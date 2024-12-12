@@ -1,0 +1,506 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+
+
+\usepackage{url}
+\input xy
+\xyoption{all} \xyoption{poly} \xyoption{knot}\xyoption{curve}\xyoption{color}
+\def\mcB{\mathcal{B}}
+\newcommand{\mcC}{\mathcal{C}}
+\newcommand{\mcD}{\mathcal{D}}
+\def\mcE{\mathcal{E}}
+\newcommand{\mcG}{\mathcal{G}}
+\def\RR{{\mathbb R}}
+\newcommand{\Ob}{{\bf Ob}}
+\newcommand{\Arr}{{\bf Arr}}
+\newcommand{\Fun}{{\bf Fun}}
+\newcommand{\taking}{\colon}
+\newcommand{\too}{\rightarrow}
+\newcommand{\toooo}{\longrightarrow}
+\newcommand{\To}{\xrightarrow}
+\newcommand{\tto}{\rightrightarrows}
+\def\from{\leftarrow}
+\newcommand{\From}{\xleftarrow}
+\newcommand{\id}{\textnormal{id}}
+\newcommand{\im}{\textnormal{im}}
+\newcommand{\Sets}{{\bf Set}}
+\newcommand{\Set}{{\bf Set}}
+\newcommand{\set}{{\text \textendash}{\bf Set}}
+\newcommand{\Cat}{{\bf Cat}}
+\newcommand{\Strings}{{\bf Strings}}
+\newcommand{\NN}{{\mathbb N}}
+\newcommand{\cross}{\times}
+\newcommand{\iso}{\cong}
+\newcommand{\sss}{\subset}
+\newcommand{\tn}[1]{\textnormal{#1}}
+\newcommand{\hsp}{\hspace{.2in}}
+\newcommand{\comment}[1]{}
+\newcommand{\bD}{{\bf \Delta}}
+\def\Hask{{\bf Hask}}
+\def\CPO{{\bf CPO}}
+\newcommand{\obox}[3]{\stackrel{#1}{\fbox{\parbox{#2}{#3}}}}
+\newcommand{\labox}[2]{\obox{#1}{1.6in}{#2}}
+\newcommand{\mebox}[2]{\obox{#1}{1in}{#2}}
+\newcommand{\smbox}[2]{\stackrel{#1}{\fbox{#2}}}
+\newcommand{\LA}[2]{\ar[#1]^-{\tn {#2}}}
+\newcommand{\LAL}[2]{\ar[#1]_-{\tn {#2}}}
+
+
+
+
+\newcommand{\LMO}[1]{\bullet^{#1}}
+\newcommand{\LTO}[1]{\bullet^{\tn{#1}}}
+
+
+
+%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{Databases are Categories II}
+\subtitle{Refinements and Extensions}
+
+\author{David I. Spivak}
+
+\date{Presented on 2010/10/22}
+
+\institute[MIT]{
+  \url{dspivak@math.mit.edu}\\
+  Mathematics Department\\
+  Massachusetts Institute of Technology \\
+
+}
+
+
+\frame{\titlepage}
+
+\newcommand{\fst}[2]{\subsection{#1}\frame{\frametitle{#1} #2}}
+
+
+\section{Introduction}
+
+\fst{Last time}{
+
+\begin{itemize}
+	\item On June 3, 2010 I gave a talk here at Galois called ``Databases are categories."
+	\item The main idea was that:
+	\begin{itemize}
+		\item a database schema is a category $\mcC$, and
+		\item a state on that schema is a functor $\delta\taking\mcC\too\Set$.
+	\end{itemize}
+	\item Here is a quick review:
+\end{itemize}
+}
+
+\frame{\frametitle{Review of basic category theory}
+\begin{itemize}
+	\item A category $\mcC$ is a system of objects and arrows, and a composition law.
+	\item A functor $\mcC\too\mcD$ is a mapping that preserves these structures.
+	\item $\Set$ is the category whose objects are sets, whose arrows are (total) functions, and whose composition law is the specification of how functions compose.
+	\item If $\mcC$ is the category on the left below, then a functor $\delta\taking\mcC\too\Set$ might look like this: $$\mcC:=\fbox{\xymatrix{A\ar[r]^f\ar[d]_g&B\\C}};\hspace{.2in} \delta=\fbox{\xymatrix{\fbox{$\bullet_{a_1}\bullet_{a_2}\bullet_{a_3}$}\ar[rr]^{(b_1,b_1,b_2)}\ar[d]&&\fbox{$\bullet_{b_1}\bullet_{b_2}$}\\\fbox{$\bullet_{c_1}$}}}$$
+	
+\end{itemize}
+
+}
+
+\frame{\frametitle{How databases fit in}
+
+A category $\mcC$ as a schema: Each object $A\in\Ob(\mcC)$ is a table, each arrow $A\too B$ is a foreign key column of table $A$ pointing to table $B$.
+\tiny \begin{align*}&\begin{tabular}{| l || l | l | l | l |}\hline\multicolumn{5}{| c |}{Employee}\\\hline {\bf Id}&{\bf First}&{\bf Last}&{\bf Mgr}&{\bf Dpt}\\\hline 101&David&Hilbert&103&q10\\\hline 102&Bertrand&Russell&102&x02\\\hline 103&Alan&Turing&103&q10\\\hline\end{tabular}&\begin{tabular}{| l || l | l |}\hline\multicolumn{3}{| c |}{Department}\\\hline {\bf Id}&{\bf Name}&{\bf Secr'y}\\\hline q10&Sales&101\\\hline x02&Production&102\\\hline\end{tabular}&&\begin{tabular}{| l |}\hline\multicolumn{1}{| c |}{ String}\\\hline {\bf Id}\\\hline a\\\hline b\\\hline \vdots\\\hline z\\\hline aa\\\hline ab\\\hline\vdots\\\hline\end{tabular}&\end{align*}
+
+\tiny\begin{align*}&\mcC=&\delta\taking\mcC\too\Sets\\&\fbox{\parbox{1.4in}{\underline{$m;d=d$}\hsp  \underline{$s;d=\id_D$}\\\xymatrix{\bullet_E\ar@<.5ex>[rr]^d\ar@(l,u)[]^m\ar@/_.5pc/[d]_f\ar@/^.5pc/[d]^l&&\bullet_D\ar@<.5ex>[ll]^s\ar[dll]^n\\\bullet_S&}}}&\fbox{\parbox{1.8in}{\xymatrix{\fbox{101,102,103}\ar@<.5ex>[rr]^d\ar@(l,u)[]^m\ar@/_.5pc/[d]_f\ar@/^.5pc/[d]^l&&\fbox{q10,x02}\ar@<.5ex>[ll]^s\ar[dll]^n\\\fbox{a,b,\ldots,z,aa,ab,\ldots}}}}\end{align*}.\normalsize
+
+}
+
+\fst{Purpose of this talk}{
+The purpose of this talk is: 
+\begin{itemize}
+	\item to refine the above ``databases are categories" notion a bit:\begin{itemize}\item a database schema is really ``a sketch." \\ In other words, a database schema is a presentation of a category.\item We can use a similar idea to discuss incomplete data.\end{itemize}
+	\item to discuss querying and data migration.
+	\item to discuss typing and calculated fields.
+	\item to talk about ontologies, or ``ologs," and a vision of ``functorial communication" based on the above ideas.
+\end{itemize}
+
+}
+
+\section{Sketching schemas and functors}
+
+\fst{Subtlety in ``database schema=category" idea}{
+
+Question: So, what's wrong with saying that the schema for the database on the left is the category on the right?
+
+\tiny \begin{align*}\parbox{2in}{\begin{tabular}{| l || l | l | l | l |}\hline\multicolumn{5}{| c |}{Employee}\\\hline {\bf Id}&{\bf First}&{\bf Last}&{\bf Mgr}&{\bf Dpt}\\\hline 101&David&Hilbert&103&q10\\\hline 102&Bertrand&Russell&102&x02\\\hline 103&Alan&Turing&103&q10\\\hline\end{tabular}\\\begin{tabular}{| l || l | l |}\hline\multicolumn{3}{| c |}{Department}\\\hline {\bf Id}&{\bf Name}&{\bf Secr'y}\\\hline q10&Sales&101\\\hline x02&Production&102\\\hline\end{tabular}}&&
+\fbox{\parbox{1.4in}{\underline{$m;d=d$}\hsp  \underline{$s;d=\id_D$}\\\xymatrix{\bullet_E\ar@<.5ex>[rr]^d\ar@(l,u)[]^m\ar@/_.5pc/[d]_f\ar@/^.5pc/[d]^l&&\bullet_D\ar@<.5ex>[ll]^s\ar[dll]^n\\\bullet_S&}}}\end{align*}\normalsize
+
+Answer: \begin{itemize}\item Categories have a composition law defined for every pair of composable arrows. \item But in the picture on the right, we don't have an arrow for $s;f$. \item Similarly in the schema on the left, there is no ``secretary's first name" column in the department table. \item Conclusion: we are only imposing a composition law where we need to.\end{itemize}
+
+}
+
+\fst{Why venture into sketches?}{
+
+\begin{itemize}
+	\item We want to be able to write down a set of objects, arrows, and composition laws, without having to throw in an arrow for every possible composition.  How do we encode that?  
+	\item We want to present categories by generators (objects and arrows) and relations (composition laws).
+	\item We want to ``sketch a category."
+\end{itemize}
+
+}
+
+\fst{Information schemas}{
+
+Suppose we don't have any composition laws to speak of.  What information do we need in order to specify such a schema?\\
+
+Information schema: \begin{align*}\mcG:=\fbox{\xymatrix@=15pt{\LTO{Table}&&\LTO{Column}\ar@/^1pc/[ll]^{\tn{foreign\_table}}\ar@/_1pc/[ll]_{\tn{in}}}}&=\fbox{\xymatrix@=15pt{\LTO{Object}&&\LTO{Arrow}\ar@/^1pc/[ll]^{\tn{target}}\ar@/_1pc/[ll]_{\tn{source}}}}\end{align*}
+
+Here's an example state on this schema, a functor $\delta\taking\mcG\too\Set$: 
+
+\tiny\begin{align*}\begin{tabular}{| l || l |}\hline\multicolumn{1}{| c |}{Object}\\\hline {\bf Id}\\\hline 1\\\hline 2\\\hline 3\\\hline\end{tabular}&\hsp\begin{tabular}{| l || l | l |}\hline\multicolumn{3}{| c |}{Arrow}\\\hline {\bf Id}&{\bf source}&{\bf target}\\\hline v&1&2\\\hline w&1&2\\\hline x&2&2\\\hline y&2&3\\\hline z&3&2\\\hline\end{tabular}&\fbox{\xymatrix{\LMO{1}\ar@<.5ex>[rr]^v\ar@<-.5ex>[rr]_w&&\LMO{2}\ar@(r,u)[]_x\ar@<.5ex>[dl]^y\\&\LMO{3}\ar@<.5ex>[ru]^z}}\end{align*}
+
+}
+
+\frame{\frametitle{Information schema for category sketches}
+Schema for category sketches:  \begin{align*}\bD:=\fbox{\xymatrix{\LTO{Object}&&\LTO{Arrow}\ar@/^1pc/[ll]^{\tn{target}}\ar@/_1pc/[ll]_{\tn{source}}&&\LTO{Comm. triangle}\ar@/_1.5pc/[ll]_{\tn{first\_map}}\ar[ll]_{\tn{composite}}\ar@/^1.5pc/[ll]^{\tn{second\_map}}}}\end{align*}
+
+Here we would need three additional equations coming from the triangle \small \begin{align*}\parbox{1in}{\xymatrix{&\LMO{2}\\\LMO{0}\ar[r]_{\tn{first\_map}}\ar[ur]^{\tn{composite}}&\LMO{1}\ar[u]_{\tn{second\_map}}}}&\hsp\hsp\parbox{2in}{\begin{align*}\tn{first\_map;source} &= \tn{composite;source}\\\tn{first\_map;target}&=\tn{second\_map;source}\\\tn{second\_map;target}&=\tn{composite;target}\end{align*}}\end{align*}\normalsize
+}
+
+\frame{\frametitle{Sketching our example, $\mcC$}
+
+\begin{itemize}
+	\item $\mcC$ is a schema for a department store.  
+	\item But how do we record the schema $\mcC$ itself, in terms of the information schema $\bD$?
+\end{itemize}
+
+\vspace{-.2in}\tiny
+\begin{align*}\tn{Record}\hsp\parbox{1.2in}{\begin{center}$\mcC=$\end{center}\vspace{-.1in}\fbox{\parbox{1.2in}{\underline{$m;d=d$}\hsp  \underline{$s;d=\id_D$}\\\xymatrix@=15pt{\bullet_E\ar@<.5ex>[rr]^d\ar@(l,u)[]^m\ar@/_.5pc/[d]_f\ar@/^.5pc/[d]^l&&\bullet_D\ar@<.5ex>[ll]^s\ar[dll]^n\\\bullet_S&}}}}&\hsp \tn{in terms of}\hsp\parbox{2.4in}{\begin{center}$\bD=$\end{center}\vspace{-.1in}\fbox{\xymatrix@=12pt{\LTO{Object}&&\LTO{Arrow}\ar@/^1pc/[ll]^{\tn{target}}\ar@/_1pc/[ll]_{\tn{source}}&&\LTO{Comm. triangle}\ar@/_1.5pc/[ll]_{\tn{first\_map}}\ar[ll]_{\tn{composite}}\ar@/^1.5pc/[ll]^{\tn{second\_map}}}}}\end{align*}
+
+\begin{align*}
+\begin{tabular}{| l ||}\hline\multicolumn{1}{| c |}{Object}\\\hline {\bf Id}\\\hline E\\\hline D\\\hline S\\\hline\end{tabular}&\hsp\begin{tabular}{| l || l | l |}\hline\multicolumn{3}{| c |}{Arrow}\\\hline {\bf Id}&{\bf source}&{\bf target}\\\hline m&E&E\\\hline d&E&D\\\hline s&D&E\\\hline f&E&S\\\hline l&E&S\\\hline n&D&S\\\hline i&D&D\\\hline\end{tabular}&\hsp\begin{tabular}{| l || l | l | l |}\hline\multicolumn{4}{| c |}{Comm. triangle}\\\hline{\bf Id}&{\bf first\_map}&{\bf second\_map}&{\bf composite}\\\hline 1&m&d&d\\\hline 2&s&d&i\\\hline 3&d&i&d\\\hline 4&i&s&s\\\hline 5&i&n&n\\\hline 6&i&i&i\\\hline\end{tabular}
+\end{align*}
+
+\normalsize
+
+}
+
+\fst{Conclusion}{
+
+\small\begin{align*}\bD:=\fbox{\xymatrix@=18pt{\LTO{Object}&&\LTO{Arrow}\ar@/^1pc/[ll]^{\tn{target}}\ar@/_1pc/[ll]_{\tn{source}}&&\LTO{Comm. triangle}\ar@/_1.5pc/[ll]_{\tn{first\_map}}\ar[ll]_{\tn{composite}}\ar@/^1.5pc/[ll]^{\tn{second\_map}}}}\end{align*}\normalsize
+\begin{itemize}
+
+	\item We can write any schema $\mcC$ as a database state on $\bD$.
+	\item We refine our definition from last time to say that a database schema is a state on $\bD$.
+	\item I'll call these ``pre-categories."  They are basically equivalent to categories.
+	\item A functor between pre-categories is just a morphism of states on $\bD$.
+	\item I swept the difference under the rug last time because I wanted to emphasize the tight connection between database schemas and categories.  That connection is still tight.
+	
+\end{itemize}
+
+}
+
+\fst{But once we're here...}{
+
+\begin{itemize}
+	\item Now that we're working with presentations of categories rather than categories,
+	\item it might be nice to ``present" other facts, besides composition laws.
+	\item We can use more complex information schemas (beef up $\bD$) to specify that a certain table in our schema $\mcC$
+	\begin{itemize}
+		\item is a product of other tables,
+		\item is a fiber product, 
+		\item is a colimit, 
+		\item is an exponential object, 
+		\item is empty (i.e. has no rows),
+		\item has only one row,
+		\item etc.
+	\end{itemize}
+	\item We can do all this with sketches.
+\end{itemize}
+
+}
+
+\fst{Sketches and sketch maps}{
+
+\begin{itemize}
+	\item ``Sketch" is category-theory terminology for ``category specification."
+	\item In a sketch we can specify that a certain object must be the limit or the colimit of some diagram.
+	\item This could be used, e.g., in a database where we want to have a table of ``airplane seats" which is the coproduct of the tables ``first class seats" and ``economy class seats".
+	\item We specify that we want $S=F\amalg E$ in the sketch $\mcC$.
+	\item Now, instead of states being functors $\mcC\to\Set$, states are ``sketch maps" $\delta\taking\mcC\to\Set$; i.e. functors that preserve all the specified facts.
+	\item For example for $\delta\taking\mcC\to\Set$ to be a sketch map, we must have $$\delta(S)=\delta(F)\amalg\delta(E).$$
+\end{itemize}
+
+}
+
+\fst{Language of sketches as formal UML}{
+
+\begin{itemize}
+	\item At this point, one recognizes that sketches are quite similar to UML (Unified Modeling Language) diagrams for database schemas.
+	\item You just specify what you want.
+	\item What's new here is the connection between database theory and category theory.
+	\item Category theory brings formal reasoning to the picture that was already there. 
+\end{itemize}
+
+}
+
+\fst{Sketching states with ``RDF triple stores"}{
+
+\begin{itemize}
+	\item Recall from the first talk that given a category $\mcC$ and a functor $\delta\taking\mcC\too\Set$ one can take the Grothendieck construction $Gr(\delta)$.
+	\item Suppose given the following example, considered as $\delta\taking\mcC\to\Set$ \tiny \begin{align*}&\begin{tabular}{| l || l | l | l | l |}\hline\multicolumn{5}{| c |}{Employee}\\\hline {\bf Emp\_Id}&{\bf First}&{\bf Last}&{\bf Mgr}&{\bf Dpt}\\\hline 101&David&Hilbert&103&q10\\\hline 102&Bertrand&Russell&102&x02\\\hline 103&Alan&Turing&103&q10\\\hline\end{tabular}&\begin{tabular}{| l || l | l |}\hline\multicolumn{3}{| c |}{Department}\\\hline {\bf Dept\_Id}&{\bf Name}&{\bf Secr'y}\\\hline q10&Sales&101\\\hline x02&Production&102\\\hline\end{tabular}\end{align*}\normalsize
+
+Applying the Grothendieck construction, we get a category $Gr(\delta)$:
+
+\tiny\begin{align*}\parbox{2.6in}{\fbox{\xymatrix@=1.1pt{\LMO{101}\ar@/_1pc/[dddddd]_{f}\ar@/_2pc/[ddddddrr]_<<<<<<{l}\ar@/_1pc/[rr]_{m}\ar@/^1pc/[rrrrr]^{d}&\LMO{102}&\LMO{103}&&&\LTO{q10}&\LTO{x02}\ar@/^2pc/[lllll]_s\ar@/^1pc/[llldddddd]^n\\\\\\\\\ldots&\LTO{Alan}&\LTO{Alao}&\ldots\\\ldots&\LTO{Bertranc}&\LTO{Bertrand}&\ldots\\\LTO{David}&\ldots&\LTO{Hilbert}&\LTO{Production}\\\LTO{Russell}&\LTO{Sales}&\LTO{Turing}&\ldots}}}\end{align*}
+
+\end{itemize}
+
+%At the following close-brace "}" something significantly changes, in terms of the .aux file.
+%Before the "}", putting either \frame{}} or \begin{itemize}\item DOES NOT cause a "strong failure" in the sense that the .aux files need to be trashed in order to re-compile.
+%On the other hand, after the "}", putting either \frame{}} or \begin{itemize}\item DOES cause a "strong failure" in the sense that the .aux files need to be trashed in order to re-compile.
+}
+%At the preceding close-brace "}" something significantly changes, in terms of the .aux file.
+%Before the "}", putting either \frame{}} or \begin{itemize}\item DOES NOT cause a "strong failure" in the sense that the .aux files need to be trashed in order to re-compile.
+%On the other hand, after the "}", putting either \frame{}} or \begin{itemize}\item DOES cause a "strong failure" in the sense that the .aux files need to be trashed in order to re-compile.
+
+\fst{Change of perspective}{
+
+ Given $\delta\taking\mcC\too\Set$, the Grothendieck construction of $\delta$ gives a functor $$\pi\taking Gr(\delta)\too\mcC.$$ 
+ 
+\vspace{-.3in}\tiny\begin{align*}\parbox{2.6in}{\begin{center}$Gr(\delta)$:=\end{center}\vspace{-.1in}\fbox{\xymatrix@=1.1pt{\LMO{101}\ar@/_1pc/[dddddd]_{f}\ar@/_2pc/[ddddddrr]_<<<<<<{l}\ar@/_1pc/[rr]_{m}\ar@/^1pc/[rrrrr]^{d}&\LMO{102}&\LMO{103}&&&\LTO{q10}&\LTO{x02}\ar@/^2pc/[lllll]_s\ar@/^1pc/[llldddddd]^n\\\\\\\\\ldots&\LTO{Alan}&\LTO{Alao}&\ldots\\\ldots&\LTO{Bertranc}&\LTO{Bertrand}&\ldots\\\LTO{David}&\ldots&\LTO{Hilbert}&\LTO{Production}\\\LTO{Russell}&\LTO{Sales}&\LTO{Turing}&\ldots}}}\hsp\To{\pi}\hsp\parbox{1.2in}{\begin{center}$\mcC:=$\end{center}\vspace{-.1in}\fbox{\parbox{1.2in}{\underline{$m;d=d$}\hsp  \underline{$s;d=\id_D$}\\\xymatrix@=15pt{\bullet_E\ar@<.5ex>[rr]^d\ar@(l,u)[]^m\ar@/_.5pc/[d]_f\ar@/^.5pc/[d]^l&&\bullet_D\ar@<.5ex>[ll]^s\ar[dll]^n\\\bullet_S&}}}}\end{align*}\normalsize
+
+The fiber over (inverse image of) every object $X\in\mcC$ is a set of objects in $\pi^{-1}(X)\in Gr(\delta)$.  That set is $\delta(X)$.
+	
+}
+
+\fst{Allowing for incomplete, non-atomic, or bad data}{
+
+\begin{itemize}\small
+	\item We can think of any functor $\pi\taking\mcD\to\mcC$ as a ``pre-state" on $\mcC.$
+	\item Such a functor $\pi$ can encode incomplete, non-atomic, or bad data.
+	\tiny\begin{align*}\parbox{2in}{$\mcD:=$\fbox{\xymatrix@=5pt{\LTO{101}\ar[rr]&&\LTO{Hello}\\\LTO{102}\ar[urr]\\\LTO{103}&&\LTO{Goodbye}\\\LTO{104}\ar[uuurr]\ar[urr]}}}\\\parbox{2in}{\hspace{.5in}$\pi\downarrow$}\\\parbox{2in}{$\mcC:=$\fbox{\xymatrix@=5pt{\LMO{A}\ar[rrr]^f&&&\LMO{B}}}}\end{align*}\small
+	
+	\item Row 103 has no data in the $f$ cell, and row 104 has too much.
+	\item Bad data (data not conforming to declared composition laws) can also be encoded as a functor $\pi\taking\mcD\to\mcC$.
+	\item Any pre-state on $\mcC$ can be ``corrected" in a canonical way to a state.
+	\item Conclusion: we can use category theory as a model even when things are awry.
+\end{itemize}
+\normalsize
+}
+
+
+\section{Functorial data migration and querying}
+
+\fst{Data migration}{
+\begin{itemize}
+	\item Let's go back to the simple picture of database schemas as categories or pre-categories $\mcC$ and states as functors $\delta\taking\mcC\to\Set$.  (Not sketchy).
+	\item Given a schema $\mcC$, the category of states on $\mcC$ is denoted $\mcC\set$.
+	\item Given a morphism between schemas, we want to be able to move data back and forth in canonical ways.
+	\item That means, given $F\taking\mcC\to\mcD$ we want functors $$\mcC\set\to\mcD\set$$ and $$\mcD\set\to\mcC\set.$$
+\end{itemize}
+
+}
+
+\fst{The ``easy" migration functor, $\Delta$}{
+\begin{itemize}
+	\item Given a morphism of schemas (i.e. a functor) $$F\taking\mcC\too\mcD,$$ we can transform states on $\mcD$ to states on $\mcC$ as follows: $$(\delta\taking\mcD\too\Set) \mapsto ((\delta\circ F)\taking\mcC\too\Set)$$
+	\item Thus we have a functor $\Delta_F\taking\mcD\set\too\mcC\set$.
+	\item $\Delta_F$ basically operates by ``re-indexing."  Using it, one can duplicate or drop tables or columns.
+
+\end{itemize}
+
+}
+
+\fst{The ``harder" migration functors, $\Sigma$ and $\Pi$}{
+Given a morphism of schemas (i.e. a functor) $F\taking\mcC\too\mcD$, 
+\begin{itemize}
+	\item the functor $\Delta_F\taking\mcD\set\to\mcC\set$ has two adjoints:
+	\begin{itemize}
+		\item a left adjoint $\Sigma_F\taking\mcC\set\to\mcD\set$, and
+		\item a right adjoint $\Pi_F\taking\mcC\set\to\mcD\set$,$$\xymatrix{\mcC\set\ar@<.5ex>[r]^{\Sigma_F}&\mcD\set\ar@<.5ex>[l]^{\Delta_F}\ar@<.5ex>[r]^{\Delta_F}&\mcC\set\ar@<.5ex>[l]^{\Pi_F}}$$		
+	\end{itemize}
+	\item Thus, given a morphism $F$ of schemas, these three functors, $$\Delta_F,\Sigma_F, \tn{ and } \Pi_F$$ allow one to move data back and forth between $\mcC$ and $\mcD$ in canonical ways.
+\end{itemize}
+
+}
+
+\fst{Views as polynomial functors}{
+
+These functors can be arbitrarily composed to create views.\vspace{-.7in}\tiny$$\parbox{1.5in}{$\mcB$:=\\\fbox{\xymatrix@=3pt{&&\LTO{boy}\ar[ddll]\ar[ddrr]\\&&\LTO{man}\ar[dll]\ar[drr]\\\LTO{name}&&&&\LTO{address}\ar[dd]\\&&\LTO{woman}\ar[ull]\ar[urr]\\&&\LTO{girl}\ar[uurr]\ar[uull]&&\LTO{street}\ar[dd]\\\\&&&&\LTO{city}}}}\From{F}
+\parbox{1.4in}{$\mcC$:=\\\fbox{\xymatrix@=3pt{&&\LTO{boy}\ar[ddll]\ar[ddrr]\\&&\LTO{man}\ar[dll]\ar[drr]\\\LTO{name}&&&&\LTO{street}\\&&\LTO{woman}\ar[ull]\ar[urr]\\&&\LTO{girl}\ar[uurr]\ar[uull]}}}\To{G}
+\parbox{1.3in}{\vspace{1in}$\mcD$:=\\\fbox{\xymatrix@=1pt{&&\LTO{male}\ar[ddll]\ar[ddrr]\\\\\LTO{name}&&&&\LTO{street}\\\\&&\LTO{female}\ar[uurr]\ar[uull]}}\begin{center}$\downarrow H$\end{center}\hspace{-.15in}
+$\mcE$:=\fbox{\xymatrix@=1pt{&&\LTO{male}\ar[ddll]\ar[ddrr]\\\\\LTO{name}&&\LMO{Q}\ar[uu]\ar[dd]\ar@{}[rr]|(.4)*+{\checkmark}&&\LTO{street}\\\\&&\LTO{female}\ar[uurr]\ar[uull]}}}$$\normalsize
+
+Given a state $\gamma\taking\mcB\to\Set$, what is $\Pi_H\circ\Sigma_G\circ\Delta_F(\gamma)\taking\mcE\to\Set$?
+}
+
+\frame{\frametitle{A simple ``SELECT" query}
+
+SELECT title, isbn\\FROM book\\WHERE price $>100$\\
+
+\tiny$$\parbox{1.7in}{$\mcC:=$\\\fbox{\xymatrix@=5pt{&&\LTO{book}\ar[rr]^{\tn{title}}\ar[rrdd]^{\tn{isbn}}\ar[dd]^{\tn{price}}&&\LTO{String}\\\\\LMO{\RR_{>100}}\ar[rr]&&\LMO{\RR}&&\LTO{isbn-num}}}}\To{F}\parbox{1.7in}{$\mcD:=$\\\fbox{\xymatrix@=5pt{\LMO{W}\ar[rr]\ar[dd]\ar@{}[ddrr]|{\checkmark}&&\LTO{book}\ar[rr]^{\tn{title}}\ar[rrdd]^{\tn{isbn}}\ar[dd]^{\tn{price}}&&\LTO{String}\\\\\LMO{\RR_{>100}}\ar[rr]&&\LMO{\RR}&&\LTO{isbn-num}}}}\From{G}\parbox{1in}{$\mcE:=$\\\fbox{\xymatrix@=5pt{\LMO{W}\ar[rr]^{\tn{title}}\ar[rrdd]^{\tn{isbn}}&&\LTO{String}\\\\&&\LTO{isbn-num}}}}$$\normalsize
+
+$\Delta_G\circ \Pi_F$ is the appropriate view.\\For any $\delta\taking\mcC\to\Set$, we materialize the view as $\Delta_G\circ \Pi_F(\delta).$
+
+}
+
+\fst{Interfacing between schemas}{
+
+\begin{itemize}
+	\item We are often interested in taking data from one enterprise model $\mcC$ and transferring it to another enterprise model $\mcD$.
+	\item Such transfers can also be accomplished using polynomial functors.
+	\item However, if $\mcC$ and $\mcD$ are not basic schemas (they're too ``sketchy") then the ``harder" migration functors, $\Sigma$ and $\Pi$, might not exist. 
+	\item Also, we might need to perform calculations such as concatenation, addition, comparison, conversion of units, etc. in order to interface these schemas.
+	\item For this we'll need an underlying typing category. 
+\end{itemize}
+}
+
+\section{Typing databases}
+
+\fst{Incorporating data types and functions}{
+
+\begin{itemize}
+	\item In the example: \small$$\parbox{1.7in}{$\mcC:=$\\\fbox{\xymatrix@=7pt{&&\LTO{book}\ar[rr]^{\tn{title}}\ar[rrdd]^{\tn{isbn}}\ar[dd]^{\tn{price}}&&\LTO{String}\\\\\LMO{\RR_{>100}}\ar[rr]&&\LMO{\RR}&&\LTO{isbn-num}}}}$$\normalsize
+how do we know that $\LTO{String}, \LMO{\RR},$ and $\LMO{\RR_{>100}}$ are what they say they are?  
+	\item That is, given $\delta\taking\mcC\to\Set$, how do we specify that $\delta(\LMO{\RR})\in\Set$ is some pre-defined data type like Float. 
+\end{itemize}
+}
+
+\fst{Power of category theory: connection is easy}{
+
+\begin{itemize}
+	\item Let $\Hask$ denote a category of types and functions that has been implemented on a computer and for which (at least theoretically) there exists a functor $V\taking\Hask\to\Set$.
+	\begin{itemize}
+		\item Think of $\Hask$ as all Haskell data types and the definable functions between them, as well as all new types that could possibly be output by modules.
+	\end{itemize}  
+	\item Now $\Hask$ begins to look like a schema and $V$ a ``canonical state."
+	\item Since database schemas are categories and $\Hask$ is a category, we can integrate the two.
+\end{itemize}
+
+}
+
+\frame{\frametitle{Example}
+\begin{itemize}
+	\item Here a nice functor $$\parbox{1.6in}{$\mcB:=$\\\fbox{\xymatrix@=3pt{&&&\LTO{String}\\\\\LMO{\RR_{>100}}\ar[rr]&&\LMO{\RR}}}}\To{F}\Hask$$ $F(\LTO{String})=\tn{char(40)}, \;\;F(\LMO{\RR})=\tn{Float},\;\; F(\LMO{\RR_{>100}})=$ some new type.
+	\item There is also an obvious functor \small$$\mcB=\parbox{1.4in}{\fbox{\xymatrix@=3pt{&&&\LTO{String}\\\\\LMO{\RR_{>100}}\ar[rr]&&\LMO{\RR}}}}\To{G}\parbox{2in}{\fbox{\xymatrix@=7pt{&&\LTO{book}\ar[rr]^{\tn{title}}\ar[rrdd]^{\tn{isbn}}\ar[dd]^{\tn{price}}&&\LTO{String}\\\\\LMO{\RR_{>100}}\ar[rr]&&\LMO{\RR}&&\LTO{isbn-num}}}}=\mcC$$\normalsize
+	\item We are interested in functors $\delta\taking\mcC\to\Set$ equipped with a map $\Delta_G\delta\to \Delta_FV$.
+\end{itemize}
+
+}
+
+\frame{\frametitle{Typing in general}
+
+\begin{itemize}
+	\item If we need to enforce data types, our schema $\mcC$ will more than just a category (or sketch),
+	\item It will be a category (or sketch) plus something like above: $$\Hask\From{F}\mcB\To{G}\mcC.$$
+	\item And we won't interested in any old state $\delta\taking\mcC\to\Set$ but only those with a map $\Delta_G\delta\to \Delta_FV$, where $V\taking\Hask\to\Set$ is as above.
+	\item By definition of adjunction, that's just $$\delta\to \Pi_G\Delta_F(V),$$ and $\Pi_G\Delta_F(V)$ is some huge fixed state on $\mcC$ that encodes our typing requirements.
+	\item So the category of typed states is $\mcC\set_{/\Pi_G\Delta_F(V)}$.  This is a topos.
+\end{itemize}
+
+}
+
+\fst{Summary}{
+
+\begin{itemize}
+	\item The longer portion of this talk is over.
+	\item I discussed how to tighten the connection between databases and mathematics.
+	\begin{itemize}
+		\item How to only include the columns and composition laws you want (not necessarily all of them).
+		\item How to force tables to be products or coproducts (etc.) of other tables.
+		\item How to model incomplete, non-atomic, or bad data.
+		\item How functors between schemas give rise to views and data migration.
+		\item How to encode typing information and calculated fields to database schemas.
+	\end{itemize}
+\end{itemize}
+
+}
+
+\section{Ologs}
+
+\fst{Bringing these concepts to researchers}{
+\begin{itemize}
+	\item In this short second section, I want to look at these categories and sketches from a different perspective.
+	\item Issue: how to allow people (e.g. scientists) to record very precise conceptual ideas.
+	\begin{itemize}
+		\item A big problem in science is to know where data comes from and how its been manipulated to arrive at conclusions.
+		\item Another is to have the flexibility to design new databases on the fly, so as to capture unexpected nuances of data.
+		\item Finally, academic researchers need to be able to record precisely what they mean in a computer-searchable way, rather than in silos of prose. 
+	\end{itemize}
+	\item We need to democratize information storage.
+\end{itemize}
+
+}
+
+\fst{Ologs: linguistic categories}{
+
+\begin{itemize}
+	\item The word ``Olog" 
+	\begin{itemize}
+		\item From ``ontology log," a play on ``Blog."
+		\item Alternatively, a suffix for ``study of."
+	\end{itemize}
+	\item An olog is a category or sketch, but with natural language labels.
+	\item The goal is to capture meaning using explicit structure.
+	
+\end{itemize}
+
+}
+
+\frame{\frametitle{Example olog}
+\tiny\begin{align*}\label{dia:arganine}\fbox{\xymatrix{&\smbox{1}{arganine}\ar@{}[dr]|{\checkmark}\LA{r}{}\LA{d}{is}&\obox{2}{.9in}{an electrically-charged side chain}\LA{d}{is}\\&\smbox{3}{an amino acid}\LAL{dl}{has}\LA{dr}{has}\LA{r}{has}&\smbox{4}{a side chain}\\\smbox{5}{an amine group}&&\smbox{6}{a carboxylic acid}}}\end{align*}  \normalsize
+
+``Arganine is an amino acid.  An amino acid has a side chain, a carboxylic acid, and an amine group.  An electrically-charged side chain is a side chain.  Arganine's side chain is electrically-charged."
+}
+
+\frame{\frametitle{Another example}
+\tiny$$\fbox{\parbox{4in}{\hspace{1.3in}\underline{(1,2,4,5) and (2,3,5,6) are fiber products.}\\\\\xymatrix@=10pt{\smbox{1}{a material $x$ at room temperature}\LA{d}{is}\LA{r}{}&\smbox{2}{room temperature}\LA{rr}{in kelvin}\LA{d}{is}&&\smbox{3}{$\{x\in\RR : 293\leq x\leq 298\}$}\LA{d}{}\\\smbox{4}{a material $x$ at a temperature $y$}\LA{d}{x}\LA{r}{y}&\smbox{5}{a temperature}\LA{rr}{in kelvin}&&\obox{6}{.1in}{$\RR$}\\\smbox{7}{a material}}}}$$\normalsize
+
+\begin{itemize}
+	\item This is clearly a sketch defining room temperature and what it means to be a material at room temperature.
+	\item An underlying typing system could handle the arrow $3\to 6$.
+	\item This olog could be referenced and extended by many scientists.
+	\item It represents a fragment of a world-view.
+	\item Moreover, each object and arrow could be ``clickable" meaning one could open it up as a table of values.
+\end{itemize}
+
+}
+
+\frame{\frametitle{Another example}
+\vspace{-.2in}
+\begin{align*} \scriptsize\fbox{\xymatrix@=14pt{\mebox{1}{a company that has hosted me}\ar[drr]&&\smbox{2}{Galois Inc.}\ar[ll]\ar[rr]\ar[d]\ar@{}[dll]|(.3)*{\checkmark}\ar@{}[drr]|(.3)*{\checkmark}&&\mebox{3}{a company in Portland Oregon}\ar[d]\ar[dll]\\&&\smbox{4}{a company}&&\smbox{5}{Portland Oregon}\\\smbox{6}{(Galois, John Launchbury)}\ar[rr]\ar[ddrr]\ar[uurr]\ar@{}[urr]|{\checkmark}\ar@{}[drr]|{\checkmark}&&\parbox{.8in}{$\mebox{7}{a pair $(x,y)$ where $x$ is a company and $y$ is its founder}$}\ar[u]^-x\ar[d]_-y\\&&\smbox{8}{a founder}\ar[rr]&&\smbox{9}{a person}\\&&\smbox{10}{John Launchbury}\ar[u]\ar[rr]\ar@{}[urr]|{\checkmark}&&\smbox{11}{a person I play go with}\ar[u]}}
+\end{align*}
+\normalsize
+}
+
+\fst{Dreams and speculation}{
+
+\begin{itemize}
+	\item Imagine a world of people authoring ologs and connecting to each other's ologs, forming a network of knowledge.
+	\item These connections could given by functors (or ``spans"), which could only be instantiated if the two ologs are compatible.
+	\item My dream is an ``olog network" of people recording their world-views.
+	\begin{itemize}
+		\item This is analogous to the semantic web vision (in fact it is possible to convert an olog into a RDF or OWL schema).
+		\item Politicians could record their views in ologs.  It would be interesting to note precise differences between Obama's olog and Palin's olog.
+		\item Information in the olog network is neither right nor wrong, just ``linked into" by others or not.
+	\end{itemize}
+	\item Laws should be query-able.  Could laws and legislation be recorded in this precise format?  
+\end{itemize}
+}
+
+\section{Conclusion}
+
+\fst{Conclusion}{
+
+\begin{itemize}
+	\item The purpose of this talk was to refine and extend the ``databases are categories" idea from last time.
+	\item With schemas as categories, views, data migration, and integrating with PL become natural.
+	\item Recording world-views as ologs may yield an information network that is instantly compatible with database systems.
+	\item ``It's all categories and functors!" ---\\ I hope people see category theory as a unified modeling language for information storage, processing, and transfer.
+	
+\end{itemize}
+	
+\begin{center}{\bf Thanks for hosting me and inviting me to speak!}\end{center}
+
+}
+
+\end{document}
+

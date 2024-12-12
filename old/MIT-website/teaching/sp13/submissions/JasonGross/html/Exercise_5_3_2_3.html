@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_5_3_2_3</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_5_3_2_3</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="PowerSetMonad.html#"><span class="id" type="library">PowerSetMonad</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab162"></a><h1 class="section">Exercise 5.3.2.3</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Module</span> <a name="Exercise_5_3_2_3"><span class="id" type="module">Exercise_5_3_2_3</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab163"></a><h2 class="section">Problem</h2>
+ Let <span class="inlinecode"><a class="idref" href="Exercise_4_5_3_6.html#ℙ"><span class="id" type="abbreviation">&#x2119;</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" type="keyword">Set</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" type="keyword">Set</span></span> be the powerset functor, so that given a
+      function <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="TopologicalContinuity.html#continuous.continuous_definition.Y"><span class="id" type="variable">Y</span></a></span> the function <span class="inlinecode"><a class="idref" href="Exercise_4_5_3_6.html#ℙ"><span class="id" type="abbreviation">&#x2119;</span></a>(<a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a>)</span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_4_5_3_6.html#ℙ"><span class="id" type="abbreviation">&#x2119;</span></a>(<a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a>)</span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="Exercise_4_5_3_6.html#ℙ"><span class="id" type="abbreviation">&#x2119;</span></a>(<a class="idref" href="TopologicalContinuity.html#continuous.continuous_definition.Y"><span class="id" type="variable">Y</span></a>)</span> is
+      given by taking images.
+
+<div class="paragraph"> </div>
+
+      (a) Make sense of the following statement: “with <span class="inlinecode"><a class="idref" href="PowerSetMonad.html#PowerSetMonad.η"><span class="id" type="variable">η</span></a></span> defined by
+          singleton subsets and with <span class="inlinecode">µ</span> defined by union, <span class="inlinecode"><a class="idref" href="Topology.html#inclusion.T"><span class="id" type="variable">T</span></a></span> <span class="inlinecode">:=</span> <span class="inlinecode">(<a class="idref" href="Exercise_4_5_3_6.html#ℙ"><span class="id" type="abbreviation">&#x2119;</span></a>,</span>
+          <span class="inlinecode"><a class="idref" href="PowerSetMonad.html#PowerSetMonad.η"><span class="id" type="variable">η</span></a>,</span> <span class="inlinecode">µ)</span> is a monad”.
+
+<div class="paragraph"> </div>
+
+      (b) With <span class="inlinecode"><a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a></span> <span class="inlinecode">=</span> <span class="inlinecode">{<a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.a"><span class="id" type="constructor">a</span></a>,</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.b"><span class="id" type="constructor">b</span></a>}</span>, write down the function <span class="inlinecode"><span class="id" type="var">η_X</span></span> as a 2-row,
+          2-column table, and write down the function <span class="inlinecode">µ<span class="id" type="var">_X</span></span> as a 16-row,
+          2-column table (you can stop after 5 rows if you fully get
+          it).
+
+<div class="paragraph"> </div>
+
+      (c) Check that you believe the monad laws from Definition 5.3.2.1. 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Check</span> <a class="idref" href="PowerSetMonad.html#PowerSetMonad"><span class="id" type="definition">PowerSetMonad</span></a>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_5_3_2_3.html#"><span class="id" type="module">Exercise_5_3_2_3</span></a>.<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

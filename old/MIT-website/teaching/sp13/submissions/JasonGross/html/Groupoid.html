@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Groupoid</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Groupoid</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Category.html#"><span class="id" type="library">Category</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="CategoryIsomorphisms.html#"><span class="id" type="library">CategoryIsomorphisms</span></a> <a class="idref" href="ComputableCategory.html#"><span class="id" type="library">ComputableCategory</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab177"></a><h1 class="section">Groupoids</h1>
+ Definition 4.2.3.7. A groupoid is a category <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span> such that every
+    morphism is an isomorphism.  If <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span> and <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent_Relation.D"><span class="id" type="variable">D</span></a></span> are groupoids, a morphism
+    of groupoids, denoted <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent.F"><span class="id" type="variable">F</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent_Relation.D"><span class="id" type="variable">D</span></a></span>, is simply a functor. The category
+    of groupoids is denoted <span class="inlinecode"><span class="id" type="var">Grpd</span></span>. 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Class</span> <a name="IsGroupoid"><span class="id" type="record">IsGroupoid</span></a> `(<span class="id" type="var">C</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">obj</span>) :=<br/>
+&nbsp;&nbsp;{ <a name="is_groupoid"><span class="id" type="projection">is_groupoid</span></a> :> <span class="id" type="keyword">∀</span> <span class="id" type="var">s</span> <span class="id" type="var">d</span> (<span class="id" type="var">m</span> : <a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> <a class="idref" href="Groupoid.html#C"><span class="id" type="variable">C</span></a> <a class="idref" href="Groupoid.html#s"><span class="id" type="variable">s</span></a> <a class="idref" href="Groupoid.html#d"><span class="id" type="variable">d</span></a>),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="CategoryIsomorphisms.html#IsomorphismOf"><span class="id" type="class">IsomorphismOf</span></a> <a class="idref" href="Groupoid.html#m"><span class="id" type="variable">m</span></a> }.<br/>
+
+<br/>
+<span class="id" type="keyword">Record</span> &gt; <a name="Groupoid"><span class="id" type="record">Groupoid</span></a> :=<br/>
+&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="GroupoidType"><span class="id" type="projection">GroupoidType</span></a> :> <span class="id" type="keyword">Type</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="GroupoidCategory"><span class="id" type="projection">GroupoidCategory</span></a> :> @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <a class="idref" href="Groupoid.html#GroupoidType"><span class="id" type="method">GroupoidType</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="GroupoidIsGroupoid"><span class="id" type="projection">GroupoidIsGroupoid</span></a> :> <a class="idref" href="Groupoid.html#IsGroupoid"><span class="id" type="class">IsGroupoid</span></a> <a class="idref" href="Groupoid.html#GroupoidCategory"><span class="id" type="method">GroupoidCategory</span></a><br/>
+&nbsp;&nbsp;}.<br/>
+
+<br/>
+<span class="id" type="var">Existing</span> <span class="id" type="keyword">Instance</span> <span class="id" type="var">GroupoidIsGroupoid</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Definition</span> <a name="CategoryOfGroupoids"><span class="id" type="definition">CategoryOfGroupoids</span></a> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <a class="idref" href="Groupoid.html#Groupoid"><span class="id" type="record">Groupoid</span></a> :=<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Eval</span> <span class="id" type="tactic">hnf</span> <span class="id" type="keyword">in</span> @<a class="idref" href="ComputableCategory.html#ComputableCategory"><span class="id" type="definition">ComputableCategory</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <a class="idref" href="Groupoid.html#GroupoidCategory"><span class="id" type="projection">GroupoidCategory</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

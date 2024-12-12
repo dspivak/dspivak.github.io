@@ -1,0 +1,217 @@
+\documentclass{amsart}
+
+\input{decl-main}
+\def\Shv{\She}
+\def\UM{{\bf UM}}
+\def\bD{{\bf \Delta}}
+\def\Fuz{{\bf Fuz}}
+\def\sFuz{{\bf sFuz}}
+\def\gVect{{\bf gVect}}
+
+\begin{document}
+
+\begin{abstract}
+
+We discuss fuzzy simplicial sets, and their relationship to (a mild generalization of) metric spaces.  Namely, we present an adjunction between the categories: a metric realization functor and fuzzy singular complex functor that generalize the usual geometric realization and singular functors.  Finally, we show how these constructions relate to persistent homology.
+
+The following document is a rough draft and may have (substantial) errors.
+
+\end{abstract}
+
+\title{Metric realization of fuzzy simplicial sets}
+
+\author{David I. Spivak}
+
+\thanks{This project was supported in part by a grant from the Office of Naval Research: N000140910466.}
+
+\maketitle
+
+\section{Fuzzy simplicial sets}
+
+Let $I$ denote the topological space whose underlying set of points is $(0,1]\in\RR$ and whose open sets are the intervals $(0,a)$ where $a\in(0,1]$.  In other words, the category of open sets and inclusions in $I$ is equivalent to the partially ordered set $(0,1]$ under the relation $\leq$.  It has a Grothendieck topology given in the usual way, so $I$ has an ``underlying Grothendieck site."  We may abuse notation by writing $I$ to denote the poset of open sets in the topological space $I$, either as a category or as a site.
+
+A sheaf $S\in\Shv(I)$ on $I$ is a functor $S\taking I\op\to\Sets$ satisfying the sheaf condition.  Explicitly, $S$ consists of a set $S([0,a))$ for all $a\in(0,1]$, which we choose to denote by $S^{\geq a}$,  and restriction maps $\rho_{b,a}\taking S^{\geq b}\to S^{\geq a}$ for all $b\geq a$, such that if $c\geq b\geq a$ then $\rho_{b,a}\circ\rho_{c,b}=\rho_{c,a}$, and such that, for any non-empty subset $A\ss(0,1]$ with supremum $a=\sup(A)$, one has $$S^{\geq a}\iso\lim_{a'\in A}S^{\geq a'}.$$
+
+A sheaf $S$ is called a {\em fuzzy set} if for each $b\geq a$ in $(0,1]$, the restriction map $\rho_{b,a}$ is injective.  Let $\Fuz$ denote the full subcategory of $\Shv(I)$ spanned by the fuzzy sets.  This definition is slightly different than Goguen's \cite{Gog}, but is closely related.  See \cite{Bar}.  The difference between fuzzy sets $T$ and arbitrary sheaves $S\in\Shv(I)$ is that, in $T$ two elements are either equal or they are not, whereas two elements $x\neq y\in S^{\leq a}$ may be equal {\em to a certain degree}, $\rho_{a,c}(x)=\rho_{a,c}(y)$ for some $c<a$.
+
+Suppose $S\in\Shv(I)$ is a sheaf.   For $a\in (0,1],$ let $S(a)=S^{\geq a}-\colim_{b>a}S^{\geq b}$, and note that $S^{\geq a}=\colim_{b\geq a}\rho_{b,a}[S(b)].$  If $T$ is a fuzzy set, we can make this easier on the eyes: $$T^{\geq a}=\coprod_{b\geq a}T(b).$$  We write $x\in S$ and say that {\em $x$ is an element of $S$}, if there exists $a\in (0,1]$ such that $x\in S(a)$; in this case we may say that {\em $x$ is an element of $S$ with strength $a$}.
+
+The following definition may bring things down to earth.
+
+\begin{definition}
+
+A {\em classical  fuzzy set} is a pair $(X,\eta)$ where $X$ is a set and $\eta\taking X\to(0,1]$ is a function.   Given classical fuzzy sets $(X,\eta_X)$ and $(Y,\eta_Y)$, {\em morphism of classical fuzzy sets} between them is a function $f\taking X\to Y$ such that $\eta_Y(f(x))\geq\eta_X(x)$ for all $x\in X$.
+
+Let $T$ denote a fuzzy set.  Let $\bar{T}$ denote the set $\bigcup_{a\in (0,1]} T^{\geq a}$, and define $\eta\taking\bar{T}\to(0,1]$ by $\eta(x)=a$ if the following condition holds: $x\in T^{\geq a}$ and for all $a'\geq a$ one has $x\not\in T^{\geq a'}$.  We refer to the pair $(\bar{T},\eta)$ as the {\em classical form for $T$}.  We refer to $\bar{T}$ as the {\em underlying set} of $T$ and to $\eta$ as the {\em characteristic function} for $T$.  This construction is functorial and induces an isomorphism of categories between fuzzy sets and classical fuzzy sets.
+
+\end{definition}
+
+The following lemma says that, under a map of fuzzy sets, an element cannot be sent to an element of lower strength.
+
+\begin{lemma}
+
+Suppose that $S$ and $T$ are fuzzy sets.  If $f\taking S\to T$ is a morphism of fuzzy sets, then for all $a,b\in (0,1]$, if $x\in S(a)$ then $f(x)\in T(b)$ for some $b\geq a$.
+
+\end{lemma}
+
+\begin{proof}
+
+Since $x\in S^{\geq a}$, we have by definition that $f(x)\in T^{\geq a}$, so $x\in T(b)$ for some $b\geq a$.
+
+\end{proof}
+
+\begin{lemma}
+
+The forgetful functor $\Fuz\to\Shv(I)$ is fully faithful and has a left adjoint $m$.  Thus $\Fuz$ is closed under taking colimits.
+
+\end{lemma}
+
+\begin{proof}
+
+Given a sheaf $S\taking I\op\to\Sets$ and $a\in (0,1]$, let $(mS)^{\geq a}=S^{\geq a}/\sim$, where for $x,x'\in S^{\geq a}$, we set $x\sim x'$ if there exists $b\leq a$ such that $\rho_{a,b}(x)=\rho_{a,b}(x')$.  Clearly, $mS$ is a fuzzy set, and one checks that $m$ is left adjoint to the forgetful functor.  
+
+To compute the colimit of a diagram in $\Fuz$, one applies the forgetful functor, takes the colimit in $\Shv(I)$, and applies the left adjoint.
+
+\end{proof}
+
+Let $\bD$ denote the simplicial indexing category, and denote its objects by $[n]$ for $n\in\NN$.
+
+\begin{definition}
+
+A {\em fuzzy simplicial set} is a functor $\bD\op\to\Fuz$.  A {\em morphism of fuzzy simplicial sets} is a natural transformation of functors.   The category of fuzzy simplicial sets is denoted $\sFuz$.
+
+\end{definition}
+
+A fuzzy simplicial set is a simplicial set in which every simplex has a strength.  A simplex has strength at most the minimum of its faces.  All degeneracies of a simplex have the same strength as the simplex.
+
+A fuzzy simplicial set $X\taking\bD\op\to\Fuz$ can be rewritten as a sheaf $X\taking(\bD\cross I)\op\to\Sets$, where $\bD$ has the trivial Grothendieck topology and $\bD\cross I$ has the product Grothendieck topology.  We write $X_n^{<a}$ to denote the set $X([n],[0,a)).$
+
+For $n\in\NN$ and $i\in I$, let $\Delta^n_i\in\sFuz$ denote the functor represented by $(n,i)$.  If $i=[0,a)$  we may also write $\Delta^n_{<a}$ to denote $\Delta^n_i$.  Note that a map $f\taking[n]\to[m]$ induces a unique map $F\taking\Delta^n_{<a}\to\Delta^m_{<b}$ if and only if $a\leq b$; otherwise there can be no such $F$.
+
+Any fuzzy simplicial set $X$ can be canonically written as the colimit of its diagram of simplices: $$\colim_{\Delta^n_{<a}\to X}\Delta^n_{<a}\Too{\iso} X$$
+
+
+\section{uber-metric spaces}
+
+We define a category of uber-metric spaces, which are metric spaces except with the possibility of $d(x,y)=\infty$ or $d(x,y)=0$ for $x\neq y$.
+
+\begin{definition}
+
+An {\em uber-metric space} is a pair $(X,d)$, where $X$ is a set and $d\taking X\cross X\to [0,\infty]$, such that for all $x,y,z\in X$, \begin{enumerate}\item $d(x,x)=0$,\item $d(x,y)=d(y,x)$, and\item $d(x,z)\leq d(x,y)+d(y,z)$.\end{enumerate}  Here we consider $x\leq\infty$ and $x+\infty=\infty+x=\infty$ for all $x\in [0,\infty]$.  We call $d$ an {\em uber-metric} or just a {\em metric} on $X$.
+
+A {\em morphism of uber-metric spaces}, denoted $f\taking (X,d_X)\to (Y,d_Y)$ is a function $f\taking X\to Y$ such that $d_Y(f(x_1),f(x_2))\leq d_X(x_1,x_2)$ for all $x_1,x_2\in X$.  Such functions are also called {\em non-expansive}.
+
+These objects and morphisms define a category called {\em the category of uber-metric spaces} and denoted $\UM$.
+
+\end{definition}
+
+\begin{lemma}
+
+The category $\UM$ is closed under colimits.
+
+\end{lemma}
+
+\begin{proof}
+
+We must show that $\UM$ has an initial object, arbitrary coproducts, and coequalizers.  The set $\emptyset$ is the initial object in $\UM$.  
+
+Let $A$ be a set and for all $a\in A$, let $(X_a,d_a)$ denote a metric space.  Let $X_A$ denote the set $\coprod_{a\in A}X_a$; and let $d_A$ denote the metric such that for all $y,y'\in X_A$, if there exists $a\in A$ such that $y,y'\in X_a$ then $d_A(y,y')=d_a(y,y')$, but if instead $y$ and $y'$ are in separate components then $d_A(y,y')=\infty$.  One checks that $(X_A,d_A)$ is an uber-metric space and that it satisfies the universal property for a coproduct.
+
+Finally, suppose that $$\xymatrix{A\ar@<.5ex>[r]^f\ar@<-.5ex>[r]_g& X\ar[r]^{[-]}& Y}$$ is a coequalizer diagram of sets.  Write $x\sim x'$ if there exists $a\in A$ with $x=f(a), y=g(a)$; then $Y=X/\sim$ is the set of equivalence classes.  If $y=m(x)$.   If $d_X$ is a metric on $X$, we define a metric (\cite{Wik}) $d_Y$ on $Y$ by $$d_Y([x],[x'])=\inf(d_X(p_1,q_1)+d_X(p_2,q_2)+\cdots+d_X(p_n,q_n)),$$ where the infemum is taken over all pairs of sequences $(p_1,\ldots,p_n), (q_1,\ldots,q_n)$ of elements of $X$, such that $p_1\sim x$, $q_n\sim x'$, and $p_{i+1}\sim q_i$ for all $1\leq i\leq n-1$.  Again, one checks that $(Y,d_Y)$ is an uber-metric space which satisfies the universal property of a coequalizer.
+
+\end{proof}
+
+\section{Metric realization}
+
+In order to define a metric realization functor $Re\taking\sFuz\to\UM$, we first define it on the representable sheaves in $\sFuz$ and then extend to the whole category using colimits (i.e. using a left Kan extention).  
+
+Recall the usual metric on Euclidean space $\RR^m$ and let $\RR^m_{\geq 0}$ denote the $m$-tuples all of whose entries are non-negative.  Recall also that objects of $I$ are of the form $[0,a)$ for $0<a\leq 1$.  For an object $([n],[0,a))\in \NN\cross I$, define $Re(\Delta^n_{<a})$, as a set, to be $$\{(x_0,x_1,\ldots,x_n)\subset\RR^{n+1}|x_0+x_1+\cdots+x_n=-\lg(a)\},$$ where $\lg(a)$ means the log (base 2) of $a$.  We take as our metric on $Re(\Delta^n_{<a})$ to be that induced by its inclusion as a subspace of $\RR^{n+1}$. 
+
+A morphism $([n],[0,a))\to ([m],[0,b))$ exists if $a\leq b$, and in that case consists of a morphism $\sigma\taking [n]\to[m]$.  We define $Re(\sigma,a\leq b)\taking Re(\Delta^n_{<a})\to Re(\Delta^m_{<b})$ to be the map $$(x_0,x_1,\ldots,x_n)\mapsto \frac{\lg(b)}{\lg(a)}\left(\sum_{i_0\in\sigma^\m1(0)}x_{i_0},\sum_{i_1\in\sigma^\m1(1)}x_{i_1},\ldots,\sum_{i_m\in\sigma^\m1(m)}x_{i_m}\right).$$  Note that this map is non-expansive because $0<a\leq b\leq 1$ implies that $\frac{\lg(b)}{\lg(a)}\leq 1$.
+
+We are ready to define $Re$ on a general $X$ as $$Re(X):=\colim_{\Delta^n_{<a}\to X}Re(\Delta^n_{<a}).$$  This functor preserves colimits, so it has a right adjoint, which we denote $Sing\taking\UM\to\sFuz$.  It is given on $Y\in\UM$ by $$Sing(Y)_n^{<a}=\Hom_\UM(Re(\Delta^n_{<a}),Y).$$
+
+\section{Persistent Homology}
+
+Let $Ch_{\geq 0}$ denote the category of non-negatively graded chain complexes of abelian groups (whose differential decreases degree).  Given a fuzzy simplicial set $X$, its {\em persistence complex} is a functor $P_X\taking I\op\to Ch_{\geq 0}$, which in degree $n$ is $$P_X([0,a))_n=\ZZ\langle X_n^{\geq a}\rangle,$$ the free $\ZZ$-module generated by the $n$-simplices of strength at least $a$ in $X$.  The boundary maps are computed in the usual way.  The homology of $P_X$ is the functor $$H_*(-;\ZZ)\circ P_X\taking I\op\to\gVect,$$ where $\gVect$ is the category of graded vector spaces.  In other words, for every $a\in(0,1]$, one has homology groups $H_n^{\geq a}(X;\ZZ)$, and if $a\geq b$, one has a map $H_n^{\geq a}(X;\ZZ)\to H_n^{\geq b}(X;\ZZ)$.
+
+Given a finite metric space $(M,d_M)$, one can form a fuzzy graph $G(M)$ as follows.  On vertices, take $G(M)^{\geq a}_0=M$, for all $a\in(0,1]$.  For edges, take $$G(M)^{\geq a}_1=\left\{(m_1,m_2)\in M\cross M| d_M(m_1,m_2)\leq-\lg(a)\right\}$$
+
+Now of course, there is a left adjoint that builds a fuzzy simplicial set $F(G)$ out of a fuzzy graph $G$, using cliques.  Precisely, we have $$F(G)^{\geq a}_n=\Hom(sk_1(\Delta^n_{\leq a}),G),$$ where $sk_1$ denotes the 1-skeleton functor from fuzzy simplicial sets to fuzzy graphs. 
+
+Taking our original finite metric space $M$, form $F(G(M))$, take its persistent homology in the above sense.
+
+\begin{question} and I wonder if this agrees with its persistent homology in the sense I heard about from Gunnar Carlsson.
+\end{question}
+
+\begin{question}
+Is there any reasonable way in which we could take a homotopy colimit of our fuzzy simplicial set $X\taking(\bD\cross I)\op\to\Sets$ and get back something reasonable? (For simplicial sets $Y$, the homotopy colimit of the composite $Y\taking\bD\to\Sets\to\Top$ gives the ``right" answer, the geometric realization of $Y$.)
+\end{question}
+
+
+
+%\comment{%2009/11/20: I'm not sure what I think of considering fuzzy simplicial sets in terms of probability theory.
+\appendix
+
+\section{Probabilistic simplicial sets}
+
+One might want to consider fuzzy simplicial sets $X$ in the following way: for each $n$-simplex $x\in X_n$, consider $\eta_n(x)\in(0,1]$ as ``the probability that $x$ is in $X$."  Now simulate $X$ by writing down lots of (non-fuzzy) simplicial sets $X'$ whose simplices are chosen from $X$ with the indicated probabilities.
+
+Unfortunately, this does not make much sense.  For example, consider the fuzzy simplex $\Delta^1_{\leq .5}$.  This has two 0-simplices and a single 1-simplex, each with value $\frac{1}{2}$.  To simulate it, one would flip a coin to decide whether to include each vertex and then, only if both vertices were included, flip another coin to decide whether to include the 1-simplex.  Thus the 1-simplex is in the simulated simplicial set with probability $\frac{1}{8}$ -- this does not seem like a good notion, because the natural understanding of $\Delta^1_{\leq .5}$ is that each of the three simplices has a probability of $\frac{1}{2}$, whatever that might mean.
+
+Notice that $M:=(0,1]$ is a monoid under multiplication. 
+
+\begin{definition}
+
+Let $\mcX=(X,\eta_X)$ and $\mcY(Y,\eta_Y)$ denote fuzzy sets.  We define their {\em tensor product} $\mcX\tensor\mcY$ to be the fuzzy set $(X\cross Y,\eta)$, where $\eta(x,y)=\eta_X(x)\eta_Y\!(y)$ for each $x\in X, y\in Y$.  There is an obvious map of fuzzy sets $\mcX\tensor\mcY\to\mcX\cross\mcY$.
+
+\end{definition}
+
+Let $X$ denote a fuzzy simplicial set.  Recall that the face maps induce, for every $n\in\NN$, a map of fuzzy sets $d\taking X_n\to X_{n-1}\cross\cdots\cross X_{n-1}$, where there are $n+1$ copies in the product.
+
+\begin{definition}
+
+A {\em probabilistic simplicial set} is a fuzzy simplicial set $X$ such that for each integer $n\geq 1$ there exists a dotted lift in the diagram $$\xymatrix{&(X_{n-1})^{\tensor n+1}\ar[d]\\X_n\ar@{-->}[ur]\ar[r]_-d&(X_{n-1})^{\cross n+1}.}$$
+
+\end{definition}
+
+In other words, the value of an $n$-simplex in a probabilistic simplicial set is at most the product of the values of its faces.  Now we can define an appropriate concept of simulation.
+
+(Caveat: my understanding of probability theory is limited, and this will be obvious when reading the following definition.)
+
+\begin{definition}
+
+Given a set $X$ and a function $\eta\taking X\to(0,1]$, an {\em simulation} of $(X,\eta)$ is a subset $X'\ss X$ such that for each $x\in X$, the probability that $x\in X'$ is $\eta(x)$.  
+
+\end{definition}
+
+\begin{definition}
+
+Let $(X,\eta)$ denote a fuzzy simplicial set, and for each $n\in\NN$, let $\eta_n\taking X_n\to (0,1]$ denote the characteristic function of level $n$.  A {\em simulation} of $(X,\eta)$ is a simplicial set $X'$ with the following properties: \begin{itemize} \item The set $X'_0$ of 0-simplices is a simulation of $(X_0,\eta_0)$ \item Let $X_1''$ denote the fiber product in the diagram of sets $$\xymatrix{X_1''\ar[r]\ar[d]&X_1\ar[d]\\X_0'\cross X_0'\ar[r]&X_0\cross X_0,}$$ the set of {\em possible 1-simplices given the simulation $X'_0$}, and let $\eta_1''\taking X_1''\to(0,1]$ be defined by $\eta_1''(x)=\frac{\eta_1(x)}{\eta_0(d_0(x))\cdot\eta_0(d_1(x))}$ for each $x\in X_1''$.  Now define $X_1'$ to be a simulation of $X_1''$.\item Inductively, we can define a fuzzy set $(X_n'',\eta_n'')$ given a simulation $X'_{n-1}$ of the previous stage, and then simulate it as $X_n'$.
+
+\end{itemize}
+
+\end{definition}
+
+\begin{question}
+
+Suppose that $X$ is a probabilistic simplicial set.  There are two ways to imagine what should be the Betti numbers of $X$.  The first is to take Betti numbers of the persistence complex $P_X([0,a))$ as a function of $a\in (0,1]$, and then compute the expected values -- i.e. integrate this function over the unit interval.  The second way is to simulate the fuzzy simplicial set $X$ and take averages.  Is there any relationship between these approaches?
+
+\end{question}
+
+%}%2009/11/20
+
+\bibliographystyle{amsalpha}
+\begin{thebibliography}{JTT}
+
+\bibitem[Gog]{Gog}Goguen.
+
+\bibitem[Bar]{Bar}Barr. Fuzzy sets form a topos.
+
+\bibitem[Isb]{Isb}Isbell.  Category of metric spaces.
+
+\bibitem[Wik]{Wik}Wikipedia, Metric space, http://en.wikipedia.org/wiki/Metric\_space (Quotient metric spaces) (as of Sept. 18, 2009, 17:58 GMT).
+
+\end{thebibliography}
+
+\end{document}

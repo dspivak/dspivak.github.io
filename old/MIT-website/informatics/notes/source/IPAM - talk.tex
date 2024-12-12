@@ -1,0 +1,34 @@
+\documentclass{amsart}
+
+\input{decl-main}
+
+\begin{document}
+
+\title{Simplicial sets model networks.}
+
+\author{David I. Spivak}
+
+\maketitle
+
+\begin{itemize}
+
+\item Simplicial sets vs. graphs.
+\item Simplicial sets are a type of hypergraph (all faces are included).
+\item Example: word network (\cite{LC}).  Wall and Street are vertices on an edge.
+\item A functor from a simplicial set (representing a network) to the nerve of some category (like the category of vocabularies of various entities).  
+
+To be clear, $\mcC$ is a category of vocabularies if there is a functor $F\taking\mcC\to\Sets$ (or perhaps $F\taking\mcC\to\sSets$).  The objects of $\mcC$ represent people and the morphisms represent ``ways or contexts of communication."  The functor $F$ then says how the vocabularies are translated under these contexts.  
+
+Now, if $S$ is a simplicial set representing an arrangement of people in a room, say, then what is a map $S\to N\mcC$ to the nerve of $\mcC$?  For each vertex in $S$, we get a ``person" in $\mcC$, and for each edge we get a context of communication for the first person to speak to the second.  The 2-simplicies are interesting.  A person is speaking to two people simultaneously, and we have in mind a way that the second person can translate what is being said to the third person; the third person is then receiving two communications.  In the case that $\mcC$ is a 1-category, we demand that these two communications are equal; in the case of higher categories we make a less stringent demand -- there must be a path connecting them.
+
+\item Depending on context, you may or may not want ordered simplices.  For example in a room of people, each grouping could be considered as unordered.  In an English phrase, words are considered ordered.
+
+\end{itemize}
+
+\bibliographystyle{amsalpha}
+\begin{thebibliography}{JTT}
+
+\bibitem[LC]{LC} Lin, Chiang.  A simplicial complex, a hypergraph,structure in the latent semantic spaceof document clustering
+
+\end{thebibliography}
+\end{document}

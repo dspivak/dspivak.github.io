@@ -1,0 +1,236 @@
+\documentclass{amsart}
+
+\usepackage{amssymb, amscd,stmaryrd,setspace,hyperref,color}
+\usepackage{lmodern}
+\usepackage{outline}
+
+\oddsidemargin0in
+\evensidemargin0in
+%\topmargin-.2in
+%\textheight9.4in
+\textwidth6.5in
+
+\input xy
+\xyoption{all} \xyoption{poly} \xyoption{knot}\xyoption{curve}
+
+\newcommand{\comment}[1]{}
+\def\sub{\begin{outline}\item}
+\def\endsub{\end{outline}}
+\def\eendsub{\endsub\endsub}
+\def\eeendsub{\endsub\endsub\endsub}
+\def\next{\item}
+\def\nnext{\endsub\next}
+\def\nnnext{\eendsub\next}
+
+\newcommand{\boxrm}[1]{{\fbox{\tn{#1}}}}
+\newcommand{\obox}[3]{\stackrel{#1}{\fbox{\parbox{#2}{#3}}}}
+\newcommand{\smbox}[2]{\stackrel{#1}{\fbox{#2}}}
+\newcommand{\labox}[2]{\obox{#1}{1.6in}{#2}}
+\newcommand{\mebox}[2]{\obox{#1}{1in}{#2}}
+
+\def\rr{\raggedright}
+
+
+\def\to{\rightarrow}
+\def\To{\xrightarrow}
+\def\from{\leftarrow}
+\def\iso{\cong}
+\def\NN{{\mathbb N}}
+\def\ZZ{{\mathbb Z}}
+\def\RR{{\mathbb R}}
+\def\String{{\bf String}}
+\def\Int{{\bf Int}}
+\def\DT{{\bf DT}}
+\def\U{{\bf U}}
+\def\DB{{\bf DB}}
+\def\taking{\colon}
+\def\mcO{{\mathcal O}}
+\def\mcU{{\mathcal U}}
+\def\Sub{{\bf Sub}}
+\def\op{^{\text{op}}}
+\def\Sets{{\bf Sets}}
+\def\Tables{{\bf Tables}}
+\def\To{\xrightarrow}
+\def\From{\xleftarrow}
+\def\Fin{{\bf Fin}}
+\def\cross{\times}
+\def\Ob{{\bf Ob}}
+\def\Hom{{\bf Hom}}
+\def\Set{{\bf Set}}
+\def\Arr{{\bf Arr}}
+\def\Path{{\bf Path}}
+\def\id{\tn{id}}
+\def\Pre{{\bf Pre}}
+\def\Fin{{\bf Fin}}
+\def\El{{\bf El}}
+\def\Cat{{\bf Cat}}
+\def\Type{{\bf Type}}
+\def\down{\downarrow}
+\def\set{{\bf -Set}}
+\def\mcB{{\mathcal B}}
+\def\mcC{{\mathcal C}}
+\def\mcD{{\mathcal D}}
+\def\mcE{{\mathcal E}}
+\def\mcK{{\mathcal K}}
+\def\mcS{{\mathcal S}}
+\def\P{{\bf P}}
+\newcommand{\LMO}[1]{\bullet^{#1}}
+\newcommand{\LTO}[1]{\bullet^{\tn{#1}}}
+\newcommand{\LA}[2]{\ar[#1]^-{\tn {#2}}}
+
+\def\edge{\ar@{-}}
+
+\def\ullimit{\ar@{}[rd]|(.3)*+{\lrcorner}}
+\def\urlimit{\ar@{}[ld]|(.3)*+{\llcorner}}
+\def\lllimit{\ar@{}[ru]|(.3)*+{\urcorner}}
+\def\lrlimit{\ar@{}[lu]|(.3)*+{\ulcorner}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+
+
+
+\def\tn{\textnormal}
+\def\too{\longrightarrow}
+\def\fromm{\longleftarrow}
+
+\newcommand{\longnote}[2][4.9in]{\fcolorbox{black}{yellow}{\parbox{#1}{\color{black} #2}}}
+\newcommand{\shortnote}[1]{\fcolorbox{black}{yellow}{\color{black} #1}}
+
+\begin{document}
+
+\title{\large Categorical Information Theory\\~\\\normalsize Topology seminar at JHU\\2011/11/21}
+
+\author{David I. Spivak}
+
+\begin{abstract}
+
+Classical information theory, as developed by Claude Shannon in 1948, studies how to optimize the quantity of data that can be transmitted across a noisy channel, but it ignores what this information "means". It is clear that information is intended to mean or signify something -- this is its only purpose -- but how can such a thing as meaning be formalized? In this talk I'll discuss how category theory may be useful in this endeavor. Once the basics (which are quite straightforward) are clear, I'll discuss some interesting applications to computer science and materials engineering (!), and time permitting look into the vast array of open and interesting avenues for future work.
+
+\end{abstract}
+
+\maketitle
+
+Thanks to John Lind and Jack Morava for the invitation.
+
+\section*{Outline of talk}
+
+\sub Introduction
+	\sub What is information?
+		\sub Examples
+		\next Information vs. data
+		\next Not absolute but relational
+		\next Intention vs. extension
+	\nnext Historical context
+		\sub Frege -- Begriffsschrift
+		\next Hilbert: ``This formula game is carried out according to certain definite rules, in which the technique of our thinking is expressed. [...] The fundamental idea of my proof theory is none other than to describe the activity of our understanding, to make a protocol of the rules according to which our thinking actually proceeds" (Hilbert, 1928, 475).
+		\next Dan Kan: ``Information is inherently a combinatorial affair." Facts are fit together in appropriate ways to create new facts.
+		\next Databases
+	\nnext Outline of talk
+		\sub Information via category theory
+			\sub Main idea: databases are custom categories
+			\next Aside from speed considerations, DB theory is category theory.
+			\next Formulations beloved by topologists show up in databases
+		\nnext Functorial data migration
+		\next Queries
+		\next Communication networks
+		\next Applications
+	\eendsub
+	
+\next Information via category theory
+	\sub Databases
+		\sub  Example
+			\sub  \begin{align}\parbox{5in}{\begin{tabular}{| l || l | l | l | l |}\hline\multicolumn{5}{| c |}{\bf Employee}\\\hline {\bf Id}&{\bf First}&{\bf Last}&{\bf Mgr}&{\bf Dpt}\\\hline 101&David&Hilbert&103&q10\\\hline 102&Bertrand&Russell&102&x02\\\hline 103&Alan&Turing&103&q10\\\hline\end{tabular}\hspace{.5in}\begin{tabular}{| l || l | l |}\hline\multicolumn{3}{| c |}{\bf Department}\\\hline {\bf Id}&{\bf Name}&{\bf Secr'y}\\\hline q10&Sales&101\\\hline x02&Production&102\\\hline\end{tabular}}\end{align}
+		\nnext Schemas
+			\sub  \begin{align}\label{dia:basic cat} \mcC:=\fbox{\xymatrix{\LTO{Employee}\ar@<.5ex>[rr]^{\tn{Dpt}}\ar@(l,u)[]^{\tn{Mgr}}\ar@/_1pc/[dd]_{\tn{First}}\ar@/^1pc/[dd]^{\tn{Last}}&&\LTO{Department}\ar@<.5ex>[ll]^{\tn{Secr'y}}\ar@/^1pc/[ddll]^{\tn{Name}}\\\\\LTO{String}}}\end{align} 
+		\nnext States $\delta\taking\mcC\to\Set$
+			\sub Note that the schema is intentional not extensional: we allow the extension to change in time, but the intention is fixed.
+		\nnext Grothendieck construction $p\taking\int\delta\to\mcC$
+%	\nnext Ologs
+%		\sub Sketches with labels (intention)
+%			\sub $$\fbox{\xymatrix@=18pt{\obox{A=B\cross_DC}{1in}{a ``nice furniture placement" $(f,s)$}\LA{ddd}{is}\ar[rrrr]^{w_1=\tn{width of } f;\;\;w_2=\tn{width of } s}&&&&\obox{C}{1.1in}{\rr a pair of widths $(w_1,w_2)$ such that $1\leq w_2-w_1\leq 8$}\LA{ddd}{is}\\\\&\obox{B_1}{.7in}{\rr a piece of furniture}\ar@{}[drr]|{\checkmark}\LA{rr}{has as width}&&\smbox{D_1}{a number}\\\obox{B=B_1\cross B_2}{1.1in}{\rr a pair $(f,s)$ where $f$ is a piece of furniture and $s$ is a space in the house}\ar[dr]_-s\ar[ur]^-f\ar[rrrr]^{w_1=\tn{width of } f;\;\;w_2=\tn{width of } s}&&&&\mebox{D=D_1\cross D_2}{a pair of numbers $(w_1,w_2)$}\ar[ul]_{w_1}\ar[dl]^{w_2}\\&\obox{B_2}{.7in}{\rr a space in the house}\ar@{}[urr]|{\checkmark}\LA{rr}{has as width}&&\smbox{D_2}{a number}}}$$
+%		\nnext Readability
+%		\next States
+	\nnext Examples
+		\sub \small\begin{align}\label{dia:basic example} \stackrel{\mcC:=}{\fbox{\xymatrix{&\tn{SSN}\\&\tn{First}\\T1\ar[uur]\ar[ur]\ar[dr]&&T2\ar[ul]\ar[dl]\ar[ddl]\\&\tn{Last}\\&\tn{Salary}}}}&\stackrel{F}{\too}\stackrel{\mcD:=}{\fbox{\xymatrix{&\tn{SSN}\\&\tn{First}\\U\ar[uur]\ar[ur]\ar[dr]\ar[ddr]\\&\tn{Last}\\&\tn{Salary}}}}\stackrel{G}{\fromm}\stackrel{\mcE:=}{\fbox{\xymatrix{&\tn{SSN}\\&\tn{First}\\V\ar[uur]\ar[ur]\ar[dr]\\&\tn{Last}}}}\end{align}\normalsize
+		\next $\fbox{\xymatrix{\bullet^E\ar@<.5ex>[r]^s\ar@<-.5ex>[r]_t&\bullet^V}}$
+		\next $\fbox{\xymatrix{X\ar@(l,u)[]^{s}}}$
+	\eendsub
+\next Functorial data migration
+	\sub The migration functors for $F\taking\mcC\to\mcD$
+		\sub $F^*, F_*, F_!$
+			\sub $F_!(\gamma)(d)$ is colimit of $(F\down d)\to\mcC\To{\gamma}\Set$
+			\next $F_*(\gamma)(d)$ is limit of $(d\down F)\to\mcC\To{\gamma}\Set$
+		\nnext Fact: $F\taking\mcC\to\mcD$ is fully faithful iff $F^*F_*\iso\id_{\mcC\set}\iso F^*F_!$
+	\nnext Examples
+		\sub  Do example 1 for $F_!,F_*,G_!,G_*$.
+	\nnext Typing
+		\sub What if we want to add typing example 1?
+		\next $\Type$
+			\sub The type system of Haskell, 
+				\sub Including objects \Int, \String, etc.
+				\next Including morphisms ${\bf length}\taking\String\to\Int$, etc.
+			\nnext A functor $V\taking\Type\to\Set$
+		\nnext Now suppose we need some fragment of it to give types to $\mcC$.
+			\sub We begin with $\Type\From{F}\mcB\To{G}\mcC$
+			\next Now look at $\mcC\set_{/G_*F^*V}$
+			\next Still a topos. Changing types gives essential geometric morphisms (all three migration functors).
+		\endsub
+	\eendsub
+
+\next Queries
+	\sub Joins, unions, etc.
+		\sub Beginning with \tiny$$\parbox{1.7in}{$\mcB$:=\\\fbox{\xymatrix@=3pt{&&\LTO{boy}\ar[ddll]\ar[ddrr]\\&&\LTO{man}\ar[dll]\ar[drr]\\\LTO{name}&&&&\LTO{address}\ar[dd]\\&&\LTO{woman}\ar[ull]\ar[urr]\\&&\LTO{girl}\ar[uurr]\ar[uull]&&\LTO{street}\ar[dd]\\\\&&&&\LTO{city}}}}$$\normalsize
+		\next We want males and females who live on the same street. \tiny$$\parbox{1.7in}{$\mcB$:=\\\fbox{\xymatrix@=3pt{&&\LTO{boy}\ar[ddll]\ar[ddrr]\\&&\LTO{man}\ar[dll]\ar[drr]\\\LTO{name}&&&&\LTO{address}\ar[dd]\\&&\LTO{woman}\ar[ull]\ar[urr]\\&&\LTO{girl}\ar[uurr]\ar[uull]&&\LTO{street}\ar[dd]\\\\&&&&\LTO{city}}}}\From{F}
+\parbox{1.6in}{$\mcC$:=\\\fbox{\xymatrix@=3pt{&&\LTO{boy}\ar[ddll]\ar[ddrr]\\&&\LTO{man}\ar[dll]\ar[drr]\\\LTO{name}&&&&\LTO{street}\\&&\LTO{woman}\ar[ull]\ar[urr]\\&&\LTO{girl}\ar[uurr]\ar[uull]}}}\To{G}
+\parbox{1.5in}{\vspace{1in}$\mcD$:=\\\fbox{\xymatrix@=1pt{&&\LTO{male}\ar[ddll]\ar[ddrr]\\\\\LTO{name}&&&&\LTO{street}\\\\&&\LTO{female}\ar[uurr]\ar[uull]}}\begin{center}$\downarrow H$\end{center}\hspace{-.15in}
+$\mcE$:=\fbox{\xymatrix@=1pt{&&\LTO{male}\ar[ddll]\ar[ddrr]\\\\\LTO{name}&&\LMO{Q}\ar[uu]\ar[dd]\ar@{}[rr]|(.4)*+{\checkmark}&&\LTO{street}\\\\&&\LTO{female}\ar[uurr]\ar[uull]}}}$$\normalsize
+	\nnext Graph patterns via ``Lifting diagrams"
+		\sub  A boy and a girl live on the same street; the boy's name is John and the girl's name is Sue. Find their addresses.
+		\next Strategy:
+			\sub Given data $p\taking\mcE\to\mcC$, a query on $p$ is given by two things: the  shape relating what we know and what we want to know, and data we know.  
+			\next Write this as the commutative diagram; we're looking for lifts $$\xymatrix{K\ar[r]\ar[d]_q&\mcE\ar[d]^p\\S\ar[r]\ar@{-->}[ur]&\mcC}$$
+		\nnext Instead of our John and Sue example, let's do a more mathematical example: 
+			\sub Tell me all known spaces $X$ with $\pi_1(X)=\pi_2(X)=0,\pi_3(X)=\ZZ$ and  $H_1(X)=0$.
+
+			\next Suppose we have data $p\taking\mcE\to\mcC$ on the olog $$\mcC:=\parbox{4in}{\fbox{\xymatrix{\obox{P}{1.1in}{a positive number $n\in\NN_{\geq1}$}&\obox{M}{1in}{a positive number $n\in\NN_{\geq 1}$ and a space $X$}\ar[l]_{n}\ar[r]^X\ar[dl]_(.6){\pi_n(X)}\ar[dr]^(.6){H_n(X)}&\obox{S}{.7in}{a space $X$}\\\obox{G}{.6in}{a group}&&\obox{A}{1in}{an abelian group}}}}$$
+			\next Suppose we have some data input, $p\taking\mcE\to \mcC$
+			\next Lift $$K:=\parbox{2.4in}{\fbox{\xymatrix@=8pt{\bullet^1&&&&&&&&\\\bullet^2&&&&\\\bullet^3&&&&\\\\\\\\\\\bullet^{\{0\}}&&\bullet^{\ZZ}&&&&&&\bullet^{\{0\}}}}}\To{\;q\;}\parbox{2.7in}{\fbox{\xymatrix@=8pt{\bullet^1&&&&\bullet^{(1,X)}\ar[llll]\ar[rrrr]\ar[dddddddllll]_(.6){\pi_1(X)}\ar[dddddddrrrr]^{H_1(X)}&&&&\bullet^X\\\bullet^2&&&&\bullet^{(2,X)}\ar[llll]\ar[urrrr]\ar[ddddddllll]^{\pi_2(X)}\\\bullet^3&&&&\bullet^{(3,X)}\ar[llll]\ar[rrrruu]\ar[dddddll]^{\pi_3(X)}\\\\\\\\\\\bullet^{\{0\}}&&\bullet^{\ZZ}&&&&&&\bullet^{\{0\}}}}}=:S$$
+			\endsub
+		\next Integer sequence database -- similar idea, but less sophisticated.
+	\eendsub
+	
+\next Communication networks...
+	\sub Network of interaction
+		\sub A simplicial complex (or semi-simplicial set)
+		\next To each simplex assign a category (the world-view)
+		\next A functor from higher-dimensional ``common ground world-view" category to each sub-simplex's world-view
+	\nnext Communication protocol
+		\sub 
+			\sub A {\em piece of knowledge of $A$} is a pair $(I,f)$ where $I$ is a finite category and $f\taking I\to K_A$ is a functor; the category $I$ is called the {\em formation} of the knowledge.
+			\next Given a piece of knowledge $f\taking I'\to K_A$ of $A$, a diagram \begin{eqnarray}\label{dia:comm att}\xymatrix{
+I\ar[r]\ar[d]&K_{AB}\ar[d]\ar[r]&K_B\\I'\ar[r]&K_A}\end{eqnarray} is called a {\em communication attempt from $A$ to $B$};
+			\next An {\em interpretation by $B$} of $\bar I$ is a diagram $$\xymatrix{I\ar[r]\ar[d]&K_{AB}\ar[r]\ar[d]&K_B\\I'\ar[r]\ar[dr]&K_{AB}'\lrlimit\ar[d]\ar[ru]\\&K_A}$$
+			\next A {\em learning by $B$} of $\bar I$ is a diagram $$\xymatrix{I\ar[r]\ar[d]&K_{AB}\ar[r]\ar[d]&K_B\ar[d]\\I'\ar[r]\ar[dr]&K_{AB}'\lrlimit\ar[d]\ar[r]&K_B'\lrlimit\\&K_A}$$
+			\endsub
+		\next Example: $$I=\parbox{2.3in}{\fbox{\xymatrix{&\obox{M}{.2in}{-1}\LA{d}{is}\\\obox{A}{.9in}{a pair $(x,y)$ of numbers such that $x^2=y$}\ar@<.5ex>[r]^x\ar@<-.5ex>[r]_y&\obox{N}{.6in}{a number}}}}\too \parbox{2.3in}{\fbox{\xymatrix{&\obox{M}{.2in}{-1}\ar[dl]\LA{d}{is}\\\obox{A}{.9in}{a pair $(x,y)$ of numbers such that $x^2=y$}\ar@<.5ex>[r]^x\ar@<-.5ex>[r]_y&\obox{N}{.6in}{a number}}}}=I'$$
+	
+		\endsub
+	\endsub
+\next Applications
+	\sub Materiomics
+		\sub ``Solving the olog" (system of equations)
+		\next Bio-inspired materials -- make it rigorous.
+		\endsub
+	\next Web of science?
+		\sub If papers came with ologs specifying their content, graduate students could add data as they work out examples.
+		\endsub
+	\endsub	
+
+\endsub
+
+
+
+
+\end{document}

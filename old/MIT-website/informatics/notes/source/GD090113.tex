@@ -1,0 +1,38 @@
+\documentclass{amsart}
+
+\input{decl-db}
+
+\def\Met{{\bf Met}}
+\def\Str{{\bf Str}}
+
+\begin{document}
+
+\title{GD 09/01/13}
+
+\author{David Spivak}
+
+\maketitle
+
+\begin{definition}
+
+Let $\Str$ be the category of strings.  A {\em semantic system on $\Str$} consists of a site $(\mcD,J)$, together with a function $N\taking \bigcup(J)\to\Str$.  That is, every element $f\taking D_0\to D$ of every covering family $j=\{D_\alpha\to D\}\in J(D)$ has an associated name $N(f)\in\Str$.
+
+\end{definition}
+
+Let $\mcD$ be a small site, called the category of domains.  Objects of $\mcD$ may include things like the $\RR$ and $\ZZ$.  It may also include things like ``Weight" which might be the set of real numbers also, mapping to $\RR$ by the identity, but not receiving a map from $\RR$.  The idea is that a weight measurement is always a real measurement, but not every real measurement is a weight measurement.  There may be objects like ``weight x volume," and it may map to objects like ``average density."  Basically, $\mcD$ is the category of ways that things can be measured (as objects) and ways in which these measurements relate (morphisms).
+
+Coverings in $\mcD$ might be classifications like ``over 195 lbs" and ``under 200 lbs" which cover.  
+
+\begin{definition}
+
+Let $\mcD$ be a category.  Define the {\em category of metrics on $\mcD$}, denoted $\Met(\mcD)$, to be the category whose objects are finite-limit preserving functors $F\taking\mcD\to\Sets$, and whose morphisms are natural transformations of functors.
+
+\end{definition}
+
+\begin{example}
+
+Suppose that $\mcD$ is the category with four objects
+
+\end{example}
+
+\end{document}

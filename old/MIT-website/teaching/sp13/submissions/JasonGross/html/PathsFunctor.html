@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>PathsFunctor</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library PathsFunctor</h1>
+
+<div class="code">
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.JMeq.html#"><span class="id" type="library">JMeq</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Graph.html#"><span class="id" type="library">Graph</span></a> <a class="idref" href="GraphCategory.html#"><span class="id" type="library">GraphCategory</span></a> <a class="idref" href="Functor.html#"><span class="id" type="library">Functor</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="PathsCategory.html#"><span class="id" type="library">PathsCategory</span></a> <a class="idref" href="UnderlyingGraph.html#"><span class="id" type="library">UnderlyingGraph</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="FEqualDep.html#"><span class="id" type="library">FEqualDep</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab210"></a><h1 class="section">Paths functor</h1>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="PathsFunctor"><span class="id" type="section">PathsFunctor</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab211"></a><h2 class="section">Example 4.1.2.19. <span class="inlinecode"><span class="id" type="var">paths</span>-<span class="id" type="var">graph</span></span></h2>
+ Let <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent.G"><span class="id" type="variable">G</span></a></span> <span class="inlinecode">=</span> <span class="inlinecode">(<a class="idref" href="PathsCategory.html#PathsCategory.V"><span class="id" type="variable">V</span></a>,</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.A"><span class="id" type="variable">A</span></a>,</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.src"><span class="id" type="variable">src</span></a>,</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.tgt"><span class="id" type="variable">tgt</span></a>)</span> be a graph. Then for any pair of
+      vertices <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.v"><span class="id" type="constructor">v</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.w"><span class="id" type="constructor">w</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent.G"><span class="id" type="variable">G</span></a></span>, there is a set <span class="inlinecode"><span class="id" type="var">Path_G</span>(<a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.v"><span class="id" type="constructor">v</span></a>,<a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.w"><span class="id" type="constructor">w</span></a>)</span> of paths from
+      <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.v"><span class="id" type="constructor">v</span></a></span> to <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.w"><span class="id" type="constructor">w</span></a></span>; see Definition 3.3.2.1. In fact there is a set
+      <span class="inlinecode"><span class="id" type="var">Path_G</span></span> and functions <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.src"><span class="id" type="variable">src</span></a>,</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.tgt"><span class="id" type="variable">tgt</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" type="var">Path_G</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="PathsCategory.html#PathsCategory.V"><span class="id" type="variable">V</span></a></span>. That
+      information is enough to define a new graph, <span class="inlinecode"><span class="id" type="var">Paths</span>(<a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent.G"><span class="id" type="variable">G</span></a>)</span> <span class="inlinecode">:=</span> <span class="inlinecode">(<a class="idref" href="PathsCategory.html#PathsCategory.V"><span class="id" type="variable">V</span></a>,</span>
+      <span class="inlinecode"><span class="id" type="var">Path_G</span>,</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.src"><span class="id" type="variable">src</span></a>,</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.tgt"><span class="id" type="variable">tgt</span></a>)</span>.  Moreover, given a graph homomorphism <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent.G"><span class="id" type="variable">G</span></a></span>
+      <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.G'"><span class="id" type="variable">G'</span></a></span>, every path in <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent.G"><span class="id" type="variable">G</span></a></span> is sent under <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a></span> to a path in
+      <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.G'"><span class="id" type="variable">G'</span></a></span>. So <span class="inlinecode"><span class="id" type="var">Paths</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_1_14.html#Exercise_4_1_1_14.Grph"><span class="id" type="variable">Grph</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_1_14.html#Exercise_4_1_1_14.Grph"><span class="id" type="variable">Grph</span></a></span> is a functor. 
+<div class="paragraph"> </div>
+
+ We use the underlying graph of the paths category, because we
+      have already Coq'ed those two constructions. 
+</div>
+<div class="code">
+&nbsp;&nbsp;<span class="id" type="keyword">Section</span> <a name="PathsFunctor.paths_functor"><span class="id" type="section">paths_functor</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Variables</span> <a name="PathsFunctor.paths_functor.G"><span class="id" type="variable">G</span></a> <a name="PathsFunctor.paths_functor.G'"><span class="id" type="variable">G'</span></a> : <a class="idref" href="Graph.html#Graph"><span class="id" type="record">Graph</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a> : <a class="idref" href="Graph.html#GraphHomomorphism"><span class="id" type="record">GraphHomomorphism</span></a> <a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.G"><span class="id" type="variable">G</span></a> <a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.G'"><span class="id" type="variable">G'</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Fixpoint</span> <a name="PathsHomomorphism_on_edges"><span class="id" type="definition">PathsHomomorphism_on_edges</span></a> <span class="id" type="var">src</span> <span class="id" type="var">tgt</span> (<span class="id" type="var">p</span> : <a class="idref" href="Path.html#path"><span class="id" type="inductive">path</span></a> (<a class="idref" href="Graph.html#Edge"><span class="id" type="projection">Edge</span></a> <a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.G"><span class="id" type="variable">G</span></a>) <a class="idref" href="PathsFunctor.html#src"><span class="id" type="variable">src</span></a> <a class="idref" href="PathsFunctor.html#tgt"><span class="id" type="variable">tgt</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="Path.html#path"><span class="id" type="inductive">path</span></a> (<a class="idref" href="Graph.html#Edge"><span class="id" type="projection">Edge</span></a> <a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.G'"><span class="id" type="variable">G'</span></a>) (<a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a> <a class="idref" href="PathsFunctor.html#src"><span class="id" type="variable">src</span></a>) (<a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a> <a class="idref" href="PathsFunctor.html#tgt"><span class="id" type="variable">tgt</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:= <span class="id" type="keyword">match</span> <a class="idref" href="PathsFunctor.html#p"><span class="id" type="variable">p</span></a> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="Path.html#NoEdges"><span class="id" type="constructor">NoEdges</span></a> ⇒ <a class="idref" href="Path.html#NoEdges"><span class="id" type="constructor">NoEdges</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="Path.html#AddEdge"><span class="id" type="constructor">AddEdge</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">p0</span> <span class="id" type="var">e</span> ⇒ <a class="idref" href="Path.html#AddEdge"><span class="id" type="constructor">AddEdge</span></a> (<a class="idref" href="PathsFunctor.html#PathsHomomorphism_on_edges"><span class="id" type="definition">PathsHomomorphism_on_edges</span></a> <span class="id" type="var">p0</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="Graph.html#OnEdges"><span class="id" type="projection">OnEdges</span></a> <a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">e</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="PathsHomomorphism"><span class="id" type="definition">PathsHomomorphism</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> <a class="idref" href="GraphCategory.html#CategoryOfGraphs"><span class="id" type="definition">CategoryOfGraphs</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="UnderlyingGraph.html#UnderlyingGraph"><span class="id" type="definition">UnderlyingGraph</span></a> (<a class="idref" href="PathsCategory.html#PathsCategory"><span class="id" type="definition">PathsCategory</span></a> (<a class="idref" href="Graph.html#Edge"><span class="id" type="projection">Edge</span></a> <a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.G"><span class="id" type="variable">G</span></a>)))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="UnderlyingGraph.html#UnderlyingGraph"><span class="id" type="definition">UnderlyingGraph</span></a> (<a class="idref" href="PathsCategory.html#PathsCategory"><span class="id" type="definition">PathsCategory</span></a> (<a class="idref" href="Graph.html#Edge"><span class="id" type="projection">Edge</span></a> <a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.G'"><span class="id" type="variable">G'</span></a>)))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="Graph.html#Build_GraphHomomorphism"><span class="id" type="constructor">Build_GraphHomomorphism</span></a> (<a class="idref" href="UnderlyingGraph.html#UnderlyingGraph"><span class="id" type="definition">UnderlyingGraph</span></a> (<a class="idref" href="PathsCategory.html#PathsCategory"><span class="id" type="definition">PathsCategory</span></a> (<a class="idref" href="Graph.html#Edge"><span class="id" type="projection">Edge</span></a> <a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.G"><span class="id" type="variable">G</span></a>)))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="UnderlyingGraph.html#UnderlyingGraph"><span class="id" type="definition">UnderlyingGraph</span></a> (<a class="idref" href="PathsCategory.html#PathsCategory"><span class="id" type="definition">PathsCategory</span></a> (<a class="idref" href="Graph.html#Edge"><span class="id" type="projection">Edge</span></a> <a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.G'"><span class="id" type="variable">G'</span></a>)))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="Graph.html#OnVertices"><span class="id" type="projection">OnVertices</span></a> <a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="PathsFunctor.html#PathsHomomorphism_on_edges"><span class="id" type="definition">PathsHomomorphism_on_edges</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">End</span> <a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor"><span class="id" type="section">paths_functor</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Ltac</span> <span class="id" type="var">t0</span> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">intro</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">reflexivity</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">apply</span> <a class="idref" href="Graph.html#GraphHomomorphism_Eq"><span class="id" type="lemma">GraphHomomorphism_Eq</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">apply</span> <a class="idref" href="FEqualDep.html#eq_JMeq"><span class="id" type="lemma">eq_JMeq</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : <span class="id" type="var">_</span> |- <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">rewrite</span> <span class="id" type="var">H</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> ( <span class="id" type="tactic">hnf</span> <span class="id" type="keyword">in</span> *; <span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> × )<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Ltac</span> <span class="id" type="var">t</span> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> <span class="id" type="var">t0</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">p</span> : <a class="idref" href="Path.html#path"><span class="id" type="inductive">path</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> |- <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">induction</span> <span class="id" type="var">p</span>; <span class="id" type="tactic">solve</span> [ <span class="id" type="var">t0</span> ]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="PathsFunctor"><span class="id" type="definition">PathsFunctor</span></a> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="GraphCategory.html#CategoryOfGraphs"><span class="id" type="definition">CategoryOfGraphs</span></a> <a class="idref" href="GraphCategory.html#CategoryOfGraphs"><span class="id" type="definition">CategoryOfGraphs</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">Build_Functor</span></a> <a class="idref" href="GraphCategory.html#CategoryOfGraphs"><span class="id" type="definition">CategoryOfGraphs</span></a> <a class="idref" href="GraphCategory.html#CategoryOfGraphs"><span class="id" type="definition">CategoryOfGraphs</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">G</span> ⇒ <a class="idref" href="UnderlyingGraph.html#UnderlyingGraph"><span class="id" type="definition">UnderlyingGraph</span></a> (<a class="idref" href="PathsCategory.html#PathsCategory"><span class="id" type="definition">PathsCategory</span></a> (<a class="idref" href="Graph.html#Edge"><span class="id" type="projection">Edge</span></a> <a class="idref" href="PathsFunctor.html#G"><span class="id" type="variable">G</span></a>)))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="PathsFunctor.html#PathsHomomorphism"><span class="id" type="definition">PathsHomomorphism</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> <span class="id" type="var">t</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="PathsFunctor.html#PathsFunctor"><span class="id" type="section">PathsFunctor</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

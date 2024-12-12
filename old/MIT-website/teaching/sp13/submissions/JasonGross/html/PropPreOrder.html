@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>PropPreOrder</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library PropPreOrder</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Orders.html#"><span class="id" type="library">Orders</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#"><span class="id" type="library">Ensembles</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Program.Basics.html#"><span class="id" type="library">Coq.Program.Basics</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab217"></a><h2 class="section">Prop is pre-order</h2>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="PropPreOrder"><span class="id" type="section">PropPreOrder</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Global Instance</span> <a name="Prop_PreOrder"><span class="id" type="instance">Prop_PreOrder</span></a> : @<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#PreOrder"><span class="id" type="class">PreOrder</span></a> <span class="id" type="keyword">Prop</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Program.Basics.html#impl"><span class="id" type="definition">impl</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">firstorder</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Global Instance</span> <a name="PropHasMeets"><span class="id" type="instance">PropHasMeets</span></a> <span class="id" type="var">a</span> <span class="id" type="var">b</span> : <a class="idref" href="Orders.html#MeetOf"><span class="id" type="class">MeetOf</span></a> <a class="idref" href="PropPreOrder.html#Prop_PreOrder"><span class="id" type="instance">Prop_PreOrder</span></a> <a class="idref" href="PropPreOrder.html#a"><span class="id" type="variable">a</span></a> <a class="idref" href="PropPreOrder.html#b"><span class="id" type="variable">b</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= {| <a class="idref" href="Orders.html#MeetElement"><span class="id" type="method">MeetElement</span></a> := <span class="id" type="var">a</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'/\'_x"><span class="id" type="notation">∧</span></a> <span class="id" type="var">b</span> |}.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> <span class="id" type="tactic">firstorder</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Global Instance</span> <a name="PropHasJoins"><span class="id" type="instance">PropHasJoins</span></a> <span class="id" type="var">a</span> <span class="id" type="var">b</span> : <a class="idref" href="Orders.html#JoinOf"><span class="id" type="class">JoinOf</span></a> <a class="idref" href="PropPreOrder.html#Prop_PreOrder"><span class="id" type="instance">Prop_PreOrder</span></a> <a class="idref" href="PropPreOrder.html#a"><span class="id" type="variable">a</span></a> <a class="idref" href="PropPreOrder.html#b"><span class="id" type="variable">b</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= {| <a class="idref" href="Orders.html#JoinElement"><span class="id" type="method">JoinElement</span></a> := <span class="id" type="var">a</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'\/'_x"><span class="id" type="notation">∨</span></a> <span class="id" type="var">b</span> |}.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> <span class="id" type="tactic">firstorder</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Global Instance</span> <a name="PropHasIndexedMeets"><span class="id" type="instance">PropHasIndexedMeets</span></a> <span class="id" type="var">Index</span> (<span class="id" type="var">Indexer</span> : <a class="idref" href="PropPreOrder.html#Index"><span class="id" type="variable">Index</span></a> → <span class="id" type="keyword">Prop</span>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="Orders.html#IndexedMeetOf"><span class="id" type="class">IndexedMeetOf</span></a> <a class="idref" href="PropPreOrder.html#Indexer"><span class="id" type="variable">Indexer</span></a> <a class="idref" href="PropPreOrder.html#Prop_PreOrder"><span class="id" type="instance">Prop_PreOrder</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= {| <a class="idref" href="Orders.html#IndexedMeetElement"><span class="id" type="method">IndexedMeetElement</span></a> := <span class="id" type="keyword">∀</span> <span class="id" type="var">i</span>, <span class="id" type="var">Indexer</span> <a class="idref" href="PropPreOrder.html#i"><span class="id" type="variable">i</span></a> |}.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> <span class="id" type="tactic">firstorder</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Global Instance</span> <a name="PropHasIndexedJoins"><span class="id" type="instance">PropHasIndexedJoins</span></a> <span class="id" type="var">Index</span> (<span class="id" type="var">Indexer</span> : <a class="idref" href="PropPreOrder.html#Index"><span class="id" type="variable">Index</span></a> → <span class="id" type="keyword">Prop</span>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="Orders.html#IndexedJoinOf"><span class="id" type="class">IndexedJoinOf</span></a> <a class="idref" href="PropPreOrder.html#Indexer"><span class="id" type="variable">Indexer</span></a> <a class="idref" href="PropPreOrder.html#Prop_PreOrder"><span class="id" type="instance">Prop_PreOrder</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= {| <a class="idref" href="Orders.html#IndexedJoinElement"><span class="id" type="method">IndexedJoinElement</span></a> := <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:'exists'_x_'..'_x_','_x"><span class="id" type="notation">∃</span></a> <span class="id" type="var">i</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:'exists'_x_'..'_x_','_x"><span class="id" type="notation">,</span></a> <span class="id" type="var">Indexer</span> <a class="idref" href="PropPreOrder.html#i"><span class="id" type="variable">i</span></a> |}.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> <span class="id" type="tactic">firstorder</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Global Instance</span> <a name="PropHasEnsembleMeets"><span class="id" type="instance">PropHasEnsembleMeets</span></a> (<span class="id" type="var">U</span> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Ensemble"><span class="id" type="definition">Ensemble</span></a> <span class="id" type="keyword">Prop</span>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="Orders.html#EnsembleMeetOf"><span class="id" type="class">EnsembleMeetOf</span></a> <a class="idref" href="PropPreOrder.html#U"><span class="id" type="variable">U</span></a> <a class="idref" href="PropPreOrder.html#Prop_PreOrder"><span class="id" type="instance">Prop_PreOrder</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= {| <a class="idref" href="Orders.html#EnsembleMeetElement"><span class="id" type="method">EnsembleMeetElement</span></a> := <span class="id" type="keyword">∀</span> <span class="id" type="var">i</span>, <a class="idref" href="PropPreOrder.html#i"><span class="id" type="variable">i</span></a> <a class="idref" href="Notations.html#::x_'∈'_x"><span class="id" type="notation">&isin;</span></a> <span class="id" type="var">U</span> → <a class="idref" href="PropPreOrder.html#i"><span class="id" type="variable">i</span></a> |}.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> <span class="id" type="tactic">firstorder</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Global Instance</span> <a name="PropHasEnsembleJoins"><span class="id" type="instance">PropHasEnsembleJoins</span></a> (<span class="id" type="var">U</span> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Ensemble"><span class="id" type="definition">Ensemble</span></a> <span class="id" type="keyword">Prop</span>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="Orders.html#EnsembleJoinOf"><span class="id" type="class">EnsembleJoinOf</span></a> <a class="idref" href="PropPreOrder.html#U"><span class="id" type="variable">U</span></a> <a class="idref" href="PropPreOrder.html#Prop_PreOrder"><span class="id" type="instance">Prop_PreOrder</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= {| <a class="idref" href="Orders.html#EnsembleJoinElement"><span class="id" type="method">EnsembleJoinElement</span></a> := <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:'exists'_x_'..'_x_','_x"><span class="id" type="notation">∃</span></a> <span class="id" type="var">i</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:'exists'_x_'..'_x_','_x"><span class="id" type="notation">,</span></a> <a class="idref" href="PropPreOrder.html#i"><span class="id" type="variable">i</span></a> <a class="idref" href="Notations.html#::x_'∈'_x"><span class="id" type="notation">&isin;</span></a> <span class="id" type="var">U</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'/\'_x"><span class="id" type="notation">∧</span></a> <a class="idref" href="PropPreOrder.html#i"><span class="id" type="variable">i</span></a> |}.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> <span class="id" type="tactic">firstorder</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="PropPreOrder.html#PropPreOrder"><span class="id" type="section">PropPreOrder</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

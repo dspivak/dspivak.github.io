@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_4_2_1_14</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_4_2_1_14</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#"><span class="id" type="library">ProofIrrelevance</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="PreOrderCategory.html#"><span class="id" type="library">PreOrderCategory</span></a> <a class="idref" href="CategoryIsomorphisms.html#"><span class="id" type="library">CategoryIsomorphisms</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab85"></a><h1 class="section">Exercise 4.2.1.14</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Exercise_4_2_1_14"><span class="id" type="section">Exercise_4_2_1_14</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab86"></a><h2 class="section">Problem</h2>
+ Suppose that <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span> is a preorder (considered as a category). Let
+      <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.y"><span class="id" type="constructor">y</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.CategoryLeafTable.Ob"><span class="id" type="variable">Ob</span></a></span> <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span> be objects such that <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a></span> <span class="inlinecode">&le;</span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.y"><span class="id" type="constructor">y</span></a></span> and <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.y"><span class="id" type="constructor">y</span></a></span> <span class="inlinecode">&le;</span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a></span>. Prove
+      that there is an isomorphism <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a></span> <span class="inlinecode">&cong;</span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.y"><span class="id" type="constructor">y</span></a></span> in <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span>. 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Open</span> <span class="id" type="keyword">Scope</span> <span class="id" type="var">category_scope</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#PreOrder"><span class="id" type="class">PreOrder</span></a> <span class="id" type="var">X</span> <span class="id" type="var">R</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_4_2_1_14.C"><span class="id" type="variable">C</span></a> := <a class="idref" href="PreOrderCategory.html#PreOrderCategory"><span class="id" type="definition">PreOrderCategory</span></a> (<span class="id" type="var">R</span> := <a class="idref" href="Exercise_4_2_1_14.html#Exercise_4_2_1_14.R"><span class="id" type="variable">R</span></a>) <span class="id" type="var">_</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Infix</span> <a name="Exercise_4_2_1_14.::x_'≤'_x"><span class="id" type="notation">"</span></a>&le;" := <a class="idref" href="Exercise_4_2_1_14.html#Exercise_4_2_1_14.R"><span class="id" type="variable">R</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="Exercise_4_2_1_14"><span class="id" type="lemma">Exercise_4_2_1_14</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">x</span> <span class="id" type="var">y</span> : <a class="idref" href="Exercise_4_2_1_14.html#Exercise_4_2_1_14.C"><span class="id" type="variable">C</span></a>, <a class="idref" href="Exercise_4_2_1_14.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="Exercise_4_2_1_14.html#Exercise_4_2_1_14.::x_'≤'_x"><span class="id" type="notation">&le;</span></a> <a class="idref" href="Exercise_4_2_1_14.html#y"><span class="id" type="variable">y</span></a> → <a class="idref" href="Exercise_4_2_1_14.html#y"><span class="id" type="variable">y</span></a> <a class="idref" href="Exercise_4_2_1_14.html#Exercise_4_2_1_14.::x_'≤'_x"><span class="id" type="notation">&le;</span></a> <a class="idref" href="Exercise_4_2_1_14.html#x"><span class="id" type="variable">x</span></a> → (<a class="idref" href="Exercise_4_2_1_14.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="CategoryIsomorphisms.html#:category_scope:x_'≅'_x"><span class="id" type="notation">&cong;</span></a> <a class="idref" href="Exercise_4_2_1_14.html#y"><span class="id" type="variable">y</span></a>)%<span class="id" type="var">category</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span> <span class="id" type="var">x</span> <span class="id" type="var">y</span> <span class="id" type="var">f</span> <span class="id" type="var">g</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> <span class="id" type="var">f</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> <span class="id" type="var">g</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">simpl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#proof_irrelevance"><span class="id" type="axiom">ProofIrrelevance.proof_irrelevance</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_4_2_1_14.html#Exercise_4_2_1_14"><span class="id" type="section">Exercise_4_2_1_14</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,540 @@
+\documentclass{amsart}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\begin{document}
+\begin{center}
+{\bfseries\large Math 256: Introduction to Differential Equations}\\
+\vspace{0.5cm}
+Mark Walsh\\
+Linear Algebra Review Sheet.
+ \end{center}
+\vspace{1.0cm} 
+{\bf 1.0 Vector Spaces}\\\\
+Before defining a vector space, lets look at some familiar examples.\\\\
+(i) $\mathbb{R}^{2}=\{(x,y):x,y\in \mathbb{R}\}$\\
+(ii) $\mathbb{R}^{3}=\{(x,y,z):x,y,z\in \mathbb{R}\}$\\
+(iii) $\mathbb{R}^{n}=\{(x_1,x_2,\cdots,x_n):x_1,x_2,\cdots,x_n\in \mathbb{R}\}$\\\\
+Elements of these sets are couples, triples or $n$-tuples of real numbers which can be added componentwise or scaled (multiplied by a real number called a scalar) to produce other vectors.\\\\
+eg: $v=(2,3,-7), w=(\sqrt{2}, 5, \frac{1}{2})\in\mathbb{R}^3$.\\
+ $10v+w=10(2,3,-7)+(\sqrt{2}, 5, \frac{1}{2})=(20,30,-70)+(\sqrt{2}, 5, \frac{1}{2})=(20+\sqrt{2}, 35, -70\frac{1}{2})\in \mathbb{R}^3$\\
+\\
+The above are examples of {\bf real} vector spaces. This is because the scalars are real numbers.\\\\
+(iv) $\mathbb{C}^{n}=\{(x_1,x_2,\cdots,x_n):x_1,x_2,\cdots,x_n\in \mathbb{C}\}$ would be an example of a complex vector space where $\mathbb{C}=\{a+ib:a,b\in\mathbb{R}, i=\sqrt{-1}\}$ is the set of complex numbers.\\
+\\
+For the most part we will deal with real vector spaces although we may occasionally deal with complex ones. The above examples are all finite dimensional vector spaces. We haven't defined the term "dimension" yet, but intuitively this should be clear. Here are some examples of vector spaces which are not finite dimensional. Let $I=(a,b)$ be an interval on the real line.\\
+\\
+(v) $F(I)$ is the set of real functions on $I$. Any 2 real functions may be added together to form another real function on $I$. Multiplying any real function by a real number produces a real function $I$. A shorter way of expressing this would be to say that $F(I)$ is closed under addition and scalar multiplication.\\
+(vi) $C(I)$ is the set of continuous real functions on $I$.\\ 
+(vii) $C^{k}(I)$ is the set of $k$ times differentiable real functions on $I$.\\
+(viii) $C^{\infty}(I)$ is the set of infintely differentiable real functions on $I$.\\
+(ix) $P(I)$ is the set of real polynomial functions on $I$.\\
+\\
+All of these sets are closed under addition and scalar multiplication. Notice also that\\
+\centerline{$P(I)\subset C^{\infty}(I)\subset C^{k}(I)\subset C(I)\subset F(I).$}\\
+\\
+We should point out that being closed under addition and scalar multiplication does not make a set a real or complex vector space, but its a good start. I don't expect you to memorise this, but for the sake of completeness, here is the full definition in the real case. For the complex case, just replace the real scalars with complex ones.\\
+\\
+A {\it real vector space} is a set $V$ which is closed under both an addition operation and scalar multiplication by real numbers which satisfy the following properties. Let $u,v,w\in V$ and $a,b\in\mathbb{R}$.\\
+(i) $u+v=v+u$ (commutativity)\\
+(ii) $(u+v)+w=u+(v+w)$ (associativity)\\
+(iii) There is an element $0\in V$ so that $v+0=v$ for any $v\in V$. $0$ is called the additive identity.\\
+(iv) For every $v\in V$, there is an element $w\in V$ for which $v+w=0$. $w$ is the additive inverse of $v$.\\
+(v) $1v=v$ for any $v\in V$.\\
+(vi) $a(v+w)=av+aw$ and $(a+b)v=av+bv.$ (distributivity) 
+\\\\
+As an exercise, it is worth checking that the above examples are actually vector spaces by checking each axiom. This is a tedious exercise but well worth doing, especially for those of you with an interest in more advanced mathematics. Think of it as a training exercise. By the way, if you do decide to spend your Saturday night verifying that examples (v) through (ix) are real vector spaces, make sure you read section 3.0.\\
+\\\\
+{\bf 2.0 Linear Maps}\\\\
+Suppose $V$ and $W$ are real vector spaces. A {\it linear map}, $L:V\rightarrow W$, is a function from $V$ to $W$ which satisfies the following properties. Let $u,v\in V$ and $c\in \mathbb{R}$. Then\\
+(i) $L(u+v)=L(u)+L(v)$.\\
+(ii) $L(cv)=cL(v)$.\\
+\\
+For example, suppose $L:\mathbb{R}^{2}\rightarrow \mathbb{R}^{2}$ is the map defined $L((x,y))=(2x+3y,x-y)$. Then it is an easy exercise (which you should do) to show that $L$ is linear. The map $K:\mathbb{R}^{2}\rightarrow \mathbb{R}^{2}$, defined $K((x,y))=(3x,x+y^{2})$ is not linear. This is easy to see as $K((0,2))=(0,4)\neq (0,2)=K((0,1))+K((0,1))$.\\
+\\
+Another example of a linear map is $L:C^{2}(I)\rightarrow C(I)$ defined as $L(f)=\frac{d^{2}f}{dx^{2}}+\frac{df}{dx}+f$. Checking linearity here is a very good exercise and something that you should do at least once.\\
+An {\bf important property} of any linear map such as $L$ is that $L(0)=0$. This must be the case because linearity means that $L(0)=L(v-v)=L(v)-L(v)=0$.
+\\\\
+Note: Often authors will combine the above properties (i) and (ii) as a single property and simply require that $L(cu+v)=cL(u)+L(v)$.\\
+\newpage
+\noindent {\bf 3.0 Vector subspaces}\\\\
+A {\it vector subspace} $U$ is a subset of a vector space $V$ which is also a vector space under the same addition and scalar multiplication. That last part is important as $\mathbb{R}\subset \mathbb{C}$ and $\mathbb{R}$ is a vector space but $\mathbb{R}$ is not closed under complex scaling and so is not a complex vector subspace of $\mathbb{C}$. It turns out that to show that a subset $U$ is a vector subspace of a vector space $V$, it is enough to show the following.\\
+\\
+(i) $0\in U$.\\
+(ii) $U$ is closed under addition and scalar multiplication.\\
+\\
+For examples, recall in section 1.0 we had\\
+\centerline{$P(I)\subset C^{\infty}(I)\subset C^{k}(I)\subset C(I)\subset F(I).$}\\
+$F(I)$ is a real vector space and to show this you will need to check that each of the vector space axioms in the definition in section 1.0 hold. The above chain of subsets is actually a chain of vector subspaces. You should verify this.\\
+\\
+A less exotic example of a vector subspace would be $\mathbb{R}^{n}\subset \mathbb{R}^{n+k}$ for some positive integers $n,k$, where\\ \centerline{$\mathbb{R}^{n+k}=\{(x_1,x_2,\cdots,x_n,x_{n+1},\cdots,x_{n+k-1},x_{n+k}):x_1,\cdots,x_{n+k}\in\mathbb{R}\}$}\\ and $\mathbb{R}^{n}=\{(x_1,\cdots,x_n,0,0,\cdots,0)\in\mathbb{R}^{n+k}:x_1,\cdots,x_n\in\mathbb{R}\}$. In the case when $n=1$ andd $k=1$, we have just described the $x-$axis as a vector subspace of the $x-y-$plane. In the case when $n=2$ and $k=1$ we have just described the $x-y-$plane as a vector subspace of the $x-y-z-$plane. There are of course many other ways in which we could consider $\mathbb{R}^{n}$ as a vector subspace of $\mathbb{R}^{n+k}$. For example in the case when $n=1$ and $k=1$, any straight line through the origin is a vector subspace of $\mathbb{R}^2$. You should verify this, using the fact that points on such a line have the form $(x,mx+c)$ for some constants $m,c\in\mathbb{R}$. More generally any $n$-dimensional plane in $n+k-$dimensional space, which intersects with the origin, is an $n-$dimensional vector subspace of $\mathbb{R}^{n+k}$.\\
+\\
+A partciularly important example of a vector subspace is the following. Suppose $L:V\rightarrow W$ is a linear map of vector spaces. Define the {\it kernel} of $L$, written $Ker (L)$ as the space $\{v\in V:L(v)=0\}$. $Ker L$ is often called the {\it nullspace} of $L$. Its the part of $V$ that $L$ sends to $0$.\\
+Lets verify that $Ker (L)$ is a subspace of $V$. Let $u,v\in Ker (L)$ and $c\in \mathbb{R}$. Then by linearity, $L(cu+v)=cL(u)+L(v)=c.0+0=0$, as $L(u)=L(v)=0$, $u$ and $v$ being in the kernel of $L$. Hence $cu+v\in Ker(L)$ which means that $Ker(L)$ is closed under addition and mutiplication. Finally $0\in Ker(L)$ because $L$ is linear and so $L(0)=0$.\\
+\\
+So for example if $L:\mathbb{R}^{2}\rightarrow\mathbb{R}^{3}$ is the linear map defined $L((x,y))=(x+y, 3x+3y, 0)$, $Ker (L)=\{(x,y)\in\mathbb{R}^{2}:x+y=0,3x+3y=0\}=\{(x,y)\in\mathbb{R}^{2}:x+y=0\}$ is the subspace of $\mathbb{R}^{2}$, which is just the line $y=-x$.\\
+\\
+Another example involves $L:C^{2}(I)\rightarrow C(I)$ defined as $L(f)=\frac{d^{2}f}{dx^{2}}+p(x)\frac{df}{dx}+q(x)f$ where $p(x)$ and $q(x)$ are continuous functions on $I$. Now $Ker (L)=\{ y\in C^{2}(I):\frac{d^{2}y}{dx^{2}}+p(x)\frac{dy}{dx}+q(x)y=0$. This vector subspace is of course the solution set of a second order linear homogeneous differential equation. Closure under addition and scalar multiplication is the reason why linear combinations of solutions of this differential equation are still solutions.\\
+\\
+\\
+{\bf 4.0 Linear Dependence and Indepedence}\\\\
+Let $V$ be a real vector space. Let $v_1,v_2,\cdots,v_n\in V$. Then we say that $v_1,v_2,\cdots,v_n$ are {\it linearly dependent} if there are constants $c_1,c_2,\cdots,c_n\in \mathbb{R}$, {\bf not all zero}, so that\\
+\centerline{$c_1v_1+c_2v_2+\cdots+c_nv_n=0$}\\
+\\
+If the only constants that make the above equation hold are $c_1=c_2=\cdots=c_n=0$, then we say that $v_1,v_2,\cdots,v_n$ are {\it linearly independent}.
+\\\\
+So for example, $u=(1,0,1)$, $v=(0,10,2)$ and $w=(-3,15,0)$ are linearly dependent in $\mathbb{R}^3$. This is because $u-\frac{1}{2}v+\frac{1}{3}w=0$. However any pair from $u,v$ and $w$, are linearly independent.\\
+\\
+Recall from lecture notes that in the case of $F(I)$ above, $0$ is the function which is constantly zero on $I$. Hence $n$ functions $f_1(x),\cdots,f_n(x)\in F(I)$ are linearly dependent if there are constants $c_1,\cdots,c_n\in \mathbb{R}$, not all zero, for which the function $c_1f_1(x)+\cdots+c_nf_n(x)=0$ on all of $I$ and linearly dependent if the only such $c_1,\cdots,c_n$ which can be found are $c_1=\cdots=c_n=0$.\\
+\\
+Linearly independent vectors can be though of as "building blocks" for vector subspaces of a vector space. For example the vector space $\mathbb{R}^{3}$ can be thought of as "built from" the linearly independent vectors $E_1=(1,0,0),E_2=(0,1,0),E_3=(0,0,1)$ in the sense that every vector $(x,y,z)\in\mathbb{R}^{3}$ can be written\\\\
+\centerline{$(x,y,z)=z(1,0,0)+y(0,1,0)+z(0,0,1)=xE_1+yE_2+zE_3$.}\\\\
+We have written the vector $(x,y,z)$ as a {\it linear combination} of the linearly independent vectors $E_1,E_2, E_3$.  If we only had the two building block vectors $E_1$ and $E_2$ then the most we could build would be a copy of $\mathbb{R}^{2}$ inside $\mathbb{R}^{3}$, namely the space $\{(x,y,0)\in\mathbb{R}^{3}:x,y\in\mathbb{R}\}$. Suppose we added a fourth building block vector, say $v=(v_1,v_2,v_3)$ for any choice of $v_1,v_2,v_3\in\mathbb{R}$. We could still build all vectors in $\mathbb{R}^{3}$ as linear combinations of $E_1,E_2,E_3,v$ but it quickly becomes clear that the vector $v$ is superfluous. As $v=v_1E_1+v_2E_2+v_3E_3$, or if you prefer $1v-v_1E_1+v_2E_2+v_3E_3=0$, it is clear that the vectors $v, E_1,E_2,E_3$ are not linearly independent. Hence $E_1,E_2,E_3$ is, in a sense, a minimal collection of building blocks for $\mathbb{R}^{3}$. If you remove any one of these building blocks you cannot build $\mathbb{R}^{3}$ with linear combinations. Adding extra building blocks gives you no more building power.\\
+Of course the vectors $E_1,E_2,E_3$ are not the only vectors we could have chosen to construct $\mathbb{R}^{3}$, although they are a particularly nice choice. For example the collection $(1,2,1),(3,0,0),(-1,2,0)$ would act as a perfectly good set of building blocks for $\mathbb{R}^{3}$. Indeed so would any {\bf triple} of linearly indepedent vectors in $\mathbb{R}^{3}$. Given such a triple one would quickly discover that removing any one vector would mean only a subspace of $\mathbb{R}^{3}$ could be built. Adding a fourth vector would always be superfluous. The number three is therefore significant. It is the dimension of the vector space $\mathbb{R}^{3}$.\\
+In general, the {\it dimension} of a real vector space $V$, is the minimal number of vectors in $V$, which are required to generate $V$ by linear combination. Such a collection of vectors (which is neccessarily linearly independent, otherwise we could remove a superfluous vector to make it smaller) is known as a {\it basis} for $V$. So the dimension of $\mathbb{R}^{n}$ is $n$. However the dimension of $P(I)$ is not finite, as the collection $\{1,x,x^{2},x^{3},\cdots\}$ is an infinite set of linearly independent vectors. Consequently, $C^{\infty}(I), C^{k}(I), C(I)$ and  $F(I)$, each of which contains $P(I)$, is infinite dimensional.\\\\
+You have already seen how to build the vector space of solutions to a second order linear homogeneous differential equation by finding linearly independent solutions which act as building blocks. In this case it turns out (after proving some theorems) that {\bf 2} linearly independent solutions are all we require to build all others and so we conclude that such a solution space is a $2-$dimensional vector subspace of $C^{2}(I)$.\\
+\\\\
+{\bf 5.0 Matrices and systems of linear equations}\\\\
+An $n\times k$ real matrix $A$ is an $n\times k$ array of real numbers often written $[a_{ij}]$ where $a_{ij}$ represents the entry in the $i^{th}$ row and $j^{th}$ column.\\
+ 
+\begin{equation*}
+A
+ =
+ \begin{pmatrix}
+ a_{11}&a_{21}&\cdots& a_{1k}\\
+ a_{21}&a_{22}&\cdots& a_{2k}\\
+ \vdots&&\ddots&\vdots\\
+ a_{n1}&a_{n2}&\cdots& a_{nk}
+ \end{pmatrix}
+ \end{equation*}
+\\
+Suppose $A$ and $B$ are matrices.\\ 
+(i) $A=B$ if and only if both matrices are $n\times k$ and $a_{ij}=b_{ij}$ for all $i\in\{1,\cdots,n\}$ and $j\in\{1,\cdots,k\}$.\\ 
+(ii) $n\times k$ matrices can be added together componentwise, in the obvious way. Thus if $A=[a_{ij}]$ and $B=[b_ij]$ are $n\times k$ matrices, $A+B$ is the $n\times k$ matrix $C=[c_{ij}]$ with entries $c_{ij}=a_{ij}+b_{ij}$.\\
+(iii) Any matrix can be scaled, that is multiplied by a real number called a {\it scalar}. That is, if $c\in\mathbb{R}$, the matrix $cA$ has entries $[ca_{ij}]$.\\
+(iv) 2 matrices $A$ and $B$ can be multiplied, written $AB$ or $A.B$, provided the number of columns in $A$ is equal to the number of rows in $B$, that is $A$ is $n\times k$ and $B$ is $k\times m$. We obtain a matrix $C=AB$ whose entries are $c_{ij}=\sum_{s=1}^{k}a_{is}b_{sj}$. See lecture notes for examples.\\
+(v) The {\it transpose} of a matrix $A$ with entries $a_{ij}$ is the matrix $A^{T}$ with entries $a_{ij}^{T}$ and satisfying the condition that $a_{ij}^{T}=a_{ji}$. Hence the transpose of an $n\times k$ matrix is a $k\times n$ matrix.\\
+(vi) Matrices which are $1\times n$ or $n\times 1$ will often be thought of as simply vectors in $\mathbb{R}^{n}$.\\
+\\
+Note: In this course we also deal with matrix and vector valued functions. So $A(t)=[a_ij(t)]$ is a matrix valued function on $I$ provided each $a_{ij}(t)$ is a function on $I$. $A(t)$ is continuous, differentiable etc provided if and only if each $a_{ij}(t)$ is continuous, differentiable etc. If $A(t)$ is differentiable, then $\frac{dA}{dt}=[\frac{da_{ij}}{dt}]$. Sometimes the notations $A'(t)=[a_{ij}'(t)]$ or $\dot{A}(t)=[\dot{a_{ij}}(t)]$ are used.\\
+\\ 
+Now consider the following system of linear equations.\\
+\begin{equation*}
+\begin{split}
+x+2y+z&=3\\
+2x-y+z&=1\\
+x+y-z&=2
+\end{split}
+\end{equation*}
+\\
+In the language of matrices, we represent this system as:\\
+\\
+
+ \begin{equation*}
+ \begin{pmatrix}
+ 1&2&3\\
+ 2&-1&1\\
+ 1&1&-1
+ \end{pmatrix}
+ \begin{pmatrix}
+ x\\
+ y\\
+ z
+ \end{pmatrix}
+=
+\begin{pmatrix}
+ 3\\
+ 1\\
+ 2
+ \end{pmatrix}
+\end{equation*}
+\\
+\\
+Solving the system of linear equations is now the same as solving this matrix equation. This can be done using the method of "row reduction". The information contained in the above matrix equation can be written as a $3\times 4$ matrix, shown below.\\
+ \begin{equation*}
+ \begin{pmatrix}
+ 1&2&3&|&3\\
+ 2&-1&1&|&1\\
+ 1&1&-1&|&2
+ \end{pmatrix}
+\end{equation*}
+We can make the following alterations to this matrix without changing the solutions of the system of equations it represents.\\
+(i) Scale any row by a real number. (This should make sense as the equation $2x+2y=10$ has the same solutions as $x+y=5$.) More precislely replace the $i^{th}$ row $R_i$ with $cR_i$ for any constant $c$. We denote this by $cR_i$.\\
+(ii) Add any two rows. More precisely replace $R_i$ with $R_i+R_k$. We denote this by $R_i+R_k$.\\
+(iii) Swap any two rows. More precisely, replace $R_i$ with $R_k$. We denote this by $R_i<->R_j$.\\
+\\
+We will now row reduce the above matrix. The following method can be applied more generally.\\
+\\
+$R_2-2R_3$ gives
+\begin{equation*}
+ \begin{pmatrix}
+ 1&2&3&|&3\\
+ 0&-3&3&|&-3\\
+ 1&1&-1&|&2
+ \end{pmatrix}.
+\end{equation*}
+\\
+$R_3-R_1$ gives
+\begin{equation*}
+ \begin{pmatrix}
+ 1&2&3&|&3\\
+ 0&-3&3&|&-3\\
+ 0&-1&-4&|&-1
+ \end{pmatrix}.
+\end{equation*}
+\\
+$R_3-\frac{1}{3}R_2$ gives
+\begin{equation*}
+ \begin{pmatrix}
+ 1&2&3&|&3\\
+ 0&-3&3&|&-3\\
+ 0&0&-5&|&0
+ \end{pmatrix}.
+\end{equation*}
+\\
+$R_2+\frac{3}{5}R_3$ gives
+\begin{equation*}
+ \begin{pmatrix}
+ 1&2&3&|&3\\
+ 0&-3&0&|&-3\\
+ 0&0&-5&|&0
+ \end{pmatrix}.
+\end{equation*}
+\\
+$R_1+\frac{3}{5}R_3$ gives
+\begin{equation*}
+ \begin{pmatrix}
+ 1&2&0&|&3\\
+ 0&-3&0&|&-3\\
+ 0&0&-5&|&0
+ \end{pmatrix}.
+\end{equation*}
+\\
+$R_1+\frac{2}{3}R_2$ gives
+\begin{equation*}
+ \begin{pmatrix}
+ 1&0&0&|&1\\
+ 0&-3&0&|&-3\\
+ 0&0&-5&|&0
+ \end{pmatrix}.
+\end{equation*}
+\\
+Finally $\frac{-1}{3}R_2,\frac{-1}{5}R_3$ gives
+\begin{equation*}
+ \begin{pmatrix}
+ 1&0&0&|&1\\
+ 0&1&0&|&1\\
+ 0&0&1&|&0
+ \end{pmatrix}.
+\end{equation*}
+\\
+Rewriting this as a system of linear equations we now have that $x=1$, $y=1$ and $z=0$. As we used only the permissable alterations above, these are the solutions to the original system.\\
+\\
+Now suppose we have a matrix equation of the form $Ax=b$ where $A$ is an $n\times n$ real matrix and $x$ and $b$ are vectors in $\mathbb{R}^{n}$.
+
+\begin{equation*}
+ \begin{pmatrix}
+ a_{11}&a_{21}&\cdots& a_{1k}\\
+ a_{21}&a_{22}&\cdots& a_{2k}\\
+ \vdots&&\ddots&\vdots\\
+ a_{n1}&a_{n2}&\cdots& a_{nk}
+ \end{pmatrix}
+\begin{pmatrix}
+ x_1\\
+ x_2\\
+ \vdots\\
+ x_n
+ \end{pmatrix}
+=
+\begin{pmatrix}
+ b_1\\
+ b_2\\
+ \vdots\\
+ b_n
+ \end{pmatrix}
+ \end{equation*}
+We would like to know when the above equation (or the linear system it represents) has a unique solution. Before discussing this we must define an object called the determinant of the matrix $A$. The determinant of $A$, written $det(A)$ is a number which is obtained by adding together certain products of matrix entries. See lecture notes for the actual formula. In the $n=2$ case, $det(A)=a_{11}a_{22}-a_{12}a_{21}$. When $n=3$ we get\\\\
+\centerline{$det(A)=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{31}a_{22}a_{13}-a_{32}a_{23}a_{11}-a_{33}a_{21}a_{12}.$} 
+\\
+\\
+As $n$ gets larger this formula becomes increasingly more complicated (the above formula has $n!=n(n-1)(n-2)\cdots(3)(2)(1)$ terms) and so using the formula alone is not a realistic way of computing the determinat of an $n\times n$ matrix. There are of course much more efficient methods we which are covered in any standard Linear Algebra course. We will not deal much with $n\times n$ matrices when $n>3$ except in very simple cases.\\
+We now state the following theorem.\\\\
+{\bf Theorem 5.1.} Let $A$ be an $n\times n$ real matrix. Then the following statements are equivalent\\
+(i) $Ax=0$ has only the trivial solution $x=0$.\\
+(ii) For any $b$, $Ax=b$ has a unique solution.\\
+(iii) $det(A)\neq 0$.\\
+(iv) The column vectors of $A$ are linearly independent.\\
+(v) The row vectors of $A$ are linearly independent.\\
+\\
+For an intuitive explanation as to why $det A\neq 0$ is the same as linear independence of the column vectors, see lecture notes on the determinant and volume.\\
+\\
+So what happens when $det(A)=0$? It follows directly from the above theorem that the equation $Ax=0$ has more solutions than just the trivial one $x=0$. In other words, there must exist $v\neq 0$ so that $Av=0$.  At this point it is useful to think of the matrix $A$ as a linear map, namely the map $A:\mathbb{R}^{n}\rightarrow\mathbb{R}^{n}$, defined as $x\mapsto Ax$. Of course then the solution set to the equation $Ax=0$ is simply the {\it kernel} of $A$ and is thus a vector subspace of $\mathbb{R}^{n}$. When $det(A)\neq 0$, $Ker(A)=0$, that is only $x=0$ is a solution to $Ax=0$. However when $det(A)=0$, $Ker(A)\neq0$, that is contains more elements than just $0$.\\
+Now what about the equation $Ax=b$ when $b\neq0$? In this case we may have no solutions as $b$ may not be in the image of the map $A$. Suppose $Ax=b$ is the matrix equation
+\begin{equation*}
+ \begin{pmatrix}
+ 1&1\\
+ 3&3
+ \end{pmatrix}
+ \begin{pmatrix}
+ x\\
+ y
+ \end{pmatrix}
+= 
+\begin{pmatrix}
+ 5\\
+ 10
+ \end{pmatrix}.
+ \end{equation*}
+ This equation has no solutions as there is no pair $x,y$ so that $x+y=5$ and $3x+3y=10$.
+ If however $b$ is in the image of $A$, then $Ax=b$ will have many solutions. Consider a slight adjustment to the above example.
+ \begin{equation*}
+ \begin{pmatrix}
+ 1&1\\
+ 3&3
+ \end{pmatrix}
+ \begin{pmatrix}
+ x\\
+ y
+ \end{pmatrix}
+= 
+\begin{pmatrix}
+ 5\\
+ 15
+ \end{pmatrix}
+ \end{equation*}
+ This equation has solution space $\{(x,5-x)\in\mathbb{R}^{2}:x\in\mathbb{R}\}$. An important observation to make is that any vector in the solution space can be written $(x,-x)+(0,5)$. It is not hard to see that the space $\{(x,-x)\in\mathbb{R}^{2}:x\in\mathbb{R}\}$ is the kernel of $A$, or if you prefer, the solution space to $Ax=0$. $(0,5)$ is a particular solution to $Ax=b$. The above example illustrates a more general fact. Suppose $Ax=b$ is a matrix equation. Suppose $v$ is a particular solution to $Ax=b$. Then every solution to $Ax=b$ can be written $v+\xi$ where $\xi$ is some solution to $Ax=0$. Indeed, the solution space to $Ax=b$ is $\{v+\xi\in\mathbb{R}^{n}:A\xi=0\}$. This fact is not difficult to prove and you should do it as an exercise.\\
+\\
+We finish this section with an example. Compute the solution space to the following matrix equation $Ax=b$.\\
+\\
+ \begin{equation*}
+ \begin{pmatrix}
+ 1&1&0\\
+ 2&1&1\\
+ -4&-2&-2
+ \end{pmatrix}
+ \begin{pmatrix}
+ x\\
+ y\\
+ z
+ \end{pmatrix}
+=
+\begin{pmatrix}
+ 3\\
+ 4\\
+ -8
+ \end{pmatrix}
+\end{equation*}
+\\
+We first write this as the $3\times 4$ matrix:
+\begin{equation*}
+ \begin{pmatrix}
+ 1&1&0&|&3\\
+ 2&1&1&|&4\\
+ -4&-2&-2&|&-8
+ \end{pmatrix}.
+\end{equation*}
+\\
+$R_{3}+2R_{2}$ gives
+\begin{equation*}
+ \begin{pmatrix}
+ 1&1&0&|&3\\
+ 2&1&1&|&4\\
+ 0&0&0&|&0
+ \end{pmatrix}.
+\end{equation*}
+\\
+Then $R_{2}-2R_{1}$ gives
+\begin{equation*}
+ \begin{pmatrix}
+ 1&1&0&|&3\\
+ 0&-1&1&|&-2\\
+ 0&0&0&|&0
+ \end{pmatrix}.
+\end{equation*}
+\\
+Finally we obtain $x+y=3$ and $-y+z=-2$. Setting $x=t$ gives us the solution space $\{(t,3-t,1-t)\in\mathbb{R}^{3}:t\in\mathbb{R}\}$. Notice that when $t=0$ the vector $(0,3,1)$ is a solution to the original equation $Ax=b$ while $\{(t,-t,-t)\in\mathbb{R}^{n}:t\in\mathbb{R}\}$ is the solution space to $Ax=0$ (you should check this). 
+\\
+\\
+\\
+{\bf 6.0 Eigenvalues and eigenvectors}\\\\
+See lecture notes for motivation. Suppose $A$ is an $n\times n$ matrix. We can think of $A$ as a linear map from $\mathbb{R}^{n}\rightarrow\mathbb{R}^{n}$ defined as $x\mapsto Ax$. 
+Inputs of this function are vectors. $A$ then acts on the input value moving it somewhere in $\mathbb{R}^{n}$. For example the matrix\\
+ \begin{equation*}
+ \begin{pmatrix}
+ 0&-1\\
+ 1&0
+ \end{pmatrix}.
+\end{equation*}
+acts on $\mathbb{R}^{2}$ by rotating each vector $90^{o}$ in the anti-clockwise direction. The matrix
+ \begin{equation*}
+ \begin{pmatrix}
+1&0\\
+ 0&2
+ \end{pmatrix}.
+\end{equation*}
+stretches the plane $\mathbb{R}^{2}$ by a factor of $2$ in the vertical direction. This has the effect of stretching vectors on the vertical axis by a factor of $2$ and has no effect on vectors on the horizontal axis.\\
+An important observation is that in the case of the first matrix each non-zero vector is moved to a different line through $0$ (or a different subspace of $\mathbb{R}^{2}$). Moreover 2 vectors $v$ and $cv$ (where $c$ is a constant) are moved from the same line to the same line. In the case of the second matrix, vectors of the form $(x,0)$ are sent to $(x,0)$ and vectors of the form $(0,y)$ are sent to $2(0,y)=(0,2y)$. Consequently, the horizontal subspace $\{(x,0)\in\mathbb{R}^{2}:x\in\mathbb{R}\}$ is sent to itself and the vertical subspace $\{(0,y)\in\mathbb{R}^{2}:y\in\mathbb{R}\}$ is sent to itself (even though each vector on it is stretched by a factor of $2$). The horizontal and vertical subspaces are known as ``invariant'' subspaces. Finding invariant subspaces of linear maps is an important area of Linear Algebra with applications throughout Mathematics.\\
+In general we are interested in the following problem. For which constant $\lambda$ does the equation $Ax=\lambda x$ have nontrivial solutions. It should be clear that $x=0$ is always a solution of such an equation. We rewrite this equation as\\
+\begin{equation*}
+Ax=\lambda Ix
+\end{equation*}
+where $I$ is the identity matrix\\
+\begin{equation*}
+ \begin{pmatrix}
+ 1&0&\cdots& 0\\
+ 0&1&\cdots& 0\\
+ \vdots&&\ddots&\vdots\\
+ 0&0&\cdots& 1
+ \end{pmatrix}
+\end{equation*}
+Rearranging further we obtain\\
+\begin{equation*}
+(A-\lambda I)x=0
+\end{equation*}
+We know that such an equation has non-trivial solutions only when $det(A-\lambda I)=0$. This equation is a polynomial equation known as the ``characteristic equation''. We know that there are a number of possibilities for solutions for this equation. The roots of the characteristic polynomial $det(A-\lambda I))$ are known as the {\it eigenvalues} (or {\it characteristic values}) of the matrix $A$. As these eigenvalues are the roots of a real polynomial they may be all real or there may be some complex ones. Even if they are all real, there may be some repeated eigenvalues. Here are some examples.\\
+ The matrix 
+ \begin{equation*}
+ \begin{pmatrix}
+ 0&-1\\
+ 1&0
+ \end{pmatrix}.
+\end{equation*}
+has characteristic equation $\lambda^{2}+1=0$ and so has no real eigenvalues. (In the context of real vector spaces we can think of this as having no eigenvalues.) This makes sense as this matrix rotates the plane by $90^{o}$ and so leaves no subspace (except $0$) invariant.\\
+To find the eigenvalues of the matrix 
+\begin{equation*}
+ \begin{pmatrix}
+1&3\\
+ 5&-1
+ \end{pmatrix}
+\end{equation*}
+we want the equation 
+\begin{equation*}
+ \begin{pmatrix}
+1-\lambda&3\\
+ 5&-1-\lambda
+ \end{pmatrix}
+\begin{pmatrix}
+x\\
+y
+\end{pmatrix}
+=
+\begin{pmatrix}
+0\\
+0
+\end{pmatrix}
+\end{equation*}
+to have non-trivial solutions. We thus need to solve the characteristic equation $(1-\lambda)(-1-\lambda)-3.5=0$ giving that the matrix has eigenvalues $\lambda=4$ and $\lambda=--4$.
+\\\\
+Suppose a matrix $A$ has a real eigenvalue $\lambda$. Then $Av=\lambda v$ for some $v\neq0$. Such a vector $v$ is an {\it eigenvector} for the eigenvalue $\lambda$. Of course if $v$ and $w$ are eigenvectors for $\lambda$ and if $c$ is a constant, then $cv+w$ is an eigenvector for $\lambda$. This is easy to see as $A(cv+w)=A(cv)+A(w)=cA(v)+A(w)=c\lambda v+\lambda w=\lambda(cv+w).$ Hence the set of eigenvectors for the eigenvalue $\lambda$ is a vector subspace of $\mathbb{R}^{n}$. We call it the {\it eigenspace} of $\lambda$.\\\\
+Lets now compute the eigenspaces for the above example. When $\lambda=4$, we have the equation\\
+\begin{equation*}
+ \begin{pmatrix}
+-3&3\\
+ 5&-5
+ \end{pmatrix}
+\begin{pmatrix}
+x\\
+y
+\end{pmatrix}
+=
+\begin{pmatrix}
+0\\
+0
+\end{pmatrix}.
+\end{equation*}
+This eigenspace for $\lambda=4$ is thus $\{t(1,1)\in\mathbb{R}^{2}:t\in\mathbb{R}\}$. Similarly we can compute the eigenspace for $\lambda=-4$. (You should do this as an exercise.) \\
+\\
+Both eigenspaces in the above case are $1$-dimensional but this need not always be the case. Recall again that the eigenvalues of a matrix $A$ are the roots of the characteristic polynomial $det(A-\lambda I)$. Lets assume that from now on all of the roots of this polynomial are real. (We will deal with the complex case in lectures when we need to.) Each root (eigenvalue) $\lambda=a$ has an {\it algebraic multiplicity}. This is the number of times it occurs in the polynomial. More precisely the root $a$ has multiplicity $k$ provided $(x-a)^{k}$ is a factor of $det(A-\lambda I)$ but $(x-a)^{k+1}$ is not. We denote this multiplicity by $m_{a}$.\\
+To each eigenvalue $\lambda=a$ we can also associate another integer called the geometric multiplicity of $a$. We denote it by $q_{a}$. $q_{a}$ is the number of linearly independent vectors in the eigenspace of $a$. It is a fact that $1\leq q_{a}\leq m_{a}$. Thus there is always at least one non-trivial eigenvector for each eigenvector $a$. (We already knew this.) Although it is not always the case that $q_{a}=m_{a}$, we can assume in this course that this will be the case. (That is we will only consider matrices $A$ which have this property.) One sufficient condition for this is that our matrix be symmetric. That is $A=A^{T}$.\\
+\\
+We will finish with an example.\\
+\\
+Compute eigenvalues and eigenspaces for the matrix\\
+\begin{equation*}
+ A=
+ \begin{pmatrix}
+ 3&-2&0\\
+ -2&3&0\\
+ 0&0&5
+ \end{pmatrix}.
+\end{equation*}
+\\
+We obtain the equation
+\begin{equation*}
+ \begin{pmatrix}
+ 3-\lambda&-2&0\\
+ -2&3-\lambda&0\\
+ 0&0&5-\lambda
+ \end{pmatrix}
+  \begin{pmatrix}
+x\\
+y\\
+z
+ \end{pmatrix}
+ =
+  \begin{pmatrix}
+0\\
+0\\
+0
+ \end{pmatrix}.
+\end{equation*}
+To find non-trivial solutions we must solve the characteristic equation\\
+\begin{equation*}
+(3-\lambda)(3-\lambda)(5-\lambda)-(5-\lambda)(-2)(-2)=0
+\end{equation*}
+This equation can be simplified to 
+\begin{equation*}
+(\lambda-1)(\lambda-5)^{2}=0
+\end{equation*}
+The eigenvalues of $A$ are $1$ and $5$ with algebraic multiplicities $1$ and $2$ respectively. Now we will find the corresponding eigenspaces.\\
+When $\lambda=1$ we obtain the matrix equation
+\begin{equation*}
+ \begin{pmatrix}
+ 2&-2&0\\
+ -2&2&0\\
+ 0&0&4
+ \end{pmatrix}
+  \begin{pmatrix}
+x\\
+y\\
+z
+ \end{pmatrix}
+ =
+  \begin{pmatrix}
+0\\
+0\\
+0
+ \end{pmatrix}.
+\end{equation*}
+The solution space to this equation is easily computed to be $\{t(1,1,0)\in\mathbb{R}^{3}:t\in\mathbb{R}\}$. This is a one dimensional space generated by the vector $(1,1,0)$. Thus $\lambda =1$ has geometric multiplicity $1$.\\
+\\
+When $\lambda =5$ we obtain the matrix equation
+\begin{equation*}
+ \begin{pmatrix}
+ -2&-2&0\\
+ -2&-2&0\\
+ 0&0&0
+ \end{pmatrix}
+  \begin{pmatrix}
+x\\
+y\\
+z
+ \end{pmatrix}
+ =
+  \begin{pmatrix}
+0\\
+0\\
+0
+ \end{pmatrix}.
+\end{equation*}
+\\
+This has solution space $\{s(-1,1,0)+t(0,0,1)\in\mathbb{R}^{3}:s,t\in\mathbb{R}\}$ and so $\lambda=5$ has geometric multiplicity $2$.
+
+
+
+
+
+
+
+
+\end{document}

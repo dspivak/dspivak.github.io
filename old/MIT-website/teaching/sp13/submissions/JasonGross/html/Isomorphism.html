@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Isomorphism</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Isomorphism</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Setoids.Setoid.html#"><span class="id" type="library">Setoid</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#"><span class="id" type="library">Ensembles</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#"><span class="id" type="library">ProofIrrelevance</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a> <a class="idref" href="Morphism.html#"><span class="id" type="library">Morphism</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab184"></a><h1 class="section">Isomorphism</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Record</span> <a name="is_isomorphism"><span class="id" type="record">is_isomorphism</span></a> <span class="id" type="var">X</span> <span class="id" type="var">Y</span> (<span class="id" type="var">f</span> : <a class="idref" href="Isomorphism.html#X"><span class="id" type="variable">X</span></a> → <a class="idref" href="Isomorphism.html#Y"><span class="id" type="variable">Y</span></a>) :=<br/>
+&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="isomorphism_inverse"><span class="id" type="projection">isomorphism_inverse</span></a> : <a class="idref" href="Isomorphism.html#Y"><span class="id" type="variable">Y</span></a> → <a class="idref" href="Isomorphism.html#X"><span class="id" type="variable">X</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="isomorphism_right_inverse"><span class="id" type="projection">isomorphism_right_inverse</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;: <span class="id" type="keyword">∀</span> <span class="id" type="var">x</span>, (<a class="idref" href="Isomorphism.html#f"><span class="id" type="variable">f</span></a> <a class="idref" href="Morphism.html#::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Isomorphism.html#isomorphism_inverse"><span class="id" type="method">isomorphism_inverse</span></a>) <a class="idref" href="Isomorphism.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8_core.html#::'λ'_x_'..'_x_','_x"><span class="id" type="notation">&lambda;</span></a> <span class="id" type="var">x</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8_core.html#::'λ'_x_'..'_x_','_x"><span class="id" type="notation">,</span></a> <a class="idref" href="Isomorphism.html#x"><span class="id" type="variable">x</span></a>) <a class="idref" href="Isomorphism.html#x"><span class="id" type="variable">x</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="isomorphism_left_inverse"><span class="id" type="projection">isomorphism_left_inverse</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;: <span class="id" type="keyword">∀</span> <span class="id" type="var">x</span>, (<a class="idref" href="Isomorphism.html#isomorphism_inverse"><span class="id" type="method">isomorphism_inverse</span></a> <a class="idref" href="Morphism.html#::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Isomorphism.html#f"><span class="id" type="variable">f</span></a>) <a class="idref" href="Isomorphism.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8_core.html#::'λ'_x_'..'_x_','_x"><span class="id" type="notation">&lambda;</span></a> <span class="id" type="var">x</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8_core.html#::'λ'_x_'..'_x_','_x"><span class="id" type="notation">,</span></a> <a class="idref" href="Isomorphism.html#x"><span class="id" type="variable">x</span></a>) <a class="idref" href="Isomorphism.html#x"><span class="id" type="variable">x</span></a><br/>
+&nbsp;&nbsp;}.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<span class="inlinecode"><span class="id" type="keyword">Notation</span></span> <span class="inlinecode">"<a class="idref" href="Exercise_4_4_1_5.html#Exercise_4_4_1_5.i"><span class="id" type="constructor">i</span></a></span> <span class="inlinecode"><span class="id" type="var"><sup>-1</sup></span>"</span> <span class="inlinecode">:=</span> <span class="inlinecode">(<a class="idref" href="Isomorphism.html#isomorphism_inverse"><span class="id" type="projection">isomorphism_inverse</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_4_4_1_5.html#Exercise_4_4_1_5.i"><span class="id" type="constructor">i</span></a>)</span> <span class="inlinecode">(<span class="id" type="tactic">at</span></span> <span class="inlinecode"><span class="id" type="keyword">level</span></span> <span class="inlinecode">10).</span> 
+</div>
+<div class="code">
+
+<br/>
+
+<br/>
+<span class="id" type="keyword">Record</span> <a name="isomorphic"><span class="id" type="record">isomorphic</span></a> <span class="id" type="var">X</span> <span class="id" type="var">Y</span> :=<br/>
+&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="isomorphic_morphism"><span class="id" type="projection">isomorphic_morphism</span></a> :> <a class="idref" href="Isomorphism.html#X"><span class="id" type="variable">X</span></a> → <a class="idref" href="Isomorphism.html#Y"><span class="id" type="variable">Y</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="isomorphic_is_isomorphism"><span class="id" type="projection">isomorphic_is_isomorphism</span></a> :> <a class="idref" href="Isomorphism.html#is_isomorphism"><span class="id" type="record">is_isomorphism</span></a> <a class="idref" href="Isomorphism.html#isomorphic_morphism"><span class="id" type="method">isomorphic_morphism</span></a><br/>
+&nbsp;&nbsp;}.<br/>
+
+<br/>
+<span class="id" type="keyword">Hint Resolve</span> <a class="idref" href="Isomorphism.html#isomorphic_is_isomorphism"><span class="id" type="projection">isomorphic_is_isomorphism</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Infix</span> <a name=":type_scope:x_'≅'_x"><span class="id" type="notation">"</span></a>&cong;" := (<a class="idref" href="Isomorphism.html#isomorphic"><span class="id" type="record">isomorphic</span></a>) (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 70) : <span class="id" type="var">type_scope</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Lemma</span> <a name="isomorphic_eq"><span class="id" type="lemma">isomorphic_eq</span></a> <span class="id" type="var">X</span> <span class="id" type="var">Y</span> (<span class="id" type="var">f</span> <span class="id" type="var">g</span> : <a class="idref" href="Isomorphism.html#X"><span class="id" type="variable">X</span></a> <a class="idref" href="Isomorphism.html#:type_scope:x_'≅'_x"><span class="id" type="notation">&cong;</span></a> <a class="idref" href="Isomorphism.html#Y"><span class="id" type="variable">Y</span></a>) :<br/>
+&nbsp;&nbsp;<a class="idref" href="Isomorphism.html#isomorphic_morphism"><span class="id" type="projection">isomorphic_morphism</span></a> <a class="idref" href="Isomorphism.html#f"><span class="id" type="variable">f</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Isomorphism.html#isomorphic_morphism"><span class="id" type="projection">isomorphic_morphism</span></a> <a class="idref" href="Isomorphism.html#g"><span class="id" type="variable">g</span></a><br/>
+&nbsp;&nbsp;→ <a class="idref" href="Isomorphism.html#isomorphism_inverse"><span class="id" type="projection">isomorphism_inverse</span></a> <a class="idref" href="Isomorphism.html#f"><span class="id" type="variable">f</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Isomorphism.html#isomorphism_inverse"><span class="id" type="projection">isomorphism_inverse</span></a> <a class="idref" href="Isomorphism.html#g"><span class="id" type="variable">g</span></a><br/>
+&nbsp;&nbsp;→ <a class="idref" href="Isomorphism.html#f"><span class="id" type="variable">f</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Isomorphism.html#g"><span class="id" type="variable">g</span></a>.<br/>
+<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">f</span> <span class="id" type="keyword">as</span> [ ? [ ] ], <span class="id" type="var">g</span> <span class="id" type="keyword">as</span> [ ? [ ] ]; <span class="id" type="tactic">simpl</span>;<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">intro</span>; <span class="id" type="tactic">subst</span>; <span class="id" type="tactic">repeat</span> <span class="id" type="tactic">f_equal</span>;<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#proof_irrelevance"><span class="id" type="axiom">ProofIrrelevance.proof_irrelevance</span></a>.<br/>
+<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+
+<br/>
+<span class="id" type="keyword">Notation</span> <a name="relation"><span class="id" type="abbreviation">relation</span></a> <span class="id" type="var">A</span> := (<span class="id" type="var">A</span> → <span class="id" type="var">A</span> → <span class="id" type="keyword">Type</span>).<br/>
+
+<br/>
+<span class="id" type="keyword">Definition</span> <a name="Reflexive"><span class="id" type="definition">Reflexive</span></a> {<span class="id" type="var">A</span>} (<span class="id" type="var">R</span> : <a class="idref" href="Isomorphism.html#relation"><span class="id" type="abbreviation">relation</span></a> <a class="idref" href="Isomorphism.html#A"><span class="id" type="variable">A</span></a>) := <span class="id" type="keyword">∀</span> <span class="id" type="var">x</span>, <a class="idref" href="Isomorphism.html#R"><span class="id" type="variable">R</span></a> <a class="idref" href="Isomorphism.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="Isomorphism.html#x"><span class="id" type="variable">x</span></a>.<br/>
+<span class="id" type="keyword">Definition</span> <a name="Symmetric"><span class="id" type="definition">Symmetric</span></a> {<span class="id" type="var">A</span>} (<span class="id" type="var">R</span> : <a class="idref" href="Isomorphism.html#relation"><span class="id" type="abbreviation">relation</span></a> <a class="idref" href="Isomorphism.html#A"><span class="id" type="variable">A</span></a>) := <span class="id" type="keyword">∀</span> <span class="id" type="var">x</span> <span class="id" type="var">y</span>, <a class="idref" href="Isomorphism.html#R"><span class="id" type="variable">R</span></a> <a class="idref" href="Isomorphism.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="Isomorphism.html#y"><span class="id" type="variable">y</span></a> → <a class="idref" href="Isomorphism.html#R"><span class="id" type="variable">R</span></a> <a class="idref" href="Isomorphism.html#y"><span class="id" type="variable">y</span></a> <a class="idref" href="Isomorphism.html#x"><span class="id" type="variable">x</span></a>.<br/>
+<span class="id" type="keyword">Definition</span> <a name="Transitive"><span class="id" type="definition">Transitive</span></a> {<span class="id" type="var">A</span>} (<span class="id" type="var">R</span> : <a class="idref" href="Isomorphism.html#relation"><span class="id" type="abbreviation">relation</span></a> <a class="idref" href="Isomorphism.html#A"><span class="id" type="variable">A</span></a>) := <span class="id" type="keyword">∀</span> <span class="id" type="var">x</span> <span class="id" type="var">y</span> <span class="id" type="var">z</span>, <a class="idref" href="Isomorphism.html#R"><span class="id" type="variable">R</span></a> <a class="idref" href="Isomorphism.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="Isomorphism.html#y"><span class="id" type="variable">y</span></a> → <a class="idref" href="Isomorphism.html#R"><span class="id" type="variable">R</span></a> <a class="idref" href="Isomorphism.html#y"><span class="id" type="variable">y</span></a> <a class="idref" href="Isomorphism.html#z"><span class="id" type="variable">z</span></a> → <a class="idref" href="Isomorphism.html#R"><span class="id" type="variable">R</span></a> <a class="idref" href="Isomorphism.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="Isomorphism.html#z"><span class="id" type="variable">z</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Record</span> <a name="Equivalence"><span class="id" type="record">Equivalence</span></a> {<span class="id" type="var">A</span> : <span class="id" type="keyword">Type</span>} (<span class="id" type="var">R</span> : <a class="idref" href="Isomorphism.html#relation"><span class="id" type="abbreviation">relation</span></a> <a class="idref" href="Isomorphism.html#A"><span class="id" type="variable">A</span></a>)<br/>
+&nbsp;&nbsp;:= <a name="Build_Equivalence"><span class="id" type="constructor">Build_Equivalence</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ <a name="Equivalence_Reflexive"><span class="id" type="projection">Equivalence_Reflexive</span></a> : <a class="idref" href="Isomorphism.html#Reflexive"><span class="id" type="definition">Reflexive</span></a> <a class="idref" href="Isomorphism.html#R"><span class="id" type="variable">R</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="Equivalence_Symmetric"><span class="id" type="projection">Equivalence_Symmetric</span></a> : <a class="idref" href="Isomorphism.html#Symmetric"><span class="id" type="definition">Symmetric</span></a> <a class="idref" href="Isomorphism.html#R"><span class="id" type="variable">R</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="Equivalence_Transitive"><span class="id" type="projection">Equivalence_Transitive</span></a> : <a class="idref" href="Isomorphism.html#Transitive"><span class="id" type="definition">Transitive</span></a> <a class="idref" href="Isomorphism.html#R"><span class="id" type="variable">R</span></a> }.<br/>
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="isomorphic_relation"><span class="id" type="section">isomorphic_relation</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Ltac</span> <span class="id" type="var">t</span> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>; <span class="id" type="tactic">simpl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : <span class="id" type="var">_</span> <a class="idref" href="Isomorphism.html#:type_scope:x_'≅'_x"><span class="id" type="notation">&cong;</span></a> <span class="id" type="var">_</span> |- <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">destruct</span> <span class="id" type="var">H</span> <span class="id" type="keyword">as</span> [ ? [] ]; <span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> ×<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : <span class="id" type="var">_</span> |- <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">rewrite</span> <span class="id" type="var">H</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="isomorphic_reflexive"><span class="id" type="definition">isomorphic_reflexive</span></a> : <a class="idref" href="Isomorphism.html#Reflexive"><span class="id" type="definition">Reflexive</span></a> <a class="idref" href="Isomorphism.html#isomorphic"><span class="id" type="record">isomorphic</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">intro</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8_core.html#::'λ'_x_'..'_x_','_x"><span class="id" type="notation">&lambda;</span></a> <span class="id" type="var">x</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8_core.html#::'λ'_x_'..'_x_','_x"><span class="id" type="notation">,</span></a> <a class="idref" href="Isomorphism.html#x"><span class="id" type="variable">x</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8_core.html#::'λ'_x_'..'_x_','_x"><span class="id" type="notation">&lambda;</span></a> <span class="id" type="var">x</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8_core.html#::'λ'_x_'..'_x_','_x"><span class="id" type="notation">,</span></a> <a class="idref" href="Isomorphism.html#x"><span class="id" type="variable">x</span></a>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">t</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="isomorphic_symmetric"><span class="id" type="definition">isomorphic_symmetric</span></a> : <a class="idref" href="Isomorphism.html#Symmetric"><span class="id" type="definition">Symmetric</span></a> <a class="idref" href="Isomorphism.html#isomorphic"><span class="id" type="record">isomorphic</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span> <span class="id" type="var">x</span> <span class="id" type="var">y</span> <span class="id" type="var">f</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">eexists</span> (<span class="id" type="var">f</span> <a class="idref" href="Isomorphism.html#::x_'⁻¹'"><span class="id" type="notation"><sup>-1</sup></span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> <span class="id" type="var">f</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">t</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="isomorphic_transitive"><span class="id" type="definition">isomorphic_transitive</span></a> : <a class="idref" href="Isomorphism.html#Transitive"><span class="id" type="definition">Transitive</span></a> <a class="idref" href="Isomorphism.html#isomorphic"><span class="id" type="record">isomorphic</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span> <span class="id" type="var">x</span> <span class="id" type="var">y</span> <span class="id" type="var">z</span> <span class="id" type="var">f</span> <span class="id" type="var">g</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> (<span class="id" type="var">g</span> <a class="idref" href="Morphism.html#::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <span class="id" type="var">f</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> (<span class="id" type="var">f</span> <a class="idref" href="Isomorphism.html#::x_'⁻¹'"><span class="id" type="notation"><sup>-1</sup></span></a> <a class="idref" href="Morphism.html#::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <span class="id" type="var">g</span> <a class="idref" href="Isomorphism.html#::x_'⁻¹'"><span class="id" type="notation"><sup>-1</sup></span></a>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">t</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Isomorphism.html#isomorphic_relation"><span class="id" type="section">isomorphic_relation</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Hint Resolve</span> @<a class="idref" href="Isomorphism.html#isomorphic_reflexive"><span class="id" type="definition">isomorphic_reflexive</span></a> @<a class="idref" href="Isomorphism.html#isomorphic_symmetric"><span class="id" type="definition">isomorphic_symmetric</span></a>.<br/>
+<span class="id" type="keyword">Hint Immediate</span> @<a class="idref" href="Isomorphism.html#isomorphic_reflexive"><span class="id" type="definition">isomorphic_reflexive</span></a> @<a class="idref" href="Isomorphism.html#isomorphic_symmetric"><span class="id" type="definition">isomorphic_symmetric</span></a> @<a class="idref" href="Isomorphism.html#isomorphic_transitive"><span class="id" type="definition">isomorphic_transitive</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

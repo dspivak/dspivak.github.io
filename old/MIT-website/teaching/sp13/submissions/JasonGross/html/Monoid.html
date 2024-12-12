@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Monoid</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Monoid</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.FunctionalExtensionality.html#"><span class="id" type="library">FunctionalExtensionality</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#"><span class="id" type="library">ProofIrrelevance</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Record</span> <a name="ComputationalMonoid"><span class="id" type="record">ComputationalMonoid</span></a> (<span class="id" type="var">M</span> : <span class="id" type="keyword">Type</span>) :=<br/>
+&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">monoid_obj</span> :> <span class="id" type="var">_</span> := <a class="idref" href="Monoid.html#M"><span class="id" type="variable">M</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="id"><span class="id" type="projection">id</span></a> : <a class="idref" href="Monoid.html#monoid_obj"><span class="id" type="method">monoid_obj</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="comp"><span class="id" type="projection">comp</span></a> : <a class="idref" href="Monoid.html#monoid_obj"><span class="id" type="method">monoid_obj</span></a> → <a class="idref" href="Monoid.html#monoid_obj"><span class="id" type="method">monoid_obj</span></a> → <a class="idref" href="Monoid.html#monoid_obj"><span class="id" type="method">monoid_obj</span></a><br/>
+&nbsp;&nbsp;}.<br/>
+
+<br/>
+<span class="id" type="var">Arguments</span> <a class="idref" href="Monoid.html#id"><span class="id" type="projection">id</span></a> {<span class="id" type="var">M</span> <span class="id" type="var">_</span>}.<br/>
+
+<br/>
+<span class="id" type="keyword">Infix</span> <a name="::x_'★'_x"><span class="id" type="notation">"</span></a>&#9733;" := (<a class="idref" href="Monoid.html#comp"><span class="id" type="projection">comp</span></a> <span class="id" type="var">_</span>) (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 40, <span class="id" type="tactic">left</span> <span class="id" type="keyword">associativity</span>).<br/>
+
+<br/>
+<span class="id" type="keyword">Class</span> <a name="IsMonoid"><span class="id" type="record">IsMonoid</span></a> (<span class="id" type="var">M</span> : <span class="id" type="keyword">Type</span>) (<span class="id" type="var">cmonoid</span> : <a class="idref" href="Monoid.html#ComputationalMonoid"><span class="id" type="record">ComputationalMonoid</span></a> <a class="idref" href="Monoid.html#M"><span class="id" type="variable">M</span></a>) : <span class="id" type="keyword">Prop</span> :=<br/>
+&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="left_id"><span class="id" type="projection">left_id</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">x</span> : <a class="idref" href="Monoid.html#cmonoid"><span class="id" type="variable">cmonoid</span></a>, <a class="idref" href="Monoid.html#id"><span class="id" type="projection">id</span></a> <a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">&#9733;</span></a> <a class="idref" href="Monoid.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Monoid.html#x"><span class="id" type="variable">x</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="right_id"><span class="id" type="projection">right_id</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">x</span> : <a class="idref" href="Monoid.html#cmonoid"><span class="id" type="variable">cmonoid</span></a>, <a class="idref" href="Monoid.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">&#9733;</span></a> <a class="idref" href="Monoid.html#id"><span class="id" type="projection">id</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Monoid.html#x"><span class="id" type="variable">x</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="assoc"><span class="id" type="projection">assoc</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">a</span> <span class="id" type="var">b</span> <span class="id" type="var">c</span> : <a class="idref" href="Monoid.html#cmonoid"><span class="id" type="variable">cmonoid</span></a>, <a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">(</span></a><a class="idref" href="Monoid.html#a"><span class="id" type="variable">a</span></a> <a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">&#9733;</span></a> <a class="idref" href="Monoid.html#b"><span class="id" type="variable">b</span></a><a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">)</span></a> <a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">&#9733;</span></a> <a class="idref" href="Monoid.html#c"><span class="id" type="variable">c</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Monoid.html#a"><span class="id" type="variable">a</span></a> <a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">&#9733;</span></a> <a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">(</span></a><a class="idref" href="Monoid.html#b"><span class="id" type="variable">b</span></a> <a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">&#9733;</span></a> <a class="idref" href="Monoid.html#c"><span class="id" type="variable">c</span></a><a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">)</span></a><br/>
+&nbsp;&nbsp;}.<br/>
+
+<br/>
+<span class="id" type="var">Create</span> <span class="id" type="var">HintDb</span> <span class="id" type="var">monoid</span> <span class="id" type="var">discriminated</span>.<br/>
+<span class="id" type="keyword">Hint Resolve</span> <a class="idref" href="Monoid.html#left_id"><span class="id" type="method">left_id</span></a> <a class="idref" href="Monoid.html#right_id"><span class="id" type="method">right_id</span></a> : <span class="id" type="var">monoid</span>.<br/>
+<span class="id" type="keyword">Hint Immediate</span> @<a class="idref" href="Monoid.html#assoc"><span class="id" type="method">assoc</span></a> @<a class="idref" href="Monoid.html#left_id"><span class="id" type="method">left_id</span></a> @<a class="idref" href="Monoid.html#right_id"><span class="id" type="method">right_id</span></a> : <span class="id" type="var">monoid</span>.<br/>
+<span class="id" type="keyword">Hint Rewrite</span> @<a class="idref" href="Monoid.html#left_id"><span class="id" type="method">left_id</span></a> @<a class="idref" href="Monoid.html#right_id"><span class="id" type="method">right_id</span></a> <span class="id" type="keyword">using</span> <span class="id" type="var">typeclasses</span> <span class="id" type="tactic">eauto</span> : <span class="id" type="var">monoid</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Record</span> <a name="Monoid"><span class="id" type="record">Monoid</span></a> (<span class="id" type="var">M</span> : <span class="id" type="keyword">Type</span>) :=<br/>
+&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="cmonoid"><span class="id" type="projection">cmonoid</span></a> :> <a class="idref" href="Monoid.html#ComputationalMonoid"><span class="id" type="record">ComputationalMonoid</span></a> <a class="idref" href="Monoid.html#M"><span class="id" type="variable">M</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="is_monoid"><span class="id" type="projection">is_monoid</span></a> :> @<a class="idref" href="Monoid.html#IsMonoid"><span class="id" type="class">IsMonoid</span></a> <a class="idref" href="Monoid.html#M"><span class="id" type="variable">M</span></a> <a class="idref" href="Monoid.html#cmonoid"><span class="id" type="method">cmonoid</span></a><br/>
+&nbsp;&nbsp;}.<br/>
+
+<br/>
+<span class="id" type="keyword">Definition</span> <a name="is_commutative"><span class="id" type="definition">is_commutative</span></a> <span class="id" type="var">M</span> (<span class="id" type="var">M'</span> : <a class="idref" href="Monoid.html#Monoid"><span class="id" type="record">Monoid</span></a> <a class="idref" href="Monoid.html#M"><span class="id" type="variable">M</span></a>) := <span class="id" type="keyword">∀</span> <span class="id" type="var">a</span> <span class="id" type="var">b</span> : <a class="idref" href="Monoid.html#M'"><span class="id" type="variable">M'</span></a>, <a class="idref" href="Monoid.html#a"><span class="id" type="variable">a</span></a> <a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">&#9733;</span></a> <a class="idref" href="Monoid.html#b"><span class="id" type="variable">b</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Monoid.html#b"><span class="id" type="variable">b</span></a> <a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">&#9733;</span></a> <a class="idref" href="Monoid.html#a"><span class="id" type="variable">a</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab190"></a><h2 class="section">Monoid Action</h2>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Class</span> <a name="IsMonoidAction"><span class="id" type="record">IsMonoidAction</span></a> <span class="id" type="var">G'</span> (<span class="id" type="var">G</span> : <a class="idref" href="Monoid.html#ComputationalMonoid"><span class="id" type="record">ComputationalMonoid</span></a> <a class="idref" href="Monoid.html#G'"><span class="id" type="variable">G'</span></a>) (<span class="id" type="var">S</span> : <span class="id" type="keyword">Type</span>) (<span class="id" type="var">f</span> : <a class="idref" href="Monoid.html#G"><span class="id" type="variable">G</span></a> → <a class="idref" href="Monoid.html#S"><span class="id" type="variable">S</span></a> → <a class="idref" href="Monoid.html#S"><span class="id" type="variable">S</span></a>) : <span class="id" type="keyword">Prop</span> :=<br/>
+&nbsp;&nbsp;{ <a name="id_action"><span class="id" type="projection">id_action</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">s</span>, <a class="idref" href="Monoid.html#f"><span class="id" type="variable">f</span></a> <a class="idref" href="Monoid.html#id"><span class="id" type="projection">id</span></a> <a class="idref" href="Monoid.html#s"><span class="id" type="variable">s</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Monoid.html#s"><span class="id" type="variable">s</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="action_respectful"><span class="id" type="projection">action_respectful</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">g</span> <span class="id" type="var">g'</span> <span class="id" type="var">s</span>, <a class="idref" href="Monoid.html#f"><span class="id" type="variable">f</span></a> <a class="idref" href="Monoid.html#g"><span class="id" type="variable">g</span></a> (<a class="idref" href="Monoid.html#f"><span class="id" type="variable">f</span></a> <a class="idref" href="Monoid.html#g'"><span class="id" type="variable">g'</span></a> <a class="idref" href="Monoid.html#s"><span class="id" type="variable">s</span></a>) <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Monoid.html#f"><span class="id" type="variable">f</span></a> (<a class="idref" href="Monoid.html#g"><span class="id" type="variable">g</span></a> <a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">&#9733;</span></a> <a class="idref" href="Monoid.html#g'"><span class="id" type="variable">g'</span></a>) <a class="idref" href="Monoid.html#s"><span class="id" type="variable">s</span></a> }.<br/>
+
+<br/>
+<span class="id" type="keyword">Record</span> <a name="MonoidAction"><span class="id" type="record">MonoidAction</span></a> <span class="id" type="var">G'</span> (<span class="id" type="var">G</span> : <a class="idref" href="Monoid.html#ComputationalMonoid"><span class="id" type="record">ComputationalMonoid</span></a> <a class="idref" href="Monoid.html#G'"><span class="id" type="variable">G'</span></a>) (<span class="id" type="var">S</span> : <span class="id" type="keyword">Type</span>) :=<br/>
+&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="monoid_action"><span class="id" type="projection">monoid_action</span></a> :> <a class="idref" href="Monoid.html#G"><span class="id" type="variable">G</span></a> → <a class="idref" href="Monoid.html#S"><span class="id" type="variable">S</span></a> → <a class="idref" href="Monoid.html#S"><span class="id" type="variable">S</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="is_monoid_action"><span class="id" type="projection">is_monoid_action</span></a> : @<a class="idref" href="Monoid.html#IsMonoidAction"><span class="id" type="class">IsMonoidAction</span></a> <a class="idref" href="Monoid.html#G'"><span class="id" type="variable">G'</span></a> <a class="idref" href="Monoid.html#G"><span class="id" type="variable">G</span></a> <a class="idref" href="Monoid.html#S"><span class="id" type="variable">S</span></a> <a class="idref" href="Monoid.html#monoid_action"><span class="id" type="method">monoid_action</span></a><br/>
+&nbsp;&nbsp;}.<br/>
+
+<br/>
+<span class="id" type="keyword">Infix</span> <a name="::x_'↷'_x"><span class="id" type="notation">"</span></a><div style="display:inline-block; transform:rotate(90deg);-o-transform:rotate(90deg);-mod-transform:rotate(90deg);-webkit-transform:rotate(90deg);">&#x21ba;</div>" := (@<a class="idref" href="Monoid.html#monoid_action"><span class="id" type="projection">monoid_action</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span>) (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 70).<br/>
+<span class="id" type="keyword">Infix</span> <a name=":type_scope:x_'↷'_x"><span class="id" type="notation">"</span></a><div style="display:inline-block; transform:rotate(90deg);-o-transform:rotate(90deg);-mod-transform:rotate(90deg);-webkit-transform:rotate(90deg);">&#x21ba;</div>" := (@<a class="idref" href="Monoid.html#MonoidAction"><span class="id" type="record">MonoidAction</span></a> <span class="id" type="var">_</span>) (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 70) : <span class="id" type="var">type_scope</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab191"></a><h2 class="section">Monoid Homomorphism</h2>
+ Definition 3.1.4.1. Let <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a></span> <span class="inlinecode">:=</span> <span class="inlinecode">(</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a>,</span> <span class="inlinecode"><a class="idref" href="Monoid.html#id"><span class="id" type="projection">id</span></a>,</span> <span class="inlinecode">&#9733;</span> <span class="inlinecode">)</span> and <span class="inlinecode"><a class="idref" href="Group.html#M'"><span class="id" type="variable">M'</span></a></span> <span class="inlinecode">:=</span> <span class="inlinecode">(</span> <span class="inlinecode"><a class="idref" href="Group.html#M'"><span class="id" type="variable">M'</span></a>,</span> <span class="inlinecode"><span class="id" type="var">id'</span>,</span> <span class="inlinecode">&#9733;</span>
+    <span class="inlinecode">)</span> be monoids. A monoid homomorphism <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a></span> from <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a></span> to <span class="inlinecode"><a class="idref" href="Group.html#M'"><span class="id" type="variable">M'</span></a></span>, denoted
+    <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="Group.html#M'"><span class="id" type="variable">M'</span></a></span>, is a function <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="Group.html#M'"><span class="id" type="variable">M'</span></a></span> satisfying two
+    conditions:
+
+<div class="paragraph"> </div>
+
+<ul class="doclist">
+<li> <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a>(<a class="idref" href="Monoid.html#id"><span class="id" type="projection">id</span></a>)</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" type="var">id'</span></span>, and
+
+</li>
+<li> <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a>(<a class="idref" href="Category.html#m1"><span class="id" type="variable">m1</span></a></span> <span class="inlinecode">&#9733;</span> <span class="inlinecode"><a class="idref" href="Category.html#m2"><span class="id" type="variable">m2</span></a>)</span> <span class="inlinecode">=</span> <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a>(<a class="idref" href="Category.html#m1"><span class="id" type="variable">m1</span></a>)</span> <span class="inlinecode">&#9733;</span> <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a>(<a class="idref" href="Category.html#m2"><span class="id" type="variable">m2</span></a>)</span>, for all <span class="inlinecode"><a class="idref" href="Category.html#m1"><span class="id" type="variable">m1</span></a></span>, <span class="inlinecode"><a class="idref" href="Category.html#m2"><span class="id" type="variable">m2</span></a></span> in <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a></span>.
+
+</li>
+</ul>
+    
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Record</span> <a name="MonoidHomomorphism"><span class="id" type="record">MonoidHomomorphism</span></a> `(<span class="id" type="var">MH</span> : @<a class="idref" href="Monoid.html#IsMonoid"><span class="id" type="class">IsMonoid</span></a> <span class="id" type="var">M0</span> <span class="id" type="var">M</span>) `(<span class="id" type="var">M'H</span> : @<a class="idref" href="Monoid.html#IsMonoid"><span class="id" type="class">IsMonoid</span></a> <span class="id" type="var">M'0</span> <span class="id" type="var">M'</span>) :=<br/>
+&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="MonoidHomomorphism_Function"><span class="id" type="projection">MonoidHomomorphism_Function</span></a> :> <a class="idref" href="Monoid.html#M"><span class="id" type="variable">M</span></a> → <a class="idref" href="Monoid.html#M'"><span class="id" type="variable">M'</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="MonoidHomomorphism_IdentityLaw"><span class="id" type="projection">MonoidHomomorphism_IdentityLaw</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="Monoid.html#MonoidHomomorphism_Function"><span class="id" type="method">MonoidHomomorphism_Function</span></a> <a class="idref" href="Monoid.html#id"><span class="id" type="projection">id</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Monoid.html#id"><span class="id" type="projection">id</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="MonoidHomomorphism_CompositionLaw"><span class="id" type="projection">MonoidHomomorphism_CompositionLaw</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;: <span class="id" type="keyword">∀</span> <span class="id" type="var">m1</span> <span class="id" type="var">m2</span>,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Monoid.html#MonoidHomomorphism_Function"><span class="id" type="method">MonoidHomomorphism_Function</span></a> (<a class="idref" href="Monoid.html#m1"><span class="id" type="variable">m1</span></a> <a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">&#9733;</span></a> <a class="idref" href="Monoid.html#m2"><span class="id" type="variable">m2</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">(</span></a><a class="idref" href="Monoid.html#MonoidHomomorphism_Function"><span class="id" type="method">MonoidHomomorphism_Function</span></a> <a class="idref" href="Monoid.html#m1"><span class="id" type="variable">m1</span></a><a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">)</span></a> <a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">&#9733;</span></a> <a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">(</span></a><a class="idref" href="Monoid.html#MonoidHomomorphism_Function"><span class="id" type="method">MonoidHomomorphism_Function</span></a> <a class="idref" href="Monoid.html#m2"><span class="id" type="variable">m2</span></a><a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">)</span></a><br/>
+&nbsp;&nbsp;}.<br/>
+
+<br/>
+<span class="id" type="keyword">Definition</span> <a name="identity_monoid_homomorphism"><span class="id" type="definition">identity_monoid_homomorphism</span></a> `(<span class="id" type="var">MH</span> : @<a class="idref" href="Monoid.html#IsMonoid"><span class="id" type="class">IsMonoid</span></a> <span class="id" type="var">M0</span> <span class="id" type="var">M</span>)<br/>
+: <a class="idref" href="Monoid.html#MonoidHomomorphism"><span class="id" type="record">MonoidHomomorphism</span></a> <a class="idref" href="Monoid.html#MH"><span class="id" type="variable">MH</span></a> <a class="idref" href="Monoid.html#MH"><span class="id" type="variable">MH</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">∃</span> (<span class="id" type="keyword">fun</span> <span class="id" type="var">x</span> ⇒ <a class="idref" href="Monoid.html#x"><span class="id" type="variable">x</span></a>); <span class="id" type="tactic">reflexivity</span>.<br/>
+<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Definition</span> <a name="compose_monoid_homomorphisms"><span class="id" type="definition">compose_monoid_homomorphisms</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(<span class="id" type="var">MH</span> : @<a class="idref" href="Monoid.html#IsMonoid"><span class="id" type="class">IsMonoid</span></a> <span class="id" type="var">M0</span> <span class="id" type="var">M</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(<span class="id" type="var">MH'</span> : @<a class="idref" href="Monoid.html#IsMonoid"><span class="id" type="class">IsMonoid</span></a> <span class="id" type="var">M0'</span> <span class="id" type="var">M'</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(<span class="id" type="var">MH''</span> : @<a class="idref" href="Monoid.html#IsMonoid"><span class="id" type="class">IsMonoid</span></a> <span class="id" type="var">M0''</span> <span class="id" type="var">M''</span>)<br/>
+: <a class="idref" href="Monoid.html#MonoidHomomorphism"><span class="id" type="record">MonoidHomomorphism</span></a> <a class="idref" href="Monoid.html#MH'"><span class="id" type="variable">MH'</span></a> <a class="idref" href="Monoid.html#MH''"><span class="id" type="variable">MH''</span></a><br/>
+&nbsp;&nbsp;→ <a class="idref" href="Monoid.html#MonoidHomomorphism"><span class="id" type="record">MonoidHomomorphism</span></a> <a class="idref" href="Monoid.html#MH"><span class="id" type="variable">MH</span></a> <a class="idref" href="Monoid.html#MH'"><span class="id" type="variable">MH'</span></a><br/>
+&nbsp;&nbsp;→ <a class="idref" href="Monoid.html#MonoidHomomorphism"><span class="id" type="record">MonoidHomomorphism</span></a> <a class="idref" href="Monoid.html#MH"><span class="id" type="variable">MH</span></a> <a class="idref" href="Monoid.html#MH''"><span class="id" type="variable">MH''</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">intros</span> <span class="id" type="var">m1</span> <span class="id" type="var">m2</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">∃</span> (<span class="id" type="keyword">fun</span> <span class="id" type="var">x</span> ⇒ <span class="id" type="var">m1</span> (<span class="id" type="var">m2</span> <a class="idref" href="Monoid.html#x"><span class="id" type="variable">x</span></a>));<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">rewrite</span> <a class="idref" href="Monoid.html#MonoidHomomorphism_IdentityLaw"><span class="id" type="projection">MonoidHomomorphism_IdentityLaw</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">rewrite</span> <a class="idref" href="Monoid.html#MonoidHomomorphism_CompositionLaw"><span class="id" type="projection">MonoidHomomorphism_CompositionLaw</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Lemma</span> <a name="MonoidHomomorphism_Eq"><span class="id" type="lemma">MonoidHomomorphism_Eq</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(<span class="id" type="var">MH</span> : @<a class="idref" href="Monoid.html#IsMonoid"><span class="id" type="class">IsMonoid</span></a> <span class="id" type="var">M0</span> <span class="id" type="var">M</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(<span class="id" type="var">M'H</span> : @<a class="idref" href="Monoid.html#IsMonoid"><span class="id" type="class">IsMonoid</span></a> <span class="id" type="var">M'0</span> <span class="id" type="var">M'</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">M1</span> <span class="id" type="var">M2</span> : <a class="idref" href="Monoid.html#MonoidHomomorphism"><span class="id" type="record">MonoidHomomorphism</span></a> <a class="idref" href="Monoid.html#MH"><span class="id" type="variable">MH</span></a> <a class="idref" href="Monoid.html#M'H"><span class="id" type="variable">M'H</span></a>)<br/>
+: (<span class="id" type="keyword">∀</span> <span class="id" type="var">x</span>, <a class="idref" href="Monoid.html#MonoidHomomorphism_Function"><span class="id" type="projection">MonoidHomomorphism_Function</span></a> <a class="idref" href="Monoid.html#M1"><span class="id" type="variable">M1</span></a> <a class="idref" href="Monoid.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Monoid.html#MonoidHomomorphism_Function"><span class="id" type="projection">MonoidHomomorphism_Function</span></a> <a class="idref" href="Monoid.html#M2"><span class="id" type="variable">M2</span></a> <a class="idref" href="Monoid.html#x"><span class="id" type="variable">x</span></a>)<br/>
+&nbsp;&nbsp;→ <a class="idref" href="Monoid.html#M1"><span class="id" type="variable">M1</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Monoid.html#M2"><span class="id" type="variable">M2</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">intro</span> <span class="id" type="var">H</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">assert</span> (<span class="id" type="var">H0</span> : <a class="idref" href="Monoid.html#MonoidHomomorphism_Function"><span class="id" type="projection">MonoidHomomorphism_Function</span></a> <span class="id" type="var">M1</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Monoid.html#MonoidHomomorphism_Function"><span class="id" type="projection">MonoidHomomorphism_Function</span></a> <span class="id" type="var">M2</span>) <span class="id" type="tactic">by</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.FunctionalExtensionality.html#functional_extensionality_dep"><span class="id" type="axiom">functional_extensionality_dep</span></a>; <span class="id" type="tactic">assumption</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">M1</span>, <span class="id" type="var">M2</span>; <span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> *; <span class="id" type="tactic">subst</span>; <span class="id" type="tactic">f_equal</span>; <span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#proof_irrelevance"><span class="id" type="axiom">proof_irrelevance</span></a>.<br/>
+<span class="id" type="keyword">Qed</span>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

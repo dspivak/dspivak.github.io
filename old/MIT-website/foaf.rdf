@@ -1,0 +1,25 @@
+<rdf:RDF
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+      xmlns:admin="http://webns.net/mvcb/">
+<foaf:PersonalProfileDocument rdf:about="">
+  <foaf:maker rdf:resource="#me"/>
+  <foaf:primaryTopic rdf:resource="#me"/>
+  <admin:generatorAgent 
+rdf:resource="http://www.ldodds.com/foaf/foaf-a-matic"/>
+  <admin:errorReportsTo rdf:resource="mailto:leigh@ldodds.com"/>
+</foaf:PersonalProfileDocument>
+<foaf:Person rdf:ID="me">
+<foaf:name>David I. Spivak</foaf:name>
+<foaf:title>Dr. </foaf:title>
+<foaf:givenname>David</foaf:givenname>
+<foaf:family_name>Spivak</foaf:family_name>
+<foaf:mbox_sha1sum>947bbbcf1bd1d01b3f2cc54f75e949ba3041dca0</foaf:mbox_sha1sum>
+<foaf:homepage rdf:resource="math.mit.edu/~dspivak"/>
+<foaf:workplaceHomepage rdf:resource="http://math.mit.edu/"/>
+<foaf:workInfoHomepage 
+rdf:resource="http://math.mit.edu/"/>
+<foaf:schoolHomepage 
+rdf:resource="http://math.berkeley.edu/"/></foaf:Person>
+</rdf:RDF>

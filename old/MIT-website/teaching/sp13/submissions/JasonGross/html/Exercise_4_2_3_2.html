@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_4_2_3_2</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_4_2_3_2</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#"><span class="id" type="library">ProofIrrelevance</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.FunctionalExtensionality.html#"><span class="id" type="library">FunctionalExtensionality</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a> <a class="idref" href="FEqualDep.html#"><span class="id" type="library">FEqualDep</span></a> <a class="idref" href="SetCategory.html#"><span class="id" type="library">SetCategory</span></a> <a class="idref" href="TopologyCategory.html#"><span class="id" type="library">TopologyCategory</span></a> <a class="idref" href="PreOrderCategory.html#"><span class="id" type="library">PreOrderCategory</span></a> <a class="idref" href="Functor.html#"><span class="id" type="library">Functor</span></a> <a class="idref" href="Morphism.html#"><span class="id" type="library">Morphism</span></a> <a class="idref" href="Duals.html#"><span class="id" type="library">Duals</span></a> <a class="idref" href="IndiscreteTopology.html#"><span class="id" type="library">IndiscreteTopology</span></a> <a class="idref" href="DiscreteTopology.html#"><span class="id" type="library">DiscreteTopology</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Open</span> <span class="id" type="keyword">Scope</span> <span class="id" type="var">topology_scope</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab92"></a><h1 class="section">Exercise 4.2.3.2</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Exercise_4_2_3_2"><span class="id" type="section">Exercise_4_2_3_2</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ClassicalFacts.html#"><span class="id" type="library">ClassicalFacts</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab93"></a><h2 class="section">Problem</h2>
+ Explain how "looking at points" gives a functor <span class="inlinecode"><span class="id" type="var">Top</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" type="keyword">Set</span></span>. Does
+      "looking at open sets" give a functor <span class="inlinecode"><span class="id" type="var">Top</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" type="var">PrO</span></span>? 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="UnderlyingPoints"><span class="id" type="definition">UnderlyingPoints</span></a> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="TopologyCategory.html#CategoryOfTopologies"><span class="id" type="definition">CategoryOfTopologies</span></a> <a class="idref" href="SetCategory.html#CategoryOfTypes"><span class="id" type="definition">CategoryOfTypes</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> {| <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">ObjectOf</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">X</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">:</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">CategoryOfTopologies</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">⇒</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">X</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">:</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">CategoryOfTypes</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">);</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">MorphismOf</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">s</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">d</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">(</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">m</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">:</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">Morphism</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">CategoryOfTopologies</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">s</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">d</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">)</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">⇒</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">proj1_sig</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">m</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">:</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">Morphism</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">CategoryOfTypes</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">_</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">_</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">)</span></a> |};<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Record</span> &gt; <a name="EOpenSet"><span class="id" type="record">EOpenSet</span></a> `(<a class="idref" href="Topology.html#Topology"><span class="id" type="class">Topology</span></a> <span class="id" type="var">X</span>) :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="OpenSetSet"><span class="id" type="projection">OpenSetSet</span></a> :> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Ensemble"><span class="id" type="definition">Ensemble</span></a> <a class="idref" href="Exercise_4_2_3_2.html#X"><span class="id" type="variable">X</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="OpenSetOpen"><span class="id" type="projection">OpenSetOpen</span></a> :> <span class="id" type="keyword">Open</span> <a class="idref" href="Exercise_4_2_3_2.html#OpenSetSet"><span class="id" type="method">OpenSetSet</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="OpenSet_eq"><span class="id" type="lemma">OpenSet_eq</span></a> `(<span class="id" type="var">T</span> : <a class="idref" href="Topology.html#Topology"><span class="id" type="class">Topology</span></a> <span class="id" type="var">X</span>) (<span class="id" type="var">A</span> <span class="id" type="var">B</span> : <a class="idref" href="Exercise_4_2_3_2.html#EOpenSet"><span class="id" type="record">EOpenSet</span></a> <a class="idref" href="Exercise_4_2_3_2.html#T"><span class="id" type="variable">T</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="Exercise_4_2_3_2.html#OpenSetSet"><span class="id" type="projection">OpenSetSet</span></a> <a class="idref" href="Exercise_4_2_3_2.html#A"><span class="id" type="variable">A</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Exercise_4_2_3_2.html#OpenSetSet"><span class="id" type="projection">OpenSetSet</span></a> <a class="idref" href="Exercise_4_2_3_2.html#B"><span class="id" type="variable">B</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;→ <a class="idref" href="Exercise_4_2_3_2.html#A"><span class="id" type="variable">A</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Exercise_4_2_3_2.html#B"><span class="id" type="variable">B</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">A</span>, <span class="id" type="var">B</span>; <span class="id" type="tactic">simpl</span>; <span class="id" type="tactic">intro</span>; <span class="id" type="tactic">subst</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">f_equal</span>; <span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#proof_irrelevance"><span class="id" type="axiom">ProofIrrelevance.proof_irrelevance</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Global Instance</span> <a name="opens_ordered_by_inclusion"><span class="id" type="instance">opens_ordered_by_inclusion</span></a> `(<a class="idref" href="Topology.html#Topology"><span class="id" type="class">Topology</span></a> <span class="id" type="var">X</span>)<br/>
+&nbsp;&nbsp;: @<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#PreOrder"><span class="id" type="class">PreOrder</span></a> (<a class="idref" href="Exercise_4_2_3_2.html#EOpenSet"><span class="id" type="record">EOpenSet</span></a> <span class="id" type="var">_</span>) (<span class="id" type="keyword">fun</span> <span class="id" type="var">U</span> <span class="id" type="var">V</span> ⇒ <a class="idref" href="Exercise_4_2_3_2.html#U"><span class="id" type="variable">U</span></a> <a class="idref" href="Notations.html#::x_'⊆'_x"><span class="id" type="notation">&sube;</span></a> <a class="idref" href="Exercise_4_2_3_2.html#V"><span class="id" type="variable">V</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">split</span>; <span class="id" type="tactic">firstorder</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="continuous_induced_functor_object_of"><span class="id" type="definition">continuous_induced_functor_object_of</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">s</span> <span class="id" type="var">d</span> (<span class="id" type="var">m</span> : <a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> <a class="idref" href="TopologyCategory.html#CategoryOfTopologies"><span class="id" type="definition">CategoryOfTopologies</span></a> <a class="idref" href="Exercise_4_2_3_2.html#s"><span class="id" type="variable">s</span></a> <a class="idref" href="Exercise_4_2_3_2.html#d"><span class="id" type="variable">d</span></a>)<br/>
+&nbsp;&nbsp;: (<a class="idref" href="Exercise_4_2_3_2.html#opens_ordered_by_inclusion"><span class="id" type="instance">opens_ordered_by_inclusion</span></a> <a class="idref" href="Exercise_4_2_3_2.html#d"><span class="id" type="variable">d</span></a>) → (<a class="idref" href="Exercise_4_2_3_2.html#opens_ordered_by_inclusion"><span class="id" type="instance">opens_ordered_by_inclusion</span></a> <a class="idref" href="Exercise_4_2_3_2.html#s"><span class="id" type="variable">s</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intro</span>; <span class="id" type="tactic">hnf</span> <span class="id" type="keyword">in</span> ×.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> (<a class="idref" href="Morphism.html#inverse_image"><span class="id" type="definition">inverse_image</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#proj1_sig"><span class="id" type="definition">proj1_sig</span></a> <span class="id" type="var">m</span>) <span class="id" type="var">X</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">simpl</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">m</span> <span class="id" type="keyword">as</span> [<span class="id" type="var">f</span> <span class="id" type="var">c</span>];<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <span class="id" type="var">c</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">X</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">assumption</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="continuous_induced_functor_morphism_of"><span class="id" type="definition">continuous_induced_functor_morphism_of</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">s</span> <span class="id" type="var">d</span> (<span class="id" type="var">m</span> : <a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> <a class="idref" href="TopologyCategory.html#CategoryOfTopologies"><span class="id" type="definition">CategoryOfTopologies</span></a> <a class="idref" href="Exercise_4_2_3_2.html#s"><span class="id" type="variable">s</span></a> <a class="idref" href="Exercise_4_2_3_2.html#d"><span class="id" type="variable">d</span></a>)<br/>
+&nbsp;&nbsp;: <span class="id" type="keyword">∀</span> <span class="id" type="var">s'</span> <span class="id" type="var">d'</span> (<span class="id" type="var">m'</span> : <a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> (<a class="idref" href="PreOrderCategory.html#PreOrderCategory"><span class="id" type="definition">PreOrderCategory</span></a> (<a class="idref" href="Exercise_4_2_3_2.html#opens_ordered_by_inclusion"><span class="id" type="instance">opens_ordered_by_inclusion</span></a> <a class="idref" href="Exercise_4_2_3_2.html#d"><span class="id" type="variable">d</span></a>))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Exercise_4_2_3_2.html#s'"><span class="id" type="variable">s'</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Exercise_4_2_3_2.html#d'"><span class="id" type="variable">d'</span></a>),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> (<a class="idref" href="PreOrderCategory.html#PreOrderCategory"><span class="id" type="definition">PreOrderCategory</span></a> (<a class="idref" href="Exercise_4_2_3_2.html#opens_ordered_by_inclusion"><span class="id" type="instance">opens_ordered_by_inclusion</span></a> <a class="idref" href="Exercise_4_2_3_2.html#s"><span class="id" type="variable">s</span></a>))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="Exercise_4_2_3_2.html#continuous_induced_functor_object_of"><span class="id" type="definition">continuous_induced_functor_object_of</span></a> <a class="idref" href="Exercise_4_2_3_2.html#m"><span class="id" type="variable">m</span></a> <a class="idref" href="Exercise_4_2_3_2.html#s'"><span class="id" type="variable">s'</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="Exercise_4_2_3_2.html#continuous_induced_functor_object_of"><span class="id" type="definition">continuous_induced_functor_object_of</span></a> <a class="idref" href="Exercise_4_2_3_2.html#m"><span class="id" type="variable">m</span></a> <a class="idref" href="Exercise_4_2_3_2.html#d'"><span class="id" type="variable">d'</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span> <span class="id" type="var">s'</span> <span class="id" type="var">d'</span> <span class="id" type="var">m'</span> <span class="id" type="var">x</span> <span class="id" type="var">H</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">hnf</span> <span class="id" type="keyword">in</span> <span class="id" type="var">m</span>, <span class="id" type="var">m'</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> ×.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">m</span> <span class="id" type="keyword">as</span> [ <span class="id" type="var">f</span> <span class="id" type="var">c</span> ]; <span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> ×.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">unfold</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#In"><span class="id" type="definition">Ensembles.In</span></a>, <a class="idref" href="Morphism.html#inverse_image"><span class="id" type="definition">inverse_image</span></a> <span class="id" type="keyword">in</span> ×.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intuition</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="continuous_induced_functor"><span class="id" type="definition">continuous_induced_functor</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">s</span> <span class="id" type="var">d</span> (<span class="id" type="var">m</span> : <a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> <a class="idref" href="TopologyCategory.html#CategoryOfTopologies"><span class="id" type="definition">CategoryOfTopologies</span></a> <a class="idref" href="Exercise_4_2_3_2.html#s"><span class="id" type="variable">s</span></a> <a class="idref" href="Exercise_4_2_3_2.html#d"><span class="id" type="variable">d</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> <a class="idref" href="PreOrderCategory.html#CategoryOfPreOrders"><span class="id" type="definition">CategoryOfPreOrders</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="Exercise_4_2_3_2.html#opens_ordered_by_inclusion"><span class="id" type="instance">opens_ordered_by_inclusion</span></a> <a class="idref" href="Exercise_4_2_3_2.html#d"><span class="id" type="variable">d</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="Exercise_4_2_3_2.html#opens_ordered_by_inclusion"><span class="id" type="instance">opens_ordered_by_inclusion</span></a> <a class="idref" href="Exercise_4_2_3_2.html#s"><span class="id" type="variable">s</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> {| <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">ObjectOf</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">(</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">continuous_induced_functor_object_of</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">m</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">);</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">MorphismOf</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">(</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">continuous_induced_functor_morphism_of</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">m</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">)</span></a> |};<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<span class="id" type="tactic">intros</span>; <span class="id" type="tactic">simpl</span>; <span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#proof_irrelevance"><span class="id" type="axiom">ProofIrrelevance.proof_irrelevance</span></a>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="PreOrderedSets"><span class="id" type="definition">PreOrderedSets</span></a><br/>
+&nbsp;&nbsp;: <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="TopologyCategory.html#CategoryOfTopologies"><span class="id" type="definition">CategoryOfTopologies</span></a> (<a class="idref" href="Duals.html#OppositeCategory"><span class="id" type="definition">OppositeCategory</span></a> <a class="idref" href="PreOrderCategory.html#CategoryOfPreOrders"><span class="id" type="definition">CategoryOfPreOrders</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">Build_Functor</span></a> <a class="idref" href="TopologyCategory.html#CategoryOfTopologies"><span class="id" type="definition">CategoryOfTopologies</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="Duals.html#OppositeCategory"><span class="id" type="definition">OppositeCategory</span></a> <a class="idref" href="PreOrderCategory.html#CategoryOfPreOrders"><span class="id" type="definition">CategoryOfPreOrders</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">x</span> ⇒ <a class="idref" href="Exercise_4_2_3_2.html#opens_ordered_by_inclusion"><span class="id" type="instance">opens_ordered_by_inclusion</span></a> <a class="idref" href="Exercise_4_2_3_2.html#x"><span class="id" type="variable">x</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Exercise_4_2_3_2.html#continuous_induced_functor"><span class="id" type="definition">continuous_induced_functor</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<span class="id" type="tactic">repeat</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">progress</span> (<span class="id" type="tactic">simpl</span>; <span class="id" type="tactic">intros</span>; <span class="id" type="var">expand</span>))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">progress</span> <span class="id" type="var">destruct_head_hnf</span> @<a class="idref" href="Exercise_4_2_3_2.html#EOpenSet"><span class="id" type="record">EOpenSet</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#f_equal"><span class="id" type="lemma">f_equal</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#proof_irrelevance"><span class="id" type="axiom">ProofIrrelevance.proof_irrelevance</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">apply</span> <a class="idref" href="FEqualDep.html#proof_irrelevance_JMeq"><span class="id" type="lemma">proof_irrelevance_JMeq</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">apply</span> <a class="idref" href="Functor.html#Functor_Eq"><span class="id" type="lemma">Functor_Eq</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_4_2_3_2.html#Exercise_4_2_3_2"><span class="id" type="section">Exercise_4_2_3_2</span></a>.<br/>
+<span class="id" type="keyword">Module</span> <a name="Exercise_4_2_3_2_continuity_bad"><span class="id" type="module">Exercise_4_2_3_2_continuity_bad</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Inductive</span> <a name="Exercise_4_2_3_2_continuity_bad.Three"><span class="id" type="inductive">Three</span></a> := <a name="Exercise_4_2_3_2_continuity_bad.A"><span class="id" type="constructor">A</span></a> | <a name="Exercise_4_2_3_2_continuity_bad.B"><span class="id" type="constructor">B</span></a> | <a name="Exercise_4_2_3_2_continuity_bad.C"><span class="id" type="constructor">C</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="Exercise_4_2_3_2_continuity_bad.ThreeTopology1"><span class="id" type="definition">ThreeTopology1</span></a> : <a class="idref" href="Topology.html#Topology"><span class="id" type="class">Topology</span></a> <a class="idref" href="Exercise_4_2_3_2.html#Exercise_4_2_3_2_continuity_bad.Three"><span class="id" type="inductive">Three</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="DiscreteTopology.html#DiscreteTopology"><span class="id" type="definition">DiscreteTopology</span></a> <span class="id" type="var">_</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="Exercise_4_2_3_2_continuity_bad.ThreeTopology2"><span class="id" type="definition">ThreeTopology2</span></a> : <a class="idref" href="Topology.html#Topology"><span class="id" type="class">Topology</span></a> <a class="idref" href="Exercise_4_2_3_2.html#Exercise_4_2_3_2_continuity_bad.Three"><span class="id" type="inductive">Three</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="IndiscreteTopology.html#IndiscreteTopology"><span class="id" type="definition">IndiscreteTopology</span></a> <span class="id" type="var">_</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="Exercise_4_2_3_2_continuity_bad.f"><span class="id" type="definition">f</span></a> := @<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#id"><span class="id" type="definition">id</span></a> <a class="idref" href="Exercise_4_2_3_2.html#Exercise_4_2_3_2_continuity_bad.Three"><span class="id" type="inductive">Three</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="Exercise_4_2_3_2_continuity_bad.continuous_function_continuous"><span class="id" type="definition">continuous_function_continuous</span></a> : <a class="idref" href="TopologicalContinuity.html#continuous"><span class="id" type="definition">continuous</span></a> <a class="idref" href="Exercise_4_2_3_2.html#Exercise_4_2_3_2_continuity_bad.ThreeTopology1"><span class="id" type="definition">ThreeTopology1</span></a> <a class="idref" href="Exercise_4_2_3_2.html#Exercise_4_2_3_2_continuity_bad.ThreeTopology2"><span class="id" type="definition">ThreeTopology2</span></a> <a class="idref" href="Exercise_4_2_3_2.html#Exercise_4_2_3_2_continuity_bad.f"><span class="id" type="definition">f</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">intro</span>; <span class="id" type="tactic">constructor</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="Exercise_4_2_3_2_continuity_bad.f_not_preserve_open"><span class="id" type="lemma">f_not_preserve_open</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:'exists'_x_'..'_x_','_x"><span class="id" type="notation">∃</span></a> <span class="id" type="var">S</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:'exists'_x_'..'_x_','_x"><span class="id" type="notation">,</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@<span class="id" type="keyword">Open</span> <span class="id" type="var">_</span> <a class="idref" href="Exercise_4_2_3_2.html#Exercise_4_2_3_2_continuity_bad.ThreeTopology1"><span class="id" type="definition">ThreeTopology1</span></a> <a class="idref" href="Exercise_4_2_3_2.html#S"><span class="id" type="variable">S</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'/\'_x"><span class="id" type="notation">∧</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:'~'_x"><span class="id" type="notation">¬</span></a>@<span class="id" type="keyword">Open</span> <span class="id" type="var">_</span> <a class="idref" href="Exercise_4_2_3_2.html#Exercise_4_2_3_2_continuity_bad.ThreeTopology2"><span class="id" type="definition">ThreeTopology2</span></a> (<a class="idref" href="Morphism.html#image"><span class="id" type="definition">image</span></a> <a class="idref" href="Exercise_4_2_3_2.html#Exercise_4_2_3_2_continuity_bad.f"><span class="id" type="definition">f</span></a> <a class="idref" href="Exercise_4_2_3_2.html#S"><span class="id" type="variable">S</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> (<span class="id" type="keyword">fun</span> <span class="id" type="var">x</span> ⇒ <span class="id" type="keyword">match</span> <a class="idref" href="Exercise_4_2_3_2.html#x"><span class="id" type="variable">x</span></a> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="Exercise_4_2_3_2.html#Exercise_4_2_3_2_continuity_bad.A"><span class="id" type="constructor">A</span></a> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#True"><span class="id" type="inductive">True</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#False"><span class="id" type="inductive">False</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">simpl</span>; <span class="id" type="tactic">intuition</span>; <span class="id" type="tactic">firstorder</span> <span class="id" type="tactic">subst</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">fg_equal</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : <span class="id" type="var">_</span> |- <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">pose</span> <span class="id" type="var">proof</span> (<span class="id" type="var">H</span> <a class="idref" href="Exercise_4_2_3_2.html#Exercise_4_2_3_2_continuity_bad.A"><span class="id" type="constructor">A</span></a>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">pose</span> <span class="id" type="var">proof</span> (<span class="id" type="var">H</span> <a class="idref" href="Exercise_4_2_3_2.html#Exercise_4_2_3_2_continuity_bad.B"><span class="id" type="constructor">B</span></a>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">pose</span> <span class="id" type="var">proof</span> (<span class="id" type="var">H</span> <a class="idref" href="Exercise_4_2_3_2.html#Exercise_4_2_3_2_continuity_bad.C"><span class="id" type="constructor">C</span></a>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">clear</span> <span class="id" type="var">H</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : @<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq"><span class="id" type="inductive">eq</span></a> <span class="id" type="keyword">Prop</span> ?<span class="id" type="var">a</span> ?<span class="id" type="var">b</span> |- <span class="id" type="var">_</span> ]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⇒ <span class="id" type="keyword">let</span> <span class="id" type="var">H'</span> := <span class="id" type="tactic">fresh</span> <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">assert</span> (<span class="id" type="var">H'</span> : <span class="id" type="var">a</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'<->'_x"><span class="id" type="notation">↔</span></a> <span class="id" type="var">b</span>) <span class="id" type="tactic">by</span> (<span class="id" type="tactic">rewrite</span> <span class="id" type="var">H</span>; <span class="id" type="tactic">firstorder</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">clear</span> <span class="id" type="var">H</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">H'</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intuition</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : <span class="id" type="keyword">∀</span> <span class="id" type="var">_</span> : ?<span class="id" type="var">T</span>, <span class="id" type="var">_</span> |- <span class="id" type="var">_</span> ]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⇒ <span class="id" type="keyword">match</span> <span class="id" type="var">type</span> <span class="id" type="var">of</span> <span class="id" type="var">T</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="keyword">Prop</span> ⇒ <span class="id" type="keyword">let</span> <span class="id" type="var">t</span> := <span class="id" type="tactic">fresh</span> <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">assert</span> (<span class="id" type="var">t</span> : <span class="id" type="var">T</span>) <span class="id" type="tactic">by</span> (<span class="id" type="tactic">repeat</span> <span class="id" type="var">esplit</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">try</span> <span class="id" type="tactic">reflexivity</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">trivial</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">specialize</span> (<span class="id" type="var">H</span> <span class="id" type="var">t</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> <span class="id" type="tactic">compute</span> <span class="id" type="keyword">in</span> ×<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> <span class="id" type="var">destruct_head_hnf</span> @<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#ex"><span class="id" type="inductive">ex</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> <span class="id" type="var">destruct_head_hnf</span> @<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#and"><span class="id" type="inductive">and</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> <span class="id" type="tactic">intuition</span> <span class="id" type="tactic">subst</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_4_2_3_2.html#"><span class="id" type="module">Exercise_4_2_3_2_continuity_bad</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

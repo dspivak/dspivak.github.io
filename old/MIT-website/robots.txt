@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /informatics
+Allow: /teaching/sp13
+Disallow: /cv.pdf
+Allow: /
+
+User-agent: Googlebot
+Allow: /.
+Allow: /informatics
+Allow: /teaching/sp13
+Disallow: /cv.pdf
+Allow: /
+

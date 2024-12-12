@@ -1,0 +1,57 @@
+\documentclass{amsart}
+
+\oddsidemargin0in
+\textwidth5.8in
+
+\def\to{\rightarrow}
+\def\To{\xrightarrow}
+\def\taking{\colon}
+\def\A{\textnormal{A}}
+\def\B{\textnormal{B}}
+\def\C{\textnormal{C}}
+
+\begin{document}
+
+\title{A set of rules for labeling ontologies\\\today}
+
+\maketitle
+
+
+
+\begin{enumerate}
+
+\item If $A$ is a box for which we do not specify a label, the label will be taken to be ``an A".
+
+\item An unlabeled arrow is by default labeled ``has an associated".
+
+\item Any identity arrow is labeled ``is of course".
+
+\item Never use a plural noun to label a box (i.e. say ``a person" rather than ``people").
+
+\item In a box $A$, the name for each structural outgoing arrow should be a variable (i.e. part of the structure, but not part of the data of $A$).  
+
+\item Suppose an arrow $f\taking A\to B$ is labeled $A\To{blahs}B$.  Then the label of the graph box for $f$ is ``an A, $x$,  which blahs a B, $y$" (where $x$ and $y$ are variables denoting the arrows out of the graph box.  $x$ points at A and $y$ points at B.  See examples below.)
+
+\begin{enumerate}
+
+\item Example: Consider the label ``is" for a certain arrow $A\to B$.   Then label of the graph box is ``an A, $x$, which is a B, $y$."  
+
+\item Example: Consider the label ``has as father" for a certain arrow $f\taking$Person$\to$Person.  Then label of the graph box is ``a person, $x$, which has as father a person, $y$."
+
+\end{enumerate}
+
+\item The graph box for $f\taking A\to B$ has two structural arrows out, namely $x$ and $y$.  Suppose that $f$ is labeled ``blahs".  Then $x$ is labeled ``is in particular" and $y$ is labeled ``blahs".  Note that $x$ is an isomorphism; its inverse is labeled ``can be construed as".
+
+\item Let $A, B$, and $C$ be boxes and let $x\taking B\to A$ and $y\taking C\to A$ be arrows (forming a ``potential fiber product" diagram).  Suppose the label for $A$ is ``an apple," the label for $B$ is ``an apple $x$, and more, all satisfying B-ness" and the label for $C$ is ``an apple $y$, and more, all satisfying C-ness".  Then the label for the fiber product is ``an apple $x$, and more, satisfying B-ness, together with an apple $y$, and more, satisfying C-ness, for which $x$ and $y$ agree."  
+
+\item The composition of two arrows is labeled by concatenating the label of the first arrow, the label of its target box, the word ``which", and then the label of the second arrow.
+
+\item An arrow may be labeled ``is an instance of," but note that such arrows do not compose.  However, ``is an instance of" does compose with ``is" to give ``is an instance of." 
+
+\item Consider an arrow $A\To{blahs}B$.  The image box is labeled ``a B, $x$, for which there exists an A, $y$, such that $y$ blahs $x$."  If $I$ is the image, then the map $A\to I$ is labeled ``blahs" and the map $I\to B$ is labeled ``is".
+
+\end{enumerate}
+
+
+\end{document}
+

@@ -1,0 +1,129 @@
+\documentclass{amsart}
+
+\input{decl-db}
+
+\newcommand{\TriRight}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longrightarrow}\ar@{}[u]|>>>>{#7}}}
+\newcommand{\TriLeft}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longleftarrow}\ar@{}[u]|>>>>{#7}}}
+\def\FC{{\bf FC}}
+
+\begin{document}
+
+\author{David I. Spivak}
+
+\thanks{This project was supported in part by the Office of Naval Research.}
+
+\title{Changing types}
+
+\maketitle
+
+\section{Notation}
+
+Let $F\taking A\to C$ and $G\taking B\to C$ be functors.  We denote by $(F\down G)$ the category whose objects are pairs $(a,b,f)$ where $a\in\Ob(A), b\in\Ob(b)$ and $f\taking F(a)\to G(b)$ is a morphism in $C$, and whose morphism sets are given by $$\Hom_{(F\down G)}((a,b,f),(a',b',f'))=\{(x\taking a\to a', y\taking b\to b')| yf=f'x\}.$$
+
+If $F\taking A\to\Cat$ is a functor and $B$ is a category, we sometimes write $(A\down\{B\})$ to denote $(F\down i_B)$, where $i_B\taking\{*\}\to\Cat$ is the category $B$.
+
+If $C=\Cat$ we introduce a new category $(F\Down G)$ whose objects are the same as those in $(F\down G)$ but for which morphisms sets are given by $$\Hom_{(F\Down G)}((a,b,f),(a',b',f'))=\{(x,y,\alpha)|x\taking a\to a',y\taking b\to b',\alpha\taking yf\to f'x\}.$$  We write $(F\Up G)$ to denote the category with the direction of the natural transformation reversed: same objects, but morphism sets given by $$\Hom_{(F\Up G)}((a,b,f),(a',b',f'))=\{(x,y,\alpha)|x\taking a\to a',y\taking b\to b',\alpha\taking f'x\to yf\}.$$
+
+Again, we may write $(F\Down\{B\})$ to denote $(F\Down i_B)$.  Explicitly, the objects in $(F\Down\{B\})$ are functors $F(a)\To{f} B$, where $a\in A$, and the morphisms $(F(a)\To{f} B)\too (F(a')\To{f'} B)$ are pairs $(x,\alpha)$ giving a natural transformation diagram $$\TriRight{F(a)}{f}{x}{F(a')}{f'}{B}{\alpha}$$
+
+Given $F\taking A\to\Cat$, let $\bar{F}\taking A\to\Cat$ denote the functor $a\mapsto F(a)\op$.  Clearly, $(F\down\{B\})$ is isomorphic to $(\bar{F}\down\{B\op\})$.  The category $(\bar{F}\Down\{B\op\})$ can be identified with the category whose objects are functors $F(a)\to B$, where $a\in A$, and the morphisms $(F(a)\To{f}B)\too(F(a')\To{f'}B)$ are pairs $(x,\alpha)$ giving a natural transformation diagram $$\TriLeft{F(a)}{f}{x}{F(a')}{f'}{B}{\alpha}.$$  Clearly, this is the category $(F\Up\{B\})=(\bar{F}\Down\{B\op\})$.
+
+\section{Grothendieck construction}
+
+Let $T\taking \mcS\to\Cat$ be a functor.  The Grothendieck construction for $T$ is given by $$Gr(T):=(\{*\}\Down T).$$  Explicitly, $Gr(T)$ is the category with objects $(S,s)$ where $S\in\Ob(\mcS)$ and $s\in T(S)$.  The morphism sets in $Gr(T)$ are given by $$\Hom((S,s),(S',s'))=\{(y\taking S\to S',\alpha\taking T(y)(s)\to s')\}.$$
+
+There is a natural projection $Gr(T)\to\mcS$ given by $(S,s)\mapsto S$.  It is a split fibration; that is, for any $y\taking S\to S'$ and $s\in S$, there is a canonical choice of map $(S,s)\to (S',T(y)(s))$ lying over $y$.
+
+\begin{lemma}\label{gro pull square}
+
+Let $\sigma\taking\mcC\to\mcS$ and $T\taking\mcS\to\Cat$ be functors.  The diagram $$\xymatrix{Gr(T\sigma)\ullimit\ar[r]\ar[d]&Gr(T)\ar[d]\\\mcC\ar[r]&\mcS}$$ is a pullback square.
+
+\end{lemma}
+
+Recall that a pullback square as in Lemma \ref{gro pull square} defines a functor from the sections of $Gr(T)\to\mcS$ to the sections of $Gr(T\sigma)\to\mcC$.
+
+\begin{lemma}\label{gro nat trans}
+
+Suppose given two functors $f,g\taking\mcS\to\Cat$; let $\Nat(f,g)$ denote the set of natural transformations from $f$ to $g$.  There is a natural isomorphism $$\Hom_\mcS(Gr(f),Gr(g))\To{\iso}\Nat(f.g).$$ t
+
+\end{lemma}
+
+\begin{definition}
+
+There is a functor $\Gamma\taking(\Cat\Down\{\Cat\})\to\Cat$ defined as follows.  On objects, $\Gamma(f\taking\mcC\to\Cat)$ is defined to be the global sections of the functor $\pi\taking Gr(f)\to\mcC$, i.e. the category whose objects are functors $s\taking\mcC\to Gr(f)$ with $\pi\circ s=\id_\mcC$, and whose morphisms are natural transformations $s\to s'$.  
+
+To define $\Gamma$ on morphisms, suppose we are given a natural transformation diagram $$\TriLeft{\mcC}{f}{x}{\mcD}{g}{\Cat}{\alpha}.$$  By Lemma \ref{gro pull square}, there is a canonical functor $\Gamma(g)\to\Gamma(gx)$.  By Lemma \ref{gro nat trans}, there is a canonical functor $\Gamma(gx)\to\Gamma(f)$ induced by $\alpha$.  The composition gives the desired functor.
+
+\end{definition}
+
+\begin{lemma}
+
+Suppose that $\sigma_i\taking C_i\to\Cat$, for $i=1,2,3$, are three functors and suppose that $f\taking C_2\to C_1$ and $g\taking C_2\to C_3$ are functors too. There is an induced functor $C_4:=C_1\amalg_{C_2}C_3\To{\sigma_4}\Cat$.  Taking Grothendieck constructions yeilds the diagram $$\xymatrix@=10pt{&Gr(\sigma_1)\ar[ddd]\ar[drr]&&\\Gr(\sigma_2)\ar[ddd]\ar[drr]_{g'}\ar[ur]^{f'}&&&Gr(\sigma_4)\ar[ddd]\\&&Gr(\sigma_3)\ar[ur]\ar[ddd]&\\&C_1\ar[drr]&&\\C_2\ar[ur]^f\ar[drr]_g&&&C_4\\&&C_3\ar[ur]&}$$  All of the vertical squares are pullback squares by Lemma \ref{gro pull square}.
+
+The natural map $$\Gamma(\sigma_4)\too\Gamma(\sigma_1)\cross_{\Gamma(\sigma_2)}\Gamma(\sigma_3)$$ is an isomorphism.
+
+\end{lemma}
+
+\section{Monad}
+
+\begin{lemma}\label{monad lift}
+
+Suppose that $\mcC$ is a category and $T$ is a monad on $\mcC$.  If $C\in\mcC$ is a $T$-algebra, then $T$ lifts to a monad on the category $(\mcC\down C)$.
+
+\end{lemma}
+
+\begin{proof}
+
+Given $f\taking X\to C$ we define $T(f)$ to be the composition $T(X)\to T(C)\to C$.  It satisfies the axioms for a monad.
+
+\end{proof}
+
+\begin{remark}
+
+The material below emphasizes the role of $\Cat$, but everything said (Lemma \ref{fc down is monad} and \ref{cat is alg for fc down}) also works for $\Sets$.  In particular, replace the category $\FC$ with the category $\Fin$ of finite sets, and replace the category $\Cat$ with the category $\Sets$.
+
+\end{remark}
+
+\begin{lemma}\label{fc down is monad}
+
+Let $\FC$ denote the category of finite categories.  Consider the endofunctor $d:=(\FC\Down(-))\taking\Cat\to\Cat$.  There are natural transformations $\eta\taking\id_\Cat\to d$ and $\mu\taking d^2\to d$, which gives $d$ the structure of a monad on $\Cat$.  
+
+\end{lemma}
+
+\begin{proof}
+
+For $C\in\Cat$, define $\eta_C\taking C\to dC$ to be the functor given on objects by $c\mapsto (\{*\}\To{c}C)$, and given on morphisms by $$(f\taking c\to c')\mapsto\left(\TriRight{\{*\}}{c}{\id_{\{*\}}}{\{*\}}{c'}{C}{f}\right).$$  This is clearly a natural transformation.
+
+Definining $\mu$ is more difficult.  Let $C\in\Cat$ be a category; we will define $\mu_C$.
+
+Let $X$ be a finite category and let $\sigma\taking X\to(\FC\Down C)$ be an object in $d^2C$.  We need to establish some notation for $\sigma$.  On objects $x\in X$, denote $\sigma(x)$ by $$\sigma_x\taking S_x\to C,$$ where $S_x$ is a finite category.  On morphisms $f\taking x\to y$ in $X$, denote $\sigma(f)$ by $$(\sigma_f,\sigma_f^\sharp)\taking\left(\TriRight{S_x}{\sigma_x}{\sigma_f}{S_y}{\sigma_y}{C}{\sigma_f^\sharp}\right).$$
+
+Define $\mu(X,\sigma)\in\Cat$ as the category with objects $$\Ob(\mu(X,\sigma)):=\{(x,s_x)|x\in X,s_x\in S_x\}$$ and morphisms $$\Hom_{\mu(X,\sigma)}((x,s_x),(y,s_y))=\{(f,f^\sharp)|f\taking x\to y, (f^\sharp\taking\sigma_f(s_x)\to s_y)\in S_y\}.$$  Note that since $X$ and each $S_x$ is finite, so is $\mu(X,\sigma)$.  
+
+There is a canonical functor $\mu(X,\sigma)\to C$ given on objects by $(x,s_x)\mapsto\sigma_x(s_x)$ and given on morphisms by sending $(f,f^\sharp)\taking(x,s_x)\to(y,s_y)$ to the composite $$\sigma_x(s_x)\To{\sigma_f^\sharp}\sigma_y\sigma_f(s_x)\To{\sigma_y(f^\sharp)}\sigma_y(s_y).$$  Thus $\mu(X,\sigma)$ is indeed in $(\FC\Down C$.
+
+So far, we have only established $\mu$ on objects.  On morphisms $$\TriRight{X}{\sigma}{m}{X'}{\sigma'}{(\FC\Down C)}{m^\sharp},$$ define $\mu(m,m^\sharp)\taking\mu(X,\sigma)\to\mu(X',\sigma')$ as the functor given as follows.  Send the object $(x,s_x)\in\mu(X,\sigma)$ to $(m(x),m^\sharp_x(s_x))\in\mu(X',\sigma')$.  Send $(f,f^\sharp)\taking(x,s_x)\to(y,s_y)$ to $$(m(x),(m_y^\sharp\circ f^\sharp\taking\sigma'_{mf}(m_x^\sharp(s_x))\to m_y^\sharp(s_y)))\taking\mu(X,\sigma)\to\mu(X'\sigma').$$  There is an obvious natural transformation $$\TriRight{\mu(X,\sigma)}{}{}{\mu(X',\sigma')}{}{C}{}$$ because $m^\sharp\taking\sigma'\circ m\to \sigma$ was assumed natural.  
+
+We draw the following diagram, in case it is useful to the reader: $$\xymatrix{S_x\ar@/^3pc/[rrd]^{\sigma_x}\ar[r]^{\sigma_f}\ar[d]_{m_x^\sharp}&S_y\ar[rd]^{\sigma_y}\ar[d]_{m_y^\sharp}&\ar@{}[l]|{\Leftarrow}_{\sigma_f^\sharp}\\S'_{mx}\ar[r]_{\sigma'_{mx}}\ar@/_2pc/[rr]_{\sigma'_{mx}}&S'_{my}\ar@{}[d]|{\Uparrow}_{\sigma_{mf}^\sharp}\ar[r]_{\sigma'_{my}}\ar@{}[ur]|<<<{\Down}&C\\&&&}$$
+
+We forgo showing that this really is a monad.
+
+\end{proof}
+
+\begin{lemma}\label{cat is alg for fc down}
+
+The global sections functor $\Gamma\taking(\FC\Down\Cat)\to\Cat$ gives $\Cat$ the structure of a $d$-algebra.  
+
+Therefore, one can consider $d$ as a monad on $(\Cat\Down\{\Cat\})$.
+
+\end{lemma}
+
+\begin{proof}
+
+The second assertion follows from the first by Lemma \ref{monad lift}.  The first requires proof....
+
+\end{proof}
+
+
+
+\end{document}

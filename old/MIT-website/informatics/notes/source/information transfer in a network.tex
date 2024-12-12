@@ -1,0 +1,46 @@
+\documentclass{amsart}
+
+\input{decl-main}
+
+\def\bD{{\bf \Delta}}
+\def\down{\downarrow}
+\def\Surj{{\bf Surj}}
+\def\Sub{{\bf Sub}}
+
+\begin{document}
+
+\title{Information transfer in a network}
+
+\author{David I. Spivak}
+
+\thanks{This project was supported in part by the Office of Naval Research.}
+
+\maketitle
+
+\tableofcontents
+
+\section{Setup}
+
+Let $X\taking\bD\op\to\Sets$ denote a simplicial set, thought of as a network.  Let $(\bD\down X)\op$ denote the category whose objects are simplices $(n,x)$ with $x\in X_n$, and where $$\Hom((n,x),(m,y))=\{d\taking [m]\to[n]| d^*_X(x)=y\}.$$
+
+Let $A$ be a set.  Define $\Surj(A)$ to be the category (poset) whose objects are pairs $(B,f\taking A\surj B)$ and for which $\Hom((B,f),(B',f'))=\{g\taking B\to B'\;|\;gf=f'\}$.  This is the same as the poset of equivalence relations on $A$ under inclusion.  Note that $\Surj(A)$ is just $\Surj_{A/}$, where $\Surj$ is the category of surjections.
+
+\begin{definition}
+
+Let $X$ denote a simplicial set.  An {\em interpretation system on $X$} is functor $(\bD\down X)\op\to\Sets$.  If $A$ is a set, then an {\em interpretation system for $A$ on $X$} is a functor $(\bD\down X)\op\to\Surj(A)$.
+
+\end{definition}
+
+The idea is this.  The $n$-simplices of $X$ represent contexts in which $n+1$ people have gotten together.  An interpretive system on $X$ assigns to each such context a set of possible things that can be experienced by that group.  If something can be experienced by a group then it can be experienced by a subgroup, hence the functoriality. 
+
+If we want to make the problem easier, suppose that anything which can be experienced by a subgroup can be experienced by the whole group.  This is not really an assumption on a network -- it's more like a perspective on experience.  If I experience something and I'm part of a larger group, then even if no one else experiences it, the group still experiences it (because one of its members did!)  This situation is modeled by an interpretation system for $A$.
+
+Given a functor $f\taking(\bD\down X)\op\to\Surj$, there is a unique sheaf $F\in\Sub(X)$ extending it, where $\Sub(X)$ is the Grothendieck site of simplicial subsets of $X$ (with the obvious covers).
+
+What I don't have time to make precise right now is what I want to talk about at IPAM.  Namely, suppose that some sub-object $A\ss X$ detects a phenomenon $p\in F(A)$.  And then they choose some superset $B\superset A$ on which to ``post the message."  In order to post the message, they choose an element $p'\in F(B)$ whose restriction to $A$ is $p$.  This will be a way of communicating something to a larger group.  Note that they can't tell the difference between any two $p'$ that lift $p$.  
+
+The idea is to notice the difference between a simplicial set and its underlying graph.  In particular, one can see this for a 2-simplex versus it's 1-skeleton.  Given a 2-simplex, a vertex can communicate something to the other two vertices which they will agree on.  But on a $\partial\Delta^2$, a vertex has no way to know communicate something to the other two that he knows they'll both understand the same way.  Think about three friends without three-way calling.  It's annoying!
+
+
+
+\end{document}

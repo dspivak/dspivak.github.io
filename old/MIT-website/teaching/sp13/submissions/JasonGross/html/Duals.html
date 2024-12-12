@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Duals</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Duals</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.JMeq.html#"><span class="id" type="library">JMeq</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.Eqdep.html#"><span class="id" type="library">Eqdep</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Category.html#"><span class="id" type="library">Category</span></a> <a class="idref" href="CategoryIsomorphisms.html#"><span class="id" type="library">CategoryIsomorphisms</span></a> <a class="idref" href="Functor.html#"><span class="id" type="library">Functor</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab19"></a><h1 class="section">Dual Categories</h1>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Open</span> <span class="id" type="keyword">Scope</span> <span class="id" type="var">category_scope</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="OppositeCategory"><span class="id" type="section">OppositeCategory</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="OppositeCategory"><span class="id" type="definition">OppositeCategory</span></a> `(<span class="id" type="var">C</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">objC</span>) : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <a class="idref" href="Duals.html#objC"><span class="id" type="variable">objC</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= @<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Build_Category</span></a> <a class="idref" href="Duals.html#objC"><span class="id" type="variable">objC</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">s</span> <span class="id" type="var">d</span> ⇒ <a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> <a class="idref" href="Duals.html#C"><span class="id" type="variable">C</span></a> <a class="idref" href="Duals.html#d"><span class="id" type="variable">d</span></a> <a class="idref" href="Duals.html#s"><span class="id" type="variable">s</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(@<a class="idref" href="Category.html#Identity"><span class="id" type="projection">Identity</span></a> <span class="id" type="var">_</span> <a class="idref" href="Duals.html#C"><span class="id" type="variable">C</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">m1</span> <span class="id" type="var">m2</span> ⇒ @<a class="idref" href="Category.html#Compose"><span class="id" type="projection">Compose</span></a> <span class="id" type="var">_</span> <a class="idref" href="Duals.html#C"><span class="id" type="variable">C</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <a class="idref" href="Duals.html#m2"><span class="id" type="variable">m2</span></a> <a class="idref" href="Duals.html#m1"><span class="id" type="variable">m1</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_sym"><span class="id" type="lemma">eq_sym</span></a> (@<a class="idref" href="Category.html#Associativity"><span class="id" type="projection">Associativity</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span>))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> ⇒ @<a class="idref" href="Category.html#RightIdentity"><span class="id" type="projection">RightIdentity</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> ⇒ @<a class="idref" href="Category.html#LeftIdentity"><span class="id" type="projection">LeftIdentity</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span>).<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Duals.html#OppositeCategory"><span class="id" type="section">OppositeCategory</span></a>.<br/>
+
+<br/>
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="OppositeFunctor"><span class="id" type="section">OppositeFunctor</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">C</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">objC</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">D</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">objD</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="OppositeFunctor.F"><span class="id" type="variable">F</span></a> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="Duals.html#OppositeFunctor.C"><span class="id" type="variable">C</span></a> <a class="idref" href="Duals.html#OppositeFunctor.D"><span class="id" type="variable">D</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="OppositeFunctor.COp"><span class="id" type="variable">COp</span></a> := <a class="idref" href="Duals.html#OppositeCategory"><span class="id" type="definition">OppositeCategory</span></a> <a class="idref" href="Duals.html#OppositeFunctor.C"><span class="id" type="variable">C</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="OppositeFunctor.DOp"><span class="id" type="variable">DOp</span></a> := <a class="idref" href="Duals.html#OppositeCategory"><span class="id" type="definition">OppositeCategory</span></a> <a class="idref" href="Duals.html#OppositeFunctor.D"><span class="id" type="variable">D</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="OppositeFunctor"><span class="id" type="definition">OppositeFunctor</span></a> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="Duals.html#OppositeFunctor.COp"><span class="id" type="variable">COp</span></a> <a class="idref" href="Duals.html#OppositeFunctor.DOp"><span class="id" type="variable">DOp</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">Build_Functor</span></a> <a class="idref" href="Duals.html#OppositeFunctor.COp"><span class="id" type="variable">COp</span></a> <a class="idref" href="Duals.html#OppositeFunctor.DOp"><span class="id" type="variable">DOp</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">c</span> : <a class="idref" href="Duals.html#OppositeFunctor.COp"><span class="id" type="variable">COp</span></a> ⇒ <a class="idref" href="Duals.html#OppositeFunctor.F"><span class="id" type="variable">F</span></a> <a class="idref" href="Duals.html#c"><span class="id" type="variable">c</span></a> : <a class="idref" href="Duals.html#OppositeFunctor.DOp"><span class="id" type="variable">DOp</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> (<span class="id" type="var">s</span> <span class="id" type="var">d</span> : <a class="idref" href="Duals.html#OppositeFunctor.COp"><span class="id" type="variable">COp</span></a>) (<span class="id" type="var">m</span> : <a class="idref" href="Duals.html#OppositeFunctor.C"><span class="id" type="variable">C</span></a>.(<a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a>) <a class="idref" href="Duals.html#d"><span class="id" type="variable">d</span></a> <a class="idref" href="Duals.html#s"><span class="id" type="variable">s</span></a>) ⇒ <a class="idref" href="Functor.html#MorphismOf"><span class="id" type="projection">MorphismOf</span></a> <a class="idref" href="Duals.html#OppositeFunctor.F"><span class="id" type="variable">F</span></a> (<span class="id" type="var">s</span> := <a class="idref" href="Duals.html#d"><span class="id" type="variable">d</span></a>) (<span class="id" type="var">d</span> := <a class="idref" href="Duals.html#s"><span class="id" type="variable">s</span></a>) <a class="idref" href="Duals.html#m"><span class="id" type="variable">m</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">d'</span> <span class="id" type="var">d</span> <span class="id" type="var">s</span> <span class="id" type="var">m1</span> <span class="id" type="var">m2</span> ⇒ <a class="idref" href="Functor.html#FCompositionOf"><span class="id" type="projection">FCompositionOf</span></a> <a class="idref" href="Duals.html#OppositeFunctor.F"><span class="id" type="variable">F</span></a> <a class="idref" href="Duals.html#s"><span class="id" type="variable">s</span></a> <a class="idref" href="Duals.html#d"><span class="id" type="variable">d</span></a> <a class="idref" href="Duals.html#d'"><span class="id" type="variable">d'</span></a> <a class="idref" href="Duals.html#m2"><span class="id" type="variable">m2</span></a> <a class="idref" href="Duals.html#m1"><span class="id" type="variable">m1</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="Functor.html#FIdentityOf"><span class="id" type="projection">FIdentityOf</span></a> <a class="idref" href="Duals.html#OppositeFunctor.F"><span class="id" type="variable">F</span></a>).<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Duals.html#OppositeFunctor"><span class="id" type="section">OppositeFunctor</span></a>.<br/>
+
+<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

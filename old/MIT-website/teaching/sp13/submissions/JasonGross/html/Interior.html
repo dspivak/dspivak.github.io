@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Interior</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Interior</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Setoids.Setoid.html#"><span class="id" type="library">Setoid</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Topology.html#"><span class="id" type="library">Topology</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab183"></a><h2 class="section">Interiors</h2>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Open</span> <span class="id" type="keyword">Scope</span> <span class="id" type="var">topology_scope</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="interior"><span class="id" type="section">interior</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">T</span> : <a class="idref" href="Topology.html#Topology"><span class="id" type="class">Topology</span></a> <span class="id" type="var">X</span>).<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+The interior of a set contains all points which are in some open
+      set contained in <span class="inlinecode"><a class="idref" href="SetCategoryFacts.html#EpiMono.S"><span class="id" type="variable">S</span></a></span> 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="interior"><span class="id" type="definition">interior</span></a> (<span class="id" type="var">S</span> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Ensemble"><span class="id" type="definition">Ensemble</span></a> <a class="idref" href="Interior.html#interior.X"><span class="id" type="variable">X</span></a>) : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Ensemble"><span class="id" type="definition">Ensemble</span></a> <a class="idref" href="Interior.html#interior.X"><span class="id" type="variable">X</span></a> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Topology.html#:topology_scope:'⋃'_x"><span class="id" type="notation">&#8899;</span></a> <a class="idref" href="Topology.html#:topology_scope:'⋃'_x"><span class="id" type="notation">(</span></a><span class="id" type="keyword">fun</span> <span class="id" type="var">U</span> ⇒ <a class="idref" href="Interior.html#U"><span class="id" type="variable">U</span></a> <a class="idref" href="Notations.html#::x_'⊆'_x"><span class="id" type="notation">&sube;</span></a> <a class="idref" href="Interior.html#S"><span class="id" type="variable">S</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'/\'_x"><span class="id" type="notation">∧</span></a> <span class="id" type="keyword">Open</span> <a class="idref" href="Interior.html#U"><span class="id" type="variable">U</span></a><a class="idref" href="Topology.html#:topology_scope:'⋃'_x"><span class="id" type="notation">)</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="interior_open"><span class="id" type="lemma">interior_open</span></a> <span class="id" type="var">S</span> : <span class="id" type="keyword">Open</span> (<a class="idref" href="Interior.html#interior"><span class="id" type="definition">interior</span></a> <a class="idref" href="Interior.html#S"><span class="id" type="variable">S</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="Topology.html#ArbitraryUnionOpen"><span class="id" type="method">ArbitraryUnionOpen</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">firstorder</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="interior_subset"><span class="id" type="lemma">interior_subset</span></a> <span class="id" type="var">S</span> : <a class="idref" href="Interior.html#interior"><span class="id" type="definition">interior</span></a> <a class="idref" href="Interior.html#S"><span class="id" type="variable">S</span></a> <a class="idref" href="Notations.html#::x_'⊆'_x"><span class="id" type="notation">&sube;</span></a> <a class="idref" href="Interior.html#S"><span class="id" type="variable">S</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">intro</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">destruct_head_hnf</span> <a class="idref" href="Topology.html#ArbitraryUnion"><span class="id" type="inductive">ArbitraryUnion</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">firstorder</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="interior_open_same"><span class="id" type="lemma">interior_open_same</span></a> <span class="id" type="var">S</span> : <span class="id" type="keyword">Open</span> <a class="idref" href="Interior.html#S"><span class="id" type="variable">S</span></a> → <a class="idref" href="Interior.html#interior"><span class="id" type="definition">interior</span></a> <a class="idref" href="Interior.html#S"><span class="id" type="variable">S</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Interior.html#S"><span class="id" type="variable">S</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intro</span> <span class="id" type="var">H</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Extensionality_Ensembles"><span class="id" type="axiom">Extensionality_Ensembles</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">split</span>; <span class="id" type="tactic">repeat</span> <span class="id" type="tactic">intro</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">destruct_head_hnf</span> <a class="idref" href="Topology.html#ArbitraryUnion"><span class="id" type="inductive">ArbitraryUnion</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">destruct_head_hnf</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#and"><span class="id" type="inductive">and</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intuition</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> <span class="id" type="var">S</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intuition</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Ltac</span> <span class="id" type="var">t</span> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> (<span class="id" type="tactic">instantiate</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="tactic">split</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| <span class="id" type="tactic">intro</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| <span class="id" type="tactic">assumption</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">progress</span> <span class="id" type="tactic">trivial</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">progress</span> <span class="id" type="tactic">constructor</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">progress</span> (<span class="id" type="var">etransitivity</span>; <span class="id" type="var">eassumption</span>); <span class="id" type="tactic">instantiate</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">progress</span> <span class="id" type="var">destruct_head_hnf</span> <span class="id" type="var">ArbitraryUnion</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">progress</span> <span class="id" type="var">destruct_head_hnf</span> <span class="id" type="var">and</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">progress</span> <span class="id" type="var">destruct_head_hnf</span> @<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Intersection"><span class="id" type="inductive">Intersection</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">apply</span> <a class="idref" href="Topology.html#Intersection_Included_morr"><span class="id" type="definition">Intersection_Included_morr</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">apply</span> <a class="idref" href="Topology.html#FiniteIntersectionOpen"><span class="id" type="method">FiniteIntersectionOpen</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">apply</span> <a class="idref" href="Interior.html#interior_open"><span class="id" type="lemma">interior_open</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">progress</span> <span class="id" type="tactic">firstorder</span>))).<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="interior_respect_subset"><span class="id" type="lemma">interior_respect_subset</span></a> <span class="id" type="var">U</span> <span class="id" type="var">V</span> : <a class="idref" href="Interior.html#U"><span class="id" type="variable">U</span></a> <a class="idref" href="Notations.html#::x_'⊆'_x"><span class="id" type="notation">&sube;</span></a> <a class="idref" href="Interior.html#V"><span class="id" type="variable">V</span></a> → <a class="idref" href="Interior.html#interior"><span class="id" type="definition">interior</span></a> <a class="idref" href="Interior.html#U"><span class="id" type="variable">U</span></a> <a class="idref" href="Notations.html#::x_'⊆'_x"><span class="id" type="notation">&sube;</span></a> <a class="idref" href="Interior.html#interior"><span class="id" type="definition">interior</span></a> <a class="idref" href="Interior.html#V"><span class="id" type="variable">V</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">t</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H0</span> : ?<span class="id" type="var">Xj</span> <a class="idref" href="Notations.html#::x_'⊆'_x"><span class="id" type="notation">&sube;</span></a> <a class="idref" href="Notations.html#::x_'⊆'_x"><span class="id" type="notation">?</span></a><span class="id" type="var">U</span>, <span class="id" type="var">H1</span> : <span class="id" type="keyword">Open</span> ?<span class="id" type="var">Xj</span>, <span class="id" type="var">H2</span> : ?<span class="id" type="var">x</span> <a class="idref" href="Notations.html#::x_'∈'_x"><span class="id" type="notation">&isin;</span></a> <a class="idref" href="Notations.html#::x_'∈'_x"><span class="id" type="notation">?</span></a><span class="id" type="var">Xj</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- ?<span class="id" type="var">x</span> <a class="idref" href="Notations.html#::x_'∈'_x"><span class="id" type="notation">&isin;</span></a> <a class="idref" href="Interior.html#interior"><span class="id" type="definition">interior</span></a> ?<span class="id" type="var">V</span> ]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⇒ (<span class="id" type="tactic">∃</span> (<span class="id" type="var">Xj</span> <a class="idref" href="Notations.html#::x_'∩'_x"><span class="id" type="notation">&cap;</span></a> <a class="idref" href="Interior.html#interior"><span class="id" type="definition">interior</span></a> <span class="id" type="var">V</span>))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">t</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : <span class="id" type="var">_</span>, <span class="id" type="var">H'</span> : <span class="id" type="var">_</span> |- <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">rewrite</span> <span class="id" type="var">H</span> <span class="id" type="keyword">in</span> <span class="id" type="var">H'</span>; <span class="id" type="tactic">solve</span> [ <span class="id" type="var">t</span> ]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Interior.html#interior"><span class="id" type="section">interior</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

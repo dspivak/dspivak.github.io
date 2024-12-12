@@ -1,0 +1,214 @@
+\usepackage{amssymb, amscd,stmaryrd,setspace,hyperref,color}
+
+\setcounter{secnumdepth}{2}
+
+\input xy
+\xyoption{all} \xyoption{poly} \xyoption{knot}\xyoption{curve}
+
+
+\newcommand{\comment}[1]{}
+
+\comment{The following is Eli Lebow's trick for making the table of contents include all definitions and labels.
+
+\setcounter{tocdepth}{5}
+
+\newcommand{\tocnote}[1]{\addcontentsline{toc}{subsubsection}{#1}}
+
+%\newcommand {\mylabel} {\label}
+\newcommand{\mylabel}[1]{\addcontentsline{toc}{subsubsection}{$\{$\texttt{#1}$\}$}\label{#1}}
+
+%\newcommand{\defword}[1]{\textit{#1}}
+\newcommand{\defword}[1]{\textit{#1}\addcontentsline{toc}{subsubsection}{\textit{#1}}}
+
+}
+
+\newcommand{\longnote}[2][4.9in]{\fcolorbox{black}{yellow}{\parbox{#1}{\color{black} #2}}}
+\newcommand{\note}[1]{\fcolorbox{black}{yellow}{\color{black} #1}}
+\newcommand{\shortnote}[1]{\fcolorbox{black}{yellow}{\color{black} #1}}
+\newcommand{\q}[1]{\begin{question}#1\end{question}}
+\newcommand{\g}[1]{\begin{guess}#1\end{guess}}
+\newcommand{\beqn}[1]{\begin{eqnarray}\label{#1}}
+\newcommand{\eeqn}{\end{eqnarray}}
+
+\def\tn{\textnormal}
+\def\mf{\mathfrak}
+\def\mc{\mathcal}
+
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\CC{{\mathbb C}}
+\def\AA{{\mathbb A}}
+\def\PP{{\mathbb P}}
+\def\NN{{\mathbb N}}
+
+\def\Cech{$\check{\textnormal{C}}$ech }
+\def\C{\check C}
+
+\def\Aut{\tn{Aut}}
+\def\Tor{\tn{Tor}}
+\def\Sym{\tn{Sym}}
+\def\im{\tn{im}}
+\def\coker{\tn{coker}}
+\def\Spec{\tn{Spec}}
+\def\Supp{\tn{Supp }}
+\def\dim{\tn{dim}}
+\def\sheafHom{\mathcal{H}om}
+\def\Stab{\tn{Stab}}
+\def\Fun{\tn{Fun}}
+\def\mod{{\bf \tn{-mod}}}
+\def\alg{{\bf \tn{-alg}}}
+\def\ho{\tn{ho}}
+
+\def\Hom{\tn{Hom}}
+\def\Ob{\tn{Ob}}
+\def\Mor{\tn{Mor}}
+\def\End{\tn{End}}
+\def\Map{\tn{Map}}
+\def\sheafMap{\mathbf{Map}}
+\def\map{\mathbf{map}}
+\def\sheafmap{\mathbf{map}}
+\def\coeq{\tn{CoEq}}
+\def\Op{\tn{Op}}
+
+\def\to{\rightarrow}
+\def\from{\leftarrow}
+\def\cross{\times}
+\def\taking{\colon}
+\def\inj{\hookrightarrow}
+\def\surj{\twoheadrightarrow}
+\def\too{\longrightarrow}
+\def\tooo{\longlongrightarrow}
+\def\tto{\rightrightarrows}
+\def\ttto{\equiv\!\!>}
+\def\ss{\subset}
+\def\superset{\supset}
+\def\iso{\cong}
+\def\|{{\;|\;}}
+\def\m1{{-1}}
+\def\op{^\tn{op}}
+\def\loc{\tn{loc}}
+\def\la{\langle}
+\def\ra{\rangle}
+\def\wt{\widetilde}
+\def\wh{\widehat}
+\def\we{\simeq}
+\def\ol{\overline}
+\def\ul{\underline}
+\def\qeq{\mathop{=}^?}
+
+\def\ullimit{\ar@{}[rd]|(.3)*+{\lrcorner}}
+\def\urlimit{\ar@{}[ld]|(.3)*+{\llcorner}}
+\def\lllimit{\ar@{}[ru]|(.3)*+{\urcorner}}
+\def\lrlimit{\ar@{}[lu]|(.3)*+{\ulcorner}}
+\def\ulhlimit{\ar@{}[rd]|(.3)*+{\diamond}}
+\def\urhlimit{\ar@{}[ld]|(.3)*+{\diamond}}
+\def\llhlimit{\ar@{}[ru]|(.3)*+{\diamond}}
+\def\lrhlimit{\ar@{}[lu]|(.3)*+{\diamond}}
+\newcommand{\clabel}[1]{\ar@{}[rd]|(.5)*+{#1}}
+
+\newcommand{\arr}[1]{\ar@<.5ex>[#1]\ar@<-.5ex>[#1]}
+\newcommand{\arrr}[1]{\ar@<.7ex>[#1]\ar@<0ex>[#1]\ar@<-.7ex>[#1]}
+\newcommand{\arrrr}[1]{\ar@<.9ex>[#1]\ar@<.3ex>[#1]\ar@<-.3ex>[#1]\ar@<-.9ex>[#1]}
+\newcommand{\arrrrr}[1]{\ar@<1ex>[#1]\ar@<.5ex>[#1]\ar[#1]\ar@<-.5ex>[#1]\ar@<-1ex>[#1]}
+
+\newcommand{\To}[1]{\xrightarrow{#1}}
+\newcommand{\Too}[1]{\xrightarrow{\ \ #1\ \ }}
+\newcommand{\From}[1]{\xleftarrow{#1}}
+
+\newcommand{\push}[4]{\xymatrix{#1\ar[r]\ar[d] \ar@{}[rd]|(.7)*+{\lrcorner} & #2 \ar[d] \\ #3 \ar[r] & #4}}
+\newcommand{\Push}[8]{\xymatrix{#1\ar[r]^-{#5}\ar[d]_-{#6} \ar@{}[rd]|(.7)*+{\lrcorner} & #2 \ar[d]^-{#7} \\ #3 \ar[r]_-{#8} & #4}}
+\newcommand{\pull}[4]{\xymatrix{#1\ar[r]\ar[d] \ar@{}[rd]|(.3)*+{\ulcorner} & #2 \ar[d] \\ #3 \ar[r] & #4}}
+\newcommand{\Pull}[8]{\xymatrix{#1\ar[r]^-{#5}\ar[d]_-{#6} \ar@{}[rd]|(.3)*+{\ulcorner} & #2 \ar[d]^-{#7} \\ #3 \ar[r]_-{#8} & #4}}
+\newcommand{\hpush}[4]{\xymatrix{#1\ar[r]\ar[d] \ar@{}[rd]|(.7)*+{\diamond} & #2 \ar[d] \\ #3 \ar[r] & #4}}
+\newcommand{\hPush}[8]{\xymatrix{#1\ar[r]^{#5}\ar[d]_{#6} \ar@{}[rd]|(.7)*+{\diamond} & #2 \ar[d]^{#7} \\ #3 \ar[r]_{#8} & #4}}
+\newcommand{\hpull}[4]{\xymatrix{#1\ar[r]\ar[d] \ar@{}[rd]|(.3)*+{\diamond} & #2 \ar[d] \\ #3 \ar[r] & #4}}
+\newcommand{\hPull}[8]{\xymatrix{#1\ar[r]^-{#5}\ar[d]_-{#6} \ar@{}[rd]|(.3)*+{\diamond} & #2 \ar[d]^-{#7} \\ #3 \ar[r]_-{#8} & #4}}
+
+\newcommand{\sq}[4]{\xymatrix{#1\ar[r]\ar[d] & #2 \ar[d] \\ #3 \ar[r] & #4}}
+\newcommand{\Sq}[8]{\xymatrix{#1\ar[r]^-{#5}\ar[d]_-{#6} & #2 \ar[d]^-{#7} \\ #3 \ar[r]_-{#8} & #4}}
+\newcommand{\sqlabel}[5]{\xymatrix{#1\ar[r]\ar[d]\clabel{#5} & #2 \ar[d] \\ #3 \ar[r] & #4}}
+\newcommand{\Sqlabel}[9]{\xymatrix{#1\ar[r]^-{#5}\ar[d]_-{#6}\clabel{#9} & #2 \ar[d]^-{#7} \\ #3 \ar[r]_-{#8} & #4}}
+
+\newcommand{\hsq}[4]{\xymatrix{#1\ar[r]\ar[d]\clabel{\diamond} & #2 \ar[d] \\ #3 \ar[r] & #4}}
+\newcommand{\hSq}[8]{\xymatrix{#1\ar[r]^-{#5}\ar[d]_-{#6}\clabel{\diamond} & #2 \ar[d]^-{#7} \\ #3 \ar[r]_-{#8} & #4}}
+
+\newcommand{\adjoint}[2]{\xymatrix@1{#1\ar@<.5ex>[r] & #2 \ar@<.5ex>[l]}}
+\newcommand{\Adjoint}[4]{\xymatrix@1{#2 \ar@<.5ex>[r]^-{#1} & #3 \ar@<.5ex>[l]^-{#4}}}
+\newcommand{\lamout}[3]{\xymatrix{#1 \ar[r]\ar[d] & #2\\ #3 &}}
+\newcommand{\lamin}[3]{\xymatrix{& #1\ar[d]\\ #2\ar[r]& #3}}
+\newcommand{\Lamout}[5]{\xymatrix{#1 \ar[r]^{#4}\ar[d]_{#5} & #2\\ #3 &}}
+\newcommand{\Lamin}[5]{\xymatrix{& #1\ar[d]^{#4}\\ #2\ar[r]^{#5}& #3}}
+
+\newcommand{\overcat}[1]{_{/#1}}
+
+\def\id{\tn{id}}
+\def\Top{{\bf Top}}
+\def\Cat{{\bf Cat}}
+\def\Sets{{\bf Sets}}
+\def\sSets{{\bf sSets}}
+\def\Grpd{{\bf Grpd}}
+\def\Pre{{\bf Pre}}
+\def\She{{\bf Shv}}
+\def\Rings{{\bf Rings}}
+
+\def\colim{\mathop{\tn{colim}}}
+\def\hocolim{\mathop{\tn{hocolim}}}
+\def\holim{\mathop{\tn{holim}}}
+
+\def\mfC{\mf{C}}
+
+\def\mcA{\mc{A}}
+\def\mcB{\mc{B}}
+\def\mcC{\mc{C}}
+\def\mcD{\mc{D}}
+\def\mcE{\mc{E}}
+\def\mcF{\mc{F}}
+\def\mcG{\mc{G}}
+\def\mcH{\mc{H}}
+\def\mcI{\mc{I}}
+\def\mcJ{\mc{J}}
+\def\mcK{\mc{K}}
+\def\mcL{\mc{L}}
+\def\mcM{\mc{M}}
+\def\mcN{\mc{N}}
+\def\mcO{\mc{O}}
+\def\mcP{\mc{P}}
+\def\mcQ{\mc{Q}}
+\def\mcR{\mc{R}}
+\def\mcS{\mc{S}}
+\def\mcT{\mc{T}}
+\def\mcU{\mc{U}}
+\def\mcV{\mc{V}}
+\def\mcW{\mc{W}}
+\def\mcX{\mc{X}}
+\def\mcY{\mc{Y}}
+\def\mcZ{\mc{Z}}
+
+\def\star{\ast}
+\def\singleton{{\{\ast\}}}
+\def\tensor{\otimes}
+
+\newtheorem{theorem}[subsection]{Theorem}
+\newtheorem{lemma}[subsection]{Lemma}
+\newtheorem{proposition}[subsection]{Proposition}
+\newtheorem{corollary}[subsection]{Corollary}
+\newtheorem{fact}[subsection]{Fact}
+
+\theoremstyle{remark}
+\newtheorem{remark}[subsection]{Remark}
+\newtheorem{example}[subsection]{Example}
+\newtheorem{warning}[subsection]{Warning}
+\newtheorem{question}[subsection]{Question}
+\newtheorem{guess}[subsection]{Guess}
+\newtheorem{answer}[subsection]{Answer}
+\newtheorem{construction}[subsection]{Construction}
+\newtheorem{problem}[subsection]{Problem}
+
+\theoremstyle{definition}
+\newtheorem{definition}[subsection]{Definition}
+\newtheorem{notation}[subsection]{Notation}
+\newtheorem{conjecture}[subsection]{Conjecture}
+\newtheorem{postulate}[subsection]{Postulate}
+
+

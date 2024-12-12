@@ -1,0 +1,325 @@
+\documentclass{amsart}
+
+\input{decl-main}
+
+\def\ss{\subseteq}
+\def\Vrt{{\bf Vrt}}
+\def\bD{{\bf \Delta}}
+
+\begin{document}
+
+\setcounter{tocdepth}{1}
+
+\begin{abstract}
+
+Many networks, such as online social networks, have a notion of ``public spaces," in which certain communications are shared by more than two people.  Such spaces are not adequately represented in the graph model of a network.  Hypergraphs can be used, but these are difficult to analyze mathematically.  In this paper we propose the use of simplicial sets and similar combinatorial structures to model networks.  Simplicial sets are a favorite tool of topologists because they are easy to understand and visualize, and yet are expressive enough to model any topological space.
+
+\end{abstract}
+
+\author{David I. Spivak}
+
+\title{Networks with shared spaces should be modeled by simplicial sets, not graphs}
+
+\thanks{This project was supported in part by the Office of Naval Research.}
+
+\maketitle
+
+\tableofcontents
+
+\longnote{Add to the introduction the idea of ``reliable multicast"}
+\longnote{Simplicial sets or semisimplicial sets?}
+\longnote{Categories are networks.  These are modeled by simplicial sets (nerve)}
+\longnote{Access control list.}
+\longnote{Peer to Peer (ad-hoc addition of nodes).  Supernodes}
+\longnote{OSN: Online social networks}
+\longnote{Network architecture!}
+\longnote{The internet itself is a tree, a 1-graph.  But on a conceptual level, it may be useful to consider higher-dimensional phenomena!}
+
+\section{Introduction}
+
+Networks are commonly conceived as directed or undirected graphs (\cite{S},\cite{},\cite{}), in which the nodes represent entities and the edges represent lines of communication.  These graphs can be considered as topological (or metric) spaces, meaning that one can assign to any pair of points on the graph a notion of distance.  Doing so generally has a nice interpretation: the closer the nodes, the better the communication between them.  
+
+The topological space one associates to a graph is always 1-dimensional: if a person were to stand at any point in the graph, he or she would have only a finite set of directions in which movement was possible.  On a 2-dimensional surface, one would have infinitely many choices for movement at any point, each determined by an angle.  In a 3-dimensional ``space," one would have even more options, requiring more than one variable to indicate direction.  Mathematics leaves room for larger spaces as well ($n$-dimensional spaces), but in this paper when we say ``higher dimensional" we mean any $n>1$, and one may imagine surfaces of dimension $n=2$.
+
+The purpose of this paper is to propose that higher-dimensional graphs are an important possibility to consider when describing a network, and to provide a wide array of new mathematical models for these higher-dimensional graphs.  One category of such models, which has been around since the 1940s (and due to Eilenberg and Zilber) is that of simplicial sets (\cite{J}).  These combinatorial mathematical objects are based solely on the workings of finite ordered sets and yet have the expressive power to model any topological space, in a precise sense \cite{H}.  Simplicial sets have countless cousins, brought to us by the modern field of category theory, many of which have not been studied.  These related categories give the researcher an endless supply of other models which can be fitted to the situation at hand.
+
+Before describing simplicial sets, let us give a constructive description of graphs.  When thinking of a graph $G$, one may imagine it in its completed form or one may imagine building it from scratch.  In the second case, we build $G$ inductively, beginning with a single vertex $G_0=\{v\}$ and at the $n+1$st stage ``gluing" a new edge $e_{n+1}$ on to the current graph $G_n$.  We perform this gluing by choosing a subset of the vertices of the edge $e_{n+1}$ and a subset of the vertices of the graph $G_n$ and then attaching in a prescribed way.  If $G$ is finite, this process will end in a finite number of steps.  The preceding inductive description can be made rigorous in terms of the typical mathematical conception of a graph as a pair of arrows $E\tto V$; see \ref{building graphs inductively}.
+
+One may imagine simplicial sets in the same way, except instead of only speaking of vertices and edges, one also may attach triangles and higher-dimensional triangles (tetrahedra, etc.).  While the use of triangles may seem a bit ad hoc, they are not: an $n$-dimensional triangle is the polyhedral ``hull" of $n+1$ vertices (one should check this in the case $n=0,1,2,3$).  A simplicial set is a polyhedral shape that can be made by gluing together edges, triangles, etc., along common vertices, faces, etc.  Thus, one can imagine two triangles that share a common edge or three tetrahedra that share a common vertex.  We can build any finite simplicial set by gluing in new edges, triangles, etc.  Like graphs, these polyhedra are purely combinatorial and fall under the banner of discrete mathematics.  Note that any graph canonically has the structure of a (1-dimensional) simplicial set.
+
+We will describe simplicial sets more carefully in Section \ref{sec:simplicial sets}, and we will describe their relevance to networks in Section \ref{sec:networks}, but let us here briefly explain the inadequacy of graphs for understanding networks.  
+
+Imagine a table of four people at a restaurant communicating with each other; this event is understood as a simple network with four nodes.  If everyone can hear everyone else, then graph-theoretically this network is represented by a complete graph on four vertices.  Now imagine a situation of four people playing the game ``telephone" so that each person may only whisper in the ear of another person.  If each person can whisper to anyone else, this scenario is again modeled graph-theoretically by a complete graph on four vertices.  But the situations are extremely different!  One-dimensional graph theory does not capture the distinction between these scenarios, but higher-dimensional theory can: a solid tetrahedron represents the foursome communicating together in a single context, whereas the complete graph on 4-vertices models the ``telephone" situation.  
+
+Whereas all 1-dimensional graphs are topologically equivalent (more precisely, homotopy equivalent) to some number of circles \cite{}, a simplicial set can have arbitrarily complex topological structure \cite{}.  The topological analysis of a network has a better chance of discerning key features of the network if it is modeled with simplicial sets than if it is modeled by graphs.  The advantages of a higher-dimensional approach should be clear on the face of it: if a model cannot discern that a party of four is different than ${4}\choose{2}$ whispering pairs, then it cannot do an adequate job of modeling how information is actually conveyed.
+
+Simplicial sets are only one version of higher-dimensional graphs.  Hypergraphs have already been widely used as a counterpart (\cite{}), but these are not especially good models for networks (\cite{}).  Moreover, the theory of hypergraphs can be understood solely in terms of functions on the set of simplices of a simplicial set (see \ref{hypergraphs as boolean function on simplices}).  We discuss the drawbacks of hypergraphs, as well as a more detailed account of the situations in which 1-graphs are or are not adequate models, in Section \ref{sec:drawbacks}.  In Section \ref{sec:other models}, we discuss a generalization of simplicial sets that allows the working researcher to choose from a whole host of categories the one which best fits the network at hand.
+
+We conclude the paper with Section \ref{sec:applications}, in which we describe some applications of the the higher-dimensional network models, as well as some avenues for further research.
+
+The author would like to thank Paea LePendu for many useful conversations.
+
+\section{Simplicial Sets}\label{sec:simplicial sets}
+
+In this section we give two rigorous definitions of simplicial sets, one presented set-theoretically, and the other presented category-theoretically.  We feel obliged to give the rigorous definition of simplicial sets, but we wish to emphasize that it is not needed to read most sections of this paper.  We thus suggest that the reader skip this section on the first reading unless he or she is particularly interested in the mathematical details.  However, before skipping this section one should take a look at Remark \ref{rem:all you need to know} to make sure he or she can visualize simplicial sets.
+
+Simplicial sets have a close cousin, called semi-simplicial sets.  Both are founded on the workings of finite ordered sets, but both are expressive enough to model all topological spaces up to homotopy (\cite{}).  Simplicial sets are more structured and have better formal properties, but are more difficult to imagine.  While topologists usually prefer working with them, simplicial sets can be daunting to people seeing them for the first time.  For this reason, we elide the difference between simplicial sets and semi-simplicial sets often throughout this paper.  In this section we will only give the set-theoretic version of semi-simplicial sets, but give the category-theoretic version of both.
+
+\longnote{It's important to say that simplicial sets have a big advantage over hypergraphs: you can visualize them!!}
+
+\begin{definition}[Set-theoretic definition of semi-simplicial set]\label{def:set def of sset}
+
+A {\em semi-simplicial set} $X$ consists of a sequence of sets $(X_0,X_1,X_2,\ldots)$, and for every $n\geq 1$ a collection of functions $d^n_0,d^n_1,\ldots,d^n_n$ each of which has domain $X_n$ and codomain $X_{n-1}$.  These functions must satisfy the following identity for $n\geq 2$: $$d^{n-1}_i\circ d^n_j=d^{n-1}_{j-1}\circ d^n_i.$$  
+
+For each $n\geq 0$ the set $X_n$ is called the set of {\em $n$-simplices} of $X$.  The function $d^n_i\taking X_n\to X_{n-1}$ is often abbreviated $d_i$ and is called the {\em $i$th face operator}.  The {\em dimension} of $X$ is the largest number $n$ such that $X_n\neq\emptyset$, or $\infty$ if there is no such largest $n$.
+
+We may write $X$ as $$\xymatrix{\cdots \arrrr{r}&X_2\arrr{r}&X_1\arr{r}&X_0.}$$
+
+\end{definition}
+
+\begin{remark}
+
+Definition \ref{def:set def of sset} may seem difficult to comprehend on first glance.  One should think of $X$ as a polygonal shape made of triangles, like two triangles put together to form a square.  The set $X_0$ is the set of vertices of that shape, the set $X_1$ is the set of edges, the set $X_2$ is the set of triangles (called 2-simplices in this parlance because they are 2-dimensional), etc.  
+
+Each 2-simplex in $X$ has three edges: across from each vertex in the triangle is an edge not touching it.  These correspond to the three face operators $d^2_0,d^2_1,d^2_2$ which are tasked with telling us which three edges form the boundary of a given 2-simplex.
+
+\end{remark}
+
+\begin{definition}
+
+Let $X=\xymatrix@1{\cdots \arrrr{r}&X_2\arrr{r}&X_1\arr{r}&X_0}$ be a semi-simplicial set.  The {\em 1-skeleton} of $X$ is the (directed) graph $$\xymatrix@1{X_1\ar@<.35ex>[r]^{d_1}\ar@<-.35ex>[r]_{d_0}&X_0,}$$ obtained by forgetting all higher-order ($n\geq 2$) data in $X$. 
+
+Here, $X_1$ is the set of edges and $X_0$ is the set of vertices of the 1-skeleton;  $d_1$ takes each edge to its source, and $d_0$ takes each edge to its target.
+
+\end{definition}
+
+\begin{example}
+
+A filled-in square, composed of two triangles glued along their diagonal, is drawn below.
+
+\begin{center}\begin{picture}(40,40)
+
+\put(0,0){a}\put(0,44){c}\put(44,0){b}\put(44,44){d}
+\put(4,4){$\bullet$}\put(4,40){$\bullet$}\put(40,4){$\bullet$}\put(40,40){$\bullet$}
+\put(6,6){\vector(1,0){36}}\put(6,6){\vector(1,1){36}}\put(6,6){\vector(0,1){36}}
+\put(42,6){\vector(0,1){36}}\put(6,42){\vector(1,0){36}}
+\end{picture}\end{center}
+
+Here we have $X_0=\{a,b,c,d\}, X_1=\{ab,ac,ad,bd,cd\},$ and $X_2=\{abd,acd\}$.  Each triangle has three edges, given by the various $d^2$'s: $d^2_0(abd)=bd, d^2_0(acd)=cd, d^2_1(abd)=d^2_1(acd)=ad, d^2_2(abd)=ab,$ and $d^2_2(acd)=ac$.  Similarly, each edge has two vertices: $d^1_1(ac)=d^1_1(ad)=d^1_1(ab)=a$, $d^1_0(ad)=d^1_0(bd)=d^1_0(cd)=d$, $d^1_0(ac)=d^1_1(cd)=c$, and $d^1_0(ab)=d^1_1(bd)=b.$ 
+
+Knowing the above sets $X_i$ and face operator equations allows one to completely reconstruct the square.  
+
+The 1-skeleton of the above square is drawn the same way, but one imagines the triangles as empty in this case; it is just 5 edges.  As a graph, it is written $\{ab,ac,ad,bd,cd\}\tto\{a,b,c,d\}$, where one of the maps assigns to each edge its first vertex and the other assigns the second vertex.  This is precisely what is achieved by $d^1_1$ and $d^1_0$ above.
+
+\end{example}
+
+As promised, we also give a category-theoretic definition.  \shortnote{at some point cite mac lane.}
+
+\begin{definition}[Categorical definition of semi-simplicial sets]
+
+Let $\mcD$ denote the category whose objects are the finite non-empty ordered sets, and whose morphisms are strictly increasing maps.  Let $\mcD\op$ denote the opposite category.  The {\em category of semi-simplicial sets} is the category of functors $\Sets^{\mcD\op}$, whose objects are functors $\mcD\op\to\Sets$ and whose morphisms are natural transformations.
+
+\end{definition}
+
+\begin{definition}[Categorical definition of simplicial sets]
+
+Let $\bD$ denote the category whose objects are the finite non-empty ordered sets, and whose morphisms are non-decreasing maps.  Let $\bD\op$ denote the opposite category.  The {\em category of simplicial sets} is the category of functors $\Sets^{\bD\op}$, whose objects are functors $\bD\op\to\Sets$ and whose morphisms are natural transformations.
+
+\end{definition}
+
+\begin{remark}\label{rem:all you need to know}
+
+\end{remark}
+
+\comment{For each $n$ there is a function $\Vrt_n\taking X_n\to (X_0)^{\times(n+1)}$, sending an $n$-simplex to its set of vertices.  It is induced by the $n+1$ functions $[0]\to[n]$.
+
+\begin{definition}
+
+A {\em simplicial v-set} is a simplicial set $S$ with the additional property that, for each $n$ the map $\Vrt_n$ is injective.  That is, no two $n$-simplices have the same ordered set of vertices.
+
+\end{definition}}
+
+
+
+\section{Networks as simplicial sets}\label{sec:networks}
+
+
+As discussed in the introduction, graphs are not suitable models for many kinds of networks that exist in the real world.  One way of stating the inadequacy is that graphs do not contain enough data to discern public conversations from private ones.  They do not leave room for contexts shared by more than two people.
+
+For example, consider again the case of four friends, named Alice, Bob, Carmen, and Dan, sitting around a table.  When Alice talks, each other person hears the utterance -- it is a public event.  Now imagine that Dan asks both Bob and Carmen to whisper to him what Alice said.  He can compare both of  their impressions with his own impression of what she said, and use that comparison to gain information about his friends and about what was said.  His analysis can rely on the fact that Alice made her statement to the whole group at once.
+
+Now let us return to the case that the four friends can only whisper to each other.  Suppose Alice whispers a message to Bob, Carmen, and Dan, individually and privately.  Again, Dan asks both Bob and Carmen to whisper to him what Alice said to them.   In this case, if Dan hears different messages, he has no way to determine where those differences arose; he does not even know whether Alice gave the same message to each person.
+
+It should be clear that these two scenarios are vastly different.  The existence of public knowledge, like an earthquake or a public statement, is a crucial part of building a coherent network.  If each person can only speak in private conversations, building consensus and trust is impossible because no one can tell who is being truthful in their account or accurate in their assessments.  
+
+Using simplicial sets, the two scenarios are modeled in vastly different ways.  The first is modeled by a solid tetrahedron, representing the idea that there is a public ``space" shared by all participants.  We may imagine that Alice's utterance fills this space.  The second is modeled by the ``1-skeleton" of the tetrahedron, the six line segments connecting its four vertices.  This represents isolated lines of communication without anything shared.  As a graph, the two situations are modeled in the same way, both as the 1-skeleton of a tetrahedron.  This ``thin" version cannot be used to understand the concept of public space, and thus fails to model the public situation.  
+
+One can also imagine a host of other scenarios that are intermediate to the above two, all of which can be modeled by simplicial sets.  For example, if Alice can only converse with Bob, Carmen, and Dan privately, but the latter three can talk among themselves, then this would be modeled by a solid triangle BCD, each vertex of which is connected by a line segment to a vertex A.
+
+\subsection{Networks modeled by graphs}
+
+Many networks can be modeled by (1-dimensional) graphs.  For example, if one does not use ``multicast" network.  When a person sends email, it always passes privately to the recipient.  Even if the recipient list of an email includes multiple addresses, none of the recipients has any way to truly know that the same message was sent to each person.  The message does not exist in a public forum.
+
+Graphs are good models for any type of network in which all correspondences are private, or ``one-on-one," because every incidence between nodes involves only two nodes.  In a martial arts movie, it seems that all fights, even brawls, involve only two players at any one time; these sorts of fights could be modeled by graphs.
+
+The graph model breaks down as soon as one wants to consider threesome, foursomes or $n$-somes interacting all at once.  In an online social network (e.g. Facebook), some communications are posted to a public forum which can be accessed by any member of the group.  Assuming the internal integrity of the system (i.e. assuming Facebook displays the same messages to each member of the group), the message is {\em shared} by the group.  These situations are not well-modeled by graphs.  
+
+Similarly, if one wishes to consider a brawl as a context that differs from multiple one-on-one contests, then graphs are not sufficient.  The distinction here is interesting: in what sense does a fight among three people differ from the three simultaneous subfights among pairs?  To answer this question, one might put the fighters in a ring with a thick vertical pole in the center, keeping them on the perimeter of the ring, and witness how that changes their interaction.  Doing so amounts to putting a ``hole" in the center of the triangle which represents their interaction, converting it from a (2-dimensional) triangle to its (1-dimensional) boundary.  Examples like this illustrate the difference between simplicial sets and graphs in terms of what they can model.
+
+Here are some networks that are best modeled with graphs.
+
+\cite{BG}
+
+\begin{enumerate}
+
+\item transportation networks
+
+\item Digraph: one-way streets
+
+\item one-on-one tournaments
+
+\item Electrical flow (wires).
+
+\item gossip.
+
+
+
+\end{enumerate}
+
+\subsection{Network modeled by simplicial sets}
+
+If we look back at the definition of simplicial sets (Definition \ref{def:simplicial sets}), we notice that each simplex has ordered vertices.  In all our discussions above, we have been suppressing this fact.  Simplicial sets may ``look like" the polygonal shapes we've described, but they also have more structure.    This is akin to the fact that graphs can be directed; they may look like 1-dimensional spaces, but each edge has ordered vertices, giving it a directionality.  
+
+To represent a given real-world situation, this ordered structure may be useful or it may not.  If it is not, we could either continue to use simplicial sets as our model but forget the ordered structure, or we could use a more refined higher-dimensional model.  In this section we discuss situations in which simplicial sets, in all their ordered glory, are most adequate as models.  In Section \ref{sec:other models} we explain how easy it is to create other mathematical categories which can be chosen to satisfy the demands of the situation at hand.
+
+We begin again with 1-dimensional simplicial sets, because these are just graphs; in this case, we are just asking how one decides whether to use directed or undirected graphs as models for a given situation.  One should think of undirected graphs as {\em symmetric directed graphs}, i.e. directed graphs $G$ such that if $v,v'$ are vertices, then there is a bijection between the set of directed edges connecting $v$ to $v'$ and the set of directed edges connecting $v'$ to $v$.  With this condition imposed, there is no need to draw the arrows.
+
+Undirected graphs are not capable of expressing as much as directed graphs are.  However, this extra expressiveness for directed graphs has its drawbacks.  First, they take up more space and are harder to analyze because they have more structure.  Second, that extra structure is sometimes not relevant to the task at hand: if all interactions in a certain arena are by nature symmetric, then adding the extra structure of directionality is not only slower, it's misrepresentative of the inherent structure of the given arena.  Category theory teaches us to take these types of considerations seriously.
+
+Again, the simplices in a simplicial set are by definition ordered.  Of course, if one wishes to impose on a simplicial set $X$ a symmetry condition akin to the one for undirected graphs, one would demand the following symmetry condition on $X$. \begin{description}\item[Symmetry condition] If $v_0,v_1,\ldots,v_n$ are vertices of $X$ then, for any permutation $\sigma$ of the set $\{0,1,\ldots,n\}$, there exists a bijection between the set of simplices in $X$ whose ordered sequence of vertices is $(v_0,v_1,\ldots,v_n)$ and the set of simplices in $X$ whose ordered sequence of vertices is the permuted sequence $(v_{\sigma(0)},v_{\sigma(1)},\ldots,v_{\sigma(n)})$.\end{description}
+
+The point is that we can describe ``unordered simplicial sets" within the setting of (ordered) simplicial sets, if we so choose.  However, let us now imagine some scenarios in which the ordering is useful.
+
+\begin{enumerate}
+
+\item An ordered multicast
+\item A set of interacting processes (where some subprocesses are part of two different processes)
+\item A route from A to B including stops which can be skipped or bipassed, together with caravan or meeting possibilities.
+\item Stress analysis of a shape by triangulation.
+
+\end{enumerate}
+
+\subsection{Other networks}
+
+Consider a system of multicasts, in which source nodes send messages to sets of target nodes.  Above \shortnote{?} we imagined a system in which each member of the audience for a message was responsible for relaying the message to any subsequent member.  In the standard model for multicasts, this is not done; instead, members of the audience have no responsibility and do not know who the other members are \cite{}.  For this type of situation, the simplicial set model is not appropriate.  
+
+In Section \ref{sec:other models} we discuss a variety of categories that are similar to the category of simplicial sets, but which model slightly different network situations.  Recall that simplicial sets are based on the workings of finite ordered sets, which can be understood as ``string" categories with $n+1$ objects ($n\geq 0$), perhaps labeled $0$ through $n$, and a unique morphism from $i$ to $j$ if $i\leq j$.  If we want to model the multicast scenario above, we should should replace these string categories with ``multicast categories," i.e. categories with $n+1$ objects, one of which is initial, and no other non-identity arrows.  
+
+\begin{enumerate}
+
+\item Local hierarchies (preorders).
+\item Local trees (finite trees)
+\item Ad hoc networks.  For example, twitter accounts with the ability to verify agreement (the full subcategory of $\Cat$ spanned by the multicast categories and $E_2$, the contractible groupoid on 2 objects).
+\item Symmetric networks (symmetric sets = contractible groupoids on $n+1$ letters).
+\item Cellular automata.
+
+\end{enumerate}
+
+\section{Drawbacks of hypergraphs in modeling networks}\label{sec:drawbacks}
+
+\longnote{Not visualizable (or very ugly visualization), and mathematical analysis of these objects is difficult.  contrast simplicial sets.  For example, multiple 1-ary edges with same vertex, n-ary edges consisting of a single vertex, etc.}
+
+We recall from \cite{DW} the definition of a hypergraph.  If $S$ is a set, let $\PP_+(S)=\{R\ss S| R\neq\emptyset\}$ denote the set of nonempty subsets of $S$.
+
+\begin{definition}
+
+A {\em hypergraph} consists of a triple $(E,V,f)$, where $E$ and $V$ are sets (called the set of {\em hyperedges} (or {\em edges}) and the set of {\em vertices}, respectively), and where $f\taking E\to\PP_+(V)$ is a function.  If $e\in E$ is a hyperedge and the cardinality $|f(e)|$ is $n\in\NN$ then we say that $e$ is an $n$-edge. We say that an edge $e$ {\em links} its vertices $f(e)$.
+
+A morphism of hypergraphs $(E_1,V_1,f_1)\to(E_2,V_2,f_2)$ consists of maps $\alpha\taking E_1\to E_2$ and $\beta\taking V_1\to V_2$, such that if $\beta_*\taking\PP_+(V_1)\to\PP_+(V_2)$ denotes the map $(R\ss V_1)\mapsto \beta(R)\ss V_2)$, then the diagram $$\xymatrix{E_1\ar[r]^{f_1}\ar[d]_\alpha&\PP_+(V_1)\ar[d]^{\beta_*}\\E_2\ar[r]_{f_2}&\PP_+(V_2)}$$ commutes.
+
+\end{definition}
+
+The category of hypergraphs is a bit strange in the following way.  Let $H_1=(\{e_1\},\{v_1\},f)$ denote the unique hypergraph with one edge and one vertex.  Let $H_2=(\{e_2\},\{v_2,w_2\},g)$ denote the hypergraph with two vertices and one edge, where that edge connects the two vertices ($g(e_2)=\{v_2,w_2\}$).  Then there is {\em no morphism} from $H_1$ to $H_2$.  This is a simple example, but it is easily generalized.
+
+The question we must ask ourselves first is, ``for what types of networks are hypergraphs appropriate models?"  Imagine a scenario in which three people are talking (modeled by a hypergraph with three vertices and one 3-edge).  Another person comes and makes a foursome (four vertices and one 4-edge).  This is {\em not} a morphism of hypergraphs!  Only if the original threesome remains exclusive in some way (i.e. retains the 3-edge), will it be a morphism of hypergraphs.
+
+Note that in the category of simplicial sets, there is are always morphisms from $n$-simplices to $n+1$-simplices (there are several).  Thus, it is easy to model the first scenario above, the transformation of a threesome into a foursome.  We could also model the second scenario, in which the three-some remains exclusive in some way within the foursome, using a simplicial set constructed by gluing an additional triangle onto the bottom of a tetrahedron.  As the reader can see, simplicial sets are quite versatile. 
+
+It is hard to imagine the situations in which the hypergraph category gives the appropriate model.  In many applications, there are users who are able to add or drop an affiliation to a group; such actions do not yield hypergraph morphisms.  However, though it may seem like ``bad news" to a category theorist, perhaps a certain researcher does not care about the morphisms of hypergraphs and just wants to study static, unchanging hypergraphs.  What are these useful for?  
+
+In online social networks such as Facebook, it is possible for a set $S$ of users to form a group in such a way that some (many!) subsets of $S$ do not form a group.  If the researcher considers this aspect of the application important, then hypergraphs are the appropriate model.  However, one may find that allowing subgroups to interact is beneficial to the network, and thus use the simplicial sets as a guide to creating more user-friendly networks.  Or, one may find that, even if to some extent the above limitation is important to consider, the mathematical analysis is so improved when using simplicial sets rather than hypergraphs, because of their superior category-theroetic and topological properties, that glossing over the limitation is worthwhile.
+
+So that it does not appear that our imagination is running away from us, let us consider an example, namely that of word associations (see \cite{LC}).  Here one is interested in sequences of words that have conceptual meaning above and beyond the sums of their parts (such as ``Wall Street").  One wishes to discover concepts simply by analyzing word associations across large samples of documents.  The authors show that, while hypergraphs can be (and have been) used to study this problem, simplicial sets do a better job of discovering real concepts.
+
+Before we leave this section, it seems worthwhile to look at the relationship between hypergraphs and simplicial sets.  This way, any application that currently uses hypergraphs can be transformed to one that uses simplicial sets.
+
+Let us imagine our simplicial sets as unordered for the moment (see Definition \ref{}).  We could roughly say that a simplicial set is a hypergraph $H$ such that if $e$ is a hyperedge with vertices $f(e)$ then for each non-empty subset of $f(e)$, there is a hyperedge linking those vertices as well.  ``The hyperedges are closed under taking subsets of their vertices."
+
+We have understood simplicial sets in terms of hypergraphs; now let us define hypergraphs in terms of simplicial sets.  Suppose that $X$ is a simplicial set; let $s(X)=\coprod_{n\geq 1}X_n$ denote the set of all simplices of $X$ that are not vertices.  Then any function $h\taking s(X)\to\{0,1\}$ defines a hypergraph $(E,V,f)$ in the following way.  Let $V=X_0$ be the set of vertices of $X$, let $E=\{x\in s(x)|h(x)=1\}$, and let $f\taking E\to \PP_+(V)$ denote the function sending each simplex to its set of vertices.  The idea is that a hypergraph is a simplicial sets with some of the simplices ``turned off."  
+
+\section{Other models of higher-dimensional graphs}\label{sec:other models}
+
+Below, when we speak of finite sets and categories, we mean both finite {\em and non-empty}.
+
+\begin{enumerate}
+
+\item The category of finite contractible groupoids.
+
+\item The category of finite ordered sets.
+
+\item The category of finite categories.
+
+\item The category of finite categories that have an initial object and no other non-identity morphisms (if $n+1$ objects then $2n+1$ morphisms.)
+
+\item ``Subjective experience": the category of finite categories that have a final object and no other non-identity morphisms.
+
+\item The category of connected finite categories.
+
+\item The category of finite pre-orders.
+
+\end{enumerate}
+
+\section{Applications and further research}\label{sec:applications}
+
+Throughout this paper we have given specialized scenarios that can be better modeled with a higher-dimensional graph of some kind than by an ordinary graph or hypergraph.  In Section \ref{sec:other models} especially we hoped to convince the reader that mathematical models can be specifically chosen to represent the key features of the situation at hand.
+
+Before discussing the possibility of future research in this area, we present one more application of the ideas in this paper.  This application in some sense encompasses all the others.  
+
+In linguistics, it is noted that every individual speaks his or her own ``idiolect."  Similarly, every subculture of people has its own ``dialect," with specialized meanings given to words and phrases \cite{}.   Given a set $A$ of people and a subset $B\ss A$, any speech delivered to group $A$ is automatically delivered to group $B$.  We can think of each group of people as a ``context" for speech because the meaning of a phrase is dependent on the group of people to whom it is spoken.  One can see that the context associated to group $A$ transcends, but includes, the contexts associated to its subgroups: the whole can be greater than the sum of its parts.
+
+Simplicial sets are an excellent setting for studying these types of situations.  A certain pair of people can be a part of several different larger groups, which we can visualize as several large simplices which share a common edge.  The communications of the world would form a huge simplicial set, with one simplex for each group of people who communicate together.  These simplices would be joined when they share a common subgroup of people.
+
+One sees that this is not only a model for linguistic communication but also for online social networks, database integration problems, protocol hierarchies \shortnote{?}, etc.  Any time we are interested in allowing groups to interact in a common context in such a way that the interaction effects every subgroup in a possibly different way, simplicial sets provide models that exceed the expressive power of graphs.
+
+
+
+\comment{Applications of these ideas is numerous.  It has been our claim all along that many networks one encounters in real life are best modeled by higher-dimensional graphs, like simplicial sets, rather than 1-dimensional graphs or hypergraphs.  Section \ref{sec:other models} gives a variety of scenarios in which other categories of higher-dimensional graphs serve as even better models.
+
+In this section, however, we would like to flesh out a common real-world situation: a party.  In this party, sometimes someone is talking privately to another person.  Sometimes someone is relating a story from his or her life to a small group.  Sometimes someone is making an announcement to everyone simultaneously.  Sometimes a group of people are saying (singing?) something in unison.  Sometimes a game is being played in which certain groups try to communicate to other groups in specialized ways.
+
+What is interesting about this scenario is not that there are so many types of communications occurring, but that they are interrelated.  For example, imagine that two people (C and D) are enjoying the fact that they can only hear only one side (A to B) of a certain conversation (involving both A to B and B to A).  This can be modeled by \shortnote{start here.  can we find a way to use the category of finite categories here?}}
+
+\bibliographystyle{amsalpha}
+\begin{thebibliography}{JTT}
+
+\bibitem[S]{S} Scott, J. Social network analysis.
+
+\bibitem[ER]{ER} Ernesto Estrada1* and Juan A. Rodr’guez-Vel‡zquez2.  Complex Networks as Hypergraphs. http://arxiv.org/pdf/physics/0505137
+
+\bibitem[J]{J} James,I. History of Topology.
+
+\bibitem[H]{H} Hovey, M.  Model Categories.
+
+\bibitem[LC]{LC} Lin, Chiang.  A simplicial complex, a hypergraph,
+structure in the latent semantic space
+of document clustering
+
+\bibitem[BG]{BG} Jorgen Bang-Jensen, Gregory Gutin.  Digraphs Theory, Algorithms and Applications
+15th August 2007.  Online: http://www.cs.rhul.ac.uk/books/dbook/main.pdf
+
+\bibitem[DW]{DW} Dšrfler, W.; Waller, D. A.
+A category-theoretical approach to hypergraphs. 
+Arch. Math. (Basel) 34 (1980), no. 2, 185--192. 
+
+\end{thebibliography}
+\end{document}

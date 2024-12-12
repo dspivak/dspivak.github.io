@@ -1,0 +1,1079 @@
+\documentclass{latex/sig-alternate}
+
+\RequirePackage{amsmath, amssymb, latexsym}
+\usepackage{epsfig}
+\usepackage{fancyvrb,relsize}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{tabularx,colortbl}
+\usepackage{rotating}
+\usepackage{pifont}
+\usepackage{times}
+\usepackage{multirow}
+\usepackage{hyperref}
+
+
+%  ============================================================================
+
+
+
+\usepackage{amscd,stmaryrd,setspace,hyperref,color}
+\usepackage{lmodern}
+
+\input xy
+\xyoption{all} \xyoption{poly} \xyoption{knot}\xyoption{curve}
+\input{diagxy}
+
+% changed to test. carlo is god
+
+\newcommand{\noshow}[1]{}
+\def\comment{\noshow}
+
+
+\newcommand{\longnote}[2][4.9in]{\fcolorbox{black}{yellow}{\parbox{#1}{\color{black} #2}}}
+\newcommand{\shortnote}[1]{\fcolorbox{black}{yellow}{\color{black} #1}}
+\newcommand{\q}[1]{\begin{question}#1\end{question}}
+\newcommand{\g}[1]{\begin{guess}#1\end{guess}}
+
+\def\tn{\textnormal}
+\def\mf{\mathfrak}
+\def\mc{\mathcal}
+
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\CC{{\mathbb C}}
+\def\AA{{\mathbb A}}
+\def\PP{{\mathbb P}}
+\def\NN{{\mathbb N}}
+
+\def\Hom{\tn{Hom}}
+\def\Fun{\tn{Fun}}
+\def\Ob{{\bf Ob}}
+\def\Arr{{\bf Arr}}
+\def\comp{\tn{comp}}
+\def\Op{\tn{Op}}
+
+\def\to{\rightarrow}
+\def\from{\leftarrow}
+\def\cross{\times}
+\def\taking{\colon}
+\def\inj{\hookrightarrow}
+\def\surj{\twoheadrightarrow}
+\def\too{\longrightarrow}
+\def\fromm{\longleftarrow}
+\def\tooo{\longlongrightarrow}
+\def\tto{\rightrightarrows}
+\def\ttto{\equiv\!\!>}
+\def\ss{\subset}
+\def\superset{\supset}
+\def\iso{\cong}
+\def\down{\downarrow}
+\def\|{{\;|\;}}
+\def\m1{{-1}}
+\def\op{^\tn{op}}
+\def\loc{\tn{loc}}
+\def\la{\langle}
+\def\ra{\rangle}
+\def\wt{\widetilde}
+\def\wh{\widehat}
+\def\we{\simeq}
+\def\ol{\overline}
+\def\ul{\underline}
+\def\qeq{\mathop{=}^?}
+\def\hsp{\hspace{.2in}}
+
+\def\ullimit{\ar@{}[rd]|(.3)*+{\lrcorner}}
+\def\urlimit{\ar@{}[ld]|(.3)*+{\llcorner}}
+\def\lllimit{\ar@{}[ru]|(.3)*+{\urcorner}}
+\def\lrlimit{\ar@{}[lu]|(.3)*+{\ulcorner}}
+\def\ulhlimit{\ar@{}[rd]|(.3)*+{\diamond}}
+\def\urhlimit{\ar@{}[ld]|(.3)*+{\diamond}}
+\def\llhlimit{\ar@{}[ru]|(.3)*+{\diamond}}
+\def\lrhlimit{\ar@{}[lu]|(.3)*+{\diamond}}
+\newcommand{\clabel}[1]{\ar@{}[rd]|(.5)*+{#1}}
+\newcommand{\TriRight}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longrightarrow}\ar@{}[u]|>>>>{#7}}}
+\newcommand{\TriLeft}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longleftarrow}\ar@{}[u]|>>>>{#7}}}
+\newcommand{\TriIso}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longleftrightarrow}\ar@{}[u]|>>>>{#7}}}
+
+
+\newcommand{\arr}[1]{\ar@<.5ex>[#1]\ar@<-.5ex>[#1]}
+\newcommand{\arrr}[1]{\ar@<.7ex>[#1]\ar@<0ex>[#1]\ar@<-.7ex>[#1]}
+\newcommand{\arrrr}[1]{\ar@<.9ex>[#1]\ar@<.3ex>[#1]\ar@<-.3ex>[#1]\ar@<-.9ex>[#1]}
+\newcommand{\arrrrr}[1]{\ar@<1ex>[#1]\ar@<.5ex>[#1]\ar[#1]\ar@<-.5ex>[#1]\ar@<-1ex>[#1]}
+
+\newcommand{\To}[1]{\xrightarrow{#1}}
+\newcommand{\Too}[1]{\xrightarrow{\ \ #1\ \ }}
+\newcommand{\From}[1]{\xleftarrow{#1}}
+
+\newcommand{\Adjoint}[4]{\xymatrix@1{#2 \ar@<.5ex>[r]^-{#1} & #3 \ar@<.5ex>[l]^-{#4}}}
+ 
+\def\id{\tn{id}}
+\def\Top{{\bf Top}}
+\def\Cat{{\bf Cat}}
+\def\Str{{\bf Str}}
+\def\Sets{{\bf Set}}
+\def\Set{{\bf Set}}
+\def\set{{\text \textendash}{\bf Set}}
+\def\sSet{{\bf sSet}}
+\def\sSets{{\bf sSets}}
+\def\Grpd{{\bf Grpd}}
+\def\Pre{{\bf Pre}}
+\def\Shv{{\bf Shv}}
+\def\Rings{{\bf Rings}}
+\def\Piv{{\bf Piv}}
+\def\Data{{\bf Data}}
+\def\UpCmd{{\bf UpCmd}}
+\def\Up{{\bf Up}}
+\def\Tr{{\bf Tr}}
+
+\def\colim{\mathop{\tn{colim}}}
+
+\def\mcA{\mc{A}}
+\def\mcB{\mc{B}}
+\def\mcC{\mc{C}}
+\def\mcD{\mc{D}}
+\def\mcE{\mc{E}}
+\def\mcF{\mc{F}}
+\def\mcG{\mc{G}}
+\def\mcH{\mc{H}}
+\def\mcI{\mc{I}}
+\def\mcJ{\mc{J}}
+\def\mcK{\mc{K}}
+\def\mcL{\mc{L}}
+\def\mcM{\mc{M}}
+\def\mcN{\mc{N}}
+\def\mcO{\mc{O}}
+\def\mcP{\mc{P}}
+\def\mcQ{\mc{Q}}
+\def\mcR{\mc{R}}
+\def\mcS{\mc{S}}
+\def\mcT{\mc{T}}
+\def\mcU{\mc{U}}
+\def\mcV{\mc{V}}
+\def\mcW{\mc{W}}
+\def\mcX{\mc{X}}
+\def\mcY{\mc{Y}}
+\def\mcZ{\mc{Z}}
+
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+
+%\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{guess}[theorem]{Guess}
+\newtheorem{answer}[theorem]{Answer}
+\newtheorem{construction}[theorem]{Construction}
+
+%\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{postulate}[theorem]{Postulate}
+
+\def\Finm{{\bf Fin_{m}}}
+\def\El{{\bf El}}
+\def\Gr{{\bf Gr}}
+\def\DT{{\bf DT}}
+\def\DB{{\bf DB}}
+\def\Tables{{\bf Tables}}
+\def\Sch{{\bf Sch}}
+\def\Fin{{\bf Fin}}
+\def\P{{\bf P}}
+\def\SC{{\bf SC}}
+\def\ND{{\bf ND}}
+\def\Poset{{\bf Poset}}
+\def\Tab{{\bf Tab}}
+\def\dash{\,\tn{-}}
+%\def\'{\textnormal{'}}
+\def\singleton{{\{\star\}}}
+\newcommand{\start}[1]{\longnote{Start here with #1}}
+\newcommand{\LTO}[1]{\bullet^{\tn{#1}}}  % "Labeled text object"
+\newcommand{\LMO}[1]{\bullet^{#1}}   %"Labeled math object" 
+\newcommand{\LA}[2]{\ar[#1]^{\tn{#2}}}   %"Labeled arrow"
+\newcommand{\LLA}[2]{\ar[#1]_{\tn{#2}}}  %"Leftward labeled arrow"
+\newcommand{\namecat}[1]{\begin{center}$#1:=$\end{center}\vspace{-.1in}}
+
+% ============================================================================
+\newcommand{\commcc}[1]{\textcolor{blue}{CC: #1}}
+\newcommand{\commds}[1]{\textcolor{red}{DS: #1}}
+% ============================================================================
+
+
+\title{Category Theory as a Unifying Database Formalism}
+
+%\author{David I. Spivak \\ dspivak@math.mit.edu \and Carlo Curino \\ curino@csail.mit.edu}
+%\thanks{Spivak thanks ONR grant N000141010841}
+
+\begin{document}
+\maketitle
+
+
+
+\begin{abstract}
+
+Database theory developed from mathematical logic and set theory, but many formalisms have been introduced over time to tackle specific extensions of these core theories. 
+This paper makes the case for using category theory as a unifying formalism for databases, by arguing that category theory 
+can capture in a uniform and succinct way the basic relational model (e.g., schemas, constraints, queries, updates), and its many extensions 
+(e.g., aggregates, transactions, triggers, schema mapping, pivoting, anonymization, and semi-structured data).  
+We also show how existing results from the large corpus of theorems developed within pure mathematics can be naturally imported, 
+and how automated proof assistants such as COQ could be leveraged. 
+Finally, we observe that category theory has been successfully applied to other areas of computer science (e.g., programming languages),
+this provides hope about the feasibility of our attempt, and suggests that by sharing a rigorous formal footing we could enable fascinating 
+cross-area analysis and theories. 
+
+\end{abstract}
+
+% ============================================================================
+\section{Introduction}
+\label{sec:intro}
+\commds{Much of the theory below would work out if we used only finite schemas (only a finite number of non-equivalent paths) and allowed only finitely many rows in each table.  Would you prefer this?  If so, should we still call the category of states on $\mcC$ ``$\mcC\set$" or should we replace $\Set$ with something like $\Fin$ or ${\bf FSet}$?}
+
+The field of Database research developed at the boundary of active industrial development and 
+solid formal theories, and here more than in any other field this duality has produced a fascinating interplay
+between system builders and theoreticians. The flow of innovation has not always been 
+a unidirectional transfer from new advances in theory to corresponding systems, but rather an intricate back and forth, 
+where often systems have been built before a full understanding of the theoretical implications was 
+available. 
+
+The core of database theory has developed from rather old and well-understood mathematics: \emph{mathematical logic} and {\em set theory}.
+From this common starting point the database community has built a host of extensions, which were needed to provide the formal underpinnings 
+for a large number of new functionalities and new solutions to problems arising from the system development side. 
+For example consider the various formal advances regarding schema mapping, aggregates and user-defined-functions, 
+deductive databases, incomplete data and management of nulls, database recovery and concurrency control, real-time DB. \commds{are we proposing to handle each of these?}
+
+While for each of these areas precise formal models, rooted in formal logic, have been provided,
+it remains often hard to precisely understand the correspondences between different formalizations --- at the very least this understanding requires a significant time investment. This task is often daunting, making it harder to operate 
+across the boundaries of different theories, which in turn works as a disincentive to anyone trying to reduce this gap.
+
+A similar problem faced the mathematics community in the first half of the 20th century.  Mathematics was subdivided into many subfields, each with its own jargon and way of doing business.  In order to advance, a unifying language and formalism was needed.  Category theory was invented in the 1940s by Mac Lane and Eilenberg to strengthen the connection between topology and algebra, but it quickly spread to neighboring fields.  By providing a precise language for comparing different universes of discourse, category theory has been a unifying force for mathematics.
+
+\commcc{next two paragraphs need smoothing}
+Category theory is no stranger to computer science.  It has been remarkably successful in formalizing the semantics of programming languages \cite{}.  In fact, it has also been applied many times to database theory in the past.  These attempts did not catch on in mainstream applications, perhaps because those models attempted to be too faithful to the relational model.  Because these formalisms did not seem to offer enough advantages to justify the learning curve, some database theorists developed a slight aversion to category theory.  \commcc{We need to check who's in the PC, and avoid to make enemies!}
+
+However in this paper, we argue that database theory and category theory are naturally compatible, in fact that a basic database schema and a category are roughly the same thing.  Once a simple dictionary is set up, classical category theoretic results and constructions capture many of the formal results that appear in database literature.
+
+In particular, we present an application of categories and functors to uniformly represent schemas, integrity constraints, 
+database states, queries, updates, and show that this is not only natural but enlightening.  And we show, with a simple online demo, that 
+simple algorithms can be used to translate SQL schemas (with primary keys and foreign keys) and queries into the formalism of categories 
+and functors.
+
+Next, we showcase the expressivity of category theory in modeling classical database problems, many of which required significant
+extensions of the relational model, such as schema mapping, transactions, and user defined aggregates.  We show existing results in DB theory can be proved using category theories.
+
+We then argue that by adopting this formalism we can also: (i) inherit results from the large corpus of theorems
+produced in the pure category theory research, and (ii) leverage automated proof assistants such as COQ. 
+
+Finally, since category theory has already been embraced by other communities such as the theoretical programming 
+language community, there is an interesting opportunity of bridging results and enabling theories and analysis to span across 
+different areas.  As an example consider security models \commds{...?} 
+
+\commcc{
+A common problem in applying category theory to computer science problem is an excessively loose modeling, that lead to an application of the theory, that while formally correct is not constructive. We carefully avoid this in this paper, giving a tighter modeling of databases. This allows us to leverage some of the core results/machinery developed in category theory (such as composition properties of functors, and the theory of adjoint functors) to constructively force important properties. As an example the semantics of query execution we provide naturally and automatically derives from the use of functors to model the query commands. 
+As further confirmation that this application of category theory is useful we observed that some of the classical results in category theory, e.g., functors composition, perfectly fit known theorems in database theory, e.g., second order mappings composition.}  
+
+\commds{``Data migration and querying are both formalized by the same mathematics.  There is something deep going on here." --Peter Gates}
+
+\commds{This paper can serve as a very fast introduction of databases to anyone familiar with computer science.  Database theorists should note the economy of the definitions contained here.}
+
+\paragraph*{Contributions}
+
+In summary this paper makes the following contributions:
+\begin{itemize}
+\item Offer ``all-at-once" ETL process, rather than one table at a time.
+\item
+\item
+\end{itemize}
+
+The rest of this paper is organized as follows: Section~\ref{sec:background} provides a crash course in category theory, Section~\ref{sec:dbascat} presents the basic application of category theory to databases that we propose, Section~\ref{sec:classics} shows how some of the classical database results can be proved in this new framework, Section~\ref{sec:more} showcase the power of category theory beyond classical results on a simple case, and argues that much more can be done, Section~\ref{sec:relwork} provides summary of related work, and Section~\ref{sec:conclusion} summarizes our conclusions.
+
+\subsubsection{Acknowledgments}
+
+The first author would like to thank Peter Gates for many useful conversations and Greg Morrisett for suggesting we explore transactions.
+
+% ============================================================================
+\section{Background}
+\label{sec:background}
+This section provides the reader with a crash course in category theory.  More details can be found in \cite{Awodey,Pierce,BarrWells,Mac}.  The reader already familiar with the definition of category and functor, as well as the category $\Set$ of sets, can safely skip to Section \ref{sec:pre-categories}.  
+The goal of this section is to provide database researchers with a core introduction to category theory, so we slightly abuse our notation and postpone detailed comments on some set-theoretic issues (e.g., the distinction between sets and classes) to Appendix~\ref{sec:moreprecisely}.
+
+Intuitively, a category is a multi-graph (i.e., a graph that can have multiple edges between the same two nodes) 
+together with an equivalence relation on finite paths (i.e., we can declare two paths between the same nodes to be equivalent or not)---as shown in the example figure below. 
+\begin{figure}[h!]
+\vspace{-2mm}
+\centering
+\includegraphics[width=0.25\textwidth]{images/basiccat}
+\vspace{-2mm}
+\end{figure}
+
+%\noindent$f \bullet h = g$\\
+%$h \neq i$\\
+
+Each node represents an object of a specific type, each arrow $A\to B$ represents a chosen function between objects (that can be total, continuous, etc.), a path in the graph represents the composition of such functions, and two paths are equivalent if they represent the same function. Conceptually, the graph contains the transitive closure of every finite path, including the paths of length 0, i.e. the degenerate self-loop on each node (a,b,c in our example). Note that   we often omit obvious paths when representing a category pictorially. 
+A more formal definition is presented below:
+
+\begin{definition}
+
+A {\em category} $\mcC$ consists of the following components: 
+\begin{enumerate}
+\item A set of objects $\Ob_\mcC$ --- each element $x\in\Ob_\mcC$ is called {\em an object of $\mcC$}.
+\item For each $x,y\in\Ob_\mcC$ a set $\Arr_\mcC(x,y)$ --- each element $f\in\Arr_\mcC(x,y)$ is called {\em an arrow from $x$ to $y$ in $\mcC$}, and is denoted as $f\taking x\to y$ or as $x\To{f}y$.
+\item For each object $x\in\Ob_\mcC$ a chosen arrow $\id_x\in\Arr_\mcC(x,x)$ called {\em the identity arrow on $x$}.
+\item For each $x,y,z\in\Ob_\mcC$, a function $$\comp_\mcC\taking \Arr_\mcC(x,y)\cross\Arr_\mcC(y,z)\to\Arr_\mcC(x,z)$$  called {\em the composition law for $\mcC$} --- we denote $\comp_\mcC(f,g)$ simply by $f\bullet g$. 
+%\footnote{We may also denote $fg$ by $g\circ f$.}
+
+\end{enumerate} 
+
+To be a category the above components must also satisfy the following properties:
+\begin{description}
+\item[Identity law:] For each arrow $f\taking x\to y$, the following equations hold: $$\id_x \bullet f=f\hsp\tn{and}\hsp f \bullet \id_y=f.$$ 
+\item[Associative law:] Given a sequence of composable arrows $$w\To{f}x\To{g}y\To{h}z,$$ the following equation holds: $$f\bullet(g\bullet h)=(f\bullet g)\bullet h.$$
+\end{description}
+
+\end{definition}
+
+\commcc{I pulled this triangle comment from the definition}
+Given the following triangle:
+$$\xymatrix{\LMO{x}\ar[r]^f\ar[dr]_h&\LMO{y}\ar[d]^g\\&\LMO{z}}$$
+We say the triangle  {\em commutes} iff $f \bullet g=\comp_\mcC(f,g)=h$.\commds{I don't like using bullet ($\bullet$) both to denote the composition law and to draw objects in a category (as $\LMO{x}$).  How about $f*g$ for composition?}\commcc{Let's use an empty bullet in the graphs.. and keep the solid one for the text..}
+
+Mathematicians often use categories to formalize rather general concepts such as the category of topological spaces and continuous functions, the category of groups and group homomorphisms, or the category $\Set$ of sets and functions.  The last of these, $\Set$, is an important category both in mathematics and for the present paper. The objects in this category are sets \footnote{See Appendix~\ref{sec:moreprecisely} for a more rigorous definition.}, the arrows are (total) functions between sets, and the composition law simply sends a pair of composable functions to their composition. 
+%For example, the set $\Arr_\Set(\{1,2,3\},\{T,F\})$ has eight elements. 
+In this paper we are not interested platonic categories (those of mathematical interest), other than the $\Set$ category and various derivations of it.  Instead we deal mainly with ``custom'' categories designed to model some enterprise.  Our objects will represent tables, our arrows will represent attributes, and our composition law will represent integrity constraints or ``business rules."  All this will be made explicit in Section \ref{sec:dbascat}.
+
+Another key notion is the one of  {\em functors}.  A functor is a mapping between categories that sends objects to objects, and arrows to arrows, while preserving compositions and identities.  
+ We formalize the notion of functor as follows:
+
+\begin{definition}
+
+Let $\mcC$ and $\mcD$ be categories.  A {\em functor from $\mcC$ to $\mcD$}, denoted $F\taking\mcC\to\mcD$ maps:
+
+\begin{enumerate}
+\item each object $x\in\Ob_\mcC$ to an object $F(x)\in\Ob_\mcD$, and 
+\item each arrow $f\taking x\to y$ in $\Arr_\mcC(x,y)$ to an arrow \\$F(f)\taking F(x)\to F(y)$ in $\Arr_\mcD(F(x),F(y)).$ 
+\end{enumerate}  
+
+A functor must also satisfy the following requirements:
+\begin{description}
+\item[Preserve identities:] for each object $x\in\Ob_\mcC$ the equation $F(\id_x)=\id_{F(x)}$ holds in $\Arr_\mcD(F(x),F(x))$, and 
+\item[Preserve composition:] for each composable pair of arrows $x\To{f}y\To{g}z$ in $\mcC$, the equation $$F(f\bullet g)=F(f) \bullet F(g)$$ holds in $\Arr_\mcD(F(x),F(z))$.
+\end{description}
+
+\end{definition}
+
+Specifying a functor means defining ``where each object and arrow from one category is sent in the other category".  One should note that the composition of two functors is a functor.   Let's consider the example category $\mcC$ above .
+
+%\noindent$A\to T, B\to T, C\to S$\\
+%$h\to u, g\to u,$ \\
+%$f\to t, a\to t, b\to t,$ \\
+%$c\to s, i\to v$
+
+%\noindent$v \neq u$\\
+
+
+\begin{example}
+Consider as an example the functor F in the following figure. Every object/arrow of the input category ${\mcC}$ is mapped to an object/arrow in ${\mcD}$, and both identities and compositions are preserved. 
+%Let $\mcC_1$ and $\mcC_2$ denote the two categories from Example \ref{ex:small cat}, so the sets $\Arr_{\mcC_1}(X,Z)$ and $\Arr_{\mcC_2}(X,Z)$ have one and two objects, respectively.  A functor $F\taking\mcC_1\to\Set$ is given by supplying three sets $F(X), F(Y), F(Z)$ and three functions $F(f), F(g), F(h)$, where (because we must preserve composition) we require that $F(f)F(g)=F(f)F(h)$; a functor $G\taking\mcC_2\to\Set$ is the same thing, except the above requirement is not enforced.  Simple examples of functors $G\taking\mcC_2\to\Set$ that do not lift to (i.e. ``come from") functors $\mcC_1\to\Set$ are ones in which $G(f)$ is a surjection. 
+\end{example}
+
+\begin{figure}[h!]
+\vspace{-2mm}
+\centering
+\includegraphics[width=0.25\textwidth]{images/basicfunct}
+\vspace{-2mm}
+\end{figure}
+
+
+A particularly interesting class of functors for our paper are the {\em set-valued functors}; i.e. functors of the type $\mcC \to \Set$.  Such a functor sends objects and arrows of some category $\mcC$ to objects and arrows of the category $\Set$ of sets.  This will be explained in Section \ref{sec:dbascat}.
+%In fact, a category $\mcC$ will serve as a database schema and each set-valued functor $\gamma\taking\mcC\to\Set$ will serve as an instance of it.  
+
+\subsection{Representing categories and functors}\label{sec:pre-categories}
+In order to simplify pictorial representation of categories, we will omit the needed but obvious arrows, e.g., we will avoid drawing identity arrows and arrows representing paths through drawn arrows.
+Similarly, by convention, two paths will not be considered equivalent unless explicitly declared.  As for functors $F\taking\mcC\to\mcD$ we will omit all the obvious mappings (i.e., if there is an object in $\mcC$ with the same name as an object in $\mcD$, we intend that the first is mapped to the second unless otherwise specified).  Mathematically, these pictorial representations are called ``linear sketches" and are akin to representing a group in abstract algebra by generators and relations.
+
+We will now show that, once equipped with the above basic notions of category and functor, we can easily leverage the expressive power and mathematical rigor of category theory to model a broad spectrum of database problems.
+
+%Given a graph $G$, one can create a category $\mcC_G$ whose objects are the nodes of $G$, whose arrows $x\to y$ are the paths from $x$ to $y$ in $G$, and whose composition law takes a pair of paths meeting ``head to tail" and concatenates them.  The category $\mcC_G$ is called the {\em free category on $G$}.  For example, consider the graph $H$ with only one node and one loop --- its free category $\mcC_H$ again has one object but it has an arrow for every natural number $n\in\NN$, and $\comp_{\mcC_H}(m,n)=m+n$.   It is certainly much easier to draw the graph of $H$ than the category $\mcC_H$.  This is akin to the fact that in Example \ref{ex:small cat} it was more convenient to draw the displayed graph $G$ than its free category $\mcC_2$.
+%
+%\commcc{We want to say: we only draw needed stuff, the rest exists implicitly and does not commute... comfy + mathematically sound}
+%
+%Categories, like groups in abstract algebra, can be presented by generators and relations.  The generators for a category are a set of objects and arrows, and the relations are equations of paths.  In Example \ref{ex:small cat},  $\mcC_1$ is generated by $G$, but has the additional relation $fg=fh$.  A category $\mcC$ typically can have many different presentations; $\mcC$ is called {\em finitely presentable} if it is generated by a finite graph $G$ and finitely many relations.  For example $\Set$ is not finitely presentable, but of course $\mcC_1$ and $\mcC_2$ are.  In this paper we do not make much of a distinction between a finitely presentable category and a given presentation of it.  For more details, see \cite{}.
+
+\newpage
+% ============================================================================
+\section{Databases as Categories}
+\label{sec:dbascat}
+In this section, we discuss the basic intuition: there is a tight connection between database schemas and categories, 
+and between database states and functors.
+
+\subsection{Schemas are Categories}
+\label{sec:schema}
+The schema of a database is naturally represented by a category in which: (i) objects represent schema tables and datatypes, and (ii) arrows represent columns. 
+As an example consider the following relational schema $S$:
+
+
+\begin{verbatim}
+employee(ssn int, name varchar, deptno int);  
+department(dno int, address varchar);
+\end{verbatim}
+
+Where {\tt employee.deptno} is a foreign key that references {\tt department.dno}.
+The categorical representation $\mcC_S$ for schema $S$ is shown in Figure~\ref{fig:schema}. 
+
+\begin{figure}[h!]
+\vspace{-2mm}
+\centering
+\includegraphics[width=0.3\textwidth]{images/schema2}
+\caption{A simple schema as a category}\label{fig:schema}
+\vspace{-2mm}
+\end{figure}
+
+More precisely we state the following:
+
+\begin{definition} \label{def:basic-schema}{\bf Schemas are Categories:}
+A {\em database schema} $S$ is a finitely presentable category $\mcC_S$. Each table $t$ of the schema $S$ is represented by a corresponding object $t \in Ob_{C_{S}}$, and each column $c$ in $S$ with data type $d$ is represented as $c\taking t\to d$. Each table also has an implicit column $\id_t$ which is represented as an identity map $\id_t \taking t\to t$ is called the {\em identity column} of $t$. 
+Foreign keys are defined as arrows between tables (functions between row identifiers), together with commutative properties for the referenced columns (see Figure~\ref{fig:schema}). 
+%An object $d\in\Ob_{\mcC_S}$ that has no outgoing arrows is called {\em a leaf table}. If $d$ is a leaf table then for any table $t$, a column $c\taking t\to d$ is called a {\em data column of $t$}.  If $t'$ is not a leaf table, then a column $c\taking t\to t'$ is called a {\em foreign key column of $t$}.
+\end{definition}
+
+Note that the identity column of each table closely matches the notion of row identifier often used in practical implementations of the relational model. Also note that datatypes are represented uniformly as tables conceptually listing all the values in the domain of an attribute.  In this way data columns and foreign key columns are put on equal footing. The definition of a foreign key is constituted by an arrow between the two tables, and the declaration of commutativity of the two paths containing referencing and referenced columns, as shown in Figure~\ref{fig:schema} The notion of uniqueness of a column, required to model primary keys, requires more powerful mathematics, namely sketches, and its discussion is postponed to Section~\ref{sec:moreformal}.
+
+%Integrity constraints can also be naturally captured.   We generally consider foreign keys as columns of one table that point to the identity column of another.  A more general foreign key constraint  between column $c \in t$ and column $d \in s$ is simply represented as an arrow $fk \taking t\to s$, 
+%plus the declaration of path commutativity: $fk \bullet d = c$. 
+%
+%Primary keys are most easily understood as row ids on the table.  However it is often advantageous to associate representative codes to these ids and demand that these codes are unique.  To define a column $k$ as primary key for a table $t \in S$, we can simply state that the corresponding arrow in $k\taking t\to c$ is injective: no two rows in $t$ can point to the same value in $c$.  We indicate situation this pictorially by using following ``hooked" arrow $k\taking t\inj c$.  Using these injectivity constraints or using multi-column primary and foreign keys is easily achieved using category theoretic {\em sketches} (categories with additional constraints) --- this detailed discussion is postponed to Appendix~\ref{sec:moreprecisely}.
+%
+%In the following figure, we present an extension of our previous example containing primary and foreign keys.
+%
+%\begin{figure}[h!]
+%\vspace{-2mm}
+%\centering
+%\includegraphics[width=0.25\textwidth]{images/schema2}
+%\vspace{-2mm}
+%\end{figure}
+
+\subsection{Database states are Set-Valued Functors}
+\label{sec:state}
+
+Now the question arise: how to represent a database state?
+A database state is a collection of sets/functions, one for each table/column, that satisfies the schema structure, data types and integrity constraints. 
+In the world of categories it is natural to represent this as a functor from the category $\mcC_S$ representing the schema to the category $\Set$ of all possible sets.
+
+So a database state is a functor in which: each table (object) in the schema is mapped to the set (in $\Set$) of row identifiers stored in that table, 
+and each column (arrow) is mapped to an arrow (in $\Set$) that associates row identifiers to column values for this specific state. 
+This fully characterizes a state, and thanks to the fact that functors preserve identity and composition, it also guarantees that the state is {\em valid} or is a {\em model} for $S$. This means that only functors representing valid states can be defined between  $\mcC_S$ and $\Set$.
+ More formally we say:
+
+\begin{definition} \label{def:basic-state}{\bf Database states are set-valued Functors:}
+A {\em database state} of schema $S$ is a functor $\gamma\taking\mcC_S\to\Set$.  The functor $\gamma$ takes each object $t$ in $\mcC_S$ to a set $\gamma(t)\in\Set$ (representing the row identifiers of table $t$ for this state), and each column $c\taking t\to t'$ in $\Arr_{C_{S}}(t,t')$ to an arrow $\gamma(c)\taking\gamma(t)\to\gamma(t')$ in $\Set$ that associates each row identifier $x\in\gamma(t)$ to its corresponding column value in the set $\gamma(t')$.  
+\end{definition}
+
+One of the strengths of category theory is to allow us to change level of abstraction very naturally. We exploit this here, by representing database states as the objects of a much larger category called $\mcC_S\set$.
+$\mcC_S\set$ thus is the category of all valid database states for schema $S$. The arrows of $\mcC_S\set$ are called natural transformations. 
+Using transformations we can capture database insert and delete operations. In the following section we will use this to provide a semantics for update commands.
+Various mathematical subtleties related to $\mcC_S\set$ will be worked out rigorously in Section~\ref{sec:moreformal}.
+
+\subsection{The Update Category}\label{sec:update}
+We are now ready to introduce the notion of update commands in terms of the arrows/transformations in $\mcC_S\set$. We introduce this intuitively here for insert and delete statements, while we postpone to Section~\ref{sec:moreformal} a richer construction and rigorous definition. For now we defined a insert/delete command in terms of the arrows in $\mcC_S\set$. In particular, every insert/delete statement is represented by a family of arrows in $\mcC_S\set$, one for each database state (object). An arrow from the objects $D_1$ to $D_2$ represents the effect of a certain update statement applied to $D_1$. 
+
+In the following figure we show how an update $u$ operates on few database states (in light gray you can see other updates).
+
+\begin{figure}[h!]
+\vspace{-2mm}
+\centering
+\includegraphics[width=0.35\textwidth]{images/updates}
+\vspace{-2mm}
+\end{figure}
+
+A richer definition of the semantics of an update command is given in terms of the transformations in $\mcC_S\set$ in Section~\ref{sec:moreformal}, where we will also show that this definition fits nicely with many other constructions representing schema migration, querying etc. 
+
+\begin{figure*}[t!]
+\vspace{-2mm}
+\centering
+
+\includegraphics[width=0.98\textwidth]{images/query}
+\vspace{-2mm}
+\caption{Representing a query}\label{fig:query}
+\end{figure*}
+
+
+\subsection{Queries as Functors}
+\label{sec:state}
+
+Queries are naturally represented as functors between the category of the schema $\mcC_S$ and the category representing the answer schema/targetlist.
+Let us introduce this with a simple example, consider the schema $S$ introduced in Figure~\ref{fig:schema}, and the following SQL query:
+\begin{verbatim}
+SELECT d.address FROM employee e, department d 
+WHERE e.deptno = d.did AND e.name="carlo";
+\end{verbatim}
+
+We can represent this categorically as shown in Figure~\ref{fig:query}.
+
+
+ 
+
+
+
+In this section, we showed the basic results of our work and how categories and functors can be used to capture the basic entities in the database world. 
+In the following section, we provide further details on this and, thus, prepare the ground for the more advanced results of Section~\ref{sec:moreadvanced}.
+\commcc{longer and explaining why we need next section}
+
+%
+%
+%
+%
+%We complete this section introducing a more complete running example, that will be used throughout the paper
+%\subsection{Running example}\label{sec:running example}\commds{Is this really a running example?  Is it worth the space?  Can it be streamlined?}
+%
+%In this section we set up a running example which we will discuss throughout the paper.  \commds{We don't use it as much as I might have thought....}
+%
+%A database in categorical normal form \commds{We never defined categorical normal form} consists of a bunch of tables.  Each has an identity column, and other columns.  For example, consider these tables: \begin{align}\label{dia:flb}\begin{tabular}{| l || l | l | l | l |}\hline\multicolumn{5}{| c |}{\bf Employee}\\\hline {\bf Id}&{\bf First}&{\bf Last}&{\bf Mgr}&{\bf Dpt}\\\hline 101&David&Hilbert&103&q10\\\hline 102&Bertrand&Russell&102&x02\\\hline 103&Alan&Turing&103&q10\\\hline\end{tabular}\end{align} $$\begin{tabular}{| l || l | l |}\hline\multicolumn{3}{| c |}{\bf Department}\\\hline {\bf Id}&{\bf Name}&{\bf Secr}\\\hline q10&Sales&101\\\hline x02&Production&102\\\hline\end{tabular}$$   Every column in a table refers to the identity column of another table -- every column is a ``key column."  This will be made clear in Diagram (\ref{dia:basic cat}), but lets look at the {\bf Employee} table.  \begin{itemize}\item the Id column is valued in the {\bf Employee} table, \item the First and last columns are valued in the {\bf String} table (see below), \item the Mgr column is valued in the {\bf Employee}  table, and \item the Dpt column is valued in the {\bf Department} table.\end{itemize}  One should quickly check that all cells in the Dpt column refer to row-ids in the {\bf Department} table.
+%
+%As explained in Section \ref{sec:basic idea}, even each data column of a table (e.g. Name) refers to the identity column of some other table (e.g. the table of Strings).  The table of strings can be considered ``virtual" -- one can never load its entirety into memory nor view it.  Here is a sample of it: \begin{align}\label{dia:strings}\tiny\begin{tabular}{| l ||}\hline\multicolumn{1}{| c |}{\bf String}\\\hline{\bf Id}\\\hline a\\\hline b\\\hline\vdots\\\hline z\\\hline aa\\\hline ab\\\hline\vdots\\\hline\end{tabular}\end{align}\normalsize  
+%
+%\commcc{Functional dependencies between columns of a table corresponds to commutative triangles!!!}
+%\commcc{Neat: limit of skolem variable creation using commutative triangles e.g., $ manager^5 = manager^6$... }
+%The way the above three tables interact (in terms of how their columns refer to one another) is called the schema for a database.  The fundamental observation of this paper is that such a schema can be drawn as a category.  In this case it is: \commds{sometimes we draw objects as bubbles, other times as bullets.  let's choose one.}\begin{align}\label{dia:basic cat} \mcC:=\fbox{\parbox{2.4in}{\underline{Mgr;Dpt=Dpt}\hsp  \underline{Secr;Dpt=$\id_{\tn{Department}}$}\\\\\xymatrix{\LTO{Employee}\ar@<.5ex>[rr]^{\tn{Dpt}}\ar@(l,u)[]^{\tn{Mgr}}\ar@/_1pc/[dd]_{\tn{First}}\ar@/^1pc/[dd]^{\tn{Last}}&&\LTO{Department}\ar@<.5ex>[ll]^{\tn{Secr}}\ar@/^1pc/[ddll]^{\tn{Name}}\\\\\LTO{String}}}}\end{align}  Each object (drawn as a dot) corresponds to a table.  The arrows out of an object $t$ correspond to columns of $t$.  
+%
+%Note that $\mcC$ is actually the presentation of a category: we do not draw identity arrows (as they are implied) nor do we draw ``free compositions."  For example the arrow $$\tn{Secr}\tn{ First}\taking\LTO{Department}\too\LTO{String}$$ is not drawn; this is akin to the fact that the {\bf Department} table does not need a column for the secretary's first name.  We call any such path through columns of $\mcC$ a {\em generalized column}, so the path that returns an employee's manager's manager's first name is an generalized column of the {\bf Employee} table valued in the {\em String} table.
+%
+%We can also impose ``business rules" -- composition laws.  These are what differentiate categories from graphs.  For example we could say that every employee must be in the same department as his or her manager.  We could also say that the secretary of a department must be in that department.  To impose these rules is to impose composition laws on $\mcC$: \begin{align*}\tn{Mgr}\tn{ Dpt}&=\tn{Dpt}; \\\tn{Secr}\tn{ Dpt}&=\id_{\tn{Department}}.\end{align*}
+%
+%A database state on $\mcC$ is a functor $\gamma\taking\mcC\to\Set$.  Thus for each object in $\mcC$ we will write a set, and for each arrow in $\mcC$ we will write a function.  An example of such sets and functions is precisely what is given in Tables (\ref{dia:flb}) and (\ref{dia:strings}) above.  One might represent $\gamma$ as the following diagram of sets:
+%
+%\commcc{Extension of database state }
+%
+%\begin{align*}\fbox{\parbox{1.9in}{\xymatrix{\fbox{101,102,103}\ar@<.5ex>[rr]^{\tn{Dpt}}\ar@(l,u)[]^{\tn{Mgr}}\ar@/_1pc/[dd]_{\tn{First}}\ar@/^1pc/[dd]^{\tn{Last}}&&\fbox{q10,x02}\ar@<.5ex>[ll]^{\tn{Secr}}\ar[ddll]^{\tn{Name}}\\\\\fbox{a,b,\ldots,z,aa,ab,\ldots}}}}\end{align*}\normalsize
+%
+%Before leaving this section, the reader should understand the following overview / dictionary, at least in the context of Example \ref{ex:basic}:
+%
+%\begin{description}\item[Database overview] a database schema consists of tables and ``column-headers"; a state on a schema coherently assigns to each table a set of rows and to each column their respective values.\item[Category overview] a category $\mcC$ consists of objects and arrows; a functor $\gamma\taking\mcC\to\Set$ coherently assigns to each object a set of elements and to each arrow their respective values. \end{description}
+%
+
+\section{Underlying Mathematics}\label{sec:underlying math}
+
+In Section \ref{sec:dbascat}, we gave an explicit definition of the basic idea, that of representing schemas as categories and states as functors.  We also gave a brief introduction to updates and queries so that the reader could see how the general theory fit in with these definitions.  In this section we explicate these ideas in detail.  We will show that the concepts are tight enough that classical theorems in mathematics yield beautiful results, for example a tight link between data migration and queries.
+
+We begin by explaining the setup for migrating data or querying, namely the notion of morphism between schemas, which will simply be a functor.  We will then discuss the notion of mapping from one state to another (within the same schema) which will be the basis for our rigorous definition of updates.
+
+At this point we will need to shift gears to describe the data migration functors and queries.  While queries are defined solely by schema mappings, they act at an instance level by applying some powerful mathematical machinery.  We will conclude this section by discussing data types and calculated fields.  
+
+For the reader who is interested in the tight formulations of schema mapping, data migration, queries, updates, and typing, this section will be a careful presentation.  The reader who is interested in only the main ideas may skim (or skip) to Section \ref{sec:classics} without much trouble.
+
+From here on, we may denote a schema as $\mcC$ rather than $\mcC_S$.
+
+\subsection{Morphisms between schemas}
+
+A schema can be thought of as a graph in which we can specify when two paths are equivalent.  Graph morphisms send objects to objects and arrows to arrows, and a schema morphism does too, with the additional requirement that equivalent paths are sent to equivalent paths; in other words it is a functor.  Here is the precise definition.
+
+\begin{definition}\label{def:morphism of schemas}
+
+Let $\mcC$ and $\mcD$ be schemas (categories).  A {\em morphism of schemas}, denoted $F\taking\mcC\to\mcD$, is simply a functor.  That is, it is a mapping sending each table $T$ in $\mcC$ to a table $F(T)$ in $\mcD$ and each column $T\to T'$ in $\mcC$ to a column $F(T)\to F(T')$ in $\mcD$, such that the composition law enforced in $\mcC$ must also be enforced in $\mcD$.
+
+\end{definition}
+
+At this point we have defined schemas and morphisms of schemas, and there is an obvious identity and composition law for morphisms.  In other words, we have a category of schemas.  We will not really need to use this fact, although it may be convenient for phrasing future results.
+
+\commds{?}\begin{example}\label{ex:small cat}
+Consider the graph $$G:=\fbox{\xymatrix{\bullet^X\ar[r]^f&\bullet^Y\ar@/_1pc/[r]_h\ar@/^1pc/[r]^g&\bullet^Z}}$$  To make it a category $\mcC$, one must only add identity arrows for $X,Y,Z$ and add compositions $fg$ and $fh$.  There are two such choices: one is to make $fg=fh$, so that $\Arr_\mcC(X,Z)$ has one element; the other is to allow them to be different so $\Arr_\mcC(X,Z)$ has two elements. 
+\end{example}
+
+
+\begin{example}\commds{worthwhile?  If not, can you come up with something?}
+
+There are two possible category structures on the graph $$\fbox{\xymatrix{\bullet^X\ar[r]^f&\bullet^Y\ar@/_1pc/[r]_h\ar@/^1pc/[r]^g&\bullet^Z}}$$  In one, we set $f*g=f*h$ and in the other we do not (so $f*g\neq f*h$).  Lets call the first once $\mcC_1$ and the second $\mcC_2$.   Considering these as schemas, we will discuss the morphisms between them.
+
+There is a unique functor $\mcC_2\to\mcC_1$ that sends every object to itself, but there is no functor $\mcC_1\to\mcC_2$ that sends every object to itself.  However, if we drop the requirement that objects are sent to themselves, then there are many functors $\mcC_1\to\mcC_2$.  For example there is one which sends every object in $\mcC_1$ to $X\in\Ob(\mcC_2)$ and every morphism to $\id_X$.  As an exercise, the reader may check that there are in fact ten (10) functors $\mcC_1\to\mcC_2$.  Each of these will prescribe a different way to exchange data between $\mcC_1$ and $\mcC_2$.
+
+\end{example}
+
+Currently, in order to create a schema mapping one writes down a set of logical axioms that detail how the data in one schema relates to that of the other schema.  Here we suggest that many (if not all) of the mappings which come up in practice can be inferred from functors, as in Definition \ref{def:morphism of schemas}.  Whereas logical axioms can be ad hoc, redundant, and difficult to envision, functors are simple to understand and surprisingly powerful.  \commds{Can you support this claim?}
+
+\subsection{A new concept of state transformations}\label{sec:transformations}
+
+In Section \ref{sec:data migration} we will discuss how a morphism of schemas creates a port through which to transfer data.  Before we do so, we must discuss mappings between states on a given schema $\mcC$.  To a category theorist, these are natural transformations of set-valued functors.     To a database theorist, transformations may be a bit mysterious at first.  However it will turn out that many constructions familiar to a database theorist happen to respect all transformations; for example queries, updates, and pivoting.  Moreover, queries can be understood using classical theorems of category theory if given as input the category of states and transformations, rather than just the set of states.
+
+One can think of such a transformation as a one-way dictionary between two states, a translation of every record in the first to an record in the second, which preserves the foreign-key relations.  It turns out that a large class of updates are ``functorial" with respect to these transformations.  We will discuss that after giving the following definition.
+
+\begin{definition}\label{def:transformation}
+
+Let $\mcC$ be a schema and let $\gamma$ and $\delta$ be two states on $\mcC$, i.e. functors $\mcC\to\Set$.  A {\em transformation of states}, denoted $m\taking\gamma\to\delta$, consists of a function $m_c\taking\gamma(c)\to\delta(c)$ for each table $c\in\Ob_\mcC$ and must satisfy the following condition.  For each row $x\in\gamma(c)$ and each column $f\taking c\to c'$, the following equation holds \begin{align}\label{dia:trans}m_c(x).f=m_{c'}(x.f).\end{align}
+
+\end{definition}
+
+Definition \ref{def:transformation} is not as difficult as it may appear.  A mapping of states $m\taking\gamma\to\delta$ is as one might expect: for every row in the first state, $m$ provides a row in the second state.  The equation (\ref{dia:trans}) is a coherence condition on cells: given a column $f\taking c\to c'$ and a row $r\in\gamma(c)$ the value of the $(r,f)$-cell in $\gamma$ must be sent by $m$ to the value of the $(m_c(r),\delta(f))$-cell in $\delta$.  For example, $\delta$ may be the result of inserting some rows into $\gamma$, in which case $m$ is the inclusion of states.
+
+By now we have defined a new category for every schema $\mcC$: the category of states on $\mcC$, which we denote $\mcC\set$.  The objects of $\mcC\set$ are states $\gamma\taking\mcC\to\Set$ and the morphisms are transformations of states.  As a trivial example, consider the category with only one object and its identity morphism $[0]:=\fbox{$\bullet$}$.  Then $[0]\set$ is the category of sets --- a state on $[0]$ is just a set of rows.  
+
+For any schema $\mcC$, the category $\mcC\set$ is a {\em topos}.  That means that there is an internal language and logic for states on $\mcC$ supporting all the usual logical connectives.  For example, if $m\taking\gamma\inj\delta$ is an inclusion of states, the logic of $\mcC\set$ allows us to take the complement of $\gamma$ in $\delta$.  However, note that the naive (table by table) complement of one state in another will not generally be a state.  The the topos logic ``takes that into account" and returns the largest possible state contained inside the naive complement.
+
+\begin{example}\label{ex:graph}
+
+Consider the category $$\mcG=\fbox{\xymatrix{\LMO{E}\ar[r]^s\ar@<-.8ex>[r]_t&\LMO{V}}}$$  A state $\delta\taking\mcG\to\Set$ is the same thing as a multi-graph; it consists of a set $\delta(V)$ of vertices, a set $\delta(E)$ of edges, and a source and target map between them.  A transformation of states $m\taking\gamma\to\delta$ is the same thing as a graph morphism; it sends vertices to vertices and edges to edges in such a way that the source and target of each edge is preserved.  So for example a graph isomorphism is just an isomorphism in the category $\mcG\set$.
+
+\end{example}
+
+
+\subsection{Data migration functors}\label{sec:data migration}
+
+In this section we show that given any morphism of schemas, $F\taking\mcC\to\mcD$, three data migration functors $\Delta_F,\Sigma_F$, and $\Pi_F$ are automatically defined.  These functors transport data between $\mcC$ and $\mcD$ according to logical rules.  However, these rules do not have to be explicitly mentioned; they arise as {\em universal constructions}.  
+
+In this section we will define these three migration functors.  As evidence that these constructions, which seemingly have not been previously discussed in database literature, have ``real-world" meaning, we will show that in special cases they naturally compute projects, duplicates, unions, joins, and selects roughly following this dictionary:$$\begin{tabular}{| c | c | c |}\hline {\bf Migration functor}&{\bf SQL command}&{\bf Direction}\\\hline $\Delta_F$&Project / duplicate & Backward\\\hline $\Sigma_F$&Union / Skolem&Forward\\\hline $\Pi_F$&Join / Select&Forward\\\hline\end{tabular}$$  These migration functors have been well-known in category theory literature for 50 years, albeit with different intentions.  We will explain what is meant in the above table by the ``Direction" column shortly.
+
+We should also note that $\Delta,\Sigma,$ and $\Pi$ can be used in combination to create GLAV views or more complex queries.  Although we have not defined or even properly described these migration functors yet, we provide an example of a theorem which roughly says that any complex query of this form can be refactored as a project / duplicate, followed by a select / join, followed by a union / skolem.\commds{fix this.}
+
+\begin{theorem}
+
+Suppose one has a sequence of functors $$\xymatrix@=11pt{\mcC_1&\mcD_1\ar[l]_{F_1}\ar[r]^{G_1}&\mcE_1\ar[r]^{H_1}&\mcC_2&\mcD_2\ar[l]_{F_2}\ar[r]^{G_2}&\mcE_2\ar[r]^{H_2}&\cdots\ar[r]^{G_n}&\mcE_n\ar[r]^-{H_n}&\mcC_{n+1},}$$ and consider the migration functor $X\taking\mcC_1\set\to\mcC_{n+1}\set$ given by $$X=\Delta_{F_1}\Pi_{G_1}\Sigma_{H_1}\Delta_{F_2}\Pi_{G_2}\Sigma_{H_2}\cdots\Pi_{G_N}\Sigma_{H_n}.$$  Then there exists some 3-term sequence $$\xymatrix{\mcC_1&\mcD\ar[l]_{F}\ar[r]^G&\mcE\ar[r]^{H}&\mcC_{n+1}}$$ and an isomorphism $X\iso\Delta_F\Pi_G\Sigma_H$ of functors $\mcC_1\set\to\mcC_{n+1}\set$.  Moreover, the process of finding this 3-term sequence is implementable. \commds{word choice?}
+
+\end{theorem}
+
+\begin{proof}
+
+\cite{polynomial functors polynomial monads}
+
+\end{proof}
+
+\commds{Say somewhere that this composition of functors can be thought of as ``pipelining."}
+
+Now we will describe the migration functors from a mathematical point of view.  The simplest to describe is $\Delta$ which basically works by projection or duplication.  
+
+\subsubsection{The migration functor $\Delta$}\label{sec:migration Delta}
+
+We begin with an example.  Consider the morphism $F$ of schemas depicted below:\commds{Should $\mcD$ below have the commutativity relations on it as in (\ref{dia:basic cat})?  The idea is the same without them, they add space, we don't care if the reader thinks they're there or not.  Yet not having them here, and saying that (\ref{dia:basic cat}) is the running example may add annoying ambiguity.}
+
+\begin{align}\label{dia:projection}\parbox{.9in}{\namecat{\mcD}\fbox{\xymatrix{\LTO{Employee}\ar@/_.5pc/[dd]_{\tn{First}}\ar@/^.5pc/[dd]^{\tn{Last}}\\\\\LTO{String}}}}\To{F}\parbox{1.9in}{\namecat{\mcC}\fbox{\xymatrix@=15pt{\LTO{Employee}\ar@<.5ex>[rr]^{\tn{Dpt}}\ar@(l,u)[]^{\tn{Mgr}}\ar@/_1pc/[dd]_{\tn{First}}\ar@/^1pc/[dd]^{\tn{Last}}&&\LTO{Department}\ar@<.5ex>[ll]^{\tn{Secr}}\ar@/^1pc/[ddll]^{\tn{Name}}\\\\\LTO{String}}}}\end{align}
+
+Given a database state on $\mcC$, it should be clear how one would import it to $\mcD$: one simply drops the {\bf Department} table entirely, and projects out the Dpt and Mgr column of the {\bf Employee} table.  One can also use $\Delta$ to duplicate tables or columns.  For example, consider the functor \begin{align}\label{dia:duplication}\parbox{1.1in}{\namecat{\mcD}\fbox{\xymatrix@=8pt{\LMO{E_1}\ar[dddr]_{l_1}&&\LMO{E_2}\ar[dddl]^{l_2}\\\\\\&\LTO{S}}}}\To{F}\parbox{1.4in}{\namecat{\mcC}\fbox{\xymatrix@=15pt{\LMO{E}\ar@<.5ex>[rr]^d\ar@(l,u)[]^{m}\ar@/_1pc/[dd]_{f}\ar@/^1pc/[dd]^{l}&&\LMO{D}\ar@<.5ex>[ll]^{s}\ar@/^1pc/[ddll]^{n}\\\\\LMO{S}}}}\end{align} where $F$ sends $E_1, E_2$ to $E$ and sends $l_1$ and $l_2$ to $l$.  Given any state $\gamma\taking\mcC\to\Set$ on $\mcC$ the migration functor $\Delta_F$ duplicates the employee table, as well as projecting out everything but its last name column, and puts that result in $\mcD$.
+
+
+In this section we will show that a similar process works for any morphism of schemas.  Not only that, but there will be two ways to export a state on $\mcC$ to a state on $\mcD$.  The distinction between them does not appear to have been discussed before in database literature. \commds{how do you feel about that?}
+
+Let $F\taking\mcC\to\mcD$ be a morphism of schemas.  Given a state $\delta\taking\mcD\to\Set$, let $\Delta_F(\delta)\taking\mcC\to\Set$ denote the composition of functors $$\mcC\To{F}\mcD\To{\delta}\Set.$$  We will call $\Delta_F$ the {\em re-indexing functor} --- it is a functor by Lemma \ref{lemma:reindexing} below.
+
+\begin{lemma}\label{lemma:reindexing}
+
+Let $F\taking\mcC\to\mcD$ be a morphism of schemas.  The mapping $\Delta_F$ described above extends to a functor $$\Delta_F\taking\mcD\set\to\mcC\set,$$ which in particular means that for any transformation of states $\delta\to\delta'$ on $\mcD$, there is a transformation $\Delta_F(\delta)\to\Delta_F(\delta')$ of states on $\mcC$, and the composition law is preserved.
+
+\end{lemma}
+
+\begin{proof}
+
+See \cite{anything}.
+
+\end{proof}
+
+Given a schema mapping $F\taking\mcC\to\mcD$, the functor $\Delta_F$ imports data from $\mcD$ to $\mcC$.  We now describe two functors that export data from $\mcC$ to $\mcD$.  These functors, denoted $\Sigma_F$ and $\Pi_F$ are known as the left and right adjoint (respectively) of $\Delta_F$.  The reader can see above that once $F$ is defined, the migration functor $\Delta_F$ is not chosen but mathematically given.  In the same way, its adjoints $\Sigma_F$ and $\Pi_F$ are mathematically given, even if they are more difficult to explain.  
+
+We must save the explicit descriptions of $\Sigma_F$ and $\Pi_F$ for the appendix, Section \ref{sec:app1}, where we allow ourselves to assume more category-theoretic background on the part of the reader.  However, we can give the following informal descriptions here.
+
+\subsubsection{The migration functor $\Pi$}
+
+Let $F\taking\mcC\to\mcD$, and let $\gamma\taking\mcC\to\Set$ be a state on $\mcC$; we wish to describe the state $\Pi_F(\gamma)$ on $\mcD$.  To do so, we will take an arbitrary table in $\mcD$ and describe the set of rows in the exported state $\Pi_F(\gamma)(t)$.  Given any table $t$ in $\mcD$ there are a number of tables $u$ in $\mcC$ that are either sent by $F$ to $t$ itself, or are sent to some table to which $t$ has a transitive column.  The set $\Pi_F(\gamma)(t)$ is roughly the join (or ``limit") of all rows in all such $u$'s.  
+
+\begin{example}
+
+Recall the functor $F\taking\mcD\to\mcC$ from Diagram (\ref{dia:duplication}), and that given a state $\gamma$ on $\mcC$ the result of $\Delta_F(\gamma)$ is a state on $\mcD$ that has duplicated the employee table and forgotten everything but the last names.  Now suppose we follow $F$ by the functor \begin{align}\label{dia:join}\parbox{1.1in}{\namecat{\mcD}\fbox{\xymatrix@=8pt{\LMO{E_1}\ar[ddr]_{l_1}&&\LMO{E_2}\ar[ddl]^{l_2}\\\\&\LTO{S}}}}\To{G}\parbox{1.1in}{\namecat{\mcE}\fbox{\xymatrix@=8pt{&\LMO{W}\ar[ddl]\ar[ddr]\\\\\LMO{E_1}\ar[ddr]_{l_1}&&\LMO{E_2}\ar[ddl]^{l_2}\\\\&\LTO{S}}}}\end{align}  Applying the migration functor $\Delta_F\Pi_G$ to $\gamma$ produces a state on $\mcE$.  One can prove that the result will leave the employee tables alone, and that table $W$ will be their join --- in other words, a row in $W$ (more precisely in $\Delta_F\Pi_G(\gamma)(W)$) is a pair of employees with the same last name.
+
+\end{example}
+
+\subsubsection{The migration functor $\Sigma$}
+Let $H\taking\mcE\to\mcC$, and let $\epsilon\taking\mcE\to\Set$ be a state on $\mcE$; we wish to describe the state $\Sigma_H(\epsilon)$ on $\mcC$.  To do so, we will take an arbitrary table in $\mcC$ and describe the set of rows in the exported state $\Sigma_H(\epsilon)(t)$.  Given any table $t$ in $\mcC$ there are a number of tables $u$ in $\mcE$ that are either sent by $H$ to $t$ itself, or are sent to some table with a transitive column to $t$.  The set $\Sigma_H(\epsilon)(t)$ is roughly the union (or ``colimit") of all rows in all such $u$'s.  
+
+Note that this process automatically creates {\em skolem variables}.  For example, consider Diagram \ref{dia:projection} but rename $\mcD, \mcC,$ and $F\taking\mcD\to\mcC$ respectively to $\mcE,\mcC,$ and $H\taking\mcE\to\mcC$ so as to conform with the current notation.  Given any state on $\mcE$ (which consists of a set of employees and a first and last name for each), we need to give a state on $\mcC$.  This is done by including a row in the {\bf Department} table for not only every employee but every employees manager (to the $n$th power).  We would also have to add new rows to the {\bf String} table as well.  These would not be strings, but variables acting like strings, called Skolem variables.  These Skolem variables could be manipulated in various ways by state transformations; e.g. we may equate the skolem variable for Alice's manager with the skolem variable for Bob's department's secretary.  In Theorem \ref{thm:finite skolem} we will show that, as long as there are only finitely many paths through a both the source and target database schema, there will only be finitely many skolem variables created under the mapping.
+
+\begin{theorem}\label{thm:finite skolem}
+
+Let $F\taking\mcC\to\mcD$ be a morphism of schemas, and let $\gamma\in\mcC\set$ be a finite state on $\mcC$.  If $\mcC$ and $\mcD$ are finite categories then $F_!\gamma$ will be a finite state on $\mcD$.
+
+\end{theorem}
+
+\begin{proof}
+
+For each object of $x\in\Ob_\mcD$, the set of $x$-records of $\Sigma_F(\gamma)$ is given by a colimit of finite sets, whose indexing category is finite.  The result is a quotient of (and hence has at most the cardinality of) a finite coproduct of finite sets, which is finite.
+
+\end{proof}
+
+\begin{example}
+
+Let $\mcD:=\fbox{\xymatrix{\LMO{E}\ar@(l,u)[]^{\tn{mgr}}}}$; with no relations imposed, $\mcD$ has infinitely many arrows, $\tn{mgr}^n$ for all $n\in\NN$.  Let $\mcC:=\fbox{$\LMO{E}$}$ and $F\taking\mcC\to\mcD$ the unique functor.  Given a finite set of employees $\gamma\taking E\to\Set$, one can load that data into $\mcD$ by applying $\Sigma_F(\gamma)$.  The result will be a state on $\mcD$ which includes infinitely many skolem variable (one for each choice of employee-record in $\gamma$ and $n\in\NN$).  
+
+However, if we know that the manager-hierarchy of our business is only 7 deep (i.e. that a 7th-degree manager is his or her own manager) then we can replace $\mcD$ by the category $$\mcE:=\fbox{\parbox{.8in}{$\underline{\tn{mgr}^7=\tn{mgr}^8}$\\\\\xymatrix{\LMO{E}\ar@(l,u)[]^{\tn{mgr}}}}}$$ and consider the unique functor $G\taking\mcC\to\mcE$.  Now Theorem \ref{thm:finite skolem} applies, and we can rest assured that $\Sigma_G(\gamma)$ is a finite state.  In fact its cardinality will be precisely 8 times the cardinality of $\gamma(E)$.
+
+Moreover, if in the future our manager-hierarchy changes (say to allow for 10th degree managers), we can again use migration functors to transform the old data into the new scheme.
+
+\end{example}
+
+\subsection{Typing and calculated fields}\label{sec:typing and calc}
+
+Consider again the category $\mcC$ from Section \ref{sec:running example} Diagram \ref{dia:basic cat}.  The observant reader may have noticed that a state $\gamma\taking\mcC\to\Set$ has no obligation to return the set of strings when applied to the object called $\LTO{String}$.  This predicts an interesting problem: when merging or comparing databases across schemas, there is no reason to expect that the implementation of basic types, such as strings, is the same.  In order to enforce that $\gamma(\LTO{String})$ really is some set of strings (e.g. varchar(40)), one can use the migration functors and an already-established typing system.
+
+This brings us to an interesting point.  As mentioned in the introduction, category theory has been remarkably successful in modeling programming languages and advancing the theory of functional programs.  For example, monads (functors of a certain kind) have brought notions such as input/output, state, exceptions, and concurrency to the purely functional setting.  The goal of PL theory is to reason about programs and prove that they will perform as expected.  It is our hope and belief that category theory will help bring that kind of guarantee and reasoning ability to database theory as well.
+
+While it is a bit of a digression, let us take a moment to describe how category theory applies to functional programming languages (such as Haskell and ML).   The relevant category $\mcT$ is that of ``types and programs": the objects are simple data types such as Int, String, Bool, as well as more complex data types such as (Int$\to$Int) whose values are themselves functions.  The arrows in $\mcT$ are programs, for example the program that takes a string and returns its length as an integer; this is an arrow String$\to$Int.  For each object in $t\in\Ob(\mcT)$, there is an intended ``set of values"\footnote{In fact, the values of these types are often CPOs, but as there is a functor from CPOs to Sets, the above discussion is valid} $V(t)$ and each program $t\to t'$ is a function from the values of $t$ to the values of $t'$. In other words, $V\taking\mcC\to\Set$ is a functor.
+
+We call the category $\mcT$, together with the values functor $V$ {\em a typing system}, meaning a category of types and programs for which every object and arrow is fully implementable on a computer.  Note the similarity between $\mcT$ and a database schema $\mcC$: in both cases the objects are types and the arrows are some way to take values of one type and produce values of another; in both cases the values of those types are given by a set-valued functor.  The only difference is that the types in $\mcC$ are most often ``user-defined" and their values are changing, whereas the types in $\mcT$ seem closer to ``god-given" and their values are permanent.
+
+\begin{definition}\label{def:typing}
+
+Let $(\mcT,V\taking\mcT\to\Set)$ be a typing system as above and let $\mcC$ be a category.  We call a functor $$G\taking\mcT\to\mcC$$ a {\em $(\mcT,V)$-typing of $\mcC$}.   An object in $\mcT$ (or its image under $G$) will be called {\em a typed object} and a morphism in $\mcT$ (or its image under $G$) will be called a {\em calculated field}.
+
+A {\em $(\mcT,V)$-typed state on $\mcC$} consists of a state $\gamma\in\mcC\set$ and a transformation $\gamma\to\Pi_GV$ of states on $\mcC$, or equivalently a transformation $\Delta_G(\gamma)\to V$ of states on $\mcT$.   
+
+\end{definition}
+
+Note that under this definition any computer program $P$ can serve as a foreign key column connecting its input type $X$ to its output type $Y$; we merely write it as an arrow $X\To{P}Y$ in $\mcT$.  We did not define morphisms of $(\mcT,V)$-typed states in Definition \ref{def:typing} for fear of overwhelming readers.  It can be found in Definition \ref{def:typing category}.
+
+\begin{example}
+
+Suppose each employee of a company has a salary and a travel allowance, and we wish to calculate the sum of these two fields.  The relevant schema is $$\mcC:=\parbox{1.6in}{\fbox{\parbox{1.6in}{\underline{$f;\pi_1$=\tn{salary}}\hsp\underline{$f;\pi_2$=\tn{travel}}\\\\\xymatrix{&\LMO{E}\LLA{dl}{salary}\LA{dr}{travel}\LA{d}{$f$}\\\LMO{\RR}&\LMO{\RR\cross\RR}\LLA{l}{$\pi_1$}\LA{r}{$\pi_2$}\LA{d}{+}&\LMO{\RR}\\&\LMO{\RR}}}}}$$  The composite $f;+\taking\LMO{E}\to\LMO{\RR}$, is a calculated field.  However, nothing about this schema forces that the elements of $\LMO{\RR}$ or $\LMO{\RR\cross\RR}$ are anything like real numbers or pairs of such, nor that the column $+$ really produces the sum.  To enforce these constraints, we use a typing as above. 
+
+Let $\mcT$ be the category $$\mcT:=\parbox{1.6in}{\fbox{\xymatrix{\LMO{\RR}&\LMO{\RR\cross\RR}\LLA{l}{$\pi_1$}\LA{r}{$\pi_2$}\LA{d}{+}&\LMO{\RR}\\&\LMO{\RR}}}}$$ and let $V\taking\mcT\to\Set$ be appropriate functor \commds{Carlo: help}.  Under Definition \ref{def:typing}, every object in $\mcC$, except for $E$, is a typed object, and both projections $\pi_1,\pi_2$ and the sum of real numbers $+$ are calculated fields, whereas salary and travel are not.  
+
+There is an obvious functor $G\taking\mcT\to\mcC$, so we have a typing of $\mcC$.  A $(\mcT,V)$-typed state $\delta$ on $\mcC$ consists of a set $\delta(x)$ for every object $x$ in $\mcC$, together with an assignment of a value to each cell in $\mcT$.  In other words, it is what we want.
+
+\end{example}
+
+The point here is that the way in which categories are used in PL theory fits in perfectly with the way we propose to use categories in DB theory.  We can exploit that connection to make a bridge between these two fields of research.  In Section \ref{sec:PL} we discuss this issue a bit more to integrate a few advanced results.
+
+
+\subsection{The update category, revisited}
+
+In Section \ref{sec:update}
+
+
+We start from this rather loose definition of an update command that we can formally state as follows: 
+
+\begin{definition}\label{def:update command}
+Let $\mcC$ be a schema.  An {\em update command on $\mcC$} is a function $U\taking\Ob_{\mcC\set}\to\Ob_{\mcC\set}$; the subcategory of $\mcC\set$ on which $U$ is defined is called {\em the domain of definition of $U$}.  Let $\UpCmd_\mcC$ denote the monoid of update commands on $\mcC$.  The multiplication law for this monoid is simply sequential application of update commands.  Two update commands are considered equal if they are the same as functions.
+\end{definition}
+
+This simple definition already allows us to define equivalence for chains of updates statements. However, we are interested in giving a tighter definition based on 
+
+
+
+
+
+
+We are now interested in the category of updates, as opposed to the category (or monoid) of update commands.  We want each object in this category to be a state and each morphism $A\to B$ to be an update command applied to $A$ which returns $B$.  We say that two updates $f,g\taking A\to B$ are equivalent if commands which generated $f$ and $g$ are equal, i.e. if these two commands are identical when applied to any state.  It will turn out (Proposition \ref{prop:updates} that this definition is not arbitrary from a categorical perspective, but instead ``suggested" in the sense that it comes from a major tool of category theory called {\em the Grothendieck construction}.
+
+\begin{definition}\label{def:update}
+
+Let $\mcC$ be a schema.  The {\em category of updates on $\mcC$}, denoted $\Up_\mcC$, has as objects the set $\Ob_{\mcC\set}\amalg\{\tn{fail}\}$ of states on $\mcC$ plus a fail state.  If $\gamma$ and $\delta$ are states, then a morphism $f\taking \gamma\to\delta$ is a update command $U\in\UpCmd_\mcC$ such that $U(\gamma)=\delta$, and a morphism $\gamma\to\tn{fail}$ is any update command which fails on $\gamma$.  For the composition law, we say $f_1*f_2=f_3$ if the underlying update commands also satisfy that equation, $U_1*U_2=U_3$, i.e. if this composition law would hold for any input state.
+
+\end{definition}
+
+\begin{proposition}\label{prop:update}
+
+Let $\mcC$ be a category and let $\UpCmd_\mcC$ be the monoid of update commands, considered as a category with one object.  There is a functor $F\taking\UpCmd_\mcC\to\Set$ where the unique object of $\UpCmd$ is sent to the set $\Ob_{\mcC\set}\amalg\{\tn{fail}\}$, and each update command is sent to the corresponding function $\Ob_{\mcC\set}\to\Ob_{\mcC\set}$.  The Grothendieck construction of $F$ is precisely the category $\Up_\mcC$ defined in Definition \ref{def:update}.
+
+\end{proposition}
+
+\begin{proof}
+
+Obvious to those who know and can work with the definition of Grothendieck constructions.
+
+\end{proof}
+
+\begin{remark}
+
+In Definition \ref{def:update command}, we defined an update command to be a function from states to states.  Surprisingly, it seems that updates are often functorial; i.e. they respect the notion of ``transformation of states" defined in Definition \ref{def:transformation}.  The precise structure of update commands, such as those found in SQLs data manipulation language, should be studied using category theory to determine \begin{itemize}\item whether all update commands are indeed partial functors $U\taking\mcC\set\to\mcC\set$\item whether there is a nice characterization of standard updates within the category of all partial functors $\mcC\set\to\mcC\set$, \item and whether, if there are some partial functors that are not standardly considered updates, such functors may have new capabilities that have not been explored.\end{itemize}
+
+\end{remark}
+
+In Section \ref{transactions and triggers} we will discuss transactions and triggers and show that category theory can provide a useful semantics for these.
+
+\noshow{%2010/12/07
+To update a state, one applies an update command, many of which can be written as a deletion followed by an insertion.  Some deletions or insertions, when applied to a given state, may fail because of various constraint violation possibilities.  However it turns out that when updates succeed, they are functorial!  That means that if one has a transformation $\gamma\to\delta$ and applies the same update command $U$ to both (and neither fails), then there will again be a transformation $U(\gamma)\to U(\delta)$ --- if we knew how to map rows of $\gamma$ to rows of $\delta$ before applying $U$, we will still know how to do it afterwards.  
+
+The following, Definition \ref{def:update command}, is one possible definition for update commands (the definition of updates themselves will follow in Definition \ref{def:update}).  There may be more appropriate definitions one could give, and we are not claiming this one to be correct.  Our goal here is to merely give one viable definition so that the reader may see how it might work.  
+
+\begin{definition}\label{def:update command}
+
+Let $\mcC$ be a schema.  An {\em update command on $\mcC$} is a partial functor $U\taking\mcC\set\to\mcC\set$; the subcategory of $\mcC\set$ on which $U$ is defined is called {\em the domain of definition of $U$}.  Let $\UpCmd_\mcC$ denote the monoid of update commands on $\mcC$.  The multiplication law (or composition law) for this monoid is simply sequential application of update commands.  Two update commands are considered equal if they do the same thing to every state.
+
+\end{definition}
+
+We are now interested in the category of updates, as opposed to the category (or monoid) of update commands.  We want each object in this category to be a state and each morphism $A\to B$ to be an update command applied to $A$ which returns $B$.  We say that two updates $f,g\taking A\to B$ are equivalent if commands which generated $f$ and $g$ are equal, i.e. if these two commands are identical when applied to any state.  It will turn out (Proposition \ref{prop:updates} that this definition is not arbitrary from a categorical perspective, but instead ``suggested" in the sense that it comes from a major tool of category theory called {\em the Grothendieck construction}.
+
+\begin{definition}\label{update}
+
+Let $\mcC$ be a schema.  The {\em category of updates on $\mcC$}, denoted $\Up_\mcC$, has as objects the set $\Ob_{\mcC\set}$ of states on $\mcC$.  If $\gamma$ and $\delta$ are states, then a morphism $f\taking \gamma\to\delta$ is a update command $U\in\UpCmd_\mcC$ such that $U(\gamma)=\delta$.  For the composition law, we say $f_1*f_2=f_3$ if the underlying update commands also satisfy that equation, $U_1*U_2=U_3$, i.e. if this composition law would hold for any input state.
+
+\end{definition}
+}%2010/12/07
+
+
+
+
+
+% ============================================================================
+\section{Categories for classical results}
+\label{sec:classics}
+In the previous section, we provided the user with a natural representation of databases in terms of categories and functors, what remains to be shown is that this specific application of category theory to databases is constructive, and that is a valid alternative to prove useful results. We attempt this in this section by showing how we can use the framework introduced above to prove some of the classical results in database theory.
+
+\commcc{- schema mapping as a functor\\
+- extensions of aggregates and UDF } 
+
+\section{More advanced results}
+\label{sec:more}
+In the previous sections, we showed that category theory naturally extend set theory, and, thus, naturally allows to represent database problems, and its rigorous foundations allows us to prove some of the classical theorems from the database literature. This section is devoted to suggest how using these conceptual tools we can imagine to tackle more advanced problems. 
+
+\subsection{Integrations with PL}\label{sec:PL}
+
+We described in Section \ref{sec:typing and calc} how category theory is typically applied in the theory programming languages, and how this meshes with our application to databases.  In Section \ref{sec:RDF} we will also mention Grothendieck constructions are useful \cite{Harper?}\cite{Launchbury?} and how they relate to our work.  Harper's work also discussed ``Kinds" a category $\mcK$ together with a map $\mcK\to\Cat$.  Here, each kind has a {\em category} of states, rather than a mere set of states, and these are the types of that kind.  Many of the above ideas on set-valued functors can be recast to category-valued functors and again integrate well with Harper's theory.  One could also use functors valued in topological spaces or vector spaces and perhaps find use in spatial or temporal databases.
+
+As a quick example of the link, one of the big successes in programming language theory was the use of monads to describe effects such as those encountered in IO, exceptions, concurrency, etc.  A monad on a category $\mcC$ is a functor $M\taking\mcC\to\mcC$ with some properties.  The simplest such example is the list monad which takes a type and produces its list type.  In database theory the same monad might be useful to relax the notion of ``state transformation" $m\taking\gamma\to\delta$ (from Section \ref{sec:transformations}), and instead allow each row in $\gamma$ to map to a sequence of rows in $\delta$.
+
+\subsection{Grouping}\label{sec:grouping}
+
+In this section we show that grouping a table by a few of its columns is functorial.  That is, it fits in perfectly with the rest of the theory of this paper.
+
+Let $\mcC$ be a schema; one can picture a 5-column table in $\mcC$ as a functor $F\taking\mcH\to\mcC$ where $\mcH$ is the category to the right$$\parbox{1.2in}{\namecat{\mcG}\fbox{\xymatrix@=5pt{&&&&\LMO{C_1}\\\LMO{T_1}\ar[dd]_g\ar[urrrr]^{f_1}\ar[rrrr]^{f_2}\ar[drrrr]^{f_3}&&&&\LMO{C_2}\\&&&&\LMO{C_3}\\\LMO{T_2}\ar[rrrr]^{f_4}\ar[drrrr]^{f_5}&&&&\LMO{C_4}\\&&&&\LMO{C_5}}}}\To{G}\parbox{1.1in}{\namecat{\mcH}\fbox{\xymatrix@=5pt{&&&&\LMO{C_1}\\&&&&\LMO{C_2}\\\LMO{T}\ar[uurrrr]^{f_1}\ar[urrrr]^{f_2}\ar[rrrr]^{f_3}\ar[drrrr]^{f_4}\ar[ddrrrr]^{f_5}&&&&\LMO{C_3}\\&&&&\LMO{C_4}\\&&&&\LMO{C_5}}}}$$  There is a functor $F\taking\mcG\to\mcH$ (where $T_1,T_2$ are sent to $T$ and labels are otherwise preserved) which will allow us to group by columns 4 and 5.  Hopefully, the way one does this for an arbitrary subset of the columns is clear.
+
+At this point we have functors $$\mcG\To{G}\mcH\To{F}\mcC$$ so, as in Section \ref{sec:migration Delta}, we can take any database state $\delta$ on $\mcC$ and apply $\Delta_G$ if we want to isolate table $T$, or we can apply $\Delta_F$ to that to get a state $\gamma:=\Delta_{\commds{?}}(\delta)$ in $\mcG\set$.  It should be clear how this would look: two tables and a foreign key column pointing from the first to the second, where we intend to group by the columns of the second.  In other words, for every element in $\gamma(T_2)$, we want a table with data columns $C_1,C_2,C_3$, i.e. a state on $$\mcG':=\parbox{1.2in}{\fbox{\xymatrix@=5pt{&&&&\LMO{C_1}\\\LMO{T_1}\ar[urrrr]^{f_1}\ar[rrrr]^{f_2}\ar[drrrr]^{f_3}&&&&\LMO{C_2}\\&&&&\LMO{C_3}}}}$$  We have the following proposition.
+
+\begin{proposition}\label{prop:grouping}
+
+There is a functor $$\mcG\set\too\mcX\set_{\Ob_{\mcG'\set}}$$ where $\mcX$ is the schema $$\fbox{\xymatrix@=8pt{&&\LMO{C_4}\\\LMO{T_2}\ar[rru]\ar[rr]\ar[rrd]&&\LMO{C_5}\\&&\LMO{X}}}$$ and $X$ is typed by the set of $\mcG'$-tables, $\Ob_{\mcG'\set}$.\commds{Carlo: help}
+
+\end{proposition}
+
+\begin{proof}
+***
+\end{proof}
+
+Proposition \ref{prop:grouping} says that given a choice of how to group some table $T$, the grouping operation is functorial.
+
+\begin{remark}
+
+The same idea works for indexing.  Given a field $c\taking X\to T$ in a schema $\mcC$, we can index table $X$ by type $T$.  Suppose that $T$ has value set $V\to T$.  Form the fiber product $$\xymatrix{X\cross_TV\ar[r]\ar[d]\ullimit&X\ar[d]^c\\V\ar[r]&T}$$ and, after removing the arrow $c$(using a migration functor), apply the above operation to group by $V$.  The result is a map $V\to\Ob_{\mcX\set}$, that sends every value to the set of $X$ records that have that value in the $c$ field.
+
+\end{remark}
+
+\noshow{%2010/12/05
+
+Let $\mcC$ be a category, $d\taking E\to D$ a morphism in $\mcC$, and $\gamma\taking\mcC\to\Set$ a state.  For each value $x\in\gamma(D)$ we would like a table of all records of $E$ whose $d$-value is $x$.  In this section we give a construction that takes the above data and returns a new schema and a new state which contains all the old information as well as the new grouping.  It turns out that this construction is functorial both in $d$ and $\gamma$.  Before providing the explicit construction, we give an example.
+
+\begin{example}
+
+Consider the schema $$\mcC:=\parbox{1.8in}{\fbox{\xymatrix@=15pt{\LTO{Emp}\ar[rr]^d\ar@/_1pc/[dd]_{f}\ar@/^1pc/[dd]^{l}&&\LTO{Dpt}\\\\\LTO{Str}}}}$$ and suppose we want to group by $d\taking E\to D$ (i.e. to group employees by department).  Suppose that $\gamma$ is given by the table $$\tn{\begin{tabular}{| c || c | c | c |}\hline\multicolumn{4}{| c |}{\tn{Employee}}\\\hline \tn{\bf Id} & {\bf f} & {\bf l} & {\bf d}\\\hline 101&David&Hilbert&Sales\\\hline 102 &Bertrand & Russell & Production\\\hline 103& Alan & Turing &Sales\\\hline \end{tabular}}$$  
+
+Applying our procedure in this case would return a new schema $$\mcC_{d,\gamma}:=\parbox{2.8in}{\fbox{\xymatrix@=13pt{\LTO{Sales-Emp}\ar[dr]&&\LTO{Production-Emp}\ar[dl]\\&\LTO{Emp}\ar[rr]^d\ar@/_1pc/[dd]_{f}\ar@/^1pc/[dd]^{l}&&\LTO{Dpt}\\\\&\LTO{Str}}}}$$ and a new state $\gamma_d\taking\mcC_{d,\gamma}\to\Set$ which, when restricted to $\mcC$, is the same as $\gamma$ and which returns the obvious subsets of $\gamma(\LTO{Emp})$ on the new objects.  For example $\gamma_f$ applied to \tn{Sales-Emp} would have the obvious two rows.
+
+\end{example}
+
+The grouping construction is generally given for $$\mcC\in\Cat,\hsp (d\taking E\to D)\in\mcC,\hsp \gamma\taking\mcC\to\Set$$ as follows.  Let $\mcC_{d,\gamma}$ be given by freely adding to $\mcC$ a new object $x\dash E$ and morphism $x\dash E\to E$ for every row $x\in\gamma(D)$.  Let $\gamma_d\taking\mcC_{d,\gamma}\to\Set$ be equal to $\gamma$ when restricted to $\mcC$, assign to each new object $x\dash E$ the set $\gamma_d(x\dash E):=\gamma(d)^\m1(x)$, and assign to each new morphism $x\dash E\to E$ the inclusion $\gamma(d)^\m1(x)\ss\gamma(E)$.  We call $\mcC_{d,\gamma}$ the {\em grouping of $\mcC$ by $\gamma$ along $d$} and we call $\gamma_d$ the {\em grouping of $\gamma$ along $f$}.
+
+While we do not have space to make it explicit here, the above construction is functorial in both $d$ and $\gamma$.  In other words, given a commutative diagram $$\xymatrix{E_1\ar[r]\ar[d]_{d_1}&E_2\ar[d]^{d_2}\\ D_1\ar[r]&D_2}$$ in $\mcC$ and/or a transformation $\gamma_1\to\gamma_2$ of $\mcC$-sets, there is an induced schema morphism $\mcC_{d_1,\gamma_1}\to\mcC_{d_2,\gamma_2}$ and an induced morphism of grouped states as well.
+
+}%2010/12/05
+
+
+
+\subsection{Aggregates}\label{sec:aggregates}
+
+Let $\mcC$ be a schema and $S=\Ob_{\mcC\set}$ its set of states.  Suppose given a function $h\taking S\to T$, where $T$ is any set.  For example $T$ could be the set of integers and $h$ could send any state to its total number of rows or the sum of cells in a given column of $\mcC$.  Then aggregation simply becomes a combination of grouping, as defined in Section \ref{sec:grouping}, and the function $h$, which could be user-defined.
+
+\begin{example}
+
+A scientist is measuring the spring constant for springs made of different materials.  He or she wants a table of materials vs. spring constants.  We will consider the map of schemas $$\parbox{1.4in}{\namecat{\mcG'}\fbox{\xymatrix@=5pt{&&&\LTO{x-val}\\\LTO{sample}\ar[urrr]\ar[drrr]\\&&&\LTO{y-val}}}}\To{F}\;\parbox{1.4in}{\namecat{\mcG}\fbox{\xymatrix@=4pt{&&&\LTO{x-val}\\\LTO{sample}\ar[dd]\ar[urrr]\ar[drrr]\\&&&\LTO{y-val}\\\LTO{experiment}\ar[rrr]&&&\LTO{mtrl}}}}$$  A single experiment can be viewed in $\mcG'$, whereas the totality is viewed on $\mcG$.  Let $S=\Ob_{\mcG'\set}$ be the set of states on $\mcG'$.   A data set for one spring can either be seen formally as an element of $S$ or visually as a scatterplot of force-extension data for that spring.
+
+By Hook's law, the force vs. extension curve of a spring is assumed linear, of the form $y=kx+b$.   During the data reduction process the scientist will use some program $h\taking S\to\RR$ which assigns to each data set a best-fit value of the spring constant $k$.  By grouping, we can functorially transform a state on $\mcG$ into a state on the schema $$\fbox{\xymatrix@=5pt{\LTO{experiment}\ar[rrrd]\ar[rrr]&&&\LTO{mtrl}\\&&&\LMO{S}}}$$ which sends each experiment to its data set.  We can then use migration functors and typing to add a calculated field given by $h\taking S\to \RR$ to yield a state on the schema $$\fbox{\xymatrix@=5pt{\LTO{experiment}\ar[rrrd]\ar[rrr]&&&\LTO{mtrl}\\&&&\LMO{\RR}}}$$  This will be a table of materials and their spring constants.
+
+
+\end{example}
+
+\noshow{%2010/12/06
+
+Aggregate functions are to some degree outside the main thrust of this paper.  Instead of being functorial, aggregates tend to be ``continuous."  For example, as one adds new data to a state, the sum or average of a given column will vary continuously.  If new data were added that sharply changed some aggregate, then topologically the new state would be ``far" from the old state.
+
+Given a schema $\mcC$, the set of states on $\mcC$ is $\Ob(\mcC\set)$.  Aggregation is given by a function $A\taking\Ob(\mcC\set)\to\Ob(\mcD\set)$ for some schema $\mcD$.  If both sets $C:=\Ob(\mcC\set)$ and $D:=\Ob(\mcD\set)$ are endowed with a topology, then we can ask whether $A\taking C\to D$ is continuous.  If $D$ is endowed with a topology and $C$ isn't, we could define one on it using what is formally called {\em the strong topology on $C$ for $A$}, which just means ``make everything in $C$ as close together as possible under the constraint that $A$ be continuous."  A few different aggregates could be chosen to define a topology on $C$ and then experiments could test whether, under that topology, certain other aggregates were continuous.  
+
+\begin{example}
+
+Suppose that a database schema $\mcC$ is constructed to record results of pharmacological experiments.  One could define aggregate functions on chemical compounds to measure potency, etc. and define a topology on $C:=\Ob(\mcC\set)$ accordingly.  Then, one could define aggregate functions to determine the health of patients under clinical trials.  If these aggregates turn out to be continuous, this would mean that, given the way we measure drugs, similar drugs have similar results.  If these aggregates turn out to not be continuous, it means we are missing an important feature: drugs that seem similar to the company are having very different clinical results.
+
+\end{example}
+
+}%2010/12/06
+
+\noshow{%2010/12/01
+
+Aggregate functions are perhaps the least-well covered by the general theory outlined in this paper.  However, a nice feature of category theory is that even when a model fails, it fails gracefully.  The hope would be that aggregates are ``functorial" on $\mcC\set$, as described below, but this is not the case.  
+
+The setup for aggregates is as follows.  Let $\mcC$ be a schema and $\gamma\taking\mcC\to\Set$ a state, and suppose given a subschema of the form $$\mcA=\parbox{1.5in}{\fbox{\xymatrix@=10pt{&&\LMO{A_1}\\\LMO{E}\ar[dddd]_d\ar[rru]\ar[rr]\ar[rrdd]&&\LMO{A_2}\\&&\vdots\\&&\LMO{A_n}\\\\\LMO{D}}}}$$  The first step is an alternative to the model given in Section \ref{sec:grouping}.  
+
+Suppose that $A_1,A_2,\ldots,A_n$ are typed by sets $T_1,T_2,\cdots, T_n$ respectively, and let $T=T_1\cross T_2\cross\cdots\cross T_n$ be the product.  The above setup induces a morphism $$\gamma(\LMO{D})\to\Set_{/T}$$ which sends every $D$-row in $\gamma$ to its set of preimages, each of which is valued in $T$.  
+
+An aggregate function, whether ``built-in" or ``user defined"  $\Set_{/T}\to U$ for any set $U$, will now induce a map $\gamma(\LMO{D})\to U$.  Although one can add a column $a\taking\LMO{D}\to\LMO{U}$ in $\mcA$ or $\mcC$, and force $a$ to be this aggregate function, we do not consider this construction to be categorical at the present time.  The above discussion is meant to simply show the state of affairs as of writing this paper.
+
+}%2010/12/01
+
+
+
+
+\subsection{Transactions}
+
+A transaction is a series of updates which must be performed as a unit, or at least act as though it is performed as a unit.  In this section we describe the relationship between transactions and updates in the language of category theory.
+
+The main point is to relate transactions to updates; each will be a morphism in an appropriate category and we want a functor between them.  The set of objects in these two categories will be the same, namely the set of states on a given schema $\mcC$.  The difference is in the morphisms: the morphisms in the category of updates are all sequences of updates, whereas the morphisms in the category of transactions are all sequences of transactions.  Clearly, every transaction yields a sequence of updates, but some sequences of updates are not transactions.
+
+\begin{definition}
+
+Let $\mcC$ be a schema and let $\Up_\mcC$ be the category of updates on $\mcC$.  A {\em category of transactions on $\mcC$} is a subcategory $\mcX$ of $\Up_\mcC$ that has the same set of objects, $\Ob_{\mcX}=\Ob_{\Up_\mcC}=\Ob_{\mcC\set}$.  We denote the inclusion functor by $L\taking\mcX\to\Up_\mcC$.
+
+\end{definition}
+
+Note that under the above definition there may be many different categories of transactions on $\mcC$.  That is, one can decide which updates (or sequences of updates) will count as transactions and which will not.  
+
+The beauty of this approach is that the updates in a sequence of transactions could be done in any order, so long as the resulting path is equivalent to the ``default" path.  Let us make this more precise.  To say that $t_1$ and $t_2$ are transactions with underlying update sequences $r_1,r_2,\ldots,r_m$ and $s_1,s_2,\ldots,s_n$ respectively, is to say that $L(t_1)=r_1*r_2*\cdots*r_m$ and $L(t_2)=s_1*s_2*\cdots*s_n$.  And of course, $L(t_1*t_2)=r_1*\cdots*s_n$ accordingly.  However there may be more than one sequence of updates that compose to equal $L(t_1*t_2)$.  In a category, two different sequences of arrows may be declared equal, and we have declared to sequences of updates to be equal if they have the same effect.  Thus the transaction scheduler could choose any sequence of updates whose composition is equal to $L(t_1*t_2)$.
+
+Recall that we defined updates using a notion of update commands.  Similarly we could define {\em transaction commands}, a monoid which acts on the set $\Ob_{\mcC\set}$ of states, just as $\UpCmd_\mcC$ does.  A result analogous to Proposition \ref{prop:update} is easily proved.  In fact, it would be interesting to study the category of submonoids of $\UpCmd_\mcC$, to classify various notions of transaction on a given schema.
+
+\begin{remark}
+
+The above does not explore transactions in all there glory.  There are promising connections with the ``state monad" in PL theory that will be useful to explore in future work.  This monad would allow one to model programs which have the capacity to access the state of the database, use it in a computation, and then update the state.  Monads are specifically designed to allow one to keep track of the history of such transactions.
+
+\end{remark}
+
+\subsection{Triggers}
+
+A database schema is supposed to give a certain semantic to the data.  Triggers are designed to uphold this semantic: given an update which would violates a constraint, triggers are employed to rectify the situation.  In this paper, we do not describe triggers which act outside the database (like sending a supervisor an email whenever a certain event occurs), we only describe those that act on the state of the database; we call these {\em corrective triggers}.  We can describe corrective triggers categorically as follows.
+
+Suppose that $\mcC$ is a sketch (which includes information like ``table $T$ is the product of table $A$ and table $B$") and $\mcB$ is the underlying category (with only foreign key type constraints).  Then any state on $\mcC$ will restrict to a state on $\mcB$, whereas a state on $\mcB$ must be ``corrected" in order to give a state on $\mcC$.  In other words, there are functors $F\taking\mcC\set\to\mcB\set$ and $G\taking\mcB\set\to\mcC\set$ such that $FG=\id_{\mcC\set}$, where $G$ is the functor that takes a state on $\mcB$ and formulaically adds rows to table $T$ to ensure that it becomes the product of $A$ and $B$.  Updates to a $\mcC$-set $\delta$ will generally land in $\mcB\set$ because the updater either does not know about the constraint or wants it to be taken care of automatically.  The trigger is basically $G$ --- it is employed to take the resulting $\mcB$-set and ``rectify it" to give a new $\mcC$-set.  Whereas this is generally done with a piece of code, the semantics should be considered as a functor $G$ as above.
+
+\subsection{RDF and semi-structured data}\label{sec:RDF}
+
+Suppose that $\mcC$ is a schema and $\delta\taking\mcC\to\Set$ is a state.  A beautiful construction of category theory, called the Grothendieck construction, allows one to convert the functor $\delta$ into a new category $\El(\delta)$, called {\em the category of elements of $\delta$}, which is surprisingly similar to an RDF graph.  The objects of $\El(\delta)$, like vertices in an RDF graph, correspond to the entities in $\delta$, i.e. one for each row in each table.  The arrows of $\El(\delta)$, like edges in an RDF graph, correspond to the attributes of the entities in $\delta$, i.e. an arrow points from an entity to its value in some cell.  So the subject and value in a (subject, predicate, value) triple correspond to two objects in $\El(\delta)$, and the predicate corresponds to an arrow between them.
+
+In fact, there is a canonical functor $\pi\taking\El(\delta)\to\mcC$, where $\El(\delta)$ acts as the RDF triple store (or RDF graph), $\mcC$ acts as the RDF schema, and $\pi$ sends each entity and predicate to its type as declared in $\mcC$.  Functors such as $\pi$ can encode semi-structured data as well.  In other words, such a functor (or RDF triple store) may not come from a relational database state on $\mcC$, for example because such a state would have null values or multiple values in a single cell, or may not conform to the commutativity constraints declared in $\mcC$.  Thus the Grothendieck construction sends database states into a more ``relaxed" world of semi-structured data in a functorial way.  
+
+\subsection{Pivoting}\label{sec:pivoting}
+
+\commds{If we want to be sure of no nulls in the pivoted thing, we have to enforce that $Ce$ is a fiber product as drawn below in $\mcP$.  But if we allow nulls in the pivoted thing then we don't need to get into it (we can stay in categories, rather than needing sketches).  If we allow nulls then we aren't in the world of database states, but ``semi-structured data" as described in Section \ref{sec:RDF}.  What do you think?}
+
+We can pivot any state on a schema of the following form: $$\mcP:=\parbox{1.6in}{\fbox{\xymatrix{\LMO{R}\ar[d]&\LMO{Ce}\ar[l]\ar[d]\ar[r]\urlimit&\LMO{D}\ar[d]\\\LMO{T}&\LMO{Co}\ar[r]^t\ar[l]_s&\LMO{DT}}}}$$ where the labels of the objects stand for: row, cell, domain, table, column, data type --- respectively.  One can change the number of columns in a table or the data types of those columns by changing the state on $\mcP$.  Pivoting turns the state on $\mcP$ into a new schema whose tables are the elements of T, columns are elements of Co with data types given by $t$, etc.  
+
+In this section we define pivoting only for schemas in which the tables have no foreign keys, just data columns.  Allowing foreign keys can be done along the same lines \commds{should we put it in an appendix?}.  What is amazing, from a categorical perspective, about pivoting is that it is functorial -- in other words it naturally respects the categorical structure we defined in Section \ref{sec:transformations}, and works hand-in-hand with two of the migration functors $\Delta$ and $\Sigma$.
+
+A state on only the bottom row of $\mcP$ can be transformed into a bipartite graph with tables on one side, data types on the other, and an arrow from each table to its data type.  Such a graph is in fact a category.  Moreover, morphisms of states on $\mcP$ are sent by this construction to functors between categories.  That is, we have a functor $$\Piv_0\taking\mcP\set\to\Cat$$ (we prove this as part of Proposition \ref{prop:pivoting})which works only at the schema level.  We need the following definition in order to see the full power of pivoting.
+
+\begin{definition}\label{def:data cat}
+
+Let $\Data$ denote the category for which an object is a pair $(\mcC,\delta\taking\mcC\to\Set)$ consisting of a schema and a state on it; and for which a morphism $a\taking(\mcC,\delta)\to(\mcC',\delta')$ consists of a pair $(a,a^\sharp)$ where $a\taking\mcC\to\mcC'$ is a map of schemas and $a^\sharp\taking\delta\to a^*\delta'$ is a transformation of states.
+
+\end{definition}  
+
+In terms of RDF graphs, the above is easier to understand: it's just a commutative square of categories $$\xymatrix{\Gr(\delta)\ar[r]^{a^\sharp}\ar[d]&\Gr(\delta')\ar[d]\\\mcC\ar[r]_a&\mcC'}$$
+
+\begin{proposition}\label{prop:pivoting}
+
+There is a functor $\Piv\taking\mcP\set\to\Data$, sending a state $\gamma$ on $\mcP$ to an object $(\mcC,\delta)$ where the set of tables in $\mcC$ is $\gamma(T)$, the set of all columns is $\gamma(Co)$, each column is sourced in a table by $\gamma(s)$ and has values in a data type by $\gamma(t)$, the set of all rows is given by $\gamma(R)$, the set of cells is given by $\gamma(Ce)$, etc. 
+
+\end{proposition}
+
+\begin{proof}
+
+If $F$ is the schema morphism $$\parbox{1.6in}{\namecat{\mcP'}\fbox{\xymatrix{\LMO{T}&\LMO{Co}\ar[l]_s\ar[r]^t&\LMO{DT}}}}\To{F}\parbox{1in}{\namecat{\mcQ}\fbox{\xymatrix{\LMO{Co}\ar@<.5ex>[r]\ar@<-.5ex>[r]&\LMO{T}}}}$$ the migration functor $\Sigma_F$ sends states on $\mcP$ to states on $\mcQ$.  A state on $\mcQ$ is a graph, and there is a functor sending graphs to categories.  Combining this with the $\Delta$ migration functor applied to the obvious inclusion $\mcP'\to\mcP$ gives us $\Piv_0$ as above.  
+
+Applying this same construction to the top row of $\mcP$ yields another such functor, written $\Piv_1\taking\mcP\set\to\Cat$, and a natural transformation $m\taking\Piv_1\to\Piv_0$.  The requirement on $\mcP$-sets $\delta$ that $\delta(Ce)=\delta(R)\cross_{\delta(R)}\delta(Co)$ enforces that the functor $\Piv_1(\delta)\to\Piv_0(\delta)$ is a discrete op-fibration, which means that $\Piv_1(\delta)=\Gr(\gamma)$ for some state $\gamma\taking\Piv_0(\delta)\to\Set$.  We can consider $m$ as a functor $m\taking\mcP\set\to\Cat^{[1]}$, and the preceding sentence implies that it serves as a functor $m\taking\mcP\set\to\Data$.  If we take $\Piv:=m$, it is clear that it has the prescribed properties.
+
+\end{proof}
+
+\begin{remark}
+
+It is interesting to notice that applying the Grothendieck construction to a state on $\mcP$ is similar to ``reification" in RDF triples stores and schemas.  The arrows (cells) become new objects which point to both their subject and value.  This is just another case of how natural concepts in category theory almost magically recreate ideas that may have seemed ad hoc or complicated without it.  
+
+\end{remark}
+
+\commcc{(mention many prove one)\\
+- transactions\\
+- schema mapping extensions... beyond weak acyclicity\\
+- PL integration... etc..}
+
+% ============================================================================
+\section{Related Work}
+\label{sec:relwork}
+
+
+\commds{The following papers discuss sketches as models for database schemas:\begin{itemize}\item Zinovy Diskin.  ``Databases as diagram algebras: specifying queries and views via the graph-based logic of sketches."  Research Report FIS/LDBD-96-02. Frame Inform System, Riga, Latvia, 1996\item Zinovy Diskin, Boris Kadish.  ``Variable set semantics for keyed generalized sketches: formal semantics for object identity and abstract syntax for conceptual modeling"  Data \& Knowledge Engineering.  Volume 47 Issue 1, October 2003\item Michael Johnson, Robert Rosebrugh, and R. J. Wood.  ``Entity-relationship-attribute designs and sketches."\end{itemize}I claim that we are doing something more here.\begin{itemize}\item Many of these papers were either not clear or not written for a computer scientist.
+\item These papers are too flexible: so much of the theory can be done with just categories (not sketches) that you give up a lot of power by jumping so far.  For example ``data migration" does not really exist for sketches like it does for categories.
+\item These papers do not discuss calculated fields.
+\item These papers do not discuss the transformations of states that make so much of our machinery work.
+\item These papers do not discuss updates, grouping, triggers, transactions, pivoting, RDF, etc.
+\item The conception of aggregates in some of them is surprisingly unlike mine.
+\item These papers do not show any examples in table form, thus making it difficult to understand.
+\item These papers do not emphasize commutative diagrams, and never suggest anything like $mgr^7=mgr^8$.\end{itemize}}
+
+
+% ============================================================================
+\section{Conclusions}
+\label{sec:conclusions}
+
+category can be very useful for DB
+
+
+\bibliography{bib/global}
+\bibliographystyle{abbrv}
+
+\appendix
+
+\section{Category theory}
+
+
+\section{Abuse of notation, and detailed comments}
+\label{sec:moreprecisely}
+
+\begin{definition}\label{def:typing category}
+
+A {\em typing system} is defined as a category $\mcT$ and a functor $V\taking\mcT\to\Set$.  Given a category $\mcC$, we call a functor $$G\taking\mcT\to\mcC$$ a {\em $(\mcT,V)$-typing of $\mcC$}.   A {\em $(\mcT,V)$-typed state on $\mcC$} consists of a pair $(\gamma,m)$ where $\gamma\in\mcC\set$ is a state and $m\taking\gamma\to\Pi_GV$ is a transformation of states on $\mcC$.   A {\em morphism of $(\mcT,V)$-typed states on $\mcC$} is a transformation of states $f\taking (\delta,m)\to(\delta',m')$ such that $m=m'\commds{*}f$.  We denote the category of $(\mcT,V)$-typed states on $\mcC$ by $\mcC\set_{/V}$.
+
+
+\end{definition}
+\commcc{comment on use of sketches for multi-column pk and fk}.
+
+
+\commcc{add reference back to properexample}
+The fact that $\Ob(\Set)$ is not actually a set but a ``class" is a distinction that is carefully made in mathematics textbooks but which we elide.
+
+\commds{Some references follow below the end\{document\} line in this .tex file.}
+
+\end{document}
+
+@inproceedings{Harper:1989:HMP:96709.96744,
+ author = {Harper, Robert and Mitchell, John C. and Moggi, Eugenio},
+ title = {Higher-order modules and the phase distinction},
+ booktitle = {Proceedings of the 17th ACM SIGPLAN-SIGACT symposium on Principles of programming languages},
+ series = {POPL '90},
+ year = {1990},
+ isbn = {0-89791-343-4},
+ location = {San Francisco, California, United States},
+ pages = {341--354},
+ numpages = {14},
+ url = {http://doi.acm.org/10.1145/96709.96744},
+ doi = {http://doi.acm.org/10.1145/96709.96744},
+ acmid = {96744},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+}
+
+ Eugenio Moggi (1991). A category-theoretic account of program modules. Mathematical Structures in Computer Science, 1, pp 103-139 doi:10.1017/S0960129500000074 
+ 
+David I. Spivak.  ``Functorial Data Migration."  Submitted to {\em Journal of the ACM}.  ePrint available: http://arxiv.org/abs/1009.1166
+
+Zinovy Diskin.  ``Databases as diagram algebras: specifying queries and views via the graph-based logic of sketches."  Research Report FIS/LDBD-96-02. Frame Inform System, Riga, Latvia, 1996
+
+Zinovy Diskin *, Boris Kadish.  ``Variable set semantics for keyed generalized sketches: formal semantics for object identity and abstract syntax for conceptual modeling"  Data & Knowledge Engineering.  Volume 47 Issue 1, October 2003
+
+Michael Johnson, Robert Rosebrugh, and R. J. Wood.  ``Entity-relationship-attribute designs and sketches."
+
+
+%(maybe DB SCHEMA for CAT)

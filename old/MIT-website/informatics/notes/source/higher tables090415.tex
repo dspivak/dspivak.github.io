@@ -1,0 +1,41 @@
+\documentclass{amsart}
+
+\input{decl-db}
+
+
+%\oddsidemargin .5in 
+%\evensidemargin .5in 
+%textwidth 5.3in 
+
+\def\Loc{{\bf Loc}}
+\def\bigjoin{\bigvee}
+\def\bigmeet{\bigwedge}
+\def\join{\vee}
+\def\meet{\wedge}
+
+
+%\usepackage{showkeys}
+
+\begin{document}
+
+\author{David I. Spivak}
+
+\thanks{This project was supported in part by the Office of Naval Research.}
+
+\title{Higher Tables}
+
+\maketitle
+
+Given a functor $\pi\taking T\to S$, define $d(S)=(\Cat\op\down S)$: an object in $d(S)$ is a category $C$ together with a functor $\sigma\taking C\to S$; a morphism $f\taking(C,\sigma)\to(C',\sigma')$ in $d(S)$ is a commutative triangle $$\xymatrix@=13pt{C'\ar[dr]_{\sigma'}\ar[rr]^f&&C\ar[dl]^\sigma\\&S}$$
+
+There is a canonical functor $\Gamma\taking d(S)\to\Cat$, defined by assigning to each $(\sigma\taking C\to S)\in d(S)$ the category of sections $\Gamma(\sigma):=\Hom_S(\sigma,\pi)$, i.e. dotted arrows making the diagram $$\xymatrix{&T\ar[d]^\pi\\C\ar[r]_\sigma\ar@{-->}[ur]^r&S}$$ commute.  Here, the objects of $\Gamma(\sigma)$ are the arrows (functors) labeled $r$, and the morphisms of $\Gamma(\sigma)$ are the natural transformations between them.
+
+Define a new category $d(T):=(\Cat\down\Gamma)$: an object is a pair $(K,\sigma,\tau)$ where $K\in\Cat$ is a category, $\sigma\in d(S)$ is an object, and $\tau\taking K\to\Gamma(\sigma)$ is a functor; a morphism $(K,\sigma,\tau)\to(K',\sigma',\tau')$ consists of a functor $K\to K'$ and a map $\sigma\to\sigma'$ in $dS$, such that the square $$\xymatrix{K\ar[r]\ar[d]&\Gamma(\sigma)\ar[d]\\K'\ar[r]&\Gamma(\sigma')}$$ commutes.  
+
+Finally, define $d(\pi)\taking d(T)\to d(S)$ by the natural projection, $d(\pi)(K,\sigma,\tau):=\sigma$.  We call $d(\pi)$ the {\em derivation of $\pi$}.
+
+
+\bibliographystyle{amsalpha}
+\bibliography{biblio}
+
+\end{document}

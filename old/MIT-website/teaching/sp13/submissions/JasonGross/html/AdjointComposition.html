@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>AdjointComposition</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library AdjointComposition</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Adjoint.html#"><span class="id" type="library">Adjoint</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="compose"><span class="id" type="section">compose</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">C</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">objC</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">D</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">objD</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">E</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">objE</span>).<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="compose.F"><span class="id" type="variable">F</span></a> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="AdjointComposition.html#compose.C"><span class="id" type="variable">C</span></a> <a class="idref" href="AdjointComposition.html#compose.D"><span class="id" type="variable">D</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="compose.F'"><span class="id" type="variable">F'</span></a> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="AdjointComposition.html#compose.D"><span class="id" type="variable">D</span></a> <a class="idref" href="AdjointComposition.html#compose.E"><span class="id" type="variable">E</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="compose.G"><span class="id" type="variable">G</span></a> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="AdjointComposition.html#compose.D"><span class="id" type="variable">D</span></a> <a class="idref" href="AdjointComposition.html#compose.C"><span class="id" type="variable">C</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="compose.G'"><span class="id" type="variable">G'</span></a> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="AdjointComposition.html#compose.E"><span class="id" type="variable">E</span></a> <a class="idref" href="AdjointComposition.html#compose.D"><span class="id" type="variable">D</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="compose.A'"><span class="id" type="variable">A'</span></a> : <a class="idref" href="Adjoint.html#Adjunction"><span class="id" type="record">Adjunction</span></a> <a class="idref" href="AdjointComposition.html#compose.F'"><span class="id" type="variable">F'</span></a> <a class="idref" href="AdjointComposition.html#compose.G'"><span class="id" type="variable">G'</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="compose.A"><span class="id" type="variable">A</span></a> : <a class="idref" href="Adjoint.html#Adjunction"><span class="id" type="record">Adjunction</span></a> <a class="idref" href="AdjointComposition.html#compose.F"><span class="id" type="variable">F</span></a> <a class="idref" href="AdjointComposition.html#compose.G"><span class="id" type="variable">G</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="ComposeAdjunctionsUnitMorphism"><span class="id" type="definition">ComposeAdjunctionsUnitMorphism</span></a><br/>
+&nbsp;&nbsp;: <a class="idref" href="NaturalTransformation.html#NaturalTransformation"><span class="id" type="record">NaturalTransformation</span></a> (<a class="idref" href="Functor.html#IdentityFunctor"><span class="id" type="definition">IdentityFunctor</span></a> <a class="idref" href="AdjointComposition.html#compose.C"><span class="id" type="variable">C</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="Functor.html#ComposeFunctors"><span class="id" type="definition">ComposeFunctors</span></a> (<a class="idref" href="Functor.html#ComposeFunctors"><span class="id" type="definition">ComposeFunctors</span></a> <a class="idref" href="AdjointComposition.html#compose.G"><span class="id" type="variable">G</span></a> <a class="idref" href="AdjointComposition.html#compose.G'"><span class="id" type="variable">G'</span></a>) (<a class="idref" href="Functor.html#ComposeFunctors"><span class="id" type="definition">ComposeFunctors</span></a> <a class="idref" href="AdjointComposition.html#compose.F'"><span class="id" type="variable">F'</span></a> <a class="idref" href="AdjointComposition.html#compose.F"><span class="id" type="variable">F</span></a>)).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">pose</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#projT1"><span class="id" type="definition">projT1</span></a> (<a class="idref" href="AdjointComposition.html#compose.A"><span class="id" type="variable">A</span></a> : <a class="idref" href="AdjointUnit.html#AdjunctionUnit"><span class="id" type="definition">AdjunctionUnit</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span>)) <span class="id" type="keyword">as</span> <span class="id" type="var">η</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">pose</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#projT1"><span class="id" type="definition">projT1</span></a> (<a class="idref" href="AdjointComposition.html#compose.A'"><span class="id" type="variable">A'</span></a> : <a class="idref" href="AdjointUnit.html#AdjunctionUnit"><span class="id" type="definition">AdjunctionUnit</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span>)) <span class="id" type="keyword">as</span> <span class="id" type="var">η'</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (<a class="idref" href="NaturalTransformation.html#NTComposeT"><span class="id" type="definition">NTComposeT</span></a> <span class="id" type="var">_</span> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="NaturalTransformation.html#NTComposeT"><span class="id" type="definition">NTComposeT</span></a> (<a class="idref" href="NaturalTransformation.html#NTComposeF"><span class="id" type="definition">NTComposeF</span></a> (<a class="idref" href="NaturalTransformation.html#IdentityNaturalTransformation"><span class="id" type="definition">IdentityNaturalTransformation</span></a> <a class="idref" href="AdjointComposition.html#compose.G"><span class="id" type="variable">G</span></a>) (<a class="idref" href="NaturalTransformation.html#NTComposeF"><span class="id" type="definition">NTComposeF</span></a> <span class="id" type="var">η'</span> (<a class="idref" href="NaturalTransformation.html#IdentityNaturalTransformation"><span class="id" type="definition">IdentityNaturalTransformation</span></a> <a class="idref" href="AdjointComposition.html#compose.F"><span class="id" type="variable">F</span></a>)))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="NaturalTransformation.html#NTComposeT"><span class="id" type="definition">NTComposeT</span></a> <span class="id" type="var">_</span> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">η</span>)));<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">nt_solve_associator</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ &#x22a2; <a class="idref" href="NaturalTransformation.html#NaturalTransformation"><span class="id" type="record">NaturalTransformation</span></a> ?<span class="id" type="var">F</span> ?<span class="id" type="var">G</span> ] ⇒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (<a class="idref" href="NaturalTransformation.html#Build_NaturalTransformation"><span class="id" type="constructor">Build_NaturalTransformation</span></a> <span class="id" type="var">F</span> <span class="id" type="var">G</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="Category.html#Identity"><span class="id" type="projection">Identity</span></a> <span class="id" type="var">_</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">simpl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">autorewrite</span> <span class="id" type="keyword">with</span> <span class="id" type="var">morphism</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="ComposeAdjunctions"><span class="id" type="definition">ComposeAdjunctions</span></a> : <a class="idref" href="Adjoint.html#Adjunction"><span class="id" type="record">Adjunction</span></a> (<a class="idref" href="Functor.html#ComposeFunctors"><span class="id" type="definition">ComposeFunctors</span></a> <a class="idref" href="AdjointComposition.html#compose.F'"><span class="id" type="variable">F'</span></a> <a class="idref" href="AdjointComposition.html#compose.F"><span class="id" type="variable">F</span></a>) (<a class="idref" href="Functor.html#ComposeFunctors"><span class="id" type="definition">ComposeFunctors</span></a> <a class="idref" href="AdjointComposition.html#compose.G"><span class="id" type="variable">G</span></a> <a class="idref" href="AdjointComposition.html#compose.G'"><span class="id" type="variable">G'</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (<span class="id" type="var">_</span> : <a class="idref" href="AdjointUnit.html#AdjunctionUnit"><span class="id" type="definition">AdjunctionUnit</span></a> (<a class="idref" href="Functor.html#ComposeFunctors"><span class="id" type="definition">ComposeFunctors</span></a> <a class="idref" href="AdjointComposition.html#compose.F'"><span class="id" type="variable">F'</span></a> <a class="idref" href="AdjointComposition.html#compose.F"><span class="id" type="variable">F</span></a>) (<a class="idref" href="Functor.html#ComposeFunctors"><span class="id" type="definition">ComposeFunctors</span></a> <a class="idref" href="AdjointComposition.html#compose.G"><span class="id" type="variable">G</span></a> <a class="idref" href="AdjointComposition.html#compose.G'"><span class="id" type="variable">G'</span></a>)).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> <a class="idref" href="AdjointComposition.html#ComposeAdjunctionsUnitMorphism"><span class="id" type="definition">ComposeAdjunctionsUnitMorphism</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">pose</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#projT2"><span class="id" type="definition">projT2</span></a> (<a class="idref" href="AdjointComposition.html#compose.A"><span class="id" type="variable">A</span></a> : <a class="idref" href="AdjointUnit.html#AdjunctionUnit"><span class="id" type="definition">AdjunctionUnit</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span>)) <span class="id" type="keyword">as</span> <span class="id" type="var">Hη</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">pose</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#projT2"><span class="id" type="definition">projT2</span></a> (<a class="idref" href="AdjointComposition.html#compose.A'"><span class="id" type="variable">A'</span></a> : <a class="idref" href="AdjointUnit.html#AdjunctionUnit"><span class="id" type="definition">AdjunctionUnit</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span>)) <span class="id" type="keyword">as</span> <span class="id" type="var">Hη'</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span> <span class="id" type="var">c</span> <span class="id" type="var">d</span> <span class="id" type="var">f</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#proj1_sig"><span class="id" type="definition">proj1_sig</span></a> (<span class="id" type="var">Hη'</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#proj1_sig"><span class="id" type="definition">proj1_sig</span></a> (<span class="id" type="var">Hη</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">f</span>)))).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">subst_body</span>; <span class="id" type="var">intro_proj2_sig_from_goal</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">hnf</span> <span class="id" type="keyword">in</span> *; <span class="id" type="var">split_and</span>; <span class="id" type="tactic">split</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> *;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">autorewrite</span> <span class="id" type="keyword">with</span> <span class="id" type="var">category</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ <span class="id" type="var">try_associativity</span> <span class="id" type="keyword">ltac</span>:(<span class="id" type="tactic">progress</span> <span class="id" type="tactic">repeat</span> <span class="id" type="tactic">rewrite</span> &lt;- <a class="idref" href="Functor.html#FCompositionOf"><span class="id" type="projection">FCompositionOf</span></a>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> *;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : <span class="id" type="var">_</span> &#x22a2; <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#f_equal"><span class="id" type="lemma">f_equal</span></a>; <span class="id" type="tactic">solve</span> [ <span class="id" type="tactic">trivial</span> ]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : <span class="id" type="var">_</span> &#x22a2; <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">symmetry</span>; <span class="id" type="tactic">rewrite</span> &lt;- <span class="id" type="var">H</span> <span class="id" type="tactic">at</span> 1; <span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#f_equal2"><span class="id" type="lemma">f_equal2</span></a>; <span class="id" type="tactic">try</span> <span class="id" type="tactic">reflexivity</span>; []; <span class="id" type="tactic">symmetry</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="tactic">intros</span> <span class="id" type="var">x'</span> <span class="id" type="var">H</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : <span class="id" type="var">_</span> &#x22a2; <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">apply</span> <span class="id" type="var">H</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : <span class="id" type="var">_</span> &#x22a2; <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">symmetry</span>; <span class="id" type="tactic">apply</span> <span class="id" type="var">H</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">rewrite</span> &lt;- <span class="id" type="var">H</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">try_associativity</span> <span class="id" type="keyword">ltac</span>:(<span class="id" type="tactic">progress</span> <span class="id" type="tactic">repeat</span> <span class="id" type="tactic">rewrite</span> <a class="idref" href="Functor.html#FCompositionOf"><span class="id" type="projection">FCompositionOf</span></a>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">autorewrite</span> <span class="id" type="keyword">with</span> <span class="id" type="var">morphism</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span> ]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="AdjointComposition.html#compose"><span class="id" type="section">compose</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

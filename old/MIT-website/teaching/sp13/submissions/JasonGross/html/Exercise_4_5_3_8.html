@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_4_5_3_8</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_4_5_3_8</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.FunctionalExtensionality.html#"><span class="id" type="library">FunctionalExtensionality</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="GroupCategory.html#"><span class="id" type="library">GroupCategory</span></a> <a class="idref" href="CategoryObjects.html#"><span class="id" type="library">CategoryObjects</span></a> <a class="idref" href="ZeroGroup.html#"><span class="id" type="library">ZeroGroup</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab136"></a><h1 class="section">Exercise 4.5.3.8</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Exercise_4_5_3_8"><span class="id" type="section">Exercise_4_5_3_8</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab137"></a><h2 class="section">Problem</h2>
+ (a) What is the initial object in <span class="inlinecode"><a class="idref" href="Exercise_4_5_3_8.html#Exercise_4_5_3_8.Grp"><span class="id" type="variable">Grp</span></a></span>, the category of groups?
+
+<div class="paragraph"> </div>
+
+      (b) What is the terminal object in <span class="inlinecode"><a class="idref" href="Exercise_4_5_3_8.html#Exercise_4_5_3_8.Grp"><span class="id" type="variable">Grp</span></a></span>? 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_4_5_3_8.Grp"><span class="id" type="variable">Grp</span></a> := <a class="idref" href="GroupCategory.html#CategoryOfGroups"><span class="id" type="definition">CategoryOfGroups</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Example</span> <a name="Exercise_4_5_3_8_a"><span class="id" type="definition">Exercise_4_5_3_8_a</span></a> : <a class="idref" href="CategoryObjects.html#InitialObject"><span class="id" type="record">InitialObject</span></a> <a class="idref" href="Exercise_4_5_3_8.html#Exercise_4_5_3_8.Grp"><span class="id" type="variable">Grp</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (@<a class="idref" href="CategoryObjects.html#Build_InitialObject"><span class="id" type="constructor">Build_InitialObject</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span> <a class="idref" href="Exercise_4_5_3_8.html#Exercise_4_5_3_8.Grp"><span class="id" type="variable">Grp</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#existT"><span class="id" type="constructor">existT</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <a class="idref" href="ZeroGroup.html#ZeroGroup"><span class="id" type="definition">ZeroGroup</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="ZeroGroup.html#HomomorphismFromZeroGroup"><span class="id" type="definition">HomomorphismFromZeroGroup</span></a> <span class="id" type="var">_</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="ZeroGroup.html#HomomorphismFromZeroGroup_unique"><span class="id" type="lemma">HomomorphismFromZeroGroup_unique</span></a> <span class="id" type="var">_</span>)).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Example</span> <a name="Exercise_4_5_3_8_b"><span class="id" type="definition">Exercise_4_5_3_8_b</span></a> : <a class="idref" href="CategoryObjects.html#TerminalObject"><span class="id" type="record">TerminalObject</span></a> <a class="idref" href="Exercise_4_5_3_8.html#Exercise_4_5_3_8.Grp"><span class="id" type="variable">Grp</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (@<a class="idref" href="CategoryObjects.html#Build_TerminalObject"><span class="id" type="constructor">Build_TerminalObject</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span> <a class="idref" href="Exercise_4_5_3_8.html#Exercise_4_5_3_8.Grp"><span class="id" type="variable">Grp</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#existT"><span class="id" type="constructor">existT</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <a class="idref" href="ZeroGroup.html#ZeroGroup"><span class="id" type="definition">ZeroGroup</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="ZeroGroup.html#HomomorphismToZeroGroup"><span class="id" type="definition">HomomorphismToZeroGroup</span></a> <span class="id" type="var">_</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="ZeroGroup.html#HomomorphismToZeroGroup_unique"><span class="id" type="lemma">HomomorphismToZeroGroup_unique</span></a> <span class="id" type="var">_</span>)).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_4_5_3_8.html#Exercise_4_5_3_8"><span class="id" type="section">Exercise_4_5_3_8</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

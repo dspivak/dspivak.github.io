@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_5_1_4_4</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_5_1_4_4</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.JMeq.html#"><span class="id" type="library">JMeq</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#"><span class="id" type="library">ProofIrrelevance</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Graph.html#"><span class="id" type="library">Graph</span></a> <a class="idref" href="Category.html#"><span class="id" type="library">Category</span></a> <a class="idref" href="Isomorphism.html#"><span class="id" type="library">Isomorphism</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab156"></a><h1 class="section">Exercise 5.1.4.4</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Module</span> <a name="Exercise_5_1_4_4"><span class="id" type="module">Exercise_5_1_4_4</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab157"></a><h2 class="section">Problem</h2>
+ Let <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span> <span class="inlinecode">=</span> <span class="inlinecode">(<a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent.G"><span class="id" type="variable">G</span></a>,</span> <span class="inlinecode">≃)</span> be a schema. A leaf table is an object <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.c"><span class="id" type="constructor">c</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.CategoryLeafTable.Ob"><span class="id" type="variable">Ob</span></a></span>
+      <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span> with no outgoing arrows. Write this condition mathematically
+      in three different languages: that of graphs (using symbols <span class="inlinecode"><a class="idref" href="PathsCategory.html#PathsCategory.V"><span class="id" type="variable">V</span></a></span>, <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.A"><span class="id" type="variable">A</span></a></span>,
+      <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.src"><span class="id" type="variable">src</span></a></span>, <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.tgt"><span class="id" type="variable">tgt</span></a></span>), that of categories (using <span class="inlinecode"><span class="id" type="var">Hom_C</span></span>, etc.), and that of
+      tables (in terms of columns, tables, rows, etc.).
+
+<div class="paragraph"> </div>
+
+      In the language of categories, is there a difference between a
+      terminal object and a leaf table? 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Section</span> <a name="Exercise_5_1_4_4.GraphLeafTable"><span class="id" type="section">GraphLeafTable</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="Exercise_5_1_4_4.GraphLeafTable.G"><span class="id" type="variable">G</span></a> : <a class="idref" href="Graph.html#Graph'"><span class="id" type="record">Graph'</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_5_1_4_4.GraphLeafTable.V"><span class="id" type="variable">V</span></a> := <a class="idref" href="Graph.html#Vertex'"><span class="id" type="projection">Vertex'</span></a> <a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.G"><span class="id" type="variable">G</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_5_1_4_4.GraphLeafTable.A"><span class="id" type="variable">A</span></a> := <a class="idref" href="Graph.html#Arrow'"><span class="id" type="projection">Arrow'</span></a> <a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.G"><span class="id" type="variable">G</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_5_1_4_4.GraphLeafTable.src"><span class="id" type="variable">src</span></a> := <a class="idref" href="Graph.html#Graph'Source"><span class="id" type="projection">Graph'Source</span></a> <a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.G"><span class="id" type="variable">G</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_5_1_4_4.GraphLeafTable.tgt"><span class="id" type="variable">tgt</span></a> := <a class="idref" href="Graph.html#Graph'Target"><span class="id" type="projection">Graph'Target</span></a> <a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.G"><span class="id" type="variable">G</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="Exercise_5_1_4_4.GraphLeafTable"><span class="id" type="definition">GraphLeafTable</span></a> (<span class="id" type="var">v</span> : <a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.V"><span class="id" type="variable">V</span></a>) := <span class="id" type="keyword">∀</span> <span class="id" type="var">a</span> : <a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.A"><span class="id" type="variable">A</span></a>, <a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.src"><span class="id" type="variable">src</span></a> <a class="idref" href="Exercise_5_1_4_4.html#a"><span class="id" type="variable">a</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'<>'_x"><span class="id" type="notation">≠</span></a> <a class="idref" href="Exercise_5_1_4_4.html#v"><span class="id" type="variable">v</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable"><span class="id" type="section">GraphLeafTable</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Section</span> <a name="Exercise_5_1_4_4.CategoryLeafTable"><span class="id" type="section">CategoryLeafTable</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_5_1_4_4.CategoryLeafTable.Ob"><span class="id" type="variable">Ob</span></a> {<span class="id" type="var">objC</span>} (<span class="id" type="var">C</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <a class="idref" href="Exercise_5_1_4_4.html#objC"><span class="id" type="variable">objC</span></a>) := <a class="idref" href="Category.html#Object"><span class="id" type="projection">Object</span></a> <a class="idref" href="Exercise_5_1_4_4.html#C"><span class="id" type="variable">C</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_5_1_4_4.CategoryLeafTable.Hom"><span class="id" type="variable">Hom</span></a> {<span class="id" type="var">objC</span>} (<span class="id" type="var">C</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <a class="idref" href="Exercise_5_1_4_4.html#objC"><span class="id" type="variable">objC</span></a>) := <a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> <a class="idref" href="Exercise_5_1_4_4.html#C"><span class="id" type="variable">C</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">C</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">objC</span>).<br/>
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="Exercise_5_1_4_4.CategoryLeafTable"><span class="id" type="definition">CategoryLeafTable</span></a> (<span class="id" type="var">c</span> : <a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.CategoryLeafTable.Ob"><span class="id" type="variable">Ob</span></a> <a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.CategoryLeafTable.C"><span class="id" type="variable">C</span></a>) :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> <span class="id" type="var">d</span> : <a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.CategoryLeafTable.Ob"><span class="id" type="variable">Ob</span></a> <a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.CategoryLeafTable.C"><span class="id" type="variable">C</span></a>, <a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.CategoryLeafTable.Hom"><span class="id" type="variable">Hom</span></a> <a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.CategoryLeafTable.C"><span class="id" type="variable">C</span></a> <a class="idref" href="Exercise_5_1_4_4.html#c"><span class="id" type="variable">c</span></a> <a class="idref" href="Exercise_5_1_4_4.html#d"><span class="id" type="variable">d</span></a> <a class="idref" href="Isomorphism.html#:type_scope:x_'≅'_x"><span class="id" type="notation">&cong;</span></a> <a class="idref" href="Isomorphism.html#:type_scope:x_'≅'_x"><span class="id" type="notation">(</span></a><a class="idref" href="Exercise_5_1_4_4.html#c"><span class="id" type="variable">c</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Exercise_5_1_4_4.html#d"><span class="id" type="variable">d</span></a><a class="idref" href="Isomorphism.html#:type_scope:x_'≅'_x"><span class="id" type="notation">)</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.CategoryLeafTable"><span class="id" type="section">CategoryLeafTable</span></a>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_5_1_4_4.html#"><span class="id" type="module">Exercise_5_1_4_4</span></a>.<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

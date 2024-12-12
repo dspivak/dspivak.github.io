@@ -1,0 +1,36 @@
+\documentclass{amsart}
+
+\input{decl-db}
+
+\def\Allo{{\bf Allo}}
+\def\Phon{{\bf Phon}}
+\def\Word{{\bf Word}}
+\def\PreWord{{\bf PreWord}}
+\def\D{{\bf \Delta}}
+\def\down{\downarrow}
+
+\begin{document}
+
+\title{Categorical phonology}
+
+\author{Grace Lyo and David Spivak}
+
+\maketitle
+
+Let $\Allo$ denote the space of allophones, i.e. sounds that can be made with the mouth.  To specify a language, one must provide a finite set of subspaces of $\Allo$, which we might want to call the {\em set of allophones}.  I don't know if these subspaces can overlap, and it seems they do not need to cover the space.  But let's pretend that $\Allo$ is the given set of subspaces, so that it is a finite discrete set, for now.  Or, we could just assume that $\Allo$ is a discrete set to begin with!
+
+Let $\D$ denote the category whose objects are finite ordered sets and whose morphisms are injections.  The category $(\D\down\Allo)$ has as objects finite sequences of allophones and has as morphisms inclusions of these sequences.  The language provides us with a set of words, called $\Word$, and a map $$(\D\down\Allo)\to\Word$$ that takes a finite ordered sequence of allophones and assigns to it the word it represents.
+
+\begin{definition}
+
+A {\em phonological reduction} is a set $P$ and a surjection $f\taking\Allo\to P$, such that a dotted arrow exists making the diagram $$\xymatrix{(\D\down\Allo)\ar[r]\ar[d]_{(\D\down f)}&\Word\\(\D\down P)\ar@{-->}[ur]}$$ commute.  Note that the dotted arrow is unique if it exists, since $(\D\down f)$ is surjective.  The final object in the category of phonological reductions is the maximal such quotient, which we denote $\Phon$ and call {\em the set of phonemes}.
+
+\end{definition}
+
+Here's an alternate take..  Instead of the above, we are given a map $(\D\down\Allo)\to\PreWord$ and an inclusion $\Word\ss\PreWord$.  The fiber product, written $(\D\down\Allo)^{legal}\ss (\D\down\Allo)$, is the set of sequences of allophones that represent real words.  A {\em phonological reduction} is a set $P$ and a surjection $f\taking\Allo\to P$ such that a dotted arrow exists making the diagram $$\xymatrix{(\D\down\Allo)^{legal}\ar[r]\ar[d]&\Word\ar[d]\\(\D\down P)\ar@{-->}[r]&\PreWord}$$ commute.
+
+This definition is basically the same as above, except that we don't care what happens with illegal sequences of allophones. 
+
+Note there is also a map $\Word\to(\D\down\Allo)^{legal}$ which is a section of the chosen map $(\D\down\Allo)\to\Word$.  It's called the pronunciation map.
+
+\end{document}

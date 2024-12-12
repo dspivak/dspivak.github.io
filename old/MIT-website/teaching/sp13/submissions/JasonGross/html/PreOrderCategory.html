@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>PreOrderCategory</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library PreOrderCategory</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Setoids.Setoid.html#"><span class="id" type="library">Setoid</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#"><span class="id" type="library">Classes.RelationClasses</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.Morphisms.html#"><span class="id" type="library">Morphisms</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.FunctionalExtensionality.html#"><span class="id" type="library">FunctionalExtensionality</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#"><span class="id" type="library">ProofIrrelevance</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Category.html#"><span class="id" type="library">Category</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="ComputableCategory.html#"><span class="id" type="library">ComputableCategory</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab214"></a><h1 class="section">PreOrders as Categories</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="preorder_category"><span class="id" type="section">preorder_category</span></a>.<br/>
+</div>
+
+<div class="doc">
+A preorder <span class="inlinecode">(<a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a>,</span> <span class="inlinecode">&le;)</span> consists of a set <span class="inlinecode"><a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a></span> and a binary relation
+      <span class="inlinecode">&le;</span> that is reflexive and transitive. We can make from <span class="inlinecode">(<a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a>,</span> <span class="inlinecode">&le;)</span> <span class="inlinecode">:</span>
+      <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.CategoryLeafTable.Ob"><span class="id" type="variable">Ob</span></a></span> <span class="inlinecode"><span class="id" type="var">PrO</span></span> a category <span class="inlinecode"><a class="idref" href="Exercise_4_5_1_28.html#Exercise_4_5_1_28.X'"><span class="id" type="variable">X'</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.CategoryLeafTable.Ob"><span class="id" type="variable">Ob</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_35.html#Exercise_4_1_2_35.Cat"><span class="id" type="variable">Cat</span></a></span> as follows.  Define <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.CategoryLeafTable.Ob"><span class="id" type="variable">Ob</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_4_5_1_28.html#Exercise_4_5_1_28.X'"><span class="id" type="variable">X'</span></a></span> <span class="inlinecode">=</span> <span class="inlinecode"><a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a></span>
+      and for every two objects <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.y"><span class="id" type="constructor">y</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a></span> define
+
+<div class="paragraph"> </div>
+
+      <span class="inlinecode">[<span class="id" type="var">Hom_X'</span>(<a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a>,</span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.y"><span class="id" type="constructor">y</span></a>)</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" type="keyword">if</span></span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a></span> <span class="inlinecode">&le;</span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.y"><span class="id" type="constructor">y</span></a></span> <span class="inlinecode"><span class="id" type="keyword">then</span></span> <span class="inlinecode">{"<a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a></span> <span class="inlinecode">&le;</span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.y"><span class="id" type="constructor">y</span></a>"}</span> <span class="inlinecode"><span class="id" type="keyword">else</span></span> <span class="inlinecode">∅]</span>
+
+<div class="paragraph"> </div>
+
+      ...
+
+<div class="paragraph"> </div>
+
+      In Coq, we can simply take the set of proofs of <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a></span> <span class="inlinecode">&le;</span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.y"><span class="id" type="constructor">y</span></a></span>. 
+</div>
+<div class="code">
+&nbsp;&nbsp;<span class="id" type="keyword">Section</span> <a name="preorder_category.single_preorder"><span class="id" type="section">single_preorder</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#PreOrder"><span class="id" type="class">PreOrder</span></a> <span class="id" type="var">X</span> <span class="id" type="var">R</span>).<br/>
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Infix</span> <a name="preorder_category.single_preorder.::x_'≤'_x"><span class="id" type="notation">"</span></a>&le;" := <a class="idref" href="PreOrderCategory.html#preorder_category.single_preorder.R"><span class="id" type="variable">R</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="PreOrderCategory"><span class="id" type="definition">PreOrderCategory</span></a> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <a class="idref" href="PreOrderCategory.html#preorder_category.single_preorder.X"><span class="id" type="variable">X</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> {|<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Morphism</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">R</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">;</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Identity</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">reflexivity</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">;</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Compose</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">x</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">y</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">z</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">A</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">B</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">⇒</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">transitivity</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">B</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">A</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">)</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|};<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<span class="id" type="tactic">intros</span>; <span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#proof_irrelevance"><span class="id" type="axiom">ProofIrrelevance.proof_irrelevance</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">End</span> <a class="idref" href="PreOrderCategory.html#preorder_category.single_preorder"><span class="id" type="section">single_preorder</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Section</span> <a name="preorder_category.all_preorders"><span class="id" type="section">all_preorders</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Record</span> &gt; <a name="PreOrderedSet"><span class="id" type="record">PreOrderedSet</span></a> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="PreOrderedSetType"><span class="id" type="projection">PreOrderedSetType</span></a> :> <span class="id" type="keyword">Type</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="PreOrderedSetRelation"><span class="id" type="projection">PreOrderedSetRelation</span></a> :> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Relations.Relation_Definitions.html#relation"><span class="id" type="definition">Relation_Definitions.relation</span></a> <a class="idref" href="PreOrderCategory.html#PreOrderedSetType"><span class="id" type="method">PreOrderedSetType</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="PreOrderedSetPreOrder"><span class="id" type="projection">PreOrderedSetPreOrder</span></a> :> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#PreOrder"><span class="id" type="class">PreOrder</span></a> <a class="idref" href="PreOrderCategory.html#PreOrderedSetRelation"><span class="id" type="method">PreOrderedSetRelation</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}.<br/>
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="CategoryOfPreOrders"><span class="id" type="definition">CategoryOfPreOrders</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:= @<a class="idref" href="ComputableCategory.html#ComputableCategory"><span class="id" type="definition">ComputableCategory</span></a> <a class="idref" href="PreOrderCategory.html#PreOrderedSet"><span class="id" type="record">PreOrderedSet</span></a> <span class="id" type="var">_</span> (<span class="id" type="keyword">fun</span> <span class="id" type="var">X</span> ⇒ <a class="idref" href="PreOrderCategory.html#PreOrderCategory"><span class="id" type="definition">PreOrderCategory</span></a> <a class="idref" href="PreOrderCategory.html#X"><span class="id" type="variable">X</span></a>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">End</span> <a class="idref" href="PreOrderCategory.html#preorder_category.all_preorders"><span class="id" type="section">all_preorders</span></a>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="PreOrderCategory.html#preorder_category"><span class="id" type="section">preorder_category</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

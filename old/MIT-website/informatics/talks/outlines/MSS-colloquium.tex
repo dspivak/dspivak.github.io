@@ -1,0 +1,222 @@
+\documentclass{amsart}
+
+\usepackage{amssymb, amscd,stmaryrd,setspace,hyperref,color}
+\usepackage{lmodern}
+\usepackage{outline}
+
+\oddsidemargin0in
+\evensidemargin0in
+\topmargin-.2in
+\textheight9.4in
+\textwidth6.5in
+
+\input xy
+\xyoption{all} \xyoption{poly} \xyoption{knot}\xyoption{curve}
+
+\def\sub{\begin{outline}\item}
+\def\endsub{\end{outline}}
+\def\eendsub{\endsub\endsub}
+\def\eeendsub{\endsub\endsub\endsub}
+\def\next{\item}
+\def\nnext{\endsub\next}
+\def\nnnext{\eendsub\next}
+
+\def\to{\rightarrow}
+\def\To{\xrightarrow}
+\def\tto{\rightrightarrows}
+\def\from{\leftarrow}
+\def\too{\longrightarrow}
+\def\fromm{\longleftarrow}
+\def\NN{{\mathbb N}}
+\def\ZZ{{\mathbb Z}}
+\def\RR{{\mathbb R}}
+\def\String{{\bf String}}
+\def\DT{{\bf DT}}
+\def\U{{\bf U}}
+\def\DB{{\bf DB}}
+\def\taking{\colon}
+\def\mcO{{\mathcal O}}
+\def\mcU{{\mathcal U}}
+\def\Sub{{\bf Sub}}
+\def\op{^{\text{op}}}
+\def\Sets{{\bf Sets}}
+\def\Tables{{\bf Tables}}
+\def\To{\xrightarrow}
+\def\Fin{{\bf Fin}}
+\def\cross{\times}
+\def\Ob{{\bf Ob}}
+\def\Hom{{\bf Hom}}
+\def\Set{{\bf Set}}
+\def\Arr{{\bf Arr}}
+\def\Path{{\bf Path}}
+\def\id{\tn{id}}
+\def\Pre{{\bf Pre}}
+\def\Fin{{\bf Fin}}
+\def\El{{\bf El}}
+\def\Cat{{\bf Cat}}
+\def\down{\downarrow}
+\def\set{{\bf -Set}}
+\def\mcC{{\mathcal C}}
+\def\mcD{{\mathcal D}}
+\def\mcE{{\mathcal E}}
+\def\mcK{{\mathcal K}}
+\def\mcS{{\mathcal S}}
+\def\P{{\bf P}}
+\newcommand{\LMO}[1]{\bullet^{#1}}
+\newcommand{\LTO}[1]{\bullet^{\tn{#1}}}
+\newcommand{\LA}[2]{\ar[#1]^-{\tn {#2}}}
+
+\newcommand{\obox}[3]{\stackrel{#1}{\fbox{\parbox{#2}{#3}}}}
+\newcommand{\smbox}[2]{\stackrel{#1}{\fbox{#2}}}
+\newcommand{\labox}[2]{\obox{#1}{1.6in}{#2}}
+\newcommand{\mebox}[2]{\obox{#1}{1in}{#2}}
+
+
+\def\edge{\ar@{-}}
+
+\def\ullimit{\ar@{}[rd]|(.3)*+{\lrcorner}}
+\def\urlimit{\ar@{}[ld]|(.3)*+{\llcorner}}
+\def\lllimit{\ar@{}[ru]|(.3)*+{\urcorner}}
+\def\lrlimit{\ar@{}[lu]|(.3)*+{\ulcorner}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+
+
+
+\def\tn{\textnormal}
+\def\too{\longrightarrow}
+
+\newcommand{\longnote}[2][4.9in]{\fcolorbox{black}{yellow}{\parbox{#1}{\color{black} #2}}}
+\newcommand{\shortnote}[1]{\fcolorbox{black}{yellow}{\color{black} #1}}
+
+\begin{document}
+
+\title{\large Categorical Information Theory\\~\\\normalsize MSS Colloquium at UIUC\\2011/11/29}
+
+\author{David I. Spivak}
+
+\maketitle
+
+\begin{abstract}
+
+Classical information theory, as developed by Claude Shannon in 1948, studies how to optimize the quantity of data that can be transmitted across a noisy channel, but it ignores what this information "means". It is clear that information is intended to mean or signify something -- this is its only purpose -- but how can such a thing as meaning be formalized? In this talk I'll discuss how category theory may be useful in this endeavor. Going further, we may postulate that information is always intended as a communication from one party to another (perhaps from an entity to a later version of itself). In this case we can ask, "what is the relationship between the structure of the information being transferred and the structure of the two communicating parties?" I will outline a possible answer to this question in the form of a category-theoretic communication protocol for transferring information between parties. 
+
+No prior knowledge of category theory will be necessary to understand this talk.
+
+
+\end{abstract}
+
+\sub Introduction
+	\sub What is Information?
+		\sub ``Information theory" vs. Meaning
+		\next Examples -- dictionary, engineers schematic diagram, database
+		\next Information vs. data
+		\next Relational, not absolute
+	\nnext Historical context
+		\sub Frege -- Begriffsschrift
+		
+		\next Hilbert: ``This formula game is carried out according to certain definite rules, in which the technique of our thinking is expressed. [...] The fundamental idea of my proof theory is none other than to describe the activity of our understanding, to make a protocol of the rules according to which our thinking actually proceeds" (Hilbert, 1928, 475).
+		
+		\next Dan Kan: ``Information is inherently a combinatorial affair." Facts are fit together in appropriate ways to create new facts.
+	\nnext Category theory
+		\sub History
+			\sub Invented to connect topology and algebra
+			\next Became unifying language for lots of math
+			\next Successfully applied in CS -- programming languages
+		\nnext Algebraic geometry
+			\sub Grothendieck and Weil conjectures (proved power of CT)
+			\next Idea: sheaves (hard to talk about without categories)
+			\next Local sections (we'll talk more about this)
+			\endsub
+	\nnext Databases
+		\sub Why Databases? Information!
+		\next Example -- tables connected in a specific way
+		\next I'll give a simple CT formulation.
+	\nnext Outline of the talk
+		\sub Basic category theory
+		\next Databases
+		\next Change of schema
+		\next Queries
+		\next Communication (time permitting)
+	\eendsub
+\next Basic category theory
+	\sub Categories
+		\sub A category $\mcC$ is a graph in which paths can be declared equivalent
+			\sub A set $\Ob(\mcC)$
+			\next A set of arrows $\Arr(\mcC)$ each with a source and target object.
+			\next An equivalence relation on paths ($\Path(\mcC)$), respecting source and target, and preserved under composition.
+		\nnext Examples of categories
+			\sub Random thing.
+			\next $E\tto V$
+			\next $\Set$ (saturated)
+			\next Topological spaces, manifolds, rings, etc.
+			\endsub
+	\nnext Functors
+		\sub A functor $F\taking\mcC\to\mcD$ is a mapping between categories
+			\sub A map $\Ob(\mcC)\to\Ob(\mcD)$
+			\next A map $\Arr(\mcC)\to\Path(\mcD)$
+				\sub If $\mcD$ is saturated then we may assume $\Arr(\mcC)\to\Arr(\mcD)$.
+			\nnext Equivalent paths in $\mcC$ are sent to equivalent paths in $\mcD$.
+		\nnext Examples
+			\sub {\bf Rings}$\to\Set$
+			\next $\fbox{$E\tto V$}\to\fbox{\xymatrix{N\ar@(u,r)[]^~}}$
+			\next $\fbox{$E\tto V$}\to\Set$. (Draw tables)
+			\next $\fbox{\xymatrix{N\ar@(u,r)[]^~}}\to\Set$
+			\endsub
+		\endsub
+	\endsub
+\next Databases
+	\sub  \begin{align}\label{dia:basic cat} \mcC:=\fbox{\xymatrix{\LTO{Employee}\ar@<.5ex>[rr]^{\tn{Dpt}}\ar@(l,u)[]^{\tn{Mgr}}\ar@/_1pc/[dd]_{\tn{First}}\ar@/^1pc/[dd]^{\tn{Last}}&&\LTO{Department}\ar@<.5ex>[ll]^{\tn{Secr'y}}\ar@/^1pc/[ddll]^{\tn{Name}}\\\\\LTO{String}}}\end{align} 
+
+	\next $\mcC\set$ is a topos
+		\sub Morphisms are called natural transformations
+		\next Subobjects, unions, products, quotients
+		\next Logic (typed lambda calculus)
+	\nnext The graph example \fbox{$E\tto V$} in terms of databases
+		\sub Morphisms of graphs
+	\eendsub
+\next Morphism of schemas
+	\sub Example: $\fbox{$E\tto V$}\to\fbox{\xymatrix{N\ar@(u,r)[]^~}}$
+		\sub Pulling back data
+		\next Pushing forward data?
+	\nnext For every functor $F\taking\mcC\to\mcD$ exists 
+		\sub $\Delta_F\taking\mcD\set\to\mcC\set$,
+		\next $\Sigma_F\taking\mcC\set\to\mcD\set$, and
+		\next $\Pi_F\taking\mcC\set\to\mcD\set$.
+	\nnext DB example
+		\sub \small\begin{align}\label{dia:basic example} \stackrel{\mcC:=}{\fbox{\xymatrix{&\tn{SSN}\\&\tn{First}\\T1\ar[uur]\ar[ur]\ar[dr]&&T2\ar[ul]\ar[dl]\ar[ddl]\\&\tn{Last}\\&\tn{Salary}}}}&\stackrel{F}{\too}\stackrel{\mcD:=}{\fbox{\xymatrix{&\tn{SSN}\\&\tn{First}\\U\ar[uur]\ar[ur]\ar[dr]\ar[ddr]\\&\tn{Last}\\&\tn{Salary}}}}\stackrel{G}{\fromm}\stackrel{\mcE:=}{\fbox{\xymatrix{&\tn{SSN}\\&\tn{First}\\V\ar[uur]\ar[ur]\ar[dr]\\&\tn{Last}}}}\end{align}\normalsize
+		\endsub
+	\endsub
+
+\next Queries
+	\sub Grothendieck construction 
+		\sub Given $\delta\taking\mcC\to\Set$, get $\int\delta\to\mcC$
+		\next Objects: $\{(c,x)|c\in\Ob(\mcC), x\in\delta(c)\}$
+		\next An arrow $(c,x)\to(c',x')$ for every $f\taking c\to c'$ such that $f(x)=x'$.
+		\next In other words, objects are id-cells, arrows are other cells.
+		\next The fiber over each object is its set of instances.
+	\nnext Local sections
+		\sub E.g. $$\parbox{1.2in}{\fbox{\xymatrix{\LTO{Emp1}\ar[dr]\\&\LTO{Last}\\\LTO{Emp2}\ar[ur]}}}\too\parbox{2.2in}{\fbox{\xymatrix{\LTO{Employee}\ar@<.5ex>[rr]^{\tn{Dpt}}\ar@(l,u)[]^{\tn{Mgr}}\ar@/_1pc/[dd]_{\tn{First}}\ar@/^1pc/[dd]^{\tn{Last}}&&\LTO{Department}\ar@<.5ex>[ll]^{\tn{Secr'y}}\ar@/^1pc/[ddll]^{\tn{Name}}\\\\\LTO{String}}}}$$
+		\next A lift is the same as two employees with same last name.
+		\next Find two employees, one named Bob, one named Sue, that have the same manager: $$\parbox{.9in}{\fbox{\xymatrix{&\LTO{Bob}\\\\&\LTO{Sue}}}}\too\parbox{1.2in}{\fbox{\xymatrix{\LTO{Emp1}\ar[r]\ar[dr]&\LTO{First}\\&\LTO{Mgr}\\\LTO{Emp2}\ar[r]\ar[ur]&\LTO{First}}}}$$
+		\next Same idea: I have a topological space $X$. I know that $\pi_1(X)=pi_2(X)=0,\pi_3(X)=\ZZ$ and $H_1(X)=0$.  $$\mcC:=\parbox{4in}{\fbox{\xymatrix{\obox{P}{1.1in}{a positive number $n\in\NN_{\geq1}$}&\obox{M}{1in}{a positive number $n\in\NN_{\geq 1}$ and a space $X$}\ar[l]_{n}\ar[r]^X\ar[dl]_(.6){\pi_n(X)}\ar[dr]^(.6){H_n(X)}&\obox{S}{.7in}{a space $X$}\\\obox{G}{.6in}{a group}&&\obox{A}{1in}{an abelian group}}}}$$
+		\next Like integer sequence database.
+		\endsub
+	\endsub
+\next Communication
+	\sub Basic idea: 
+		\sub Everyone has a schema and data
+		\next Interacting groups have their own schema and data mapping to each subgroup
+		\next A simplicial complex of interactions.
+	\nnext There is a nice model for communicating new information
+		\sub Can be done within category theory.
+		\next See me afterwards if interested.
+	\eendsub
+\endsub
+
+
+
+
+\end{document}

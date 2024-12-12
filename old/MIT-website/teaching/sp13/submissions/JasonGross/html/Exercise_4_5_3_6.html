@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_4_5_3_6</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_4_5_3_6</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.FunctionalExtensionality.html#"><span class="id" type="library">FunctionalExtensionality</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="EnsemblePreOrder.html#"><span class="id" type="library">EnsemblePreOrder</span></a> <a class="idref" href="PreOrderCategory.html#"><span class="id" type="library">PreOrderCategory</span></a> <a class="idref" href="CategoryObjects.html#"><span class="id" type="library">CategoryObjects</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab134"></a><h1 class="section">Exercise 4.5.3.6</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Exercise_4_5_3_6"><span class="id" type="section">Exercise_4_5_3_6</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab135"></a><h2 class="section">Problem</h2>
+ Let <span class="inlinecode"><a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a></span> be a set, let <span class="inlinecode"><a class="idref" href="Exercise_4_5_3_6.html#ℙ"><span class="id" type="abbreviation">&#x2119;</span></a>(<a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a>)</span> be the set of subsets of <span class="inlinecode"><a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a></span> (see
+      Definition 2.7.4.9). We can regard <span class="inlinecode"><a class="idref" href="Exercise_4_5_3_6.html#ℙ"><span class="id" type="abbreviation">&#x2119;</span></a>(<a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a>)</span> as a preorder under
+      inclusion of subsets (see for example Section 3.4.2). And we can
+      regard preorders as categories using a functor <span class="inlinecode"><span class="id" type="var">PrO</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_35.html#Exercise_4_1_2_35.Cat"><span class="id" type="variable">Cat</span></a></span> (see
+      Proposition 4.2.1.17).
+
+<div class="paragraph"> </div>
+
+      (a) What is the initial object in <span class="inlinecode"><a class="idref" href="Exercise_4_5_3_6.html#ℙ"><span class="id" type="abbreviation">&#x2119;</span></a>(<a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a>)</span>?
+
+<div class="paragraph"> </div>
+
+      (b) What is the terminal object in <span class="inlinecode"><a class="idref" href="Exercise_4_5_3_6.html#ℙ"><span class="id" type="abbreviation">&#x2119;</span></a>(<a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a>)</span>? 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="Exercise_4_5_3_6.X"><span class="id" type="variable">X</span></a> : <span class="id" type="keyword">Type</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Notation</span> <a name="ℙ"><span class="id" type="abbreviation">&#x2119;</span></a> <span class="id" type="var">X</span> := (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Ensemble"><span class="id" type="definition">Ensemble</span></a> <span class="id" type="var">X</span>).<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_4_5_3_6.ℙX"><span class="id" type="variable">ℙX</span></a> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> (<a class="idref" href="Exercise_4_5_3_6.html#ℙ"><span class="id" type="abbreviation">&#x2119;</span></a> <a class="idref" href="Exercise_4_5_3_6.html#Exercise_4_5_3_6.X"><span class="id" type="variable">X</span></a>) := <a class="idref" href="PreOrderCategory.html#PreOrderCategory"><span class="id" type="definition">PreOrderCategory</span></a> (<a class="idref" href="EnsemblePreOrder.html#Ensemble_PreOrder"><span class="id" type="instance">Ensemble_PreOrder</span></a> <a class="idref" href="Exercise_4_5_3_6.html#Exercise_4_5_3_6.X"><span class="id" type="variable">X</span></a>).<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Ltac</span> <span class="id" type="var">t</span> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">intro</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> <span class="id" type="tactic">compute</span> <span class="id" type="keyword">in</span> ×<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.FunctionalExtensionality.html#functional_extensionality_dep"><span class="id" type="axiom">functional_extensionality_dep</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ |- <span class="id" type="keyword">context</span>[<span class="id" type="keyword">match</span> ?<span class="id" type="var">E</span> <span class="id" type="keyword">with</span> <span class="id" type="keyword">end</span>] ]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⇒ <span class="id" type="tactic">solve</span> [ <span class="id" type="tactic">case</span> <span class="id" type="var">E</span> ]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ |- @<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq"><span class="id" type="inductive">eq</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Full_set"><span class="id" type="inductive">Ensembles.Full_set</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span>) ?<span class="id" type="var">a</span> ?<span class="id" type="var">b</span> ]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⇒ <span class="id" type="tactic">progress</span> (<span class="id" type="tactic">try</span> <span class="id" type="tactic">case</span> <span class="id" type="var">a</span>; <span class="id" type="tactic">intros</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">try</span> <span class="id" type="tactic">case</span> <span class="id" type="var">b</span>; <span class="id" type="tactic">intros</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Example</span> <a name="Exercise_4_5_3_6_a"><span class="id" type="definition">Exercise_4_5_3_6_a</span></a> : <a class="idref" href="CategoryObjects.html#InitialObject"><span class="id" type="record">InitialObject</span></a> <a class="idref" href="Exercise_4_5_3_6.html#Exercise_4_5_3_6.ℙX"><span class="id" type="variable">ℙX</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (@<a class="idref" href="CategoryObjects.html#Build_InitialObject"><span class="id" type="constructor">Build_InitialObject</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span> <a class="idref" href="Exercise_4_5_3_6.html#Exercise_4_5_3_6.ℙX"><span class="id" type="variable">ℙX</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Empty_set"><span class="id" type="inductive">Ensembles.Empty_set</span></a> <a class="idref" href="Exercise_4_5_3_6.html#Exercise_4_5_3_6.X"><span class="id" type="variable">X</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">H</span> ⇒ <span class="id" type="keyword">match</span> <a class="idref" href="Exercise_4_5_3_6.html#H"><span class="id" type="variable">H</span></a> <span class="id" type="keyword">with</span> <span class="id" type="keyword">end</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> <span class="id" type="var">t</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Example</span> <a name="Exercise_4_5_3_6_b"><span class="id" type="definition">Exercise_4_5_3_6_b</span></a> : <a class="idref" href="CategoryObjects.html#TerminalObject"><span class="id" type="record">TerminalObject</span></a> <a class="idref" href="Exercise_4_5_3_6.html#Exercise_4_5_3_6.ℙX"><span class="id" type="variable">ℙX</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (@<a class="idref" href="CategoryObjects.html#Build_TerminalObject"><span class="id" type="constructor">Build_TerminalObject</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span> <a class="idref" href="Exercise_4_5_3_6.html#Exercise_4_5_3_6.ℙX"><span class="id" type="variable">ℙX</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Full_set"><span class="id" type="inductive">Ensembles.Full_set</span></a> <a class="idref" href="Exercise_4_5_3_6.html#Exercise_4_5_3_6.X"><span class="id" type="variable">X</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Full_intro"><span class="id" type="constructor">Full_intro</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> <span class="id" type="var">t</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_4_5_3_6.html#Exercise_4_5_3_6"><span class="id" type="section">Exercise_4_5_3_6</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

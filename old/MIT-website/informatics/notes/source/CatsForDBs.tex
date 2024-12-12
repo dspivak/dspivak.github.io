@@ -1,0 +1,383 @@
+\documentclass{amsart}
+
+\usepackage{amssymb, amscd,stmaryrd,setspace,hyperref,color}
+
+\input xy
+\xyoption{all} \xyoption{poly} \xyoption{knot}\xyoption{curve}
+\input{diagxy}
+
+\textwidth=5.5in
+\oddsidemargin=.5in
+
+
+\newcommand{\comment}[1]{}
+
+\newcommand{\longnote}[2][4.9in]{\fcolorbox{black}{yellow}{\parbox{#1}{\color{black} #2}}}
+\newcommand{\note}[1]{\fcolorbox{black}{yellow}{\color{black} #1}}
+\newcommand{\q}[1]{\begin{question}#1\end{question}}
+\newcommand{\g}[1]{\begin{guess}#1\end{guess}}
+
+\def\tn{\textnormal}
+\def\mf{\mathfrak}
+\def\mc{\mathcal}
+
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\CC{{\mathbb C}}
+\def\AA{{\mathbb A}}
+\def\PP{{\mathbb P}}
+\def\NN{{\mathbb N}}
+
+\def\Hom{\tn{Arr}}
+\def\Fun{\tn{Fun}}
+\def\Ob{\tn{Nd}}
+\def\Op{\tn{Op}}
+
+\def\to{\rightarrow}
+\def\from{\leftarrow}
+\def\cross{\times}
+\def\taking{\colon}
+\def\inj{\hookrightarrow}
+\def\surj{\twoheadrightarrow}
+\def\too{\longrightarrow}
+\def\tooo{\longlongrightarrow}
+\def\tto{\rightrightarrows}
+\def\ttto{\equiv\!\!>}
+\def\ss{\subset}
+\def\superset{\supset}
+\def\iso{\cong}
+\def\down{\downarrow}
+\def\|{{\;|\;}}
+\def\m1{{-1}}
+\def\op{^\tn{op}}
+\def\loc{\tn{loc}}
+\def\la{\langle}
+\def\ra{\rangle}
+\def\wt{\widetilde}
+\def\wh{\widehat}
+\def\we{\simeq}
+\def\ol{\overline}
+\def\ul{\underline}
+\def\qeq{\mathop{=}^?}
+
+\def\ullimit{\ar@{}[rd]|(.3)*+{\lrcorner}}
+\def\urlimit{\ar@{}[ld]|(.3)*+{\llcorner}}
+\def\lllimit{\ar@{}[ru]|(.3)*+{\urcorner}}
+\def\lrlimit{\ar@{}[lu]|(.3)*+{\ulcorner}}
+\def\ulhlimit{\ar@{}[rd]|(.3)*+{\diamond}}
+\def\urhlimit{\ar@{}[ld]|(.3)*+{\diamond}}
+\def\llhlimit{\ar@{}[ru]|(.3)*+{\diamond}}
+\def\lrhlimit{\ar@{}[lu]|(.3)*+{\diamond}}
+\newcommand{\clabel}[1]{\ar@{}[rd]|(.5)*+{#1}}
+
+\newcommand{\arr}[1]{\ar@<.5ex>[#1]\ar@<-.5ex>[#1]}
+\newcommand{\arrr}[1]{\ar@<.7ex>[#1]\ar@<0ex>[#1]\ar@<-.7ex>[#1]}
+\newcommand{\arrrr}[1]{\ar@<.9ex>[#1]\ar@<.3ex>[#1]\ar@<-.3ex>[#1]\ar@<-.9ex>[#1]}
+\newcommand{\arrrrr}[1]{\ar@<1ex>[#1]\ar@<.5ex>[#1]\ar[#1]\ar@<-.5ex>[#1]\ar@<-1ex>[#1]}
+
+\newcommand{\To}[1]{\xrightarrow{#1}}
+\newcommand{\Too}[1]{\xrightarrow{\ \ #1\ \ }}
+\newcommand{\From}[1]{\xleftarrow{#1}}
+
+\newcommand{\Adjoint}[4]{\xymatrix@1{#2 \ar@<.5ex>[r]^-{#1} & #3 \ar@<.5ex>[l]^-{#4}}}
+
+\def\id{\tn{id}}
+\def\Top{{\bf Top}}
+\def\Cat{{\bf Cat}}
+\def\Str{{\bf Str}}
+\def\Sets{{\bf Sets}}
+\def\Set{{\bf Set}}
+\def\sSet{{\bf sSet}}
+\def\sSets{{\bf sSets}}
+\def\Grpd{{\bf Grpd}}
+\def\Pre{{\bf Pre}}
+\def\Shv{{\bf Shv}}
+\def\Rings{{\bf Rings}}
+
+\def\colim{\mathop{\tn{colim}}}
+
+\def\mcA{\mc{A}}
+\def\mcB{\mc{B}}
+\def\mcC{\mc{C}}
+\def\mcD{\mc{D}}
+\def\mcE{\mc{E}}
+\def\mcF{\mc{F}}
+\def\mcG{\mc{G}}
+\def\mcH{\mc{H}}
+\def\mcI{\mc{I}}
+\def\mcJ{\mc{J}}
+\def\mcK{\mc{K}}
+\def\mcL{\mc{L}}
+\def\mcM{\mc{M}}
+\def\mcN{\mc{N}}
+\def\mcO{\mc{O}}
+\def\mcP{\mc{P}}
+\def\mcQ{\mc{Q}}
+\def\mcR{\mc{R}}
+\def\mcS{\mc{S}}
+\def\mcT{\mc{T}}
+\def\mcU{\mc{U}}
+\def\mcV{\mc{V}}
+\def\mcW{\mc{W}}
+\def\mcX{\mc{X}}
+\def\mcY{\mc{Y}}
+\def\mcZ{\mc{Z}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{guess}[theorem]{Guess}
+\newtheorem{answer}[theorem]{Answer}
+\newtheorem{construction}[theorem]{Construction}
+
+\theoremstyle{definition}
+\newtheorem{ctdef}{CT Definition}
+\newtheorem{dbdef}{DB Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{postulate}[theorem]{Postulate}
+
+\def\Finm{{\bf Fin_{m}}}
+\def\El{{\bf El}}
+\def\Gr{{\bf Gr}}
+\def\DT{{\bf DT}}
+\def\DB{{\bf DB}}
+\def\Tables{{\bf Tables}}
+\def\Sch{{\bf Sch}}
+\def\Fin{{\bf Fin}}
+\def\P{{\bf P}}
+\def\SC{{\bf SC}}
+\def\ND{{\bf ND}}
+\def\Poset{{\bf Poset}}
+\def\'{\textnormal{'}}
+
+%%%%%
+
+\begin{document}
+
+\title{Categories for databases}
+
+\author{David I. Spivak}
+
+\thanks{Thanks to Tristan Nguyen and the ONR for the grant: N000140910466.}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+A category is roughly a database schema with foreign key constraints.  Under that correspondence, we have the following dictionary:
+
+\begin{align}\begin{tabular}{| l | l |}\hline\multicolumn{2}{| c |}{Dictionary}\\\hline Database schema, $\mcS$&Category, $\mcC$\\\hline Table, $T\in\mcS$&Object, $T\in\mcC$\\Column of $T$&Outgoing arrow, $f\taking T\to\; ?$\\Primary key column of $T$, Id\_$T$&Identity arrow, $\id_T$\\Data type $D$&Object $D$ without outgoing arrows (except $\id_D$)\\Transitivity constraints&Non-free composition laws\\\hline\end{tabular}\end{align}\\
+
+In other words, one can think of a category as a scheme for linking tables in a database.  In this understanding, every column of a table $T$ represents a method for taking records in $T$ and outputting records in another table, $U$.  One objection to this idea might  be that not all columns of a table are ``foreign keys" -- some are purely data (e.g. {\tt First Name}).  However, we think of such data columns as 1-column tables whose primary id column is the data itself (e.g. a 1-column table of first names).  Thus even such a pure-data column can be considered a foreign key to a 1-column table.  See Example \ref{ex:names} for more on this.
+
+\subsection{Conventions and layout of this paper}
+
+This paper is mainly meant as a dictionary between category theory and database theory.  We discuss graphs and reflexive graphs, which are basic database schemas.   We discuss Gates's database dictionary pattern in the latter part of Section \ref{sec:graphs and dbs} (specifically DB Definition \ref{db:database}, and relate it to RDF in Section \ref{sec:RDF}.
+
+In the following we give two definitions for every concept.  One will be using the parlance of mathematics, and in particular category theory.  The other will be using the parlance of databases.  We denote these by {\bf CT Definition} and {\bf DB Definition} respectively.  
+
+For the mathematical definitions, we will use the concepts of sets and functions.  For the database definitions we will use a UML-style presentation of tables and their foreign key constraints.  We will say something like ``a --- is that which can be expressed within the following database schema" and then display the UML.  This should be self-explanatory to the database theorist.  We hope that the mathematician will also catch on, especially after a brief explanation in Example \ref{ex:UML}.
+
+\section{Graphs and database schemas}\label{sec:graphs and dbs}
+
+\begin{ctdef}[Graph]\label{ct:graph}
+
+A {\em graph} is a tuple $\mcG:=\la\Ob,\Hom,s,t\ra$, where $\Ob$ and $\Hom$ are sets, and $s\taking\Hom\to\Ob$ and $t\taking\Hom\to\Ob$ are total functions.  We express this by the diagram of sets $$\xymatrix{\Ob&&\Hom\ar@/_1pc/[ll]_{s}\ar@/^1pc/[ll]^{t}.}$$  The elements of $\Ob$ are called the {\em nodes} of $\mcG$, and the elements of $\Hom$ are called the {\em arrows} of $\mcG$.  The function $s$ is called the {\em source} and the function $t$ is called the {\em target}, and for an arrow $f\in\Hom$, we refer to $s(f)$ as the {\em source of $f$} and $t(f)$ as the {\em target of $f$}.
+
+\end{ctdef}
+
+We now repeat the above definition, doing our best to emulate database convention rather than mathematical convention.  
+
+\begin{dbdef}\label{db:graph}
+
+A {\em graph} is that which can be expressed within the database schema, \begin{align}\xymatrix@=2cm{{\begin{tabular}{| l |} \hline \multicolumn{1}{| c |}{NODE}\\\hline Id\_node\\\hline\end{tabular} }&&{\begin{tabular}{| l |} \hline \multicolumn{1}{| c |}{ARROW}\\\hline Id\_arrow\\Source\_node\\Target\_node\\\hline\end{tabular}}\ar@/_1pc/[ll]_{\tt{source\_node}}\ar@/^1pc/[ll]^{\tt{target\_node}}}\end{align}  
+
+\end{dbdef}
+
+\begin{example}\label{ex:UML}
+
+In other words, a graph is understood by way of two tables, a table of NODEs and a table of ARROWs.  The NODE table will have only one column -- the identity of the node.  The ARROW table will consist of three columns -- the identity, the source, and the target of the arrow.
+
+Consider the graph $$\fbox{\xymatrix{\bullet^A\ar[r]^f&\bullet^B\ar@/_1pc/[r]_h\ar@/^1pc/[r]^g&\bullet^C\\\bullet^D\ar@(l,u)[]^i\ar@/^1pc/[r]^j&\bullet^E\ar@/^1pc/[l]^k}}$$  To express it within the database schema for graph given in DB Definition \ref{db:graph} is to write it as the following system of tables: \begin{align}\xymatrix{{\begin{tabular}{| l ||}\hline\multicolumn{1}{| c |}{NODE}\\\hline Id\_Node\\\hline A\\B\\C\\D\\E\\\hline\end{tabular}}&{\begin{tabular}{| l || l | l |}\hline\multicolumn{3}{| c |}{ARROW}\\\hline Id\_Arrow&Source\_Node&Target\_Node\\\hline f&A&B\\g&B&C\\h&B&C\\i&D&D\\j&D&E\\k&E&D\\\hline\end{tabular}}}\end{align}
+
+At this point, we hope the reader can understand what is meant by DB Definition \ref{db:graph}, and by extension the other DB definitions in this paper.
+
+\end{example}
+
+\begin{ctdef}
+
+A {\em reflexive graph} is a tuple $\mcG:=\la\Ob,\Hom,p,s,t\ra$ where $\Ob$ and $\Hom$ are sets, and $p\taking\Ob\to\Hom, s\taking\Hom\to\Ob,$ and $t\taking\Hom\to\Ob$ are total functions, which we can picture using the diagram of sets $$\xymatrix{\Ob\ar[rr]^{p}&&\Hom\ar@/_1.5pc/[ll]_{s}\ar@/^1.5pc/[ll]_{t},}$$ such that $$s\circ p(X)=t\circ p(X)=X$$ for any element $X\in\Ob$.  
+
+A reflexive graph $\mcG$ as above has an {\em underlying graph} $\la\Ob,\Hom,s,t\ra$.  The terminology for a reflexive graph is the same as that for its underlying graph (see CT Definition \ref{ct:graph}), except the new arrow $p\taking\Ob\to\Hom$ is called the {\em primary arrow} function.  In other words, for any node $n\in\Ob$ we call $p(n)$ its primary arrow.
+
+\end{ctdef}
+
+\begin{dbdef}\label{db reflexive graph}
+
+A {\em reflexive graph} is that which can be expressed within the database schema, \begin{align}\xymatrix@=2cm{{\begin{tabular}{| l |} \hline \multicolumn{1}{| c |}{NODE}\\\hline Id\_node\\Primary\_arrow\\\hline\end{tabular} }\ar[rr]^{\tt{Primary\_arrow}}&&{\begin{tabular}{| l |} \hline \multicolumn{1}{| c |}{ARROW}\\\hline Id\_arrow\\Source\_node\\Target\_node\\\hline\end{tabular}}\ar@/_2pc/[ll]_{\tt{Source\_node}}\ar@/^2pc/[ll]_{\tt{Target\_node}}}\end{align} subject to the following constraints for all $N\in\tn{NODE}$: \begin{align} &N{\tt.Primary\_arrow.Source\_node}=N\\&N{\tt.Primary\_arrow.Target\_node}=N\end{align}
+
+\end{dbdef}
+
+\begin{example}\label{ex:reflexive graph}
+
+When drawing a reflexive graph, we always leave off the primary arrows at each node, as they add too much clutter.  However, we must give them names; if A is a node, we name its primary arrow id\_A.  Other arrows whose source and target are the same node will be drawn.  Here is an example of a reflexive graph: $$\fbox{\xymatrix{\bullet^A\ar[r]^f&\bullet^B\ar@/_1pc/[r]_h\ar@/^1pc/[r]^g&\bullet^C\\\bullet^D\ar@(l,u)[]^i\ar@/^1pc/[r]^j&\bullet^E\ar@/^1pc/[l]^k}}$$  
+
+This can be represented by a system of tables conforming to the schema given in DB Definition \ref{db reflexive graph}.
+
+\begin{align}\xymatrix{{\begin{tabular}{| l || l |}\hline\multicolumn{2}{| c |}{NODE}\\\hline Id node&Primary\_arrow\\\hline A&id\_A\\B&id\_B\\C&id\_C\\D&id\_D\\E&id\_E\\\hline\end{tabular}}&{\begin{tabular}{| l || l | l |}\hline\multicolumn{3}{| c |}{ARROW}\\\hline Id arrow&Source\_node&Target\_node\\\hline id\_A&A&A\\f&A&B\\id\_B&B&B\\g&B&C\\h&B&C\\id\_C&C&C\\id\_D&D&D\\i&D&D\\j&D&E\\id\_E&E&E\\k&E&D\\\hline\end{tabular}}}\end{align}
+
+\end{example}
+
+\begin{dbdef}\label{db database schema}
+
+A {\em database schema} is that which can be expressed within the following database schema. \begin{align}\xymatrix@=2cm{{\begin{tabular}{| l |} \hline  \multicolumn{1}{| c |}{TABLE}\\\hline Id\_table\\Primary\_column\\\hline\end{tabular} }\ar[rr]^{\tt{Primary\_column}}&&{\begin{tabular}{| l |} \hline  \multicolumn{1}{| c |}{COLUMN}\\\hline Id\_column\\Source\_table\\Value\_table\\\hline\end{tabular}}\ar@/_2pc/[ll]_{\tt{Source\_table}}\ar@/^2pc/[ll]_{\tt{Value\_table}}}\end{align} subject to the following constraints for all $T\in\tn{TABLE}$ \begin{align}&T{\tt.Primary\_column.Source\_table}=T\\&T{\tt.Primary\_column.Value\_table}=T\end{align}
+
+\end{dbdef}
+
+Clearly, categorical databases and reflexive graphs have isomorphic schemas.  Thus we can make the following mathematical definition:
+
+\begin{ctdef}\label{def:database}
+
+A {\em database schema} is a reflexive graph.
+
+\end{ctdef}
+
+\begin{example}
+
+The reader has probably noticed the self-referential nature of DB Definition \ref{db database schema}.  The idea is that a database schema can be expressed as two tables, one called ``TABLE" and one called ``COLUMN."  The first has two columns and the second has three; out of the five columns in total, two are primary keys and three are foreign keys.  
+
+But DB Definition \ref{db database schema} also is presented using a database schema.  It follows that this database schema can be written as a system of tables in the form specified by DB Definition \ref{db database schema}.  We will do that here.  However, to make it a bit less self-referential we describe reflexive graphs instead -- these are isomorphic to database schemas, but the terminology is different (which is extremely valuable for this example!).  Here is the result of that process:
+
+\begin{align}\xymatrix{{\begin{tabular}{| l| | l |}\hline\multicolumn{2}{| c |}{TABLE}\\\hline Id\_table & Primary\_column\\\hline NODE&Id\_node\\ARROW&Id\_arrow\\\hline\end{tabular}}&{\begin{tabular}{| l || l | l |}\hline\multicolumn{3}{| c |}{COLUMN}\\\hline Id\_column & Source\_table& Value\_table\\\hline Id\_node&NODE&NODE\\Primary\_arrow&NODE&ARROW\\Id\_arrow&ARROW&ARROW\\Source\_node&ARROW&NODE\\Target\_node&ARROW&NODE\\\hline\end{tabular}}}\end{align}
+
+Recall that we made two integrity constraints in DB Definition \ref{db database schema}, which can be verified here.
+
+\end{example}
+
+\begin{example}\label{ex:names}
+
+We need one more example to show what happens with ``pure-data" columns.  Suppose we have a database schema for employees.  Each employee has a first and last name, and each employee has a manager and a department.  Departments have names and secretaries.  We can represent this as the following (reflexive) graph $$\fbox{\xymatrix{\tn{Employee}\ar@<.5ex>[rr]^{\tn{dpt}}\ar@(l,u)[]^{\tn{mgr}}\ar@/_1pc/[dd]_{\tn{first}}\ar@/^1pc/[dd]^{\tn{last}}&&\tn{Department}\ar@<.5ex>[ll]^{\tn{Secretary}}\ar@/^1pc/[ddll]^{\tn{Name}}\\\\\tn{String}}}$$
+
+Here, String is a one-column table of strings, say of length $\leq$ 40.  Of course, this one-column table would never be stored (as it has at least 26\^40 rows), but theoretically it works just like any other table.  
+
+\end{example}
+
+\begin{remark}
+
+Looking back at Example \ref{ex:names}, suppose we wanted to add the following integrity constraints.  First, the secretary of any department must be an employee of that department.  Second, the manager of any employee must be in the same department as that employee.  We can represent these constraints by the following equations for all employees $E$ and departments $D$: \begin{align}\label{dia:ref1}D{\tt.secretary.dpt}&=D\\\label{dia:ref2}E{\tt.mgr.dpt}&=E{\tt.dpt}\end{align}  If we want to express these kinds of constraints we need to define database schemas as categories rather than as reflexive graphs.  
+
+{\bf The database expert can think of a category as nothing more than a database schema with the kinds of referential integrity constraint expressed in Equations (\ref{dia:ref1}) and (\ref{dia:ref2}).}
+
+\end{remark}
+
+\section{Tuples on a schema are given by a functor}
+
+Now suppose that we want to understand tuples within this language.  For this we need the concept of a functor.  Roughly, a functor $F\taking G\to \Sets$ from a reflexive graph $G$ to sets assigns to each node $n\in G$ a set $F(n)$ and to each arrow $a\taking n\to n'$ in $G$ a function $F(a)\taking F(n)\to F(n')$ between corresponding sets.
+
+\begin{ctdef}\label{ct:database}
+
+A {\em database} consists of a a database schema $G$ and a functor $\delta\taking G\to\Sets$.  
+
+Each object $a$ in $G$ is called a {\em table}; each arrow $f\taking a\to b$ in $G$ is called a {\em column} with {\em source table} $a$ and {\em value table} $b$.  Each element $x\in\delta(a)$ is called a {\em row} of table $a$.  A pair $(x,f)$ where $x\in\delta(a)$ and $f\taking a\to b$ is called {\em the cell} in row $x$ and column $f$, and the corresponding element $y=\delta(f)(x)\in\delta(b)$ is called the {\em value} of that cell.
+
+\end{ctdef}
+
+The categorical definition of database does not really have a DB-analog.  However the following definition comes close.  The interested reader can see the following remark, Remark \ref{rem:grothendieck}, to see the connection; others can skip right to DB Definition \ref{db:database}.
+
+\begin{remark}\label{rem:grothendieck}
+
+Given a database $(G,\delta)$ as in CT Definition \ref{ct:database}, consider the Grothendieck construction $\Gr(\delta)$ and its canonical functor $\pi\taking\Gr(\delta)\to G$.  Consider this functor as a functor $\pi\taking[1]\to\Cat$ where $[1]$ is the category with two objects, 0 and 1, and one non-identity morphism $0\to 1$, and where $\Cat$ is the category of small categories.  Finally, take the Grothendieck construction of this functor $\Gr(\pi)$ to get the ``dictionary pattern" as in DB Definition \ref{db:database}.
+
+\end{remark}
+
+\begin{dbdef}\label{db:database}
+
+A {\em database dictionary} is that which can be expressed within the following database schema.  \begin{align}\xymatrix@=2cm{{\begin{tabular}{| l |}\hline\multicolumn{1}{| c |}{TABLE}\\\hline Id\_table\\Primary\_column\\\hline\end{tabular}}\ar[rr]^{\tt{Primary\_column}}&&{\begin{tabular}{| l |}\hline \multicolumn{1}{| c |}{COLUMN}\\\hline Id\_column\\Source\_table\\Value\_table\\\hline\end{tabular}}\ar@/_2pc/[ll]_{\tt{Source\_table}}\ar@/^2pc/[ll]_{\tt{Value\_table}}\\{\begin{tabular}{| l |}\hline \multicolumn{1}{| c |}{ROW}\\\hline Id\_row\\Source\_table\\Primary\_cell \\\hline\end{tabular}}\ar[u]_{\tt{Source\_table}}\ar[rr]^{\tt{Primary\_cell}}&&{\begin{tabular}{| l |}\hline \multicolumn{1}{| c |}{CELL}\\\hline Id\_cell\\Source\_row\\Source\_column\\Value\_row\\\hline\end{tabular}}\ar[u]_{\tt{Source\_column}}\ar@/_2pc/[ll]_{\tt{Source\_row}}\ar@/^2pc/[ll]_{\tt{Value\_row}}} \end{align} subject to the following constraints for all $T\in\tn{TABLE}, R\in\tn{ROW}, C\in\tn{CELL}$: \begin{align}&T{\tt.Primary\_column.Source\_table}=T\\&T{\tt.Primary\_column.Value\_table}=T\\&R{\tt.Primary\_cell.Source\_row}=R\\&R{\tt.Primary\_cell.Value\_row}=R\\&C{\tt.Source\_row.Source\_table}=C{\tt.Source\_column.Source\_table}\\&C{\tt.Value\_row.Source\_table}=C{\tt.Source\_column.Value\_table}\end{align} and that for certain ``obvious" projections, we have \begin{align}\pi(\tn{CELL})=\pi\Big(\tn{COLUMN}\Join_{{\tt source\_table}={\tt source\_table}}\tn{ROW}\Big)\end{align}
+
+\end{dbdef}
+
+\begin{remark}
+
+Since CELL is the fiber product of ROW and COLUMN over their respective source\_table maps, the identity of a cell is completely determined by its source\_row and its source\_column.  In actuality, we should further require that the primary\_cell map above takes a row $r$ to the cell whose source row is $r$ and whose source column is $r${\tt.Source\_table.Primary\_column}.
+
+\end{remark}
+
+\begin{example}
+
+We will exemplify DB Definition \ref{db:database} by drawing a reflexive graph, , writing down the corresponding system of tables as in Example \ref{ex:reflexive graph}, and then showing the corresponding  database dictionary as in DB Definition \ref{db:database}.  
+
+Here is a simple reflexive graph (where we have not drawn the primary arrows for $B$ and $C$): $$\fbox{\xymatrix{\bullet^B\ar@/_1pc/[r]_h\ar@/^1pc/[r]^g&\bullet^C}}$$
+
+Here is the corresponding system of tables for the schema laid out in DB Definition \ref{db reflexive graph}: \begin{align}\xymatrix{{\begin{tabular}{| l || l |}\hline\multicolumn{2}{| c |}{NODE}\\\hline Id\_node&Primary\_arrow\\\hline B&id\_B\\C&id\_C\\\hline\end{tabular}}&{\begin{tabular}{| l || l | l |}\hline\multicolumn{3}{| c |}{ARROW}\\\hline Id arrow&Source\_node&Target\_node\\\hline id\_B&B&B\\g&B&C\\h&B&C\\id\_C&C&C\\\hline\end{tabular}}}\end{align}
+
+Here is the corresponding database dictionary: \begin{align}\tiny\xymatrix{{\begin{tabular}{| l| | l |}\hline\multicolumn{2}{| c |}{TABLE}\\\hline Id\_table & Primary\_column\\\hline NODE&Id\_node\\ARROW&Id\_arrow\\\hline\end{tabular}}&{\begin{tabular}{| l || l | l |}\hline\multicolumn{3}{| c |}{COLUMN}\\\hline Id\_column & Source\_table& Value\_table\\\hline Id\_node&NODE&NODE\\Primary\_arrow&NODE&ARROW\\Id\_arrow&ARROW&ARROW\\Source\_node&ARROW&NODE\\Target\_node&ARROW&NODE\\\hline\end{tabular}}\\{\begin{tabular}{| l || l | l |}\hline\multicolumn{3}{| c |}{ROW}\\\hline Id\_row&Source\_table & Primary\_cell\\\hline B&NODE&(B,Id\_node)\\C&NODE&(C,Id\_node)\\id\_B&ARROW&(id\_B,Id\_arrow)\\g&ARROW&(g,Id\_arrow)\\h&ARROW&(h,Id\_arrow)\\id\_C&ARROW&(id\_C,Id\_arrow)\\\hline\end{tabular}}&{\begin{tabular}{| l || l | l | l |}\hline\multicolumn{4}{| c |}{CELL}\\\hline Id\_cell&Source\_row&Source\_column&Value\_row\\\hline (B,Id\_node)&B&Id\_node&B\\(B,Primary\_arrow)&B&Primary\_arrow&id\_B\\(C,Id\_node)&C&Id\_node&C\\(C,Primary arrow)&C&Primary\_arrow&id\_C\\(id\_B,Id\_arrow)&id\_B&Id\_arrow&id\_B\\(id\_B,Source\_node)&id\_B&Source\_node&B\\(id\_B,Target\_node)&id\_B&Target\_node&B\\(g,Id\_arrow)&g&Id\_arrow&g\\(g,Source\_node)&g&Source\_node&B\\(g,Target\_node)&g&Target\_node&C\\(h,Id\_arrow)&h&Id\_arrow&h\\(h,Source\_node)&h&Source\_node&B\\(h,Target\_node)&h&Target\_node&C\\(id\_C,Id\_arrow)&id\_C&Id\_arrow&C\\(id\_C,Source\_node)&id\_C&Source\_node&C\\(id\_C,Target\_node)&id\_C&Target\_node&C\\\hline\end{tabular}}}\end{align}\normalsize
+
+Of course, we flatly refuse to check all the constraints listed in Definition \ref{db:database}; we will check one of each.  \tiny\begin{align*}\tn{NODE}{\tt.Primary\_column.Source\_table}&=\tn{NODE}, \checkmark\\\tn{NODE}{\tt.Primary\_column.Value\_table}&=\tn{NODE},\checkmark\\\tn{g}{\tt.primary\_cell.Source\_row}&=\tn{g},\checkmark\\\tn{g}{\tt.Primary\_cell.Value\_row}&=\tn{g},\checkmark\\\tn{(h,Target\_node)}{\tt.Source\_row.Source\_table}&=\tn{ARROW}=\tn{(h,Target\_node)}{\tt.Source\_column.Source\_table},\checkmark\\\tn{(g,Source\_node)}{\tt.Value\_row.Source\_table}&=\tn{NODE}=\tn{(g,Source\_node)}{\tt.Source\_column.Value\_table},\checkmark\end{align*}\normalsize  Finally, the join constraint can be checked by numbers.  We are looking for rows in the COLUMN table and rows in the ROW table whose Source\_table's match.  There are 2*2=4 pairs with Source\_table NODE and 3*4=12 pairs with SOURCE\_table ARROW.  These constitute the 4+12=16 rows of the CELL table.
+
+\end{example}
+
+\begin{example}
+
+We will also exemplify DB Definition \ref{db:database} by drawing a (non-reflexive) graph, writing down the corresponding system of tables as in Example \ref{ex:reflexive graph}, and then showing the corresponding  database dictionary as in DB \ref{db:database}.  
+
+Here is a simple graph: $$\fbox{\xymatrix{\bullet^B\ar@/_1pc/[r]_h\ar@/^1pc/[r]^g&\bullet^C\ar[l]^i}}$$
+
+Here is the corresponding system of tables: \begin{align}\xymatrix{{\begin{tabular}{| l |}\hline\multicolumn{1}{| c |}{NODE}\\\hline Id\_node\\\hline B\\C\\\hline\end{tabular}}&{\begin{tabular}{| l || l | l |}\hline\multicolumn{3}{| c |}{ARROW}\\\hline Id\_arrow&Source\_node&Target\_node\\\hline id\_B&B&B\\g&B&C\\h&B&C\\id\_C&C&C\\i&C&B\\\hline\end{tabular}}}\end{align}
+
+Here is the corresponding database: \begin{align}\tiny\xymatrix{{\begin{tabular}{| l || l |}\hline\multicolumn{2}{| c |}{TABLE}\\\hline Id\_table&Id\_column\\\hline NODE&Id\_node\\ARROW&Id\_arrow\\\hline\end{tabular}}&{\begin{tabular}{| l || l | l |}\hline\multicolumn{3}{| c |}{COLUMN}\\\hline Id\_column & Source\_table& Value\_table\\\hline Id\_node&NODE&NODE\\Id\_arrow&ARROW&ARROW\\Source\_node&ARROW&NODE\\Target\_node&ARROW&NODE\\\hline\end{tabular}}\\{\begin{tabular}{| l || l | l |}\hline\multicolumn{3}{| c |}{ROW}\\\hline Id\_row&Source\_table & Primary\_cell\\\hline B&NODE&(B,Id\_node)\\C&NODE&(C,Id\_node)\\id\_B&ARROW&(id\_B,Id\_arrow)\\g&ARROW&(g,Id\_arrow)\\h&ARROW&(h,Id\_arrow)\\id\_C&ARROW&(id\_C,Id\_arrow)\\i&ARROW&(i,Id\_arrow)\\\hline\end{tabular}}&{\begin{tabular}{| l || l | l | l |}\hline\multicolumn{4}{| c |}{CELL}\\\hline Id\_cell&Source\_row&Source\_column&Value\_row\\\hline (B,Id\_node)&B&Id\_node&B\\(C,Id\_node)&C&Id\_node&C\\(id\_B,Id\_arrow)&id\_B&Id\_arrow&id\_B\\(id\_B,Source\_node)&id\_B&Source\_node&B\\(id\_B,Target\_node)&id\_B&Target\_node&B\\(g,Id\_arrow)&g&Id\_arrow&g\\(g,Source\_node)&g&Source\_node&B\\(g,Target\_node)&g&Target\_node&C\\(h,Id\_arrow)&h&Id\_arrow&h\\(h,Source\_node)&h&Source\_node&B\\(h,Target\_node)&h&Target\_node&C\\(id\_C,Id\_arrow)&id\_C&Id\_arrow&C\\(id\_C,Source\_node)&id\_C&Source\_node&C\\(id\_C,Target\_node)&id\_C&Target\_node&C\\(i,Id\_arrow)&i&Id\_arrow&i\\(i,Source\_node)&i&Source\_node&C\\(i,Target\_node)&i&Target\_node&B\\\hline\end{tabular}}}\end{align}\normalsize
+
+Of course, we flatly refuse to check all the constraints listed in Definition \ref{db:database}; we will check one of each.  \tiny\begin{align*}\tn{NODE}{\tt.Primary\_column.Source\_table}&=\tn{NODE}, \checkmark\\\tn{NODE}{\tt.Primary\_column.Value\_table}&=\tn{NODE},\checkmark\\\tn{g}{\tt.primary\_cell.Source\_row}&=\tn{g},\checkmark\\\tn{g}{\tt.Primary\_cell.Value\_row}&=\tn{g},\checkmark\\\tn{(h,Target\_node)}{\tt.Source\_row.Source\_table}&=\tn{ARROW}=\tn{(h,Target\_node)}{\tt.Source\_column.Source\_table},\checkmark\\\tn{(g,Source\_node)}{\tt.Value\_row.Source\_table}&=\tn{NODE}=\tn{(g,Source\_node)}{\tt.Source\_column.Value\_table},\checkmark\end{align*}\normalsize Finally, the join constraint can be checked by numbers.  We are looking for rows in the COLUMN table and rows in the ROW table whose Source\_table's match.  There are 2*1=2 pairs with Source\_table NODE and 3*5=15 pairs with SOURCE\_table ARROW.  These constitute the 2+15=17 rows of the CELL table.
+
+\end{example}
+
+\subsection{If primary keys didn't have to be columns}
+
+\begin{dbdef}\label{db:weak database}
+
+A {\em weak database} is that which can be expressed within the following database schema.  \begin{align}\xymatrix@=2cm{{\begin{tabular}{| l |}\hline\multicolumn{1}{| c |}{TABLE}\\\hline Id\_table\\\hline\end{tabular}}&&{\begin{tabular}{| l |}\hline \multicolumn{1}{| c |}{COLUMN}\\\hline Id\_column\\Source\_table\\Value\_table\\\hline\end{tabular}}\ar@/_2pc/[ll]_{\tt{Source\_table}}\ar@/^2pc/[ll]_{\tt{Value\_table}}\\{\begin{tabular}{| l |}\hline \multicolumn{1}{| c |}{ROW}\\\hline Id\_row\\Source\_table\\\hline\end{tabular}}\ar[u]_{\tt{Source\_table}}&&{\begin{tabular}{| l |}\hline \multicolumn{1}{| c |}{CELL}\\\hline Id\_cell\\Source\_row\\Source\_column\\Value\_row\\\hline\end{tabular}}\ar[u]_{\tt{Source\_column}}\ar@/_2pc/[ll]_{\tt{Source\_row}}\ar@/^2pc/[ll]_{\tt{Value\_row}}} \end{align} subject to the following constraints for all $C\in\tn{CELL}$: \begin{align}&C{\tt.Source\_row.Source\_table}=C{\tt.Source\_column.Source\_table}\\&C{\tt.Value\_row.Source\_table}=C{\tt.Source\_column.Value\_table}\end{align} and that for certain ``obvious" projections, we have \begin{align}\pi(\tn{CELL})=\pi\Big(\tn{COLUMN}\Join_{{\tt source\_table}={\tt source\_table}}\tn{ROW}\Big)\end{align}
+
+\end{dbdef}
+
+One reason this is not our preferred setup is that it does not allow for certain types of referential integrity constraints, known in mathematics as {\em isomorphisms}.  But we have not even discussed putting integrity constraints in terms of databases as discussed here, so to some extent it is a non-issue at this point.  In other words, the above schema is perfectly adequate for a database system without strong referential integrity.
+
+\begin{ctdef}\label{ct:weak database}
+
+A {\em weak database} consists of a graph $G$ and a functor $\delta\taking G\to\Sets$.
+
+\end{ctdef}
+
+\section{RDF}\label{sec:RDF}
+
+We first rewrite the above definition of database using terminology from RDF.
+
+\comment{
+An {\em RDF database} is that which can be expressed within the following database schema.  \begin{align}\xymatrix@=2cm{{\begin{tabular}{| l |}\hline\multicolumn{1}{| c |}{TYPE}\\\hline Uri\\Self\_attribute\\\hline\end{tabular}}\ar[rr]^{\tt{Self\_attribute}}&&{\begin{tabular}{| l |}\hline \multicolumn{1}{| c |}{ATTRIBUTE}\\\hline Uri\\Subject\_type\\Value\_type\\\hline\end{tabular}}\ar@/_2pc/[ll]_{\tt{Subject\_type}}\ar@/^2pc/[ll]_{\tt{Value\_type}}\\{\begin{tabular}{| l |}\hline \multicolumn{1}{| c |}{ENTITY}\\\hline Uri\\Class\_type\\Self\_fact \\\hline\end{tabular}}\ar[u]_{\tt{Class\_type}}\ar[rr]^{\tt{Self\_fact}}&&{\begin{tabular}{| l |}\hline \multicolumn{1}{| c |}{FACT}\\\hline Uri\\Subject\\Predicate\_attribute\\Object\\\hline\end{tabular}}\ar[u]_{\tt{Predicate\_attribute}}\ar@/_2pc/[ll]_{\tt{Subject}}\ar@/^2pc/[ll]_{\tt{Object}}} \end{align} subject to the following constraints for all $T\in\tn{TYPE}, E\in\tn{ENTITY}, F\in\tn{FACT}$: \begin{align}&T{\tt.Self\_attribute.Subject\_type}=T\\&T{\tt.Self\_attribute.Value\_type}=T\\&E{\tt.Self\_fact.Subject}=E\\&E{\tt.Self\_fact.Object}=E\\&F{\tt.Subject.Class\_type}=F{\tt.Predicate\_attribute.Subject\_type}\\&F{\tt.Object.Class\_type}=F{\tt.Predicate\_attribute.Value\_type}\end{align} and that for certain ``obvious" projections, we have \begin{align}\pi(\tn{FACT})=\pi\Big(\tn{ATTRIBUTE}\Join_{{\tt Subject}={\tt Class}}\tn{ENTITY}\Big)\end{align}
+}
+
+\begin{dbdef}
+
+An {\em RDF database} is that which can be expressed within the following database schema.  \begin{align}\xymatrix@=2cm{{\begin{tabular}{| l |}\hline\multicolumn{1}{| c |}{TYPE}\\\hline Uri\\\hline\end{tabular}}&&{\begin{tabular}{| l |}\hline \multicolumn{1}{| c |}{ATTRIBUTE}\\\hline Uri\\Subject\_type\\Value\_type\\\hline\end{tabular}}\ar@/_2pc/[ll]_{\tt{Subject\_type}}\ar@/^2pc/[ll]_{\tt{Value\_type}}\\{\begin{tabular}{| l |}\hline \multicolumn{1}{| c |}{ENTITY}\\\hline Uri\\Type \\\hline\end{tabular}}\ar[u]_{\tt{Type}}&&{\begin{tabular}{| l |}\hline \multicolumn{1}{| c |}{FACT}\\\hline Uri\\Subject\\Predicate\\Value\\\hline\end{tabular}}\ar[u]_{\tt{Predicate}}\ar@/_2pc/[ll]_{\tt{Subject}}\ar@/^2pc/[ll]_{\tt{Value}}} \end{align} subject to the following constraints for all $F\in\tn{FACT}$: \begin{align}&F{\tt.Subject.Type}=F{\tt.Predicate.Subject\_type}\\&F{\tt.Value.Type}=F{\tt.Predicate.Value\_type}\end{align} and that for certain ``obvious" projections, we have \begin{align}\pi(\tn{FACT})=\pi\Big(\tn{ATTRIBUTE}\Join_{{\tt Subject}={\tt Type}}\tn{ENTITY}\Big)\end{align}
+
+\end{dbdef}
+
+\begin{ctdef}
+
+An {\em RDF database} consists of a graph $G$ and a functor $\delta\taking G\to Sets$.  
+
+Each node $t\in G$ is called a {\em type}, each arrow $f\taking t\to u$ in $G$ is called an {\em attribute} with subject type $t$ and value type $u$.  For a type $t$, each element $x\in \delta(t)$ is called an {\em entity of type $t$}.  The {\em value} of an attribute $f$ defined for an entity $x$ is defined as $\delta(f)(x)$.
+
+\end{ctdef}
+
+\end{document}

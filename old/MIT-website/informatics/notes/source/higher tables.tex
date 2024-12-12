@@ -1,0 +1,140 @@
+\documentclass{amsart}
+
+\input{decl-db}
+
+
+%\oddsidemargin .5in 
+%\evensidemargin .5in 
+%textwidth 5.3in 
+
+\def\Loc{{\bf Loc}}
+\def\bigjoin{\bigvee}
+\def\bigmeet{\bigwedge}
+\def\join{\vee}
+\def\meet{\wedge}
+\def\Down{\Downarrow}
+\def\Po{{\bf Po}}
+\def\FC{{\bf FC}}
+
+\newcommand{\TriRight}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longrightarrow}\ar@{}[u]|>>>>{#7}}}
+\newcommand{\TriLeft}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longleftarrow}\ar@{}[u]|>>>>{#7}}}
+
+
+%\usepackage{showkeys}
+
+\begin{document}
+
+\author{David I. Spivak}
+
+\thanks{This project was supported in part by the Office of Naval Research.}
+
+\title{Higher Tables}
+
+\maketitle
+
+Let $\Po$ denote the category of finite partially ordered sets.  We can consider objects in $\Po$ as categories in which case the morphisms between the objects are exactly the functors between corresponding categories.
+
+Let $\FC$ denote the category of finite categories.  
+
+\section{Derivation of tables}
+
+Given a functor $\pi\taking T\to S$, define $d(S)=(\FC\op\Down S)$ as follows.  An object in $d(S)$ is a finite category $C$ together with a functor $\sigma\taking C\to S$.  A morphism, denoted $$(F,F^\sharp)\taking(C,\sigma)\to(C',\sigma')$$ in $d(S)$, consists of a functor $F\taking C'\to C$ and a natural transformation $F^\sharp\taking (\sigma\circ F)\to\sigma'$, as depicted in the diagram $$\TriLeft{C'}{\sigma'}{F}{C}{\sigma}{S}{F^\sharp}$$ 
+
+There is a canonical functor $\Gamma\taking d(S)\to\Cat$, defined by assigning to each $(\sigma\taking C\to S)\in d(S)$ the category for which an object is a pair $(r,r^\sharp)$, where $r\taking C\to T$ is a functor and $r^\sharp\taking(\pi\circ r)\to\sigma$ is a natural transformation, as depicted in the diagram $$\xymatrix{&&T\ar[dd]^\pi\\\\C\ar[uurr]^r\ar[rr]_\sigma&\ar@{}[uur] |(.3){r^\sharp\Downarrow}&S}$$  A morphism $(r_1,r_1^\sharp)\to(r_2,r_2^\sharp)$ in $\Gamma(C,\sigma)$ is a natural transformation $\alpha\taking r_1\to r_2$ such that $r_2^\sharp\circ\alpha=r_1^\sharp$.
+
+Let us define $\Gamma$ on morphisms in $dS$.  Given a morphism $(F,F^\sharp)\taking (C,\sigma)\to(C',\sigma')$, let $(r,r^\sharp)\in\Gamma(C,\sigma)$ denote an object.  Then $(r\circ F)\taking C'\to T$ is a functor and we have a composition of natural transformations $$\pi\circ(r\circ F)=(\pi\circ r)\circ F\To{r^\sharp}\sigma\circ F\To{F^\sharp}\sigma'.$$  Together, these form a pair $((r\circ F),(F^\sharp\circ r^\sharp))\in\Gamma(C',\sigma')$, and we define $\Gamma(F,F^\sharp)$ on objects in this way.  In a similar way, we define $\Gamma(F,F^\sharp)$ for morphisms $\alpha\taking r_1\to r_2$.
+
+Define a new category $d(T):=(\Cat\down\Gamma)$: an object is a pair $(K,\sigma,\tau)$ where $K\in\Cat$ is a category, $\sigma\in d(S)$ is an object, and $\tau\taking K\to\Gamma(\sigma)$ is a functor; a morphism $(K,\sigma,\tau)\to(K',\sigma',\tau')$ consists of a functor $g\taking K\to K'$, a map $\mcF\taking\sigma\to\sigma'$ in $dS$, and a natural transformation $\beta\taking\Gamma(\mcF)\circ\tau\to\tau'\circ g$, depicted in the diagram $$\xymatrix{K\ar[r]^\tau\ar[d]_g\ar@{}[dr] |{\beta\Downarrow}&\Gamma(\sigma)\ar[d]^\mcF\\K'\ar[r]_{\tau'}&\Gamma(\sigma').}$$  
+
+Finally, define $d(\pi)\taking d(T)\to d(S)$ by the natural projection, $d(\pi)(K,\sigma,\tau):=\sigma$.  We call $d(\pi)$ the {\em derivation of $\pi$}.  
+
+\begin{remark}
+
+We might call $dT$ the {\em category of databases on $\pi$}.  Be careful, though, because these are not database states, but update diagrams.  In other words if $K=\singleton$, then $\tau\taking K\to\Gamma(\sigma)$ can be identified with a pair $(r,r^\sharp)$, as above.  That is, it is a $C$-shaped diagram of tables with schema over $\sigma$.  But morphisms in $K$ correspond to morphisms of such database states, such as unions (and deletions going the other way), joins, projects, and selects, as long as everything has at least as much information as required by $\sigma$.
+
+\end{remark}
+
+\begin{lemma}
+
+Let $q\taking dT\to(\Cat\cross dS)$ denote the functor $(K,\sigma,\tau)\mapsto(K,\sigma)$.  We can recover $\Gamma$ from $q$.
+
+\end{lemma}
+
+\begin{proof}
+
+Let us first produce $\Gamma\taking dS\to\Cat$ on objects.  Given $\sigma\taking C\to S$ in $dS$, we wish to find $\Gamma(\sigma)\in\Cat$.  Consider the object $(\singleton,\sigma)\in(\Cat\cross dS)$.  The category of sections of $q$ over $(\singleton,\sigma)$ is $\Gamma(\sigma)$.
+
+\end{proof}
+
+\begin{example}
+
+Let $\pi\taking U\to\DT$ denote a type specification.  Let $T=U$ and $S=\DT$.  Then one can show that there is an equivalence of categories $d(S)\iso(\Fin\down\DT)\op$, that the functor $\Gamma\taking d(S)\to\Sets\ss\Cat$ is defined as usual, and that there is another equivalence of categories $d(T)\iso\Tables^\pi$.
+
+\end{example}
+
+\begin{example}
+
+Let $p\taking U\to\DT$ denote a type specification.  Define $S=d(\DT)\iso\Sch(p)\op, T=d(U)\iso\Tables^p$, and $\pi=d(p)\taking\Tables\to\Sch(p)\op$.  We wish to investigate $d\pi\taking dT\to dS$.
+
+An object $\sigma\taking C\to S$ of $dS$ is a finite diagram of schema.  For example, $\sigma$ could be a finite set of schema.  Then $\Gamma(\sigma)$ is the category of $\sigma$-shaped diagrams of tables, where the tables do not have to be the exact shape specified by $\sigma$: they must have at least that much info -- they come equipped with a natural transformation to tables on $\sigma$.
+
+
+\end{example}
+
+\section{Comparison}
+
+There is a natural functor $\varphi\taking S\to dS$ defined by sending an object $s\in S$ to $$\varphi(s):=(\singleton\mapsto s)$$ in $dS=(\Cat\op\Down S)$.  A morphism $f\taking s\to s'$ in $S$ defines a morphism $\varphi(f)\taking\varphi(s)\to\varphi(s')$ as depicted in the diagram $$\TriLeft{\singleton}{s'}{\id_\singleton}{\singleton}{s}{S}{f}$$
+
+\section{To do}
+
+\begin{itemize}
+
+\item Do $\Gamma\to d\Gamma$ and $T\to dT$.  Then write out the ``change of datatypes" functor for these.
+\item Write down the definition of  ``topological space,"  ``continuous map of topological spaces," and ``category,"  and show that topological spaces form a category.  
+\item Perhaps show something like: continuous maps from a space to $\RR$ form a ring. 
+\item Phrase the fact that two points determine a line.
+\item A ``vertical table" has three columns: subject-property-object (e.g. David address Kincaid; Ralph eat carrot).  These are generally considered unreadable.  A ``horizontal table" has lots of columns, one for each property, but is perhaps sparse (lots of nulls).  In other words, it is a simplicial database with one simplex (and all its subsimplices).  
+
+To convert a vertical table into a horizontal table, first sort by property.  That is, for each datum in the ``property" column, find the table of subject-object pairs that has that datum.  This process gives a new 2-column table: the first column is properties and the second column is subject-object tables.  Now join these tables along their ``subject" column.  This gives a horizontal table.
+
+Except it has one problem: the columns of the horizontal table are untyped.  We never used the properties to type them.  Doing so requires more thinking about the dynamics of tables.  
+
+\end{itemize}
+
+\section{Data Structures}
+
+ Above, we defined for a category $S$ a new category $d(S)$ as $$d(S):=(\FC\op\Down S).$$  Perhaps instead, we should create something called ``data structures" wherein we choose a category of finite categories $D\taking\mcC\to\FC$ and define $d(S):=(D\op\Down S)$ as above.  Namely, the objects of $(D\op\Down S)$ are pairs $(C,\sigma)$ where $C\in\Ob(\mcC)$ and $\sigma\taking D(C)\to S$ is a functor to the (fixed) category $S$; the morphisms are pairs $(F,F^\sharp)\taking (C,\sigma)\to(C',\sigma')$ are diagrams $$\TriLeft{D(C')}{\sigma'}{D(F)}{D(C)}{\sigma}{S}{F^\sharp}$$ of categories, where $F\taking C'\to C$ is a morphism in $\mcC$.
+
+The old version, defined in Section 1, is found in this new version by setting $\mcC=\FC$, the category of all finite categories, and $D=\id_\FC$.  In the new version, we can use any category that indexes finite categories.  For example, we can create the data-structure ``list" or the data-structure ``binary tree" by setting $\mcC$ to be the category indexing these objects.
+
+\begin{definition}\label{def:data structures}
+
+A {\em data structure} is a pair $(\mcC,D)$ where $\mcC$ is a category and $D\taking\mcC\to\FC$ is a functor from $\mcC$ to the category of finite categories.  A {\em morphism of data structures} $(\mcC_1,D_1)\to(\mcC_2,D_2)$ consists of a pair $(a,a^\sharp)$ where $a\taking\mcC_1\to\mcC_2$ is a functor and $a^\sharp\taking(D_2\circ a)\to D_1$ is a natural transformation, as depicted in the diagram \begin{align}\label{dia:morphism of data structures}\TriLeft{\mcC_1}{D_1}{a}{\mcC_2}{D_2}{\Cat}{a^\sharp}\end{align}
+
+\end{definition}
+
+\begin{remark}
+
+It may be that the above is the opposite of the most convenient way to define data structures.  This would not change the shape of Diagram (\ref{dia:morphism of data structures}), but it would now be regarded as a morphism $(\mcC_2,D_2)\to(\mcC_1,D_1)$.  
+
+\end{remark}
+
+\begin{remark}
+
+It may be handy to require that the terminal category $\singleton\in\FC$ is in the image of a data structure $D\taking\mcC\to\FC$.  That way, there will be a comparison functor $\varphi\taking S\to d(S)$.
+
+\end{remark}
+
+Given a morphism of data structures $\alpha=(a,a^\sharp)\taking (\mcC_1,D_1)\to(\mcC_2,D_2)$ as in Definition \ref{def:data structures}, and given a category $S$, there is an induced map of derivations $\alpha^*\taking d_1(S)\to d_2(S)$ defined as follows.  To an object $\sigma\taking D_1(C_1)\to S$ in $d_1(S)$, the functor $\alpha$ assigns the object $$D_2(aC_1)\To{a^\sharp}D_1(C_1)\To{\sigma}S$$ in $d_2(S)$.  To the morphism $$\TriLeft{D_1(C_1')}{\sigma_1'}{D_1(F)}{D_1(C_1)}{\sigma_1}{S}{F^\sharp}$$
+one composes with the commutative square $$\xymatrix{D_2(aC_1')\ar[r]\ar[d]^{a^\sharp}&D_2(aC_1)\ar[d]^{a^\sharp}\\D_1(C_1')\ar[r]_F&D_1(C_1)}$$ to obtain the morphism $$\TriLeft{D_2(aC_1')}{\sigma'\circ a^\sharp}{D_2(aF)}{D_2(aC_1)}{\sigma\circ a^\sharp}{S}{F^\sharp\circ a^\sharp}$$
+
+\longnote{Notation may be subject to improvement.}
+
+
+
+
+
+\bibliographystyle{amsalpha}
+\bibliography{biblio}
+
+\end{document}

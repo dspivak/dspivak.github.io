@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_5_3_3_7</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_5_3_3_7</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.JMeq.html#"><span class="id" type="library">JMeq</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#"><span class="id" type="library">ProofIrrelevance</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.FunctionalExtensionality.html#"><span class="id" type="library">FunctionalExtensionality</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#"><span class="id" type="library">Ensembles</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="KleisliCategory.html#"><span class="id" type="library">KleisliCategory</span></a> <a class="idref" href="KleisliCategoryCoproducts.html#"><span class="id" type="library">KleisliCategoryCoproducts</span></a> <a class="idref" href="PowerSetMonad.html#"><span class="id" type="library">PowerSetMonad</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Topology.html#"><span class="id" type="library">Topology</span></a> <a class="idref" href="Morphism.html#"><span class="id" type="library">Morphism</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a> <a class="idref" href="SetCategoryFacts.html#"><span class="id" type="library">SetCategoryFacts</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab168"></a><h1 class="section">Exercise 5.3.3.7</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Module</span> <a name="Exercise_5_3_3_7"><span class="id" type="module">Exercise_5_3_3_7</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab169"></a><h2 class="section">Problem</h2>
+ Let <span class="inlinecode"><a class="idref" href="Topology.html#inclusion.T"><span class="id" type="variable">T</span></a></span> <span class="inlinecode">=</span> <span class="inlinecode">(<a class="idref" href="Exercise_4_5_3_6.html#ℙ"><span class="id" type="abbreviation">&#x2119;</span></a>,</span> <span class="inlinecode"><a class="idref" href="PowerSetMonad.html#PowerSetMonad.η"><span class="id" type="variable">η</span></a>,</span> <span class="inlinecode">µ)</span> be the power set monad. The category <span class="inlinecode"><span class="id" type="var">Kls</span>(<a class="idref" href="Topology.html#inclusion.T"><span class="id" type="variable">T</span></a>)</span>
+      is closed under binary coproducts, i.e. every pair of objects <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.A"><span class="id" type="variable">A</span></a></span> <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismCompositionLemmas.B"><span class="id" type="variable">B</span></a></span>
+      <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.CategoryLeafTable.Ob"><span class="id" type="variable">Ob</span></a>(<span class="id" type="var">Kls</span>(<a class="idref" href="Topology.html#inclusion.T"><span class="id" type="variable">T</span></a>))</span> have a coproduct in <span class="inlinecode"><span class="id" type="var">Kls</span>(<a class="idref" href="Topology.html#inclusion.T"><span class="id" type="variable">T</span></a>)</span>. What is the coproduct of <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.A"><span class="id" type="variable">A</span></a></span>
+      <span class="inlinecode">=</span> <span class="inlinecode">{1,2,3}</span> and <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismCompositionLemmas.B"><span class="id" type="variable">B</span></a></span> <span class="inlinecode">=</span> <span class="inlinecode">{<a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.a"><span class="id" type="constructor">a</span></a>,</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.b"><span class="id" type="constructor">b</span></a>}</span>? 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Open</span> <span class="id" type="keyword">Scope</span> <span class="id" type="var">type_scope</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_5_3_3_7.T"><span class="id" type="variable">T</span></a> := <a class="idref" href="PowerSetMonad.html#PowerSetMonad"><span class="id" type="definition">PowerSetMonad</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_5_3_3_7.η"><span class="id" type="variable">η</span></a> := <a class="idref" href="Monad.html#MonadUnit"><span class="id" type="projection">MonadUnit</span></a> <a class="idref" href="Exercise_5_3_3_7.html#Exercise_5_3_3_7.T"><span class="id" type="definition">T</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_5_3_3_7.µ"><span class="id" type="variable">µ</span></a> := <a class="idref" href="Monad.html#MonadMultiplication"><span class="id" type="projection">MonadMultiplication</span></a> <a class="idref" href="Exercise_5_3_3_7.html#Exercise_5_3_3_7.T"><span class="id" type="definition">T</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Global Instance</span> <a name="Exercise_5_3_3_7.PowerSetMonadCoproducts"><span class="id" type="instance">PowerSetMonadCoproducts</span></a> <span class="id" type="var">X</span> <span class="id" type="var">Y</span> : <a class="idref" href="Coproduct.html#is_coproduct"><span class="id" type="class">is_coproduct</span></a> (<a class="idref" href="KleisliCategory.html#KleisliCategory"><span class="id" type="definition">KleisliCategory</span></a> <a class="idref" href="Exercise_5_3_3_7.html#Exercise_5_3_3_7.T"><span class="id" type="definition">T</span></a>) <a class="idref" href="Exercise_5_3_3_7.html#X"><span class="id" type="variable">X</span></a> <a class="idref" href="Exercise_5_3_3_7.html#Y"><span class="id" type="variable">Y</span></a> (<a class="idref" href="Exercise_5_3_3_7.html#X"><span class="id" type="variable">X</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:type_scope:x_'+'_x"><span class="id" type="notation">+</span></a> <a class="idref" href="Exercise_5_3_3_7.html#Y"><span class="id" type="variable">Y</span></a>).<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="KleisliCategoryCoproducts.html#KleisliCategory_has_is_coproducts"><span class="id" type="instance">KleisliCategory_has_is_coproducts</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">exact</span> (<a class="idref" href="SetCategoryFacts.html#sumT_is_coproduct"><span class="id" type="instance">sumT_is_coproduct</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_5_3_3_7.html#"><span class="id" type="module">Exercise_5_3_3_7</span></a>.<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,420 @@
+\documentclass{amsart}
+
+\input{decl-db}
+
+\def\DT{{\bf DT}}
+\def\GD{{\bf GD}}
+\def\DB{\GD}
+\def\Sch{{\bf Sch}}
+\def\Null{{\bf Null}}
+\def\Strings{{\bf Strings}}
+\def\ND{{\bf ND}}
+\def\Tables{{\bf Tables}}
+\def\'{\tn{'}}
+\def\disunion{\amalg}
+\def\Rel{{\bf Rel}}
+\def\Cech{$\check{\tn{C}}$ech }
+\def\C{\check{\tn{C}}}
+\def\Fin{{\bf Fin}}
+\def\singleton{\{*\}}
+
+\begin{document}
+
+\author{David I. Spivak}
+
+\title{Simplicial Databases}
+
+\maketitle
+
+\begin{abstract}
+
+
+\end{abstract}
+
+\tableofcontents
+
+
+
+\section{Introduction}
+
+\note{Talk about ``uses methods from algebraic topology..."}
+
+The theory of relational databases is generally formulated within mathematical logic.  We provide a more modern and more flexible approach using category theory.  Category theory is the correct language for many aspects of computer science, and databases is no exception.  Using the wrong language can hamper ones ability to implement, work with, and reason about a subject.  This can be seen as the reason that SQL implements tables, rather than relational databases in their pure form: mathematical logic is not a sufficiently flexible setting for database theory.
+
+One reason that relational databases have been so successful is that their definition can be phrased within a precise mathematical language.  The definition we provide in this paper is just as precise, if not more so.  However, we go beyond simply defining the {\em objects} of study (databases), but instead continue on to define {\em morphisms} between databases.  With these definitions, we have a category of databases.
+
+There are many categories whose objects are databases (the difference being in their morphisms); what makes one definition better than others?  First, a good definition should make sense -- the morphisms should somehow preserve the structure of the databases.  Second, applying common categorical constructions (products, colimits, etc.) to the category of databases should result in common database constructions (unions, joins, etc.).  Third, the categorical approach should make reasoning about databases easier.  For example, query equivalences should be easy to prove.
+
+Our formulation accomplishes these three goals.  As an added bonus, the schemas for our databases, have geometric structure (more precisely, the structure of a simplicial set).  In other words, the schema is given as a geometric object which one should think of as a kind of Entity-Relationship diagram for the schema.  This approach may lead to improvements in query optimization, because one can adjust the ``shape" of the schema to fit with the purposes of the queries to be taken.
+
+We assume throughout that the reader has a basic knowledge of category theory which includes knowing the definition of category, functor, limit, and colimit.  We do not assume that the reader has a prior knowledge of simplicial sets.
+
+We begin by defining a category, called the category of tables, in Section 2.  In Section 3, we prove that the category of tables is closed under limits and certain colimits, and that these constructions give unions and joins.  We also prove that projections and deletions are easily defined under our formulation.  In Section 4, we give a brief description of (symmetric) simplicial sets, which will be needed in Section 5.  In section 5 we define the category of simplicial databases.  In Section 6, we prove that the category of geometric databases is closed under all limits and colimits and again prove that they have good meanings in terms of database theory.  Finally in Section 7, we discuss applications.
+
+\subsection{Acknowledgments}
+
+I would like to thank Paea LePendu for explaining relational databases to me, for suggesting that databases should be categorified, and for his encouragement throughout the process.  I would also like to thank Chris Wilson for several useful discussions.
+
+\section{Tables}
+
+It is no accident that SQL uses tables instead of relations: Tables are inherently more useful and easier to implement.  They are disliked by the purists of relational database theory not because they are bad, but because they do not fit in with that theory.  In this section we provide a categorical structure to the set of tables, thus firmly grounding it in rigorous mathematics.  In fact, we give two such categories which have the same set of objects (the set of tables) but different morphisms.  One is more flexible but has fewer nice properties.
+
+\subsection{Data types}
+
+In order to define schemas, records, and tables of a given type, we need to define what we mean by type. 
+
+\begin{definition}
+
+A {\em type designation} is simply a function between sets $\pi\taking U\to \DT$.  The set $\DT$ is called the set of {\em data types} for $\pi$, and the set $U$ is called the {\em data bundle} for $\pi$.  Given any element $T\in\DT$, the preimage $\pi^\m1(T)\ss U$ is called the set of {\em objects of type $T$}.
+
+\end{definition}
+
+\begin{example}\label{ex:type designation}
+
+Let $U$ denote the disjoint union $U:=(\ZZ\amalg\RR\amalg\Strings)$ and let $\DT$ denote the three element set $\{`\ZZ\', `\RR\', `\Strings\'\}$.  Let $\pi\taking U\to\DT$ denote the obvious function, which send all of $\ZZ$ to the element $`\ZZ\'$, all of $\RR$ to $`\RR\'$, and all of $\Strings$ to $`\Strings\'$. 
+The preimage $\pi^\m1(`\Strings\')\ss U$, which we have called the set of objects of type $`\Strings\'$, is indeed the set of strings.
+
+As another example, the mod 2 function $\pi\taking\ZZ\to\{\tn{even},\tn{odd}\}$ is a type designation in which the objects of type even are the even integers.
+
+\end{example}
+
+\subsection{Schemas}
+
+We quickly recall the definition of fiber product (for sets).
+
+\begin{definition}
+
+Let $A, B,$ and $C$ be sets, and suppose $f\taking A\to B$ and $g\taking C\to B$ are functions.  The {\em fiber product of $A$ and $C$ over $B$}, denoted $A\cross_BC$ is the set $$A\cross_BC:=\{(a,c)\in A\cross C | f(a)=g(c)\in B\}.$$  The fiber product moreover comes equipped with obvious projection maps making the diagram $$\xymatrix{A\cross_BC\ar[r]^{f'}\ar[d]_{g'}\ullimit&C\ar[d]^g\\A\ar[r]_f&B}$$ commute.  The corner symbol $\lrcorner$ serves to remind the reader that the object in the upper left is a fiber product.   We sometimes call $g'\taking A\cross_BC\to A$ the {\em pullback of $g$ along $f$}; similarly $f'$ is the pullback of $f$ along $g$.
+
+\end{definition}
+
+\begin{remark}
+
+The fiber product of the diagram $A\To{f}B\From{g}C$ above should probably be denoted $f\cross_Bg$ instead of $A\cross_BC$, since it depends on the maps $f$ and $g$, not just their domains.  However, this is not often done, and in this paper the maps will be clear from context.
+
+\end{remark}
+
+\begin{definition}
+
+Suppose given a type designation $\pi\taking U\to\DT$.  A {\em table schema of type $\pi$} consists of a pair $(C,\sigma)$, where $C$ is a finite set and $\sigma\taking C\to\DT$ is a function.   We often refer to a table schema simply as a {\em schema}.  We sometimes denote the schema simply by $\sigma$.  We refer to $C$ as the set of {\em attributes} for $\sigma$.
+
+We call the pullback $\pi_\sigma\taking\sigma^\m1(U)\to C$, i.e. the left hand map in the diagram $$\xymatrix{\sigma^\m1(U)\ar[r]\ar[d]_{\pi_\sigma}\ullimit&U\ar[d]^\pi\\C\ar[r]_\sigma&\DT,}$$ the {\em data bundle} induced by $\sigma$.  We sometimes write $U_\sigma$ to denote $\sigma^\m1(U)$.
+
+\end{definition}
+
+\begin{example}\label{ex:schema}
+
+Let $\pi\taking U\to\DT$ denote the type designation of Example \ref{ex:type designation}.  Let $C=\{\tn{`First Name', `Last Name',`Age'}\}$, and define $\sigma\taking C\to\DT$ by \begin{align*}\sigma(\tn{`First Name'})&=`\Strings\'\\\sigma(\tn{`Last Name'})&=`\Strings\'\\\sigma(\tn{`Age'})&=`\ZZ'\end{align*}    It should be clear why $C$ is called the set of attributes and $\sigma$ the schema.
+
+The data bundle $U_\sigma$ induced by $\sigma$ is the obvious function $$(\Strings\amalg\Strings\amalg\ZZ)\too C.$$  Thus the set of objects of type `First Name' is the set of strings, in this example.
+
+\end{example}
+
+\begin{definition}\label{def:morphism of schema}
+
+Suppose given a type designation $\pi\taking U\to\DT$.  A {\em morphism of table schemas (of type $\pi$)}, written $f\taking (C,\sigma)\to (C',\sigma')$, is a function $f\taking C\to C'$ such that the triangle $$\xymatrix@=16pt{C\ar[rr]^f\ar[dr]_\sigma&&C'\ar[dl]^{\sigma'}\\&\DT}$$ commutes.
+
+The {\em category of table schemas on $\pi$} is the category whose objects are table schemas and whose morphisms are morphisms thereof.  We denote this category by $(\Fin\down\DT)$.
+
+\end{definition}
+
+\begin{remark}
+
+The notation $(\Fin\down\DT)$ for the category of table schema means a schema is given by a map from a finite set to $\DT$, and a morphism of table schemas is given by a map of finite sets over $\DT$.
+
+\end{remark}
+
+\subsection{Records and Tables}
+
+\begin{definition}
+
+Let $(C,\sigma)$ be a schema.  A {\em record on $(C,\sigma)$} is a function $r\taking C\to U_\sigma$ such that $\pi_\sigma\circ r=\id_C$, i.e. a section of the data bundle for $\sigma$.  We denote the set of records on $\sigma$ by $\Gamma(\sigma)$.
+
+\end{definition}
+
+In other words, a record must produce, for each attribute $c\in C$, an object of type $\sigma(c)\in\DT$.  
+
+\begin{example}\label{ex:record}
+
+Let $\pi$ and $(C,\sigma)$ be as in Example \ref{ex:schema}.  A record on that schema is a section $r$ as depicted in the diagram $$\xymatrix{\Strings\amalg\Strings\amalg\ZZ\ar[d]^{\pi_\sigma}\\\{\tn{`First Name', `Last Name',`Age'}\}.\ar@/^1pc/[u]^r}$$  That is, it consists of a way to designate a first name and a last name (in $\Strings$) and an age (in $\ZZ$).  For example (Barack; Obama; 48) denotes a record of this schema; that is it denotes a section of $\pi_\sigma$.
+
+The set $\Gamma(\sigma)$ of records on $(C,\sigma)$ is simply the set of all possible such designations.  In this example $\Gamma(\sigma)=\Strings\cross\Strings\cross\ZZ$.
+
+\end{example}
+
+\begin{definition}
+
+Let $\pi\taking U\to\DT$ be a type designation.  A {\em table of type $\pi$} consists of a sequence $(R,C,\sigma,\tau)$, where $R$ is a finite set, $(C,\sigma)$ is a schema of type $\pi$,  and $\tau\taking R\to\Gamma(\sigma)$ is a function.  We sometimes denote $(R,C,\sigma,\tau)$ simply by $\tau$.  The set $R$ is called the {\em set of rows of $\tau$}, and $(C,\sigma)$ is called the {\em schema of $\tau$}.
+
+\end{definition}
+
+\begin{example}\label{ex:table}
+
+Given a schema $(C,\sigma)$, a table on that schema is simply a set $R$ of records.  The records need not be distinct because the set $R$ keeps track of the distinctions.  Continuing with $\pi$ and $(C,\sigma)$ as in Example \ref{ex:record}, we could have $R=\{1,2,`foo'\}$ and let $\tau\taking R\to\Gamma(\sigma)$ be the assignment \begin{align*} 1&\mapsto \tn{(Barack; Obama; 48)}\\2&\mapsto \tn{(Michelle; Obama; 45)}\\ `foo'&\mapsto\tn{(Barack; Obama; 48)}\end{align*}
+
+\end{example}
+
+\begin{lemma}\label{induced morphisms}
+
+Let $\pi\taking U\to\DT$ denote a type designation, let $(C_1,\sigma_1)$ and $(C_2,\sigma_2)$ denote schemas on $\pi$, and let $f\taking (C_2,\sigma_2)\to (C_1,\sigma_1)$ denote a morphism of schemas.  There is an induced map on record sets $f^*\taking \Gamma(\sigma_1)\to\Gamma(\sigma_2)$.
+
+\end{lemma}
+
+\begin{proof}
+
+Consider the diagram $$\xymatrix{\sigma_2^\m1(U)\ar[r]\ar[d]_{\pi_2}\ullimit &\sigma_1^\m1(U)\ar[r]\ar[d]_{\pi_1}\ullimit&U\ar[d]_\pi\\C_2\ar[r]^f\ar@/_1pc/[rr]_{\sigma_2}&C_1\ar[r]^{\sigma_1}&\DT.}$$  Note that the left hand square is a fiber product square.  This follows from the fact that the right hand square and the big rectangle are fiber product squares.  We must show that a section $r_1\taking C_1\to \sigma_1^\m1(U)$ of $\pi_1$ induces a section $r_2\taking C_2\to\sigma_2^\m1(U)$ of $\pi_2$, because this assignment will constitute $f^*\taking\Gamma(\sigma_1)\to\Gamma(\sigma_2)$.
+
+Suppose given $r_1$ with $\pi_1\circ r_1=\id_{C_1}$.   We have a map $r_1\circ f\taking C_2\to\sigma_1^\m1(U)$ and a map $\id_{C_2}\taking C_2\to C_2$ such that $f\circ\id_{C_2}=f=\pi_1\circ(r_1\circ f)$.  By the universal property, these two maps define a map $r_2\taking C_2\to\sigma_2^\m1(U)$ such that, in particular $\pi_2\circ r_2=\id_{C_2}$.  This is the desired section of $\pi_2$.
+
+\end{proof}
+
+Given a morphism $f$ of schema, the function $f^*$ defined in the above lemma is said to be {\em induced} by $f$.
+
+\begin{definition}\label{def:morphism of tables}
+
+Let $\pi\taking U\to\DT$ be a type designation, and let $(R_1,C_1,\sigma_1,\tau_1)$ and $(R_2,C_2,\sigma_2,\tau_2)$ denote tables.  A {\em morphism of tables} $\varphi\taking\tau_1\to\tau_2$ consists of a pair $(g,f)$, where $g\taking R_1\to R_2$ is a function and $f\taking (C_2,\sigma_2)\to(C_1,\sigma_1)$ is a morphism of schema such that the diagram of sets \begin{align}\label{dia:morphism of tables}\xymatrix{R_1\ar[r]^{\tau_1}\ar[d]_g&\Gamma(\sigma_1)\ar[d]^{f^*}\\R_2\ar[r]_{\tau_2}&\Gamma(\sigma_2)}\end{align} commutes, where $f^*\taking\Gamma(\sigma_1)\to\Gamma(\sigma_2)$ is the function induced by $f$.
+
+\end{definition}
+
+\begin{example}\label{ex:morphism of tables}
+
+Let us continue with Example \ref{ex:table}, with $\sigma_1$ and $(R_1,\tau_1)$ as in that example.  Let $C_2=\{\tn{`First', `Last'}\}$ and let $\sigma_2$ send both elements to the data type $\Strings\in\DT$; thus $\Gamma(C_2)=\Strings\cross\Strings$.  
+
+Let $R_2=\{5,6,`baz'\}$ and $\tau_2$ be the assignment \begin{align*}5&\mapsto \tn{(Barack; Obama)}\\6 &\mapsto\tn{(Michelle; Obama)}\\`baz' &\mapsto\tn{(George; Bush)}.\end{align*}  
+
+A morphism of tables $\varphi\taking\tau_1\to\tau_2$ should consist of a map $g\taking R_1\to R_2$ and a map $f^*\taking\Gamma(C_1)\to\Gamma(C_2)$.   We have an obvious map of schema $f\taking C_2\to C_1$, namely $\tn{`First'}\mapsto\tn{`First name'}$ and $\tn{`Last'}\mapsto\tn{`Last name'}$.  Then $f^*\taking\Gamma(\sigma_1)\to\Gamma(\sigma_2)$ is just the projection $\Strings\cross\Strings\cross\ZZ\to\Strings\cross\Strings$.
+
+Now, to define a morphism of tables $\varphi\taking\tau_1\to\tau_2$, our choice of $g$ must send the record $(\tn{Barack; Obama;48})$ to the record $(\tn{Barack; Obama})$ and the record $(\tn{Michelle; Obama; 45})$ to $(\tn{Michelle; Obama})$.  
+
+\end{example}
+
+\begin{remark}
+
+The morphism of tables in Example \ref{ex:morphism of tables} is fairly general.  Generally, a morphism of tables may include a projection (in the columns) together with an inclusion (in the rows).  The requirement that the square (\ref{dia:morphism of tables}) in Definition \ref{def:morphism of tables} commutes is simply the requirement that morphisms preserve the integrity of the data.
+
+\end{remark}
+
+\subsection{The category of tables}
+
+We have now defined tables and morphisms between tables.  Given morphisms depicted $$\xymatrix{R_1\ar[d]\ar[r]^{\tau_1}&\Gamma(\sigma_1)\ar[d]\\R_2\ar[d]\ar[r]^{\tau_2}&\Gamma(\sigma_2)\ar[d]\\R_3\ar[r]^{\tau_3}&\Gamma(\sigma_3)}$$ it is easy to see how composition is defined.  It is also easy to understand the identity morphism on a table $\tau\taking R\to\Gamma(C)$.  Thus we have a category.
+
+
+\begin{definition}\label{def:tables}
+
+Let $\pi\taking U\to\DT$ denote a type designation.  The category whose objects are tables $R\to\Gamma(\sigma)$ and whose morphisms are commutative squares as in Definition \ref{def:morphism of tables} is called {\em the category of tables} and is denoted $\Tables$.  
+
+\end{definition}
+
+\begin{example}
+
+Suppose $\pi\taking U\to\DT$ is as in Example \ref{ex:schema}.  Suppose that $C=\{c_1,c_2\}$ and $C'=\{c_1'\}$, and that $\sigma$ and $\sigma'$ are the obvious maps such that $\Gamma(\sigma)=\ZZ\cross\ZZ$ and $\Gamma(\sigma')=\ZZ$.  Let $R$ and $R'$ be any two sets and $\tau\taking R\to\Gamma(\sigma)$ and $\tau'\taking R'\to\Gamma(\sigma')$ be any two tables.  
+
+In the category of tables, we are allowed any kind of morphisms on row sets $R\to R'$, but the only permitted maps $\ZZ\cross\ZZ\too\ZZ$ are the two projections.
+
+\end{example}
+
+\begin{definition}
+
+Let $\sigma\taking C\to\DT$ denote a schema.  The {\em category of tables on $\sigma$}, denoted $\Tables_\sigma$ is the category whose objects are tables $\tau\taking R\to\Gamma(\sigma)$ and whose morphisms are triangles $$\xymatrix@=9pt{R_1\ar[drrr]^{\tau_1}\ar[dd]_f\\&&&\Gamma(\sigma)\\R_2\ar[urrr]_{\tau_2}}$$ denoted by $f$.  
+
+\end{definition}
+
+\subsection{Relations}
+
+\begin{definition}
+
+Let $\pi\taking U\to\DT$ denote a type designation, and let $\sigma\taking C\to\DT$ denote a schema on $\pi$.  A {\em relation on $\sigma$} is a table $\tau\taking R\to\Gamma(\sigma)$ for which $\tau$ is an injective function.  
+
+A morphism of relations is a morphism of tables, for which the source and target tables are relations.  That is, the {\em category of relations}, denoted $\Rel$ is the full subcategory of $\Tables$ spanned by the relations.  Given a schema $\sigma$, the {\em category of relations on $\sigma$} is the full subcategory of $\Tables_\sigma$ spanned by the relations.
+
+There is a functor $\Rel\to\Tables$ and a functor $\Rel_\sigma\to\Tables_\sigma$, both of which are simply inclusions of full subcategories.
+
+\end{definition}
+
+\section{Formal properties of Tables}
+
+Our definition for the category of tables (Definition \ref{def:tables}) is sensible because objects are tables and morphisms are data-preserving maps.  In this section we show that category-theoretic operations on tables correspond to operations on databases, such as joins and other queries.  Fix a type designation $\pi\taking U\to\DT$ for the remainder of the section.
+
+There is a forgetful functor $\Tables\to\Sets$ given by sending a table $R\to\Gamma(\sigma)$ to the row set $R$ and a morphism of tables to the underlying map of rows.  There is another forgetful functor $\Tables\to(\Fin\down\DT)\op$ which sends the above table to $\sigma$ and a morphism $\varphi=(g,f)$ of tables to the underlying morphism of schema $f$.
+
+\begin{lemma}\label{final object}
+
+There exists a final object and an initial object in $\Tables$.    
+
+\end{lemma}
+
+\begin{proof}
+
+One checks immediately that if we take $R$ to be the terminal object in $\Sets$ and $\sigma$ to be the inital object $\emptyset\to\DT$ in $(\Fin\down\DT)$, then there is exactly one table with these as its underlying rows and schema, and this table is the terminal object in $\Tables$.
+
+One also checks immediately that if we take $R=\emptyset$ to be the initial object in $\Sets$ and $\sigma=\id_{\DT}\taking\DT\to\DT$ to be the final object in $(\Fin\down\DT)$, then there is exactly one table with these as its underlying rows and schema, and this table is the initial object in $\Tables$.
+
+\end{proof}
+
+Certain colimits exist in $\Tables$; namely colimits of diagrams that are constant in the schema.
+
+\begin{construction}
+
+Let $\tau_1\taking R_1\to\Gamma(\sigma)$ and $\tau_2\taking R_2\to\Gamma(\sigma)$ be two tables with the same schema.  By taking the disjoint union of $R_1$ and $R_2$ we get a new table $\tau\taking R_1\amalg R_2\to\Gamma(\sigma)$.  This query is called {\em union all} in SQL.  
+
+We can also take the (non-disjoint) union of these two tables, if we know how they overlap.  That is, if there is some set $R$ with maps $f_1\taking R\to R_1$ and $f_2\taking R\to R_2$ in such a way that $\tau_1\circ f_1=\tau_2\circ f_2$, then we can obtain a new table $\tau\taking R_1\amalg_RR_2\to\Gamma(\sigma)$.  This query is called {\em union} in SQL.
+
+\end{construction}
+
+We will see that limits in the category of tables correspond to generalized joins.
+
+\begin{proposition}\label{finite limits exist}
+
+All finite limits exist in $\Tables$.
+
+\end{proposition}
+
+\begin{proof}
+
+It suffices to show that $\Tables$ has a terminal object and is closed under taking fiber products; the first of these was shown in Lemma \ref{final object}.  For the second, suppose we have a diagram \begin{align}\label{eqn:limit}\xymatrix{R_1\ar[d]\ar[r]^{\tau_1}&\Gamma(\sigma_1)\ar[d]^{f_1^*}\\R\ar[r]^\tau&\Gamma(\sigma)\\R_2\ar[r]^{\tau_2}\ar[u]&\Gamma(\sigma_2)\ar[u]_{f_2^*}}\end{align} in $\Tables$.  As indicated, the maps $\Gamma(\sigma_i)\to\Gamma(\sigma)$ are induced by morphisms of schema $f_i\taking\sigma\to\sigma_i$, for $i=0,1$.
+
+Consider the schema $$(\sigma_1\amalg_\sigma\sigma_2)\taking C_1\amalg_CC_2\too\DT$$ induced by taking the colimit of the column sets.  Let us now show that it is the fiber product of the diagram of schema; i.e. that the function \begin{eqnarray}\label{eqn:limit schema}\Gamma(\sigma_1\amalg_\sigma\sigma_2)\too\Gamma(\sigma_1)\cross_{\Gamma(\sigma)}\Gamma(\sigma_2)\end{eqnarray} is a bijection.  
+
+Let us first calculate the set $\Gamma(\sigma_1\amalg_\sigma\sigma_2)$.  It is the set of all sections $r$ of the map $\pi'$ in the diagram $$\xymatrix{(\sigma_1\amalg_\sigma\sigma_2)^\m1(U)\ullimit\ar[r]\ar[d]^{\pi'}&U\ar[d]^\pi\\C_1\amalg_CC_2\ar@{..>}@/^1pc/[u]^r\ar[r]_-{\sigma_1\amalg_\sigma\sigma_2}&\DT.}$$  To give such a section is to give, for each $c_1\in C_1$ an element of $\pi^\m1(\sigma_1(c_1))$, and for each $c_2\in C_2$ an element of $\pi^\m1(\sigma_2(c_2))$, in such a way that for all $c\in C$, the induced elements in $\pi^\m1(\sigma_i(f_i(c)))$ are the same for $i=1,2$.  This is precisely the data needed for a unique element of the set $\Gamma(\sigma_1)\cross_{\Gamma(\sigma)}\Gamma(\sigma_2)$, proving the claim that the map in (\ref{eqn:limit schema}) is a bijection.
+
+Now we are ready to give the fiber product of Diagram (\ref{eqn:limit}).  It is the table $$R_1\cross_RR_2\too\Gamma(\sigma_1\amalg_\sigma\sigma_2).$$
+
+\end{proof}
+
+Proposition \ref{finite limits exist} produces the join of two tables over a third.  As one sees from the construction, the columns of the join are the union of the columns of the given tables, and the rows are the fiber product of the rows of the given tables.
+
+\begin{lemma}
+
+Let $\sigma\taking C\to\DT$ denote a schema.  The category $\Tables_\sigma$ of tables on $\sigma$ is closed under small limits and colimits.
+
+\end{lemma}
+
+\begin{proof}
+
+The category of sets is closed under small limits and colimits.  To take the limit or colimit of a diagram in $\Tables_\sigma$, simply take the limit or colimit (respectively) of the underlying diagram of rows -- see Definition \ref{def:forgetful}.  This set comes with a natural map to $\Gamma(\sigma)$, and one shows easily that it is the limit or colimit (respectively) of the diagram of tables.
+
+\end{proof}
+
+\begin{example}\label{ex:initial and final over sigma}
+
+Let $\sigma\taking C\to\DT$ denote a schema.  The initial and final objects in $\Tables_\sigma$ are $\emptyset\to\Gamma(\sigma)$ and $\id_{\Gamma(\sigma)}\taking\Gamma(\sigma)\to\Gamma(\sigma)$, respectively.
+
+\end{example}
+
+\begin{construction}
+
+Let $\tau\taking R\to\Gamma(\sigma)$ be a table with schema $\sigma\taking C\to\DT$, and let $C'\ss C$ be a subset of its columns.  There is an induced table $\tau|_{C'}\taking R\to\Gamma(\sigma|_{C'})$.  In SQL this construction is called the {\em projection} of $\tau$ onto the subset $C'\ss C$ of columns.
+
+\end{construction}
+
+Using the projection query, one can realize a SELECT query as a limit of databases.  
+
+\begin{construction}
+
+Let us construct the SELECT query.  One begins with a table $\tau\taking R\to\Gamma(\sigma)$ with schema $\sigma\taking C\to\DT$, from which to select.  Let $f\taking C'\ss C$ be a subset of its columns, and let $\sigma'=\sigma|_{C'}\taking C'\to\DT$ be the restricted schema.  One may select from $\tau$ all records whose restriction to $C'$ is a member of some list.  We encode this list as a table $\tau'\taking R'\to\Gamma(\sigma')$ on $\sigma'$.  
+
+In order to select from $\tau$ all records whose restriction to $C'$ in the table $\tau'$, take the limit of the diagram $$\xymatrix{R\ar[r]^\tau\ar[d]_{f^*\circ\tau}&\Gamma(\sigma)\ar[d]^{f^*}\\\Gamma(\sigma')\ar[r]^\id&\Gamma(\sigma')\\R'\ar[r]_{\tau'}\ar[u]^{\tau'}&\Gamma(\sigma').\ar[u]_{\id}}$$  This limit is the desired select query.
+
+\end{construction}
+
+\subsection{Relations}
+
+Relations behave much like ordinary tables.  Limits exist in the $\Rel,$ colimits exist in the category $\Rel_\sigma$ of relations on a fixed schema $\sigma$.  The functor $\Rel\to\Tables$ preserves limits, and the functor $\Rel_\sigma\to\Tables_\sigma$ preserves limits but {\em does not} preserve colimits.
+
+\section{Simplicial sets}
+
+Roughly, a simplicial set is a picture that can be drawn with vertices, edges, solid triangles, solid tetrahedra, and ``higher-dimensional tetrahedra."  For any integer $n\geq 0$, an $n$-dimensional solid tetrahedron, or {\em $n$-simplex}, is the shape in $\RR^{n+1}$ given by the algebraic equation $x_1+x_2+\cdots+x_{n+1}=1$ and the inequalities $x_i\geq 0$ for $1\leq i\leq n+1$.  To draw with these shapes is to connect various tetrahedra together along their faces (or subfaces).  For example, one could connect four triangles together along various faces to obtain an empty tetrahedron, the boundary of the 3-simplex.
+
+The above rough description of simplicial set also describes mathematical objects called symmetric simplicial sets.  The difference between simplicial sets and symmetric simplicial sets is that the tetrahedra in a simplicial set have ordered vertices, whereas the tetrahedra in a symmetric set do not (hence the symmetry).
+
+We could just as easily have worked with simplicial sets rather than symmetric simplicial sets.  Our choice was based solely on the fact that in relational database theory, one tends to use unordered sets of attributes as the columns of a table.  If instead we wished to assign an ordering to those columns, we would use simplicial sets.    
+
+The precise definition of symmetric simplicial sets is as follows.  See \cite{Grandis} for more details.
+
+\begin{definition}\label{def:sSets}
+
+Let $\Fin$ denote the category whose objects are finite sets and whose morphisms are functions.  The category of {\em augmented symmetric simplicial sets}, denoted $\sSets$, is the category whose objects are functors $X\taking\Fin\op\to\Sets$ and whose morphisms are natural transformations of functors.
+
+If $n\geq -1$ is an integer, let $\ul{n}$ denote the set $\{0,1,\ldots,n\}$.  If $X\in\sSets$ is an augmented symmetric simplicial set, we write $X_n$ to denote the set $X(\ul{n})$, and we refer to it as {\em the set of $n$-simplicies} of $X$.  
+
+When $n\geq 0$ and $0\leq i\leq n$, there is an injection $\ul{n-1}\to\ul{n}$ given by skipping the $i$th element.  The induced map $X_n\to X_{n-1}$ is denoted $d_i$ and is called the {\em $i$th face map}.  There is also a surjection $\ul{n+1}\to\ul{n}$ given by repeating the $i$th element.  The induced map $X_{n+1}\to X_n$ is called the {\em $i$th degeneracy} map.  Finally, there are $(n+1)!$ permutations of $\ul{n}$, and these induce {\em transposition maps} $X_n\to X_n$.  
+
+\end{definition}
+
+\begin{example}\label{ex:sSets}
+
+A set $S$ can be considered as a ``discrete" augmented symmetric simplicial set $X$ by taking $X_{n}=S$ for $S\geq 0$ and $X_{-1}=\singleton$.
+
+For $n\geq -1$, the {\em $n$-simplex}, denoted $\Delta^n$ is the semi-simplicial set $$\Delta^n_i=\Hom_\Fin(\ul{i},\ul{n}).$$
+
+\end{example}
+
+\begin{definition}
+
+Let $D$ be a set.  The {\em \Cech semi-simplicial set on $X$}, denoted $\C=\C(D)$ is the semi-simplicial set $$\C_n=\prod_{k=0}^n D,$$ and $d^i_n\taking\C_n\to\C_{n-1}$ the projection which forgets the $i$th coordinate.
+
+This is a functorial construction $\C\taking\Sets\to\sSets$: given a function $D\to D'$, there is an induced morphism of semi-simplicial sets $\C(D)\to\C(D')$.
+
+\end{definition}
+
+\begin{proposition}
+
+Let $X\in\sSets$ denote a semi-simplicial set, and let $D\in\Sets$ be a set.  The set of morphisms $X\to\C(D)$ of semi-simplicial sets is in natural one-to-one correspondence with the set of functions $X_0\to D$.  
+
+In other words, the \Cech functor $\C$ is right adjoint to the functor $X\mapsto X_0$ which takes underlying sets of vertices.
+
+\end{proposition}
+
+\begin{proof}
+
+Given a map $f\taking X\to\C(D)$, one takes the 0-simplices of each side and gets a map $f_0\taking X_0\to\C(D)_0=D$.
+
+Given a function $g\taking X_0\to D$ we can construct a map of semi-simplicial set $X\to\C(D)$ by sending an $n$-simplex $x\in X_n$ to the $n$-simplex in $\C(D)=D\cross D\cross\cdots\cross D$ classified by the image under $g$ of the sequence of vertices $v(x)$.  See Example \ref{ex:sSets}.
+
+Since the set of simplices in $\C(D)$ is in one-to-one correspondence with the set of finite sequences in $D$, one can easily show that our two constructions are mutually inverse functions between $\Hom_\sSets(X,\C(D))$ and $\Hom_\Sets(X_0,D)$, as desired.
+
+\end{proof}
+
+\subsection{Sheaves on semi-simplicial sets}
+
+\begin{definition}
+
+Let $X$ denote a semi-simplicial set.  Let $s(X)$ denote the category whose objects are semi-simplicial subsets $Y$ of $X$ (i.e. for each $n\in\NN$ we have $Y_n\ss X_n$) and whose morphisms are inclusions $Y_1\ss Y_2$.  We call $s(X)$ {\em the category of subobjects of $X$}.
+
+By {\em a sheaf on $X$}, we mean a functor $\mcO\taking s(X)\op\to\Sets$ such that, for every diagram $D\taking I\to s(X)$ which has a colimit in $s(X)$, one has $\mcO(\colim(D))\iso\lim(\mcO(D))$.  That is, $\mcO$ must send colimits of subobjects to corresponding limits of sets.
+
+\end{definition}
+
+\begin{example}
+
+For any semi-simplicial set $X$, there is an object $\emptyset\in s(X)$, which is the colimit of the empty diagram on $s(X)$.  Hence if $\mcO$ is to be a sheaf on $X$, one must have $\mcO(\emptyset)\iso\{*\}$.
+
+If $X$ is a discrete simplicial set (see Example \ref{ex:sSets}), then $X$ is the coproduct its vertices.  Thus, if $\mcO$ is to be a sheaf on $X$, its value on $X$ must be the product of its values on the vertices of $X$.  
+
+If $X=\Delta^1$ then $s(X)$ is a partially ordered set with five objects: $$\Ob(s(X))=\{\emptyset,\{0\},\{1\},\{0,1\},X\}.$$  A sheaf $\mcO$ on $X$ can take any values on $\{0\}, \{1\},$ and $X$, but it must have values $\mcO(\emptyset)\iso\{*\}$ and $\mcO(\{0,1\})=\mcO(\{0\})\cross\mcO(\{1\})$.  Furthermore, part of the data of $\mcO$ is a function $\mcO(X)\to\mcO(\{0,1\})$; the other functions induced by morphisms in $s(X)$ are completely determined by the sheaf condition on $\mcO$.
+
+\end{example}
+
+\note{Discuss $f^*, f_*$ and $f_!$.}
+
+\section{Simplicial databases}
+
+A database is more than just a collection of tables because of the existence of ``foreign keys" which connect records in one table to records in another.  In this section we enlarge the category of tables to allow for this type of relationship between tables.
+
+The idea is to use semi-simplicial sets as a framework in which to connect schemas together along common columns.  A schema for a simplicial database is then a formal union of schemas for tables.  If $\mcC$ is a category, one can formally ``add colimits to $\mcC$" by passing to the presheaf category $\Pre(\mcC)$ of functors $\mcC\op\to\Sets$.  In our case, we take $\mcC$ to be the category of schemas for $\Tables$.  
+
+\begin{lemma}
+
+Let $\pi\taking U\to\DT$ denote a type designation, and let $\Fin$ denote the category of finite sets.
+
+
+\end{lemma}
+
+\section{Applications}
+
+Schema for two flights: connect the endpoints to get a circle, then pushforward and get the set of round-trips.
+
+
+
+
+\end{document}

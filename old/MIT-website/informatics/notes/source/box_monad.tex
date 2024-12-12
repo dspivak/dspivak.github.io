@@ -1,0 +1,353 @@
+\documentclass{amsart}
+
+\usepackage{amssymb, amscd,stmaryrd,setspace,hyperref,color}
+
+\input xy
+\xyoption{all} \xyoption{poly} \xyoption{knot}\xyoption{curve}
+
+\newcommand{\comment}[1]{}
+
+\newcommand{\longnote}[2][4.9in]{\fcolorbox{black}{yellow}{\parbox{#1}{\color{black} #2}}}
+\newcommand{\note}[1]{\fcolorbox{black}{yellow}{\color{black} #1}}
+\newcommand{\q}[1]{\begin{question}#1\end{question}}
+\newcommand{\g}[1]{\begin{guess}#1\end{guess}}
+
+\def\tn{\textnormal}
+\def\mf{\mathfrak}
+\def\mc{\mathcal}
+
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\CC{{\mathbb C}}
+\def\AA{{\mathbb A}}
+\def\PP{{\mathbb P}}
+\def\NN{{\mathbb N}}
+
+\def\bD{{\bf \Delta}}
+\def\Str{{\bf Str}}
+
+\def\Hom{\tn{Hom}}
+\def\Fun{\tn{Fun}}
+\def\Nat{\tn{Nat}}
+\def\Ob{\tn{Ob}}
+\def\Op{\tn{Op}}
+
+\def\to{\rightarrow}
+\def\from{\leftarrow}
+\def\cross{\times}
+\def\taking{\colon}
+\def\inj{\hookrightarrow}
+\def\surj{\twoheadrightarrow}
+\def\too{\longrightarrow}
+\def\fromm{\longleftarrow}
+\def\down{\downarrow}
+\def\Down{\Downarrow}
+\def\Up{\Uparrow}
+\def\tooo{\longlongrightarrow}
+\def\tto{\rightrightarrows}
+\def\ttto{\equiv\!\!>}
+\def\ss{\subset}
+\def\superset{\supset}
+\def\iso{\cong}
+\def\|{{\;|\;}}
+\def\m1{{-1}}
+\def\op{^\tn{op}}
+\def\loc{\tn{loc}}
+\def\la{\langle}
+\def\ra{\rangle}
+\def\wt{\widetilde}
+\def\wh{\widehat}
+\def\we{\simeq}
+\def\ol{\overline}
+\def\ul{\underline}
+\def\qeq{\mathop{=}^?}
+\def\setto{\colon\hspace{-.25cm}=}
+
+\def\ullimit{\ar@{}[rd]|(.3)*+{\lrcorner}}
+\def\urlimit{\ar@{}[ld]|(.3)*+{\llcorner}}
+\def\lllimit{\ar@{}[ru]|(.3)*+{\urcorner}}
+\def\lrlimit{\ar@{}[lu]|(.3)*+{\ulcorner}}
+\def\ulhlimit{\ar@{}[rd]|(.3)*+{\diamond}}
+\def\urhlimit{\ar@{}[ld]|(.3)*+{\diamond}}
+\def\llhlimit{\ar@{}[ru]|(.3)*+{\diamond}}
+\def\lrhlimit{\ar@{}[lu]|(.3)*+{\diamond}}
+\newcommand{\clabel}[1]{\ar@{}[rd]|(.5)*+{#1}}
+
+\newcommand{\arr}[1]{\ar@<.5ex>[#1]\ar@<-.5ex>[#1]}
+\newcommand{\arrr}[1]{\ar@<.7ex>[#1]\ar@<0ex>[#1]\ar@<-.7ex>[#1]}
+\newcommand{\arrrr}[1]{\ar@<.9ex>[#1]\ar@<.3ex>[#1]\ar@<-.3ex>[#1]\ar@<-.9ex>[#1]}
+\newcommand{\arrrrr}[1]{\ar@<1ex>[#1]\ar@<.5ex>[#1]\ar[#1]\ar@<-.5ex>[#1]\ar@<-1ex>[#1]}
+
+\newcommand{\To}[1]{\xrightarrow{#1}}
+\newcommand{\Too}[1]{\xrightarrow{\ \ #1\ \ }}
+\newcommand{\From}[1]{\xleftarrow{#1}}
+
+
+\newcommand{\Adjoint}[4]{\xymatrix@1{#2 \ar@<.5ex>[r]^-{#1} & #3 \ar@<.5ex>[l]^-{#4}}}
+\newcommand{\adjoint}[4]{\xymatrix@1{#1\colon #2\ar@<.5ex>[r]& #3\;:#4 \ar@<.5ex>[l]}}
+
+\def\id{\tn{id}}
+\def\Top{{\bf Top}}
+\def\Cat{{\bf Cat}}
+\def\Sets{{\bf Sets}}
+\def\sSets{{\bf sSets}}
+\def\Grpd{{\bf Grpd}}
+\def\Pre{{\bf Pre}}
+\def\Shv{{\bf Shv}}
+\def\Rings{{\bf Rings}}
+
+\def\colim{\mathop{\tn{colim}}}
+
+\def\mcA{\mc{A}}
+\def\mcB{\mc{B}}
+\def\mcC{\mc{C}}
+\def\mcD{\mc{D}}
+\def\mcE{\mc{E}}
+\def\mcF{\mc{F}}
+\def\mcG{\mc{G}}
+\def\mcH{\mc{H}}
+\def\mcI{\mc{I}}
+\def\mcJ{\mc{J}}
+\def\mcK{\mc{K}}
+\def\mcL{\mc{L}}
+\def\mcM{\mc{M}}
+\def\mcN{\mc{N}}
+\def\mcO{\mc{O}}
+\def\mcP{\mc{P}}
+\def\mcQ{\mc{Q}}
+\def\mcR{\mc{R}}
+\def\mcS{\mc{S}}
+\def\mcT{\mc{T}}
+\def\mcU{\mc{U}}
+\def\mcV{\mc{V}}
+\def\mcW{\mc{W}}
+\def\mcX{\mc{X}}
+\def\mcY{\mc{Y}}
+\def\mcZ{\mc{Z}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{guess}[theorem]{Guess}
+\newtheorem{answer}[theorem]{Answer}
+\newtheorem{construction}[theorem]{Construction}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{postulate}[theorem]{Postulate}
+
+\def\DT{{\bf DT}}
+\def\GD{{\bf GD}}
+\def\DB{\GD}
+\def\Sch{{\bf Sch}}
+\def\Null{{\bf Null}}
+\def\Strings{{\bf Strings}}
+\def\ND{{\bf ND}}
+\def\Tables{{\bf Tables}}
+\def\'{\tn{'}}
+\def\disunion{\amalg}
+\def\Rel{{\bf Rel}}
+\def\mcRel{{\bf \mcR el}}
+\def\Cech{$\check{\tn{C}}$ech }
+\def\C{\check{\tn{C}}}
+\def\Fin{{\bf Fin}}
+\def\singleton{{\{*\}}}
+\def\Sub{{\bf Sub}}
+\def\card{\tn{card}}
+\def\Data{{\bf DB}}
+\def\DB{{\bf DB}}
+\def\im{\tn{im}}
+\def\'{\tn{'}}
+\def\start{\note{start here}}
+
+
+
+
+\newcommand{\TriRight}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longrightarrow}\ar@{}[u]|>>>>{#7}}}
+\newcommand{\TriLeft}[7]{\xymatrix{#1\ar[dr]_{#2}&&#4\ar[ll]_{#3}\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longrightarrow}\ar@{}[u]|>>>>{#7}}}
+\def\FC{{\bf FC}}
+
+\begin{document}
+
+\author{David I. Spivak}
+
+\thanks{This project was supported in part by the Office of Naval Research.}
+
+\title{The box monads}
+
+\maketitle
+
+\section{Notation}
+
+Let $\{*\}$ denote the terminal category (which has one arrow).  Let $\Cat$ denote the category of small categories (morphisms are functors).  Given a category $A\in\Cat$, let $\Ob(A)$ denote the set of objects in $A$.
+
+Let $F\taking A\to C$ and $G\taking B\to C$ be functors.  We denote by $(F\down_C G)$ the category whose objects are pairs $(a,b,f)$ where $a\in\Ob(A), b\in\Ob(b)$ and $f\taking F(a)\to G(b)$ is a morphism in $C$.  These are pictured as \begin{align}\label{pic:object}\xymatrix{Fa\ar[d]_f\\Gb.}\end{align}  The morphism sets are given by $$\Hom_{(F\down_C G)}((a,b,f),(a',b',f'))=\{(x,y)|x\taking a\to a', y\taking b\to b', Gy\circ f=f'\circ Fx\}.$$  In pictures, a morphism $(a,b,f)\to (a',b',f')$ in $(F\down_C G)$ is written $$\xymatrix{Fa\ar[r]^{Fx}\ar[d]_f&Fa'\ar[d]^{f'}\\Gb\ar[r]_{Gy}&Gb'.}$$
+
+Suppose now that $C$ is a 2-category; we will use the morphism-terminology of $C=\Cat$ because that is the main example we ultimately want to consider.  In other words, we will call morphisms in $C$ ``functors" and 2-arrows in $C$ ``natural transformations."  We still consider $A$ and $B$ as 1-categories.
+
+\begin{example}
+
+Let $C=\Cat$.  Suppose that $F\taking A\to\Cat$ is a functor and $B$ is a category, we sometimes write $(A\down_\Cat\{B\})$ to denote $(F\down_\Cat i_B)$, where $i_B\taking\{*\}\to\Cat$ is the category $B$.  In other words, $(A\down_\Cat \{B\})$ is the category of $A$-shaped diagrams in $B$.
+
+\end{example}
+
+We can add a layer of complexity to $(F\down_C G)$, by adding the possibility that the morphisms are not commutative diagrams in $C$, but instead involve a natural transformation (i.e. a 2-arrow in $C$).  To that end, we define a category $(F\Down_C G)$ whose objects are the same as those in $(F\down_C G)$, pictured in (\ref{pic:object}), but for which morphisms sets are given by \begin{align*}\Hom_{(F\Down_C G)}&((a,b,f),(a',b',f'))=\\&\{(x,y,\alpha)|x\taking a\to a',y\taking b\to b',\alpha\taking Gy\circ f\to f'\circ Fx\}.\end{align*}  In pictures, a morphism $(a,b,f)\to (a',b',f')$ in $(F\Down_C G)$ is written $$\xymatrix{Fa\ar[r]^{Fx}\ar[d]_f\ar@{}[dr] |{\stackrel{\alpha}{\Longrightarrow}}&Fa'\ar[d]^{f'}\\Gb\ar[r]_{Gy}&Gb'.}$$
+
+We write $(F\Up_C G)$ to denote a similar category but with some reversal of 1-arrows.  Its objects are the same as those in $(F\down_C G)$ and $(F\Down_C G)$; they are sequences $(a,b,f)$, as seen in (\ref{pic:object}).  The morphism sets are given by \begin{align*}\Hom_{(F\Up_C G)}&((a,b,f),(a',b',f'))=\\&\{(x,y,\alpha)|x\taking a'\to a,y\taking b'\to b,\alpha\taking f\circ Fx\to Gy\circ f'\}.\end{align*}  In pictures, a morphism $(a,b,f)\to (a',b',f')$ in $(F\Up_C G)$ is written $$\xymatrix{Fa\ar[d]_f\ar@{}[dr] |{\stackrel{\alpha}{\Longrightarrow}}&Fa'\ar[l]_{Fx}\ar[d]^{f'}\\Gb&Gb'\ar[l]^{Gy}.}$$  For those who prefer, we can simply write $(F\Up_C G)=(G\op\Down_{C\op}F\op)$, where $F\op\taking A\op\to C\op$ and $G\op\taking B\op\to C\op$ are the opposites of $F$ and $G$.
+
+\begin{example}\label{ex:Down and Up}
+
+Suppose that $C=\Cat$ and that $B$ is a category, considered as a functor $\{*\}\To{B}C$.  We may write $(F\Down\{B\})$ to denote $(F\Down i_B)$.  Explicitly, the objects in $(F\Down\{B\})$ are functors $F(a)\To{f} B$, where $a\in A$, and the morphisms $(Fa\To{f} B)\too (Fa'\To{f'} B)$ are pairs $(x,\alpha)$, where $x\taking a\to a'$ and $\alpha\taking f\to f'\circ Fx$, as seen in the natural transformation diagram $$\TriRight{Fa}{f}{Fx}{Fa'}{f'}{B}{\alpha}$$
+
+On the other hand, while the objects in $(F\Up \{B\})$ are the same as those in $(F\Down\{B\})$, a morphism $(Fa\To{f} B)\too (Fa'\To{f'} B)$ has a reversal in the top 1-arrow.  It is a pair $(x,\alpha)$ where $x\taking a'\to a$ and $\alpha\taking f\circ Fx\to f'$, as seen in the natural transformation diagram $$\TriLeft{Fa}{f}{Fx}{Fa'}{f'}{B}{\alpha}$$
+
+\end{example}
+
+
+\section{The Box monads}
+
+In this section we will be working in the base category $\Cat$, so when we write $(X\Down Y)$ we mean $(X\Down_\Cat Y)$.  In particular, let $\FC$ denote the category of finite categories and consider the full inclusion $\FC\to\Cat$.  We will be considering, for any category $C\in\Cat$, the categories $(\FC\Down\{C\})$ and $(\FC\Up\{C\})$.  These are particular cases of the categories considered in Example \ref{ex:Down and Up}.
+
+%\longnote{An annoying process that should be done at some point: change the name $C$ to the name $B$, in order to be in keeping with Section 1.}
+
+
+\begin{theorem}\label{fc down is monad}
+
+Let $\FC$ denote the category of finite categories.  Consider the endofunctor $d:=(\FC\Down\{-\})\taking\Cat\to\Cat$.  There are natural transformations $\eta\taking\id_\Cat\to d$ and $\mu\taking d^2\to d$ that give $d$ the structure of a monad on $\Cat$.  
+
+\end{theorem}
+
+\begin{proof}
+
+For $C\in\Cat$, define $\eta_C\taking C\to dC$ to be the functor given on objects by $c\mapsto (\{*\}\To{c}C)$, and given on morphisms by $$(f\taking c\to c')\mapsto\left(\TriRight{\{*\}}{c}{\id_{\{*\}}}{\{*\}}{c'}{C}{f}\right).$$  This is clearly a natural transformation.
+
+Defining $\mu$ is more difficult.  Let $C\in\Cat$ be a category; we will define $\mu_C\taking d^2C\to dC$.
+
+Let $X$ be a finite category and let $\sigma\taking X\to(\FC\Down\{C\})$ be an object in $d^2C$.  We need to establish some notation for $\sigma$.  On objects $x\in X$, denote $\sigma(x)$ by $$\sigma_x\taking S_x\to C,$$ where $S_x$ is a finite category.  On morphisms $f\taking x\to y$ in $X$, denote $\sigma(f)$ by $$(\sigma_f,\sigma_f^\sharp)\taking\left(\TriRight{S_x}{\sigma_x}{\sigma_f}{S_y}{\sigma_y}{C}{\sigma_f^\sharp}\right).$$
+
+Define $\mu(X,\sigma)\in\Cat$ as the category with objects $$\Ob(\mu(X,\sigma)):=\{(x,s_x)|x\in X,s_x\in S_x\}$$ and morphisms $$\Hom_{\mu(X,\sigma)}((x,s_x),(y,s_y))=\{(f,f^\sharp)|f\taking x\to y, (f^\sharp\taking\sigma_f(s_x)\to s_y)\in S_y\}.$$  Note that since $X$ and each $S_x$ is finite, so is $\mu(X,\sigma)$.  
+
+There is a canonical functor $\mu(X,\sigma)\to C$ given on objects by $(x,s_x)\mapsto\sigma_x(s_x)$ and given on morphisms by sending $(f,f^\sharp)\taking(x,s_x)\to(y,s_y)$ to the composite $$\sigma_x(s_x)\To{\sigma_f^\sharp}\sigma_y\sigma_f(s_x)\To{\sigma_y(f^\sharp)}\sigma_y(s_y).$$  Thus $\mu(X,\sigma)$ is indeed in $(\FC\Down\{C\})$.
+
+So far, we have only established $\mu$ on objects.  On morphisms $$\TriRight{X}{\sigma}{m}{X'}{\sigma'}{(\FC\Down \{C\})}{m^\sharp},$$ define $\mu(m,m^\sharp)\taking\mu(X,\sigma)\to\mu(X',\sigma')$ as the functor given as follows.  Send the object $(x,s_x)\in\mu(X,\sigma)$ to $(m(x),m^\sharp_x(s_x))\in\mu(X',\sigma')$.  Send $(f,f^\sharp)\taking(x,s_x)\to(y,s_y)$ to $$(m(x),(m_y^\sharp\circ f^\sharp\taking\sigma'_{mf}(m_x^\sharp(s_x))\to m_y^\sharp(s_y)))\taking\mu(X,\sigma)\to\mu(X'\sigma').$$  There is an obvious natural transformation $$\TriRight{\mu(X,\sigma)}{}{}{\mu(X',\sigma')}{}{C}{}$$ because $m^\sharp\taking\sigma'\circ m\to \sigma$ was assumed natural.  
+
+We draw the following diagram, in case it is useful to the reader: $$\xymatrix@=35pt{S_x\ar@/^4pc/[rrd]^{\sigma_x}\ar[r]^{\sigma_f}\ar[d]_{m_x^\sharp}&S_y\ar[rd]^{\sigma_y}\ar[d]_{m_y^\sharp}&\ar@{}[l]|>>>>{\stackrel{\sigma_f^\sharp}{\Longleftarrow}}\\S'_{mx}\ar[r]_{\sigma'_{mx}}\ar@/_3pc/[rr]_{\sigma'_{mx}}&S'_{my}\ar@{}[d]|<<<<{\sigma_{mf}^\sharp\Uparrow}\ar[r]_{\sigma'_{my}}\ar@{}[ur]|<<<<{\Down}&C\\&&&}$$
+
+We forgo showing that this really is a monad.
+
+\end{proof}
+
+\begin{corollary}
+
+Let $\FC$ denote the category of finite categories.  Consider the endofunctor $e:=(\FC\Up\{-\})\taking\Cat\to\Cat$.  There are natural transformations $\eta\taking\id_\Cat\to e$ and $\mu\taking e^2\to e$, which gives $e$ the structure of a monad on $\Cat$.  
+
+\end{corollary}
+
+\begin{proof}
+
+Recall the endofunctor $d\taking\Cat\to\Cat$ given by $d=(\FC\Up\{-\})$ as in Theorem \ref{fc down is monad}.  For any category $C$ there is a isomorphism (natural in $C$) $$(\FC\Down \{C\})\To{\iso}(\FC\Up \{C\op\})\op$$ given by sending an object $\sigma\taking S\to C$ to the object $\sigma\op\taking S\op\to C\op$ and by sending a morphism $(\sigma_f,\sigma_f^\sharp)\taking(\sigma_x\taking S_x\to C)\too (\sigma_y\taking S_y\to C)$, pictured as $$\TriRight{S_x}{\sigma_x}{\sigma_f}{S_y}{\sigma_y}{C}{\sigma_f^\sharp},$$ to the morphism pictured as $$\TriLeft{S_y\op}{\sigma_y\op}{\sigma_f}{S_x\op}{\sigma_x\op}{C\op}{\sigma_f^\sharp}.$$
+
+Now we can simply apply the maps $\mu$ and $\eta$ from Theorem \ref{fc down is monad}.  For $\mu$ we have \begin{align*}(\FC\Up\{\FC\Up \{C\}\})&\iso(\FC\Down\{\FC\Up \{C\op\}\})\op\\&\iso(\FC\Down\{\FC\Down \{C\op\}\})\op\\&\To{\mu}(\FC\Down \{C\op\})\op\iso (\FC\Up\{C\})\end{align*} and it is natural in $C$.  Writing $op\taking\Cat\to\Cat$ to denote the involution, we also have $$\xymatrix{\Cat\ar[r]^{op}\ar@/^2pc/[rrr]^{(\FC\Up\{-\})}&\Cat\ar[r]^{(\FC\Down\{-\})}\ar@/_1pc/[r]_{\id_\Cat}&\Cat\ar[r]^{op}&\Cat}$$ so the natural transformation $\eta\taking\id_\Cat\to(\FC\Down\{-\})$ extends to a natural transformation $\id_\Cat\to(\FC\Up \{-\})$.  
+
+All the monad diagrams commute for $e$ because they do for $d$.
+
+\end{proof}
+
+\comment{%Not currently useful.  2010/01/22
+
+\begin{lemma}\label{monad lift}
+
+Suppose that $\mcC$ is a category and $T$ is a monad on $\mcC$.  If $C\in\mcC$ is a $T$-algebra, then $T$ lifts to a monad on the category $(\mcC\down C)$.
+
+\end{lemma}
+
+\begin{proof}
+
+Given $f\taking X\to C$ we define $T(f)$ to be the composition $T(X)\to T(C)\to C$.  It satisfies the axioms for a monad.
+
+\end{proof}
+
+}%2010/01/22
+
+In the next section we will define the ``global sections functor" $$\Gamma\taking(\FC\Down\{\Cat\})\to\Cat,$$ which is related to the Grothendieck construction.  For now, we just record a proposition as to the purpose of this material.
+
+\begin{proposition}\label{cat is alg for fc down}
+
+The global sections functor $\Gamma\taking(\FC\Down\{\Cat\})\to\Cat$ gives $\Cat$ the structure of a $d$-algebra.  
+
+
+\end{proposition}
+
+\begin{proof}
+
+***
+\end{proof}
+
+
+
+\section{Grothendieck construction}
+
+Let $f\taking \mcS\to\Cat$ be a functor and let $\{*\}$ denote the terminal category.  The Grothendieck construction for $f$ is given by $$Gr(f):=(\{\{*\}\}\Down f).$$  Explicitly, $Gr(f)$ is the category with objects $(S,s)$ where $S\in\Ob(\mcS)$ and $s\in f(S)$.  The morphism sets in $Gr(f)$ are given by $$\Hom((S,s),(S',s'))=\{(y\taking S\to S',\alpha\taking f(y)(s)\to s')\}.$$
+
+There is a natural projection $\pi_f\taking Gr(f)\to\mcS$ given by $(S,s)\mapsto S$.  It is a split fibration; that is, for any $y\taking S\to S'$ and $s\in S$, there is a canonical choice of map $(S,s)\to (S',f(y)(s))$ lying over $y$.
+
+\begin{lemma}\label{gro pull square}
+
+Let $f\taking\mcS\to\Cat$ be a diagram of categories.  A functor $\sigma\taking\mcC\to\mcS$ induces a diagram $$\xymatrix{Gr(f\sigma)\ullimit\ar[r]\ar[d]_{\pi_{f\sigma}^{~}}&Gr(f)\ar[d]^{\pi_f^{~}}\\\mcC\ar[r]_\sigma&\mcS,}$$ which is a pullback square.
+
+\end{lemma}
+
+\begin{proof}
+
+***
+
+\end{proof}
+
+\begin{definition}
+
+Let $\pi\taking\mcT\to\mcS$ be a functor.  A {\em section} of $\pi$ is a functor $g\taking\mcS\to\mcT$ such that $\pi g=\id_\mcS$.  A {\em morphism of sections} of $\pi$ is a natural transformation over $\mcS$.
+
+\end{definition}
+
+Recall that a pullback square as in Lemma \ref{gro pull square} defines a functor $$g\mapsto (\id_\mcC\cross_{\id_\mcS}(g\circ\sigma))$$ from the sections of $\pi_f\taking Gr(f)\to\mcS$ to the sections of $\pi_{f\sigma}\taking Gr(f\sigma)\to\mcC$.
+
+\begin{lemma}\label{gro nat trans}
+
+Suppose given two functors $f,g\taking\mcS\to\Cat$; let $\Nat(f,g)$ denote the set of natural transformations from $f$ to $g$.  There is a natural isomorphism $$\Hom_\mcS(Gr(f),Gr(g))\To{\iso}\Nat(f,g).$$ 
+
+\end{lemma}
+
+\begin{proof}
+
+***
+
+\end{proof}
+
+\begin{definition}
+
+There is a functor $\Gamma\taking(\Cat\Up\{\Cat\})\to\Cat$ defined as follows.  On objects, $\Gamma(f\taking\mcC\to\Cat)$ is defined to be the category of sections of the functor $\pi\taking Gr(f)\to\mcC$.  To define $\Gamma$ on morphisms, suppose we are given a natural transformation diagram $$\TriLeft{\mcC}{f}{x}{\mcD}{g}{\Cat}{\alpha}.$$  By Lemma \ref{gro pull square}, there is a canonical functor $\Gamma(g)\to\Gamma(gx)$.  By Lemma \ref{gro nat trans}, there is a canonical functor $\Gamma(gx)\to\Gamma(f)$ induced by $\alpha$.  The composition gives the desired functor.
+
+\end{definition}
+
+\begin{lemma}
+
+Suppose that $\sigma_i\taking C_i\to\Cat$, for $i=1,2,3$, are three functors and suppose that $f\taking C_2\to C_1$ and $g\taking C_2\to C_3$ are functors too. There is an induced functor $C_4:=C_1\amalg_{C_2}C_3\To{\sigma_4}\Cat$.  Taking Grothendieck constructions yeilds the diagram $$\xymatrix@=10pt{&Gr(\sigma_1)\ar[ddd]\ar[drr]&&\\Gr(\sigma_2)\ar[ddd]\ar[drr]_{g'}\ar[ur]^{f'}&&&Gr(\sigma_4)\ar[ddd]\\&&Gr(\sigma_3)\ar[ur]\ar[ddd]&\\&C_1\ar[drr]&&\\C_2\ar[ur]^f\ar[drr]_g&&&C_4\\&&C_3\ar[ur]&}$$  All of the vertical squares are pullback squares by Lemma \ref{gro pull square}.
+
+The natural map $$\Gamma(\sigma_4)\too\Gamma(\sigma_1)\cross_{\Gamma(\sigma_2)}\Gamma(\sigma_3)$$ is an isomorphism.
+
+\end{lemma}
+
+
+
+\end{document}

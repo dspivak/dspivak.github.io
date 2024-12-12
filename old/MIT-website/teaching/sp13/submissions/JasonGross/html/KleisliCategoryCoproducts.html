@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>KleisliCategoryCoproducts</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library KleisliCategoryCoproducts</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="KleisliCategory.html#"><span class="id" type="library">KleisliCategory</span></a> <a class="idref" href="Coproduct.html#"><span class="id" type="library">Coproduct</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab186"></a><h1 class="section">Kleisli categories have coproducts</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="KleisliCoproducts"><span class="id" type="section">KleisliCoproducts</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">T</span> : @<a class="idref" href="Monad.html#Monad"><span class="id" type="record">Monad</span></a> <span class="id" type="var">objC</span> <span class="id" type="var">C</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="KleisliCoproducts.KT"><span class="id" type="variable">KT</span></a> := <a class="idref" href="KleisliCategory.html#KleisliCategory"><span class="id" type="definition">KleisliCategory</span></a> <a class="idref" href="KleisliCategoryCoproducts.html#KleisliCoproducts.T"><span class="id" type="variable">T</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Open</span> <span class="id" type="keyword">Scope</span> <span class="id" type="var">morphism_scope</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Global Instance</span> <a name="KleisliCategory_has_is_coproducts"><span class="id" type="instance">KleisliCategory_has_is_coproducts</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">X</span> <span class="id" type="var">Y</span> : <a class="idref" href="KleisliCategoryCoproducts.html#KleisliCoproducts.KT"><span class="id" type="variable">KT</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(<span class="id" type="var">C_has_coproduct</span> : <a class="idref" href="Coproduct.html#is_coproduct"><span class="id" type="class">is_coproduct</span></a> <span class="id" type="var">_</span> <a class="idref" href="KleisliCategoryCoproducts.html#KleisliCoproducts.C"><span class="id" type="variable">C</span></a> <a class="idref" href="KleisliCategoryCoproducts.html#X"><span class="id" type="variable">X</span></a> <a class="idref" href="KleisliCategoryCoproducts.html#Y"><span class="id" type="variable">Y</span></a> <span class="id" type="var">XuY</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">η</span> := <a class="idref" href="Monad.html#MonadUnit"><span class="id" type="projection">MonadUnit</span></a> <a class="idref" href="KleisliCategoryCoproducts.html#KleisliCoproducts.T"><span class="id" type="variable">T</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(µ := <a class="idref" href="Monad.html#MonadMultiplication"><span class="id" type="projection">MonadMultiplication</span></a> <a class="idref" href="KleisliCategoryCoproducts.html#KleisliCoproducts.T"><span class="id" type="variable">T</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="Coproduct.html#is_coproduct"><span class="id" type="class">is_coproduct</span></a> <a class="idref" href="KleisliCategoryCoproducts.html#KleisliCoproducts.KT"><span class="id" type="variable">KT</span></a> <a class="idref" href="KleisliCategoryCoproducts.html#X"><span class="id" type="variable">X</span></a> <a class="idref" href="KleisliCategoryCoproducts.html#Y"><span class="id" type="variable">Y</span></a> <a class="idref" href="KleisliCategoryCoproducts.html#XuY"><span class="id" type="variable">XuY</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (@<a class="idref" href="Coproduct.html#Build_is_coproduct"><span class="id" type="constructor">Build_is_coproduct</span></a> <span class="id" type="var">_</span> <a class="idref" href="KleisliCategoryCoproducts.html#KleisliCoproducts.KT"><span class="id" type="variable">KT</span></a> <span class="id" type="var">X</span> <span class="id" type="var">Y</span> <span class="id" type="var">XuY</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">η</span> <span class="id" type="var">_</span> <a class="idref" href="Category.html#:morphism_scope:x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Coproduct.html#:morphism_scope:'i₁'"><span class="id" type="notation">i₁</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">η</span> <span class="id" type="var">_</span> <a class="idref" href="Category.html#:morphism_scope:x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Coproduct.html#:morphism_scope:'i₂'"><span class="id" type="notation">i₂</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">A</span> ⇒ @<a class="idref" href="Coproduct.html#coproduct_map"><span class="id" type="method">coproduct_map</span></a> <span class="id" type="var">_</span> <a class="idref" href="KleisliCategoryCoproducts.html#KleisliCoproducts.C"><span class="id" type="variable">C</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">C_has_coproduct</span> (<a class="idref" href="KleisliCategoryCoproducts.html#KleisliCoproducts.T"><span class="id" type="variable">T</span></a> <a class="idref" href="KleisliCategoryCoproducts.html#A"><span class="id" type="variable">A</span></a>))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">pose</span> <span class="id" type="var">proof</span> (<a class="idref" href="Category.html#LeftIdentity"><span class="id" type="projection">LeftIdentity</span></a> <a class="idref" href="KleisliCategoryCoproducts.html#KleisliCoproducts.KT"><span class="id" type="variable">KT</span></a>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">pose</span> <span class="id" type="var">proof</span> (<a class="idref" href="Category.html#RightIdentity"><span class="id" type="projection">RightIdentity</span></a> <a class="idref" href="KleisliCategoryCoproducts.html#KleisliCoproducts.KT"><span class="id" type="variable">KT</span></a>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <a class="idref" href="KleisliCategoryCoproducts.html#KleisliCoproducts.T"><span class="id" type="variable">T</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">clear</span> <span class="id" type="var">T</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> (<span class="id" type="tactic">reflexivity</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| <span class="id" type="tactic">intro</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">progress</span> <span class="id" type="var">subst_body</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">progress</span> (<span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> *; <span class="id" type="tactic">unfold</span> <a class="idref" href="Category.html#Object"><span class="id" type="projection">Object</span></a> <span class="id" type="keyword">in</span> *; <span class="id" type="tactic">subst</span>))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">apply</span> <a class="idref" href="Coproduct.html#coproduct_inl_commutes"><span class="id" type="method">coproduct_inl_commutes</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">apply</span> <a class="idref" href="Coproduct.html#coproduct_inr_commutes"><span class="id" type="method">coproduct_inr_commutes</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">apply</span> <a class="idref" href="Coproduct.html#coproduct_map_unique"><span class="id" type="method">coproduct_map_unique</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">progress</span> <span class="id" type="var">rewrite_hyp</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">rewrite</span> &lt;- <a class="idref" href="Category.html#Associativity"><span class="id" type="projection">Associativity</span></a>))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="KleisliCategoryCoproducts.html#KleisliCoproducts"><span class="id" type="section">KleisliCoproducts</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

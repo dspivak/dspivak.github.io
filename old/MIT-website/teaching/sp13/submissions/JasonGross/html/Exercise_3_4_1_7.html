@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_3_4_1_7</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_3_4_1_7</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Setoids.Setoid.html#"><span class="id" type="library">Setoid</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#"><span class="id" type="library">ProofIrrelevance</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.ZArith.ZArith.html#"><span class="id" type="library">ZArith</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.omega.Omega.html#"><span class="id" type="library">Omega</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Orders.html#"><span class="id" type="library">Orders</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ <a name="lab44"></a><h1 class="section">Exercise 3.4.1.7</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Exercise_3_4_1_7"><span class="id" type="section">Exercise_3_4_1_7</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab45"></a><h2 class="section">Problem</h2>
+ Let <span class="inlinecode"><a class="idref" href="SetCategoryFacts.html#EpiMono.S"><span class="id" type="variable">S</span></a></span> <span class="inlinecode">=</span> <span class="inlinecode">{1,</span> <span class="inlinecode">2,</span> <span class="inlinecode">3,</span> <span class="inlinecode">4}</span>. Find a preorder <span class="inlinecode"><a class="idref" href="Exercise_3_4_1_7.html#Exercise_3_4_1_7.R"><span class="id" type="variable">R</span></a></span> <span class="inlinecode">&sube;</span> <span class="inlinecode"><a class="idref" href="SetCategoryFacts.html#EpiMono.S"><span class="id" type="variable">S</span></a></span> <span class="inlinecode">&times;</span> <span class="inlinecode"><a class="idref" href="SetCategoryFacts.html#EpiMono.S"><span class="id" type="variable">S</span></a></span> such that
+      the set <span class="inlinecode"><a class="idref" href="Exercise_3_4_1_7.html#Exercise_3_4_1_7.R"><span class="id" type="variable">R</span></a></span> is as small as possible. Is it a partial order? Is
+      it a linear order?
+
+<div class="paragraph"> </div>
+
+      Find a preorder <span class="inlinecode"><a class="idref" href="Exercise_3_4_1_7.html#Exercise_3_4_1_7.R'"><span class="id" type="variable">R'</span></a></span> <span class="inlinecode">&sube;</span> <span class="inlinecode"><a class="idref" href="SetCategoryFacts.html#EpiMono.S"><span class="id" type="variable">S</span></a></span> <span class="inlinecode">&times;</span> <span class="inlinecode"><a class="idref" href="SetCategoryFacts.html#EpiMono.S"><span class="id" type="variable">S</span></a></span> such that the set <span class="inlinecode"><a class="idref" href="Exercise_3_4_1_7.html#Exercise_3_4_1_7.R'"><span class="id" type="variable">R'</span></a></span> is as large
+      as possible. Is it a partial order? Is it a linear order? 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_3_4_1_7.S"><span class="id" type="variable">S</span></a> := <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'|'_x_'}'"><span class="id" type="notation">{</span></a> <span class="id" type="var">n</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'|'_x_'}'"><span class="id" type="notation">|</span></a> 1 <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Peano.html#:nat_scope:x_'<='_x_'<='_x"><span class="id" type="notation">≤</span></a> <span class="id" type="var">n</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Peano.html#:nat_scope:x_'<='_x_'<='_x"><span class="id" type="notation">≤</span></a> 4 <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'|'_x_'}'"><span class="id" type="notation">}</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_3_4_1_7.R"><span class="id" type="variable">R</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Relations.Relation_Definitions.html#relation"><span class="id" type="definition">relation</span></a> <a class="idref" href="Exercise_3_4_1_7.html#Exercise_3_4_1_7.S"><span class="id" type="variable">S</span></a> := <span class="id" type="keyword">fun</span> <span class="id" type="var">n</span> <span class="id" type="var">m</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#proj1_sig"><span class="id" type="definition">proj1_sig</span></a> <a class="idref" href="Exercise_3_4_1_7.html#n"><span class="id" type="variable">n</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#proj1_sig"><span class="id" type="definition">proj1_sig</span></a> <a class="idref" href="Exercise_3_4_1_7.html#m"><span class="id" type="variable">m</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_3_4_1_7.R'"><span class="id" type="variable">R'</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Relations.Relation_Definitions.html#relation"><span class="id" type="definition">relation</span></a> <a class="idref" href="Exercise_3_4_1_7.html#Exercise_3_4_1_7.S"><span class="id" type="variable">S</span></a> := <span class="id" type="keyword">fun</span> <span class="id" type="var">n</span> <span class="id" type="var">m</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#True"><span class="id" type="inductive">True</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Ltac</span> <span class="id" type="var">t</span> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">unfold</span> <span class="id" type="var">R</span>, <span class="id" type="var">R'</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">split</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> (<span class="id" type="tactic">compute</span> <span class="id" type="keyword">in</span> *; <span class="id" type="tactic">subst</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> <span class="id" type="tactic">trivial</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> <span class="id" type="tactic">intuition</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">intro</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#sig"><span class="id" type="inductive">sig</span></a> <span class="id" type="var">_</span> |- <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">destruct</span> <span class="id" type="var">H</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#proof_irrelevance"><span class="id" type="axiom">proof_irrelevance</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">omega</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#f_equal"><span class="id" type="lemma">f_equal</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Instance</span> <a name="Exercise_3_4_1_7_R_preorder"><span class="id" type="instance">Exercise_3_4_1_7_R_preorder</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#PreOrder"><span class="id" type="class">PreOrder</span></a> <a class="idref" href="Exercise_3_4_1_7.html#Exercise_3_4_1_7.R"><span class="id" type="variable">R</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">t</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Example</span> <a name="Exercise_3_4_1_7_R'_preorder"><span class="id" type="definition">Exercise_3_4_1_7_R'_preorder</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#PreOrder"><span class="id" type="class">PreOrder</span></a> <a class="idref" href="Exercise_3_4_1_7.html#Exercise_3_4_1_7.R'"><span class="id" type="variable">R'</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">t</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Example</span> <a name="Exercise_3_4_1_7_R_partial_order"><span class="id" type="definition">Exercise_3_4_1_7_R_partial_order</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#PartialOrder"><span class="id" type="class">PartialOrder</span></a> <span class="id" type="var">_</span> <a class="idref" href="Exercise_3_4_1_7.html#Exercise_3_4_1_7.R"><span class="id" type="variable">R</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">t</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Example</span> <a name="Exercise_3_4_1_7_R_not_comparable"><span class="id" type="definition">Exercise_3_4_1_7_R_not_comparable</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8_core.html#:type_scope:'¬'_x"><span class="id" type="notation">&not;(</span></a><a class="idref" href="Orders.html#Comparable"><span class="id" type="class">Comparable</span></a> <a class="idref" href="Exercise_3_4_1_7.html#Exercise_3_4_1_7.R"><span class="id" type="variable">R</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8_core.html#:type_scope:'¬'_x"><span class="id" type="notation">)</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intro</span> <span class="id" type="var">H</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">assert</span> (<span class="id" type="var">S1</span> : 1 <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Peano.html#:nat_scope:x_'<='_x_'<='_x"><span class="id" type="notation">≤</span></a> 1 <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Peano.html#:nat_scope:x_'<='_x_'<='_x"><span class="id" type="notation">≤</span></a> 4) <span class="id" type="tactic">by</span> <span class="id" type="tactic">omega</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">assert</span> (<span class="id" type="var">S2</span> : 1 <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Peano.html#:nat_scope:x_'<='_x_'<='_x"><span class="id" type="notation">≤</span></a> 2 <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Peano.html#:nat_scope:x_'<='_x_'<='_x"><span class="id" type="notation">≤</span></a> 4) <span class="id" type="tactic">by</span> <span class="id" type="tactic">omega</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">specialize</span> (<span class="id" type="var">H</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#exist"><span class="id" type="constructor">exist</span></a> <span class="id" type="var">_</span> 1 <span class="id" type="var">S1</span>) (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#exist"><span class="id" type="constructor">exist</span></a> <span class="id" type="var">_</span> 2 <span class="id" type="var">S2</span>)).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">t</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Example</span> <a name="Exercise_3_4_1_7_R'_not_antisymmetric"><span class="id" type="definition">Exercise_3_4_1_7_R'_not_antisymmetric</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8_core.html#:type_scope:'¬'_x"><span class="id" type="notation">&not;(</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#Antisymmetric"><span class="id" type="class">Antisymmetric</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <a class="idref" href="Exercise_3_4_1_7.html#Exercise_3_4_1_7.R'"><span class="id" type="variable">R'</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8_core.html#:type_scope:'¬'_x"><span class="id" type="notation">)</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intro</span> <span class="id" type="var">H</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">assert</span> (<span class="id" type="var">S1</span> : 1 <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Peano.html#:nat_scope:x_'<='_x_'<='_x"><span class="id" type="notation">≤</span></a> 1 <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Peano.html#:nat_scope:x_'<='_x_'<='_x"><span class="id" type="notation">≤</span></a> 4) <span class="id" type="tactic">by</span> <span class="id" type="tactic">omega</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">assert</span> (<span class="id" type="var">S2</span> : 1 <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Peano.html#:nat_scope:x_'<='_x_'<='_x"><span class="id" type="notation">≤</span></a> 2 <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Peano.html#:nat_scope:x_'<='_x_'<='_x"><span class="id" type="notation">≤</span></a> 4) <span class="id" type="tactic">by</span> <span class="id" type="tactic">omega</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">specialize</span> (<span class="id" type="var">H</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#exist"><span class="id" type="constructor">exist</span></a> <span class="id" type="var">_</span> 1 <span class="id" type="var">S1</span>) (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#exist"><span class="id" type="constructor">exist</span></a> <span class="id" type="var">_</span> 2 <span class="id" type="var">S2</span>) <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#I"><span class="id" type="constructor">I</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#I"><span class="id" type="constructor">I</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">inversion</span> <span class="id" type="var">H</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_3_4_1_7.html#Exercise_3_4_1_7"><span class="id" type="section">Exercise_3_4_1_7</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

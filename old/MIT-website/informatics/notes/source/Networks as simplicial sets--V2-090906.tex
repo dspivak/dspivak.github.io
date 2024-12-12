@@ -1,0 +1,300 @@
+\documentclass{amsart}
+
+\input{decl-main}
+
+\def\ss{\subseteq}
+\def\Vrt{{\bf Vrt}}
+\def\bD{{\bf \Delta}}
+\def\OO{{\mathbb O}}
+\def\bfn{{\bf n}}
+\def\bfm{{\bf m}}
+
+\begin{document}
+
+\setcounter{tocdepth}{1}
+
+\begin{abstract}
+
+In social networks, some communications may involve more than two people.  Because they are 1-dimensional, graphs cannot adequately model these situations.  While often used, hypergraphs are not the best higher-dimensional analog of graphs.  They are difficult to visualize and difficult to analyze mathematically, and they do not offer the dynamic quality one needs to model social networks, for example the ability to add members to a group.  
+
+We offer several new categories with which one can model social networks.  The best-known example is that of simplicial sets, which has been widely used in algebraic topology as an efficient model for general spaces.  The category of simplicial sets subsumes the category of graphs, which are precisely the 1-dimensional simplicial sets.
+
+\end{abstract}
+
+\author{David I. Spivak}
+
+\title{Higher-dimensional models of social networks}
+
+\thanks{This project was supported in part by the Office of Naval Research.}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+A good model for a given type of network is one that captures all its essential features and is useful as an abstraction.  An abstraction is conceptually useful if it is easy to visualize and sensible to work with; it is computationally useful if it can be fully communicated to and quickly manipulated by a computer; and it is mathematically useful if it submits to mathematical analysis that yields meaningful results.
+
+Networks are typically modeled by graphs or hypergraphs.  We will show that graphs do not capture the essential features of social networks.  We will also show that, while hypergraphs do capture many of these features, they do not provide the optimal generalization of graphs because they does not have the qualities of a useful abstraction, outlined above.  
+
+In order to show that hypergraphs are not optimal, we present another model which is easier to visualize and has nicer mathematical properties.  Namely, we offer the category of simplicial sets, as well as a few of its close cousins, as the appropriate higher-dimensional analogues of graphs.  Simplicial sets (\cite{})have been studied in the mathematical field of algebraic topology (especially homotopy theory) since the 1940s; they have the capacity to capture the essential features of any topological space.  Moreover, they are defined in a completely combinatorial manner, just as graphs are.
+
+Simplicial sets are like graphs, except instead of having only vertices and edges, a simplicial set can include triangles, tetrahedra, and higher-dimensional triangular shapes as well.  While this emphasis on triangles may seem a bit ad hoc, it is not: an $n$-dimensional triangle is the polyhedral ``hull" of $n+1$ vertices (just as an edge is the polyhedral hull of 2 vertices).  A simplicial set is a polyhedral shape that can be made by gluing together edges, triangles, etc., along common vertices, faces, etc.  We call the vertices {\em 0-simplices}, the edges {\em 1-simplices}, the triangles {\em 2-simplices}, and so on; i.e. an $n$-simplex is an $n$-dimensional generalization of a triangle.  
+
+To make this a little more clear, let us emphasize that any graph is a 1-dimensional simplicial set.  Now suppose we want to make a 2-dimensional simplicial set.  Begin with a graph $G$, and find three edges $(a,b),(b,c)$, and $(a,c)$ which form a triangle inside $G$:
+
+\begin{center} \begin{picture}(18,27)\put(-4,-4){a}\put(25,-4){b}\put(10,24){c}\put(0,0){$\bullet$}\put(3,2){\vector(1,0){18}}\put(3,2){\vector(1,2){8}}\put(20,0){$\bullet$}\put(10,17){$\bullet$}\put(22,2){\vector(-1,2){8}}\end{picture}\end{center}
+
+In such a circumstance, one may attach in a 2-simplex to $G$, and the result has a filled in triangle $abc$.  Thus a 2-dimensional simplicial set looks like a graph except that some triangles are filled.  To create a 3-dimensional simplicial set, begin with a 2-dimensional one, find groupings of triangles that form an empty tetrahedron, and fill it.  At this point, the reader can imagine constructing arbitrary simplicial sets.
+
+We will describe simplicial sets more rigorously in Section \ref{sec:mathematical definitions}, and we will describe their relevance to networks in Section \ref{sec:networks}, but let us here briefly explain the inadequacy of using graphs to model social networks.  
+
+We define a social network as a network in which there can exist communications which are not privately held by only two individuals.  For example in Facebook, a user can communicate to a list or group {\em as a unit} rather than communicating privately and seperately to each individual in the group.  We are proposing that if some conversations in a social network include groups of more than two individuals, then graphs are not adequate models -- for any $n$, a group of $n$ people should be modeled by a simplex with $n$ vertices.  Let us give an example.
+
+Imagine a table of four people talking among themselves at a restaurant; this event is understood as a social network with four nodes.  If everyone can hear everyone else, then graph-theoretically this network is represented by the complete graph on four vertices.  Now imagine a situation of four people playing the game ``telephone" so that each person may only whisper in the ear of another person.  If each person can whisper to any other, this scenario is modeled by the same graph: the complete graph on four vertices.  But the situations are extremely different!  One-dimensional graph theory does not capture the distinction between these scenarios, but the simplicial theory does: a solid tetrahedron represents the foursome communicating together in a single context, whereas the complete graph on 4-vertices models the ``telephone" situation.  
+
+The transfer of information within human society would be completely different if we were restricted to one-on-one conversations.  Thus, if graphs cannot differentiate between a single group conversation and many private conversations, then they do not capture the essential features of social networks (how information is transfered) and thus comprise an inadequate model.   
+
+The topological analysis of graphs is also fairly poor: two graphs with the same number of cycles are homotopically equivalent (\cite{}).  In other words, the topological complexity of a graph is measured by a single number.  On the other hand, simplicial sets are sufficiently flexible to model {\em any} topological space whatsoever, and these are infinitely more complex than graphs.  Thus, if we hope to discover key features of a network using topological methods, simplicial sets give us much more hope of success than do graphs.
+
+We have not yet addressed why we believe that hypergraphs are inadequate generalizations for some purposes.  The main reasons are that they (as a category) do not admit basic constructions like adding a member to a group (see Example \ref{}), they do not seem to have a nice topological interpretation (unlike graphs and simplicial sets), and they are not flexible enough to encompass a variety of scenarios.  We will spend a Section \ref{} fleshing out these claims.
+
+We conclude the paper with Section \ref{sec:applications}, in which we describe some applications of the the higher-dimensional network models, as well as some avenues for further research.  Before leaving the introduction, we discuss some related work.
+
+\subsection{Related Research}
+
+Simplicial methods in data analysis (Gunnar Carlsson).
+Simplicial sets in word associations.
+Simplicial sets in modeling databases. (me)
+
+\subsection{Acknowledgments}
+
+The author would like to thank Paea LePendu for many useful conversations.
+
+\section{Mathematical definitions}
+
+In this section, most of which can be skipped on a first reading, we give precise mathematical definitions of the models we discuss in this paper.  Probably most readers will have encountered the definitions of graphs and hypergraphs before.  The definitions we give of simplicial sets and the other combinatorial gadgets are technical, though we do our best to make them clear using examples.  For those readers who wish to skip, we recommend only reading Remark \ref{}.
+
+A graph consists of a set $E$ of edges, a set $V$ of vertices, and a way to know which two vertices belong to a given edge.  We allow multiple edges to connect the same two vertices, and we allow loops.  Precisely, we have the following definition.
+
+\begin{definition}
+
+A {\em directed graph} consists of two sets, $E$ and $V$, and two functions $d_0,d_1\taking E\to V$.  We call $E$ the set of {\em edges} and $V$ the set of {\em vertices}.  We sometimes denote this graph by $E\tto V$.
+
+\end{definition}
+
+Our definition of an undirected graph would be a directed graph together with an automorphism of the edge set which switches the vertices.  Unfortunately, this definition does not fit well with the usual definition of undirected hypergraphs.  Thus, in the interest of consistency with the literature, we will define undirected graphs below as special types of undirected hypergraphs.
+
+A hypergraph is like a graph in that it has vertices and (hyper-) edges, but the set of vertices contained in a hyperedge can have cardinality greater than 2.  For a set $V$, let $\PP_+(V)$ denote the set $\{A\ss V|A\neq\emptyset\}$ of non-empty subsets of $V$.  Recall that elements of $\PP_+(V)$ are unordered; we define an ordered analogue as follows: $$\OO_+(V):=\coprod_{n\geq 1} V^n,$$ where $V^n=V\cross V\cross\cdots\cross V$ is the set of ordered $n$-tuples in $V$.  We can associate to each element $x\in\OO_+(V)$ its index $n$, where $x\in V^n$; we call $n$ the {\em cardinality} of $x$ and write $|x|=n$. There is an obvious map $\OO_+(V)\to\PP_+(V)$ given by sending each $n$-tuple to its set of elements; note that this map may decrease cardinality.   
+
+\begin{definition}
+
+An {\em directed hypergraph} is a triple $(E,V,f)$, where $E$ and $V$ are sets (called the set of {\em hyperedges} and {\em vertices} respectively), and where $f\taking E\to\OO_+(V)$ is a function, which we call the {\em constituent function}.
+
+An {\em undirected hypergraph} is a triple $(E,V,f)$ with $E$ and $V$ as above, and where $f\taking E\to\PP_+(V)$ is a function, again called the {\em (unordered) constituent function}.
+
+\end{definition}
+
+We can see easily that a directed graph is just a directed hypergraph with no $k$-edges for $k>1$.  This generalizes as follows. 
+
+\begin{definition}
+
+A {\em $k$-uniform hypergraph} (or simply {\em $k$-graph}) is a hypergraph $(E,V,f)$, such that for all $e\in E$ the cardinality $|f(e)|=k$. 
+
+\end{definition}
+
+The above definition holds for both directed and undirected hypergraphs, using the appropriate definitions of cardinality given above.
+
+There is a well-defined notion of {\em morphisms} (or functions) between hypergraphs, which we give below.  These morphisms tell us what structure needs to be preserved when comparing two hypergraphs.  The idea is that one should send vertices to vertices and edges to edges, in a consistent way.
+
+In the following definition and several others, we will assume the reader knows the first few definitions of category theory, which can be found in \cite{MacLane}.  One thinks of a category as roughly like a graph, the main difference being a certain transitive law: every pair of arrows $a\to b$ and $b\to c$ has a distinguished {\em composition} $a\to c$.  The nodes in a category are called {\em objects} and the edges are called {\em morphisms}.
+
+\begin{definition}
+
+Let $H_1=(E_1,V_1,f_1)$ and $H_2=(E_2,V_2,f_2)$ be directed hypergraphs.  A {\em morphism} $H_1\to H_2$ consists of functions $a\taking E_1\to E_2$ and $b\taking V_1\to V_2$, such that the diagram $$\xymatrix{E_1\ar[r]^-{f_1}\ar[d]_a&\OO_+(V_1)\ar[d]^{b_*}\\E_2\ar[r]_-{f_2}&\OO_+(V_2)}$$ commutes.  Here $b_*(v_1,\ldots v_n)=(b(v_1),\ldots,b(v_n))$.
+
+If $H_1$ and $H_2$ are undirected hypergraphs, we use the same diagram except we replace $\OO_+$ with $\PP_+$ and say that $b_*(\{v_1,\ldots,v_n\})=\{b(v_1),\ldots,b(v_n)\}$.
+
+The {\em category of directed ({\tn resp.} undirected) hypergraphs} has now been defined.
+
+\end{definition}
+
+\subsection{Simplicial sets}
+
+In this subsection we give a rigorous definition of simplicial sets; however, we wish to emphasize that it is not needed to read most sections of this paper.  Anyone inclined to skip this section should take a look at Remark \ref{rem:all you need to know} to make sure he or she can visualize simplicial sets.
+
+Simplicial sets have a close cousin, called semi-simplicial sets.  Both are founded on the workings of finite ordered sets, but both are expressive enough to model all topological spaces up to homotopy (\cite{}).  Simplicial sets are more structured and have better formal properties, but are much larger models.  While topologists usually prefer working with simplicial sets, they can be daunting to people seeing them for the first time.  For this reason, we elide the difference between simplicial sets and semi-simplicial sets often throughout this paper.   In this subsection we will give a category-theoretic definition of simplicial sets and semi-simplicial sets, as well as a set-theoretic definition of semi-simplicial sets. 
+
+Roughly, a simplicial set is like a hypergraph but we require that each subset of a hyperedge is also a hyperedge.  This added restriction has a big payoff: whereas hypergraphs can only be visualized as amorphous blobs, simplicial sets can be visualized as polygonal shapes.  Moreover, the so-called ``model-category" of simplicial sets is equivalent to that of all topological spaces.  A model category structure on hypergraphs does not appear to be known.
+
+As we said in the introduction, every simplicial set can be constructed by gluing simplices together along common faces, including gluing bigger faces onto smaller ones.  This last type of gluing is a bit harder to get a handle on, which is why we introduce semi-simplicial sets, which do not allow these types of attachments.  Here is the precise, set-theoretic definition of semi-simplicial sets.
+
+\begin{definition}[Set-theoretic definition of semi-simplicial set]\label{def:set def of sset}
+
+A {\em semi-simplicial set} $X$ consists of a sequence of sets $(X_0,X_1,X_2,\ldots)$, and for every $n\geq 1$ a collection of functions $d^n_0,d^n_1,\ldots,d^n_n$ each of which has domain $X_n$ and codomain $X_{n-1}$.  These functions must satisfy the following identity: $$d^n_i\circ d^{n+1}_j=d^n_{j-1}\circ d^{n+1}_i, \hspace{.2in} \tn{for all } 0\leq i<j\leq n.$$  
+
+For each $n\geq 0$ the set $X_n$ is called the set of {\em $n$-simplices} of $X$.  The function $d^n_i\taking X_n\to X_{n-1}$ is often abbreviated $d_i$ and is called the {\em $i$th face operator}.  The {\em dimension} of $X$ is the largest number $n$ such that $X_n\neq\emptyset$, if a largest such $n$ exists, and $\infty$ otherwise.
+
+
+We may write $X$ as $$\xymatrix{\cdots \arrrr{r}&X_2\arrr{r}&X_1\arr{r}&X_0.}$$
+
+\end{definition}
+
+\begin{remark}
+
+Definition \ref{def:set def of sset} may seem difficult to comprehend on first glance.  One should think of $X$ as a polygonal shape made of triangles, like two triangles put together to form a square.  The set $X_0$ is the set of vertices of that shape, the set $X_1$ is the set of edges, the set $X_2$ is the set of triangles (called 2-simplices in this parlance because they are 2-dimensional), etc.  
+
+Each 2-simplex in $X$ has three edges: across from each vertex in the triangle is an edge not touching it.  The three face operators $d^2_0,d^2_1,d^2_2$ are tasked with telling us which three edges form the boundary of a given 2-simplex.
+
+\end{remark}
+
+\begin{definition}
+
+Let $X=\xymatrix@1{\cdots \arrrr{r}&X_2\arrr{r}&X_1\arr{r}&X_0}$ be a semi-simplicial set.  The {\em 1-skeleton} of $X$ is the (directed) graph $$\xymatrix@1{X_1\ar@<.35ex>[r]^{d_1}\ar@<-.35ex>[r]_{d_0}&X_0,}$$ obtained by forgetting all higher-order ($n\geq 2$) data in $X$. 
+
+Here, $X_1$ is the set of edges and $X_0$ is the set of vertices of the 1-skeleton;  $d_1$ takes each edge to its source, and $d_0$ takes each edge to its target.
+
+\end{definition}
+
+\begin{example}\label{ex:square}
+
+A filled-in square, composed of two triangles glued along their diagonal, is drawn below.
+
+\begin{center}\begin{picture}(40,40)
+
+\put(0,0){a}\put(0,44){c}\put(44,0){b}\put(44,44){d}
+\put(4,4){$\bullet$}\put(4,40){$\bullet$}\put(40,4){$\bullet$}\put(40,40){$\bullet$}
+\put(6,6){\vector(1,0){36}}\put(6,6){\vector(1,1){36}}\put(6,6){\vector(0,1){36}}
+\put(42,6){\vector(0,1){36}}\put(6,42){\vector(1,0){36}}
+\end{picture}\end{center}
+
+Here we have $X_0=\{a,b,c,d\}, X_1=\{ab,ac,ad,bd,cd\},$ and $X_2=\{abd,acd\}$.  Each triangle has three edges, given by the various $d^2$'s: $d^2_0(abd)=bd, d^2_0(acd)=cd, d^2_1(abd)=d^2_1(acd)=ad, d^2_2(abd)=ab,$ and $d^2_2(acd)=ac$.  Similarly, each edge has two vertices: $d^1_1(ac)=d^1_1(ad)=d^1_1(ab)=a$, $d^1_0(ad)=d^1_0(bd)=d^1_0(cd)=d$, $d^1_0(ac)=d^1_1(cd)=c$, and $d^1_0(ab)=d^1_1(bd)=b.$ 
+
+Knowing the above sets $X_i$ and face operator equations allows one to completely reconstruct the square.  
+
+The 1-skeleton of the above square is drawn the same way, but one imagines the triangles as empty in this case; it is just 5 edges.  As a graph, it is written $\{ab,ac,ad,bd,cd\}\tto\{a,b,c,d\}$, where one of the maps assigns to each edge its first vertex and the other assigns the second vertex.  This is precisely what is achieved by $d^1_1$ and $d^1_0$ above.
+
+\end{example}
+
+\subsection{Categorical definitions}
+
+As promised, we also give a category-theoretic definition of semi-simplicial sets.  For each $n\in\NN$, let $[n]$ denote the ordered set $\{0,1,\ldots,n\}$; note that each $[n]$ is finite and non-empty.  A function $f\taking[m]\to[n]$ is called {\em non-decreasing} if $0\leq i\leq j\leq m$ implies $f(i)\leq f(j)$.  The function $f$ is called {\em strictly increasing} if $0\leq i<j\leq m$ implies $f(i)<f(j)$.  The category whose objects are the ordered sets $[n]$ for $n\in\NN$ and whose morphisms are non-decreasing (respectfully strictly-increasing) functions is denoted $\bD$ (respectively $\mcD$).
+
+\begin{definition}[Categorical definition of semi-simplicial sets]
+
+Let $\mcD$ denote the category whose objects are the finite non-empty ordered sets, and whose morphisms are strictly increasing maps.  Let $\mcD\op$ denote the opposite category.  The {\em category of semi-simplicial sets} is the category of functors $\Sets^{\mcD\op}$, whose objects are functors $\mcD\op\to\Sets$ and whose morphisms are natural transformations.
+
+\end{definition}
+
+\begin{remark}
+
+Given a simplicial set $X\taking\mcD\op\to\Sets$, we write $X_n\in\Sets$ to denote the set $X(\{0,1,\ldots,n\})$; its elements are the {\em $n$-simplices of $X$}.  There are $n+1$ possibilities for strictly increasing maps $d^i\taking \{0,1,\ldots,n-1\}\to\{0,1,\ldots,n\}$, given by skipping exactly one of the numbers $0\leq i\leq n$.  Since $X$ is a contravariant functor, each of these morphisms is sent to a map $X(d^i)\taking X_n\to X_{n-1}$, which is the {\em $i$th face operator} and denoted $d^n_i$.  These face operators satisfy the properties given in the set-theoretic Definition \ref{def:set def of sset}.
+
+\end{remark}
+
+The set-theoretic definition of simplicial sets is much more involved than that of semi-simplicial sets, the difference being that $n$-simplices can be ``degenerate," meaning they are really smaller simplices in disguise.  Instead of having one identity (like the displayed formula in Definition \ref{def:set def of sset}), there are six.  For this reason, we do not include the set-theoretic definition of simplicial sets; it can be found in \cite{GJ}.  Luckily, the categorical definition of simplicial sets is no harder than that of semi-simplicial sets.  
+
+\begin{definition}[Categorical definition of simplicial sets]
+
+Let $\bD$ denote the category whose objects are the finite non-empty ordered sets, and whose morphisms are non-decreasing maps.  Let $\bD\op$ denote the opposite category.  The {\em category of simplicial sets} is the category of functors $\Sets^{\bD\op}$, whose objects are functors $\bD\op\to\Sets$ and whose morphisms are natural transformations.
+
+\end{definition}
+
+\begin{remark}\label{rem:all you need to know}
+
+As this is not a technical paper designed to prove results, but instead an expository paper meant to convince the reader that simplicial sets are better models for certain networks, we do not require that the reader understand the rigorous underpinnings of simplicial sets.  If convinced of their usefulness, the reader can easily learn about them on his or her own time.  We hope the reader simply understands the following.
+
+A simplicial set is a geometric object with corners, edges, triangular faces, tetrahedra, etc., which are called simplices.  An $n$-simplex has dimension $n$, so that a $0$-simplex is a vertex, a $1$-simplex is an edge, a $2$-simplex is a triangle, and an $n$-simplex is an $n$-dimensional triangle.  Each $n$-simplex has lots of sub-simplices, as a triangle has edges and vertices.  All simplices have ordered vertices, and the vertices of a sub-simplex are in the same order as in the simplex.
+
+If simplicial sets are geometric objects comprised of these triangles, then we must be able to fit together these triangles in some ways.  To do so, simply line up some vertices of one simplex with some vertices of another; doing so will match up a face of the first simplex with a face of the other.  Then attach these two simplices along that common face.  In Example \ref{ex:square} we showed a square; it can be obtained by attaching as we have described here, by gluing the triangle $abd$ to the triangle $acd$ along the common edge $ad$.
+
+\end{remark}
+
+\begin{lemma}[Categorical definition of hypergraphs]
+
+Let $\bD_H$ denote the category with objects denoted $[n]$, one for each $n\in\NN$, as well as an object $V$; with distinct morphisms $v_i^n\taking V\to[n]$ for each $0\leq i\leq n$, and no other non-identity morphisms.  Let $\bD_H\op$ denote its opposite.  
+
+The category of hypergraphs is equivalent to $\Sets^{\bD_H\op}$, the category of contravariant functors from $\bD_H$ to $\Sets$.  
+
+\end{lemma}
+
+\begin{proof}[Sketch of proof]
+
+If we denote an arbitrary object in $\Sets^{\bD_-\op}$ by $F$, then its vertex set is $F(V)$, its hyperedge set is $\coprod_{n\in\NN}F([n])$, and its constituent function is given by the product of the $n+1$ maps $F([n])\to F(V)$.
+
+\end{proof}
+
+Let $\sSets$ denote the category of simplicial sets, and let $\mcH$ denote the category of hypergraphs.  There is a functor $U\taking\sSets\to\mcH$ which assigns to a simplicial set $X\taking\bD\to\Sets$ the hypergraph with vertices $V=X_0$, hyperedges $E=\coprod_{n\in\NN}X_n$, and constituent function $f\taking E\to\OO_+(V)$ defined on $X_n$ as $$f|_{X_n}:=Vrt_n\taking X_n\to (X_0)^{n+1}.$$  One checks easily that this assignment is functorial in $X$.  
+
+\begin{theorem}\label{thm:adjoint}
+
+The functor $U\taking\sSets\to\mcH$ has a left adjoint $F\taking\mcH\to\sSets$, defined as follows.  Let $H=(E,V,f)$ denote a hypergraph, and for each $x\in E$, let $|x|\geq 1$ denote the cardinality of $f(x)$.  Then we have $$F(H)_n:=\{(x,d)|x\in E, \tn{ and } d\taking [n]\to[|x|-1] \tn{ in }\bD)\}/\sim_n,$$ where $\sim_n$ is the equivalence relation: $(x,d)\sim(x',d')$ if and only if $|x|=|x'|=1$ and $f(x)=f(x')$.
+
+\end{theorem}
+
+\begin{proof}
+
+The functor $\bD_H\to\bD$ (given by $V\mapsto [0]$ and $[i]\mapsto [i]$) induces an adjunction $\adjoint{\Sets^{\bD_H\op}}{\Sets^{\bD\op}}$, with the above description.  
+
+\end{proof}
+
+\begin{lemma}[Categorical definition of graphs]
+
+Let $\bD_G$ denote the category with two objects $V$ and $[1]$, two morphisms $V\to[1]$, and no other non-identity morphisms.  Let $\bD_G\op$ denote its opposite.  Then the category of graphs is equivalent to $\Sets^{\bD_G\op}$.
+
+\end{lemma}
+
+\begin{remark}
+
+Adjoint functors such as those provided in Theorem \ref{thm:adjoint} abound.  For example, there are canonical ways to consider a semi-simplicial set as a hypergraph and vice versa. 
+
+\end{remark}
+
+\subsection{Other combinatorial gadgets}
+
+We saw above that category theory provides a framework in which graphs, hypergraphs, simplicial sets, and semi-simplicial sets all can be defined.  One naturally asks: what other categories might be useful for modeling networks?
+
+In order to answer this, we must decide on what we want out of a theory of higher-dimensional graphs should have.  First, we clearly want a set of vertices and sets of (higher) edges, such that each higher edge has an interpretation as a set of vertices.  
+
+\longnote{Following def is wrong.  Not $\bD_H$ but instead the category with objects $V,[1],[2],...$ and $n+1$ morphisms $V\to[n]$.  So $\bD_H$ has one more object than the category we should be using.  Following definition needs to be fixed.}
+
+
+\begin{definition}
+
+An {\em indexing category for higher graphs} is a pair $(\mcC,\bD_H\to\mcC)$, where $\mcC$ is a category $\mcC$ and $\bD_H\to\mcC$ is a functor.  The {\em category of higher graphs} associated to an indexing category $(\mcC,\bD_H\to\mcC)$ is the induced adjunction $$\adjoint{\Sets^{\bD_H\op}}{\Sets^{\mcC\op}}.$$  We sometimes write $\mcC$ to denote the indexing category and $\Sets^{\mcC\op}$ to denote the corresponding category of higher graphs, suppressing mention of $\mcH=\Sets^{\bD_H\op}$.
+
+\end{definition}
+
+\section{Appropriate models for various networks}
+
+In the introduction we attempted to show by way of a short example that graphs are not adequate as models for social networks.  To represent a group of more than two people, one requires something more than vertices and edges.  In the theory of hypergraphs, one uses hyper-edges for such situations; in our theory we use simplices.  The biggest difference between hypergraphs and simplicial sets is that subsets of hyper-edges need not be hyper-edges, whereas in simplicial sets, any sub-simplex of a simplex is a simplex.  
+
+Note that if $n$ people share a common trait, then so does any subset of those people.  If $n$ people are speaking about something together, then so is any subset.  We will now define the types of relations that have this property.
+
+Recall that if $S$ is a set, then its $n$-fold product $S^n=S\cross S\cross\cdots\cross S$ can be identified with the set of functions $\bfn\to S$, where $\bfn=\{1,2,\ldots,n\}$.  Any function of sets $f\taking\bfm\to\bfn$ induces a function $f^*\taking S^n\to S^m$ by taking $(s_1,\ldots,s_n)$ to $(s_{f(1)},\ldots,s_{f(m)})$.  Clearly, any subset $R_n\ss S^n$ has an image $f^*(R_n)\ss S^m$.
+
+For example there are nine functions from ${\bf 2}$ to $\bf{3}$, and these induce nine functions $S\cross S\cross S\to S\cross S$.  For example $(s,t,u)$ may be sent to $(s,s), (t,u)$, or $(u,t)$, to name three.
+
+\begin{definition}
+
+A {\em multi-relation} on a set $S$ consists of a subset $R_i\ss S^i$ for each $i\in\NN$.  We say that such a multi-relation is {\em social and symmetric} if, for any injection $f\taking\bfm\inj\bfn$, we have $f^*(R_n)\ss R_m$.   We say that a multi-relation is {\em social} if, for any order-preserving injection $f\taking\bfm\inj\bfn$, we have $f^*(R_n)\ss R_m$.
+
+\end{definition}
+
+\begin{example}
+
+Let $S$ be the set of people, and let $R_n$ denote the set of all groups of $n$ people who have had lunch together.  This constitutes a social and symmetric multi-relation, because if the people $(a_1,\ldots,a_n)\in S^n$ have had lunch together then so has any subset of them (in any order).  The set $R_1\ss S$ is the set of people who have had lunch at some point.
+
+If $Q_n\ss S^n$ is the relation given by those sets of people who have been the coauthors of a paper, then $Q$ is not a social relation.  However if $Q'_n\ss S^n$ is the relation given by those sets of people who have been {\em among} the coauthors of a given paper, then $Q'$ is social in our sense.  It may or may not be symmetric, depending on whether we are considering ordered or unordered coauthorships.  
+
+\end{example}
+
+Note that some relations one can define in an online social networks may not be social relations in our sense!  For example, in Facebook one may join various groups; thus we can take the multi-relation given by ``are the members of a group."  This is not a social multi-relation.  On the other hand, the relation given by ``are in a group together" is a social multi-relation.
+
+All multi-relations can be modeled by hypergraphs, whereas only social relations can be modeled by simplicial sets.  Though they are slightly less applicable, simplicial sets are easier to work with and analyze topologically.  
+
+\section{Drawbacks of hypergraphs in modeling networks}\label{sec:drawbacks}
+
+\section{Applications and further research}\label{sec:applications}
+
+\end{document}

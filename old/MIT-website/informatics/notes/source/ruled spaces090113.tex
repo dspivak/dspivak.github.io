@@ -1,0 +1,99 @@
+\documentclass{amsart}
+
+\input{decl-db}
+
+\def\Rul{{\bf Rul}}
+\def\dRul{{\bf dRul}}
+\def\j{\bar{j}}
+\def\Str{{\bf Str}}
+
+\begin{document}
+
+\title{Ruled Spaces}
+
+\author{David I. Spivak}
+
+\maketitle
+
+We begin by defining the category of rulers.  Given a topological space $X$, let $\Op(X)$ denote its set of open sets (or category of open inclusions).
+
+\begin{definition}
+
+A {\em ruler} is a pair $(R,J)$, where $R$ is a topological space, and $J=\{j_1,\ldots,j_n\}\ss\Op(R)$ is a finite set of open subsets of $R$ that together constitute a covering of $R$.  If $J$ is understood, we may write $R$ to denote the ruler $(R,J)$.
+
+A morphism of rulers $f\taking (R,J)\to(S,K)$ consists of a continuous map $f\taking R\to S$ such that, for each open set $j\in J$ there exists a $k\in K$ such that $j\ss f^\m1(k)$.
+
+With these definitions, we have defined the {\em category of rulers}, denoted $\Rul$.
+
+\end{definition}
+
+\begin{example}
+
+\begin{enumerate}
+
+\item A finite set $R$ canonically has the structure of a ruler $(R,R)$.  The initial and the terminal objects of the category of rulers are of this form.
+\item If $R$ is a topological space, then the single open set $\{R\}\ss\Op(R)$ is a cover.  We denote by $\bar{R}$ the ruler $(R,\{R\})$.
+\item If $(R,J)$ is a ruler and $j\in J$ is an open set, then $\j:=(j,\{j\})$ is a ruler, and there is a canonical morphism $\j\to (R,J)$ in the category of rulers. 
+\item More generally, if $(R,J)$ is a ruler and $f\taking S\to R$ is a subspace, then one can take $K\ss\Op(S)$ to be the set of preimages $f^\m1(j)$ for $j\in J$.  Then $f$ gives a morphism $(S,K)\to(R,J)$.
+
+\item Consider a ruler in the usual sense: a closed interval in $\RR$ together with $n$-many evenly spaced markings (of a distance $\epsilon$ from one another).  Take $R$ to be the topological space given by the interval, and take $J$ to be a cover given by $\epsilon$-balls around the marked points.  This is a ruler.  A morphism of rulers which leaves the underlying space fixed is simply a {\em refinement} of the cover.
+
+\end{enumerate}
+
+\end{example}
+
+\begin{lemma}
+
+The category $\Rul$ of rulers is closed under finite limits.  
+
+\end{lemma}
+
+\begin{proof}
+
+It suffices to check that $\Rul$ is closed under equalizers and finite products.  Each is easy to check.
+
+\end{proof}
+
+\begin{definition}
+
+A {\em demarcated ruler} is a triple $(R,J,N)$ where $(R,J)$ is a ruler and $N\taking J\to\Str$ is a function, called the {\em naming function}.  We often denote a demarcated ruler $(R,J,N)$ by its underlying ruler $(R,J)$ or simply by $R$, depending on context.
+
+A morphism of demarcated rulers is simply a morphism of their underlying rulers.  We denote the category of demarcated rulers by $\dRul$.
+
+\end{definition}
+
+If $(R,J,N)$ is a demarcated ruler and $j\in J$ is an open set of $R$, then $\j:=(j,\{j\},N(j))$ is the induced demarcated ruler.
+
+\begin{definition}
+
+A {\em semantic system} a full subcategory $\mcR\ss\dRul$ such that, for every ruler $(R,J,N)\in\mcR$ and every open set $j\in J$, the ruler $\j$ is also an object in $\mcR$.  
+
+Given a semantic system $\mcR$, an {\em $\mcR$-description} is a functor $F\taking\mcR\to\Sets$ that preserves finite limits.  A morphism of $\mcR$-descriptions is just a natural transformation of functors.
+
+\end{definition}
+
+Note that if $F\taking\mcR\to\Sets$ is an description, $R=(R,J)\in\mcR$ is a ruler, and $j\in J$ is an element of the distinguished cover, then the natural map $F(\bar{j})\to F(R)$ is a monomorphism, because $F$ preserves finite limits and hence monomorphisms.
+
+\begin{lemma}
+
+Let $\mcR$ be a semantic system.  The category of $\mcR$-descriptions is closed under taking filtered colimits.
+
+\end{lemma}
+
+\begin{proof}
+
+If $\mcS$ is any category, then a filtered colimit of functors $\mcS\to\Sets$, each of which preserves finite limits, will preserve finite limits as well.
+
+\end{proof}
+
+\begin{definition}
+
+Let $\mcR$ be a semantic system.  A {\em preschema on $\mcR$} is a pair $(X,\mcO_X)$, where $X$ is a topological space and $\mcO_X$ is a sheaf of $\mcR$-descriptions.  Given an open set $U\ss X$ and a ruler $R\in\mcR$, we denote by $\mcO_X(U,R)$ the set $\mcO_X(U)(R)$.  
+
+A morphism of preschemas is written $$(f,f^\sharp)\taking(X,\mcO_X)\to(Y,\mcO_Y),$$ where $f\taking X\to Y$ is a map of topological spaces and $f^\sharp\taking f^*\mcO_Y\to\mcO_X$ is a morphism of sheaves.
+
+\end{definition}
+
+Let $(X,\mcO_X)$ be a preschema and $U\ss X$ an open subset. For each ruler $R=(R,J)\in\mcR$, we can pretend that the set $\mcO_X(U,R)$ is a set of continuous maps $U\to R$.   To make this work, we need a locality condition.
+
+\end{document}

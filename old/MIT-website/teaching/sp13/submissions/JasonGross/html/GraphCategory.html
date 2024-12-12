@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>GraphCategory</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library GraphCategory</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Category.html#"><span class="id" type="library">Category</span></a> <a class="idref" href="Graph.html#"><span class="id" type="library">Graph</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab173"></a><h1 class="section">Category of Graphs</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="CategoryOfGraphs"><span class="id" type="section">CategoryOfGraphs</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="CategoryOfGraphs"><span class="id" type="definition">CategoryOfGraphs</span></a> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <a class="idref" href="Graph.html#Graph"><span class="id" type="record">Graph</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> {|<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Morphism</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">GraphHomomorphism</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">;</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Identity</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">identity_graph_homomorphism</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">;</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Compose</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">compose_graph_homomorphisms</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|};<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="Graph.html#GraphHomomorphism_Eq"><span class="id" type="lemma">GraphHomomorphism_Eq</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="CategoryOfGraph's"><span class="id" type="definition">CategoryOfGraph's</span></a> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <a class="idref" href="Graph.html#Graph'"><span class="id" type="record">Graph'</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> {|<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Morphism</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Graph'Homomorphism</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">;</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Identity</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">identity_graph'_homomorphism</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">;</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Compose</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">compose_graph'_homomorphisms</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|};<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="Graph.html#Graph'Homomorphism_Eq"><span class="id" type="lemma">Graph'Homomorphism_Eq</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="GraphCategory.html#CategoryOfGraphs"><span class="id" type="section">CategoryOfGraphs</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

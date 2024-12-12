@@ -1,0 +1,50 @@
+\documentclass{amsart}
+
+\input{decl-main}
+\def\Shv{\She}
+\def\Met{{\bf Met}}
+\def\bD{{\bf \Delta}}
+\def\Fuz{{\bf Fuz}}
+
+\begin{document}
+
+\title{Metric realization of simplicial sets}
+
+\author{David I. Spivak}
+
+\thanks{This project was supported in part by a grant from the Office of Naval Research: N000140910466.}
+
+Let $I$ denote the Grothendieck site whose objects are initial open sets in the unit interval $[0,1]\in\RR$, whose morphisms are inclusions of open subsets, and whose covers are open covers.  In other words, as a category, $I$ is equivalent to the partially ordered set $[0,1]$ under the relation $\leq$.  
+
+A sheaf $X\in\Shv(I)$ on $I$ is a functor $X\taking I\op\to\Sets$ satisfying the sheaf condition.  Explicitly, $X$ consists of a set $X(a)$ for all $a\in[0,1]$ and restriction maps $\rho_{b,a}\taking X(b)\to X(a)$ for all $a\leq b$, such that if $a\leq b\leq c$ then $\rho_{b,a}\circ\rho_{c,b}=\rho_{c,a}$ such that for all $a\in I$, one has $$X(a)\iso\lim_{a'<a}X(a').$$   In particular $X(0)=\singleton$.
+
+A sheaf $X$ is called a {\em fuzzy set} if for each $0<a\leq b$ the restriction map $\rho_{b,a}$ is injective.  Let $\Fuz$ denote the full subcategory of $\Shv(I)$ spanned by the fuzzy sets.  This definition is slightly different than Goguen's \cite{Gog}, but is closely related.  See \cite{Bar}.
+
+Let $\bD$ denote the simplicial indexing category.
+
+\begin{definition}
+
+A {\em fuzzy simplicial set} is a functor $\bD\op\to\Fuz$.  A {\em morphism of fuzzy simplicial sets} is a natural transformation of functors.
+
+\end{definition}
+
+Following Isbell \cite{Isb} we have the following definition of the category of metric spaces.
+
+\begin{definition}
+
+Let $\mcX=(X,d_X)$ and $\mcY=(Y,d_Y)$ denote metric spaces.  A {\em morphism of metric spaces} $\mcX\to\mcY$ is a function $f\taking X\to Y$ such that for all $x,x'\in X$, one has $$d_Y(f(x),f(x'))\leq d_X(x,x').$$  The category whose objects are metric spaces and whose morphisms are defined above is called {\em the category of metric spaces} and denoted $\Met$.
+
+\end{definition}
+
+\bibliographystyle{amsalpha}
+\begin{thebibliography}{JTT}
+
+\bibitem[Gog]{Gog}Goguen.
+
+\bibitem[Bar]{Bar}Barr. Fuzzy sets form a topos.
+
+\bibitem[Isb]{Isb}Isbell.  Category of metric spaces.
+
+\end{thebibliography}
+
+\end{document}

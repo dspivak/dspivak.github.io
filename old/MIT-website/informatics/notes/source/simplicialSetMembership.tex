@@ -1,0 +1,206 @@
+\documentclass{amsart}
+
+\usepackage{amssymb, amscd,stmaryrd,setspace,hyperref,color}
+
+\input xy
+\xyoption{all} \xyoption{poly} \xyoption{knot}\xyoption{curve}
+\input{diagxy}
+
+
+\newcommand{\comment}[1]{}
+
+\newcommand{\longnote}[2][4.9in]{\fcolorbox{black}{yellow}{\parbox{#1}{\color{black} #2}}}
+\newcommand{\shortnote}[1]{\fcolorbox{black}{yellow}{\color{black} #1}}
+\newcommand{\q}[1]{\begin{question}#1\end{question}}
+\newcommand{\g}[1]{\begin{guess}#1\end{guess}}
+
+\def\tn{\textnormal}
+\def\mf{\mathfrak}
+\def\mc{\mathcal}
+
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\CC{{\mathbb C}}
+\def\AA{{\mathbb A}}
+\def\PP{{\mathbb P}}
+\def\NN{{\mathbb N}}
+
+\def\Hom{\tn{Hom}}
+\def\Fun{\tn{Fun}}
+\def\Ob{\tn{Ob}}
+\def\Op{\tn{Op}}
+
+\def\to{\rightarrow}
+\def\from{\leftarrow}
+\def\cross{\times}
+\def\taking{\colon}
+\def\inj{\hookrightarrow}
+\def\surj{\twoheadrightarrow}
+\def\too{\longrightarrow}
+\def\tooo{\longlongrightarrow}
+\def\tto{\rightrightarrows}
+\def\ttto{\equiv\!\!>}
+\def\ss{\subset}
+\def\superset{\supset}
+\def\iso{\cong}
+\def\down{\downarrow}
+\def\|{{\;|\;}}
+\def\m1{{-1}}
+\def\op{^\tn{op}}
+\def\loc{\tn{loc}}
+\def\la{\langle}
+\def\ra{\rangle}
+\def\wt{\widetilde}
+\def\wh{\widehat}
+\def\we{\simeq}
+\def\ol{\overline}
+\def\ul{\underline}
+\def\qeq{\mathop{=}^?}
+
+\def\ullimit{\ar@{}[rd]|(.3)*+{\lrcorner}}
+\def\urlimit{\ar@{}[ld]|(.3)*+{\llcorner}}
+\def\lllimit{\ar@{}[ru]|(.3)*+{\urcorner}}
+\def\lrlimit{\ar@{}[lu]|(.3)*+{\ulcorner}}
+\def\ulhlimit{\ar@{}[rd]|(.3)*+{\diamond}}
+\def\urhlimit{\ar@{}[ld]|(.3)*+{\diamond}}
+\def\llhlimit{\ar@{}[ru]|(.3)*+{\diamond}}
+\def\lrhlimit{\ar@{}[lu]|(.3)*+{\diamond}}
+\newcommand{\clabel}[1]{\ar@{}[rd]|(.5)*+{#1}}
+
+\newcommand{\arr}[1]{\ar@<.5ex>[#1]\ar@<-.5ex>[#1]}
+\newcommand{\arrr}[1]{\ar@<.7ex>[#1]\ar@<0ex>[#1]\ar@<-.7ex>[#1]}
+\newcommand{\arrrr}[1]{\ar@<.9ex>[#1]\ar@<.3ex>[#1]\ar@<-.3ex>[#1]\ar@<-.9ex>[#1]}
+\newcommand{\arrrrr}[1]{\ar@<1ex>[#1]\ar@<.5ex>[#1]\ar[#1]\ar@<-.5ex>[#1]\ar@<-1ex>[#1]}
+
+\newcommand{\To}[1]{\xrightarrow{#1}}
+\newcommand{\Too}[1]{\xrightarrow{\ \ #1\ \ }}
+\newcommand{\From}[1]{\xleftarrow{#1}}
+
+\newcommand{\Adjoint}[4]{\xymatrix@1{#2 \ar@<.5ex>[r]^-{#1} & #3 \ar@<.5ex>[l]^-{#4}}}
+
+\def\id{\tn{id}}
+\def\Top{{\bf Top}}
+\def\Cat{{\bf Cat}}
+\def\Str{{\bf Str}}
+\def\Sets{{\bf Set}}
+\def\Set{{\bf Set}}
+\def\set{{\text \textendash}{\bf Set}}
+\def\sSet{{\bf sSet}}
+\def\sSets{{\bf sSets}}
+\def\Grpd{{\bf Grpd}}
+\def\Pre{{\bf Pre}}
+\def\Shv{{\bf Shv}}
+\def\Rings{{\bf Rings}}
+
+\def\colim{\mathop{\tn{colim}}}
+
+\def\mcA{\mc{A}}
+\def\mcB{\mc{B}}
+\def\mcC{\mc{C}}
+\def\mcD{\mc{D}}
+\def\mcE{\mc{E}}
+\def\mcF{\mc{F}}
+\def\mcG{\mc{G}}
+\def\mcH{\mc{H}}
+\def\mcI{\mc{I}}
+\def\mcJ{\mc{J}}
+\def\mcK{\mc{K}}
+\def\mcL{\mc{L}}
+\def\mcM{\mc{M}}
+\def\mcN{\mc{N}}
+\def\mcO{\mc{O}}
+\def\mcP{\mc{P}}
+\def\mcQ{\mc{Q}}
+\def\mcR{\mc{R}}
+\def\mcS{\mc{S}}
+\def\mcT{\mc{T}}
+\def\mcU{\mc{U}}
+\def\mcV{\mc{V}}
+\def\mcW{\mc{W}}
+\def\mcX{\mc{X}}
+\def\mcY{\mc{Y}}
+\def\mcZ{\mc{Z}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{guess}[theorem]{Guess}
+\newtheorem{answer}[theorem]{Answer}
+\newtheorem{construction}[theorem]{Construction}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{postulate}[theorem]{Postulate}
+
+\def\Finm{{\bf Fin_{m}}}
+\def\El{{\bf El}}
+\def\Gr{{\bf Gr}}
+\def\DT{{\bf DT}}
+\def\DB{{\bf DB}}
+\def\Tables{{\bf Tables}}
+\def\Sch{{\bf Sch}}
+\def\Fin{{\bf Fin}}
+\def\P{{\bf P}}
+\def\SC{{\bf SC}}
+\def\ND{{\bf ND}}
+\def\Poset{{\bf Poset}}
+\def\'{\textnormal{'}}
+\newcommand{\start}[1]{\longnote{Start here with #1}}
+
+%%%%%
+
+\begin{document}
+
+\title{Simplicial representation of set-membership}
+
+\author{David I. Spivak}
+
+\thanks{This project was supported by ONR grant: N000140910466.}
+
+\maketitle
+
+\section{Introduction}
+
+This note was inspired by a question of Peter Gates.  Set-membership is a relation: if $S$ is a set of sets and $E$ is a set of elements then membership can be represented by an injective function $$i\taking M\inj E\cross S.$$  Typically, one wants to analyze patterns in how elements are shared between different sets $s\in S$.  Atkins has suggested that one analyzes these types of situations in terms of simplicial sets.  I agree, and I'll write down how that is done.  I also believe that fuzzy simplicial sets can be useful in analysis; I'll describe this as well.  
+
+The data of set-membership can be represented as a simplicial set, a system of vertices, line segments, solid triangles, solid tetrahedra, and higher-dimensional triangular analogues.  These are called hulls; every hull has $n$ vertices for some $n\geq 1$ and a hull with $n$ vertices is called an {\em $n$-hull}.  A simplicial set is a system of such hulls which are not free-standing but instead share sub-hulls with each other.  Going back to set membership, each set has a number of elements, and these sets are not free-standing but instead can share elements with each other.
+
+In our conversion of a set-membership sceneario $i\taking M\inj E\cross S$ into a simplicial set $S_i$, the vertices in $S_i$ will represent elements $e\in E$.  Each set $s\in S$ will become a hull in $S_i$ consisting of a vertex for each member of that set -- thus if $s$ consists of $n$ elements it will be represented by an $n$-hull. 
+
+Suppose that $s=\{a,b,c,d\}$ and $t=\{a,b,e\}$ are sets.  As a simplicial set, we'll see this as the union of a 4-hull (tetrahedron) $s\mapsto\Delta^{\{a,b,c,d\}}$ and a 3-hull (triangle) $t\mapsto\Delta^{\{a,b,e\}}$, glued together along a 2-hull (edge) $(s\cap t)\mapsto\Delta^{\{a,b\}}$.  While $t$ represents a filled in triangle, one can have a different set-membership scenario that resulted in an ``empty triangle."  For example let $x=\{a,b\}, y=\{b,c\}, z=\{a,c\}$; this would be represented as an empty triangle.
+
+The result of all this is to connect a collection of elements if that collection is contained in one of the sets.  But what if a collection of elements is found in multiple sets -- we may want to say that this collection of elements are more strongly connected.  For example if we are recording diagnoses, each person may have an associated set of diagnoses.  We may want to connect a collection of diseases more strongly if there are more people who have had each of these diseases.  For this, we should perhaps use fuzzy simplicial sets.  Connections have a ``fuzziness" or ``strength".  One may turn a fuzzy simplcial set into a metric space in which tight connections are closer together.  See [Spivak.  Metric realization of fuzzy simplicial sets].
+
+In this note, when I say simplicial sets I do not mean to include the possibility of "degeneracies."  Those readers who do not know what degeneracies are do not need to know, but one includes them if having one instance of something is considered to imply arbitrarily many instances of that thing (as a disease diagnosed once in a patient could be diagnosed again for every moment it inhabits the patient). For those readers who do know what degeneracies are, I am simply using the category of ordered finite non-empty sets and inclusions between them rather than the category of ordered finite non-empty sets and all maps between them.  I also blur the distinction between simplicial sets and symmetric simplicial sets.   The first corresponds to lists, whereas the second corresponds to sets.  Anything said about one in this paper could be applied to the other with the appropriate changes.  
+
+\section{Simplicial representation of set-membership}
+
+Fix a set-membership scenario $i\taking M\inj E\cross S$.  We call elements of $S$ {\em sets}, elements of $E${\em elements} and elements of $M$ {\em memberships}.
+
+The {\em membership complex associated to $i$} is the simplicial set $X(i)$ with $n$-hulls $$X(i)_n:=\{M\cross_SM\cross_SM\cross\cdots\cross_SM\}$$ where there are $n$ copies of $M$ being multiplied.  So $X(i)_0=M$ is the set of memberships and $X(i)_1=M\cross_SM$ represents two members of the same set.  
+
+The simplicial set representing all possible sets on elements $E$ is a big hull; if $\#(E)=m$ then it is an $m$-hull, which we denote $\check{E}$.  The map $M\to E$ induces a map $M\cross\cdots\cross M\to E\cross\cdots\cross E$, which we can compose with the inclusion $M\cross_S\cdots\cross_SM\to M\cross\cdots\cross M$ to give a map $$X(i)\to \check{E}.$$  The image of this map is our other object of interest; we denote it by $Y(i)$ and call it {\em the reduced membership complex associated to $i$}.
+
+Consider again the example of diagnoses.  Given diagnosis data $i\taking M\to E\cross S$, the membership complex $X(i)$ consists of a disjoint union of different hulls, one for each patient.  The reduced membership complex $Y(i)$ is a (not necessarily disjoint) union of hulls -- we gather diseases into a hull if they have all been diagnosed in some patient.  So each patient has an associated hull of diseases, and as different patients may share some subset of diagnoses, different hulls can be connected.
+
+As mentioned above, if we want to more strongly associate diseases that are more commonly shared by a patient then we need to use the map $\pi\taking X(i)\to Y(i)$ (the image map of $X(i)\to\check{E}$) to create a fuzzy simplicial set.
+
+\section{Fuzzy simplicial representation of set-membership}
+
+Let $i\taking M\inj E\cross M$ be a membership scenario, and let $\pi\taking X(i)\to Y(i)$ be as above.  To every $n$-hull in $y\in Y(i)_n$, let $\eta(y)=\frac{\#\pi^\m1(y)}{\#S}\in (0,1]$.  In our running application, $y$ represents a set of diseases and $\eta(y)$ represents the number of people who share every disease in $y$ divided by the total number of people.   
+
+If $y_1$ is a face of $y_2$ then we easily check that $\eta(y_1)\geq \eta(y_2)$; thus $(Y,\eta)$ satisfies the axioms of a fuzzy simplicial set.  To draw this fuzzy simplicial set, imagine that each vertex, edge, triangle, etc. was drawn on a grey scale.  The more people who have a disease or collection of diseases, the darker we should draw the shape representing that disease or collection.
+
+
+\end{document}

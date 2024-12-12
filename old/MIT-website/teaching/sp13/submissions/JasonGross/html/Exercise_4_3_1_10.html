@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_4_3_1_10</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_4_3_1_10</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Graph.html#"><span class="id" type="library">Graph</span></a> <a class="idref" href="GraphCategory.html#"><span class="id" type="library">GraphCategory</span></a> <a class="idref" href="SetCategory.html#"><span class="id" type="library">SetCategory</span></a> <a class="idref" href="NaturalTransformation.html#"><span class="id" type="library">NaturalTransformation</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab98"></a><h1 class="section">Exercise 4.3.1.10</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Exercise_4_3_1_10"><span class="id" type="section">Exercise_4_3_1_10</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab99"></a><h2 class="section">Problem</h2>
+ Let <span class="inlinecode"><a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a></span> and <span class="inlinecode"><a class="idref" href="TopologicalContinuity.html#continuous.continuous_definition.Y"><span class="id" type="variable">Y</span></a></span> be sets, and let <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="TopologicalContinuity.html#continuous.continuous_definition.Y"><span class="id" type="variable">Y</span></a></span>. There is a
+      functor <span class="inlinecode"><span class="id" type="var">C_X</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_1_14.html#Exercise_4_1_1_14.Grph"><span class="id" type="variable">Grph</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" type="keyword">Set</span></span> that sends every graph to the set
+      <span class="inlinecode"><a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a></span> and sends every morphism of graphs to the identity morphism
+      <span class="inlinecode"><span class="id" type="var">id_X</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a></span>. This functor is called the constant functor at
+      <span class="inlinecode"><a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a></span>. Similarly there is a constant functor <span class="inlinecode"><span class="id" type="var">C_Y</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_1_14.html#Exercise_4_1_1_14.Grph"><span class="id" type="variable">Grph</span></a></span> <span class="inlinecode">→</span>
+      <span class="inlinecode"><span class="id" type="keyword">Set</span></span>. Use <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a></span> to construct a natural transformation <span class="inlinecode"><span class="id" type="var">C_X</span></span> <span class="inlinecode">→</span>
+      <span class="inlinecode"><span class="id" type="var">C_Y</span></span>. What are its components? 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Section</span> <a name="Exercise_4_3_1_10.DiagonalFunctor_parts"><span class="id" type="section">DiagonalFunctor_parts</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">C</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">objC</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">D</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">objD</span>).<br/>
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="diagonal_functor_object_of"><span class="id" type="definition">diagonal_functor_object_of</span></a> (<span class="id" type="var">c</span> : <a class="idref" href="Exercise_4_3_1_10.html#Exercise_4_3_1_10.DiagonalFunctor_parts.C"><span class="id" type="variable">C</span></a>) : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="Exercise_4_3_1_10.html#Exercise_4_3_1_10.DiagonalFunctor_parts.D"><span class="id" type="variable">D</span></a> <a class="idref" href="Exercise_4_3_1_10.html#Exercise_4_3_1_10.DiagonalFunctor_parts.C"><span class="id" type="variable">C</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> {| <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">ObjectOf</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">_</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">⇒</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">c</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">);</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">MorphismOf</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">_</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">_</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">_</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">⇒</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">Identity</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">c</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">)</span></a> |};<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<span class="id" type="tactic">intros</span>; <span class="id" type="tactic">repeat</span> <span class="id" type="tactic">rewrite</span> <a class="idref" href="Category.html#LeftIdentity"><span class="id" type="projection">LeftIdentity</span></a>; <span class="id" type="tactic">reflexivity</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="diagonal_functor_morphism_of"><span class="id" type="definition">diagonal_functor_morphism_of</span></a> <span class="id" type="var">X</span> <span class="id" type="var">Y</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">f</span> : <a class="idref" href="Exercise_4_3_1_10.html#Exercise_4_3_1_10.DiagonalFunctor_parts.C"><span class="id" type="variable">C</span></a>.(<a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a>) <a class="idref" href="Exercise_4_3_1_10.html#X"><span class="id" type="variable">X</span></a> <a class="idref" href="Exercise_4_3_1_10.html#Y"><span class="id" type="variable">Y</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="NaturalTransformation.html#NaturalTransformation"><span class="id" type="record">NaturalTransformation</span></a> (<a class="idref" href="Exercise_4_3_1_10.html#diagonal_functor_object_of"><span class="id" type="definition">diagonal_functor_object_of</span></a> <a class="idref" href="Exercise_4_3_1_10.html#X"><span class="id" type="variable">X</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="Exercise_4_3_1_10.html#diagonal_functor_object_of"><span class="id" type="definition">diagonal_functor_object_of</span></a> <a class="idref" href="Exercise_4_3_1_10.html#Y"><span class="id" type="variable">Y</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (<a class="idref" href="NaturalTransformation.html#Build_NaturalTransformation"><span class="id" type="constructor">Build_NaturalTransformation</span></a> (<a class="idref" href="Exercise_4_3_1_10.html#diagonal_functor_object_of"><span class="id" type="definition">diagonal_functor_object_of</span></a> <span class="id" type="var">X</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="Exercise_4_3_1_10.html#diagonal_functor_object_of"><span class="id" type="definition">diagonal_functor_object_of</span></a> <span class="id" type="var">Y</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> ⇒ <span class="id" type="var">f</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">simpl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">rewrite</span> <a class="idref" href="Category.html#LeftIdentity"><span class="id" type="projection">LeftIdentity</span></a>, <a class="idref" href="Category.html#RightIdentity"><span class="id" type="projection">RightIdentity</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_4_3_1_10.html#Exercise_4_3_1_10.DiagonalFunctor_parts"><span class="id" type="section">DiagonalFunctor_parts</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variables</span> <a name="Exercise_4_3_1_10.X"><span class="id" type="variable">X</span></a> <a name="Exercise_4_3_1_10.Y"><span class="id" type="variable">Y</span></a> : <a class="idref" href="SetCategory.html#CategoryOfTypes"><span class="id" type="definition">CategoryOfTypes</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="Exercise_4_3_1_10.f"><span class="id" type="variable">f</span></a> : <a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> <a class="idref" href="SetCategory.html#CategoryOfTypes"><span class="id" type="definition">CategoryOfTypes</span></a> <a class="idref" href="Exercise_4_3_1_10.html#Exercise_4_3_1_10.X"><span class="id" type="variable">X</span></a> <a class="idref" href="Exercise_4_3_1_10.html#Exercise_4_3_1_10.Y"><span class="id" type="variable">Y</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="C"><span class="id" type="definition">C</span></a> := <a class="idref" href="Exercise_4_3_1_10.html#diagonal_functor_object_of"><span class="id" type="definition">diagonal_functor_object_of</span></a> <a class="idref" href="SetCategory.html#CategoryOfTypes"><span class="id" type="definition">CategoryOfTypes</span></a> <a class="idref" href="GraphCategory.html#CategoryOfGraphs"><span class="id" type="definition">CategoryOfGraphs</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="Exercise_4_3_1_10_NT"><span class="id" type="definition">Exercise_4_3_1_10_NT</span></a> : <a class="idref" href="NaturalTransformation.html#NaturalTransformation"><span class="id" type="record">NaturalTransformation</span></a> (<a class="idref" href="Exercise_4_3_1_10.html#C"><span class="id" type="definition">C</span></a> <a class="idref" href="Exercise_4_3_1_10.html#Exercise_4_3_1_10.X"><span class="id" type="variable">X</span></a>) (<a class="idref" href="Exercise_4_3_1_10.html#C"><span class="id" type="definition">C</span></a> <a class="idref" href="Exercise_4_3_1_10.html#Exercise_4_3_1_10.Y"><span class="id" type="variable">Y</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="Exercise_4_3_1_10.html#diagonal_functor_morphism_of"><span class="id" type="definition">diagonal_functor_morphism_of</span></a> <a class="idref" href="SetCategory.html#CategoryOfTypes"><span class="id" type="definition">CategoryOfTypes</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="GraphCategory.html#CategoryOfGraphs"><span class="id" type="definition">CategoryOfGraphs</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Exercise_4_3_1_10.html#Exercise_4_3_1_10.X"><span class="id" type="variable">X</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Exercise_4_3_1_10.html#Exercise_4_3_1_10.Y"><span class="id" type="variable">Y</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Exercise_4_3_1_10.html#Exercise_4_3_1_10.f"><span class="id" type="variable">f</span></a>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_4_3_1_10.html#Exercise_4_3_1_10"><span class="id" type="section">Exercise_4_3_1_10</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>DiscreteCategoryFunctors</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library DiscreteCategoryFunctors</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.FunctionalExtensionality.html#"><span class="id" type="library">FunctionalExtensionality</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Category.html#"><span class="id" type="library">Category</span></a> <a class="idref" href="DiscreteCategory.html#"><span class="id" type="library">DiscreteCategory</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Functor.html#"><span class="id" type="library">Functor</span></a> <a class="idref" href="SetCategory.html#"><span class="id" type="library">SetCategory</span></a> <a class="idref" href="ComputableCategory.html#"><span class="id" type="library">ComputableCategory</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab17"></a><h1 class="section">Discrete Category Functors</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="FunctorFromDiscrete"><span class="id" type="section">FunctorFromDiscrete</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="FunctorFromDiscrete.O"><span class="id" type="variable">O</span></a> : <span class="id" type="keyword">Type</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">D</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">objD</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="FunctorFromDiscrete.objOf"><span class="id" type="variable">objOf</span></a> : <a class="idref" href="DiscreteCategoryFunctors.html#FunctorFromDiscrete.O"><span class="id" type="variable">O</span></a> → <a class="idref" href="DiscreteCategoryFunctors.html#FunctorFromDiscrete.objD"><span class="id" type="variable">objD</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="FunctorFromDiscrete.FunctorFromDiscrete_MorphismOf"><span class="id" type="variable">FunctorFromDiscrete_MorphismOf</span></a> <span class="id" type="var">s</span> <span class="id" type="var">d</span> (<span class="id" type="var">m</span> : <a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> (<a class="idref" href="DiscreteCategory.html#DiscreteCategory"><span class="id" type="definition">DiscreteCategory</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#FunctorFromDiscrete.O"><span class="id" type="variable">O</span></a>) <a class="idref" href="DiscreteCategoryFunctors.html#s"><span class="id" type="variable">s</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#d"><span class="id" type="variable">d</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#FunctorFromDiscrete.D"><span class="id" type="variable">D</span></a> (<a class="idref" href="DiscreteCategoryFunctors.html#FunctorFromDiscrete.objOf"><span class="id" type="variable">objOf</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#s"><span class="id" type="variable">s</span></a>) (<a class="idref" href="DiscreteCategoryFunctors.html#FunctorFromDiscrete.objOf"><span class="id" type="variable">objOf</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#d"><span class="id" type="variable">d</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= <span class="id" type="keyword">match</span> <a class="idref" href="DiscreteCategoryFunctors.html#m"><span class="id" type="variable">m</span></a> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> ⇒ <a class="idref" href="Category.html#Identity"><span class="id" type="projection">Identity</span></a> <span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="FunctorFromDiscrete"><span class="id" type="definition">FunctorFromDiscrete</span></a> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> (<a class="idref" href="DiscreteCategory.html#DiscreteCategory"><span class="id" type="definition">DiscreteCategory</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#FunctorFromDiscrete.O"><span class="id" type="variable">O</span></a>) <a class="idref" href="DiscreteCategoryFunctors.html#FunctorFromDiscrete.D"><span class="id" type="variable">D</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> {| <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">ObjectOf</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">objOf</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">;</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">MorphismOf</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">FunctorFromDiscrete_MorphismOf</span></a> |};<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>; <span class="id" type="tactic">hnf</span> <span class="id" type="keyword">in</span> *; <span class="id" type="tactic">subst</span>; <span class="id" type="tactic">simpl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">auto</span> <span class="id" type="keyword">with</span> <span class="id" type="var">category</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="DiscreteCategoryFunctors.html#FunctorFromDiscrete"><span class="id" type="section">FunctorFromDiscrete</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Notation</span> <a name="ObjectFunctorTo"><span class="id" type="abbreviation">ObjectFunctorTo</span></a> <span class="id" type="var">Index2Object</span> <span class="id" type="var">Index2Cat</span> <span class="id" type="var">Sets</span> :=<br/>
+&nbsp;&nbsp;((<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">Build_Functor</span></a> (@<a class="idref" href="ComputableCategory.html#ComputableCategory"><span class="id" type="definition">ComputableCategory</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">Index2Cat</span>) (<a class="idref" href="SetCategory.html#CategoryOf"><span class="id" type="abbreviation">CategoryOf</span></a> <span class="id" type="var">Sets</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">C'</span> ⇒ <span class="id" type="var">Index2Object</span> <a class="idref" href="DiscreteCategoryFunctors.html#C'"><span class="id" type="variable">C'</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">F</span> ⇒ <a class="idref" href="Functor.html#ObjectOf"><span class="id" type="projection">ObjectOf</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#F"><span class="id" type="variable">F</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a>))).<br/>
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="Obj"><span class="id" type="section">Obj</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="ObjectFunctor"><span class="id" type="definition">ObjectFunctor</span></a> <span class="id" type="var">I</span> (<span class="id" type="var">Index2Object</span> : <a class="idref" href="DiscreteCategoryFunctors.html#I"><span class="id" type="variable">I</span></a> → <span class="id" type="keyword">Type</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(<span class="id" type="var">Index2Cat</span> : <span class="id" type="keyword">∀</span> <span class="id" type="var">i</span> : <a class="idref" href="DiscreteCategoryFunctors.html#I"><span class="id" type="variable">I</span></a>, @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> (@<a class="idref" href="DiscreteCategoryFunctors.html#Index2Object"><span class="id" type="variable">Index2Object</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#i"><span class="id" type="variable">i</span></a>))<br/>
+&nbsp;&nbsp;: <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <span class="id" type="var">_</span> <a class="idref" href="SetCategory.html#CategoryOfTypes"><span class="id" type="definition">CategoryOfTypes</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="DiscreteCategoryFunctors.html#ObjectFunctorTo"><span class="id" type="abbreviation">ObjectFunctorTo</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#Index2Object"><span class="id" type="variable">Index2Object</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#Index2Cat"><span class="id" type="variable">Index2Cat</span></a> <span class="id" type="keyword">Type</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="ObjectFunctorToSet"><span class="id" type="definition">ObjectFunctorToSet</span></a> <span class="id" type="var">I</span> (<span class="id" type="var">Index2Object</span> : <a class="idref" href="DiscreteCategoryFunctors.html#I"><span class="id" type="variable">I</span></a> → <span class="id" type="keyword">Set</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(<span class="id" type="var">Index2Cat</span> : <span class="id" type="keyword">∀</span> <span class="id" type="var">i</span> : <a class="idref" href="DiscreteCategoryFunctors.html#I"><span class="id" type="variable">I</span></a>, @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> (@<a class="idref" href="DiscreteCategoryFunctors.html#Index2Object"><span class="id" type="variable">Index2Object</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#i"><span class="id" type="variable">i</span></a>))<br/>
+&nbsp;&nbsp;: <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <span class="id" type="var">_</span> <a class="idref" href="SetCategory.html#CategoryOfSets"><span class="id" type="definition">CategoryOfSets</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="DiscreteCategoryFunctors.html#ObjectFunctorTo"><span class="id" type="abbreviation">ObjectFunctorTo</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#Index2Object"><span class="id" type="variable">Index2Object</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#Index2Cat"><span class="id" type="variable">Index2Cat</span></a> <span class="id" type="keyword">Set</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="ObjectFunctorToProp"><span class="id" type="definition">ObjectFunctorToProp</span></a> <span class="id" type="var">I</span> (<span class="id" type="var">Index2Object</span> : <a class="idref" href="DiscreteCategoryFunctors.html#I"><span class="id" type="variable">I</span></a> → <span class="id" type="keyword">Prop</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(<span class="id" type="var">Index2Cat</span> : <span class="id" type="keyword">∀</span> <span class="id" type="var">i</span> : <a class="idref" href="DiscreteCategoryFunctors.html#I"><span class="id" type="variable">I</span></a>, @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> (@<a class="idref" href="DiscreteCategoryFunctors.html#Index2Object"><span class="id" type="variable">Index2Object</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#i"><span class="id" type="variable">i</span></a>))<br/>
+&nbsp;&nbsp;: <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <span class="id" type="var">_</span> <a class="idref" href="SetCategory.html#CategoryOfProps"><span class="id" type="definition">CategoryOfProps</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="DiscreteCategoryFunctors.html#ObjectFunctorTo"><span class="id" type="abbreviation">ObjectFunctorTo</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#Index2Object"><span class="id" type="variable">Index2Object</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#Index2Cat"><span class="id" type="variable">Index2Cat</span></a> <span class="id" type="keyword">Prop</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="DiscreteCategoryFunctors.html#Obj"><span class="id" type="section">Obj</span></a>.<br/>
+
+<br/>
+<span class="id" type="var">Arguments</span> <a class="idref" href="DiscreteCategoryFunctors.html#ObjectFunctor"><span class="id" type="definition">ObjectFunctor</span></a> {<span class="id" type="var">I</span> <span class="id" type="var">Index2Object</span> <span class="id" type="var">Index2Cat</span>}.<br/>
+<span class="id" type="var">Arguments</span> <a class="idref" href="DiscreteCategoryFunctors.html#ObjectFunctorToSet"><span class="id" type="definition">ObjectFunctorToSet</span></a> {<span class="id" type="var">I</span> <span class="id" type="var">Index2Object</span> <span class="id" type="var">Index2Cat</span>}.<br/>
+<span class="id" type="var">Arguments</span> <a class="idref" href="DiscreteCategoryFunctors.html#ObjectFunctorToProp"><span class="id" type="definition">ObjectFunctorToProp</span></a> {<span class="id" type="var">I</span> <span class="id" type="var">Index2Object</span> <span class="id" type="var">Index2Cat</span>}.<br/>
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="InducedFunctor"><span class="id" type="section">InducedFunctor</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="InducedFunctor.O"><span class="id" type="variable">O</span></a> : <span class="id" type="keyword">Type</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">O'</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">obj</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="InducedFunctor.f"><span class="id" type="variable">f</span></a> : <a class="idref" href="DiscreteCategoryFunctors.html#InducedFunctor.O"><span class="id" type="variable">O</span></a> → <a class="idref" href="DiscreteCategoryFunctors.html#InducedFunctor.O'"><span class="id" type="variable">O'</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="InducedDiscreteFunctor"><span class="id" type="definition">InducedDiscreteFunctor</span></a> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> (<a class="idref" href="DiscreteCategory.html#DiscreteCategory"><span class="id" type="definition">DiscreteCategory</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#InducedFunctor.O"><span class="id" type="variable">O</span></a>) <a class="idref" href="DiscreteCategoryFunctors.html#InducedFunctor.O'"><span class="id" type="variable">O'</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ |- <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> ?<span class="id" type="var">C</span> ?<span class="id" type="var">D</span> ] ⇒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">Build_Functor</span></a> <span class="id" type="var">C</span> <span class="id" type="var">D</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="DiscreteCategoryFunctors.html#InducedFunctor.f"><span class="id" type="variable">f</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">s</span> <span class="id" type="var">d</span> <span class="id" type="var">m</span> ⇒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">match</span> <a class="idref" href="DiscreteCategoryFunctors.html#m"><span class="id" type="variable">m</span></a> <span class="id" type="keyword">with</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> ⇒ <a class="idref" href="Category.html#Identity"><span class="id" type="projection">Identity</span></a> (<a class="idref" href="DiscreteCategoryFunctors.html#InducedFunctor.f"><span class="id" type="variable">f</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#s"><span class="id" type="variable">s</span></a>) <span class="id" type="keyword">end</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>; <span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> *; <span class="id" type="tactic">repeat</span> <span class="id" type="tactic">subst</span>; <span class="id" type="tactic">trivial</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">rewrite</span> <a class="idref" href="Category.html#RightIdentity"><span class="id" type="projection">RightIdentity</span></a>; <span class="id" type="tactic">repeat</span> <span class="id" type="tactic">rewrite</span> <a class="idref" href="Category.html#LeftIdentity"><span class="id" type="projection">LeftIdentity</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">rewrite</span> <a class="idref" href="Category.html#Associativity"><span class="id" type="projection">Associativity</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="DiscreteCategoryFunctors.html#InducedFunctor"><span class="id" type="section">InducedFunctor</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="disc"><span class="id" type="section">disc</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Ltac</span> <span class="id" type="var">t</span> := <span class="id" type="var">functor_eq</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">subst</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">auto</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="DiscreteFunctor"><span class="id" type="definition">DiscreteFunctor</span></a> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="SetCategory.html#CategoryOfTypes"><span class="id" type="definition">CategoryOfTypes</span></a> <a class="idref" href="ComputableCategory.html#CategoryOfCategories"><span class="id" type="definition">CategoryOfCategories</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">Build_Functor</span></a> <a class="idref" href="SetCategory.html#CategoryOfTypes"><span class="id" type="definition">CategoryOfTypes</span></a> <a class="idref" href="ComputableCategory.html#CategoryOfCategories"><span class="id" type="definition">CategoryOfCategories</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">O</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#existT"><span class="id" type="constructor">existT</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> (<a class="idref" href="DiscreteCategory.html#DiscreteCategory"><span class="id" type="definition">DiscreteCategory</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#O"><span class="id" type="variable">O</span></a>))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">s</span> <span class="id" type="var">d</span> <span class="id" type="var">f</span> ⇒ <a class="idref" href="DiscreteCategoryFunctors.html#InducedDiscreteFunctor"><span class="id" type="definition">InducedDiscreteFunctor</span></a> <span class="id" type="var">_</span> <a class="idref" href="DiscreteCategoryFunctors.html#f"><span class="id" type="variable">f</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> <span class="id" type="var">t</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="DiscreteSetFunctor"><span class="id" type="definition">DiscreteSetFunctor</span></a> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="SetCategory.html#CategoryOfSets"><span class="id" type="definition">CategoryOfSets</span></a> <a class="idref" href="ComputableCategory.html#CategoryOfCategories"><span class="id" type="definition">CategoryOfCategories</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">Build_Functor</span></a> <a class="idref" href="SetCategory.html#CategoryOfSets"><span class="id" type="definition">CategoryOfSets</span></a> <a class="idref" href="ComputableCategory.html#CategoryOfCategories"><span class="id" type="definition">CategoryOfCategories</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">O</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#existT"><span class="id" type="constructor">existT</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> (<a class="idref" href="DiscreteCategory.html#DiscreteCategory"><span class="id" type="definition">DiscreteCategory</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#O"><span class="id" type="variable">O</span></a>))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">s</span> <span class="id" type="var">d</span> <span class="id" type="var">f</span> ⇒ <a class="idref" href="DiscreteCategoryFunctors.html#InducedDiscreteFunctor"><span class="id" type="definition">InducedDiscreteFunctor</span></a> <span class="id" type="var">_</span> <a class="idref" href="DiscreteCategoryFunctors.html#f"><span class="id" type="variable">f</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> <span class="id" type="var">t</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="DiscreteCategoryFunctors.html#disc"><span class="id" type="section">disc</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="DiscreteAdjoints"><span class="id" type="section">DiscreteAdjoints</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="DiscreteObjectIdentity"><span class="id" type="lemma">DiscreteObjectIdentity</span></a> : <a class="idref" href="Functor.html#ComposeFunctors"><span class="id" type="definition">ComposeFunctors</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#ObjectFunctor"><span class="id" type="definition">ObjectFunctor</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#DiscreteFunctor"><span class="id" type="definition">DiscreteFunctor</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Functor.html#IdentityFunctor"><span class="id" type="definition">IdentityFunctor</span></a> <span class="id" type="var">_</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">functor_eq</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="DiscreteCategoryFunctors.html#DiscreteAdjoints"><span class="id" type="section">DiscreteAdjoints</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

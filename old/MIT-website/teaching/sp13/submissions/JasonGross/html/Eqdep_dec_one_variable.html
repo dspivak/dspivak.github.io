@@ -1,0 +1,623 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Eqdep_dec_one_variable</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Eqdep_dec_one_variable</h1>
+
+<div class="code">
+
+<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+We prove that there is only one proof of <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a>=<a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a></span>, i.e <span class="inlinecode"><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a></span>.
+    This holds if the equality upon the set of <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a></span> is decidable.
+    A corollary of this theorem is the equality of the right projections
+    of two equal dependent pairs.
+
+<div class="paragraph"> </div>
+
+    Author:   Thomas Kleymann |&lt;tms@dcs.ed.ac.uk&gt;| in Lego
+              adapted to Coq by B. Barras
+
+<div class="paragraph"> </div>
+
+    Credit:   Proofs up to <span class="inlinecode"><a class="idref" href="Eqdep_dec_one_variable.html#K_dec"><span class="id" type="lemma">K_dec</span></a></span> follow an outline by Michael Hedberg
+
+<div class="paragraph"> </div>
+
+Table of contents:
+
+<div class="paragraph"> </div>
+
+1. Streicher's K and injectivity of dependent pair hold on decidable types
+
+<div class="paragraph"> </div>
+
+1.1. Definition of the functor that builds properties of dependent equalities
+     from a proof of decidability of equality for a set in Type
+
+<div class="paragraph"> </div>
+
+1.2. Definition of the functor that builds properties of dependent equalities
+     from a proof of decidability of equality for a set in Set
+
+<div class="paragraph"> </div>
+
+
+<div class="paragraph"> </div>
+
+<a name="lab21"></a><h1 class="section">Streicher's K and injectivity of dependent pair hold on decidable types</h1>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="EqdepDec"><span class="id" type="section">EqdepDec</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="EqdepDec.A"><span class="id" type="variable">A</span></a> : <span class="id" type="keyword">Type</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="EqdepDec.comp"><span class="id" type="variable">comp</span></a> (<span class="id" type="var">x</span> <span class="id" type="var">y</span> <span class="id" type="var">y'</span>:<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.A"><span class="id" type="variable">A</span></a>) (<span class="id" type="var">eq1</span>:<a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a>) (<span class="id" type="var">eq2</span>:<a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y'"><span class="id" type="variable">y'</span></a>) : <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y'"><span class="id" type="variable">y'</span></a> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_ind"><span class="id" type="definition">eq_ind</span></a> <span class="id" type="var">_</span> (<span class="id" type="keyword">fun</span> <span class="id" type="var">a</span> ⇒ <a class="idref" href="Eqdep_dec_one_variable.html#a"><span class="id" type="variable">a</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y'"><span class="id" type="variable">y'</span></a>) <a class="idref" href="Eqdep_dec_one_variable.html#eq2"><span class="id" type="variable">eq2</span></a> <span class="id" type="var">_</span> <a class="idref" href="Eqdep_dec_one_variable.html#eq1"><span class="id" type="variable">eq1</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Remark</span> <a name="trans_sym_eq"><span class="id" type="lemma">trans_sym_eq</span></a> : <span class="id" type="keyword">∀</span> (<span class="id" type="var">x</span> <span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.A"><span class="id" type="variable">A</span></a>) (<span class="id" type="var">u</span>:<a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a>), <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.comp"><span class="id" type="variable">comp</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#u"><span class="id" type="variable">u</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#u"><span class="id" type="variable">u</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">case</span> <span class="id" type="var">u</span>; <span class="id" type="tactic">trivial</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="EqdepDec.x"><span class="id" type="variable">x</span></a> : <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.A"><span class="id" type="variable">A</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="EqdepDec.eq_dec"><span class="id" type="variable">eq_dec</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.A"><span class="id" type="variable">A</span></a>, <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'\/'_x"><span class="id" type="notation">∨</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'<>'_x"><span class="id" type="notation">≠</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="EqdepDec.nu"><span class="id" type="variable">nu</span></a> (<span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.A"><span class="id" type="variable">A</span></a>) (<span class="id" type="var">u</span>:<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a>) : <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">match</span> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.eq_dec"><span class="id" type="variable">eq_dec</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#or_introl"><span class="id" type="constructor">or_introl</span></a> <span class="id" type="var">eqxy</span> ⇒ <span class="id" type="var">eqxy</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#or_intror"><span class="id" type="constructor">or_intror</span></a> <span class="id" type="var">neqxy</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#False_ind"><span class="id" type="definition">False_ind</span></a> <span class="id" type="var">_</span> (<span class="id" type="var">neqxy</span> <a class="idref" href="Eqdep_dec_one_variable.html#u"><span class="id" type="variable">u</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="EqdepDec.nu_constant"><span class="id" type="variable">nu_constant</span></a> : <span class="id" type="keyword">∀</span> (<span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.A"><span class="id" type="variable">A</span></a>) (<span class="id" type="var">u</span> <span class="id" type="var">v</span>:<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a>), <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.nu"><span class="id" type="variable">nu</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#u"><span class="id" type="variable">u</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.nu"><span class="id" type="variable">nu</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#v"><span class="id" type="variable">v</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">unfold</span> <span class="id" type="var">nu</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">case</span> (<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.eq_dec"><span class="id" type="variable">eq_dec</span></a> <span class="id" type="var">y</span>); <span class="id" type="tactic">intros</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">case</span> <span class="id" type="var">n</span>; <span class="id" type="tactic">trivial</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="EqdepDec.nu_inv"><span class="id" type="variable">nu_inv</span></a> (<span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.A"><span class="id" type="variable">A</span></a>) (<span class="id" type="var">v</span>:<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a>) : <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a> := <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.comp"><span class="id" type="variable">comp</span></a> (<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.nu"><span class="id" type="variable">nu</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a>)) <a class="idref" href="Eqdep_dec_one_variable.html#v"><span class="id" type="variable">v</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Remark</span> <a name="nu_left_inv"><span class="id" type="lemma">nu_left_inv</span></a> : <span class="id" type="keyword">∀</span> (<span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.A"><span class="id" type="variable">A</span></a>) (<span class="id" type="var">u</span>:<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a>), <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.nu_inv"><span class="id" type="variable">nu_inv</span></a> (<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.nu"><span class="id" type="variable">nu</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#u"><span class="id" type="variable">u</span></a>) <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#u"><span class="id" type="variable">u</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">case</span> <span class="id" type="var">u</span>; <span class="id" type="tactic">unfold</span> <span class="id" type="var">nu_inv</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="Eqdep_dec_one_variable.html#trans_sym_eq"><span class="id" type="lemma">trans_sym_eq</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Theorem</span> <a name="eq_proofs_unicity"><span class="id" type="lemma">eq_proofs_unicity</span></a> : <span class="id" type="keyword">∀</span> (<span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.A"><span class="id" type="variable">A</span></a>) (<span class="id" type="var">p1</span> <span class="id" type="var">p2</span>:<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a>), <a class="idref" href="Eqdep_dec_one_variable.html#p1"><span class="id" type="variable">p1</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p2"><span class="id" type="variable">p2</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">elim</span> <a class="idref" href="Eqdep_dec_one_variable.html#nu_left_inv"><span class="id" type="lemma">nu_left_inv</span></a> <span class="id" type="keyword">with</span> (<span class="id" type="var">u</span> := <span class="id" type="var">p1</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">elim</span> <a class="idref" href="Eqdep_dec_one_variable.html#nu_left_inv"><span class="id" type="lemma">nu_left_inv</span></a> <span class="id" type="keyword">with</span> (<span class="id" type="var">u</span> := <span class="id" type="var">p2</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">elim</span> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.nu_constant"><span class="id" type="variable">nu_constant</span></a> <span class="id" type="keyword">with</span> <span class="id" type="var">y</span> <span class="id" type="var">p1</span> <span class="id" type="var">p2</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Theorem</span> <a name="K_dec"><span class="id" type="lemma">K_dec</span></a> :<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> <span class="id" type="var">P</span>:<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a> → <span class="id" type="keyword">Prop</span>, <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a>) → <span class="id" type="keyword">∀</span> <span class="id" type="var">p</span>:<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a>, <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">elim</span> <a class="idref" href="Eqdep_dec_one_variable.html#eq_proofs_unicity"><span class="id" type="lemma">eq_proofs_unicity</span></a> <span class="id" type="keyword">with</span> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a>) <span class="id" type="var">p</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">trivial</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+The corollary 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="EqdepDec.proj"><span class="id" type="variable">proj</span></a> (<span class="id" type="var">P</span>:<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.A"><span class="id" type="variable">A</span></a> → <span class="id" type="keyword">Prop</span>) (<span class="id" type="var">exP</span>:<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#ex"><span class="id" type="inductive">ex</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a>) (<span class="id" type="var">def</span>:<a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a>) : <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">match</span> <a class="idref" href="Eqdep_dec_one_variable.html#exP"><span class="id" type="variable">exP</span></a> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#ex_intro"><span class="id" type="constructor">ex_intro</span></a> <span class="id" type="var">x'</span> <span class="id" type="var">prf</span> ⇒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">match</span> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.eq_dec"><span class="id" type="variable">eq_dec</span></a> <span class="id" type="var">x'</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#or_introl"><span class="id" type="constructor">or_introl</span></a> <span class="id" type="var">eqprf</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_ind"><span class="id" type="definition">eq_ind</span></a> <span class="id" type="var">x'</span> <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <span class="id" type="var">prf</span> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_sym"><span class="id" type="lemma">eq_sym</span></a> <span class="id" type="var">eqprf</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <a class="idref" href="Eqdep_dec_one_variable.html#def"><span class="id" type="variable">def</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Theorem</span> <a name="inj_right_pair"><span class="id" type="lemma">inj_right_pair</span></a> :<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">P</span>:<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.A"><span class="id" type="variable">A</span></a> → <span class="id" type="keyword">Prop</span>) (<span class="id" type="var">y</span> <span class="id" type="var">y'</span>:<a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a>),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#ex_intro"><span class="id" type="constructor">ex_intro</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#ex_intro"><span class="id" type="constructor">ex_intro</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y'"><span class="id" type="variable">y'</span></a> → <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y'"><span class="id" type="variable">y'</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">cut</span> (<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.proj"><span class="id" type="variable">proj</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#ex_intro"><span class="id" type="constructor">ex_intro</span></a> <span class="id" type="var">P</span> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a> <span class="id" type="var">y</span>) <span class="id" type="var">y</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.proj"><span class="id" type="variable">proj</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#ex_intro"><span class="id" type="constructor">ex_intro</span></a> <span class="id" type="var">P</span> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a> <span class="id" type="var">y'</span>) <span class="id" type="var">y</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">simpl</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">case</span> (<a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.eq_dec"><span class="id" type="variable">eq_dec</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec.x"><span class="id" type="variable">x</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intro</span> <span class="id" type="var">e</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">elim</span> <span class="id" type="var">e</span> <span class="id" type="keyword">using</span> <a class="idref" href="Eqdep_dec_one_variable.html#K_dec"><span class="id" type="lemma">K_dec</span></a>; <span class="id" type="tactic">trivial</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">case</span> <span class="id" type="var">n</span>; <span class="id" type="tactic">trivial</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">case</span> <span class="id" type="var">H</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Eqdep_dec_one_variable.html#EqdepDec"><span class="id" type="section">EqdepDec</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="EqdepFacts_one_variable.html#"><span class="id" type="library">EqdepFacts_one_variable</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+We deduce axiom <span class="inlinecode"><a class="idref" href="Exercise_4_5_3_13.html#Exercise_4_5_3_13.K"><span class="id" type="variable">K</span></a></span> for (decidable) types 
+</div>
+<div class="code">
+<span class="id" type="keyword">Theorem</span> <a name="K_dec_type"><span class="id" type="lemma">K_dec_type</span></a> :<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">A</span>:<span class="id" type="keyword">Type</span>) (<span class="id" type="var">x</span>:<a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a>),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">∀</span> <span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a>, <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">{</span></a><a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">}</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">+</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">{</span></a><a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'<>'_x"><span class="id" type="notation">≠</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">}</span></a>) →<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">P</span>:<a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> → <span class="id" type="keyword">Prop</span>), <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a>) → <span class="id" type="keyword">∀</span> <span class="id" type="var">p</span>:<a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a>, <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a>.<br/>
+<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">intros</span> <span class="id" type="var">A</span> <span class="id" type="var">x</span> <span class="id" type="var">eq_dec</span> <span class="id" type="var">P</span> <span class="id" type="var">H</span> <span class="id" type="var">p</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">elim</span> <span class="id" type="var">p</span> <span class="id" type="keyword">using</span> <a class="idref" href="Eqdep_dec_one_variable.html#K_dec"><span class="id" type="lemma">K_dec</span></a>; <span class="id" type="tactic">intros</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">case</span> (<span class="id" type="var">eq_dec</span> <span class="id" type="var">y</span>); [<span class="id" type="tactic">left</span>|<span class="id" type="tactic">right</span>]; <span class="id" type="tactic">assumption</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">trivial</span>.<br/>
+<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Theorem</span> <a name="K_dec_set"><span class="id" type="lemma">K_dec_set</span></a> :<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">A</span>:<span class="id" type="keyword">Set</span>) (<span class="id" type="var">x</span>:<a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a>),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">∀</span> <span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a>, <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">{</span></a><a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">}</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">+</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">{</span></a><a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'<>'_x"><span class="id" type="notation">≠</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">}</span></a>) →<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">P</span>:<a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> → <span class="id" type="keyword">Prop</span>), <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a>) → <span class="id" type="keyword">∀</span> <span class="id" type="var">p</span>:<a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a>, <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a>.<br/>
+<span class="id" type="keyword">Proof</span> <span class="id" type="keyword">fun</span> <span class="id" type="var">A</span> ⇒ <a class="idref" href="Eqdep_dec_one_variable.html#K_dec_type"><span class="id" type="lemma">K_dec_type</span></a> (<span class="id" type="var">A</span>:=<a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a>).<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+We deduce the <span class="inlinecode"><a class="idref" href="EqdepFacts_one_variable.html#EqdepTheory.eq_rect_eq"><span class="id" type="lemma">eq_rect_eq</span></a></span> axiom for (decidable) types 
+</div>
+<div class="code">
+<span class="id" type="keyword">Theorem</span> <a name="eq_rect_eq_dec"><span class="id" type="lemma">eq_rect_eq_dec</span></a> :<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">A</span>:<span class="id" type="keyword">Type</span>) (<span class="id" type="var">p</span>:<a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a>),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">∀</span> <span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a>, <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">{</span></a><a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">}</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">+</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">{</span></a><a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'<>'_x"><span class="id" type="notation">≠</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">}</span></a>) →<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">Q</span>:<a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a> → <span class="id" type="keyword">Type</span>) (<span class="id" type="var">x</span>:<a class="idref" href="Eqdep_dec_one_variable.html#Q"><span class="id" type="variable">Q</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a>) (<span class="id" type="var">h</span>:<a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a>), <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_rect"><span class="id" type="definition">eq_rect</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#Q"><span class="id" type="variable">Q</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#h"><span class="id" type="variable">h</span></a>.<br/>
+<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">intros</span> <span class="id" type="var">A</span> <span class="id" type="var">p</span> <span class="id" type="var">eq_dec</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">apply</span> (<a class="idref" href="EqdepFacts_one_variable.html#Streicher_K__eq_rect_eq"><span class="id" type="lemma">Streicher_K__eq_rect_eq</span></a> <span class="id" type="var">A</span> <span class="id" type="var">p</span> (<a class="idref" href="Eqdep_dec_one_variable.html#K_dec_type"><span class="id" type="lemma">K_dec_type</span></a> <span class="id" type="var">eq_dec</span>)).<br/>
+<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+We deduce the injectivity of dependent equality for decidable types 
+</div>
+<div class="code">
+<span class="id" type="keyword">Theorem</span> <a name="eq_dep_eq_dec"><span class="id" type="lemma">eq_dep_eq_dec</span></a> :<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">A</span>:<span class="id" type="keyword">Type</span>) (<span class="id" type="var">p</span>:<a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a>),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">∀</span> <span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a>, <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">{</span></a><a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">}</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">+</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">{</span></a><a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'<>'_x"><span class="id" type="notation">≠</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">}</span></a>) →<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">P</span>:<a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a>→<span class="id" type="keyword">Type</span>) (<span class="id" type="var">x</span> <span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a>), <a class="idref" href="EqdepFacts_one_variable.html#eq_dep"><span class="id" type="inductive">eq_dep</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a> → <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a>.<br/>
+<span class="id" type="keyword">Proof</span> (<span class="id" type="keyword">fun</span> <span class="id" type="var">A</span> <span class="id" type="var">p</span> <span class="id" type="var">eq_dec</span> ⇒ <a class="idref" href="EqdepFacts_one_variable.html#eq_rect_eq__eq_dep_eq"><span class="id" type="lemma">eq_rect_eq__eq_dep_eq</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a> (<a class="idref" href="Eqdep_dec_one_variable.html#eq_rect_eq_dec"><span class="id" type="lemma">eq_rect_eq_dec</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#eq_dec"><span class="id" type="variable">eq_dec</span></a>)).<br/>
+
+<br/>
+<span class="id" type="keyword">Theorem</span> <a name="UIP_dec"><span class="id" type="lemma">UIP_dec</span></a> :<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">A</span>:<span class="id" type="keyword">Type</span>) (<span class="id" type="var">x</span>:<a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a>),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">∀</span> <span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a>, <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">{</span></a><a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">}</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">+</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">{</span></a><a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'<>'_x"><span class="id" type="notation">≠</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">}</span></a>) →<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a>) (<span class="id" type="var">p1</span> <span class="id" type="var">p2</span>:<a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a>), <a class="idref" href="Eqdep_dec_one_variable.html#p1"><span class="id" type="variable">p1</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p2"><span class="id" type="variable">p2</span></a>.<br/>
+<span class="id" type="keyword">Proof</span> (<span class="id" type="keyword">fun</span> <span class="id" type="var">A</span> <span class="id" type="var">x</span> <span class="id" type="var">eq_dec</span> ⇒ <a class="idref" href="EqdepFacts_one_variable.html#eq_dep_eq__UIP"><span class="id" type="lemma">eq_dep_eq__UIP</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> (<a class="idref" href="Eqdep_dec_one_variable.html#eq_dep_eq_dec"><span class="id" type="lemma">eq_dep_eq_dec</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#eq_dec"><span class="id" type="variable">eq_dec</span></a>)).<br/>
+
+<br/>
+<span class="id" type="keyword">Unset Implicit Arguments</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab22"></a><h2 class="section">Definition of the functor that builds properties of dependent equalities on decidable sets in Type</h2>
+
+<div class="paragraph"> </div>
+
+ The signature of decidable sets in <span class="inlinecode"><span class="id" type="keyword">Type</span></span> 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Module</span> <span class="id" type="keyword">Type</span> <a name="DecidableType"><span class="id" type="module">DecidableType</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Parameter</span> <a name="DecidableType.U"><span class="id" type="axiom">U</span></a>:<span class="id" type="keyword">Type</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Parameter</span> <a name="DecidableType.x"><span class="id" type="axiom">x</span></a>:<a class="idref" href="Eqdep_dec_one_variable.html#DecidableType.U"><span class="id" type="axiom">U</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Axiom</span> <a name="DecidableType.eq_dec"><span class="id" type="axiom">eq_dec</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#DecidableType.U"><span class="id" type="axiom">U</span></a>, <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">{</span></a><a class="idref" href="Eqdep_dec_one_variable.html#DecidableType.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">}</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">+</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">{</span></a><a class="idref" href="Eqdep_dec_one_variable.html#DecidableType.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'<>'_x"><span class="id" type="notation">≠</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">}</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Eqdep_dec_one_variable.html#"><span class="id" type="module">DecidableType</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+The module <span class="inlinecode"><a class="idref" href="Eqdep_dec_one_variable.html#DecidableEqDep"><span class="id" type="module">DecidableEqDep</span></a></span> collects equality properties for decidable
+    set in <span class="inlinecode"><span class="id" type="keyword">Type</span></span> 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Module</span> <a name="DecidableEqDep"><span class="id" type="module">DecidableEqDep</span></a> (<span class="id" type="var">M</span>:<a class="idref" href="Eqdep_dec_one_variable.html#"><span class="id" type="module">DecidableType</span></a>).<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Import</span> <span class="id" type="var">M</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Invariance by Substitution of Reflexive Equality Proofs 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="DecidableEqDep.eq_rect_eq"><span class="id" type="lemma">eq_rect_eq</span></a> :<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">Q</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.U"><span class="id" type="axiom">U</span></a> → <span class="id" type="keyword">Type</span>) (<span class="id" type="var">H</span>:<a class="idref" href="Eqdep_dec_one_variable.html#Q"><span class="id" type="variable">Q</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a>) (<span class="id" type="var">h</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a>), <a class="idref" href="Eqdep_dec_one_variable.html#H"><span class="id" type="variable">H</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_rect"><span class="id" type="definition">eq_rect</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#Q"><span class="id" type="variable">Q</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#H"><span class="id" type="variable">H</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#h"><span class="id" type="variable">h</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span> (<a class="idref" href="Eqdep_dec_one_variable.html#DecidableEqDep.eq_rect_eq_dec"><span class="id" type="lemma">eq_rect_eq_dec</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.eq_dec"><span class="id" type="axiom">eq_dec</span></a>).<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Injectivity of Dependent Equality 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Theorem</span> <a name="DecidableEqDep.eq_dep_eq"><span class="id" type="lemma">eq_dep_eq</span></a> :<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">P</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.U"><span class="id" type="axiom">U</span></a>→<span class="id" type="keyword">Type</span>) (<span class="id" type="var">H</span> <span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a>), <a class="idref" href="EqdepFacts_one_variable.html#eq_dep"><span class="id" type="inductive">eq_dep</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.U"><span class="id" type="axiom">U</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#H"><span class="id" type="variable">H</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a> → <a class="idref" href="Eqdep_dec_one_variable.html#H"><span class="id" type="variable">H</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span> (<a class="idref" href="EqdepFacts_one_variable.html#eq_rect_eq__eq_dep_eq"><span class="id" type="lemma">eq_rect_eq__eq_dep_eq</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.U"><span class="id" type="axiom">U</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#DecidableEqDep.eq_rect_eq"><span class="id" type="lemma">eq_rect_eq</span></a>).<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Uniqueness of Identity Proofs (UIP) 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="DecidableEqDep.UIP"><span class="id" type="lemma">UIP</span></a> : <span class="id" type="keyword">∀</span> (<span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.U"><span class="id" type="axiom">U</span></a>) (<span class="id" type="var">p1</span> <span class="id" type="var">p2</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a>), <a class="idref" href="Eqdep_dec_one_variable.html#p1"><span class="id" type="variable">p1</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p2"><span class="id" type="variable">p2</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span> (<a class="idref" href="EqdepFacts_one_variable.html#eq_dep_eq__UIP"><span class="id" type="lemma">eq_dep_eq__UIP</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.U"><span class="id" type="axiom">U</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#DecidableEqDep.eq_dep_eq"><span class="id" type="lemma">eq_dep_eq</span></a>).<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Uniqueness of Reflexive Identity Proofs 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="DecidableEqDep.UIP_refl"><span class="id" type="lemma">UIP_refl</span></a> : <span class="id" type="keyword">∀</span> (<span class="id" type="var">p</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a>), <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span> (<a class="idref" href="EqdepFacts_one_variable.html#UIP__UIP_refl"><span class="id" type="lemma">UIP__UIP_refl</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.U"><span class="id" type="axiom">U</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#DecidableEqDep.UIP"><span class="id" type="lemma">UIP</span></a>).<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Streicher's axiom K 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="DecidableEqDep.Streicher_K"><span class="id" type="lemma">Streicher_K</span></a> :<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">P</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> → <span class="id" type="keyword">Prop</span>), <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a>) → <span class="id" type="keyword">∀</span> <span class="id" type="var">p</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a>, <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span> (<a class="idref" href="Eqdep_dec_one_variable.html#DecidableEqDep.K_dec_type"><span class="id" type="lemma">K_dec_type</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.eq_dec"><span class="id" type="axiom">eq_dec</span></a>).<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Injectivity of equality on dependent pairs in <span class="inlinecode"><span class="id" type="keyword">Type</span></span> 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="DecidableEqDep.inj_pairT2"><span class="id" type="lemma">inj_pairT2</span></a> :<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">P</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.U"><span class="id" type="axiom">U</span></a> → <span class="id" type="keyword">Type</span>) (<span class="id" type="var">H</span> <span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a>),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#existT"><span class="id" type="constructor">existT</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#H"><span class="id" type="variable">H</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#existT"><span class="id" type="constructor">existT</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a> → <a class="idref" href="Eqdep_dec_one_variable.html#H"><span class="id" type="variable">H</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span> <a class="idref" href="EqdepFacts_one_variable.html#eq_dep_eq__inj_pairT2"><span class="id" type="abbreviation">eq_dep_eq__inj_pairT2</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.U"><span class="id" type="axiom">U</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#DecidableEqDep.eq_dep_eq"><span class="id" type="lemma">eq_dep_eq</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Proof-irrelevance on subsets of decidable sets 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="DecidableEqDep.inj_pairP2"><span class="id" type="lemma">inj_pairP2</span></a> :<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">P</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.U"><span class="id" type="axiom">U</span></a> → <span class="id" type="keyword">Prop</span>) (<span class="id" type="var">p</span> <span class="id" type="var">q</span>:<a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a>),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#ex_intro"><span class="id" type="constructor">ex_intro</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#ex_intro"><span class="id" type="constructor">ex_intro</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#q"><span class="id" type="variable">q</span></a> → <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#q"><span class="id" type="variable">q</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="Eqdep_dec_one_variable.html#DecidableEqDep.inj_right_pair"><span class="id" type="lemma">inj_right_pair</span></a> <span class="id" type="keyword">with</span> (<span class="id" type="var">A</span>:=<a class="idref" href="Eqdep_dec_one_variable.html#M.U"><span class="id" type="axiom">U</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span> <span class="id" type="var">y0</span>; <span class="id" type="tactic">case</span> (<a class="idref" href="Eqdep_dec_one_variable.html#M.eq_dec"><span class="id" type="axiom">eq_dec</span></a> <span class="id" type="var">y0</span>); [<span class="id" type="tactic">left</span>|<span class="id" type="tactic">right</span>]; <span class="id" type="tactic">assumption</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">assumption</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Eqdep_dec_one_variable.html#"><span class="id" type="module">DecidableEqDep</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab23"></a><h2 class="section">Definition of the functor that builds properties of dependent equalities on decidable sets in Set</h2>
+
+<div class="paragraph"> </div>
+
+ The signature of decidable sets in <span class="inlinecode"><span class="id" type="keyword">Set</span></span> 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Module</span> <span class="id" type="keyword">Type</span> <a name="DecidableSet"><span class="id" type="module">DecidableSet</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Parameter</span> <a name="DecidableSet.U"><span class="id" type="axiom">U</span></a>:<span class="id" type="keyword">Type</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Parameter</span> <a name="DecidableSet.x"><span class="id" type="axiom">x</span></a>:<a class="idref" href="Eqdep_dec_one_variable.html#DecidableSet.U"><span class="id" type="axiom">U</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Axiom</span> <a name="DecidableSet.eq_dec"><span class="id" type="axiom">eq_dec</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#DecidableSet.U"><span class="id" type="axiom">U</span></a>, <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">{</span></a><a class="idref" href="Eqdep_dec_one_variable.html#DecidableSet.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">}</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">+</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">{</span></a><a class="idref" href="Eqdep_dec_one_variable.html#DecidableSet.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'<>'_x"><span class="id" type="notation">≠</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">}</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Eqdep_dec_one_variable.html#"><span class="id" type="module">DecidableSet</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+The module <span class="inlinecode"><a class="idref" href="Eqdep_dec_one_variable.html#DecidableEqDepSet"><span class="id" type="module">DecidableEqDepSet</span></a></span> collects equality properties for decidable
+    set in <span class="inlinecode"><span class="id" type="keyword">Set</span></span> 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Module</span> <a name="DecidableEqDepSet"><span class="id" type="module">DecidableEqDepSet</span></a> (<span class="id" type="var">M</span>:<a class="idref" href="Eqdep_dec_one_variable.html#"><span class="id" type="module">DecidableSet</span></a>).<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Import</span> <span class="id" type="var">M</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Module</span> <a name="DecidableEqDepSet.N"><span class="id" type="module">N</span></a>:=<a class="idref" href="Eqdep_dec_one_variable.html#"><span class="id" type="module">DecidableEqDep</span></a>(<a class="idref" href="Eqdep_dec_one_variable.html#"><span class="id" type="module">M</span></a>).<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Invariance by Substitution of Reflexive Equality Proofs 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="DecidableEqDepSet.eq_rect_eq"><span class="id" type="lemma">eq_rect_eq</span></a> :<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">Q</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.U"><span class="id" type="axiom">U</span></a> → <span class="id" type="keyword">Type</span>) (<span class="id" type="var">H</span>:<a class="idref" href="Eqdep_dec_one_variable.html#Q"><span class="id" type="variable">Q</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a>) (<span class="id" type="var">h</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a>), <a class="idref" href="Eqdep_dec_one_variable.html#H"><span class="id" type="variable">H</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_rect"><span class="id" type="definition">eq_rect</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#Q"><span class="id" type="variable">Q</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#H"><span class="id" type="variable">H</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#h"><span class="id" type="variable">h</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span> <a class="idref" href="Eqdep_dec_one_variable.html#DecidableEqDepSet.eq_rect_eq_dec"><span class="id" type="lemma">eq_rect_eq_dec</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.eq_dec"><span class="id" type="axiom">eq_dec</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Injectivity of Dependent Equality 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Theorem</span> <a name="DecidableEqDepSet.eq_dep_eq"><span class="id" type="lemma">eq_dep_eq</span></a> :<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">P</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.U"><span class="id" type="axiom">U</span></a>→<span class="id" type="keyword">Type</span>) (<span class="id" type="var">H</span> <span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a>), <a class="idref" href="EqdepFacts_one_variable.html#eq_dep"><span class="id" type="inductive">eq_dep</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.U"><span class="id" type="axiom">U</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#H"><span class="id" type="variable">H</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a> → <a class="idref" href="Eqdep_dec_one_variable.html#H"><span class="id" type="variable">H</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span> <a class="idref" href="Eqdep_dec_one_variable.html#DecidableEqDepSet.N.eq_dep_eq"><span class="id" type="lemma">N.eq_dep_eq</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Uniqueness of Identity Proofs (UIP) 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="DecidableEqDepSet.UIP"><span class="id" type="lemma">UIP</span></a> : <span class="id" type="keyword">∀</span> (<span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.U"><span class="id" type="axiom">U</span></a>) (<span class="id" type="var">p1</span> <span class="id" type="var">p2</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a>), <a class="idref" href="Eqdep_dec_one_variable.html#p1"><span class="id" type="variable">p1</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p2"><span class="id" type="variable">p2</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span> <a class="idref" href="Eqdep_dec_one_variable.html#DecidableEqDepSet.N.UIP"><span class="id" type="lemma">N.UIP</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Uniqueness of Reflexive Identity Proofs 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="DecidableEqDepSet.UIP_refl"><span class="id" type="lemma">UIP_refl</span></a> : <span class="id" type="keyword">∀</span> (<span class="id" type="var">p</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a>), <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span> <a class="idref" href="Eqdep_dec_one_variable.html#DecidableEqDepSet.N.UIP_refl"><span class="id" type="lemma">N.UIP_refl</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Streicher's axiom K 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="DecidableEqDepSet.Streicher_K"><span class="id" type="lemma">Streicher_K</span></a> :<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">P</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> → <span class="id" type="keyword">Prop</span>), <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a>) → <span class="id" type="keyword">∀</span> <span class="id" type="var">p</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a>, <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span> <a class="idref" href="Eqdep_dec_one_variable.html#DecidableEqDepSet.N.Streicher_K"><span class="id" type="lemma">N.Streicher_K</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Proof-irrelevance on subsets of decidable sets 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="DecidableEqDepSet.inj_pairP2"><span class="id" type="lemma">inj_pairP2</span></a> :<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">P</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.U"><span class="id" type="axiom">U</span></a> → <span class="id" type="keyword">Prop</span>) (<span class="id" type="var">p</span> <span class="id" type="var">q</span>:<a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a>),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#ex_intro"><span class="id" type="constructor">ex_intro</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#ex_intro"><span class="id" type="constructor">ex_intro</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#q"><span class="id" type="variable">q</span></a> → <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#q"><span class="id" type="variable">q</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span> <a class="idref" href="Eqdep_dec_one_variable.html#DecidableEqDepSet.N.inj_pairP2"><span class="id" type="lemma">N.inj_pairP2</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Injectivity of equality on dependent pairs in <span class="inlinecode"><span class="id" type="keyword">Type</span></span> 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="DecidableEqDepSet.inj_pair2"><span class="id" type="lemma">inj_pair2</span></a> :<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> (<span class="id" type="var">P</span>:<a class="idref" href="Eqdep_dec_one_variable.html#M.U"><span class="id" type="axiom">U</span></a> → <span class="id" type="keyword">Type</span>) (<span class="id" type="var">H</span> <span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a>),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#existT"><span class="id" type="constructor">existT</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#H"><span class="id" type="variable">H</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#existT"><span class="id" type="constructor">existT</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a> → <a class="idref" href="Eqdep_dec_one_variable.html#H"><span class="id" type="variable">H</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span> <a class="idref" href="EqdepFacts_one_variable.html#eq_dep_eq__inj_pair2"><span class="id" type="lemma">eq_dep_eq__inj_pair2</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.U"><span class="id" type="axiom">U</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#M.x"><span class="id" type="axiom">x</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#DecidableEqDepSet.N.eq_dep_eq"><span class="id" type="lemma">N.eq_dep_eq</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Injectivity of equality on dependent pairs with second component
+      in <span class="inlinecode"><span class="id" type="keyword">Type</span></span> 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Notation</span> <a name="DecidableEqDepSet.inj_pairT2"><span class="id" type="abbreviation">inj_pairT2</span></a> := <a class="idref" href="Eqdep_dec_one_variable.html#DecidableEqDepSet.inj_pair2"><span class="id" type="lemma">inj_pair2</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Eqdep_dec_one_variable.html#"><span class="id" type="module">DecidableEqDepSet</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+From decidability to inj_pair2 
+</div>
+<div class="code">
+<span class="id" type="keyword">Lemma</span> <a name="inj_pair2_eq_dec"><span class="id" type="lemma">inj_pair2_eq_dec</span></a> : <span class="id" type="keyword">∀</span> (<span class="id" type="var">A</span>:<span class="id" type="keyword">Type</span>) (<span class="id" type="var">p</span>:<a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a>), (<span class="id" type="keyword">∀</span> <span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a>, <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">{</span></a><a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a><a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">}+{</span></a><a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'<>'_x"><span class="id" type="notation">≠</span></a><a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'}'_'+'_'{'_x_'}'"><span class="id" type="notation">}</span></a>) →<br/>
+&nbsp;&nbsp;&nbsp;( <span class="id" type="keyword">∀</span> (<span class="id" type="var">P</span>:<a class="idref" href="Eqdep_dec_one_variable.html#A"><span class="id" type="variable">A</span></a> → <span class="id" type="keyword">Type</span>) (<span class="id" type="var">x</span> <span class="id" type="var">y</span>:<a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a>), <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#existT"><span class="id" type="constructor">existT</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#existT"><span class="id" type="constructor">existT</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#P"><span class="id" type="variable">P</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#p"><span class="id" type="variable">p</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a> → <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#y"><span class="id" type="variable">y</span></a> ).<br/>
+<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">intros</span> <span class="id" type="var">A</span> <span class="id" type="var">x</span> <span class="id" type="var">eq_dec</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="EqdepFacts_one_variable.html#eq_dep_eq__inj_pair2"><span class="id" type="lemma">eq_dep_eq__inj_pair2</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="EqdepFacts_one_variable.html#eq_rect_eq__eq_dep_eq"><span class="id" type="lemma">eq_rect_eq__eq_dep_eq</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">unfold</span> <a class="idref" href="EqdepFacts_one_variable.html#Eq_rect_eq"><span class="id" type="definition">Eq_rect_eq</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="Eqdep_dec_one_variable.html#eq_rect_eq_dec"><span class="id" type="lemma">eq_rect_eq_dec</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <span class="id" type="var">eq_dec</span>.<br/>
+<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Examples of short direct proofs of unicity of reflexivity proofs
+      on specific domains 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Lemma</span> <a name="UIP_refl_unit"><span class="id" type="lemma">UIP_refl_unit</span></a> (<span class="id" type="var">x</span> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#tt"><span class="id" type="constructor">tt</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#tt"><span class="id" type="constructor">tt</span></a>) : <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#tt"><span class="id" type="constructor">tt</span></a>.<br/>
+<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">change</span> (<span class="id" type="keyword">match</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#tt"><span class="id" type="constructor">tt</span></a> <span class="id" type="keyword">as</span> <span class="id" type="var">b</span> <span class="id" type="keyword">return</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#tt"><span class="id" type="constructor">tt</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#b"><span class="id" type="variable">b</span></a> → <span class="id" type="keyword">Type</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#tt"><span class="id" type="constructor">tt</span></a> ⇒ <span class="id" type="keyword">fun</span> <span class="id" type="var">x</span> ⇒ <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#tt"><span class="id" type="constructor">tt</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span> <span class="id" type="var">x</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">x</span>; <span class="id" type="tactic">reflexivity</span>.<br/>
+<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Lemma</span> <a name="UIP_refl_bool"><span class="id" type="lemma">UIP_refl_bool</span></a> (<span class="id" type="var">b</span>:<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#bool"><span class="id" type="inductive">bool</span></a>) (<span class="id" type="var">x</span> : <a class="idref" href="Eqdep_dec_one_variable.html#b"><span class="id" type="variable">b</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#b"><span class="id" type="variable">b</span></a>) : <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a>.<br/>
+<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">b</span>.<br/>
+&nbsp;&nbsp;- <span class="id" type="tactic">change</span> (<span class="id" type="keyword">match</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#true"><span class="id" type="constructor">true</span></a> <span class="id" type="keyword">as</span> <span class="id" type="var">b</span> <span class="id" type="keyword">return</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#true"><span class="id" type="constructor">true</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a><a class="idref" href="Eqdep_dec_one_variable.html#b"><span class="id" type="variable">b</span></a> → <span class="id" type="keyword">Prop</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#true"><span class="id" type="constructor">true</span></a> ⇒ <span class="id" type="keyword">fun</span> <span class="id" type="var">x</span> ⇒ <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#True"><span class="id" type="inductive">True</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span> <span class="id" type="var">x</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">x</span>; <span class="id" type="tactic">reflexivity</span>.<br/>
+&nbsp;&nbsp;- <span class="id" type="tactic">change</span> (<span class="id" type="keyword">match</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#false"><span class="id" type="constructor">false</span></a> <span class="id" type="keyword">as</span> <span class="id" type="var">b</span> <span class="id" type="keyword">return</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#false"><span class="id" type="constructor">false</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a><a class="idref" href="Eqdep_dec_one_variable.html#b"><span class="id" type="variable">b</span></a> → <span class="id" type="keyword">Prop</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#false"><span class="id" type="constructor">false</span></a> ⇒ <span class="id" type="keyword">fun</span> <span class="id" type="var">x</span> ⇒ <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#True"><span class="id" type="inductive">True</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span> <span class="id" type="var">x</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">x</span>; <span class="id" type="tactic">reflexivity</span>.<br/>
+<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Lemma</span> <a name="UIP_refl_nat"><span class="id" type="lemma">UIP_refl_nat</span></a> (<span class="id" type="var">n</span>:<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#nat"><span class="id" type="inductive">nat</span></a>) (<span class="id" type="var">x</span> : <a class="idref" href="Eqdep_dec_one_variable.html#n"><span class="id" type="variable">n</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#n"><span class="id" type="variable">n</span></a>) : <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a>.<br/>
+<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">induction</span> <span class="id" type="var">n</span>.<br/>
+&nbsp;&nbsp;- <span class="id" type="tactic">change</span> (<span class="id" type="keyword">match</span> 0 <span class="id" type="keyword">as</span> <span class="id" type="var">n</span> <span class="id" type="keyword">return</span> 0<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a><a class="idref" href="Eqdep_dec_one_variable.html#n"><span class="id" type="variable">n</span></a> → <span class="id" type="keyword">Prop</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 0 ⇒ <span class="id" type="keyword">fun</span> <span class="id" type="var">x</span> ⇒ <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#True"><span class="id" type="inductive">True</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span> <span class="id" type="var">x</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">x</span>; <span class="id" type="tactic">reflexivity</span>.<br/>
+&nbsp;&nbsp;- <span class="id" type="tactic">specialize</span> <span class="id" type="var">IHn</span> <span class="id" type="keyword">with</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#f_equal"><span class="id" type="lemma">f_equal</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Peano.html#pred"><span class="id" type="definition">pred</span></a> <span class="id" type="var">x</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">change</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">match</span> (@<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> <span class="id" type="var">_</span> <span class="id" type="var">n</span>) <span class="id" type="keyword">in</span> <span class="id" type="var">_</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <span class="id" type="var">n'</span> <span class="id" type="keyword">return</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#S"><span class="id" type="constructor">S</span></a> <span class="id" type="var">n</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#S"><span class="id" type="constructor">S</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#n'"><span class="id" type="variable">n'</span></a> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">rewrite</span> &lt;- <span class="id" type="var">IHn</span>; <span class="id" type="tactic">clear</span> <span class="id" type="var">IHn</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">change</span> (<span class="id" type="keyword">match</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#S"><span class="id" type="constructor">S</span></a> <span class="id" type="var">n</span> <span class="id" type="keyword">as</span> <span class="id" type="var">n'</span> <span class="id" type="keyword">return</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#S"><span class="id" type="constructor">S</span></a> <span class="id" type="var">n</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#n'"><span class="id" type="variable">n'</span></a> → <span class="id" type="keyword">Prop</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 0 ⇒ <span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#True"><span class="id" type="inductive">True</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#S"><span class="id" type="constructor">S</span></a> <span class="id" type="var">n'</span> ⇒ <span class="id" type="keyword">fun</span> <span class="id" type="var">x</span> ⇒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <span class="id" type="keyword">match</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#f_equal"><span class="id" type="lemma">f_equal</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Peano.html#pred"><span class="id" type="definition">pred</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#x"><span class="id" type="variable">x</span></a> <span class="id" type="keyword">in</span> <span class="id" type="var">_</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <span class="id" type="var">n'</span> <span class="id" type="keyword">return</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#S"><span class="id" type="constructor">S</span></a> <span class="id" type="var">n</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#S"><span class="id" type="constructor">S</span></a> <a class="idref" href="Eqdep_dec_one_variable.html#n'"><span class="id" type="variable">n'</span></a> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span> <span class="id" type="var">x</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">pattern</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#S"><span class="id" type="constructor">S</span></a> <span class="id" type="var">n</span>) <span class="id" type="tactic">at</span> 2 3, <span class="id" type="var">x</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">x</span>; <span class="id" type="tactic">reflexivity</span>.<br/>
+<span class="id" type="keyword">Defined</span>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

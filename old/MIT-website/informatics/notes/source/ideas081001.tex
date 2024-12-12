@@ -1,0 +1,141 @@
+\documentclass{amsart}
+
+\input{decl-main}
+
+\def\DT{{\bf DT}}
+\def\GD{{\bf GD}}
+\def\Tables{{\bf Tables}}
+
+
+\begin{document}
+
+\author{David I. Spivak}
+
+\title{Ideas on networks etc. I had while in Paris}
+
+\maketitle
+
+\tableofcontents
+
+\section{Networks}
+
+\begin{definition}
+
+Let $\mcC$ denote a category with finite limits.  Let $D$ denote a semi-simplicial set and $U\taking(\Delta\downarrow D)\op\to\mcC$ a presheaf on $D$ in $\mcC$.  A {\em network of type $(\mcC,D,U)$} consists of a sequence $(X,\sigma,\mcO_X,\tau)$, where $X$ is a semi-simplicial set, $\sigma\taking X\to D$ is a morphism, $\mcO_X\taking (\Delta\downarrow X)\op\to\mcC$ is a presheaf, and $\tau\taking\mcO_X\to\sigma^*U$ is a morphism of presheaves.  We often abuse notation and write $(X,\mcO_X)$ to denote this network.
+
+A {\em morphism of networks of type $(\mcC,D,U)$} is written $$(f,f^\sharp)\taking (X,\sigma_X,\mcO_X,\tau_X)\to(Y,\sigma_Y,\mcO_Y,\tau_Y)$$ and is given by a morphism of semi-simplicial sets $f\taking X\to Y$ such that $\sigma_X=\sigma_Y\circ f$, and a morphism of presheaves $f^\sharp\taking f^*\mcO_Y\to\mcO_X$ on $X$, such that $f^*(\tau_Y)=\tau_X\circ f^\sharp$.
+
+\end{definition}
+
+\begin{example}
+
+A geometric database with data type designation $\pi\taking U\to\DT$ is a network of type $(\Sets,\C(\DT),\C(U))$.  So $\GD$ can be imbedded into this category.
+
+\end{example}
+
+\begin{example}
+
+A graph is a network of type $(\{*\},S^1,U)$, where $\mcC=\{*\}$ is the terminal category, $S^1$ is the unique semi-simplicial set with one 1-simplex, one 0-simplex, and no other simplicies, and $U$ is the unique presheaf on $\mcC$ over $(\Delta\downarrow S^1)$.  
+
+\end{example}
+
+\begin{example}
+
+One may be interested in a network of data types.  Each node in the network has a set of types that it ``understands," as do higher simplices, and if a higher simplex understands a data type then all its faces do too.  
+
+Also keep in mind the following idea.  Morphisms between datatypes should maybe be retractions.  In other words, a map $A\to B$ should have a section $B\to A$.  The idea is that $A$ understands what it's saying better than $B$ does -- that's a given.  $B$ can come back and tell $A$ what it understood, by repeating what it heard.  But it's repeating it in a lower data-type.  For example $A$ may communicate to $B$ in English, but English repeats it back just in sounds.  $A$ recognizes the sounds but was actually communicating on a higher plane.
+
+\end{example}
+
+\begin{example}
+
+Piano skill.  A network on the ssSet $\Delta^{10}$.  An $n$-simplex $x\taking\Delta^n\to\Delta^{10}$ corresponds to a set of fingers.  For each such simplex, put a database with schema $\Delta^1$.  Over each vertex of the schema put, as data, the set of $n$-tuples of notes playable by that set of fingers.  Over the edge, put the set of transitions which are playable.  
+
+The only slightly weird thing here is that the above is a network in $\GD\op$.  Given an inclusion of a simplex, say $\Delta^2\ss\Delta^3$, we get a map of databases from 2-finger combos to 3-finger combos, because maps of databases are contravariant in the data.
+
+\end{example}
+
+\subsection{Meaning}
+
+In a network, a node can speak to a simplex. In so doing, he in fact speaks to each subsimplex in its language.  If $x$ is a face in $y$ then the speech to $x$ is more refined than that to $y$.  That is, a simplex understands (at best) the ``lowest common denominator" of its faces.
+
+Of course, there may be a sense in which the group ``understands" what was said better than any subsimplex does.  This is eventually what I'd like to understand.
+
+\section{Learning}
+
+\subsection{Changing metrics}
+
+Jeff Hawkins writes of the phenomenon "fire together, wire together."  The idea is that when two neurons fire at the same time, a connection may be formed between them, thus decreasing the ``space" between them in the brain topology.
+
+Here's a model for doing that mathematically.  Suppose that $(M,D_M)$ is a metric space, $x,y\in M$ are two points, and $d\geq 0$ is a number, perhaps thought of as being related to the amount of time between the firing of neurons $x$ and $y$.
+
+We form a new metric space $N$ having the same underlying set of points as $M$ does, but with the following metric.  For $a,b\in M$, define \begin{align*}D_N(a,b)=\min\{&D_M(a,b),\\&D_M(a,x)+d+D_M(y,b),\\&D_M(a,y)+d+D_M(x,b)\}.\end{align*}
+
+Clearly, $D_N(x,y)\leq d$, $D_N$ is symmetric, and (if $d>0$) $D_N$ satisfies $D_N(a,b)\geq 0$ iff $a\neq b$.  To show that $D_N$ satisfies the triangle inequality, one proceeds by cases.
+
+\subsection{Query optimization}
+
+Higher level structures in the brain ask for information from the lower level structures.  Certain queries are performed on lower level databases more often than others are.  The data should be organized to optimize the speed of these queries.  Data should be sorted for the ease of superiors, as predicted by their past behavior.
+
+\subsection{Querying a network}
+
+In a network of databases, one would like to query the network.  The network should be able to direct the user's question to the correct set of subsimplices who can answer the question.  That is a query should descend through the network hierarchy until it can be answered (or guessed at).  
+
+In a democracy, each database (person) gives input as to the answer.  In general, this may not be so.
+
+In general, the query spreads down (and up) the hierarchy, looking for paritial answers from subordinates and for clarification of the question from the superiors.
+
+What form does an answer take?  It seems it could reside at a variety of levels (a narrative).  ``More details are needed here, no more are needed there, etc."
+
+\question{In a network, can one vertex query another?  In whatever theory we have, how does one node use a common 1-simplex to query another node?}
+
+\subsection{Changing the topology to make data continuous}
+
+It is fundamental in learning to understand sameness and difference, to understand continuity and discontinuity.  When are two observations part of the same event, and when are they not?  
+
+As data comes in to the observer, the observer decides when data belong together and when they don't.  There is an effort to produce entities (forms).  When data comes in, we use its proximity in space and time (and other dimensions) to decide what is connected and what isn't.  This forms the topology in our mind.  Two perceptions that we deem close should be connected and wired together in our mind.
+
+Somehow, it would be nice to see a database as giving this.  Inside the space of all possible sections of $A\cross B\cross C$ there are some chosen ones, which are deemed to be ``three aspects of the same entity."  Sections of a database are entities; they are data that appear to be of the same origin.  So a database is filled by entities whose one-ness is established in some way.  For example, a person calls a company and is entered in the database: the call itself establishes the one-ness of the entity being described (the person), and we get a single section of the data bundle.
+
+But in general, when learning, we want to wire things together in our mind if they ``go together," i.e. if doing so improves the continuity of the things we see.  We change the topology to fit the data.  Can this be made rigorous?
+
+\subsection{Model for recognition}
+
+Consider the big category of tables $\Tables_+$.  Imagine someone is talking to you.  You are receiving data in the form of strings (maybe facial expressions and maybe you have some context lying around). For each string (sentence, etc.), you can lift that section of the table to various other tables.  In fact, there is a diagram of (tables, lifts) for those data.  This is the context category for that data (sentence).
+
+The main point is: I have a record, or a table of records, of type $(C,\sigma)$ and I'm interested in finding lifts of these data $$\xymatrix{&\Gamma(C',\sigma')\ar[d]^f\\R\ar[r]_\tau\ar@{--}[ru]^{\tau'}&\Gamma(C,\sigma).}$$
+
+Let $Con(\tau)$ be the category whose objects are pairs $(f,\tau)$, liftings as above.
+
+\section{Notes from 2008.09.27}
+
+In this section I will just write down some ideas I had today.
+
+The goal of the network is to ``process information."  Each node has some edges on it, both input edges and output edges.  Some are rays (i.e. edges with no other endpoint) and some are segments (connecting to another node).  Each node gets information from neighboring nodes and ``processes it" or ``interprets it."  It is generally this processed information which is passed on.
+
+Time seems to be important in networks.  Information is ``processed" and then later ``passed on."  This is just something to keep in mind, because it isn't purely categorical.
+
+Is there such a thing as ``false information"?  I think so.  Input information can somehow be ``mis-interpreted" and passed on into the network.  I think that it is really important to know what ``false information" is.  Characterize it.
+
+I think the process goes something like this.  Information can only be transferred between nodes when the database schema match and some data has been shared in that schema that is agreed on by both parties.
+
+False information is transfered when the schemas seem to match and the data seems to match, but ``false data" is sent.  This data should be detected soon, as it meshes in with the rest of the node's database.  However it is possible that the falseness in the data is sufficiently ``subtle" to prevent being discovered as false.
+
+The goal of the network is to see patterns in the phenomena presented to the antennae.  Each node is its own network in which every exterior edge is an antenna.  By presenting good information, the antenna helps the network, and by processing information well, the network somehow helps itself.  It helps itself by settling itself better into the network, being more useful to the larger network (because then the larger network feeds it better, whatever that may mean).  Edges are modified in the process to strengthen connections to helpful nodes and erode connections to bad nodes.
+
+\section{Notes from 2008.10.01}
+
+When a ``phenomenon" takes place, nodes communicate their impressions of it along relevant channels.  Perhaps we can identify the phenomenon with the network communication that it inspires.  To do so is to take seriously the ``if a tree falls in the forest" Koan.\vspace{.1in}
+
+Let $X$ be a simplicial set, and let $\mcN_X=(\Delta\downarrow X)$ denote the category of simplicies of $X$.  In this section, we refer to $\mcN_X$ as the {\em network associated to $X$}.  A {\em communication system on $\mcN_X$} is a functor (fibration?) $p\taking\mcE\to\mcN_X$.
+
+The idea is that a communication is a section of the bundle $p$.  That is, each node $x\in\mcN_X$ has a variety of ``things it can say," given by $p^\m1(x)$.  
+
+A {\em phenomenon} consists of a triple $(A,f,s)$, where $\mcA$ is a category, $f\taking\mcA\to\mcN_X$ is a $\mcA$-shaped diagram in $\mcN_X$, and $s\taking\mcA\to f^\m1\mcE$ is a section of the induced bundle $$f^\m1(p)\taking f^\m1(\mcE)\to\mcA.$$
+
+
+
+
+
+
+\end{document}

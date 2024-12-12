@@ -1,0 +1,211 @@
+<html>
+
+<head>
+
+<title>David Spivak</title>
+
+<meta name="description" content="
+David Spivak received a PhD in mathematics from UC Berkeley in 2007; 
+his thesis was in algebraic topology. Noticing category theory's impressive 
+ability to organize and layer abstractions and to interconnect widely 
+different disciplines, he set out to show that mathematics' most abstract 
+field was also its most applicable. After spending ten years at MIT, 
+funded in part by NASA, the US departments of defense and commerce, and 
+private companies, he co-founded Topos Institute, an independent non-profit 
+research institute that works to shape technology for the public benefit by 
+applying the language of category theory. David's work ranges from database 
+integration to knowledge representation, from materials science to dynamical 
+systems, all with a focus on compositionality and interoperability. He 
+has written three books on applications of category theory.
+Previous research subjects include Derived 
+Manifolds, Infinity categories (a.k.a. quasi-categories), and Physics.
+>
+
+<meta name="keywords" content="David Spivak, category theory, 
+information, communication, database, dynamical system, wiring diagram,
+derived manifolds, quasi-categories, infinity categories">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-28355043-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 
+'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 
+'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; 
+s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+
+<body>
+
+<img src="./David_Cropped.jpg" align=right width="270"/>
+<h1><a href="http://dspivak.net/">David
+Spivak</a></h1>
+
+<!-- 
+
+<table><tr><th style="width:530px" align="left"> 
+
+Among the tasks of this work are: to reconceptualize <i>the body</i> so that we could 
+understand how focusing is possible, how we can feel complex situations, how the body can 
+come up with an answer to a complex human living question we cannot figure out, how body and 
+cognition are not just split apart. That obviously requires a different conception of the 
+body than physiology currently offers.
+
+<br></th></tr> <tr><th align="right"> 
+-- Eugene T. Gendlin, <i>A Process Model
+</i> </th></tr> 
+</table><br> 
+
+--> 
+<!--
+<table><tr><th style="width:560px" align="left"> 
+
+As I figure it, everything that's here is constantly passing away. Now is passing. <br><br>
+
+One might want to hold onto their youth, or their kids' youth, or a beautiful scene, or their 
+life, but this is not possible. If one tries to circumvent this and tries to pin it down, the 
+beautiful thing loses its value and often becomes ugly or perverted. <br><br>
+
+All one can do, then, is to keep renewing one's appreciation now and then now and then now, 
+for as long as one wants to and can. To me, the act of appreciating is one of simultaneously 
+celebrating and mourning: celebrating that you get to experience something and mourning that 
+this is the last time it will ever be this way.<br><br>
+
+But these two emotions can be combined into a single orientation, and 
+that's what I call appreciating. One might see it as celebrating and mourning, but it's 
+really just one very poignant and beautiful feeling.
+</th></tr>
+</table><br>
+
+-->
+
+Senior Research Scientist and Institute Fellow at
+<a href="https://topos.institute/">Topos Institute</a><br><br>
+
+<a href="./cv--Spivak.pdf"> Curriculum
+Vitae</a><br><br>
+<b>Email: </b>dspivak@gmail.com  <br>
+
+
+<hr>
+
+<h3> Current research projects</h3><br>
+<a href="http://www.dspivak.net/grants/AFOSR2020-Topos-ContextDependence.pdf">Functorial Dynamics and Interaction.</a> 
+Using polynomial functors to model dynamical systems, decision processes, data migration, and more! 
+(I'm completely enthralled with the category Poly.)
+
+A <a href="https://github.com/dspivak/poly/">book</a> on the subject is in preparation. Idris code can be found 
+<a href="https://github.com/ToposInstitute/poly/blob/main/code-examples/poly_up_to_fibonacci.idr">here</a>. 
+
+<br><br>
+<a href="./grants/AFOSR2022-Structure_and_Dynamics_of_Working_Language.pdf">
+Structure and dynamics of working language</a> Using polynomial functors 
+to account for how language works, in the sense of physics. This grant has been recommended for funding, but has not yet started.
+
+<hr>
+
+<h3> Introductory books on Applied Category theory </h3><br>
+
+<a 
+href="http://mitpress.mit.edu/books/category-theory-sciences">Category 
+Theory for the Sciences</a> was published by <a href="https://mitpress.mit.edu/books/category-theory-sciences">MIT Press</a>, 
+also available on <a href= 
+"http://www.amazon.com/Category-Theory-Sciences-David-Spivak/dp/0262028131"> 
+Amazon</a>. <br>
+
+Here are reviews by 
+<a href=" 
+http://www.maa.org/publications/maa-reviews/category-theory-for-the-sciences">
+the MAA</a>, by
+<a 
+href="http://www.ams.org/mathscinet-getitem?mr=3288752">the 
+AMS</a>, and by 
+<a
+href="http://epubs.siam.org/doi/pdf/10.1137/15N97399X">SIAM</a>. <br>
+
+Course materials (MIT OCW) can be found <a
+href=
+"https://ocw.mit.edu/courses/mathematics/18-s996-category-theory-for-scientists-spring-2013/">
+here</a>.<br><br>
+
+<a href="7sketches.pdf">Seven 
+Sketches in Compositionality</a>. 
+This material has been published by 
+<a href="https://www.cambridge.org/core/books/an-invitation-to-applied-category-theory/D4C5E5C2B019B2F9B8CE9A4E9E84D6BC">Cambridge University Press
+</a>
+as <i>An Invitation to Applied Category Theory</i> by 
+<a href="brendanfong.com">Brendan Fong</a> and David I. Spivak. 
+This version is free to view and download for personal use only. 
+Not for re-distribution, re-sale or use in derivative works.
+&copy Brendan Fong and David Spivak 2019. Also available on 
+<a href="https://www.amazon.com/Invitation-Applied-Category-Theory-Compositionality/dp/1108711820">Amazon</a>.<br>
+Here is a review by <a href="https://www.maa.org/press/maa-reviews/an-invitation-to-applied-category-theory">the MAA</a> and a review by
+<a href="http://www.dspivak.net/public/acta-cryst_fong-spivak-review.pdf">Acta Crystallographica.</a><br> 
+Course materials (MIT
+OCW) can be found
+<a href="https://ocw.mit.edu/courses/mathematics/18-s097-applied-category-theory-january-iap-2019/">
+here</a>.
+
+<hr>
+
+<h3> Past research subjects</h3><br>
+
+<a href="./grants/index.html">Applied Category Theory</a>. Various ACT grants, some funded and others not.<br><br>
+
+<a href="http://math.mit.edu/~dspivak/dman"> Derived manifolds</a>. The 
+category of derived manifolds contains arbitrary intersections of 
+manifolds, even if they are not transverse, while retaining enough 
+structure so that every compact derived manifold has a fundamental class 
+in cobordism.<br><br>
+
+<a href="http://dspivak.net/qcmap.pdf"> Mapping spaces in 
+quasi-categories</a>. Joint work with <a 
+href="http://uoregon.edu/~ddugger"> Dan Dugger</a>.  <br><br>
+
+<a href="./afsf.pdf"> Anomaly-free sets of fermions</a>. A 
+physics paper I coauthored with <a
+href="http://www.slac.stanford.edu/spires/find/hep/www?rawcmd=ea+Batra,+Puneet">
+Puneet
+Batra </a> and <a
+href="http://www.slac.stanford.edu/spires/find/hep/www?rawcmd=ea+Dobrescu,+Bogdan+A">
+Bogdan Dobrescu</a>.<br><br>
+<a href="http://dspivak.net/metric_realization090922.pdf"> Metric realization of fuzzy simplicial sets</a> 
+A draft I never published, and may contain errors, but which has gotten some attention from the creators of <a "https://arxiv.org/abs/1802.03426">UMAP</a> and others.
+<br><br>
+
+<hr>
+
+<h3> Values Statement</h3>
+
+<a href="ValuesStatement.pdf">Values Statement</a>. This is a first attempt
+to convey the values that seem to motivate me. 
+
+<br><br>
+
+<hr>
+
+
+<br><br>
+
+<a rel="license" 
+href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative 
+Commons License" style="border-width:0" 
+src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br />This 
+<span xmlns:dc="http://purl.org/dc/elements/1.1/" 
+href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <span 
+xmlns:cc="http://creativecommons.org/ns#" 
+property="cc:attributionName">David I. Spivak</span> is licensed under a 
+<a rel="license" 
+href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons 
+Attribution-Share Alike 3.0 Unported License</a>.
+
+</body>
+</html>

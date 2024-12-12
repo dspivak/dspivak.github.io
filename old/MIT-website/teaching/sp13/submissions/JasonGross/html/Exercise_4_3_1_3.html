@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_4_3_1_3</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_4_3_1_3</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="NaturalTransformation.html#"><span class="id" type="library">NaturalTransformation</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab100"></a><h1 class="section">Exercise 4.3.1.3</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Exercise_4_3_1_3"><span class="id" type="section">Exercise_4_3_1_3</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab101"></a><h2 class="section">Problem</h2>
+ Let <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent.F"><span class="id" type="variable">F</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent_Relation.D"><span class="id" type="variable">D</span></a></span> be a functor. Suppose someone said "the
+      identity on <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent.F"><span class="id" type="variable">F</span></a></span> is a natural transformation from <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent.F"><span class="id" type="variable">F</span></a></span> to itself."
+      What might they mean? If it is somehow true, what are the
+      components of this natural transformation? 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">C</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">objC</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">D</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">objD</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="Exercise_4_3_1_3.F"><span class="id" type="variable">F</span></a> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="Exercise_4_3_1_3.html#Exercise_4_3_1_3.C"><span class="id" type="variable">C</span></a> <a class="idref" href="Exercise_4_3_1_3.html#Exercise_4_3_1_3.D"><span class="id" type="variable">D</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="IdentityNaturalTransformation'"><span class="id" type="definition">IdentityNaturalTransformation'</span></a> : <a class="idref" href="NaturalTransformation.html#NaturalTransformation"><span class="id" type="record">NaturalTransformation</span></a> <a class="idref" href="Exercise_4_3_1_3.html#Exercise_4_3_1_3.F"><span class="id" type="variable">F</span></a> <a class="idref" href="Exercise_4_3_1_3.html#Exercise_4_3_1_3.F"><span class="id" type="variable">F</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> {| <a class="idref" href="NaturalTransformation.html#Build_NaturalTransformation"><span class="id" type="constructor">ComponentsOf</span></a> <a class="idref" href="NaturalTransformation.html#Build_NaturalTransformation"><span class="id" type="constructor">:=</span></a> <a class="idref" href="NaturalTransformation.html#Build_NaturalTransformation"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="NaturalTransformation.html#Build_NaturalTransformation"><span class="id" type="constructor">c</span></a> <a class="idref" href="NaturalTransformation.html#Build_NaturalTransformation"><span class="id" type="constructor">⇒</span></a> <a class="idref" href="NaturalTransformation.html#Build_NaturalTransformation"><span class="id" type="constructor">Identity</span></a> <a class="idref" href="NaturalTransformation.html#Build_NaturalTransformation"><span class="id" type="constructor">(</span></a><a class="idref" href="NaturalTransformation.html#Build_NaturalTransformation"><span class="id" type="constructor">F</span></a> <a class="idref" href="NaturalTransformation.html#Build_NaturalTransformation"><span class="id" type="constructor">c</span></a><a class="idref" href="NaturalTransformation.html#Build_NaturalTransformation"><span class="id" type="constructor">))</span></a> |}.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<span class="id" type="tactic">simpl</span>; <span class="id" type="tactic">intros</span>; <span class="id" type="tactic">rewrite</span> <a class="idref" href="Category.html#LeftIdentity"><span class="id" type="projection">LeftIdentity</span></a>, <a class="idref" href="Category.html#RightIdentity"><span class="id" type="projection">RightIdentity</span></a>; <span class="id" type="tactic">reflexivity</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="LeftIdentityNaturalTransformation'"><span class="id" type="lemma">LeftIdentityNaturalTransformation'</span></a><br/>
+&nbsp;&nbsp;: <span class="id" type="keyword">∀</span> (<span class="id" type="var">F'</span> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="Exercise_4_3_1_3.html#Exercise_4_3_1_3.C"><span class="id" type="variable">C</span></a> <a class="idref" href="Exercise_4_3_1_3.html#Exercise_4_3_1_3.D"><span class="id" type="variable">D</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">T</span> : <a class="idref" href="NaturalTransformation.html#NaturalTransformation"><span class="id" type="record">NaturalTransformation</span></a> <a class="idref" href="Exercise_4_3_1_3.html#F'"><span class="id" type="variable">F'</span></a> <a class="idref" href="Exercise_4_3_1_3.html#Exercise_4_3_1_3.F"><span class="id" type="variable">F</span></a>),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="NaturalTransformation.html#NTComposeT"><span class="id" type="definition">NTComposeT</span></a> <a class="idref" href="Exercise_4_3_1_3.html#IdentityNaturalTransformation'"><span class="id" type="definition">IdentityNaturalTransformation'</span></a> <a class="idref" href="Exercise_4_3_1_3.html#T"><span class="id" type="variable">T</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Exercise_4_3_1_3.html#T"><span class="id" type="variable">T</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>; <span class="id" type="tactic">apply</span> <a class="idref" href="NaturalTransformation.html#NaturalTransformation_Eq"><span class="id" type="lemma">NaturalTransformation_Eq</span></a>; <span class="id" type="tactic">simpl</span>; <span class="id" type="tactic">auto</span> <span class="id" type="keyword">with</span> <span class="id" type="var">morphism</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="RightIdentityNaturalTransformation'"><span class="id" type="lemma">RightIdentityNaturalTransformation'</span></a><br/>
+&nbsp;&nbsp;: <span class="id" type="keyword">∀</span> (<span class="id" type="var">F'</span> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="Exercise_4_3_1_3.html#Exercise_4_3_1_3.C"><span class="id" type="variable">C</span></a> <a class="idref" href="Exercise_4_3_1_3.html#Exercise_4_3_1_3.D"><span class="id" type="variable">D</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">T</span> : <a class="idref" href="NaturalTransformation.html#NaturalTransformation"><span class="id" type="record">NaturalTransformation</span></a> <a class="idref" href="Exercise_4_3_1_3.html#Exercise_4_3_1_3.F"><span class="id" type="variable">F</span></a> <a class="idref" href="Exercise_4_3_1_3.html#F'"><span class="id" type="variable">F'</span></a>),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="NaturalTransformation.html#NTComposeT"><span class="id" type="definition">NTComposeT</span></a> <a class="idref" href="Exercise_4_3_1_3.html#T"><span class="id" type="variable">T</span></a> <a class="idref" href="Exercise_4_3_1_3.html#IdentityNaturalTransformation'"><span class="id" type="definition">IdentityNaturalTransformation'</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Exercise_4_3_1_3.html#T"><span class="id" type="variable">T</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>; <span class="id" type="tactic">apply</span> <a class="idref" href="NaturalTransformation.html#NaturalTransformation_Eq"><span class="id" type="lemma">NaturalTransformation_Eq</span></a>; <span class="id" type="tactic">simpl</span>; <span class="id" type="tactic">auto</span> <span class="id" type="keyword">with</span> <span class="id" type="var">morphism</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_4_3_1_3.html#Exercise_4_3_1_3"><span class="id" type="section">Exercise_4_3_1_3</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

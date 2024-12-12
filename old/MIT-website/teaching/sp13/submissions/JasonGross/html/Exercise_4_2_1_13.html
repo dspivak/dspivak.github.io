@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_4_2_1_13</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_4_2_1_13</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#"><span class="id" type="library">ProofIrrelevance</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="PreOrderCategory.html#"><span class="id" type="library">PreOrderCategory</span></a> <a class="idref" href="CategoryIsomorphisms.html#"><span class="id" type="library">CategoryIsomorphisms</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab83"></a><h1 class="section">Exercise 4.2.1.13</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Exercise_4_2_1_13"><span class="id" type="section">Exercise_4_2_1_13</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab84"></a><h2 class="section">Problem</h2>
+ We have seen that a preorder can be considered as a category
+      <span class="inlinecode"><a class="idref" href="SubspaceTopology.html#subspace_topology.P"><span class="id" type="variable">P</span></a></span>. Recall from Definition 3.4.1.1 that a partial order is a
+      preorder with an additional property.  Phrase the defining
+      property for preorders in terms of isomorphisms in the category
+      <span class="inlinecode"><a class="idref" href="SubspaceTopology.html#subspace_topology.P"><span class="id" type="variable">P</span></a></span>. 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Open</span> <span class="id" type="keyword">Scope</span> <span class="id" type="var">category_scope</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Class</span> <a name="IsoImpliesId"><span class="id" type="record">IsoImpliesId</span></a> <span class="id" type="var">obj</span> (<span class="id" type="var">C</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <a class="idref" href="Exercise_4_2_1_13.html#obj"><span class="id" type="variable">obj</span></a>) :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{ <a name="iso_implies_id"><span class="id" type="projection">iso_implies_id</span></a> :> <span class="id" type="keyword">∀</span> <span class="id" type="var">x</span> <span class="id" type="var">y</span> : <a class="idref" href="Exercise_4_2_1_13.html#C"><span class="id" type="variable">C</span></a>,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="Exercise_4_2_1_13.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="CategoryIsomorphisms.html#:category_scope:x_'≅'_x"><span class="id" type="notation">&cong;</span></a> <a class="idref" href="Exercise_4_2_1_13.html#y"><span class="id" type="variable">y</span></a>)%<span class="id" type="var">category</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ <a class="idref" href="Exercise_4_2_1_13.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Exercise_4_2_1_13.html#y"><span class="id" type="variable">y</span></a> }.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#PreOrder"><span class="id" type="class">PreOrder</span></a> <span class="id" type="var">X</span> <span class="id" type="var">R</span>).<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Infix</span> <a name="Exercise_4_2_1_13.::x_'≤'_x"><span class="id" type="notation">"</span></a>&le;" := <a class="idref" href="Exercise_4_2_1_13.html#Exercise_4_2_1_13.R"><span class="id" type="variable">R</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Global Instance</span> <a name="PartialOrderCategory_is_PartialOrder"><span class="id" type="instance">PartialOrderCategory_is_PartialOrder</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(<a class="idref" href="Exercise_4_2_1_13.html#IsoImpliesId"><span class="id" type="class">IsoImpliesId</span></a> <span class="id" type="var">_</span> (<a class="idref" href="PreOrderCategory.html#PreOrderCategory"><span class="id" type="definition">PreOrderCategory</span></a> (<span class="id" type="var">R</span> := <a class="idref" href="Exercise_4_2_1_13.html#Exercise_4_2_1_13.R"><span class="id" type="variable">R</span></a>) <span class="id" type="var">_</span>))<br/>
+&nbsp;&nbsp;: <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#PartialOrder"><span class="id" type="class">PartialOrder</span></a> <span class="id" type="var">_</span> <a class="idref" href="Exercise_4_2_1_13.html#Exercise_4_2_1_13.R"><span class="id" type="variable">R</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">compute</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span> <span class="id" type="var">x</span> <span class="id" type="var">x0</span>; <span class="id" type="tactic">split</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">try</span> <span class="id" type="tactic">solve</span> [ <span class="id" type="tactic">intros</span>; <span class="id" type="tactic">subst</span>; <span class="id" type="tactic">intuition</span> ].<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span> [<span class="id" type="var">f</span> <span class="id" type="var">g</span>].<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">eapply</span> <a class="idref" href="Exercise_4_2_1_13.html#iso_implies_id"><span class="id" type="method">iso_implies_id</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> <span class="id" type="var">f</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> <span class="id" type="var">g</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">simpl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#proof_irrelevance"><span class="id" type="axiom">ProofIrrelevance.proof_irrelevance</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Global Instance</span> <a name="PartialOrder_is_PartialOrderCategory"><span class="id" type="instance">PartialOrder_is_PartialOrderCategory</span></a> `(<span class="id" type="var">H0</span> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#PartialOrder"><span class="id" type="class">PartialOrder</span></a> <a class="idref" href="Exercise_4_2_1_13.html#Exercise_4_2_1_13.X"><span class="id" type="variable">X</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq"><span class="id" type="inductive">eq</span></a> <a class="idref" href="Exercise_4_2_1_13.html#Exercise_4_2_1_13.R"><span class="id" type="variable">R</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="Exercise_4_2_1_13.html#IsoImpliesId"><span class="id" type="class">IsoImpliesId</span></a> (<a class="idref" href="PreOrderCategory.html#PreOrderCategory"><span class="id" type="definition">PreOrderCategory</span></a> (<span class="id" type="var">R</span> := <a class="idref" href="Exercise_4_2_1_13.html#Exercise_4_2_1_13.R"><span class="id" type="variable">R</span></a>) <span class="id" type="var">_</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">constructor</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span> <span class="id" type="var">x</span> <span class="id" type="var">y</span> <span class="id" type="var">i</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> (<span class="id" type="var">H0</span> <span class="id" type="var">x</span> <span class="id" type="var">y</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">i</span> <span class="id" type="keyword">as</span> [ ? [ ] ];<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">compute</span> <span class="id" type="keyword">in</span> *;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intuition</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_4_2_1_13.html#Exercise_4_2_1_13"><span class="id" type="section">Exercise_4_2_1_13</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

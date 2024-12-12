@@ -1,0 +1,237 @@
+\documentclass{amsart}
+
+\usepackage{amssymb, amscd,stmaryrd,setspace,hyperref,color,enumerate}
+\usepackage{lmodern}
+
+
+\input xy
+\xyoption{all} \xyoption{poly} \xyoption{knot}\xyoption{curve}
+
+\def\sub{\begin{outline}\item}
+\def\next{\item}
+\def\endsub{\end{outline}}
+
+\def\to{\rightarrow}
+\def\To{\xrightarrow}
+\def\from{\leftarrow}
+\def\ZZ{{\mathbb Z}}
+\def\RR{{\mathbb R}}
+\def\String{{\bf String}}
+\def\DT{{\bf DT}}
+\def\U{{\bf U}}
+\def\DB{{\bf DB}}
+\def\ss{\subseteq}
+\def\taking{\colon}
+\def\mcO{{\mathcal O}}
+\def\mcU{{\mathcal U}}
+\def\Sub{{\bf Sub}}
+\def\op{^{\text{op}}}
+\def\Sets{{\bf Sets}}
+\def\Top{{\bf Top}}
+\def\Tables{{\bf Tables}}
+\def\To{\xrightarrow}
+\def\From{\xleftarrow}
+\def\Fin{{\bf Fin}}
+\def\cross{\times}
+\def\Ob{{\bf Ob}}
+\def\Hom{{\bf Hom}}
+\def\Set{{\bf Set}}
+\def\Scrib{{\bf Scrib}}
+\def\Sym{{\bf Sym}}
+\def\Arr{{\bf Arr}}
+\def\Comp{{\bf Comp}}
+\def\id{\tn{id}}
+\def\Pre{{\bf Pre}}
+\def\Fin{{\bf Fin}}
+\def\El{{\bf El}}
+\def\Cat{{\bf Cat}}
+\def\down{\downarrow}
+\def\set{{\bf -Set}}
+\def\im{{\bf im}}
+\def\mcB{{\mathcal B}}
+\def\mcC{{\mathcal C}}
+\def\mcD{{\mathcal D}}
+\def\mcK{{\mathcal K}}
+\def\mcS{{\mathcal S}}
+\def\P{{\bf P}}
+\def\NN{\mathbb N}
+\def\GL{{\rm GL}}
+
+\def\surj{\twoheadrightarrow}
+\def\inj{\hookrightarrow}
+\def\rr{\raggedright}
+\newcommand{\LMO}[1]{\bullet^{#1}}
+\newcommand{\LTO}[1]{\bullet^{\tn{#1}}}
+\newcommand{\LA}[2]{\ar[#1]^-{\tn {#2}}}
+\newcommand{\LAL}[2]{\ar[#1]_-{\tn {#2}}}
+\newcommand{\obox}[3]{\stackrel{#1}{\fbox{\parbox{#2}{#3}}}}
+\newcommand{\labox}[2]{\obox{#1}{1.6in}{#2}}
+\newcommand{\mebox}[2]{\obox{#1}{1in}{#2}}
+\newcommand{\smbox}[2]{\stackrel{#1}{\fbox{#2}}}
+\newcommand{\fakebox}[1]{\tn{$\ulcorner$#1$\urcorner$}}
+\newcommand{\sq}[4]{\xymatrix{#1\ar[r]\ar[d]&#2\ar[d]\\#3\ar[r]&#4}}
+\newcommand{\namecat}[1]{\begin{center}$#1:=$\end{center}}
+
+\def\hsp{\hspace{.2in}}
+\def\lcone{^\triangleleft}
+\def\rcone{^\triangleright}
+\DeclareMathOperator{\colim}{colim}
+
+\newcommand{\comment}[1]{}
+ 
+\def\start{\shortnote{start here}}
+
+\def\edge{\ar@{-}}
+
+\def\ullimit{\ar@{}[rd]|(.3)*+{\lrcorner}}
+\def\urlimit{\ar@{}[ld]|(.3)*+{\llcorner}}
+\def\lllimit{\ar@{}[ru]|(.3)*+{\urcorner}}
+\def\lrlimit{\ar@{}[lu]|(.3)*+{\ulcorner}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{explanation}[theorem]{Explanation}
+\newtheorem{answer}[theorem]{Answer}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{rules}[theorem]{Rules of good practice}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{postulate}[theorem]{Postulate}
+
+
+
+\def\tn{\textnormal}
+\def\too{\longrightarrow}
+
+\newcommand{\longnote}[2][4.9in]{\fcolorbox{black}{yellow}{\parbox{#1}{\color{black} #2}}}
+\newcommand{\shortnote}[1]{\fcolorbox{black}{yellow}{\color{black} #1}}
+
+\begin{document}
+
+\title{Information presentation: Scribbles, symbols, and strategies}
+
+\author{David I. Spivak}
+
+\maketitle
+
+\section{Introduction}
+
+The purpose of this short note is to lay out some definitions for symbolic presentation of information. Information may exist ideally in some Platonic realm, but in practice it must always be ``put on paper." But what does this mean exactly? 
+
+Suppose one has a set of messages to be conveyed. The person receiving this information must understand the same symbol set as the person sending the information---they must have an agreement or convention. However note that one cannot guarantee they will be able to reproduce the symbols precisely on the nose. Instead, anything that is ``close enough" will do. Moreover, moving a symbol to the right should not change the symbol (however, if the symbol is found in a block of text then moving it to the right without moving the block of text may very well change the message). In other words, we may have to take group actions into account.
+
+It is the purpose of this document to lay out some possibilities for how this story should go. Scribbles should be anything one can draw. Symbols should be open sets of scribbles, i.e. sets of scribbles that ``count as" the symbol. Given a set of messages, we need a symbol for each one, but we need to be careful that they don't overlap, even after application of some group action.
+
+\section{Definitions}
+
+\begin{definition}\label{def:scribble}
+
+Let $R$ denote a topological space. An {\em $R$-scribble} is a pair $(k,f)$ where $k\in\NN$ is a natural number and $f\taking k*I\to R$ is a continuous function. Here $I=[0,1]\ss\RR$ is the closed unit interval and $$k*I:=I\amalg I\amalg\cdots\amalg I$$ is the $k$-fold disjoint union of intervals.
+
+The set of $R$-scribbles has a natural topology as the disjoint union of function spaces. This may or may not be the ``correct" topology, but let's use it for now. We denote the space of $R$-scribbles by $\Scrib_R$.
+
+\end{definition}
+
+\begin{example}
+
+Anything that can be drawn in $\RR^2$, including this document, is an $\RR^2$-scribble, and this is the intention of Definition \ref{def:scribble}. Perhaps one might object that the lines in this document are not ``infinitely thin". In this case, we could consider a scribble $f$ to instead be a representative for the equivalence class of all tubular neighborhoods of $f$.
+
+However, if some other space would serve our intention better, then we should Definition \ref{def:scribble} accordingly.
+
+\end{example}
+
+\begin{proposition}
+
+The map $\Scrib_{(-)}\taking\Top\to\Top$ is functorial.
+
+\end{proposition}
+
+\begin{proof}
+
+Obvious.
+
+\end{proof}
+
+\begin{lemma}
+
+Let $R$ denote a topological space. The natural map $R\to\Scrib_R$, given by sending $r$ to the function $f\taking [0,1]\to R$ given by $f(x)=r$, is continuous.
+
+\end{lemma}
+
+\begin{proof}
+
+Obvious.
+
+\end{proof}
+
+\begin{definition}
+
+Let $R$ denote a topological space. An {\em $R$-symbol} (or simply a {\em symbol} if $R$ is clear from context) is a path-connected open subset of $\Scrib_R$. We define $\Sym_R$ to be the set of $R$-symbols. If $U\ss\Scrib_R$ is a symbol, we call each scribble $s\in U$ an {\em instance} of $U$.
+
+\end{definition}
+
+\begin{remark}
+
+The idea is that a scribble $S$ will never be reproduced exactly. We define an open neighborhood $U$ of $S$ to serve as the set of scribbles that are ``close enough." If this is the intention, then it may be clear why $U$ should be path-connected, and it should also be clear that every scribble in $U$ should have a small enough open neighborhood also contained in $U$.
+
+\end{remark}
+
+\begin{lemma}
+
+Let $R$ be a topological space, $G$ a group, and let $\bullet\taking G\cross R\to R$ be a $G$-action on $R$. This action extends to a $G$-action on $\Scrib_R$ by ``post-composition": for any $f\taking k*I\to R$ and $g\in G$, take $g\bullet f$ to be $$k*I\To{f}R\To{g}R.$$ This action further extends to a $G$-action on $\Sym_R$, sending an open subset $U\ss\Scrib_R$ to its pointwise image.
+
+\end{lemma}
+
+\begin{definition}
+
+A {\em presentation medium} is a sequence $(R,G,\bullet)$, where $R$ is a topological space, $G$ is a group, and $\bullet\taking G\cross R\to R$ is a continuous $G$-action on $R$. We also denote by $\bullet$ the corresponding extension to $\Scrib_R$. We say that two scribbles $x,y\in\Scrib_R$ are {\em $G$-equivalent} if there exists an element $g\in G$ such that $g\bullet x=y.$
+
+\end{definition}
+
+\begin{example}\label{ex:reals}
+
+Let $n\in\NN$ be a natural number. Consider the group $A_n$ of affine transformations of Euclidean space $\RR^n$; there is a canonical action of $A_n$ on $\RR^n$. This action clearly extends to an action of $A_n$ on $\Scrib_n$ by ``post-composition," $$k*I\To{f}\RR^n\To{a}\RR^n.$$ It thus extends to an action of $A_n$ on $\Sym_n$, acting point-wise on each open set, as above.
+
+The $A_2$ action on $\RR^2$ is a natural choice for presentation mediums.
+
+\end{example}
+
+\begin{definition}
+
+Let $X$ be a set, let $P:=(R,G,\bullet)$ be a presentation medium. An {\em symbol denotation strategy for $X$ in $P$} is a function $\Sigma\taking X\to\Sym_R$ with the property that for all elements $x,y\in X$ and all $g\in G$ we have $$\emptyset=\Sigma(x)\cap g\bullet \Sigma(y) \ss\Scrib_R.$$ 
+
+We call each element $x\in X$ a {\em message} and we call $\Sigma(x)$ the {\em symbolic denotation of $x$}. We refer to any scribble $s\in\Sigma(x)$ as a denotation instance of $x$.
+
+\end{definition}
+
+The idea is that if two scribbles are $G$-equivalent then they cannot be denotation instances of two different messages.
+
+\begin{remark}
+
+Suppose we take as our presentation medium $(\RR^2,A_2,\bullet)$ as defined in Example \ref{ex:reals}. Notice that if $\Sigma\taking\{1,\ldots,26\}\to\Sym_{\RR^2}$ is anything like the ``lower-case English alphabet" function, then it is not a symbol denotation strategy, because turning ``d" upside-down gives ``p". 
+
+One solution would be to restrict our group $G_2$ to a smaller group, say the translations of the plane, (given by the abelian group underlying $\RR^2$). 
+
+Another solution would be to recognize that in fact $\Sigma$ should not be a denotation strategy because writing ``d" on a piece of paper and handing it to someone can fail at conveying the message. However, if instead $X$ is the set of words, then perhaps the lower-case English alphabet would suffice: perhaps no two words can be denoted by lower-case letters are $A_2$ equivalent.
+
+\end{remark}
+
+\begin{proposition}
+
+Suppose that $X$ is a set and $P=(R,G,\bullet)$ is a presentation medium. Any symbol denotation strategy  $\Sigma\taking X\to\Sym_R$ induces an equivalence relation on $\Scrib_R$: two scribbles $f,g$ are equivalent if either of the following hold:\begin{itemize}\item there exists a message $x\in X$ such that $f,g\in\Sigma(x)$ are both denotation instances of $x$, or \item there does not exist a message of which either $f$ or $g$ is a denotation instance; i.e. $\forall x\in X$ we have $f,g\not\in\Sigma(x)$.\end{itemize} The equivalence classes for this relation are in one-to-one correspondence with the set $X\amalg\{*\}$; we call $\{*\}$ {\em non-sense}.
+
+\end{proposition}
+
+\end{document}

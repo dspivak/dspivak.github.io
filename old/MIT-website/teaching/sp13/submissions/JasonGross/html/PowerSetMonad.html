@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>PowerSetMonad</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library PowerSetMonad</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Monad.html#"><span class="id" type="library">Monad</span></a> <a class="idref" href="SetCategory.html#"><span class="id" type="library">SetCategory</span></a> <a class="idref" href="PowerSetFunctor.html#"><span class="id" type="library">PowerSetFunctor</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a> <a class="idref" href="Morphism.html#"><span class="id" type="library">Morphism</span></a> <a class="idref" href="Topology.html#"><span class="id" type="library">Topology</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab213"></a><h1 class="section">Power Set Monad</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="PowerSetMonad"><span class="id" type="section">PowerSetMonad</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Everything we need to prove can be proven by repeatedly applying
+     <span class="inlinecode"><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Extensionality_Ensembles"><span class="id" type="axiom">Extensionality_Ensembles</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode">∀</span> <span class="inlinecode">(<a class="idref" href="Topology.html#subset_ensemble_union_intersection.U"><span class="id" type="variable">U</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" type="keyword">Type</span>)</span> <span class="inlinecode">(<a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.A"><span class="id" type="variable">A</span></a></span> <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismCompositionLemmas.B"><span class="id" type="variable">B</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Ensemble"><span class="id" type="definition">Ensemble</span></a></span> <span class="inlinecode"><a class="idref" href="Topology.html#subset_ensemble_union_intersection.U"><span class="id" type="variable">U</span></a>),</span>
+     <span class="inlinecode"><span class="id" type="var">Same_set</span></span> <span class="inlinecode"><span class="id" type="var">_</span></span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.A"><span class="id" type="variable">A</span></a></span> <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismCompositionLemmas.B"><span class="id" type="variable">B</span></a></span> <span class="inlinecode">&rarr;</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.A"><span class="id" type="variable">A</span></a></span> <span class="inlinecode">=</span> <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismCompositionLemmas.B"><span class="id" type="variable">B</span></a></span>, <span class="inlinecode"><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.FunctionalExtensionality.html#functional_extensionality_dep"><span class="id" type="axiom">functional_extensionality_dep</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode">∀</span> <span class="inlinecode">(<a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.A"><span class="id" type="variable">A</span></a></span> <span class="inlinecode">:</span>
+     <span class="inlinecode"><span class="id" type="keyword">Type</span>)</span> <span class="inlinecode">(<a class="idref" href="SchemaMorphism.html#SchemaMorphismCompositionLemmas.B"><span class="id" type="variable">B</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.A"><span class="id" type="variable">A</span></a></span> <span class="inlinecode">&rarr;</span> <span class="inlinecode"><span class="id" type="keyword">Type</span>)</span> <span class="inlinecode">(<a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a></span> <span class="inlinecode"><a class="idref" href="Morphism.html#morphism.inverse_compose.g"><span class="id" type="variable">g</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode">∀</span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.A"><span class="id" type="variable">A</span></a>,</span> <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismCompositionLemmas.B"><span class="id" type="variable">B</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a>),</span> <span class="inlinecode">(∀</span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.A"><span class="id" type="variable">A</span></a>,</span> <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a></span> <span class="inlinecode">=</span> <span class="inlinecode"><a class="idref" href="Morphism.html#morphism.inverse_compose.g"><span class="id" type="variable">g</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a>)</span> <span class="inlinecode">&rarr;</span>
+     <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a></span> <span class="inlinecode">=</span> <span class="inlinecode"><a class="idref" href="Morphism.html#morphism.inverse_compose.g"><span class="id" type="variable">g</span></a></span>, unfolding definitions, assuming assumptions, and guessing
+     that some inhabitant of a type exists, and leaving it to be
+     filled in by a hypothesis later. 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Ltac</span> <span class="id" type="var">t</span> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> (<span class="id" type="var">power_set_t</span> || <span class="id" type="var">destruct_head_hnf</span> @<a class="idref" href="Topology.html#ArbitraryUnion"><span class="id" type="inductive">ArbitraryUnion</span></a>).<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+The function which takes an element <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a></span> to the singleton
+      subset <span class="inlinecode">{<a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a>}</span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Ensemble"><span class="id" type="definition">Ensemble</span></a></span> <span class="inlinecode"><a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a></span> is the function <span class="inlinecode">@<a class="idref" href="Monoid.html#id"><span class="id" type="projection">id</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" type="keyword">fun</span></span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.y"><span class="id" type="constructor">y</span></a></span> <span class="inlinecode">⇒</span> <span class="inlinecode">(<a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a></span> <span class="inlinecode">=</span>
+      <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.y"><span class="id" type="constructor">y</span></a>)</span>. 
+</div>
+<div class="code">
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="PowerSetMonad.η"><span class="id" type="variable">η</span></a> : <a class="idref" href="NaturalTransformation.html#NaturalTransformation"><span class="id" type="record">NaturalTransformation</span></a> (<a class="idref" href="Functor.html#IdentityFunctor"><span class="id" type="definition">IdentityFunctor</span></a> <a class="idref" href="SetCategory.html#CategoryOfTypes"><span class="id" type="definition">CategoryOfTypes</span></a>) <a class="idref" href="PowerSetFunctor.html#PowerSetFunctor"><span class="id" type="definition">PowerSetFunctor</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (<a class="idref" href="NaturalTransformation.html#Build_NaturalTransformation"><span class="id" type="constructor">Build_NaturalTransformation</span></a> (<a class="idref" href="Functor.html#IdentityFunctor"><span class="id" type="definition">IdentityFunctor</span></a> <a class="idref" href="SetCategory.html#CategoryOfTypes"><span class="id" type="definition">CategoryOfTypes</span></a>) <a class="idref" href="PowerSetFunctor.html#PowerSetFunctor"><span class="id" type="definition">PowerSetFunctor</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">T</span> <span class="id" type="var">x</span> <span class="id" type="var">y</span> ⇒ <a class="idref" href="PowerSetMonad.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="PowerSetMonad.html#y"><span class="id" type="variable">y</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">compute</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> <span class="id" type="var">t</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="PowerSetMonad.µ"><span class="id" type="variable">µ</span></a> : <a class="idref" href="NaturalTransformation.html#NaturalTransformation"><span class="id" type="record">NaturalTransformation</span></a> (<a class="idref" href="PowerSetFunctor.html#PowerSetFunctor"><span class="id" type="definition">PowerSetFunctor</span></a> <a class="idref" href="Functor.html#:functor_scope:x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="PowerSetFunctor.html#PowerSetFunctor"><span class="id" type="definition">PowerSetFunctor</span></a>) <a class="idref" href="PowerSetFunctor.html#PowerSetFunctor"><span class="id" type="definition">PowerSetFunctor</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (<a class="idref" href="NaturalTransformation.html#Build_NaturalTransformation"><span class="id" type="constructor">Build_NaturalTransformation</span></a> (<a class="idref" href="PowerSetFunctor.html#PowerSetFunctor"><span class="id" type="definition">PowerSetFunctor</span></a> <a class="idref" href="Functor.html#:functor_scope:x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="PowerSetFunctor.html#PowerSetFunctor"><span class="id" type="definition">PowerSetFunctor</span></a>) <a class="idref" href="PowerSetFunctor.html#PowerSetFunctor"><span class="id" type="definition">PowerSetFunctor</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="Topology.html#ArbitraryUnion"><span class="id" type="inductive">ArbitraryUnion</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">compute</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> <span class="id" type="var">t</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="PowerSetMonad"><span class="id" type="definition">PowerSetMonad</span></a> : <a class="idref" href="Monad.html#Monad"><span class="id" type="record">Monad</span></a> <a class="idref" href="SetCategory.html#CategoryOfTypes"><span class="id" type="definition">CategoryOfTypes</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> <a class="idref" href="PowerSetFunctor.html#PowerSetFunctor"><span class="id" type="definition">PowerSetFunctor</span></a> <a class="idref" href="PowerSetMonad.html#PowerSetMonad.η"><span class="id" type="variable">η</span></a> <a class="idref" href="PowerSetMonad.html#PowerSetMonad.µ"><span class="id" type="variable">µ</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">compute</span>; <span class="id" type="tactic">abstract</span> <span class="id" type="var">t</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="PowerSetMonad.html#PowerSetMonad"><span class="id" type="section">PowerSetMonad</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

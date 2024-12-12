@@ -1,0 +1,151 @@
+\documentclass{amsart}
+
+\input{decl-db}
+
+\usepackage{graphicx}
+
+%\oddsidemargin .5in 
+%\evensidemargin .5in 
+%textwidth 5.3in 
+
+\def\Loc{{\bf Loc}}
+\def\bigjoin{\bigvee}
+\def\bigmeet{\bigwedge}
+\def\join{\vee}
+\def\meet{\wedge}
+
+%\usepackage{showkeys}
+
+\begin{document}
+
+\author{David I. Spivak}
+
+\thanks{This project was supported in part by the Office of Naval Research.}
+
+\title{Localic databases}
+
+\maketitle
+
+\section{Locales}
+
+\subsection{Morphisms between locales of subobjects}
+
+Suppose that $f\taking X\to Y$ is a morphism of simplicial sets.  Let $\mcX=\Sub(X)$ (respectively $\mcY=\Sub(Y)$) denote the locale of subobjects of $X$ (resp. $Y$).  The map $f$ induces an adjunction $$\adjoint{f^\m1}{\mcY}{\mcX}{\mcF}$$ where $\mcF(X')=\bigjoin(Y'\ss Y|f^\m1(Y')\ss X')$.  Note that $f^\m1$ preserves finite meets, so $\mcF\taking\mcX\to\mcY$ denotes a morphism of locales.  This morphism further induces an adjunction between Grothendieck topoi $$\adjoint{\mcF^*}{\Shv(\mcY)}{\Shv(\mcX)}{\mcF_*}$$ defined as follows for sheaves $A\in\Shv(\mcX)$ and $B\in\Shv(\mcY)$.  For any $U\in\Sub(X)$ we take \begin{eqnarray}\label{dia:mcF^*}\mcF^*B(U):=B(f(U)),\end{eqnarray} where $f(U)\in\Sub(Y)$ is the image of $U$ in $Y$.  For any $V\in\Sub(Y)$ we take \begin{eqnarray}\label{dia:mcF_*}\mcF_*A(V):=A(f^\m1(V)),\end{eqnarray} where $f^\m1(V)$ is the preimage of $V$ in $X$.
+
+\subsection{Morphisms between locales}
+
+We introduced the above ideas using a map of simplicial sets $f\taking X\to Y$, but in actuality the definitions of $\mcF^*$ and $\mcF_*$ work whenever $\mcF$ is a {\em open morphism of locales}, as we shall soon see.  To get to that point, however, it is best to start all over, by taking $\mcX$ and $\mcY$ to be arbitrary locales and considering an arbitrary adjunction $$\adjoint{f^*}{\mcY}{\mcX}{f_*}$$ as a morphism $\mcF=f_*$ of locales.  The left adjoint $f^*$ induces an adjunction of Grothendieck topoi denoted $$\adjoint{\mcF^*}{\Shv(\mcY)}{\Shv(\mcX)}{\mcF_*}$$ by $\mcF_*$, which is given by the formula \begin{align}\label{dia:again mcF^*} \mcF_*(A)(V):=A(f^*V).\end{align}  The left adjoint $\mcF^*$ is easy to understand on representable functors, but in general is just understandable as a colimit.
+
+We say that $\mcF$ is {\em an open morphism} if $f^*$ has a left adjoint $f_!\taking\mcX\to\mcY$ satisfying the ``Frobenius identity" $$f_!(x\meet f^*y)=f_!(x)\meet y$$ for all $x\in\mcX$ and $y\in\mcY$.  In this case, we can do a better job of understanding $\mcF^*$.   Namely, for a sheaf $B\in\Shv(\mcY)$ and object $U\in\mcX$, we define \begin{align}\label{dia:open}\mcF^*B(U):=B(f_!(U))\end{align} and still 
+
+To bring it together, a morphism $f\taking X\to Y$ of simplicial sets always induces an open morphism of locales.  Thus, Equations (\ref{dia:mcF^*}) and (\ref{dia:mcF_*}) becomes Equations (\ref{dia:open}) and (\ref{dia:again mcF^*}).
+
+
+\section{Elementary localic databases}
+
+Let $\Loc$ denote the category of locales (see \cite{Bor3}).  Recall that a morphism between locales is an adjunction $(f^*,f_*)$ for which $f^*$ preserves finite meets; such a morphism is denoted by the right adjoint part.
+
+\begin{definition}
+
+A {\em type specification} consists of a pair $\mcD=(D,\Gamma)$, where $D$ is a category and $\Gamma\in\Pre(D)$ is a presheaf on $D$.  A {\em morphism of type specifications}, denoted $$(F,F^\sharp)\taking\mcD\to\mcD',$$ consists of a functor $F\taking D'\to D$ and a map of presheaves $F^\sharp\taking F^*(\Gamma)\to\Gamma'$ on $D'$.  
+
+\end{definition}
+
+\begin{example}
+
+Let $D=(\Fin\down\{m,a\})$ and $D'=(\Fin\down\{F\})$ be categories.  Given $\sigma\taking C\to\{m,a\}$, let $\Gamma(\sigma)=\Hom(C,\RR)$, and similarly given $\sigma'\taking C'\to\{F\}$, let $\Gamma'(\sigma')=\Hom(C',\RR)$.  There is a morphism of type specifications $$(\mu,\mu^\sharp)\taking (D,\Gamma)\to(D',\Gamma')$$ given as follows.  
+
+First off, the functor $\mu\taking D'\to D$ sends $\sigma'\taking C'\to\{F\}$, to $\mu(\sigma'):=C'\cross\{m,a\}\to\{m,a\}$.  This induces a functor $$\mu^*\taking\Pre(D)\to\Pre(D');\hspace{.5in}X(-)\mapsto X(\mu(-)).$$
+
+Now, let $\mu^\sharp\taking\mu^*\Gamma\to\Gamma'$ denote the map of presheaves on $D'$ defined as follows for $\sigma\taking C'\to\{F\}$.  We calculate that $\mu^*\Gamma(\sigma)=\Gamma(\mu(\sigma))=(\RR\cross\RR)^{C'}$ and that $\Gamma'(C')=\RR^{C'}$.  Now define $$\mu^\sharp\taking(\RR\cross\RR)^{C'}\to\RR^{C'}$$ by composing with the usual multiplication map $\RR\cross\RR\to\RR$.  
+
+This change of type specifications allows one to turn any ``mass/accelaration" table into a ``Force" table.  We write it as $F=ma$.
+
+More generally, suppose that $x_1,\ldots,x_m$ are the variables of $D$, taking values in $\Gamma(x_1),\ldots,\Gamma(x_m)$ and $X_1,\ldots,X_n$ are the ``variables" of $D'$ taking values in $\Gamma(X_1),\ldots,\Gamma(X_n)$, then we can define $X_i$ in terms of any set of $x_1,\ldots x_m$, using any formula.  Writing down the variables involved in these formulas constitutes a map $$D'=(\Fin\down\{X_1,\ldots,X_n\})\too D=(\Fin\down\{x_1,\ldots,x_m\}).$$
+
+\end{example}
+
+\begin{definition}
+
+Let $\mcD=(D,\Gamma)$ denote a type specification.  A {\em schema on $\mcD$} consists of a pair $(L,\sigma)$, where $L$ is a locale and $\sigma\taking L\to\Pre(D)$ preserves colimits and finite limits.  A {\em morphism of schemas} is denoted $$\mcF=(f_*,f^\sharp)\taking (L,\sigma)\to(L',\sigma'),$$ where $\adjoint{f^*}{L'}{L}{f_*}$ is a morphism of locales, and $f^\sharp\taking \sigma\circ f^*\to \sigma'$ is a natural transformation of functors $L'\to\Pre(D)$.
+
+\end{definition}
+
+\begin{definition}
+
+Let $\mcD=(D,\Gamma)$ denote a type specification, and let $X=(L,\sigma)$ denote a schema over $\mcD$.  The {\em universal sheaf on $X$}, denoted $\mcU_X\taking L\op\to\Sets$, is the functor which assigns $$\ell\mapsto\Hom_{\Pre(D)}(\sigma(\ell),\Gamma) \hspace{.5in} \tn{ for } \ell\in L.$$   It is clearly contravariant and takes joins in $L$ to limits in $\Sets$.  
+
+Let $X'=(L',\sigma')$.  Given a morphism $\mcF=(f,f^\sharp)\taking X\to X'$ of schemas, there is an induced morphism $\mcU_\mcF\taking\mcU_{X'}\to\mcF_*(\mcU_X)$ given as follows for $\ell'\in L'$: $$\mcU_{L'}(\ell')=\Hom_{\Pre(D)}(\sigma'\ell',\Gamma)\To{f^\sharp}\Hom_{\Pre(D)}(\sigma f^*\ell',\Gamma)=\mcF_*(\mcU_L)(\ell').$$
+
+\end{definition}
+
+\begin{example}
+
+Let $\mcD=(D,\Gamma)$ and $\mcD'=(D',\Gamma')$ denote type specifications, and let $(F,F^\sharp)\taking\mcD\to\mcD'$ denote a morphism of type specifications.  Recall that $F\taking D'\to D$ is a functor and $F^\sharp\taking F^*\Gamma\to\Gamma'$ is a morphism of presheaves on $D'$.
+
+Let $X=(L,\sigma)$ denote a schema over $\mcD$, where $\sigma\taking L\to\Pre(D)$.  Given $\ell\in L$, the value of the universal sheaf $\mcU_X$ at $\ell$ is $$\mcU_X(\ell)=\Hom_{\Pre(D)}(\sigma(\ell),\Gamma).$$  If we apply the left adjoint $F^*$ to both sides and then compose with $F^\sharp$ we obtain a map \begin{align*}\mcU_X(\ell)=\Hom(\sigma(\ell),\Gamma)&\to\Hom(F^*\sigma(\ell),F^*\Gamma)\\&\to\Hom(F^*\sigma(\ell),\Gamma')\end{align*}  This may be seen as how databases on $\mcD$ become databases on $\mcD'$.
+
+\end{example}
+
+\begin{definition}
+
+Let $\mcD=(D,\Gamma)$ denote a type specification.  A {\em database of type $\mcD$} is a sequence $(X,\mcK_X,\tau_X)$, where $X=(L,\sigma)$ is a schema, $\mcK_X\in\Shv(L)$ is a sheaf of sets on $L$ and $\tau_X\taking\mcK_X\to\mcU_X$ is a morphism of sheaves over the universal sheaf $\mcU_X$.
+
+A {\em morphism of databases} consists of a pair $$(\mcF,\mcF^\sharp)\taking(X,\mcK_X,\tau_X)\too(Y,\mcK_Y,\tau_Y),$$ where $\mcF\taking X\to X'$ is a morphism of schema and $\mcF^\sharp\taking \mcK_Y\to\mcF_*\mcK_X$ is a morphism of sheaves on $Y$, such that the diagram $$\xymatrix{\mcK_Y\ar[r]^{\tau_Y}\ar[d]_{\mcF^\sharp}&\mcU_Y\ar[d]_{\mcU_\mcF}\\\mcF_*\mcK_X\ar[r]_{\mcF_*\tau_X}&\mcF_*\mcU_X}$$ commutes.
+
+\end{definition}
+
+\section{Theory}
+
+\longnote{There may be issues with the variance of locales.  That is, we may be naming by left adjoints instead of right adjoints.  This calls a lot of the following into question.  For now, we are just making a first pass through the space.}
+
+Let $L$ be a locale.  For an object $x\in L$, we define $i_x\taking\down x\inj L$ to be the sublocale with objects $\{y\in L|y\leq x\}$. 
+
+
+\begin{definition}
+
+Suppose given a diagram $$\xymatrix@=13pt{L\ar[dr]_{\sigma_L}&&M\ar[dl]^{\sigma_M}\\&\mcC}$$ where $L$ and $M$ are locales and $\mcC$ is a category.  Define $\Gamma^L_M\in\Shv(L)$ to be the sheaf $$\Gamma^L_M(x):=\{f\taking\down x\to M|\sigma_M\circ f=\sigma_L\circ i_x\}.$$
+
+For locales $L,M$ (in absence of $\mcC,\sigma_L,\sigma_M$) define $\Gamma^L_M\in\Shv(L)$ by $\Gamma^L_M(x):=\{f\taking\down x\to M\}$.  Clearly, this is the same thing as one gets by taking $\mcC=\{*\}$ to be the terminal category and $\sigma_L,\sigma_M$ to be the unique functors.
+
+Given a map $\pi\taking M\to L$, let $\Gamma_\pi$ be as defined by the diagram $$\xymatrix@=13pt{L\ar[dr]_{\id_L}&&M\ar[dl]^\pi\\&L}$$
+
+\end{definition}
+
+\begin{definition}
+
+Suppose given a diagram $$\xymatrix@=13pt{L\ar[dr]_{\sigma_L}&&M\ar[dl]^{\sigma_M}\\&\mcC}$$ where $L$ and $M$ are locales and $\mcC$ is a category.  Define $\mcU^L_M\in\Shv(L)$ to be the sheaf whose value on $x\in L$ is given by $$\mcU^L_M(x):=\{(f,f^\sharp)|f\taking\down x\to M, f^\sharp\taking\sigma_L(x)\to\sigma_M\circ f(x).\}$$
+
+\end{definition}
+
+Let $D$ be a locale and $\Gamma$ a presheaf on $D$.  Given a functor $\sigma\taking L\to\Pre(D)$, where $L$ is a locale, we have a diagram $$\xymatrix@=13pt{L\ar[dr]_{\sigma}&&\{*\}\ar[dl]^{\Gamma}\\&\Pre(D)}$$ so we can define $\mcU^L_\Gamma\in\Shv(L)$ as above.  Tracing through definitions, this sheaf is simply given on $x\in L$ by $$\mcU^L_\Gamma(x)=\Hom_{\Pre(\mcD)}(\sigma(x),\Gamma),$$ as expected.
+
+\begin{definition}
+
+Let $\mcC$ denote a category.  A {\em schema on $\mcC$} is a left exact left adjoint $\Gamma\taking M\to\mcC$, where $M$ is a locale.
+
+\end{definition}
+
+\begin{definition}
+
+Let $\Gamma\taking M\to\mcC$ denote a schema on $\mcC$.  A {\em database on $\Gamma$} consists of a sequence $(\sigma, \mcK,\tau)$, where $\sigma\taking L\to\mcC$ is a schema, $\mcK\in\Shv(L)$ is a sheaf on $L$, and $\tau\taking\mcK\to\mcU^\sigma_\Gamma$ is a morphism of sheaves.  
+
+\end{definition}
+
+Let $\sigma_L\taking L\to\mcC$ denote a schema and let $\mcK_L\in\Shv(L)$ denote a sheaf.  This data constitutes a schema $(\sigma_L\cross\mcK_L)\taking L\to(\mcC\cross\Sets\op)$.  
+
+
+
+\section{Next steps..}
+
+\begin{itemize}
+
+\item I'd like to study locales given by $\Sub(S)$ for a set $S$.  There should be an adjunction $\Adjoint{\Sub}{\Sets}{\Loc}{}$ which I can use.  Locales of the form $\Sub(S)$ may turn out to have a particularly easy ``grammar" in that the elements of $S$ serve well as ``variables."  There should be some kind of more general theory of variables, but I think it's easiest for $\Sub(S)$.
+\item A computer program is data interpreted as instructions.  This should be phraseable in our language.  But what is instruction?
+
+\end{itemize}
+
+\bibliographystyle{amsalpha}
+\bibliography{biblio}
+
+\end{document}

@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_4_1_2_34</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_4_1_2_34</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#"><span class="id" type="library">ProofIrrelevance</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.FunctionalExtensionality.html#"><span class="id" type="library">FunctionalExtensionality</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.omega.Omega.html#"><span class="id" type="library">Omega</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.JMeq.html#"><span class="id" type="library">JMeq</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Category.html#"><span class="id" type="library">Category</span></a> <a class="idref" href="Functor.html#"><span class="id" type="library">Functor</span></a> <a class="idref" href="DiscreteCategory.html#"><span class="id" type="library">DiscreteCategory</span></a> <a class="idref" href="NatCategory.html#"><span class="id" type="library">NatCategory</span></a> <a class="idref" href="DiscreteCategoryFunctors.html#"><span class="id" type="library">DiscreteCategoryFunctors</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="FEqualDep.html#"><span class="id" type="library">FEqualDep</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ <a name="lab77"></a><h1 class="section">Exercise 4.1.2.34</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Exercise_4_1_2_34"><span class="id" type="section">Exercise_4_1_2_34</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab78"></a><h2 class="section">Problem</h2>
+ (Terminal category). Let <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span> be a category. How many functors
+      are there <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" type="var">D_1</span></span>, where <span class="inlinecode"><span class="id" type="var">D_1</span></span> <span class="inlinecode">:=</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_9.html#Exercise_5_1_1_9.Disc"><span class="id" type="variable">Disc</span></a>(</span> <span class="inlinecode"><span class="id" type="var"><u>1</u></span></span> <span class="inlinecode">)</span> is the discrete
+      category on one element? 
+</div>
+<div class="code">
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="Exercise_4_1_2_34.obj"><span class="id" type="variable">obj</span></a> : <span class="id" type="keyword">Type</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="Exercise_4_1_2_34.C"><span class="id" type="variable">C</span></a> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <a class="idref" href="Exercise_4_1_2_34.html#Exercise_4_1_2_34.obj"><span class="id" type="variable">obj</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="proof_irrelevance_JMeq"><span class="id" type="lemma">proof_irrelevance_JMeq</span></a> (<span class="id" type="var">A</span> <span class="id" type="var">B</span> : <span class="id" type="keyword">Prop</span>) (<span class="id" type="var">a</span> : <a class="idref" href="Exercise_4_1_2_34.html#A"><span class="id" type="variable">A</span></a>) (<span class="id" type="var">b</span> : <a class="idref" href="Exercise_4_1_2_34.html#B"><span class="id" type="variable">B</span></a>) : <a class="idref" href="Exercise_4_1_2_34.html#A"><span class="id" type="variable">A</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Exercise_4_1_2_34.html#B"><span class="id" type="variable">B</span></a> → <a class="idref" href="Exercise_4_1_2_34.html#a"><span class="id" type="variable">a</span></a> <a class="idref" href="Notations.html#::x_'=='_x"><span class="id" type="notation">==</span></a> <a class="idref" href="Exercise_4_1_2_34.html#b"><span class="id" type="variable">b</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intro</span>; <span class="id" type="tactic">subst</span>; <span class="id" type="tactic">apply</span> <a class="idref" href="FEqualDep.html#eq_JMeq"><span class="id" type="lemma">eq_JMeq</span></a>; <span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#proof_irrelevance"><span class="id" type="axiom">proof_irrelevance</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="FunctorToTerminal"><span class="id" type="definition">FunctorToTerminal</span></a> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="Exercise_4_1_2_34.html#Exercise_4_1_2_34.C"><span class="id" type="variable">C</span></a> (<a class="idref" href="NatCategory.html#NatCategory"><span class="id" type="definition">NatCategory</span></a> 1).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">Build_Functor</span></a> <a class="idref" href="Exercise_4_1_2_34.html#Exercise_4_1_2_34.C"><span class="id" type="variable">C</span></a> (<a class="idref" href="NatCategory.html#NatCategory"><span class="id" type="definition">NatCategory</span></a> 1)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#exist"><span class="id" type="constructor">exist</span></a> <span class="id" type="var">_</span> 0 (@<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Peano.html#le_n"><span class="id" type="constructor">le_n</span></a> 1))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>; <span class="id" type="tactic">simpl</span>; <span class="id" type="tactic">try</span> <span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#proof_irrelevance"><span class="id" type="axiom">proof_irrelevance</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="FunctorToTerminalUnique"><span class="id" type="lemma">FunctorToTerminalUnique</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">F</span>, <a class="idref" href="Exercise_4_1_2_34.html#F"><span class="id" type="variable">F</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Exercise_4_1_2_34.html#FunctorToTerminal"><span class="id" type="definition">FunctorToTerminal</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intro</span> <span class="id" type="var">F</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="Functor.html#Functor_Eq"><span class="id" type="lemma">Functor_Eq</span></a>; <span class="id" type="var">simpl_eq</span>; <span class="id" type="tactic">intros</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : <span class="id" type="var">_</span> |- <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">clear</span> <span class="id" type="var">H</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">m</span> : <a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> ?<span class="id" type="var">C</span> ?<span class="id" type="var">s</span> ?<span class="id" type="var">d</span> |- <span class="id" type="var">_</span> ] ⇒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">simpl</span>; <span class="id" type="tactic">destruct</span> (<a class="idref" href="Functor.html#MorphismOf"><span class="id" type="projection">MorphismOf</span></a> <span class="id" type="var">F</span> <span class="id" type="var">m</span>); <span class="id" type="tactic">clear</span> <span class="id" type="var">m</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="Exercise_4_1_2_34.html#proof_irrelevance_JMeq"><span class="id" type="lemma">proof_irrelevance_JMeq</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#f_equal2"><span class="id" type="lemma">f_equal2</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">simpl_eq</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">x</span> : <a class="idref" href="Exercise_4_1_2_34.html#Exercise_4_1_2_34.obj"><span class="id" type="variable">obj</span></a> |- <span class="id" type="var">_</span> ] ⇒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">let</span> <span class="id" type="var">x0</span> := <span class="id" type="tactic">fresh</span> <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">let</span> <span class="id" type="var">H</span> := <span class="id" type="tactic">fresh</span> <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">set</span> (<span class="id" type="var">H</span> := <span class="id" type="var">F</span> <span class="id" type="var">x</span>) <span class="id" type="keyword">in</span> *;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">H</span> <span class="id" type="keyword">as</span> [ <span class="id" type="var">x0</span> ? ];<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">induction</span> <span class="id" type="var">x0</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">simpl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">omega</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">simpl</span>; <span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#proof_irrelevance"><span class="id" type="axiom">ProofIrrelevance.proof_irrelevance</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_4_1_2_34.html#Exercise_4_1_2_34"><span class="id" type="section">Exercise_4_1_2_34</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

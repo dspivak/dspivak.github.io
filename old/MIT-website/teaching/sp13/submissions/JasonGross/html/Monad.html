@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Monad</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Monad</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#"><span class="id" type="library">ProofIrrelevance</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.FunctionalExtensionality.html#"><span class="id" type="library">FunctionalExtensionality</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.JMeq.html#"><span class="id" type="library">JMeq</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Category.html#"><span class="id" type="library">Category</span></a> <a class="idref" href="Functor.html#"><span class="id" type="library">Functor</span></a> <a class="idref" href="NaturalTransformation.html#"><span class="id" type="library">NaturalTransformation</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab189"></a><h1 class="section">Monads</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Monad"><span class="id" type="section">Monad</span></a>.<br/>
+</div>
+
+<div class="doc">
+Definition 5.3.2.1 (Monad). A monad on <span class="inlinecode"><span class="id" type="keyword">Set</span></span> consists of some
+      constituents (A. functor, B. unit map, C. multiplication map)
+      conforming to some laws (1. unit laws, 2. associativity law), as
+      follows: 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Open</span> <span class="id" type="keyword">Scope</span> <span class="id" type="var">natural_transformation_scope</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Record</span> <a name="Monad"><span class="id" type="record">Monad</span></a> `(<span class="id" type="var">C</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">objC</span>) :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+
+<div class="doc">
+A. a functor <span class="inlinecode"><a class="idref" href="Topology.html#inclusion.T"><span class="id" type="variable">T</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" type="keyword">Set</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" type="keyword">Set</span></span> 
+</div>
+<div class="code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="MonadFunctor"><span class="id" type="projection">MonadFunctor</span></a> :> <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="Monad.html#C"><span class="id" type="variable">C</span></a> <a class="idref" href="Monad.html#C"><span class="id" type="variable">C</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+
+<div class="doc">
+B. a natural transformation <span class="inlinecode"><a class="idref" href="PowerSetMonad.html#PowerSetMonad.η"><span class="id" type="variable">η</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" type="var">id_</span>{<span class="id" type="keyword">Set</span>}</span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="Topology.html#inclusion.T"><span class="id" type="variable">T</span></a></span>, and 
+</div>
+<div class="code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="MonadUnit"><span class="id" type="projection">MonadUnit</span></a> : <a class="idref" href="NaturalTransformation.html#NaturalTransformation"><span class="id" type="record">NaturalTransformation</span></a> (<a class="idref" href="Functor.html#IdentityFunctor"><span class="id" type="definition">IdentityFunctor</span></a> <a class="idref" href="Monad.html#C"><span class="id" type="variable">C</span></a>) <a class="idref" href="Monad.html#MonadFunctor"><span class="id" type="method">MonadFunctor</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+
+<div class="doc">
+C. a natural transformation <span class="inlinecode">µ</span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Topology.html#inclusion.T"><span class="id" type="variable">T</span></a></span> <span class="inlinecode"><span class="id" type="var">&#x25cb;</span></span> <span class="inlinecode"><a class="idref" href="Topology.html#inclusion.T"><span class="id" type="variable">T</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="Topology.html#inclusion.T"><span class="id" type="variable">T</span></a></span> 
+</div>
+<div class="code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="MonadMultiplication"><span class="id" type="projection">MonadMultiplication</span></a> : <a class="idref" href="NaturalTransformation.html#NaturalTransformation"><span class="id" type="record">NaturalTransformation</span></a> (<a class="idref" href="Monad.html#MonadFunctor"><span class="id" type="method">MonadFunctor</span></a> <a class="idref" href="Functor.html#:functor_scope:x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Monad.html#MonadFunctor"><span class="id" type="method">MonadFunctor</span></a>) <a class="idref" href="Monad.html#MonadFunctor"><span class="id" type="method">MonadFunctor</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+
+<div class="doc">
+We sometimes refer to the functor <span class="inlinecode"><a class="idref" href="Topology.html#inclusion.T"><span class="id" type="variable">T</span></a></span> as though it were the
+          whole monad; we call <span class="inlinecode"><a class="idref" href="PowerSetMonad.html#PowerSetMonad.η"><span class="id" type="variable">η</span></a></span> the unit map and we call <span class="inlinecode">µ</span> the
+          multiplication map. The following laws harmonize these
+          constituents  1. The following diagrams of functors <span class="inlinecode"><span class="id" type="keyword">Set</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" type="keyword">Set</span></span> commute:
+
+<div class="paragraph"> </div>
+
+<pre>
+                            id_T ◇ η
+             T o id_{Set} ------------&gt; T o T
+                      \                   |
+                         \                |
+                            \             |
+                               \          | µ
+                             =    \       |
+                                     \    |
+                                        ↘ ↓
+                                          T
+</pre>
+
+<div class="paragraph"> </div>
+
+       
+</div>
+<div class="code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="MonadFunctorDiagram1"><span class="id" type="projection">MonadFunctorDiagram1</span></a> : <span class="id" type="keyword">let</span> <span class="id" type="var">T</span> := <a class="idref" href="Monad.html#MonadFunctor"><span class="id" type="method">MonadFunctor</span></a> <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">let</span> <span class="id" type="var">η</span> := <a class="idref" href="Monad.html#MonadUnit"><span class="id" type="method">MonadUnit</span></a> <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">let</span> µ := <a class="idref" href="Monad.html#MonadMultiplication"><span class="id" type="method">MonadMultiplication</span></a> <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> <span class="id" type="var">x</span>,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="Monad.html#µ"><span class="id" type="variable">µ</span></a> <a class="idref" href="NaturalTransformation.html#:natural_transformation_scope:x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="NaturalTransformation.html#:natural_transformation_scope:x_'o'_x"><span class="id" type="notation">(</span></a><a class="idref" href="NaturalTransformation.html#IdentityNaturalTransformation"><span class="id" type="definition">IdentityNaturalTransformation</span></a> <a class="idref" href="Monad.html#T"><span class="id" type="variable">T</span></a> <a class="idref" href="NaturalTransformation.html#:natural_transformation_scope:x_'◇'_x"><span class="id" type="notation">&#x25c7;</span></a> <a class="idref" href="Monad.html#η"><span class="id" type="variable">η</span></a><a class="idref" href="NaturalTransformation.html#:natural_transformation_scope:x_'o'_x"><span class="id" type="notation">)</span></a>) <a class="idref" href="Monad.html#x"><span class="id" type="variable">x</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Category.html#Identity"><span class="id" type="projection">Identity</span></a> (<a class="idref" href="Monad.html#MonadFunctor"><span class="id" type="method">MonadFunctor</span></a> <a class="idref" href="Monad.html#x"><span class="id" type="variable">x</span></a>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+
+<div class="doc">
+
+<div class="paragraph"> </div>
+
+<pre>
+                            η ◇ id_T
+             id_{Set} o T ------------&gt; T o T
+                      \                   |
+                         \                |
+                            \             |
+                               \          | µ
+                             =    \       |
+                                     \    |
+                                        ↘ ↓
+                                          T
+</pre>
+
+<div class="paragraph"> </div>
+
+       
+</div>
+<div class="code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="MonadFunctorDiagram2"><span class="id" type="projection">MonadFunctorDiagram2</span></a> : <span class="id" type="keyword">let</span> <span class="id" type="var">T</span> := <a class="idref" href="Monad.html#MonadFunctor"><span class="id" type="method">MonadFunctor</span></a> <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">let</span> <span class="id" type="var">η</span> := <a class="idref" href="Monad.html#MonadUnit"><span class="id" type="method">MonadUnit</span></a> <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">let</span> µ := <a class="idref" href="Monad.html#MonadMultiplication"><span class="id" type="method">MonadMultiplication</span></a> <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> <span class="id" type="var">x</span>,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="Monad.html#µ"><span class="id" type="variable">µ</span></a> <a class="idref" href="NaturalTransformation.html#:natural_transformation_scope:x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="NaturalTransformation.html#:natural_transformation_scope:x_'o'_x"><span class="id" type="notation">(</span></a><a class="idref" href="Monad.html#η"><span class="id" type="variable">η</span></a> <a class="idref" href="NaturalTransformation.html#:natural_transformation_scope:x_'◇'_x"><span class="id" type="notation">&#x25c7;</span></a> <a class="idref" href="NaturalTransformation.html#IdentityNaturalTransformation"><span class="id" type="definition">IdentityNaturalTransformation</span></a> <a class="idref" href="Monad.html#T"><span class="id" type="variable">T</span></a><a class="idref" href="NaturalTransformation.html#:natural_transformation_scope:x_'o'_x"><span class="id" type="notation">)</span></a>) <a class="idref" href="Monad.html#x"><span class="id" type="variable">x</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Category.html#Identity"><span class="id" type="projection">Identity</span></a> (<a class="idref" href="Monad.html#MonadFunctor"><span class="id" type="method">MonadFunctor</span></a> <a class="idref" href="Monad.html#x"><span class="id" type="variable">x</span></a>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+
+<div class="doc">
+
+<div class="paragraph"> </div>
+
+<pre>
+
+                         µ ◇ id_T
+             T o T o T ------------&gt; T o T
+                 |                     |
+                 |                     |
+                 |                     |
+        id_T ◇ µ |                     | µ
+                 |                     |
+                 |                     |
+                 ↓                     ↓
+               T o T  ---------------&gt; T
+                             µ
+</pre>
+      
+</div>
+<div class="code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="MonadFunctorDiagram3"><span class="id" type="projection">MonadFunctorDiagram3</span></a> : <span class="id" type="keyword">let</span> <span class="id" type="var">T</span> := <a class="idref" href="Monad.html#MonadFunctor"><span class="id" type="method">MonadFunctor</span></a> <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">let</span> <span class="id" type="var">η</span> := <a class="idref" href="Monad.html#MonadUnit"><span class="id" type="method">MonadUnit</span></a> <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">let</span> µ := <a class="idref" href="Monad.html#MonadMultiplication"><span class="id" type="method">MonadMultiplication</span></a> <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">∀</span> <span class="id" type="var">x</span>,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="Monad.html#µ"><span class="id" type="variable">µ</span></a> <a class="idref" href="NaturalTransformation.html#:natural_transformation_scope:x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="NaturalTransformation.html#:natural_transformation_scope:x_'o'_x"><span class="id" type="notation">(</span></a><a class="idref" href="Monad.html#µ"><span class="id" type="variable">µ</span></a> <a class="idref" href="NaturalTransformation.html#:natural_transformation_scope:x_'◇'_x"><span class="id" type="notation">&#x25c7;</span></a> <a class="idref" href="NaturalTransformation.html#IdentityNaturalTransformation"><span class="id" type="definition">IdentityNaturalTransformation</span></a> <a class="idref" href="Monad.html#T"><span class="id" type="variable">T</span></a><a class="idref" href="NaturalTransformation.html#:natural_transformation_scope:x_'o'_x"><span class="id" type="notation">)</span></a>) <a class="idref" href="Monad.html#x"><span class="id" type="variable">x</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> (<a class="idref" href="Monad.html#µ"><span class="id" type="variable">µ</span></a> <a class="idref" href="NaturalTransformation.html#:natural_transformation_scope:x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="NaturalTransformation.html#:natural_transformation_scope:x_'o'_x"><span class="id" type="notation">(</span></a><a class="idref" href="NaturalTransformation.html#IdentityNaturalTransformation"><span class="id" type="definition">IdentityNaturalTransformation</span></a> <a class="idref" href="Monad.html#T"><span class="id" type="variable">T</span></a> <a class="idref" href="NaturalTransformation.html#:natural_transformation_scope:x_'◇'_x"><span class="id" type="notation">&#x25c7;</span></a> <a class="idref" href="Monad.html#µ"><span class="id" type="variable">µ</span></a><a class="idref" href="NaturalTransformation.html#:natural_transformation_scope:x_'o'_x"><span class="id" type="notation">)</span></a>) <a class="idref" href="Monad.html#x"><span class="id" type="variable">x</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Monad.html#Monad"><span class="id" type="section">Monad</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

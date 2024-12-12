@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_4_6_4_3</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_4_6_4_3</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.JMeq.html#"><span class="id" type="library">JMeq</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#"><span class="id" type="library">ProofIrrelevance</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Category.html#"><span class="id" type="library">Category</span></a> <a class="idref" href="CommaCategory.html#"><span class="id" type="library">CommaCategory</span></a> <a class="idref" href="DiscreteCategory.html#"><span class="id" type="library">DiscreteCategory</span></a> <a class="idref" href="ComputableCategory.html#"><span class="id" type="library">ComputableCategory</span></a> <a class="idref" href="CategoryIsomorphisms.html#"><span class="id" type="library">CategoryIsomorphisms</span></a> <a class="idref" href="InitialTerminalCategory.html#"><span class="id" type="library">InitialTerminalCategory</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a> <a class="idref" href="FEqualDep.html#"><span class="id" type="library">FEqualDep</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab148"></a><h1 class="section">Exercise 4.6.4.3</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Exercise_4_6_4_3"><span class="id" type="section">Exercise_4_6_4_3</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab149"></a><h2 class="section">Problem</h2>
+ Let <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span> be a category and let <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.c"><span class="id" type="constructor">c</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.CategoryLeafTable.Ob"><span class="id" type="variable">Ob</span></a></span> <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span> be objects. Consider
+      them as functors <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.c"><span class="id" type="constructor">c</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode">1</span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span>, and consider the setup <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.c"><span class="id" type="constructor">c</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode">1</span>
+      <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span> <span class="inlinecode">&lt;-</span> <span class="inlinecode">1</span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a></span>. What is the comma category <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.c"><span class="id" type="constructor">c</span></a></span> <span class="inlinecode">&darr;</span> <span class="inlinecode"><a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a></span>? 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">C</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">objC</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variables</span> <a name="Exercise_4_6_4_3.c"><span class="id" type="variable">c</span></a> <a name="Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a> : <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.C"><span class="id" type="variable">C</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="Exercise_4_6_4_3_F_MorphismOf"><span class="id" type="definition">Exercise_4_6_4_3_F_MorphismOf</span></a> <span class="id" type="var">s</span> <span class="id" type="var">d</span> (<span class="id" type="var">m</span> : <a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> (<a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c"><span class="id" type="variable">c</span></a> <a class="idref" href="CommaCategory.html#:category_scope:x_'↓'_x"><span class="id" type="notation">&darr;</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a>) <a class="idref" href="Exercise_4_6_4_3.html#s"><span class="id" type="variable">s</span></a> <a class="idref" href="Exercise_4_6_4_3.html#d"><span class="id" type="variable">d</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> (<a class="idref" href="DiscreteCategory.html#DiscreteCategory"><span class="id" type="definition">DiscreteCategory</span></a> (<a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.C"><span class="id" type="variable">C</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c"><span class="id" type="variable">c</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a>)) (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#projT2"><span class="id" type="definition">projT2</span></a> <a class="idref" href="Exercise_4_6_4_3.html#s"><span class="id" type="variable">s</span></a>) (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#projT2"><span class="id" type="definition">projT2</span></a> <a class="idref" href="Exercise_4_6_4_3.html#d"><span class="id" type="variable">d</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">s</span>, <span class="id" type="var">d</span>, <span class="id" type="var">m</span>; <span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> *;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">destruct_sig</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">autorewrite</span> <span class="id" type="keyword">with</span> <span class="id" type="var">morphism</span> <span class="id" type="keyword">in</span> *;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">assumption</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="Exercise_4_6_4_3_F"><span class="id" type="definition">Exercise_4_6_4_3_F</span></a> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> (<a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c"><span class="id" type="variable">c</span></a> <a class="idref" href="CommaCategory.html#:category_scope:x_'↓'_x"><span class="id" type="notation">&darr;</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a>) (<a class="idref" href="DiscreteCategory.html#DiscreteCategory"><span class="id" type="definition">DiscreteCategory</span></a> (<a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.C"><span class="id" type="variable">C</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c"><span class="id" type="variable">c</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a>)).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> {| <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">MorphismOf</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">Exercise_4_6_4_3_F_MorphismOf</span></a> |};<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<span class="id" type="tactic">simpl</span>; <span class="id" type="tactic">intros</span>; <span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#proof_irrelevance"><span class="id" type="axiom">ProofIrrelevance.proof_irrelevance</span></a>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_4_6_4_3.G_ObjectOf"><span class="id" type="variable">G_ObjectOf</span></a> (<span class="id" type="var">x</span> : <a class="idref" href="DiscreteCategory.html#DiscreteCategory"><span class="id" type="definition">DiscreteCategory</span></a> (<a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.C"><span class="id" type="variable">C</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c"><span class="id" type="variable">c</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a>)) : (<a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c"><span class="id" type="variable">c</span></a> <a class="idref" href="CommaCategory.html#:category_scope:x_'↓'_x"><span class="id" type="notation">&darr;</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a>)%<span class="id" type="var">category</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#existT"><span class="id" type="constructor">existT</span></a> <span class="id" type="var">_</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">(</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#tt"><span class="id" type="constructor">tt</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">,</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#tt"><span class="id" type="constructor">tt</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">)</span></a> <a class="idref" href="Exercise_4_6_4_3.html#x"><span class="id" type="variable">x</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="CommaCategory.html#CommaCategory_ObjectT"><span class="id" type="definition">CommaCategory_ObjectT</span></a> (<a class="idref" href="InitialTerminalCategory.html#FunctorFromTerminal"><span class="id" type="definition">FunctorFromTerminal</span></a> <span class="id" type="var">_</span> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c"><span class="id" type="variable">c</span></a>) (<a class="idref" href="InitialTerminalCategory.html#FunctorFromTerminal"><span class="id" type="definition">FunctorFromTerminal</span></a> <span class="id" type="var">_</span> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a>).<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="Exercise_4_6_4_3_G_MorphismOf"><span class="id" type="definition">Exercise_4_6_4_3_G_MorphismOf</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">s</span> <span class="id" type="var">d</span> (<span class="id" type="var">m</span> : <a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> (<a class="idref" href="DiscreteCategory.html#DiscreteCategory"><span class="id" type="definition">DiscreteCategory</span></a> (<a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.C"><span class="id" type="variable">C</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c"><span class="id" type="variable">c</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a>)) <a class="idref" href="Exercise_4_6_4_3.html#s"><span class="id" type="variable">s</span></a> <a class="idref" href="Exercise_4_6_4_3.html#d"><span class="id" type="variable">d</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> (<a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c"><span class="id" type="variable">c</span></a> <a class="idref" href="CommaCategory.html#:category_scope:x_'↓'_x"><span class="id" type="notation">&darr;</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a>) (<a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.G_ObjectOf"><span class="id" type="variable">G_ObjectOf</span></a> <a class="idref" href="Exercise_4_6_4_3.html#s"><span class="id" type="variable">s</span></a>) (<a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.G_ObjectOf"><span class="id" type="variable">G_ObjectOf</span></a> <a class="idref" href="Exercise_4_6_4_3.html#d"><span class="id" type="variable">d</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">subst_body</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">revert</span> <span class="id" type="var">s</span> <span class="id" type="var">d</span> <span class="id" type="var">m</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> (<span class="id" type="tactic">intros</span> [] || <span class="id" type="tactic">intro</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> ×.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">constructor</span>; <span class="id" type="tactic">simpl</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">(</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">,</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">)</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">autorewrite</span> <span class="id" type="keyword">with</span> <span class="id" type="var">morphism</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="Exercise_4_6_4_3_G"><span class="id" type="definition">Exercise_4_6_4_3_G</span></a> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> (<a class="idref" href="DiscreteCategory.html#DiscreteCategory"><span class="id" type="definition">DiscreteCategory</span></a> (<a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.C"><span class="id" type="variable">C</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c"><span class="id" type="variable">c</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a>)) (<a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c"><span class="id" type="variable">c</span></a> <a class="idref" href="CommaCategory.html#:category_scope:x_'↓'_x"><span class="id" type="notation">&darr;</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> {| <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">MorphismOf</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">Exercise_4_6_4_3_G_MorphismOf</span></a> |};<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">subst_body</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">reflexivity</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">intro</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> <span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> ×<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> <span class="id" type="var">simpl_eq</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> <span class="id" type="tactic">subst</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> <span class="id" type="var">expand</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#f_equal"><span class="id" type="lemma">f_equal</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="Exercise_4_6_4_3"><span class="id" type="lemma">Exercise_4_6_4_3</span></a><br/>
+&nbsp;&nbsp;: (<a class="idref" href="CategoryIsomorphisms.html#:category_scope:x_'≅'_x"><span class="id" type="notation">(</span></a><a class="idref" href="DiscreteCategory.html#DiscreteCategory"><span class="id" type="definition">DiscreteCategory</span></a> (<a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.C"><span class="id" type="variable">C</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c"><span class="id" type="variable">c</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a>) : <a class="idref" href="ComputableCategory.html#CategoryOfCategories"><span class="id" type="definition">CategoryOfCategories</span></a><a class="idref" href="CategoryIsomorphisms.html#:category_scope:x_'≅'_x"><span class="id" type="notation">)</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="CategoryIsomorphisms.html#:category_scope:x_'≅'_x"><span class="id" type="notation">&cong;</span></a> <a class="idref" href="CategoryIsomorphisms.html#:category_scope:x_'≅'_x"><span class="id" type="notation">(</span></a><a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c"><span class="id" type="variable">c</span></a> <a class="idref" href="CommaCategory.html#:category_scope:x_'↓'_x"><span class="id" type="notation">&darr;</span></a> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a> : <a class="idref" href="ComputableCategory.html#CategoryOfCategories"><span class="id" type="definition">CategoryOfCategories</span></a><a class="idref" href="CategoryIsomorphisms.html#:category_scope:x_'≅'_x"><span class="id" type="notation">)</span></a>)%<span class="id" type="var">category</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3_G"><span class="id" type="definition">Exercise_4_6_4_3_G</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3_F"><span class="id" type="definition">Exercise_4_6_4_3_F</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">simpl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="Functor.html#Functor_Eq"><span class="id" type="lemma">Functor_Eq</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">reflexivity</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> <span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> ×<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">intro</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#proof_irrelevance"><span class="id" type="axiom">ProofIrrelevance.proof_irrelevance</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> <span class="id" type="var">simpl_eq</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> <span class="id" type="var">destruct_head_hnf</span> @<a class="idref" href="CommaCategory.html#CommaCategory_Object"><span class="id" type="record">CommaCategory_Object</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> <span class="id" type="var">destruct_sig</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> <span class="id" type="var">destruct_head_hnf</span> @<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#prod"><span class="id" type="inductive">prod</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> <span class="id" type="var">destruct_head_hnf</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#unit"><span class="id" type="inductive">unit</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> <span class="id" type="var">expand</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#f_equal"><span class="id" type="lemma">f_equal</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">apply</span> <a class="idref" href="CommaCategory.html#CommaCategory_Morphism_Eq"><span class="id" type="lemma">CommaCategory_Morphism_Eq</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ |- <span class="id" type="keyword">context</span>[<span class="id" type="keyword">match</span> ?<span class="id" type="var">f</span> ?<span class="id" type="var">x</span> <span class="id" type="keyword">with</span> <span class="id" type="var">_</span> ⇒ <span class="id" type="var">_</span> <span class="id" type="keyword">end</span>] ] ⇒ <span class="id" type="tactic">generalize</span> (<span class="id" type="var">f</span> <span class="id" type="var">x</span>); <span class="id" type="tactic">intro</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3"><span class="id" type="section">Exercise_4_6_4_3</span></a>.<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

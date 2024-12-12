@@ -1,0 +1,483 @@
+\documentclass{amsart}
+
+\input{decl-main}
+
+\def\down{\downarrow}
+\def\N{\vect{\NN}}
+\def\Seq{{\bf Seq}}
+\def\cSeq{{\bf cSeq}}
+\def\st{\tn{ such that }}
+\def\Del{{\bf \Delta}}
+\def\Nab{{\bf \nabla}}
+\def\dashSets{{\tn{-}\Sets}}
+\def\dashSet{{\tn{-Set}}}
+\def\dashset{{\tn{-set}}}
+\def\Deln{\Del^\NN}
+\def\Delinf{{\Del^\infty}}
+\def\Delb{{\Del_b}}
+\def\DSets{{\Delinf\dashSets}}
+\def\D2Sets{{\Del^2\dashSets}}
+\def\Catdc{{\Cat_{dc}}}
+\def\Sub{\tn{Sub}}
+\def\Sing{\tn{Sing}}
+\newcommand{\floor}[1]{\lfloor #1\rfloor}
+\def\NNN{\NN^+}
+\renewcommand{\vect}[1]{\overrightarrow{#1}}
+\def\CG{{\bf CG}}
+\def\Mon{{\bf Mon}}
+
+\begin{document}
+
+\title{Sequential Sets}
+
+\author{David I. Spivak}
+
+\maketitle
+
+\begin{abstract}
+
+Let $\Delinf=\End([\infty])$ be the monoid of convergent monotonic sequences in $\NN\cup\{\infty\}$.  The category $\Pre(\Delinf)$ of {\em sequential sets} is the category whose objects are sets equipped with an action of this monoid, and whose morphisms are equivariant maps.  We call a category $\mcC$ {\em sequentially generated} if it is a localization of $\Pre(\Delinf)$.  In this paper we show that several important categories, including the category $\Cat$ of categories, the category $\Top_{seq}$ of sequentially generated topological spaces, and the category of simplicial sets, are sequentially generated.  We hope to convince the reader that sequential sets gives an appropriate and simple setting for several mathematical considerations.
+
+\end{abstract}
+
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+\longnote{2008/08/18:  Consider concrete sites and concrete sheaves as perhaps a necessary part of the definition of sequential spaces in our sense.  See Baez: http://arxiv.org/abs/0807.1704}
+
+\longnote{2008/09/10: Joyal told me that Dan Kan proved that presheaves on the monoid of sequences which are eventually translations have something to do with spectra.  How much power do sequential sets have??}
+
+\section{Introduction}
+
+Let $M$ be a monoid.  The classical category of (right) $M$-Sets is equivalent to the category $\Pre(M)$ of presheaves on $M$, where $M$ is considered as a category with one object.  The purpose of this paper is to show that categories of $M$-sets, for various monoids $M$, are more ubiquitous in mathematics than one might think.  
+
+For example, the observation which led us to this paper is that the category $\sSets$ of simplicial sets is isomorphic to a category of right $M$-sets.  Here, $M=\Delb$ is the monoid of bounded monotonic sequences of natural numbers.  This perspective has a few payoffs.  First, it suggests the importance of the unique representable simplicial set $R_b$, herein called {\em the simplex}.  Every simplicial set $S$ is the colimit of a canonical diagram whose only object is the simplex.  One may view the simplex as the {\em free} simplicial set on one generator, and thus obtain a free-forgetful monad on $\Sets$, the algebras of which constitute the category of simplicial sets.  This appears not to have been discussed previously in the literature.
+
+Another reason for using this approach to simplicial sets is that many definitions and proofs become easier when one needs only consider a single representable object instead of countably many.  We use our free simplicial set to give a conceptual interpretation of V. Drinfeld's version \cite{} of the geometric realization functor.  The idea is that the points of the topological simplex $$\Delta^\infty=\left\{(x_0,x_1,x_2,\ldots)\in\RR^\infty_{\geq 0}\;\Big|\; 1=\sum_{i\in\NN} x_i\right\}$$ form a filtered category, and that the Drinfeld geometric realization of a simplicial set $X$ can be understood by a corresponding filtered colimit of sets, as prescribed by $X$.
+
+One may wonder why we stop at {\em bounded} monotonic sequences of natural numbers.  Indeed, there is a natural enlargement of $\Delb$, namely the monoid of convergent monotonic sequences in $\NN\cup\{\infty\}$, which we denote by $\Delinf$.  It has the property the category $\DSets=\Pre(\Delinf)$ subsumes the category of sequential topological spaces, the category $\Cat$ of small categories, and the category of semi-rings.  There is no doubt that each of these is an interesting category, but another reason to study $\DSets$ is that the monoid $\Delinf$ is quite natural.  Let us back up and explain where $\Delinf$ comes from.
+
+Arguably, the easiest categories to understand are the ``string" categories $[n]$, where $n\in\NN$ is a natural number.  The category $[n]$ has $n+1$ objects, labeled $0,\ldots,n$, with a single morphism $i\to j$ if $i\leq j$.  It can be depicted as $$[n]\!:=\;\;\bullet^0\too\bullet^1\too\bullet^2\too\cdots\too\bullet^{n-1}\too\bullet^n.$$  
+
+The category whose objects are these $[n]$, and whose morphisms are functors between them is called the simplicial category and is denoted by $\Del$.  One easily sees that $\Del$ is equivalent to the category of finite ordered sets.  The category of presheaves on $\Del$ is written $\Del-\Sets$ and called the category of simplicial sets.  Again, one result of this paper is that the category of presheaves on the monoid $\Delb$ is isomorphic to the category of presheaves on the (non-monoid) $\Del$.
+
+Since the finite string categories are so easy to understand and so useful, one might want to look at the union of all the finite strings, namely the category $$[\NN]:=\colim_{n\in\NN}\; [n],$$ which is an infinite string category with no right endpoint.  However, the property of having a right endpoint is one which all the finite string categories $[n]$ share.  Depending on ones purpose, one may be interested in retaining this property.  
+
+If we adjoin a (directed) colimit to $[\NN]$ we get a category, denoted $[\infty]$, which has objects $\NN\cup\{\infty\}$ and a single morphism $i\to j$ if $i\leq j$ (with the convention that all natural numbers are less than $\infty$).  We denote by $\Delinf$ the category of all colimit preserving functors from $[\infty]$ to itself.  It is a monoid, which we referred to above as the monoid of convergent monotonic sequences in $\NN\cup\{\infty\}$.  The monoid $\Delinf$, and presheaves on it, will be the main focus of this paper.
+
+
+Let $\mcC$ be a category.  Given a set of morphisms $S$ in $\Pre(\mcC)$, one can form the so-called Bousfield localization of $\Pre(\mcC)$, which is the largest full subcategory of $\Pre(\mcC)$ in which the elements of $S$ are isomorphisms.  For example, every category of sheaves is a Bousfield localization of the corresponding category of presheaves at a set $J$ of covering sieves.  Bousfield localizations of presheaf categories are often particularly easy to work with, and even more so when $\mcC=M$ is a monoid.  We will say that a monoid $M$ {\em generates} a category $\mcD$, if $\mcD$ is a Bousfield localization of $\Pre(M)=M-\Sets$.
+
+In this paper, we show that the category $\Sets$ of sets, the category $\Cat$ of small categories, and the category of semi-rings are generated by the monoid $\Delinf$.  However, it turns out that these facts are a bit too easy.  For example, though it is true that $\Sets$ is a localization of $\DSets$, it is also true that $\Sets$ is the category of presheaves on the trivial monoid $[0]=\End_\Cat([0])$.  Similarly, $\Cat$ is a localization of the category of presheaves  on $\Del^2:=\End_\Cat([2]).$  
+
+\longnote{Discuss somewhere the fact that if $A\to B\to A$ is a retract in some category $\mcC$ then the induced functor $\Pre(End_\mcC(B))\to\Pre(\End_\mcC(A))$ is a localization.}
+
+\longnote{Also, make sure, using Beck's monadicity theorem, that the category of algebras for the free-forgetful monad for simplicial sets really is the category of simplicial sets.}
+
+\longnote{The notation of $\Del^a$ for the monoid of endomorphisms of $a$ is bad.  The reason is that $ E^n=\End_\Cat([n])$ does not have the properties of the usual $n$-simplex.  For example, we do {\em not} have an isomorphism: $$\Hom_\Mon( E^n, E^n)\not\iso\Hom_\Cat([n],[m]).$$  This clashes with the usual simplicial set notation.} 
+
+\longnote{Finally, continue going through your corrections.}
+
+We can first use the full power of $\Delinf$ in the fact that it generates $\Top_\Seq$, the category of sequential topological spaces.  We noticed that the category $[\infty]$, in which the object $\infty$ is the colimit of the ``finite objects," is somehow similar to the so-called convergent-sequence space.  This is the topological space $\Sigma\in\Top$ whose points are labeled by the elements of $\NN\cup\{\infty\}$, and in which a subset $S\ss\Sigma$ is open if and only if $S$ is cofinite or $\infty\not\in S$.  An easier way to understand $\Sigma$ is as the subspace of points $$\left\{\frac{n}{n+1}\in [0,1]: n\in\NN\cup\{\infty\}\right\}\ss\RR,$$ or simply as the one-point compactification of the discrete space of natural numbers.
+
+The close relationship between $[\infty]$ and $\Sigma$, which may be viewed as an epimorphism of monoids $$\End_\Cat([\infty])\to\End_\Top(\Sigma),$$ allows us to understand many topological spaces as simply $\Delinf$-Sets; i.e. as sets with a right $\Delinf$ action.  The category $\Top_\Seq$ of sequential spaces has been studied by Frechet, Franklin, and Steenrod (although of course they did not understand it in the same way that we are presenting it here).  Furthermore, $\Top_\Seq$ falls under Steenrod's definition of a ``convenient category of topological spaces."  Our main result is that $\Top_\Seq$ is generated by $\Delinf$.  As an easy application, we deduce that $\Top_\Seq$ is a locally presentable category.  Moreover, any category of topological spaces which is generated (in the sense of \cite{Dugger---} by sequential spaces is also locally presentable. 
+
+The organization of this paper is as follows.  We begin with a brief discussion of sets with monoid actions, which we call {\em monacted sets}.  We then introduce sequential sets and prove some useful facts about them.  To get acquainted with the ideas, we prove that $\Cat$ is sequentially generated.  The next section is devoted to the study of sequentially generated topological spaces, and the proof that there is a Grothendieck topology on $\Delinf$ under which the sheaves are these sequentially generated spaces.  Finally, in section \ref{}, we show that $\sSets$ is equivalent to presheaves on the monoid $\Delta^b$ and give a few applications of this idea.
+
+The author wishes to thank Dan Dugger for many very useful conversations.
+
+\section{Preliminaries}
+
+A monoid $M$ is a category with one object.  However, we often abuse terminology and notation and speak of elements of $M$ -- by this we mean morphisms of $M$.  This is classical terminology.  Morphisms of monoids are just morphisms in $\Cat$: $$\Hom_\Mon(M,N):=\Hom_\Cat(M,N).$$
+
+Every monoid is a category of endomorphisms, namely it is the category of endomorphisms of its unique object!  Conversely, given a category $\mcC$ and an object $a\in\mcC$, the endomorphisms $\End_\mcC(a)$ forms a monoid, which we denote by \begin{eqnarray}\label{notation: del}\Del_\mcC^a:=\End_\mcC(a).\end{eqnarray}  If $\mcC$ is a full subcategory of $\Cat$, we supress it in the notation and simply write $\Del^a$.  We denote its opposite by $\Nab^a_\mcC.$
+
+Monoids are naturally pointed categories.  Thus, unlike for other categories $\mcC$, there is a canonical retraction of categories $$[0]\to M\to [0].$$  Whenever we have a retraction $A\To{s} B\To{p} A$ (in any category), we call $s$ the section and $p$ the projection of the retraction.  The latter terminology is in conflict with the common usage wherein one refers to the maps $X\from X\cross Y\to Y$ as projections; context will make the distinction clear.
+
+Normally, a map $f\taking A\to B$ does {\em not} induce a morphism between the respective endomorphism monoids.  However,a  retraction $A\to B\to A$ in a category induces a retraction of monoids $$\End(A)\to\End(B)\to\End(A)$$ by pre- and post-composition with the section and projection.
+
+Recall that a presheaf on a category $\mcC$ is a contravariant functor to sets (which we always write covariantly) $$\mcC\op\to\Sets,$$ and a morphism of presheaves is a natural transformation of functors; the category of such is denoted $\Pre(\mcC)$.   A functor $f\taking\mcC\to\mcD$ induces an adjunction $$\Adjoint{f^*}{\Pre(\mcC)}{\Pre(\mcD)}{f_*.}$$ 
+
+When $M$ is a monoid, the category $\Pre(M)$ is particularly simple: it is the category of right $M$-sets and equivariant maps.  An object of $\Pre(M)=M-\Sets$ can be denoted by a pair $(X,*)$, where $X$ is a set and $$*\taking X\cross M\to X$$ is a right action of $M$.  A morphism of $M$-sets is a function which preserves the $M$-action, also called an $M$-equivariant map.  
+
+A retraction of monoids (or any categories) $M\To{s}N\To{p}M$ induces adjoint retractions of presheaf categories $$\xymatrix{\Pre(M)\ar@<.5ex>[r]^{s^*}&\Pre(N)\ar@<.5ex>[l]^{s_*}\ar@<.5ex>[r]^{p^*}&\Pre(M)\ar@<.5ex>[l]^{p_*}}$$
+
+\section{Sequential Sets}
+
+Mathematicians often speak of sequences of objects in a category $\mcC$.  These are a set of objects $$X=\{X_0,X_1,X_2,\ldots\},$$ generally finite or countably infinite, and it is generally understood that one can ``pick out" various subsequences.  For example, given a functor $f\taking[\NN]\to[\NN]$, one can consider a new sequence $$X*f=\{X_{f(0)},X_{f(1)},X_{f(2)},\ldots\}.$$
+
+For whatever we mean by a sequence in $\mcC$, we should be able to perform operations of the above type.  In other words, our set of sequences in $\mcC$ should be closed under action by a certain type of operation.  These types of operations are classified by endomorphisms of the category $$[\NN]=\Big(\bullet^0\too\bullet^1\too\bullet^2\too\cdots\Big).$$  We denote the category of endomorphisms of $[\NN]$ by $\Deln$.  This is only a slight abuse of notation \ref{notation: del}.
+
+One could instead consider convergent sequences, in which the objects of the sequence are ``heading somewhere."  The set of convergent sequences in $\mcC$ can again be considered as a set with an action by a certain monoid.  This time, it is the monoid of endomorphisms of the category $$[\infty]=\Big((\bullet^0\too\bullet^1\too\bullet^2\too\cdots\too\bullet^\infty\Big),$$ which we denote by $\Delinf$.
+
+In this section we look more deeply at $\Deln$ and $\Delinf$, and at the categories of presheaves on them.  The category of presheaves on a monoid provides a nice example for getting more acquainted with categories of presheaves, because one is hopefully not scared off by the concept of monoid actions on a set.  
+
+\begin{definition}
+
+A {\em string category} is an element of the set $$\big\{[s]\; |\; s\in\NN\cup\{\NN\}\cup\{\infty\}\big\}.$$  The {\em length} of a string category $[s]$ is $s$ if $s<\infty$ and $\infty$ otherwise.  These lengths are all elements of the set $$\NNN:=\NN\cup\{\infty\}.$$  We call the category $[\NN]$ the {\em noncovergent string} and we call the category $[\infty]$ the {\em convergent string}.  
+
+
+\end{definition}
+
+A functor between string categories can be identified with an order preserving map between their sets of objects, as subsets of the ordered set $\NN\cup\{\infty\}$.  However, the only reason that $[\infty]$ arose in this discussion was because we are sometimes interested in the existence of a directed colimit.  Therefore, we only wish to consider functors $[\infty]\to[\infty]$ which preserve this directed colimit.  In fact, if we make this restriction on the other string categories, it does not change anything: all functors between them are automatically direct-colimit preserving.  In this paper, {\bf all morphisms out of string categories will be assumed to be direct-colimit preserving}.  When necessary, we will denote the category of directed-colimit preserving functors by $\Catdc$.
+
+Note that the restriction that $F\taking[\infty]\to[\infty]$ preserves colimits does {\em not} imply that $F$ must send $\infty$ to $\infty$.  For example, for each finite $n\in\NN$, consider the retraction of categories $$[n]\To{i_n}[\infty]\To{r_n}[n],$$ where $i_n(a)=a$ for all $a\in\{0,1,\ldots,n\}$.  Under this choice of section $i_n$, there is only one possible choice for projection, namely $r_n$ sends $a$ to itself if $a\in\Ob([n])$ and to $n$ if $a\geq n$.  This is a very useful retraction, as is its inversion, the map \begin{eqnarray}\label{inrn}i_nr_n\taking[\infty]\to[\infty].\end{eqnarray}  Notice that although $\infty\mapsto n$, this is still a colimit preserving functor.
+
+In the following sections, we will be discussing $[\infty]$ and its monoid of endomorphisms $\Delinf$.  However, almost all of the following ideas can applied to the other string categories without much thought.  We apologize for the inconvenience of only writing each idea in terms of the convergent string, instead of for all strings.
+
+\subsection{$\Delinf$}
+
+The morphisms of $\Delinf$ are the colimit preserving functors $f\taking[\infty]\to[\infty]$.  We denote such a morphism by $$f=(f_0,f_1,f_2,\ldots\leadsto f_\infty),$$ where for each $i\in\NNN$, we also have $f_i\in\NNN$. The colimit-preservation restriction is that $f_\infty\in\NNN$ must be the least upper bound of the set $\{f_i|i\in\NN\}$.  Each sequence $f$ has an underlying set of elements $|f|$; note that if the cardinality of $|f|$ is infinite, then one must have $\infty\in|f|$.  
+
+We denote the unique object of $\Delinf$ by $[\infty]$, which is a natural choice of denotation.  We denote the identity element by $1\in\Delinf$.  To finish describing $\Delinf$, we need only investigate how morphisms compose.  Given two convergent sequences $f,g\taking[\infty]\to[\infty]$, their composition is the sequence $$f\circ g=(f_{g_0},f_{g_1},f_{g_2},\ldots\leadsto f_{g_\infty}).$$  One easily checks that $f\circ g$ is a colimit preserving endomorphism of $[\infty]$. 
+
+We sometimes abuse notation and write convergent sequences casually as ``elements" $f\in\Delinf$.  What we mean in actuality is that $f\taking[\infty]\to[\infty]$ is a morphism of $\Delinf$, certainly not an object.  This abuse is classical, as monoids were classically considered as a set with multiplication rather than as a category with one object.
+
+\begin{definition}
+
+Let $f,g\in\Delinf$ be convergent sequences.  We write $f\leq g$ if there exists a convergent sequence $x\taking[\infty]\to[\infty]$ such that $f=g\circ x$ is the composition $$\xymatrix{[\infty]\ar[r]^\exists\ar@/_1pc/[rr]_f&[\infty]\ar[r]^g&[\infty]}.$$  Note that this is the case precisely when $|f|$ is a subset of $|g|$.  If $f\leq g$ and $g\not\leq f$, we write $f<g$.
+
+A subset $I\ss\Delinf$ is called an {\em ideal} if, for every $g\in I$ and $x\in\Delinf$, one has $g\circ x\in I$.  Note that this definition has nothing to do with the additive structure (which we have not yet discussed) which exists on the elements of $\Delinf$.  If $A\ss\Delinf$ is a subset, we denote by $(A)$ the ideal generated by $A$.  For a single element $g\in\Delinf$, we sometimes denote $(g)$ by $\Del^{\leq g}$.  One can easily check that the set $$\{f\in\Delinf|f<g\}$$ is an ideal, which we denote by $\Del^{<g}.$
+
+\end{definition}
+
+
+
+There is a very important ideal $\Del^\infty_b$, consisting of all bounded sequences $f$, i.e. sequences for which  $f_\infty<\infty.$  In fact, one could consider $\Del^\infty_b$ as a subcategory of $\Delinf$, if one were not concerned about the fact that $\Del^\infty_b$ does not have an identity element.  If we adjoin an identity morphism to $\Del^\infty_b$, we obtain a subcategory of $\Delb\ss\Delinf$ (but no longer an ideal!).  The main importance of all this is that we will see later that the category of simplicial sets is {\em isomorphic} to the category of presheaves $$\sSets\iso\Pre(\Delb)$$ on $\Delb$.  Of course, $\Delb$ is not equivalent to the simplicial indexing category, because the latter has more than one isomorphism class of objects, whereas $\Delb$ is a monoid.  (Note: the pickiness of notation here will not be a problem, because we will never be speaking of $\Del^\infty_b$ and $\Delb$ in the same context.)
+
+\begin{definition}
+
+We say that a monoid $M$ has a {\em skew structure} if there exists a functor $f\taking M\cross M\to M$ such that for all $s,t\in M$, one has $$s\circ t=f(s,t)\circ s.$$
+
+\end{definition}
+
+That is, a skew structure is a functorial way of understanding how to ``push elements past other elements."
+
+\begin{lemma}
+
+The monoid $\Delinf$ has a skew structure.
+
+\end{lemma}
+
+\subsection{$\Delinf$-Sets}
+
+It is a pleasant fact that two common uses of the term $\Delinf$-set agree.
+
+\begin{definition}
+
+We call a pair $X=(|X|,*)$ a {\em sequential set} or a {\em $\Delinf$-set} if $|X|$ is a set and $$*\taking X\cross\Delinf\to X$$ is a right action of the monoid (of morphisms of) $\Delinf$ on $X$.  A morphism of $\Delinf$-Sets is a $*$-equivariant function of sets; i.e. a function $f\taking|X|\to|Y|$ such that $f(x*\sigma)=f(x)\star\sigma$ for all $x\in X$ and $\sigma\in\Delinf$.
+
+The category of $\Delinf$-Sets is isomorphic to the category $$\DSets\iso\Pre(\Delinf)$$ of contravariant functors from $\Delinf$ to sets.  
+
+\end{definition}
+
+\begin{example}
+
+There is a unique representable $\Delinf$-set, which we denote $$R=\Hom_\Delinf(-,[\infty])\in\Pre(\Delinf),$$ and refer to as {\em the representable $\Delinf$-set}.  The underlying set $|R|$ is the set of nondecreasing sequences of natural numbers, and the action of $\Delinf$ on $|R|$ is by composition of sequences.
+
+By the Yoneda lemma, we have $$\Hom_{\DSets}(R,R)=\Hom_\Delinf([\infty],[\infty])=\Hom_\Catdc([\infty],[\infty]),$$ which is exactly the set of morphisms $f\in\Delinf$.
+
+There is another way to view a sequential set $(|X|,*)$, namely as a map of sets $$*\taking\End\op(R)\to\Hom_\Sets(|X|,|X|).$$  This is just another way of accessing the $\Delinf$ action on $|X|$.
+
+Let $I\ss\Delinf$ be an ideal.  Then $I$ is naturally a $\Delinf$-set, as it is closed under the $\Delinf$-action.  Since presheaf categories are closed under colimits (and limits), one may also form the quotient $R/I$ and obtain a $\Delinf$-set.  Moreover, colimits (resp. limits) are computed objectwise; since $\Delinf$ has only one object, this means that the underlying set of a colimit (resp. limit) is the colimit (resp. limit) of the underlying sets.
+
+\end{example}
+
+\begin{lemma}
+
+Let $f\taking X\to Y$ by a morphism of sequential sets.  It is an isomorphism if and only if the function $|f|\taking|X|\to|Y|$ is a bijection of underlying sets.
+
+\end{lemma}
+
+\begin{proof}
+
+One direction is clear.  For the other, suppose that $F=|f|\taking|X|\to|Y|$ is a bijection and let $G$ be its set-theoretic inverse.  It suffices to show that $G$ is the underlying function of a morphism $g$ of $\Delinf$-Sets.  That is, for $y\in|Y|,s\in\Delinf$, we must show that $G(y)*s=G(y*s)$.  Since $f$ is assumed to be a morphism and $F\circ G$ is the identity function, we have $$F(G(y)*s)=FG(y)*s=y*s=FG(y*s).$$  The result follows from the fact that $F$ is injective.
+
+\end{proof}
+
+Let $X$ be a sequential set.  One sees that $$|X|=\Hom_{\DSets}(R,X);$$  thus one thinks of an element $x\in|X|$ as a morphism $x\taking R\to X$.  For $\sigma\in\Delinf$, one thinks of the element $x*\sigma\in|X|$ as the composition $$R\Too{\sigma}R\Too{x}X.$$  This gives a nice way of viewing the action.
+
+We now discuss the monoidal structure on $\DSets$.  All presheaf categories have natural monoidal structures, where the tensor is given by Cartesian product and the internal hom is its right adjoint, and $\DSets$ is no different.  Thus, the $\Hom$ bifunctor factors through the category of sequential sets, via a bifunctor $$\Map\taking\Pre(\Delinf)\op\cross\Pre(\Delinf)\to\Pre(\Delinf).$$  We define the underlying set of $\Map(X,Y)$ to be $\Hom(X\cross R,Y)$, and then define $\Map(X,Y)$ itself as the composite function $$\End\op(R)\to\End\op(X\cross R)\to\End_\Sets(\Hom(X\cross R,Y))$$
+
+\comment{There is a natural sequential set structure already existing on $\Hom(X,Y)$.  It comes from the fact that a natural transformation $X\to Y$ is simply a function $|X|\to|Y|$ such that precomposition with the $\Delinf$ action on $X$ and postcomposition with the $\Delinf$ action on $Y$ have the same effect on $f$.  Thus we can act $\Delinf$ on $Y$ (or on $X$) to induce an action of $\Delinf$ on $\Hom(X,Y)$.  This sequential structure on $\Hom(X,Y)$ is {\em not} equivalent to that on $\Map(X,Y)$; in fact the underlying sets are different: $\Hom(X,Y)$ is the zero-simplices of $\Map(X,Y)$.}
+
+Recall that for $n\in\NN$, one has a retraction $$[n]\To{i_n}[\infty]\To{r_n}[n],$$ whose inversion $i_nr_n\taking[\infty]\to[\infty]$ is an important element of $\Delinf$.  We denote $i_nr_n$ by $\vect{n}\taking[\infty]\to[\infty]$; it is the sequence $$\vect{n}=(0,1,2,\ldots,n,n,n,\ldots\leadsto n).$$  We denote the ideal generated by $\vect{n}$ by $$\Delta^n:=(\vect{n})\in\DSets.$$  
+\begin{lemma}
+
+Let $m,n\in\NN$.  The set of functors $\Hom_\Cat([m],[n])$ naturally has the structure of a $\Delinf\dashSet$, and there is a natural isomorphism of $\DSets$, $$\Hom_\Cat([m],[n])\To{\iso}\Hom_\DSets(\Delta^m,\Delta^n).$$  Moreover, there is an isomorphism $\Delta^n\iso\Map(\Delta^n,\Delta^n)$.
+
+\end{lemma}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{definition}
+
+Let $n\in\NN$ be a natural number, let $\Delta^n\in\DSets$ be the $n$-simplex, and let $X\in\DSets$ be any sequential set.  The set $$X_n:=\Hom_\DSets(\Delta^n,X)$$ is called the set of {\em $n$-simplices} of $X$.  The set $|X|$ is sometimes called the set of {\em simplices} of $X$, and the union of the $n$-simplices (over all $n\in\NN$) is called the set of {\em finite simplices} of $X$.
+
+\end{definition}
+
+\begin{lemma}
+
+Let $n\in\NN$ and $X=(|X|,*)$ a sequential set.  The set $X_n$ can be characterized as the subset $$X_n=\{x\in X|x*\vect{n}=x\}.$$
+
+\end{lemma}
+
+\begin{lemma}
+
+Let $n\in\NN$.  The functor $-_n\taking X\mapsto X_n$, taking $\DSets$ to $\Sets$, has both a left and a right adjoint.
+
+\end{lemma}
+
+\begin{proof}
+
+Clearly, $-_n$ preserves limits.  Since $\Delta^n$ is a retract of the unique representable $R$, one can show using a retract diagram of the form $$\xymatrix{\colim\Hom(\Delta^n,X)\ar[r]\ar[d]&\colim\Hom(R,X)\ar[r]\ar[d]&\colim\Hom(\Delta^n,X)\ar[d]\\ \Hom(\Delta^n,\colim X)\ar[r]&\Hom(R,\colim X)\ar[r]&\Hom(\Delta^n,\colim X)},$$ where $X$ is a diagram, that $-_n$ preserves colimits as well.  
+
+The result now follows from Freyd's adjoint functor theorem.
+
+\end{proof}
+
+
+
+\begin{example}
+
+Let $X$ be a sequential set.  The power set $\mcP(X)$ of $X$ is also a sequential set in a natural way.  Namely, there is an indiscrete sequential set on two generators, which we could denote $I_2$, and we take $$\mcP(X):=\Map(X,I_2).$$
+
+\end{example}
+
+\begin{example}
+
+Given any category $\mcC$, one may take its {\em sequential nerve} $N^\infty(\mcC)$.  This is the sequential set whose underlying set is the set of (direct colimit preserving) functors $\Hom([\infty],\mcC)$, with the obvious right action of $\Delinf=\Hom([\infty],[\infty])$.  It is easy to show that the finite simplices of $N^\infty(\mcC)$ are in natural bijection with the simplices of the usual (simplicial) nerve $N(\mcC).$  We will later discuss the adjoint functors between the categories of simplicial sets and sequential sets.
+
+\end{example}
+
+\begin{example}
+
+We end this section with an example of a strange sequential set.  Let $|X|$ be the set $\{x,y\}$.  We give an action $*\taking |X|\cross\Delinf\to|X|$ as follows.  If $\sigma\in\Delinf$ is an unbounded sequence, we let it act by identity:  $x*\sigma=x$ and $y*\sigma=y$.  If $\sigma$ is a bounded sequence, set $x*\sigma=y*\sigma=y.$   
+
+This construction could be repeated for any ideal $I\ss\Delinf$.
+
+\end{example}
+
+\section{$\Cat$ is sequentially generated}
+
+In this section we show that the category $\Cat$ of small categories is sequentially generated.  The idea is that a category $\mcC$ can be completely understood by its commutative triangles.  However, if one just considers the {\em set} of commutative triangles $$\mcC_2:=\Hom_\Cat([2],\mcC),$$ they lose the ability to determine which objects and morphisms make up the commutative triangles in $\mcC$, and thus lose their understanding of how morphisms compose.  The fix is simple: one must retain the obvious action of the monoid $$\Del^2:=\Hom_\Cat([2],[2])$$ on $\mcC_2$.
+
+The first thing we must mention is that the category of $\Del^2$-Sets is a localization of $\DSets$.  In fact, $ E^n$ is a localization of $\DSets$ for all $n\in\NN$.  Let $\ell_n\taking\Delinf\to E^n$ denote the functor which sends $x\in\Delinf$ to the composition $$[n]\To{i_n}[\infty]\To{x}[\infty]\To{r_n}[n].$$
+
+
+\begin{proposition}\label{skeletal adjunction}
+
+Let $n\in\NN$ be a natural number and $ E^n$ the monoid of endomorphisms of the category $[n]$.  The adjoint pair $$\Adjoint{L}{\Pre(\Delinf)}{\Pre( E^n)}{R,}$$ induced by $\ell,$ is a left exact localization.
+
+\end{proposition}
+
+\begin{proof}
+
+We must show that $R$ is fully faithful and that $L$ is left-exact.  
+
+\end{proof}
+
+With Proposition \ref{skeletal adjunction} in hand, we can prove that $\Cat$ is a localization of $\DSets$ by proving that it is a localization of $\D2Sets$.  Let us first characterize the categories amongst the $\D2Sets$.
+
+A $\Del^2$-set is a pair $(|X|,*)$, where $|X|$ is a set and $$*\taking|X|\cross\Del^2\to|X|$$ is a right action by the monoid of endomorphisms of $[2]$.  The endomorphisms of $[2]$ can be considered as sequences $(i,j,k)$, where $0\leq i\leq j\leq k\leq 2$, and composition of endomorphisms is as for elements of $\Delinf$.  
+
+Let $\vect{0}$ denote the sequence $(0,0,0)$, let $\vect{1}$ denote $(0,1,1)$, and let $\vect{2}$ denote $(0,1,2)$.  Given a $\Del^2$-set $X$ and $i\in\{0,1,2\}$, we let $X_i:=\Hom(\vect{i},X)$; these denotations are exactly as for $X$ as a $\Delinf$-set.  We call $|X|=X_2$ the set of (commutative) triangles in $X$; we call $X_1$ the set of morphisms of $X$, and we call $X_0$ the set of objects of $X$.  Note that this terminology has {\em nothing} to do with ``triangulated categories."
+
+\begin{example}
+
+Let $\mcC$ be a category, considered as a $\Del^2$-set.  That is, it has as underlying set $$|\mcC|:=\Hom_\Cat([2].\mcC),$$ with the right action $*\taking|\mcC|\cross\Del^2\to|\mcC|$ given by precomposition.  This functor is called the 2-nerve and is denoted $$N^2\taking\Cat\to\D2Sets.$$
+
+Let $A\taking[2]\to\mcC$ be an element of $|\mcC|$; it is depicted simply by $$\xymatrix{X\ar[r]^f\ar@/_1pc/[rr]_h&Y\ar[r]^g&Z.}$$  So, for example, $A*(0,0,0)$ is the triangle $$\xymatrix{X\ar[r]^{\id_X}\ar@/_1pc/[rr]_{\id_X}& X\ar[r]^{\id_X}& X,}$$ which we refer to as the first object of $A$, and $A*(0,2,2)$ is the triangle $$\xymatrix{X\ar[r]^h\ar@/_1pc/[rr]_h& Z\ar[r]^{\id_Z}& Z,}$$ which we refer to as a composition morphism for $A$.  Note that $A*(0,0,2)$ is the other composition morphism for $A$.  The difference is just a matter of of bookkeeping.
+
+\end{example}
+
+We now give a characterization of those $\Del^2$-sets which come from categories.  They have three properties.  First, a triangle is nothing more than the morphisms which compose it; that is, in 1-category theory one cannot have two different commutative triangles corresponding to the same composition of arrows.  Second, one can compose the first arrow of any triangle with the second arrow of any triangle, assuming the second objects are the same.  Finally, if one composes three arrows in either of two ways, one gets the same answer.  One does not need any axioms about identity morphisms: these are inherent in the way that degeneracies work.
+
+\begin{definition}
+
+A $\Del^2$-set $X=(|X|,*)$ is called {\em categorical} if \begin{description}\item[uniqueness] If $A,B\in|X|$ are triangles such that $A*x=B*x$ for all $x<\vect{2}$, then $A=B$.\item[composition] if $A,B\in |X|$ are triangles such that $A*(1,1,1)=B*(1,1,1)$, then there exists a triangle $C\in X_2$ such that $C*(0,1,1)=A*(0,1,1)$ and $C*(1,2,2)=B*(1,2,2)$.\item[associativity] Suppose that $A$ and $B$ are triangles such that $A*(1,2,2)=B*(0,1,1)$.   There are two ways to compose the three morphisms found in these triangles.  In the first way, since $(A*(0,2,2))*(1,1,1)=B*(1,1,1)$, we may compose (by axiom 2) to get a triangle $C$ such that $C*(0,1,1)=A*(0,2,2)*(0,1,1)=A*(0,2,2)$ and $C*(1,2,2)=B*(1,2,2)$.  
+
+In the second way, since $A*(1,1,1)=(B*(0,0,2))*(1,1,1)$, we may compose to get a triangle $D$ such that $D*(0,1,1)=A*(0,1,1)$ and $D*(1,2,2)=B*(0,0,2)*(1,2,2)=B*(0,2,2)$.  
+
+The requirement in this axiom is that we must have an equality of triangles, $C=D\in X$.
+
+\end{description}
+
+\end{definition}
+
+\begin{theorem}
+
+The 2-nerve functor $$N:=N^2=\Hom_\Cat([2],-)\taking\Cat\to\D2Sets$$ is fully faithful and has a left adjoint $\mcL\taking\D2Sets\to\Cat$.  Thus, $\Cat$ is a localization of $\D2Sets$, and hence $\Cat$ is a localization of $\DSets$.  Moreover, the image of $N$ in $\D2Sets$ is the full subcategory spanned by the categorical $\Del^2$-sets.
+
+\end{theorem}
+
+\begin{proof}
+
+Clearly $N$ preserves limits, so it is a right adjoint.  One can think of a functor $\mcC\to\mcD$ as simply a function sending the commutative triangles of $\mcC$ to the commutative triangles of $\mcD$.  It is not hard to see that $N$ is faithful, nor is it hard to see that the image under $N$ of any category is a categorical $\Del^2$-set.
+
+It remains to show that every categorical $\Del^2$-set is in the image of $N$, and that any morphism between $\Del^2$-sets comes from a morphism of categories.  Given a categorical $\Del^2$-set $X$, we construct a category $\mcL(X)$ as follows.  The objects of $\mcL(X)$ are the 0-simplices of $X$.  Given two objects $x,y\in X_0$, one takes $\Hom_{\mcL(X)}(x,y)$ to be the set of 1-simplices $f\in X_1$ such that $f*(0,0,0)=x$ and $f*(2,2,2)=y$; we identify $f$ and $g$ if $f*(0,1,1)=g*(1,1,2)$.  Finally, we say that a triangle $$h=^?f\circ g$$ commutes in $\mcL(X)$, if there exists a triangle $A\in|X|$ such that $A*(0,1,1)=g, A*(1,2,2)=f$, and $A*(0,2,2)=h$.  It is not hard to show that the counit map $$\mcL(N(\mcC))\to\mcC$$ is an isomorphism of categories.  Therefore, $N$ is a full functor.
+
+\end{proof}
+
+\section{Sequential spaces are sequentially generated}
+
+\subsection{quick idea: left exact localization}
+
+The localization $L'\taking\Pre(\Sigma)\to\Top_\Seq$ is left exact. It is easy to see that it preserves the points of finite limits.  Since the open sets are detected by maps in from $\Sigma$, one also sees that it preserves open sets.
+
+Now, is that enough to say that $L\taking\Pre(\Delinf)\to\Top_\Seq$ is left exact?  I think so.
+
+\subsection{the rest}
+
+When one imagines a topological space, he or she generally imagines a setting in which one can determine when points are ``close" to other points.  Metric spaces allow one to quantify this closeness, but even without a metric, if one was able to say which sequences of points converge then they would have an adequate notion of closeness.  Under this approach, one would say that a function $X\to Y$ is continuous if it maps convergent sequences to convergent sequences.  
+
+The general approach to topology is to instead give a notion of far-ness: given points $x,y\in X$, each open set containing $x$ but not containing $y$ is ``evidence" of their far-ness apart.  Under this approach, we say that a function $X\to Y$ is continuous if points in $X$ whose images are far apart are themselves far apart.
+
+It is a matter of taste to decide which is a more natural notion.  One nice thing about topological spaces is that they are closed under a variety of constructions.  Norman Steenrod \cite{Ste} wrote down a list of properties that ``convenient categories $\mcC$ of topological spaces" would have, and proved that the category of compactly-generated Hausdorff spaces satisfy these properties.  These include \begin{enumerate}\item that $\mcC$ contains all spaces which come up in practice, \item that $\mcC$ is closed under products, function spaces, and colimits, and \item that $\mcC$ satisfies an exponential law and is distributive (i.e. products distribute over disjoint union). \end{enumerate}
+
+Steenrod shows that the category $\CG$ of compactly generated Hausdorff spaces is convenient in the above sense.  He also gives a functor $k\taking\Top\to\CG$ which is {\em right adjoint} to the forgetful functor.  He shows that the functor $k$ and the counit $\eta_X\taking k(X)\to X$ have several nice properties: \begin{enumerate}\item $X$ and $k(X)$ have the same compact subsets, \item if $X\in\CG$ then $k(X)=X$ (or more precisely $\eta_X=\id_X$), \item If $f\taking X\to Y$ is continuous on compact subsets then $k(f)$ is continuous, and \item $\eta_X$ induces isomorphisms of homotopy groups and singular homology and cohomology.\end{enumerate}
+
+However, compactly generated topological spaces have a significant drawback from our perspective.  Namely, the category of compact topological spaces ${\bf Cpt}$ is not small, so one cannot even consider the question of whether $\CG$ is a category of sheaves on ${\bf Cpt}$.
+ 
+In this section we consider instead the category of sequentially generated topological spaces, also known as sequential spaces. (Note that these are closely related to but {\em not the same as} Frechet-Urysohn spaces.)  A sequential space $X$ is a space in which a set $C\ss X$ is closed if and only if for all continuous maps $f\taking\Sigma\to X$, one has $f^\m1(C)\ss\Sigma$ closed.  (Here $\Sigma$ is the ``convergent sequence space" discussed in the introduction.)  We denote by $\Top_\Seq$ the full subcategory of $\Top$ spanned by the sequential spaces.  Because they are so easy to understand and work with, sequential spaces have been studied for many years, at least from the 1960s to 2007.  See, for example, \cite{Fra1}, \cite{Fra2}, \cite{Kel}. 
+
+In \cite[7.4]{BoT}, Booth and Tillotson prove not only that the category $\Top_\Seq$ of sequential spaces is convenient in Steenrod's sense, but that it is {\em initial} with respect to this property.  
+
+In this section we prove a seemingly new result about sequential spaces.  Namely, $\Top_\Seq$ is a category of sheaves on a monoid (our favorite monoid, $\Delinf$).  Hence, we can realize any sequential topological space $X$ as a set equipped with a right action by $\Delinf$.  The set referred to here is {\em not} the set of points of $X$, but the set of convergent sequences in $X$, and the $\Delinf$ action comes via a morphism of monoids $$\End_\Cat([\infty])\to\End_\Top(\Sigma).$$  In this section, we exhibit the Grothendieck topology on $\DSets$ under which $\Top_\Seq$ is the category of sheaves.
+
+Let $\Sigma^\NN$ denote the discrete space on the set $\NN$, let $\Sigma^\infty=\Sigma$ denote its one-point compactification, and let $\iota\taking\Sigma^\NN\to\Sigma^\infty$ denote the inclusion.  We begin by stating a lemma which gives another characterization of sequential spaces.
+
+\begin{lemma}\label{lifting criterion}
+
+Let $X$ be a topological space, and let $\iota\taking\Sigma^\NN\to\Sigma^\infty$ be as above.  Then $X$ is a sequential space if and only if it satisfies the following property: \begin{itemize}\item a subset $j\taking C\ss X$ is closed if and only if it satisfies the right lifting property with respect to $\iota$.
+
+That is, $C$ is closed if and only if a dotted arrow exists in every solid diagram of the form $$\xymatrix{\Sigma^\NN\ar[d]_\iota\ar[r]&C\ar[d]^j\\ \Sigma^\infty\ar@{-->}[ur]\ar[r]&X.}$$\end{itemize}
+
+\end{lemma}
+
+If $C\ss X$ is closed then every sequence in $C$ which converges in $X$ must converge in $C$.  By the lemma, the converse statement is the axiom defining sequential spaces.  We say that a set $C$ is {\em sequentially closed} if it satisfies the lifting criterion in Lemma \ref{lifting criterion}.  
+
+\begin{proposition}
+
+Let $X$ be a topological space.  If $X$ is first-countable, a metric space, a locally compact metrizable space, a CW complex, or a space with finitely many points, then $X$ is sequential.  If $X$ is a colimit of sequential spaces then $X$ is sequential.
+
+\end{proposition}
+
+\begin{proof}
+
+Metric spaces and spaces with finitely many points are first-countable, and a CW-complex is a colimit of metric spaces.  The result now follows from \cite[Section 6]{BoT}.
+
+\end{proof}
+
+The most important characterization of sequential sets is that they are colimits of the convergent sequence space $\Sigma$.  For a space $X$, consider the category $I_X$ whose objects are continuous maps $f\taking\Sigma\to X$ and whose morphisms are given by $$\Hom(f,f')=\{g\taking\Sigma\to\Sigma\;|\;f=f'\circ g\}.$$  There is an obvious functor $i_X\taking I_X\to\Top$, sending $f\mapsto \Sigma$ and sending $g\taking f\to f'$ to $g\taking\Sigma\to\Sigma$.  
+
+\begin{lemma}
+
+Let $X$ be a topological space and $i_X\taking I_X\to\Top$ as above.  Then $X$ is sequential if and only if the natural map $$\eta_X\taking\colim i_X\too X$$ is an isomorphism.
+
+\end{lemma}
+
+\begin{proof}
+
+One direction is clear because sequential spaces are closed under colimits.  For the other, one shows that if $X$ is sequential then $\eta_X$ induces a bijection of underlying sets (by looking at constant sequences), and that it also induces a bijection of closed sets.
+
+\end{proof}
+
+\subsection{Sequential spaces as sheaves on $\Delinf$}
+
+Let $f\taking[\infty]\to[\infty[$ be a colimit-preserving functor.  It induces a function from the points of $\Sigma$ to the points of $\Sigma$, and it is easy to see that this function is continuous.  Let $$Q\taking\End_\Cat([\infty])\to\End_\Top(\Sigma)$$ denote the corresponding functor between monoids.  The left Kan extension gives the first functor in the composition \begin{eqnarray}\label{eqn:geo rea}\Pre(\Delinf)\to\Pre(\End(\Sigma))\to\Top_\Seq.\end{eqnarray}  Note that each of the arrows is a left adjoint.  We call the composition in (\ref{eqn:geo rea}) {\em the geometric realization functor}, and denote it and its adjoint by $$\Adjoint{Re}{\DSets}{\Top_\Seq}{\Sing}.$$   Note that $Re$ and $\Sing$ can be extended to an adjunction between $\DSets$ and $\Top$.
+
+The following Proposition gives another way to compute the geometric realization functor and the singular functor.
+
+Let $\Omega\in\Top$ denote the space with two points and three open sets, so that $\Omega$ represents the ``open subsets" functor on $\Top$.  Let $I_2$ denote the indiscrete space with two points and two open sets.  It represents the ``all subsets" functor on $\Top$.
+
+\begin{proposition}\label{sing and re}
+
+\begin{enumerate}\item Let $T$ be a topological space.  Then $\Sing(X)$ is the sequential set obtained as the composition $$\End\op_\Cat([\infty])\to\End\op_\Top(\Sigma)\to\End_\Sets(\Hom_\Top(\Sigma,X)).$$  \item Suppose that $X$ is a sequential set, and let $Re(X)$ be its geometric realization.  The points of $Re(X)$ are the 0-simplices $X_0$ of $X$.  A subset $f\taking Re(X)\to I_2$ is open if and only if the adjoint $X\to\Sing(I_2)$ factors through the map $\Sing(\Omega)\to\Sing(I_2)$.\item The functor $\Sing\taking\Top_\Seq\to\DSets$ is fully faithful.  Hence the counit transformation $\epsilon\taking\id_{\Top_\Seq}\to Re\circ\Sing$ is an isomorphism of functors.\end{enumerate}
+
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
+
+Before giving the next definition, we wish to point out the following fact.  Let $X$ and $Y$ be topological spaces and $f\taking |X|\to|Y|$ a function between their underlying sets.  Then $f$ is a bijection if and only if the map $\Hom(Y,I_2)\to\Hom(X,I_2)$ is a bijection -- that is, if $f$ induces a bijection of power sets, then it is a bijection.  Similarly, $f$ induces a bijection between the open sets of $X$ and the open sets of $Y$ if and only if $\Hom(Y,\Omega)\to\Hom(X,\Omega)$ is a bijection.  Hence, $f$ is a homeomorphism if and only if the induced map $$\Hom_\Top(Y,\Omega\cross I_2)\to\Hom_\Top(X,\Omega\cross I_2)$$ is a bijection of sets.
+
+\begin{definition}
+
+Let $X$ and $Y$ be sequential sets.  A morphism $f\taking X\to Y$ is called a {\em homeomorphism of sequential sets} if the induced function $$\Hom_\Top(Re(Y),\Omega\cross I_2)\to\Hom_\Top(Re(X),\Omega\cross I_2)$$ is a bijection.
+
+A sequential set $Z$ is called {\em homeolocal} if, for all homeomorphisms of sequential sets $f\taking X\to Y$, the induced function $$\Hom_\DSets(Y,Z)\to\Hom_\DSets(X,Z)$$ is a bijection.
+
+\end{definition}
+
+\begin{lemma}
+
+Let $Z$ be a sequential set $Z$.  \begin{enumerate}\item The unit map $$\eta_Z\taking Z\to\Sing(\Re(Z))$$ is a homeomorphism of sequential sets.  \item $\Sing(Re(Z))$ is homeolocal. \item $Z$ is homeolocal if and only if $Z$ is a retract of $\Sing(Re(Z))$.\end{enumerate}
+
+\end{lemma}
+
+\begin{proof}
+
+The first claim follows from Proposition \ref{sing and re}.  The second claim follows from the fact that if $T\to U$ is a homeomorphism of topological spaces and $V$ is any topological space, then $\Hom(U,V)\to\Hom(T,V)$ is a bijection.  We now prove the third claim.
+
+If $Z$ is homeolocal then $\Hom(\Sing(Re(Z)),Z)\To{\eta_Z}\Hom(Z,Z)$ is a bijection, by the first part, which exhibits the retraction.  Conversely, if $Z\to\Sing(Re(Z))\to Z$ is a retract, then for any map $f\taking X\to Y$, we get a retraction $$\xymatrix{\Hom(Y,Z)\ar[d]\ar[r]&\Hom(Y,\Sing(Re(Z))\ar[d]\ar[r]&\Hom(Y,Z)\ar[d]\\ \Hom(X,Z)\ar[r]&\Hom(X,\Sing(Re(Z)))\ar[r]&\Hom(X,Z).}$$  If $f$ is a homeomorphism of sequential sets, then since $\Sing(Re(Z))$ is homeolocal, the middle vertical arrow in the diagram is an isomorphism; hence so are the outside arrows.
+
+\end{proof}
+
+\subsection{Grothendieck Topology}
+
+We now introduce the Grothendieck topology on $\Delinf$ under which the sheaves are the sequential topological spaces.  Finding the correct set of covering sieves is not hard, given the above idea.  It is a simple exercise to show that they do form a Grothendieck topology, but we include the proof in this section.
+
+The category of $\DSets$ has a unique representable object $R$, so we just need to know what sieves $S\inj R$ should be covering sieves.  A sieve $f\taking S\to R$ will be called {\em a covering sieve} if it is a homeomorphism of sequential sets; i.e. if $Re(f)\taking Re(S)\to\Sigma=Re(R)$ is a homeomorphism.
+
+\begin{proposition}
+
+Let $f\taking S\inj R$ be a sieve.  Then $f$ is a covering sieve if \begin{enumerate}\item the induced map on 0-simplices, $f_0\taking S_0\to R_0$ is surjective, and \item there exists a sequence $(s\taking R\to R)\in S$ such that $|s|$ is cofinite in $\NN\cup\{\infty\}$.\end{enumerate}
+
+These covering sieves constitute a Grothendieck topology on $\Delinf$.  
+
+\end{proposition}
+
+\begin{theorem}
+ 
+The category $\Top_\Seq$ of sequential spaces is the category of sheaves on $\Delinf$, under the above Grothendieck topology.  That is, the adjunction $$\Adjoint{Re}{\Pre(\Delinf)}{\Top_\Seq}{\Sing}$$ is the sheafification adjunction for this topology.
+
+\end{theorem}
+
+\subsection{2008/09/10}
+
+There is a model structure on the category of sequential sets in which the weak equivalences are maps $f\taking A\to B$ such that the topological realization $|f|\taking|A|\to|B|$ is a homeomorphism. 
+
+To prove this, we use the Cininski model structure, which I learned about it Joyal's manuscript: http://www.crm.cat/HigherCategories/hc2.pdf .  One needs to show that the homeomorphisms satisfy 3 for 2, that the class of homeomorphisms is accessible (which I actually don't understand, but I assume is fine), that they are saturated (which is the condition that if $X\To{i}Y\To{r}X$ is a retraction and $|Y|\To{|r|}|X|\To{|i}|Y|$ is a homeomorphism, then $|r|$ is a homeomorphism), and that every morphism with the RLP with respect to monomorphisms is a homeomorphism.  This last fact is easy: if $f\taking X\to Y$ has the RLP, use $\emptyset\to\singleton$ to show surjectivity, use a cylinder over $\partial\Delta^1$ to show injectivity, and use $\emptyset\to R$, where $R$ is the representable functor to show reverse continuity of $f$.
+
+\section{Simplicial sets}
+
+There is a strong connection between simplicial sets and bounded monotonic sequences of natural numbers.  
+
+Recall that the {\em simplicial indexing category} $\Del$ is the category whose objects are the finite string categories $[n], n\in\NN$, and whose morphisms are all functors between them.  The presheaf category $\Del\dashSets=\Pre(\Del)$ is called the category of {\em simplicial sets}.  For each $n$, the representable functor $\Hom_\Del(-,[n])$ is called the standard $n$-simplex and is denoted $\Delta^n$.  We often abuse notation and label a map $[m]\to[n]$ in $\Del$ and the corresponding morphism $\Delta^m\to\Delta^n$ in $\Del\dashSets$ using the same symbol.
+
+For $n\in\NN$, there is an obvious retraction of categories $$[n]\To{i_n}[\infty]\To{r_n}[n].$$  We will use this notation often in this section.
+
+\begin{definition}
+
+A sequence $s\taking[\infty]\to[\infty]$ is called {\em bounded} if there exists some $n\in\NN$ such that $s$ factors through the section $i_n\taking[n]\to[\infty]$.  
+
+If $s$ is bounded then there exists a smallest $[n]$ through which $s$ factors.  There is also a smallest $m\in\NN$ such that $s$ factors as $$[\infty]\To{r_m}[m]\To{s'}[n]\To{i_n}[\infty].$$  We call $s'\taking[m]\to[n]$ the {\em finite sequence underlying $s$} and we call $m$ the {\em length} of $s'$.
+
+The set of bounded sequences is closed under composition but does not contain the identity element of $\Delinf$; it is thus a semigroup.  The monoid consisting of this semigroup, together with the identity element $\id_{[\infty]}\in\Delinf$, is denoted $\Delb$.
+
+\end{definition}
+
+\begin{proposition}
+
+
+
+\end{proposition}
+
+\bibliographystyle{abbrv}
+\bibliography{biblio}
+
+\end{document}

@@ -1,0 +1,376 @@
+\documentclass{amsart}
+
+\usepackage{amssymb, amscd,stmaryrd,setspace,hyperref,color}
+
+\input xy
+\xyoption{all} \xyoption{poly} \xyoption{knot}\xyoption{curve}
+\input{diagxy}
+
+
+\newcommand{\comment}[1]{}
+
+\newcommand{\longnote}[2][4.9in]{\fcolorbox{black}{yellow}{\parbox{#1}{\color{black} #2}}}
+\newcommand{\shortnote}[1]{\fcolorbox{black}{yellow}{\color{black} #1}}
+\newcommand{\q}[1]{\begin{question}#1\end{question}}
+\newcommand{\g}[1]{\begin{guess}#1\end{guess}}
+
+\def\tn{\textnormal}
+\def\mf{\mathfrak}
+\def\mc{\mathcal}
+
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\CC{{\mathbb C}}
+\def\AA{{\mathbb A}}
+\def\PP{{\mathbb P}}
+\def\NN{{\mathbb N}}
+
+\def\Hom{\tn{Hom}}
+\def\Fun{\tn{Fun}}
+\def\Ob{\tn{Ob}}
+\def\Op{\tn{Op}}
+
+\def\to{\rightarrow}
+\def\from{\leftarrow}
+\def\cross{\times}
+\def\taking{\colon}
+\def\inj{\hookrightarrow}
+\def\surj{\twoheadrightarrow}
+\def\too{\longrightarrow}
+\def\tooo{\longlongrightarrow}
+\def\tto{\rightrightarrows}
+\def\ttto{\equiv\!\!>}
+\def\ss{\subset}
+\def\superset{\supset}
+\def\iso{\cong}
+\def\down{\downarrow}
+\def\|{{\;|\;}}
+\def\m1{{-1}}
+\def\op{^\tn{op}}
+\def\loc{\tn{loc}}
+\def\la{\langle}
+\def\ra{\rangle}
+\def\wt{\widetilde}
+\def\wh{\widehat}
+\def\we{\simeq}
+\def\ol{\overline}
+\def\ul{\underline}
+\def\qeq{\mathop{=}^?}
+
+\def\ullimit{\ar@{}[rd]|(.3)*+{\lrcorner}}
+\def\urlimit{\ar@{}[ld]|(.3)*+{\llcorner}}
+\def\lllimit{\ar@{}[ru]|(.3)*+{\urcorner}}
+\def\lrlimit{\ar@{}[lu]|(.3)*+{\ulcorner}}
+\def\ulhlimit{\ar@{}[rd]|(.3)*+{\diamond}}
+\def\urhlimit{\ar@{}[ld]|(.3)*+{\diamond}}
+\def\llhlimit{\ar@{}[ru]|(.3)*+{\diamond}}
+\def\lrhlimit{\ar@{}[lu]|(.3)*+{\diamond}}
+\newcommand{\clabel}[1]{\ar@{}[rd]|(.5)*+{#1}}
+
+\newcommand{\arr}[1]{\ar@<.5ex>[#1]\ar@<-.5ex>[#1]}
+\newcommand{\arrr}[1]{\ar@<.7ex>[#1]\ar@<0ex>[#1]\ar@<-.7ex>[#1]}
+\newcommand{\arrrr}[1]{\ar@<.9ex>[#1]\ar@<.3ex>[#1]\ar@<-.3ex>[#1]\ar@<-.9ex>[#1]}
+\newcommand{\arrrrr}[1]{\ar@<1ex>[#1]\ar@<.5ex>[#1]\ar[#1]\ar@<-.5ex>[#1]\ar@<-1ex>[#1]}
+
+\newcommand{\To}[1]{\xrightarrow{#1}}
+\newcommand{\Too}[1]{\xrightarrow{\ \ #1\ \ }}
+\newcommand{\From}[1]{\xleftarrow{#1}}
+
+\newcommand{\Adjoint}[4]{\xymatrix@1{#2 \ar@<.5ex>[r]^-{#1} & #3 \ar@<.5ex>[l]^-{#4}}}
+
+\def\id{\tn{id}}
+\def\Top{{\bf Top}}
+\def\Cat{{\bf Cat}}
+\def\Str{{\bf Str}}
+\def\Sets{{\bf Set}}
+\def\Set{{\bf Set}}
+\def\set{{\text \textendash}{\bf Set}}
+\def\sSet{{\bf sSet}}
+\def\sSets{{\bf sSets}}
+\def\Grpd{{\bf Grpd}}
+\def\Pre{{\bf Pre}}
+\def\Shv{{\bf Shv}}
+\def\Rings{{\bf Rings}}
+
+\def\colim{\mathop{\tn{colim}}}
+
+\def\mcA{\mc{A}}
+\def\mcB{\mc{B}}
+\def\mcC{\mc{C}}
+\def\mcD{\mc{D}}
+\def\mcE{\mc{E}}
+\def\mcF{\mc{F}}
+\def\mcG{\mc{G}}
+\def\mcH{\mc{H}}
+\def\mcI{\mc{I}}
+\def\mcJ{\mc{J}}
+\def\mcK{\mc{K}}
+\def\mcL{\mc{L}}
+\def\mcM{\mc{M}}
+\def\mcN{\mc{N}}
+\def\mcO{\mc{O}}
+\def\mcP{\mc{P}}
+\def\mcQ{\mc{Q}}
+\def\mcR{\mc{R}}
+\def\mcS{\mc{S}}
+\def\mcT{\mc{T}}
+\def\mcU{\mc{U}}
+\def\mcV{\mc{V}}
+\def\mcW{\mc{W}}
+\def\mcX{\mc{X}}
+\def\mcY{\mc{Y}}
+\def\mcZ{\mc{Z}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{guess}[theorem]{Guess}
+\newtheorem{answer}[theorem]{Answer}
+\newtheorem{construction}[theorem]{Construction}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{postulate}[theorem]{Postulate}
+
+\def\Finm{{\bf Fin_{m}}}
+\def\El{{\bf El}}
+\def\Gr{{\bf Gr}}
+\def\DT{{\bf DT}}
+\def\DB{{\bf DB}}
+\def\Tables{{\bf Tables}}
+\def\Sch{{\bf Sch}}
+\def\Fin{{\bf Fin}}
+\def\P{{\bf P}}
+\def\SC{{\bf SC}}
+\def\ND{{\bf ND}}
+\def\Poset{{\bf Poset}}
+\def\'{\textnormal{'}}
+\newcommand{\start}[1]{\longnote{Start here with #1}}
+
+%%%%%
+
+\begin{document}
+
+\title{Data-loading functors}
+
+\author{David I. Spivak}
+
+\thanks{This project was supported by ONR grant: N000140910466.}
+
+\maketitle
+
+\section{Introduction}
+
+The simplest way to understand databases in terms of mathematics is via the following definition.
+
+\begin{definition} \label{def:basic}
+
+A {\em database schema} is a small category $\mcC$, and a {\em morphism of schemas from $\mcC$ to $\mcC'$} is a functor $F\taking\mcC\to\mcC'$.   An object $c$ of $\mcC$ is called a {\em type} or a {\em table} in $\mcC$, and an arrow $f\taking c\to c'$ is called a {\em column of $c$ valued in $c'$}.
+
+A {\em database state} on schema $\mcC$ is a functor $\delta\taking\mcC\to\Set$.   Given an object $c\in\Ob(\mcC)$, an element $x\in\delta(c)$ is called a {\em $c$-representative in $\delta$}, or a {\em row of $\delta(c)$}.  We refer to a pair $(x,f)$, where $x$ is a $c$-representative in $\delta$ and $f\taking c\to c'$ is a column of $c$, as {\em a cell in $\delta$}, and to each cell $(x,f)$ the element $\delta(f)(x)\in\delta(c')$ is called the {\em value of the $(x,f)$-cell} or the {\em $f$-value of $x$}.
+
+A {\em morphism of database states from $\delta$ to $\delta'$} on $\mcC$ is a natural transformation $p\taking\delta\to\delta'$.  We write $\mcC\set$ to denote the category of database states on $\mcC$ and sometimes refer to it as {\em the category of $\mcC$-sets}. 
+
+\end{definition}
+
+While most practitioners may think of a database schema $\mcC$ as a large complex object, it does not have to be.  Any category is a schema, and this gives much for the curious mind to ponder: ``what might my example category mean as a schema?"  The terminal category $[0]$ (with one object and one morphism) represents a single set or perhaps a ``controlled vocabulary."  The arrow category $[1]$ (with two objects and one morphism connecting them) represents a single function.  The free monoid on one generator, denoted $\NN$, represents a discrete dynamical system.
+
+Thus the mathematical form of a database schema is one that easily represents ideas found in pure mathematics.  While these particular uses may not be so important to a database administrator, the idea is.  We will show in this paper that many views of databases (pun intended) are obtained by looking at small schemas mapping to a large main one.   Many procedures done by a DBA are in fact carried out by such functors.  For example, looking at a single table within a large schema is so obtained, as we now describe.
+
+\begin{example}\label{ex:flb}
+
+Suppose that $\mcD$ is a database schema (category) and in it there is a table of the form \begin{align}\label{dia:FLB}\begin{tabular}{| l || l | l | l |}\hline {\bf Employee}&{\bf First}&{\bf Last}&{\bf BirthYear}\\\hline 101&David&Hilbert&1862\\\hline 102&Bertrand&Russell&1872\\\hline 103&Alan&Turing&1912\\\hline\end{tabular}\end{align}  This can be considered a little database schema (category) of the form $$\mcC=\fbox{\xymatrix{\bullet^{\tn{Employee}}\ar[rr]^{\tn{BirthYear}}\ar@/_1pc/[dd]_{\tn{First}}\ar@/^1pc/[dd]^{\tn{Last}}&&\bullet^{\tn{Year}}\\\\\bullet^{\tn{String}}}}$$ sitting inside $\mcD$.  Indeed Table \ref{dia:FLB} does constitute a functor from $\mcC$ to $\Set$, perhaps obtained from some more complex database state on $\mcD$, via a data-loading functor which we shall define in Definition \ref{def:data pullback}.
+
+\end{example}
+
+\begin{remark}\label{rem:not sketch}
+
+In some sense Definition \ref{def:basic} is too simple in that it does not allow typing information, let alone the ability to demand that one table be a union or join of others.  In the schema of Example \ref{ex:flb}, one could consider a functor $\delta\taking\mcC\to\Set$ such that $\delta(\bullet^{\tn{Year}})=\{\tn{1988, 7xu, horse}\}$, and these are not all years.  Under Definition \ref{def:basic} we cannot force a $\mcC$-set to semantically interpret $\bullet^\tn{Year}$ as the set of years.  However, one can remedy this situation by using sketches (in the sense of Makkai) rather than categories.
+
+In this paper we assume that a database is as in Definition \ref{def:basic}.  In fact, much of what is said below does not work for sketches: some data-loading functors will not be able to accommodate the stringent rules that can be enforced by sketches.  However, the ideas will still be useful.  Category theory will provide enough structure and flexibility that a conscientious programmer can make good use of the results.
+
+\end{remark}
+
+
+The point of Example \ref{ex:flb} is this: given a large database schema $\mcD$ in which (\ref{dia:FLB}) is merely one table, there is a canonical functor $i\taking\mcC\to\mcD$.  It is an inclusion of categories and as such a morphism of schemas.  Morphisms of schemas can take on many forms, but here we see a basic kind: those given by taking a large database and looking at a small fragment of it.  
+
+Other important morphisms generate capabilities such as privileged access, views, joins and unions, creating warehouses, and various imports and exports.  It is critical that the database administrator begin to vastly generalize his or her notion of database schema to include all categories, especially little ones, for they are most often overlooked and most useful to a human user.
+
+\subsection{The basic data loading functor}
+
+We have not yet discussed the main point of this paper, which is to explain the various senses in which a morphism $F\taking\mcC\to\mcD$ of database schemas allows one to move data between them.  One such such sense was implicit in the example above.  Given a large database schema $\mcD$ and a table in it $i\taking\mcC\to\mcD$, one can take any database state on $\mcD$ and obtain a database state on $\mcC$.  In fact one checks that this process is functorial; i.e. we have a functor $\mcD\set\to\mcC\set$.  
+
+\begin{definition}\label{def:data pullback}
+
+Let $F\taking\mcC\to\mcD$ be a morphism of database schemas.  There exists a functor $$F^*\taking\mcD\set\to\mcC\set,$$ called {\em the data pullback functor} defined as follows.  Given a $\mcD\set$, say $\delta\taking\mcD\to\Set$, define $F^*(\delta)\taking\mcC\to\Set$ as $$F^*(\delta)=\delta\circ F.$$  
+
+\end{definition}
+
+In other words, given a functor $F\taking\mcC\to\mcD$, the data pullback functor takes data on $\mcD$ and brings it to $\mcC$ by ``doing the obvious thing" -- the reader should not go on before making this clear to him or herself.
+
+The data pullback functor has both a left and a right adjoint, denoted $F_!$ and $F_*$ respectively.  These are harder to understand but extremely useful in practice, for they allow create nearly all the functionality of RDMBSs, such as views, updates, privileges, joins, unions, ETL, etc.  It is these that we shall discuss in this paper.
+
+In Section \ref{sec:dlf} we will define these functors and investigate some special cases.  In Section \ref{sec:updates-local} we shall discuss updates and how they appear locally (i.e. to the one doing the updating).  In Section \ref{sec:updates-global} we shall discuss how these updates effect the rest of the database.
+
+\section{The data-loading functors}\label{sec:dlf}
+
+\subsection{Definitions of the data-loading functors}
+
+The basic data-loading functor was defined in Definition \ref{def:data pullback}.  Given a morphism of schemas $F\taking\mcC\to\mcD$, we can ``pull back" data on $\mcD$ to get data on $\mcC$, and we write $F^*\taking\mcD\set\to\mcC\set$.  As we mentioned at the time, the workings of this functor are in some sense ``obvious"; however it has has both a left adjoint and a right adjoint, whose workings are more difficult.  We define them in this section.
+
+Before doing so, recall that to any category $\mcC$ and any object $a\in\Ob(\mcC)$ one defines the associated Yoneda object $Y_a\taking\mcC\to\Set$ by $Y_a(c)=\Hom_\mcC(a,c)$.  Note that while $Y_a$ is covariant for each $a\in\Ob(\mcC)$, one can consider $Y$ itself to be a functor $Y\taking\mcC\op\to\mcC\set$, and the ``op"-superscript reminds us that $Y$ is contravariant on $\mcC$: a map $g\taking a\to a'$ is sent under $Y$ to a natural transformation $Y_g\taking Y_{a'}\to Y_a$.
+
+The three most important facts about the Yoneda functor $Y$ are these:\begin{itemize} \item For objects $a,a'\in\Ob(\mcC)$ there is a natural bijection $$\Hom_{\mcC\set}(Y_a,Y_{a'})\iso\Hom_{\mcC\op}(a,a'),$$ i.e. $Y$ is fully faithful.\item Given an object $a\in\Ob(\mcC)$ and any $\mcC$-set $F\taking\mcC\to\Set$, there is a natural bijection $$F(a)\iso\Hom_{\mcC\set}(Y_a,F).$$\item Let $F\taking\mcC\to\Set$ be a $\mcC$-set considered as a functor $\{F\}\taking[0]\to\mcC\set$, let $(Y\down\{F\})$ denote the associated comma-category, and let $\pi\taking(Y\down\{F\})\to\mcC\set$ denote the projection functor.  Then there is a natural isomorphism $$F\iso\colim_{(Y\down\{F\})}\pi.$$\end{itemize}  Note that the first fact follows from the second.  The third fact is a bit obtuse; it is more easily (but perhaps less rigorously) written as $$F\iso\colim_{Y_c\to F}Y_c.$$  If this definition is still opaque, the reader can gloss over it on a first reading.
+
+We are ready to define the two data pushforward functors $F_*$ and $F_!$.
+
+\begin{definition}
+
+Let $F\taking\mcC\to\mcD$ be a morphism of schemas and $F^*\taking\mcD\set\to\mcC\set$ be the associated data pullback functor.  There exists a right adjoint to $F^*$ called the {\em right data pushforward functor}, denoted $$F_*\taking\mcC\set\to\mcD\set,$$ and defined as follows.
+ 
+Given an object $\delta\taking\mcC\to\Set$ in $\mcC\set$ define $F_*(\delta)$ on an object $d\in\Ob(\mcD)$ as \begin{align}\label{dia:F_*}F_*(\delta)(d)=\Hom_{\mcC\set}(F^*(Y_d),\delta).\end{align}  On morphisms, both in $\mcD$ and the category of $\mcC$-sets, the functor $F_*$ by an ``expected" adjustment of (\ref{dia:F_*}).  Namely, on a morphism $g\taking d\to d'$ in $\mcD$ the functor $F_*$ is defined by replacing the object $Y_d$ with the morphism $Y_g$, and on a morphism $p\taking\delta\to\delta'$ in $\mcC\set$ the functor $F_*$ is defined by replacing the object $\delta$ with the morphism $p$.
+
+\end{definition}
+
+Here's another formulation of it.  Suppose $F,\delta,$ and $d$ are as above.  Then $$F_*(\delta)(d)=\lim_{d\to F(c)}\delta(c),$$ where the indexing category is the comma category $(d\down F)$.
+
+This definition is not so hard to state, but computing right-pushforwards can be quite difficult in practice.  We shall show below \ref{} that things are not so bad when the source category $\mcC$ is a poset.
+
+\begin{definition}
+
+Let $F\taking\mcC\to\mcD$ be a morphism of schemas and $F^*\taking\mcD\set\to\mcC\set$ be the associated data pullback functor.  There exists a left adjoint to $F^*$ called the {\em left data push-forward functor}, denoted $$F_!\taking\mcC\set\to\mcD\set,$$ and defined as follows.
+
+On a Yoneda object $Y_c$ (for some $c\in\Ob(\mcC)$) we can define $F_!(Y_c)=Y_{F(c)}$.  More generally,  recall that any object $\delta\taking\mcC\to\Set$ in $\mcC\set$ can canonically be written as a colimit of Yoneda objects $\delta\iso\colim_{Y_c\to\delta}Y_c.$   We define $$F_!(\delta)=\colim_{Y_c\to\delta}Y_{F(c)}.$$  
+
+\end{definition}
+
+\begin{remark}
+
+Left push-forward functors are easier to understand than right push-forwards are, in general.  Given a morphism of schemas $F\taking\mcC\to\mcD$ and a $\mcC$-set $\delta\taking\mcC\to\Set$, we understand $F_!(\delta)$ colloquially as follows.  Given an object $c$ of $\mcC$, note two things: its set of rows and what table in $\mcD$ it goes to by way of $F$.  Now, insert that set of rows into that table in $\mcD$.  Given a map $g\taking c\to c'$ in $\mcC$, note two things: where it sends rows of $c$ (i.e. what function it is assigned), and what morphism in $\mcD$ it goes to by way of $F$.  Now, assign the same function to the morphism in $\mcD$.
+
+This colloquial description can be made rigorous by way of the Grothendieck construction.  See \ref{}.
+
+\end{remark}
+
+\subsection{A basic example}
+
+Let $\mcC$, $\mcD$, and $\mcE$ be the categories depicted as follows \small\begin{align}\label{dia:basic example} \mcC:=\fbox{\xymatrix{&\tn{SSN}\\&\tn{First}\\T_1\ar[uur]\ar[ur]\ar[dr]&&T_2\ar[ul]\ar[dl]\ar[ddl]\\&\tn{Last}\\&\tn{Salary}}}&&\mcD:=\fbox{\xymatrix{&\tn{SSN}\\&\tn{First}\\U\ar[uur]\ar[ur]\ar[dr]\ar[ddr]\\&\tn{Last}\\&\tn{Salary}}}&&\mcE:=\fbox{\xymatrix{&\tn{SSN}\\&\tn{First}\\V\ar[uur]\ar[ur]\ar[dr]\\&\tn{Last}}}\end{align}\normalsize  Consider the functor $F\taking\mcC\to\mcD$ given by sending both $T_1$ and $T_2$ to $U$ and by identity on everything else; consider also the functor $G\taking\mcE\to\mcD$ by inclusion.  We will describe $F^*,F_*$, and $F_!$ (respectively for $G$) in this case.
+
+\subsubsection{The pullback functors $F^*$ and $G^*$}\label{sssec:pullback}
+
+Suppose first that $\delta\taking\mcD\to\Set$ is a database state on $\mcD$.  We can represent it as five tables.  Four of these are one-column tables (or just sets): a set of SSN's, a set of First's, a set of Last's, and a set of Salary's.  The fifth is a ``fact" table such as \begin{align*}\begin{tabular}{| l || l | l | l | l |}\hline {\bf U}&{\bf SSN}&{\bf First}&{\bf Last}&{\bf Salary}\\\hline x11&101-22-0411&David&Hilbert&150\\\hline x12&220-39-7479&Bertrand&Russell&200\\\hline x13&775-33-2819&Alan&Turing&200\\\hline\end{tabular}\end{align*}  The requirement is that each cell in a given column represents a row in the corresponding 1-column table.  For example, the 1-column table $\delta(\tn{Last})$ can be the set of strings of length at most 20, or it can be a set with only three elements (\{Hilbert, Russell, Turing\}); it simply must contain the cells in the Last column.
+
+A functor $\mcC\to\Set$ will be similar.  It will have six tables, four of which are one-column tables as above.  There will be two four-column tables, one of which has facts relating SSN, First, and Last, and the other of which has facts relating First, Last, and Salary.  
+
+As we mentioned above, $F^*(\delta)$ is obtained by ``doing the obvious thing": given an object in $\mcC$, map it to $\mcD$ and see what $\delta$ does to it.  Thus $F^*(\delta)$ will not change the four 1-column tables of $\delta$.  The two 4-column tables will be \begin{align*}\begin{tabular}{| l || l | l | l |}\hline {\bf T1}&{\bf SSN}&{\bf First}&{\bf Last}\\\hline x11&101-22-0411&David&Hilbert\\\hline x12&220-39-7479&Bertrand&Russell\\\hline x13&775-33-2819&Alan&Turing\\\hline\end{tabular}\\\begin{tabular}{| l || l | l | l |}\hline {\bf T2}&{\bf First}&{\bf Last}&{\bf Salary}\\\hline x11&David&Hilbert&150\\\hline x12&Bertrand&Russell&200\\\hline x13&Alan&Turing&200\\\hline\end{tabular}\end{align*}
+
+Once we have set all this up, describing $G^*(\delta)$ is easy.  It simply takes $\delta$ and projects off the Salary column to yield $V$.  It leaves the SSN, First, and Last tables as they are.
+
+\subsubsection{The right push-forward functors $F_*$ and $G_*$}\label{sssec:rightpush}
+
+Now suppose that $\gamma\taking\mcC\to\Sets$ is a database state on $\mcC$.  Again, it will include four 1-column tables, which we will not write out, and two 4-column tables, which we arbitrarily choose to be: \begin{align*}\begin{tabular}{| l || l | l | l |}\hline {\bf T1}&{\bf SSN}&{\bf First}&{\bf Last}\\\hline x11&101-22-0411&David&Hilbert\\\hline x12&220-39-7479&Bertrand&Russell\\\hline x13&775-33-2819&Bertrand&Russell\\\hline\end{tabular}\\\begin{tabular}{| l || l | l | l |}\hline {\bf T2}&{\bf First}&{\bf Last}&{\bf Salary}\\\hline y1&David&Hilbert&150\\\hline y2&Bertrand&Russell&200\\\hline y3&Bertrand&Russell&225\\\hline y4&Alan&Turing&200\\\hline\end{tabular}\end{align*}
+
+In order to calculate $F_*(\gamma)$ we need to first calculate $F^*$ applied to the four Yoneda objects in $\mcD\set$.  Clearly, $F^*(Y_{\tn{SSN}})=Y_{\tn{SSN}}$; this database state on $\mcC$ consists of 5 empty tables, and one 1-row table.  The same description applies for the other 1-column tables.  The only interesting case is $F^*(Y_U)$.  It is a database state on $\mcC$ consisting of precisely one row in each of the five tables.  This may not seem interesting, but the fact that there is only one row (rather than two) in First and Last has interesting results.
+
+What is $F_*(\gamma)(\tn{First})$?  It is defined as $\Hom_{\mcC\set}(F^*(Y_{\tn{First}}),\gamma)$, which we calculate is $$\Hom_{\mcC\set}(Y_{\tn{First}},\gamma)=\gamma(\tn{First}).$$  In other words, the 1-column tables are preserved identically under $F_*$.  
+
+Finally, we come to the interesting question: What is $F_*(\gamma)(U)$?  It is defined as $\Hom_{\mcC\set}(F^*(Y_U),\gamma)$, and we computed $F^*(Y_U)$ above.  A natural transformation of functors from $F^*(Y_U)$ to $\gamma$ consists of, for every table in $\gamma$, a row in that table, such that ``all diagrams commute."  In other words, for each object $c\in\mcC$, choose a row $r_c\in\gamma(c)$ in that table, such that for each column $g\taking c\to c'$ of $c$, one has $\gamma(g)(r_c)=r_{c'}$.  With the notation in place, we say it one more time: for each table $c$ choose a row $r$ such that for each column $g$ of $c$ with values in $c'$, the $(r,g)$ cell refers to the chosen row $r'$ in $c'$.
+
+While the above description is long, it is straightforward.  But what does it really mean?  One computes that what $F_*(\gamma)$ in fact yields the join of $T_1$ and $T_2$ along First and Last!  In other words (along with the four 1-column tables copied verbatim) it yields \begin{align*}\begin{tabular}{| l || l | l | l | l |}\hline {\bf U}&{\bf SSN}&{\bf First}&{\bf Last}&{\bf Salary}\\\hline (x11,y1)&101-22-0411&David&Hilbert&150\\\hline (x12,y2)&220-39-7479&Bertrand&Russell&200\\\hline (x11,y3)&220-39-7479&Bertrand&Russell&225\\\hline (x13,y2)&775-33-2819&Bertrand&Russell&200\\\hline (x13,y3)&775-33-2819&Bertrand&Russell&225\\\hline\end{tabular}\end{align*}
+
+There are several nice things about the fact that $F_*$, of which nothing outwardly suggested anything about joins, indeed does compute the join.  First, it shows that data-loading functors are more than meets the eye -- if they can compute joins, what else can they do?  Second, one should recognize that the picture in (\ref{dia:basic example}) tells the story.  In this picture, tables $T_1$ and $T_2$ are being merged together into table $U$; everything else is the same.  With learned intuition, a DBA would not need to compute what $F_*$ will do -- he or she will consider it obvious that $F_*$ will make $U$ as the join of $T_1$ and $T_2$ along their common columns.  At the same time, the DMBS can actually make the computation in a rigorous way, while theorem-provers could reason about it.  
+
+Before discussing $G_*$, note that we could apply $G^*$ to the result of the previous computation.  The $\mcE$-set $G^*F_*\gamma$ is given by simply projecting off the Salary column from the above join.
+
+Let $\epsilon\taking\mcE\to\Set$ be a database state with some choice of the three 1-column tables and with $U$ given by \begin{align*}\begin{tabular}{| l || l | l | l |}\hline {\bf T1}&{\bf SSN}&{\bf First}&{\bf Last}\\\hline x11&101-22-0411&David&Hilbert\\\hline x12&220-39-7479&Bertrand&Russell\\\hline x13&775-33-2819&Alan&Turing\\\hline\end{tabular}\end{align*}  Its right push-forward will not know what to do with the new 1-column table Salary, nor what to do with the Salary-column of $U$.  To determine these, one must compute $G^*(Y_{\tn{Salary}})$.  We leave this as an exercise to the reader, but we will say here what $G_*(\epsilon)$ is. 
+
+First, the 1-column table $G_*(\epsilon)(\tn{Salary})$ consists of a single value, say $\star$.  This is not an integer; as mentioned in Remark \ref{rem:not sketch} we are not enforcing data types at this time.  In fact, there would be no good choice of $G_*$ if we forced $\star$ to be an integer.  Here, $\star$ simply represents ''unknown."  But now we can see that there is no hardship in computing $G_*(\epsilon)(U)$ because there is no choice necessary for the Salary column:   \begin{align*}\begin{tabular}{| l || l | l | l | l |}\hline {\bf U}&{\bf SSN}&{\bf First}&{\bf Last}&{\bf Salary}\\\hline x11&101-22-0411&David&Hilbert&$\star$\\\hline x12&220-39-7479&Bertrand&Russell&$\star$\\\hline x13&775-33-2819&Alan&Turing&$\star$\\\hline\end{tabular}\end{align*}
+
+\subsubsection{The left push-forward functors $F_!$ and $G_!$}
+
+We introduced a database state $\gamma\taking\mcC\to\Set$ on $\mcC$ and a database state $\epsilon\taking\mcE\to\Set$ on $\mcE$ above in Section \ref{sssec:rightpush}.  For convenience we repeat them here.  \vspace{1in}\begin{align}\tag{$\gamma(T_1)$}\begin{tabular}{| l || l | l | l |}\hline {\bf T1}&{\bf SSN}&{\bf First}&{\bf Last}\\\hline x11&101-22-0411&David&Hilbert\\\hline x12&220-39-7479&Bertrand&Russell\\\hline x13&775-33-2819&Bertrand&Russell\\\hline\end{tabular}\\\tag{$\gamma(T_2)$}\begin{tabular}{| l || l | l | l |}\hline {\bf T2}&{\bf First}&{\bf Last}&{\bf Salary}\\\hline y1&David&Hilbert&150\\\hline y2&Bertrand&Russell&200\\\hline y3&Bertrand&Russell&225\\\hline y4&Alan&Turing&200\\\hline\end{tabular}\end{align}
+
+In this section we will explore the left push-forwards $F_!(\gamma)$ and $G_!(\epsilon)$ of these functors.  They will each clearly be $\mcD$-sets and as such consist of four 1-column tables and one 5-column table $U$.
+
+The basic idea for $F$ is the following (and for $G$ it is similar).  Every table (object) $c$ in $\mcC$ has a corresponding table $F(c)$ in $\mcD$.  Every representative of $c$ must be inserted into $F(c)$.  Perhaps two tables in $\mcC$, say $c$ and $c'$, are both sent to the same table $d$ in $\mcD$; in this case we must simply insert a row in $d$ for each row in $c$ and each row of $c'$.  This leaves much to be dealt with.   For example, $F$ may introduce ``new columns" in some tables.
+
+We begin with $F_!(\gamma)(U)$.  Each representative in $T_1$ and $T_2$ must be inserted into $U$, so we get  \begin{align*}\begin{tabular}{| l || l | l | l | l |}\hline {\bf U}&{\bf SSN}&{\bf First}&{\bf Last}&{\bf Salary}\\\hline x11&101-22-0411&David&Hilbert&x11Salary\\\hline x12&220-39-7479&Bertrand&Russell&x12Salary\\\hline x13&775-33-2819&Bertrand&Russell&x13Salary\\\hline y1&y1SSN&David&Hilbert&150\\\hline y2&y2SSN&Bertrand&Russell&200\\\hline y3&y3SSN&Bertrand&Russell&225\\\hline y4&y4SSN&Alan&Turing&200\\\hline\end{tabular}\end{align*}  Here, every ``new column" is filled in with a uniquely-assigned representative.  We have chosen some arbitrary name (e.g. ``x11Salary") but any other choice will work, as long as it is uniquely chosen.  Of course, we are not making this uniqueness rule -- it is forced upon us by the category theory and one can determine precisely what we mean by ``uniquely chosen" by looking into the matter for him or herself.
+
+Whereas the right push-forward $F_*$ produces limits (joins), the left push-forward $F_!$ produces colimits (unions).  Note that although there was repetition here, it could have been avoided if $\mcC$ had contained a table that identified certain rows of $T_1$ with certain rows of $T_2$ (e.g. x11 with y1).
+
+On the 1-column tables, $F_!(\gamma)$ simply repeats what is found in $\gamma$, and then adds a new row for every ``uniquely-assigned representative" (e.g. in $F_!(\gamma)(\tn{Salary})$ we find x11Salary). 
+
+$G_!$ is similar and is left as an exercise to the reader.
+
+\subsection{Grothendieck construction}
+
+The Grothendieck construction is a way to transform functors into categories.  Given a category $\mcD$ and a functor $\delta\taking\mcD\to\Set$ (respectively $\delta\taking\mcD\to\Cat$), one obtains a new category $\int^{\mcD}\delta$ and an op-fibration $\pi\taking\int^\mcD\delta\to\mcD$.  For each object $d\in\Ob(\mcD)$ the fiber $\pi^\m1(d)$ is a set (resp. a category) that is isomorphic to $\delta(d)$.  We give the formal definition for set-valued functors now.
+
+\begin{definition}
+
+Let $\mcD$ be a category and $\delta\taking\mcD\to\Set$ be a $\mcD$-set.  The {\em Grothendieck construct of $\delta$}, denoted $\int^\mcD\delta$ is a category whose set of objects is $\{(d,x) | d\in\Ob(\mcD), x\in\delta(d)\}$ and whose hom-sets are given by $$\Hom_{\int^\mcD\delta}((d,x),(d',x')):=\{g\taking d\to d' | g(x) = x'\}.$$
+
+There is a natural functor $\pi\taking\int^\mcD\delta\to\mcD$ given by taking $(d,x)$ to $d$ and $g\taking(d,x)\to(d',x')$ to $g\taking d\to d'$.  It is an op-fibration.
+
+\end{definition}
+
+\begin{remark}
+
+Let $\mcC$ be a category.  There is a functor $L\taking\mcC\op\to\Cat$ given by sending an object $c$ in $\mcC$ to the slice category $\mcC_{c/}$ as an object in $\Cat$ and the morphism $f\taking c\to c'$ in $\mcC$ to the morphism $(-\circ f)\taking\mcC_{c'/}\to\mcC_{c/}$ in $\Cat$.  
+
+Given any $\mcC$-set $\gamma\taking\mcC\to\Set$, one can compose with the inclusion $\Set\to\Cat$ which considers any set as a discrete category, and then cross with $L$ to get a functor $$(L\cross\gamma)\taking\mcC\op\cross\mcC\to\Cat.$$  The coend of this functor is the Grothendieck construction.  This explains our notation $\int^\mcC\delta$.
+
+\end{remark}
+
+Two of the three data-loading functors can be easily explained using the Grothendieck construction.  Let $F\taking\mcC\to\mcD$ be a morphism between schemas.  Given a functor $\delta\taking\mcD\to\Set$, consider the Grothendieck construct $\pi\taking\int^\mcD\delta\to\mcD$.  The data pull-back functor $F^*\delta$ is just the fiber product $$\xymatrix{F^*\delta\ar[r]\ar[d]\ullimit&\int^\mcD\delta\ar[d]^\pi\\\mcC\ar[r]_F&\mcD.}$$
+
+Again let $F\taking\mcC\to\mcD$ be a morphism of schemas and suppose that$\gamma\taking\mcC\to\Set$ is a $\mcC$-set; let $\pi\taking\int^\mcC\gamma\to\mcC$ be the Grothendieck construct.  The composition $$\xymatrix{\int^\mcC\gamma\ar[d]_\pi\\\mcC\ar[r]_F&\mcD}$$ is a category over $\mcD$ but it is not in general an op-fibration.  There exists an initial object in the category of op-fibrations over it, and this is $F_!\delta$.  In other words, one ``completes" the map $\int^\mcC\gamma\to\mcD$ in the minimal way.
+
+The right push-forward does not appear to have a nice description in terms of Grothendieck constructions.
+
+\begin{remark}
+
+The Grothendieck construction for a $\mcC$-set $\gamma\taking\mcC\to\Set$ could be called {\em the RDF category} of $\gamma$.  Its objects could be called {\em URIs} and its morphisms could be called {\em triples}.  A more intrinsic naming system would be that $\int^\mcC\gamma$ is called {\em the category of values and cells} of $\gamma$.  The objects are called {\em rows} and the morphisms are called {\em cells}.  The functor $\pi$ is called {\em the location functor} because for every row (resp. cell) $\pi$ returns the table (resp. column) in which it is located.
+
+\end{remark}
+
+\subsection{Special cases}
+
+Given a functor $F\taking\mcC\to\mcD$, the data pull-back functor $F^*$ is always easy to understand, but the two data push-forward functors can be quite hard to compute.  We will study four special classes of such functors, such that if $F$ happens to be in one of these then either $F_*$ or $F_!$ will be particularly easy to compute.  If $F$ is fully faithful then $F_*$ is nice (because $F^*$ is well-behaved on Yoneda objects).  If $F$ is ``connected" then $F_!$ is particularly nice \shortnote{I think}.  Finally if $\mcC$ is a poset then $F_*$ is nice \shortnote{I think} and if $\mcD$ is a poset then $F_!$ is nice \shortnote{I think}.
+
+
+
+\section{Updates and their local effects}\label{sec:updates-local}
+
+Here we look into the most common type of update, that done from a smaller local database via a fully faithful morphism $F$.   We also look at the connected geometric case and its local effects.
+
+\section{Updates and their global effects}\label{sec:updates-global}
+
+Unfinished.  How do local changes effect the whole database.  Answer this in the four special cases: one insertion, one deletion, one contraction, one expansion.
+
+Also, what happens if the same user adds one insertion, updates, then deletes that entry and updates again.  What is the result to the whole?
+
+\section{Questions}
+
+Suppose that $\mcC$ and $\mcD$ are schemas managed by separate DBMSs and that $F\taking\mcC\to\mcD$ is a functor that is managed by a third party.  Can the DBMS on $\mcD$ make inferences about the structure of $\mcC$ given a pushforward $F_*(\gamma)$ of a random (i.e. generic) $\mcC$-set $\gamma$?  My guess is that inferences can be made.
+
+\section{Miscellaneous} 
+
+\begin{definition}
+
+Let $\mcC$ be a database schema (category).  The {\em self-state of $\mcC$}, denoted $\Sigma_\mcC$, is the $\mcC$-set defined for an object $c$ and a morphism $g\taking c\to c'$ of $\mcC$ by \begin{align*}\Sigma_\mcC(c)&:=\coprod_{b\in\Ob(\mcC)}\Hom_\mcC(b,c)\\\Sigma_\mcC(g)&:=\coprod_{b\in\Ob(\mcC)}\Hom_\mcC(b,g).\end{align*}  In words, a representative of a type $c$ is a map $f\taking b\to c$, and a $g$ attribute of $f$ is the composite $g\circ f$.  In other words, the rows of table $c$ are the maps into $c$ and, recalling that the columns of $c$ are always the maps out of $c$, each cell in $c$ is defined by a map in and a map out of $c$ and their composition is written in that cell.
+
+\end{definition}
+
+\end{document}

@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>GroupCategory</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library GroupCategory</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Category.html#"><span class="id" type="library">Category</span></a> <a class="idref" href="Group.html#"><span class="id" type="library">Group</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab175"></a><h1 class="section">Category of Groups</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="CategoryOfGroups"><span class="id" type="section">CategoryOfGroups</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab176"></a><h2 class="section">Problem</h2>
+ (The category <span class="inlinecode"><a class="idref" href="Exercise_4_5_3_8.html#Exercise_4_5_3_8.Grp"><span class="id" type="variable">Grp</span></a></span> of groups). Suppose we set out to define a
+      category <span class="inlinecode"><a class="idref" href="Exercise_4_5_3_8.html#Exercise_4_5_3_8.Grp"><span class="id" type="variable">Grp</span></a></span>, having groups as objects and group homomorphisms
+      as morphisms, see Definition 3.2.1.7. Show (to the level of
+      detail of Example 4.1.1.4) that the rest of the conditions for
+      <span class="inlinecode"><a class="idref" href="Exercise_4_5_3_8.html#Exercise_4_5_3_8.Grp"><span class="id" type="variable">Grp</span></a></span> to be a category are satisfied. 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="CategoryOfGroups"><span class="id" type="definition">CategoryOfGroups</span></a> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_':'_x_'&'_x_'}'"><span class="id" type="notation">{</span></a> <span class="id" type="var">T</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_':'_x_'&'_x_'}'"><span class="id" type="notation">:</span></a> <span class="id" type="keyword">Type</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_':'_x_'&'_x_'}'"><span class="id" type="notation">&amp;</span></a> <a class="idref" href="Group.html#Group"><span class="id" type="record">Group</span></a> <span class="id" type="var">T</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_':'_x_'&'_x_'}'"><span class="id" type="notation">}</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> {|<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Morphism</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">s</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">d</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">{</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">T</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:</span></a> <span class="id" type="keyword">Type</span> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">&amp;</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Group</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">T</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">}</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">⇒</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">GroupHomomorphism</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">projT2</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">s</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">)</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">projT2</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">d</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">));</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Identity</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">x</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">⇒</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">identity_group_homomorphism</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">_</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">);</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Compose</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">_</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">_</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">_</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">m1</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">m2</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">⇒</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">compose_group_homomorphisms</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">m1</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">m2</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">)</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|};<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">intros</span> [? ?]; <span class="id" type="tactic">intros</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="Monoid.html#MonoidHomomorphism_Eq"><span class="id" type="lemma">MonoidHomomorphism_Eq</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="GroupCategory.html#CategoryOfGroups"><span class="id" type="section">CategoryOfGroups</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

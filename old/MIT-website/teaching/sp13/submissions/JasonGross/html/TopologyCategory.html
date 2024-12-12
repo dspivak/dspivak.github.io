@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>TopologyCategory</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library TopologyCategory</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Topology.html#"><span class="id" type="library">Topology</span></a> <a class="idref" href="TopologicalContinuity.html#"><span class="id" type="library">TopologicalContinuity</span></a> <a class="idref" href="Category.html#"><span class="id" type="library">Category</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab226"></a><h1 class="section">Category of Topologies</h1>
+ There's a category <span class="inlinecode"><span class="id" type="var">Top</span></span> of topological spaces, where continuous
+    maps are the morphisms 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="CategoryOfTopologies"><span class="id" type="section">CategoryOfTopologies</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Record</span> &gt; <a name="TotalTopology"><span class="id" type="record">TotalTopology</span></a> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="TypeOfTotalTopology"><span class="id" type="projection">TypeOfTotalTopology</span></a> :> <span class="id" type="keyword">Type</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="TopologyOfTotalTopology"><span class="id" type="projection">TopologyOfTotalTopology</span></a> :> <a class="idref" href="Topology.html#Topology"><span class="id" type="class">Topology</span></a> <a class="idref" href="TopologyCategory.html#TypeOfTotalTopology"><span class="id" type="method">TypeOfTotalTopology</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="CategoryOfTopologies"><span class="id" type="definition">CategoryOfTopologies</span></a> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <a class="idref" href="TopologyCategory.html#TotalTopology"><span class="id" type="record">TotalTopology</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> {| <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Morphism</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">s</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">d</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">TotalTopology</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">⇒</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">{</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">f</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">s</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">→</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">d</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">|</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">continuous</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">s</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">d</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">f</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">});</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Identity</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">x</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">⇒</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">exist</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">_</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">_</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">identity_is_continuous</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">x</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">));</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Compose</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">_</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">_</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">_</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">m1</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">m2</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">⇒</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">exist</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">_</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">_</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">compose_continuous</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">proj2_sig</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">m1</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">)</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">proj2_sig</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">m2</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">)))</span></a> |};<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">intro</span>; <span class="id" type="var">simpl_eq</span>; <span class="id" type="tactic">try</span> <span class="id" type="tactic">reflexivity</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="TopologyCategory.html#CategoryOfTopologies"><span class="id" type="section">CategoryOfTopologies</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

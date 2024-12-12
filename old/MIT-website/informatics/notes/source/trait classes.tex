@@ -1,0 +1,46 @@
+\documentclass{amsart}
+
+\input{decl-db}
+
+\def\Str{{\bf Str}}
+\def\Shv{{\bf Shv}}
+
+\begin{document}
+
+\title{Trait classes}
+
+\author{David I. Spivak}
+
+\maketitle
+
+We begin by recalling the definition of a site.
+
+\begin{definition}
+
+A {\em site} is a pair $(\mcC,J)$, where $\mcC$ is a category and $J$ is a function that assigns to each $C\in\Ob(\mcC)$,  a set $J(C)$ in which each element $T\in J(C)$ is itself a set $T=\{t_\alpha\taking c_\alpha\to C\}$ of morphisms in $\mcC$ with target $C$; these data are required to satisfy axioms which we present after defining some terms.  We call the sets $T\in J(C)$ {\em trait classifications on $C$} and individual morphisms $t\in T$ {\em trait classes on $C$}.  We require the following: \begin{enumerate}\item For each trait class $t\taking c\to C$ on $C$ and each map $D\to C$ in $\mcC$, the fiber product $c\cross_CD$ exists in $\mcC$.\item For any map $f\taking D\to C$ in $\mcC$ and any trait classification $T\in J(C)$, the pullback $f^*T=\{g^*(t)|t\in T\}$ is a trait classification on $D$.\item If $T=\{t_\alpha\taking c_\alpha\to C\}$ is a trait classification on $C$ and for each $t_\alpha\in T$ the set $U_\alpha=\{u_{\alpha,\beta}\taking b_{\alpha,\beta}\to c_\alpha\}$ is a trait classification on $c_\alpha$, then the family of composites $$\bigcup_{t_\alpha\in T}\left\{b_{\alpha,\beta}\To{t_\alpha\circ u_{\alpha,\beta}}C|u_{\alpha,\beta}\in U_\alpha\right\}$$ is a trait classification on $C$.\item If $f\taking B\to C$ is an isomorphism in $\mcC$ then the singleton set $\{f\}$ is a trait classification on $C$.\end{enumerate}
+
+\end{definition}
+
+\begin{definition}
+
+Let $(\mcC,J)$ denote a site, $X$ a topological space, and $\Shv(X)$ the category of sheaves of sets on $X$.  A functor $F\taking\mcC\to\Shv(X)$ is called {\em topological} if it preserves the finite limits which exist in $\mcC$ and if, for every trait classification $T\in J$, the induced map of sheaves $$\left(\coprod_{(t_\alpha\taking c_\alpha\to C)\in T}F(c_\alpha)\right)\too F(C)$$ is surjective.
+
+Given a pair of topological functors $F,G\taking\mcC\to\Shv(X)$, we will say that a natural transformation $a\taking F\to G$ is {\em topological} if, for every trait class $c\to C$, the induced diagram of sheaves $$\xymatrix{F(c)\ar[r]\ar[d]&G(c)\ar[d]\\F(C)\ar[r]&F(C)}$$ is a pullback square in $\Shv(X)$.
+
+\end{definition}
+
+\begin{example}
+
+If $X$ is a point, then $\Shv(X)=\Sets$ is the category of sets.  A functor $F\taking\mcC\to\Sets$ is topological if it preserves finite limits and takes trait classifications to surjections.
+
+I think that if $X$ is sober, then a functor $F\taking\mcC\to\Shv(X)$ is local if, for each point $x\in X$, the induced functor $F_x\taking\mcC\to\Sets$ on stalks (given by composition of $F$ with $\colim_{x\in U}-(U)\taking\Shv(X)\to\Sets$) is topological.
+
+\end{example}
+
+\begin{definition}
+
+Let $F\taking\mcC\to\Sets$ be a topological functor, and let $D=\{(C_1,T_1),\ldots,(C_n,T_n)\}$ denote a finite set of pairs $(C_i,T_i)$ in which $C_i\in\Ob(\mcC)$ is an object and $T_i\in J(C_i)$ is a trait classification on $C$.  The {\em $D$-display of $F$} is 
+
+\end{definition}
+
+\end{document}

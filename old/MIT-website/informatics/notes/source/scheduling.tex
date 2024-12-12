@@ -1,0 +1,343 @@
+\documentclass{amsart}
+
+\usepackage{amssymb, amscd,stmaryrd,setspace,hyperref,color}
+
+\input xy
+\xyoption{all} \xyoption{poly} \xyoption{knot}\xyoption{curve}
+\input{diagxy}
+
+
+\newcommand{\comment}[1]{}
+
+\newcommand{\longnote}[2][4.9in]{\fcolorbox{black}{yellow}{\parbox{#1}{\color{black} #2}}}
+\newcommand{\note}[1]{\fcolorbox{black}{yellow}{\color{black} #1}}
+\newcommand{\q}[1]{\begin{question}#1\end{question}}
+\newcommand{\g}[1]{\begin{guess}#1\end{guess}}
+
+\def\tn{\textnormal}
+\def\mf{\mathfrak}
+\def\mc{\mathcal}
+
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\CC{{\mathbb C}}
+\def\AA{{\mathbb A}}
+\def\PP{{\mathbb P}}
+\def\NN{{\mathbb N}}
+
+\def\Hom{\tn{Arr}}
+\def\Fun{\tn{Fun}}
+\def\Ob{\tn{Ob}}
+\def\Op{\tn{Op}}
+
+\def\to{\rightarrow}
+\def\from{\leftarrow}
+\def\cross{\times}
+\def\taking{\colon}
+\def\inj{\hookrightarrow}
+\def\surj{\twoheadrightarrow}
+\def\too{\longrightarrow}
+\def\tooo{\longlongrightarrow}
+\def\tto{\rightrightarrows}
+\def\ttto{\equiv\!\!>}
+\def\ss{\subseteq}
+\def\superset{\supset}
+\def\iso{\cong}
+\def\down{\downarrow}
+\def\|{{\;|\;}}
+\def\m1{{-1}}
+\def\op{^\tn{op}}
+\def\loc{\tn{loc}}
+\def\la{\langle}
+\def\ra{\rangle}
+\def\wt{\widetilde}
+\def\wh{\widehat}
+\def\we{\simeq}
+\def\ol{\overline}
+\def\ul{\underline}
+\def\qeq{\mathop{=}^?}
+
+\def\ullimit{\ar@{}[rd]|(.3)*+{\lrcorner}}
+\def\urlimit{\ar@{}[ld]|(.3)*+{\llcorner}}
+\def\lllimit{\ar@{}[ru]|(.3)*+{\urcorner}}
+\def\lrlimit{\ar@{}[lu]|(.3)*+{\ulcorner}}
+\def\ulhlimit{\ar@{}[rd]|(.3)*+{\diamond}}
+\def\urhlimit{\ar@{}[ld]|(.3)*+{\diamond}}
+\def\llhlimit{\ar@{}[ru]|(.3)*+{\diamond}}
+\def\lrhlimit{\ar@{}[lu]|(.3)*+{\diamond}}
+\newcommand{\clabel}[1]{\ar@{}[rd]|(.5)*+{#1}}
+
+\newcommand{\arr}[1]{\ar@<.5ex>[#1]\ar@<-.5ex>[#1]}
+\newcommand{\arrr}[1]{\ar@<.7ex>[#1]\ar@<0ex>[#1]\ar@<-.7ex>[#1]}
+\newcommand{\arrrr}[1]{\ar@<.9ex>[#1]\ar@<.3ex>[#1]\ar@<-.3ex>[#1]\ar@<-.9ex>[#1]}
+\newcommand{\arrrrr}[1]{\ar@<1ex>[#1]\ar@<.5ex>[#1]\ar[#1]\ar@<-.5ex>[#1]\ar@<-1ex>[#1]}
+
+\newcommand{\To}[1]{\xrightarrow{#1}}
+\newcommand{\Too}[1]{\xrightarrow{\ \ #1\ \ }}
+\newcommand{\From}[1]{\xleftarrow{#1}}
+
+\newcommand{\Adjoint}[4]{\xymatrix@1{#2 \ar@<.5ex>[r]^-{#1} & #3 \ar@<.5ex>[l]^-{#4}}}
+
+\def\id{\tn{id}}
+\def\Top{{\bf Top}}
+\def\Cat{{\bf Cat}}
+\def\Str{{\bf Str}}
+\def\Sets{{\bf Sets}}
+\def\Set{{\bf Set}}
+\def\sSet{{\bf sSet}}
+\def\sSets{{\bf sSets}}
+\def\Grpd{{\bf Grpd}}
+\def\Pre{{\bf Pre}}
+\def\Shv{{\bf Shv}}
+\def\Rings{{\bf Rings}}
+
+\def\colim{\mathop{\tn{colim}}}
+
+\def\mcA{\mc{A}}
+\def\mcB{\mc{B}}
+\def\mcC{\mc{C}}
+\def\mcD{\mc{D}}
+\def\mcE{\mc{E}}
+\def\mcF{\mc{F}}
+\def\mcG{\mc{G}}
+\def\mcH{\mc{H}}
+\def\mcI{\mc{I}}
+\def\mcJ{\mc{J}}
+\def\mcK{\mc{K}}
+\def\mcL{\mc{L}}
+\def\mcM{\mc{M}}
+\def\mcN{\mc{N}}
+\def\mcO{\mc{O}}
+\def\mcP{\mc{P}}
+\def\mcQ{\mc{Q}}
+\def\mcR{\mc{R}}
+\def\mcS{\mc{S}}
+\def\mcT{\mc{T}}
+\def\mcU{\mc{U}}
+\def\mcV{\mc{V}}
+\def\mcW{\mc{W}}
+\def\mcX{\mc{X}}
+\def\mcY{\mc{Y}}
+\def\mcZ{\mc{Z}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{guess}[theorem]{Guess}
+\newtheorem{answer}[theorem]{Answer}
+\newtheorem{construction}[theorem]{Construction}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{postulate}[theorem]{Postulate}
+
+\def\Finm{{\bf Fin_{m}}}
+\def\El{{\bf El}}
+\def\Gr{{\bf Gr}}
+\def\DT{{\bf DT}}
+\def\DB{{\bf DB}}
+\def\Tables{{\bf Tables}}
+\def\Sch{{\bf Sch}}
+\def\Fin{{\bf Fin}}
+\def\P{{\bf P}}
+\def\SC{{\bf SC}}
+\def\ND{{\bf ND}}
+\def\Poset{{\bf Poset}}
+\def\'{\textnormal{'}}
+
+\begin{document}
+
+\title{Schedulability of an obligation complex}
+
+\thanks{Thanks to Ian Shipman for a very useful conversation.}
+
+\maketitle
+
+\section{Introduction}
+
+The situation being studied here is the following scheduling problem. Given a set of people, various subsets need to meet for various amounts of time. For example, out of people $\{A,B,C,D\}$, groups $AB$ and $BC$ need to meet for 1 hour, group $BCD$ needs to meet for 2 hours, and groups $AD$ and $ACD$ need to meet for 3 hours. How many hours would they need to schedule all the meetings? The answer is 9 hours. This will be shown in Section \ref{sec:components}.
+
+This document reflects our quick thoughts and ideas, written down quickly. As a result, the problem is phrased in a fairly different way, namely as fractions of a day. If these ideas ever become worth publicizing, the document should be converted to a duration-based format rather than a fraction-based format.
+
+We begin by providing a convenient way to write down these scheduling problems, by way of a simplicial complex whose simplices are annotated with time fractions (alternatively durations). We provide various propositions with which to tackle the scheduling problem, the simplest given in Section \ref{sec:obligations}. A very useful technique is given in Section \ref{sec:components}.
+
+\section{Obligation complexes}\label{sec:obligations}
+
+Recall that a {\em finite simplicial complex} consists of a pair S=$(S_1,|S|)$ where $S_1$ is a finite set, and $|S|\ss\PP(S_1)$ is a set of subsets of $S_1$ with the following properties. \begin{itemize}\item for each $x\in S_1$, the singleton set $\{x\}\in|S|$, and \item if $s\in|S|$ and $t\ss s$ then $t\in|S|$.\end{itemize} We call elements $x\in S_1$  {\em vertices of $S$} and more generally elements $s\in |S|$ {\em simplices of $S$}, and we write $S_i$ to denote the set of simplices of cardinality $i$.
+
+\begin{definition}
+
+An {\em obligation complex} $(S,f)$ consists of a finite simplicial complex $S$ and a function $f\taking|S|\to[0,1]$. We call $f$ the {\em obligation function for $S$}, we call the elements $s\in|S|$ {\em working groups}, we call $f(s)\in[0,1]$ the {\em meeting time obligated for $s$}, and we refer to vertices $x\in s$ as {\em members of $s$}. For each vertex $x\in S_1$ we write $S_x$ to denote subcomplex of $S$ consisting of all simplices containing $x$, and let $f_x\taking |S|\to[0,1]$ denote the restriction of $f$ to $S_x$. We call $(S_x,f_x)$ the {\em obligation complex of $x$}.
+
+A {\em schedule} for an obligation complex $(S,f)$ is a function $m\taking|S|\to\PP([0,1])$, where $\PP([0,1])$ denotes the set of measurable subsets of $[0,1]$, such that $m$ satisfies the following conditions \begin{itemize}\item for all simplices $s,t\in |S|$, if  $s\cap t\neq\emptyset$ then  $m(s)\cap m(t)=\emptyset.$\item for all $s\in |S|$ we have $$f(s)=|m(s)|,$$ where $|m(s)|$ is the measure of $m(s)\ss[0,1]$. \end{itemize}
+ 
+Given a schedule $m$ and a working group $s\in|S|$, we call the subset $m(s)\ss[0,1]$ the {\em meeting schedule for $s$}. If $s=\{x\}\in S_1$ consists of a single member, we call $f(s)$ the {\em alone time obligated for $s$} and $m(s)$ the {\em alone time schedule for $s$}.
+
+An obligation complex is called {\em schedulable} if there exists a schedule for it.
+
+\end{definition}
+
+\begin{proposition}\label{prop:fot}
+
+Let $(S,f)$ be an obligation complex. If it is schedulable, then for any vertex $x\in S_1$ we have $$\sum_{s\in |S_x|} f(s) \leq 1.$$
+
+\end{proposition}
+
+\begin{proof}
+
+If $(S,f)$ is schedulable, let $m$ be a schedule for it. Then, for all $s,t\in|S_x|$ we have $s\cap t\neq 0$; thus $m(s)$ is disjoint from $m(t)$. Thus we have \begin{align}\label{eqn:fot}\sum_{s\in |S_x|} f(s)=\left|\bigcup_{s\in S_x}m(s)\right|\leq \big|[0,1]\big|=1\end{align}
+
+\end{proof}
+
+If $(S,f)$ satisfies  the conclusion (\ref{eqn:fot}) of Proposition \ref{prop:fot}, we say it {\em satisfies the finiteness of time requirement} or simply {\em satisfies FoT}.
+
+\begin{proposition}\label{prop:alone}
+
+Let $(S,f)$ be an obligation complex and let $f'\taking|S|\to[0,1]$ be defined as follows: \begin{itemize}\item for $i\geq 2$ and $s\in |S_i|$, we have $f'(s)=f(s)$, and\item for $s\in S_1$ we have $f'(s)=0$.\end{itemize} If $(S,f')$ is schedulable and $(S,f)$ satisfies FoT, then $(S,f)$ is schedulable.
+
+\end{proposition}
+
+\begin{proof}
+
+Suppose $(S,f')$ is schedulable and that $S$ satisfies FoT. Let $m'\taking|S|\to\PP([0,1])$ denote a schedule for $(S,f')$. For each vertex $x\in|S_1|$, we need to schedule alone time for $x$. We may assume that $f(x)$ is as large as possible such that FoT is satisfied, i.e. that $$f(x)=1-\sum_{s\in |S_x|-\{x\}} f(s).$$ Then we simply define $m(x)$ to be the complement, $$m(x)=[0,1]-\bigcup_{s\in S_x}m'(s).$$ Then $m$ will satisfy the required conditions of a schedule for $(S,f)$.
+
+\end{proof}
+
+\begin{proposition}\label{prop:removing unobligated simplices}
+
+Let $(S,f)$ be an obligation complex and let $s\in|S|$ be a simplex with the property that for all $t\in|S|$, if $s\ss t$ then $f(t)=0$. Let $$|S'|=|S|-\{t\in|S| : s\ss t\}.$$ Let $f'\taking S'\to[0,1]$ denote the restriction of $f$ to $S'$. Then $(S,f)$ is schedulable if and only if $(S',f')$ is, and given any schedule $m\taking|S|\to\PP([0,1])$ of $(S,f)$, the restriction $m'$ to $|S'|$ is a schedule for $(S',f')$.
+
+\end{proposition}
+
+\begin{proof}
+
+Obvious.
+
+\end{proof}
+
+\begin{definition}
+
+If $(S',f')$ can be obtained from $(S,f)$ by successive applications of Proposition \ref{prop:removing unobligated simplices}, i.e. by removing unobligated simplices $s\in|S|$, then we say that $(S,f)$ and $(S',f')$ are equivalent.
+
+If $(S',f')$ can be obtained from $(S,f)$ by successive applications of Proposition \ref{prop:alone}, i.e. by de-obligating alone time, then we say that $(S',f')$ is a {\em brutalization} of $(S,f)$.
+
+We say that $(S',f')$ is {\em reduced} if it has no unobligated simplices and no obligated alone time. 
+
+\end{definition}
+
+Together, Propositions \ref{prop:alone} and \ref{prop:removing unobligated simplices} say that, for scheduling purposes, we may always assume our obligation complex is reduced.
+
+\section{Less trivial results}
+
+\subsection{Breaking up meetings eases schedulability}
+
+\begin{definition}
+
+Let $S$ be a simplicial complex with vertices $S_1$. Given simplices $s,t,u\in|S|$, we say that $s$ is {\em the join of $t$ and $u$}, denoted $s=t\ast u$, if as subsets of $S_1$ we have that $s$ is the disjoint union of $t$ and $u$ $$s=t\amalg u\ss S_1,$$ i.e. $t\cap u=\emptyset$ and $t\cup u=s$.
+
+\end{definition}
+
+\begin{definition}\label{def:migration}
+
+Let $(S,f)$ be an obligation complex, let $s\in |S|$ be a simplex, and suppose $s=t\ast u$ for some $t,u\in |S|$. For any number $p\leq f(s)$, we define the {\em atomic breakup migration of $p$ from $s$ to $(t,u)$} to be the obligation simplex $(S,f')$ defined as follows: \begin{itemize}\item for simplices $r$ such that $r\neq s,t,u$, we have $f'(r)=f(r)$;\item $f'(s)=f(s)-p$; \item $f'(t)=f(t)+p$; and \item $f'(u)=f(u)+p$.\end{itemize}
+
+A {\em breakup migration of $(S,f)$} is an obligation complex $(S',f')$ that can be obtained from $(S,f)$ by a sequence of atomic breakup migrations as above.
+
+\end{definition}
+
+\begin{proposition}
+
+Suppose that $(S,f)$ and $(S,f')$ are obligation complexes and that $(S,f')$ is a breakup migration of $(S,f)$. If $(S,f)$ is schedulable then so is $(S,f')$.
+
+\end{proposition}
+
+\begin{proof}
+
+It suffices to prove this in the case of an atomic breakup migration. Suppose that $(S,f)$ is scheduled by $m\taking |S|\to\PP([0,1])$, and suppose that $(S,f')$ migrates $p$ from $s$ to $(t,u)$ for a number $p\leq f(s)$ and subsimplices $t,u\ss s$ with $s=t\ast u$. We will show that one can choose an $m'\taking |S|\to\PP([0,1])$ scheduling $(S,f')$.
+
+To do so, choose any subset $P\ss m(s)$ such that $|P|=p$. Define $m'(s)=m(s)-P$, define $m'(t)=m(t)\cup P$, and define $m'(u)=m(u)\cup P$. For all other simplices $r\in|S|$, let $m'(r)=m(r)$. It is clear from the definition (\ref{def:migration}, that for all simplices $q\in |S|$ we have $f'(q)=|m(q)|$. Note that $t\cap u=\emptyset$, so to check that $m'$ is a schedule, it suffices to check that for all $q\in|S|$, if $t\cap q\neq\emptyset$ then $m'(t)\cap m'(q)=\emptyset$. We may assume that $q$ is neither $s,t,$ or $u$, because the result is clear in those cases. Suppose $t\cap q\neq\emptyset$. It follows that $m(s)\cap m(q)=\emptyset$, and since $P\ss m(s)$, we have  $P\cap m(q)=\emptyset$. Thus, $$m'(t)\cap m'(q)=(m(t)\cup P)\cap m(q)=(m(t)\cap m(q))\cup(P\cap m(q))=\emptyset,$$ proving the result. 
+
+\end{proof}
+
+\subsection{Component scheduling}\label{sec:components}
+
+\begin{definition}
+
+Let $(S,f)$ denote a reduced obligation complex. Let $G(S)=(E,N)$ denote the undirected graph with nodes $N\iso |S|$, the simplices of $S$, and an edge between nodes $v$ and $w$ if the corresponding simplices contain no vertex in common. Nodes $n\in N$ are called {\em working groups}, and have {\em members}, just like simplices $s\in|S|$. We elide the difference between $N$ and $|S|$.
+
+We define the {\em simultaneity graph of $(S,f)$} to be the pair $(G(S),f)$ where $G(S)$ is as above and $f\taking N\to[0,1]$ is the original obligation function. The simultaneity graph is viewed as an undirected graph whose vertices are annotated with numbers in $[0,1]$.
+
+We refer to connected components of $G(S)$ as {\em simultaneity components}. If $G'\ss G(S)$ is a simultaneity component, its set of nodes will correspond to a subcomplex $(S',f')$ of $(S,f)$, where $S'$ consists of all working groups in $G'$, and where $f'$ the restriction of $f$ to $S'$.
+
+\end{definition}
+
+Note that we can recover the obligation complex $(S,f)$ from the associated simultaneity graph $(G(S),f)$. The only difference between an obligation complex and its associated simultaneity graph is in the presentation. Thus we may speak of schedules for simultaneity graphs, just as we speak of schedules for obligation complexes. 
+
+\begin{remark} 
+
+We refer to elements of $N$ as nodes rather than vertices to stave off confusion with the vertices in a simplicial complex. Thus a node can have member vertices.
+
+\end{remark}
+
+\begin{proposition}
+
+Let $(S,f)$ denote an obligation complex
+
+\end{proposition}
+
+\begin{lemma}\label{lemma:components}
+
+Let $(S,f)$ denote a reduced obligation complex, and let $(G(S),f)$ be the simultaneity graph. Suppose that $s,t$ are nodes in $G(S)$ that occur in different connected components. If $m$ is a schedule for $(S,f)$, then $m(s)\cap m(t)=\emptyset$.
+
+\end{lemma}
+
+\begin{proof}
+
+Since nodes $s$ and $t$ are in different components, in particular there is no edge connecting them. Thus they contain a common member vertex, and the result follows by the definition of schedule.
+
+\end{proof}
+
+\begin{definition}
+
+Let $(S,f)$ be an obligation complex, and let $T\in[0,1]$ be a real number between 0 and 1. We define a {\em $T$-schedule} of $(S,f)$ to be a function $m\taking|S|\to\PP([0,T])$, where $\PP([0,T])$ denotes the set of measurable subsets of $[0,T]$, such that $m$ satisfies the following conditions \begin{itemize}\item for all simplices $s,t\in |S|$, if  $s\cap t\neq\emptyset$ then  $m(s)\cap m(t)=\emptyset.$\item for all $s\in |S|$ we have $$f(s)=|m(s)|,$$ where $|m(s)|$ is the measure of $m(s)$. \end{itemize}
+
+An obligation complex is called {\em $T$-schedulable} if there exists a $T$-schedule for it.
+
+\end{definition}
+
+\begin{proposition}
+
+Let $(S,f)$ be a reduced obligation complex, and let $(G(S),f)$ denote its simultaneity graph. Let $G_1,G_2,\ldots, G_n$ denote its connected components. Then $(S,f)$ is schedulable if and only if there exist $T_1,T_2,\ldots, T_n$ such that for all $i$, the graph $G_i$ is $T_i$-schedulable, and $\sum_i T_i\leq 1$.
+
+\end{proposition}
+
+\begin{proof}
+
+It is clear that if there exist $T_1,T_2,\ldots, T_n$ with the described property then $(S,f)$ is schedulable: we simply take the schedules $m_i$ for each $G_i$ and define $m'$ for $s\in T_k$ by $m'(s)=m(s)+\sum_{j\leq k}T_j$.
+
+Now suppose that $(S,f)$ is schedulable, and let $m\taking|S|\to\PP([0,1])$ denote a schedule for it. Let $G_1,G_2,\ldots, G_n$ denote its simultaneity components, and for each $1\leq i\leq n$, let $m_i$ denote a schedule for $G_i$. Define $D_i\ss[0,1]$ as follows: $$D_i=\bigcup_{s\in G_i}m(s).$$ Let $T_i=|D_i|$. Then $G_i$ is $T_i$-schedulable by basic measure theory, since $G_i$ has a finite set of nodes. 
+
+It remains to show that we have $\sum_iT_i\leq 1$. For this it suffices to show that if $i\neq j$ then $D_i\cap D_j=\emptyset$, for then $$\sum_iT_i=\left|\bigcup_iD_i\right|=\left|\bigcup_{s\in|S|}m(s)\right|\leq 1.$$ The result then follows from Lemma \ref{lemma:components}
+
+\end{proof}
+
+\begin{example}
+
+Go through the example from the introduction.
+
+\end{example}
+
+Finish by showing what to do when we have a large connected component in the simultaneity graph for $(S,f)$: try to remove a large complete subgraph $H\ss G(S)$ such that the difference $\max_{x\in H}f(x)-\min_{x\in H}f(x)$ is as small as possible, and leaving as many connected components as possible. Of course, all three of these constraints can't necessarily be solved simultaneously. But, I believe they are listed in order of importance: removing larger complete subgraphs is most important, followed by minimizing the difference between max and min, followed by leaving lots of connected components (whose only advantage is to simplify things, not to actually decrease scheduling time).
+
+\end{document}

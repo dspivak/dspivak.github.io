@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>FunctorCategory</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library FunctorCategory</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Category.html#"><span class="id" type="library">Category</span></a> <a class="idref" href="Functor.html#"><span class="id" type="library">Functor</span></a> <a class="idref" href="NaturalTransformation.html#"><span class="id" type="library">NaturalTransformation</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab171"></a><h1 class="section">Functor Category</h1>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="FunctorCategory"><span class="id" type="section">FunctorCategory</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">C</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">objC</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">D</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">objD</span>).<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+There is a category Fun(C, D) of functors from <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span> to <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent_Relation.D"><span class="id" type="variable">D</span></a></span>. 
+</div>
+<div class="code">
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="FunctorCategory"><span class="id" type="definition">FunctorCategory</span></a> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> (<a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="FunctorCategory.html#FunctorCategory.C"><span class="id" type="variable">C</span></a> <a class="idref" href="FunctorCategory.html#FunctorCategory.D"><span class="id" type="variable">D</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (@<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Build_Category</span></a> <span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="NaturalTransformation.html#NaturalTransformation"><span class="id" type="record">NaturalTransformation</span></a> (<span class="id" type="var">C</span> := <a class="idref" href="FunctorCategory.html#FunctorCategory.C"><span class="id" type="variable">C</span></a>) (<span class="id" type="var">D</span> := <a class="idref" href="FunctorCategory.html#FunctorCategory.D"><span class="id" type="variable">D</span></a>))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="NaturalTransformation.html#IdentityNaturalTransformation"><span class="id" type="definition">IdentityNaturalTransformation</span></a> (<span class="id" type="var">C</span> := <a class="idref" href="FunctorCategory.html#FunctorCategory.C"><span class="id" type="variable">C</span></a>) (<span class="id" type="var">D</span> := <a class="idref" href="FunctorCategory.html#FunctorCategory.D"><span class="id" type="variable">D</span></a>))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="NaturalTransformation.html#NTComposeT"><span class="id" type="definition">NTComposeT</span></a> (<span class="id" type="var">C</span> := <a class="idref" href="FunctorCategory.html#FunctorCategory.C"><span class="id" type="variable">C</span></a>) (<span class="id" type="var">D</span> := <a class="idref" href="FunctorCategory.html#FunctorCategory.D"><span class="id" type="variable">D</span></a>))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<span class="id" type="tactic">intros</span>; <span class="id" type="tactic">apply</span> <a class="idref" href="NaturalTransformation.html#NaturalTransformation_Eq"><span class="id" type="lemma">NaturalTransformation_Eq</span></a>; <span class="id" type="tactic">simpl</span>; <span class="id" type="tactic">auto</span> <span class="id" type="keyword">with</span> <span class="id" type="var">morphism</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="FunctorCategory.html#FunctorCategory"><span class="id" type="section">FunctorCategory</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Notation</span> <a name=":category_scope:x_'^'_x"><span class="id" type="notation">"</span></a>C ^ D" := (<a class="idref" href="FunctorCategory.html#FunctorCategory"><span class="id" type="definition">FunctorCategory</span></a> <span class="id" type="var">D</span> <span class="id" type="var">C</span>) : <span class="id" type="var">category_scope</span>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

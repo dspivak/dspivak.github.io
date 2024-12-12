@@ -1,0 +1,111 @@
+<html>
+<head>
+
+<title>David Spivak's Homepage</title>
+
+<meta name="description" content="David I. Spivak is a post doctoral 
+associate in the mathematics department at MIT.  His research focuses on 
+using category theory and other formal mathematics to describe information 
+and communication as they are found in the real world.  Past research 
+subjects include derived manifolds, infinity categories.">
+
+</head>
+<body>
+
+<img src="./david-pic.jpg" align=right width="270"/>
+<h1>David Spivak</h1>
+Postdoctoral Associate<br>
+Department of Mathematics<br>
+MIT<br><br>
+<b>Office:</b> 4-182<br>
+Email: dspivak--math/mit/edu  <br>
+
+<a href="http://math.mit.edu/~dspivak/cv.pdf"> Curriculum
+Vitae</a>.<br><br>
+
+
+<hr>
+
+<h3> Current research projects</h3><br>
+
+<a href="http://math.mit.edu/~dspivak/cs/technical_proposal2010.pdf"> 
+Technical Proposal: "Categorical information theory".</a> This is a 
+proposal for ONR grant  N000141010841.  
+It summarizes my overarching research goals while at MIT.<br><br>
+
+<a href="http://math.mit.edu/~dspivak/cs/"> Categorical informatics.</a>  
+What is the underlying mathematical structure of information itself?  
+<br><br>
+
+<hr>
+
+<h3> Past research subjects</h3>
+
+<a href="http://math.mit.edu/~dspivak/dman"> Derived manifolds.  </a> The 
+category of derived manifolds contains arbitrary intersections of 
+manifolds, even if they are not transverse, while retaining enough 
+structure so that every compact derived manifold has a fundamental class 
+in cobordism.<br><br>
+
+<a href="http://math.mit.edu/~dspivak/qcat"> Mapping spaces in quasi-categories.</a> Joint work with <a 
+href="http://uoregon.edu/~ddugger"> Dan Dugger</a>.  <br><br>
+
+<a href="http://math.mit.edu/~dspivak/phys"> High-energy physics.</a>  A paper I coauthred with 
+Puneet Batra and Bogdan Dobrescu.<br><br>
+
+<hr>
+
+<h3> Other stuff </h3>	
+
+<a href="http://math.mit.edu/~dspivak/files"> Miscellaneous files </a> Includes 
+some papers of mine and others (some brief or unfit for publication, but 
+possibly of interest), a program for doing calculations in a group-ring, 
+some LaTeX guides I use, and other random stuff.<br>
+
+<br> <hr> <br>
+
+
+<h3>Links</h3>
+
+<a href="http://www.google.com"> The Google.</a><br>
+
+<a href="http://www.wikipedia.org"> The wiki.</a><br>
+
+<a href="http://www.ams.org/mathscinet"> MathSciNet.</a><br>
+
+<a href="http://front.math.ucdavis.edu/math"> Math arXiv.</a><br>
+
+<a href="http://tac.mta.ca/tac/reprints/index.html"> Category theory 
+reprints.</a><br>
+
+<a href="http://uoregon.edu/~ddugger"> Dan Dugger's page.</a><br>
+
+<a href="http://www.math.harvard.edu/~lurie/"> Jacob Lurie's page. 
+</a><br>
+
+<a href="http://golem.ph.utexas.edu/category/"> John Baez's blog. </a><br>
+
+<a href="http://math.mit.edu/"> MIT Math department.</a><br>
+
+<a href="http://library.mit.edu"> MIT Library.</a><br>
+
+<a href="http://www.mit.edu"> MIT.</a><br>
+
+<br><br><hr><br><br>
+
+<a href="http://math.mit.edu/~dspivak/foaf.rdf"> foaf.rdf</a><p>
+
+<a rel="license" 
+href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative 
+Commons License" style="border-width:0" 
+src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br />This 
+<span xmlns:dc="http://purl.org/dc/elements/1.1/" 
+href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <span 
+xmlns:cc="http://creativecommons.org/ns#" 
+property="cc:attributionName">David I. Spivak</span> is licensed under a 
+<a rel="license" 
+href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons 
+Attribution-Share Alike 3.0 Unported License</a>.
+
+</body>
+</html>

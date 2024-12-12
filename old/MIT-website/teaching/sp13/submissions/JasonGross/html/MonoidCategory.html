@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>MonoidCategory</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library MonoidCategory</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Monoid.html#"><span class="id" type="library">Monoid</span></a> <a class="idref" href="Category.html#"><span class="id" type="library">Category</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab192"></a><h1 class="section">Category of Monoids</h1>
+<a name="lab193"></a><h2 class="section">Example 4.1.1.4</h2>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="CategoryOfMonoids"><span class="id" type="section">CategoryOfMonoids</span></a>.<br/>
+</div>
+
+<div class="doc">
+(The category Mon of monoids) We defined monoids in Definition
+      3.1.1.1 and monoid homomorphisms in Definition 3.1.4.1. Every
+      monoid <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a></span> <span class="inlinecode">:=</span> <span class="inlinecode">(<a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a>,</span> <span class="inlinecode">1<span class="id" type="var">_M</span>,</span> <span class="inlinecode">★)</span> has an identity homomorphism <span class="inlinecode"><a class="idref" href="Monoid.html#id"><span class="id" type="projection">id</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a>:</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a></span> <span class="inlinecode">→</span>
+      <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a></span>, given by the identity function <span class="inlinecode"><a class="idref" href="Monoid.html#id"><span class="id" type="projection">id</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a></span>. To compose
+      two monoid homomorphisms <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="Group.html#M'"><span class="id" type="variable">M'</span></a></span> and <span class="inlinecode"><a class="idref" href="Morphism.html#morphism.inverse_compose.g"><span class="id" type="variable">g</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Group.html#M'"><span class="id" type="variable">M'</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" type="var">M''</span></span>, we
+      compose their underlying functions <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="Group.html#M'"><span class="id" type="variable">M'</span></a></span> and <span class="inlinecode"><a class="idref" href="Morphism.html#morphism.inverse_compose.g"><span class="id" type="variable">g</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Group.html#M'"><span class="id" type="variable">M'</span></a></span> <span class="inlinecode">→</span>
+      <span class="inlinecode"><span class="id" type="var">M''</span></span>, and check that the result <span class="inlinecode"><a class="idref" href="Morphism.html#morphism.inverse_compose.g"><span class="id" type="variable">g</span></a></span> <span class="inlinecode"><span class="id" type="var">&#x25cb;</span></span> <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a></span> is a monoid homomorphism.
+      Indeed,
+
+<div class="paragraph"> </div>
+
+<ul class="doclist">
+<li> <span class="inlinecode">[<a class="idref" href="Morphism.html#morphism.inverse_compose.g"><span class="id" type="variable">g</span></a></span> <span class="inlinecode"><span class="id" type="var">&#x25cb;</span></span> <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a>(1<span class="id" type="var">_M</span>)</span> <span class="inlinecode">=</span> <span class="inlinecode"><a class="idref" href="Morphism.html#morphism.inverse_compose.g"><span class="id" type="variable">g</span></a>(1<span class="id" type="var">_M'</span>)</span> <span class="inlinecode">=</span> <span class="inlinecode">1<span class="id" type="var">_M''</span>]</span>
+
+</li>
+<li> <span class="inlinecode">[<a class="idref" href="Morphism.html#morphism.inverse_compose.g"><span class="id" type="variable">g</span></a></span> <span class="inlinecode"><span class="id" type="var">&#x25cb;</span></span> <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a>(<a class="idref" href="Category.html#m1"><span class="id" type="variable">m1</span></a></span> <span class="inlinecode">&#9733;</span> <span class="inlinecode"><a class="idref" href="Category.html#m2"><span class="id" type="variable">m2</span></a>)</span> <span class="inlinecode">=</span> <span class="inlinecode"><a class="idref" href="Morphism.html#morphism.inverse_compose.g"><span class="id" type="variable">g</span></a>(<a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a>(<a class="idref" href="Category.html#m1"><span class="id" type="variable">m1</span></a>)</span> <span class="inlinecode">&#9733;</span> <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a>(<a class="idref" href="Category.html#m2"><span class="id" type="variable">m2</span></a>))</span> <span class="inlinecode">=</span> <span class="inlinecode"><a class="idref" href="Morphism.html#morphism.inverse_compose.g"><span class="id" type="variable">g</span></a></span> <span class="inlinecode"><span class="id" type="var">&#x25cb;</span></span> <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a>(<a class="idref" href="Category.html#m1"><span class="id" type="variable">m1</span></a>)</span> <span class="inlinecode">&#9733;</span> <span class="inlinecode"><a class="idref" href="Morphism.html#morphism.inverse_compose.g"><span class="id" type="variable">g</span></a></span> <span class="inlinecode"><span class="id" type="var">&#x25cb;</span></span> <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a>(<a class="idref" href="Category.html#m2"><span class="id" type="variable">m2</span></a>).]</span>
+
+</li>
+</ul>
+      It is clear that the two laws hold, so <span class="inlinecode"><span class="id" type="var">Mon</span></span> is a category. 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="CategoryOfMonoids"><span class="id" type="definition">CategoryOfMonoids</span></a> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_':'_x_'&'_x_'}'"><span class="id" type="notation">{</span></a> <span class="id" type="var">T</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_':'_x_'&'_x_'}'"><span class="id" type="notation">:</span></a> <span class="id" type="keyword">Type</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_':'_x_'&'_x_'}'"><span class="id" type="notation">&amp;</span></a> <a class="idref" href="Monoid.html#Monoid"><span class="id" type="record">Monoid</span></a> <span class="id" type="var">T</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_':'_x_'&'_x_'}'"><span class="id" type="notation">}</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> {|<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Morphism</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">s</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">d</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">{</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">T</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:</span></a> <span class="id" type="keyword">Type</span> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">&amp;</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Monoid</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">T</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">}</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">⇒</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">MonoidHomomorphism</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">projT2</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">s</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">)</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">projT2</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">d</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">));</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Identity</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">x</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">⇒</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">identity_monoid_homomorphism</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">_</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">);</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Compose</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">_</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">_</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">_</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">m1</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">m2</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">⇒</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">compose_monoid_homomorphisms</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">m1</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">m2</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">)</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|};<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">intros</span> [? ?]; <span class="id" type="tactic">intros</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="Monoid.html#MonoidHomomorphism_Eq"><span class="id" type="lemma">MonoidHomomorphism_Eq</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="MonoidCategory.html#CategoryOfMonoids"><span class="id" type="section">CategoryOfMonoids</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

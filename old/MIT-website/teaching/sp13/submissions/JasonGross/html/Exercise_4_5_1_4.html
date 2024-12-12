@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_4_5_1_4</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_4_5_1_4</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="OrderProduct.html#"><span class="id" type="library">OrderProduct</span></a> <a class="idref" href="Orders.html#"><span class="id" type="library">Orders</span></a> <a class="idref" href="NatOrders.html#"><span class="id" type="library">NatOrders</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab120"></a><h1 class="section">Exercise 4.5.1.4</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Exercise_4_5_1_4"><span class="id" type="section">Exercise_4_5_1_4</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab121"></a><h2 class="section">Problem</h2>
+ Consider the partial order <span class="inlinecode">&le;</span> on <span class="inlinecode"><a class="idref" href="Notations.html#ℕ"><span class="id" type="abbreviation">&#x2115;</span></a></span> given by standard
+      "less-than-or-equal-to", so <span class="inlinecode">5</span> <span class="inlinecode">&le;</span> <span class="inlinecode">9</span> etc.  And consider another
+      partial order, <span class="inlinecode"><a class="idref" href="NatOrders.html#divides"><span class="id" type="definition">divides</span></a></span> on <span class="inlinecode"><a class="idref" href="Notations.html#ℕ"><span class="id" type="abbreviation">&#x2115;</span></a></span>, where <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.a"><span class="id" type="constructor">a</span></a></span> <span class="inlinecode"><a class="idref" href="NatOrders.html#divides"><span class="id" type="definition">divides</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.b"><span class="id" type="constructor">b</span></a></span> if "<span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.a"><span class="id" type="constructor">a</span></a></span>
+      goes into <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.b"><span class="id" type="constructor">b</span></a></span> evenly", i.e. if there exists <span class="inlinecode"><a class="idref" href="Exercise_4_4_1_1.html#Exercise_4_4_1_1.part_b.n"><span class="id" type="variable">n</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Notations.html#ℕ"><span class="id" type="abbreviation">&#x2115;</span></a></span> such that <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.a"><span class="id" type="constructor">a</span></a></span>
+      <span class="inlinecode">×</span> <span class="inlinecode"><a class="idref" href="Exercise_4_4_1_1.html#Exercise_4_4_1_1.part_b.n"><span class="id" type="variable">n</span></a></span> <span class="inlinecode">=</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.b"><span class="id" type="constructor">b</span></a></span>, so <span class="inlinecode">5</span> <span class="inlinecode"><a class="idref" href="NatOrders.html#divides"><span class="id" type="definition">divides</span></a></span> <span class="inlinecode">35</span>. If we call the product order <span class="inlinecode">(<a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a>,</span>
+      <span class="inlinecode">≼)</span> <span class="inlinecode">:=</span> <span class="inlinecode">(<a class="idref" href="Notations.html#ℕ"><span class="id" type="abbreviation">&#x2115;</span></a>,</span> <span class="inlinecode">&le;)</span> <span class="inlinecode">×</span> <span class="inlinecode">(<a class="idref" href="Notations.html#ℕ"><span class="id" type="abbreviation">&#x2115;</span></a>,</span> <span class="inlinecode"><a class="idref" href="NatOrders.html#divides"><span class="id" type="definition">divides</span></a>)</span>, which of the following are true:
+
+<div class="paragraph"> </div>
+
+      <span class="inlinecode">(2,</span> <span class="inlinecode">4)</span> <span class="inlinecode">&#x227c;</span> <span class="inlinecode">(3,</span> <span class="inlinecode">4)</span>?  <span class="inlinecode">(2,</span> <span class="inlinecode">4)</span> <span class="inlinecode">&#x227c;</span> <span class="inlinecode">(3,</span> <span class="inlinecode">5)</span>?  <span class="inlinecode">(2,</span> <span class="inlinecode">4)</span> <span class="inlinecode">&#x227c;</span> <span class="inlinecode">(8,</span> <span class="inlinecode">0)</span>?  <span class="inlinecode">(2,</span>
+      <span class="inlinecode">4)</span> <span class="inlinecode">&#x227c;</span> <span class="inlinecode">(0,</span> <span class="inlinecode">0)</span>? 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Infix</span> <a name="Exercise_4_5_1_4.::x_'≤'_x"><span class="id" type="notation">"</span></a>&le;" := <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Peano.html#le"><span class="id" type="inductive">le</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Infix</span> <a name="Exercise_4_5_1_4.::x_'≼'_x"><span class="id" type="notation">"</span></a>&#x227c;" := (<span class="id" type="keyword">fun</span> <span class="id" type="var">n</span> <span class="id" type="var">m</span> ⇒ @<a class="idref" href="Orders.html#dec_rel"><span class="id" type="definition">dec_rel</span></a> <span class="id" type="var">_</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Peano.html#le"><span class="id" type="inductive">le</span></a> <a class="idref" href="OrderProduct.html#:relation_scope:x_'*'_x"><span class="id" type="notation">×</span></a> <a class="idref" href="NatOrders.html#divides"><span class="id" type="definition">divides</span></a>)%<span class="id" type="var">relation</span> <span class="id" type="var">_</span> <a class="idref" href="Exercise_4_5_1_4.html#n"><span class="id" type="variable">n</span></a> <a class="idref" href="Exercise_4_5_1_4.html#m"><span class="id" type="variable">m</span></a>) (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 70, <span class="id" type="tactic">right</span> <span class="id" type="keyword">associativity</span>).<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Eval</span> <span class="id" type="tactic">hnf</span> <span class="id" type="keyword">in</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">(</span></a>2<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">,</span></a> 4<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">)</span></a> <a class="idref" href="Exercise_4_5_1_4.html#Exercise_4_5_1_4.::x_'≼'_x"><span class="id" type="notation">&#x227c;</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">(</span></a>3<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">,</span></a> 4<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">)</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Eval</span> <span class="id" type="tactic">hnf</span> <span class="id" type="keyword">in</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">(</span></a>2<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">,</span></a> 4<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">)</span></a> <a class="idref" href="Exercise_4_5_1_4.html#Exercise_4_5_1_4.::x_'≼'_x"><span class="id" type="notation">&#x227c;</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">(</span></a>3<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">,</span></a> 5<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">)</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Eval</span> <span class="id" type="tactic">hnf</span> <span class="id" type="keyword">in</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">(</span></a>2<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">,</span></a> 4<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">)</span></a> <a class="idref" href="Exercise_4_5_1_4.html#Exercise_4_5_1_4.::x_'≼'_x"><span class="id" type="notation">&#x227c;</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">(</span></a>8<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">,</span></a> 0<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">)</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Eval</span> <span class="id" type="tactic">hnf</span> <span class="id" type="keyword">in</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">(</span></a>2<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">,</span></a> 4<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">)</span></a> <a class="idref" href="Exercise_4_5_1_4.html#Exercise_4_5_1_4.::x_'≼'_x"><span class="id" type="notation">&#x227c;</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">(</span></a>0<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">,</span></a> 0<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">)</span></a>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_4_5_1_4.html#Exercise_4_5_1_4"><span class="id" type="section">Exercise_4_5_1_4</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

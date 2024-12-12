@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_3_5_2_4</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_3_5_2_4</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab56"></a><h1 class="section">Exercise 3.5.2.4</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Module</span> <a name="Exercise_3_5_2_4"><span class="id" type="module">Exercise_3_5_2_4</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab57"></a><h2 class="section">Problem</h2>
+ Consider the graph shown in (3.14), and the two declarations
+      shown at the top. They generate a CPER. Is it true that under
+      this CPER we have
+
+<div class="paragraph"> </div>
+
+      <span class="inlinecode">[<a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Employee"><span class="id" type="constructor">Employee</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.manager"><span class="id" type="constructor">manager</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.manager"><span class="id" type="constructor">manager</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.worksIn"><span class="id" type="constructor">worksIn</span></a></span> <span class="inlinecode">&#x2243;</span> <span class="inlinecode"><a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Employee"><span class="id" type="constructor">Employee</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.worksIn"><span class="id" type="constructor">worksIn</span></a>?]</span>
+
+<div class="paragraph"> </div>
+
+      What about
+
+<div class="paragraph"> </div>
+
+      <span class="inlinecode">[<a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Employee"><span class="id" type="constructor">Employee</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.worksIn"><span class="id" type="constructor">worksIn</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.secretary"><span class="id" type="constructor">secretary</span></a></span> <span class="inlinecode">&#x2243;</span> <span class="inlinecode"><a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Employee"><span class="id" type="constructor">Employee</span></a>?]</span>
+
+<div class="paragraph"> </div>
+
+      What about
+
+<div class="paragraph"> </div>
+
+      <span class="inlinecode">[<a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Department"><span class="id" type="constructor">Department</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.secretary"><span class="id" type="constructor">secretary</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.manager"><span class="id" type="constructor">manager</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.worksIn"><span class="id" type="constructor">worksIn</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.name"><span class="id" type="constructor">name</span></a></span> <span class="inlinecode">&#x2243;</span> <span class="inlinecode"><a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Department"><span class="id" type="constructor">Department</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.name"><span class="id" type="constructor">name</span></a>?]</span> 
+</div>
+<div class="code">
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Infix</span> <a name="Exercise_3_5_2_4.::x_'≃'_x"><span class="id" type="notation">"</span></a>&#x2243;" := <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq"><span class="id" type="inductive">eq</span></a> (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 70, <span class="id" type="tactic">right</span> <span class="id" type="keyword">associativity</span>).<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Inductive</span> <a name="Exercise_3_5_2_4.Node"><span class="id" type="inductive">Node</span></a> := <a name="Exercise_3_5_2_4.Employee"><span class="id" type="constructor">Employee</span></a> | <a name="Exercise_3_5_2_4.Department"><span class="id" type="constructor">Department</span></a> | <a name="Exercise_3_5_2_4.FirstNameString"><span class="id" type="constructor">FirstNameString</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a name="Exercise_3_5_2_4.LastNameString"><span class="id" type="constructor">LastNameString</span></a> | <a name="Exercise_3_5_2_4.DepartmentNameString"><span class="id" type="constructor">DepartmentNameString</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Inductive</span> <a name="Exercise_3_5_2_4.Arrow"><span class="id" type="inductive">Arrow</span></a> : <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Node"><span class="id" type="inductive">Node</span></a> → <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Node"><span class="id" type="inductive">Node</span></a> → <span class="id" type="keyword">Type</span> :=<br/>
+&nbsp;&nbsp;| <a name="Exercise_3_5_2_4.identity"><span class="id" type="constructor">identity</span></a> : <span class="id" type="keyword">∀</span> {<span class="id" type="var">x</span>}, <a class="idref" href="Exercise_3_5_2_4.html#Arrow"><span class="id" type="inductive">Arrow</span></a> <a class="idref" href="Exercise_3_5_2_4.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="Exercise_3_5_2_4.html#x"><span class="id" type="variable">x</span></a><br/>
+&nbsp;&nbsp;| <a name="Exercise_3_5_2_4.compose"><span class="id" type="constructor">compose</span></a> : <span class="id" type="keyword">∀</span> {<span class="id" type="var">s</span> <span class="id" type="var">d</span> <span class="id" type="var">d'</span>}, <a class="idref" href="Exercise_3_5_2_4.html#Arrow"><span class="id" type="inductive">Arrow</span></a> <a class="idref" href="Exercise_3_5_2_4.html#s"><span class="id" type="variable">s</span></a> <a class="idref" href="Exercise_3_5_2_4.html#d"><span class="id" type="variable">d</span></a> → <a class="idref" href="Exercise_3_5_2_4.html#Arrow"><span class="id" type="inductive">Arrow</span></a> <a class="idref" href="Exercise_3_5_2_4.html#d"><span class="id" type="variable">d</span></a> <a class="idref" href="Exercise_3_5_2_4.html#d'"><span class="id" type="variable">d'</span></a> → <a class="idref" href="Exercise_3_5_2_4.html#Arrow"><span class="id" type="inductive">Arrow</span></a> <a class="idref" href="Exercise_3_5_2_4.html#s"><span class="id" type="variable">s</span></a> <a class="idref" href="Exercise_3_5_2_4.html#d'"><span class="id" type="variable">d'</span></a><br/>
+&nbsp;&nbsp;| <a name="Exercise_3_5_2_4.manager"><span class="id" type="constructor">manager</span></a> : <a class="idref" href="Exercise_3_5_2_4.html#Arrow"><span class="id" type="inductive">Arrow</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Employee"><span class="id" type="constructor">Employee</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Employee"><span class="id" type="constructor">Employee</span></a><br/>
+&nbsp;&nbsp;| <a name="Exercise_3_5_2_4.firstName"><span class="id" type="constructor">firstName</span></a> : <a class="idref" href="Exercise_3_5_2_4.html#Arrow"><span class="id" type="inductive">Arrow</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Employee"><span class="id" type="constructor">Employee</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.FirstNameString"><span class="id" type="constructor">FirstNameString</span></a><br/>
+&nbsp;&nbsp;| <a name="Exercise_3_5_2_4.lastName"><span class="id" type="constructor">lastName</span></a> : <a class="idref" href="Exercise_3_5_2_4.html#Arrow"><span class="id" type="inductive">Arrow</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Employee"><span class="id" type="constructor">Employee</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.LastNameString"><span class="id" type="constructor">LastNameString</span></a><br/>
+&nbsp;&nbsp;| <a name="Exercise_3_5_2_4.worksIn"><span class="id" type="constructor">worksIn</span></a> : <a class="idref" href="Exercise_3_5_2_4.html#Arrow"><span class="id" type="inductive">Arrow</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Employee"><span class="id" type="constructor">Employee</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Department"><span class="id" type="constructor">Department</span></a><br/>
+&nbsp;&nbsp;| <a name="Exercise_3_5_2_4.secretary"><span class="id" type="constructor">secretary</span></a> : <a class="idref" href="Exercise_3_5_2_4.html#Arrow"><span class="id" type="inductive">Arrow</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Department"><span class="id" type="constructor">Department</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Employee"><span class="id" type="constructor">Employee</span></a><br/>
+&nbsp;&nbsp;| <a name="Exercise_3_5_2_4.name"><span class="id" type="constructor">name</span></a> : <a class="idref" href="Exercise_3_5_2_4.html#Arrow"><span class="id" type="inductive">Arrow</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Department"><span class="id" type="constructor">Department</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.DepartmentNameString"><span class="id" type="constructor">DepartmentNameString</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Infix</span> <a name="Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">"</span></a>&#x25cb;" := <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.compose"><span class="id" type="constructor">compose</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Axiom</span> <a name="Exercise_3_5_2_4.Rule1"><span class="id" type="axiom">Rule1</span></a> : <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.manager"><span class="id" type="constructor">manager</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.worksIn"><span class="id" type="constructor">worksIn</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'≃'_x"><span class="id" type="notation">&#x2243;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.worksIn"><span class="id" type="constructor">worksIn</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Axiom</span> <a name="Exercise_3_5_2_4.Rule2"><span class="id" type="axiom">Rule2</span></a> : <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.secretary"><span class="id" type="constructor">secretary</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.worksIn"><span class="id" type="constructor">worksIn</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'≃'_x"><span class="id" type="notation">&#x2243;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.identity"><span class="id" type="constructor">identity</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Axiom</span> <a name="Exercise_3_5_2_4.LeftIdentity"><span class="id" type="axiom">LeftIdentity</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">s</span> <span class="id" type="var">d</span> (<span class="id" type="var">m</span> : <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Arrow"><span class="id" type="inductive">Arrow</span></a> <a class="idref" href="Exercise_3_5_2_4.html#s"><span class="id" type="variable">s</span></a> <a class="idref" href="Exercise_3_5_2_4.html#d"><span class="id" type="variable">d</span></a>), <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.identity"><span class="id" type="constructor">identity</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#m"><span class="id" type="variable">m</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'≃'_x"><span class="id" type="notation">&#x2243;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#m"><span class="id" type="variable">m</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Axiom</span> <a name="Exercise_3_5_2_4.RightIdentity"><span class="id" type="axiom">RightIdentity</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">s</span> <span class="id" type="var">d</span> (<span class="id" type="var">m</span> : <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Arrow"><span class="id" type="inductive">Arrow</span></a> <a class="idref" href="Exercise_3_5_2_4.html#s"><span class="id" type="variable">s</span></a> <a class="idref" href="Exercise_3_5_2_4.html#d"><span class="id" type="variable">d</span></a>), <a class="idref" href="Exercise_3_5_2_4.html#m"><span class="id" type="variable">m</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.identity"><span class="id" type="constructor">identity</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'≃'_x"><span class="id" type="notation">&#x2243;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#m"><span class="id" type="variable">m</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Axiom</span> <a name="Exercise_3_5_2_4.Associativity"><span class="id" type="axiom">Associativity</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">a</span> <span class="id" type="var">b</span> <span class="id" type="var">c</span> <span class="id" type="var">d</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">m1</span> : <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Arrow"><span class="id" type="inductive">Arrow</span></a> <a class="idref" href="Exercise_3_5_2_4.html#a"><span class="id" type="variable">a</span></a> <a class="idref" href="Exercise_3_5_2_4.html#b"><span class="id" type="variable">b</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">m2</span> : <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Arrow"><span class="id" type="inductive">Arrow</span></a> <a class="idref" href="Exercise_3_5_2_4.html#b"><span class="id" type="variable">b</span></a> <a class="idref" href="Exercise_3_5_2_4.html#c"><span class="id" type="variable">c</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">m3</span> : <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Arrow"><span class="id" type="inductive">Arrow</span></a> <a class="idref" href="Exercise_3_5_2_4.html#c"><span class="id" type="variable">c</span></a> <a class="idref" href="Exercise_3_5_2_4.html#d"><span class="id" type="variable">d</span></a>),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">(</span></a><a class="idref" href="Exercise_3_5_2_4.html#m1"><span class="id" type="variable">m1</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#m2"><span class="id" type="variable">m2</span></a><a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">)</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#m3"><span class="id" type="variable">m3</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'≃'_x"><span class="id" type="notation">&#x2243;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#m1"><span class="id" type="variable">m1</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">(</span></a><a class="idref" href="Exercise_3_5_2_4.html#m2"><span class="id" type="variable">m2</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#m3"><span class="id" type="variable">m3</span></a><a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">)</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="Exercise_3_5_2_4.Exercise_3_5_2_4_a"><span class="id" type="lemma">Exercise_3_5_2_4_a</span></a> : <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.manager"><span class="id" type="constructor">manager</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.manager"><span class="id" type="constructor">manager</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.worksIn"><span class="id" type="constructor">worksIn</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'≃'_x"><span class="id" type="notation">&#x2243;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.worksIn"><span class="id" type="constructor">worksIn</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">rewrite</span> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Associativity"><span class="id" type="axiom">Associativity</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">rewrite</span> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Rule1"><span class="id" type="axiom">Rule1</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="Exercise_3_5_2_4.Exercise_3_5_2_4_c"><span class="id" type="lemma">Exercise_3_5_2_4_c</span></a> : <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.secretary"><span class="id" type="constructor">secretary</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.manager"><span class="id" type="constructor">manager</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.worksIn"><span class="id" type="constructor">worksIn</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.name"><span class="id" type="constructor">name</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'≃'_x"><span class="id" type="notation">&#x2243;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.name"><span class="id" type="constructor">name</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ |- ?<span class="id" type="var">a</span> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">?</span></a><span class="id" type="var">b</span> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">?</span></a><span class="id" type="var">c</span> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">?</span></a><span class="id" type="var">d</span> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'≃'_x"><span class="id" type="notation">&#x2243;</span></a> <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">transitivity</span> (<span class="id" type="var">a</span> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">(</span></a><span class="id" type="var">b</span> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <span class="id" type="var">c</span><a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">)</span></a> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <span class="id" type="var">d</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ <span class="id" type="tactic">repeat</span> <span class="id" type="tactic">rewrite</span> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Associativity"><span class="id" type="axiom">Associativity</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span> | ]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">rewrite</span> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Rule1"><span class="id" type="axiom">Rule1</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">rewrite</span> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.Rule2"><span class="id" type="axiom">Rule2</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">rewrite</span> <a class="idref" href="Exercise_3_5_2_4.html#Exercise_3_5_2_4.LeftIdentity"><span class="id" type="axiom">LeftIdentity</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_3_5_2_4.html#"><span class="id" type="module">Exercise_3_5_2_4</span></a>.<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

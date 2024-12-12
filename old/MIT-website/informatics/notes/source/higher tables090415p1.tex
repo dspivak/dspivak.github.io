@@ -1,0 +1,72 @@
+\documentclass{amsart}
+
+\input{decl-db}
+
+
+%\oddsidemargin .5in 
+%\evensidemargin .5in 
+%textwidth 5.3in 
+
+\def\Loc{{\bf Loc}}
+\def\bigjoin{\bigvee}
+\def\bigmeet{\bigwedge}
+\def\join{\vee}
+\def\meet{\wedge}
+\def\Down{\Downarrow}
+\newcommand{\TriRight}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longrightarrow}\ar@{}[u]|>>>>{#7}}}
+\newcommand{\TriLeft}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longleftarrow}\ar@{}[u]|>>>>{#7}}}
+
+
+%\usepackage{showkeys}
+
+\begin{document}
+
+\author{David I. Spivak}
+
+\thanks{This project was supported in part by the Office of Naval Research.}
+
+\title{Higher Tables}
+
+\maketitle
+
+
+\section{Derivation of tables}
+
+Given a functor $\pi\taking T\to S$, define $d(S)=(\Cat\op\Down S)$ as follows.  An object in $d(S)$ is a category $C$ together with a functor $\sigma\taking C\to S$.  A morphism, denoted $$(F,F^\sharp)\taking(C,\sigma)\to(C',\sigma')$$ in $d(S)$, consists of a functor $F\taking C'\to C$ and a natural transformation $F^\sharp\taking (\sigma\circ F)\to\sigma'$, as depicted in the diagram $$\TriLeft{C'}{\sigma'}{F}{C}{\sigma}{S}{F^\sharp}$$
+
+There is a canonical functor $\Gamma\taking d(S)\to\Cat$, defined by assigning to each $(\sigma\taking C\to S)\in d(S)$ the category for which an object is a pair $(r,r^\sharp)$, where $r\taking C\to T$ is a functor and $r^\sharp\taking(\pi\circ r)\to\sigma$ is a natural transformation, as depicted in the diagram $$\xymatrix{&&T\ar[dd]^\pi\\\\C\ar[uurr]^r\ar[rr]_\sigma&\ar@{}[uur] |(.3){r^\sharp\Downarrow}&S}$$  A morphism $(r_1,r_1^\sharp)\to(r_2,r_2^\sharp)$ in $\Gamma(C,\sigma)$ is a natural transformation $\alpha\taking r_1\to r_2$ such that $r_2^\sharp\circ\alpha=r_1^\sharp$.
+
+Let us define $\Gamma$ on morphisms in $dS$.  Given a morphism $(F,F^\sharp)\taking (C,\sigma)\to(C',\sigma')$, let $(r,r^\sharp)\in\Gamma(C,\sigma)$ denote an object.  Then $(r\circ F)\taking C'\to T$ is a functor and we have a composition of natural transformations $$\pi\circ(r\circ F)=(\pi\circ r)\circ F\To{r^\sharp}\sigma\circ F\To{F^\sharp}\sigma'.$$  Together, these form a pair $((r\circ F),(F^\sharp\circ r^\sharp))\in\Gamma(C',\sigma')$, and we define $\Gamma(F,F^\sharp)$ on objects in this way.  In a similar way, we define $\Gamma(F,F^\sharp)$ for morphisms $\alpha\taking r_1\to r_2$.
+
+Define a new category $d(T):=(\Cat\down\Gamma)$: an object is a pair $(K,\sigma,\tau)$ where $K\in\Cat$ is a category, $\sigma\in d(S)$ is an object, and $\tau\taking K\to\Gamma(\sigma)$ is a functor; a morphism $(K,\sigma,\tau)\to(K',\sigma',\tau')$ consists of a functor $g\taking K\to K'$, a map $\mcF\taking\sigma\to\sigma'$ in $dS$, and a natural transformation $\beta\taking\Gamma(\mcF)\circ\tau\to\tau'\circ g$, depicted in the diagram $$\xymatrix{K\ar[r]^\tau\ar[d]_g\ar@{}[dr] |{\beta\Downarrow}&\Gamma(\sigma)\ar[d]^\mcF\\K'\ar[r]_{\tau'}&\Gamma(\sigma').}$$  
+
+Finally, define $d(\pi)\taking d(T)\to d(S)$ by the natural projection, $d(\pi)(K,\sigma,\tau):=\sigma$.  We call $d(\pi)$ the {\em derivation of $\pi$}.
+
+\begin{lemma}
+
+Let $q\taking dT\to(\Cat\cross dS)$ denote the functor $(K,\sigma,\tau)\mapsto(K,\sigma)$.  We can recover $\Gamma$ from $q$.
+
+\end{lemma}
+
+\begin{proof}
+
+Let us first produce $\Gamma\taking dS\to\Cat$ on objects.  Given $\sigma\taking C\to S$ in $dS$, we wish to find $\Gamma(\sigma)\in\Cat$.  Consider the object $(\singleton,\sigma)\in(\Cat\cross dS)$.  The category of sections of $q$ over $(\singleton,\sigma)$ is $\Gamma(\sigma)$.
+
+\end{proof}
+
+\begin{example}
+
+Let $\pi\taking U\to\DT$ denote a type specification.  Then $d(S)
+
+\end{example}
+
+\section{Comparison}
+
+There is a natural functor $\varphi\taking S\to dS$ defined by sending an object $s\in S$ to $$\varphi(s):=(\singleton\mapsto s)$$ in $dS=(\Cat\op\Down S)$.  A morphism $f\taking s\to s'$ in $S$ defines a morphism $\varphi(f)\taking\varphi(s)\to\varphi(s')$ as depicted in the diagram $$\TriLeft{\singleton}{s'}{\id_\singleton}{\singleton}{s}{S}{f}$$
+
+
+
+\bibliographystyle{amsalpha}
+\bibliography{biblio}
+
+\end{document}

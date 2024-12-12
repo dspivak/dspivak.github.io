@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_3_3_1_5</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_3_3_1_5</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Graph.html#"><span class="id" type="library">Graph</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab37"></a><h1 class="section">Exercise 3.3.1.5</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Exercise_3_3_1_5"><span class="id" type="section">Exercise_3_3_1_5</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab38"></a><h2 class="section">Problem</h2>
+ Let <span class="inlinecode"><a class="idref" href="PathsCategory.html#PathsCategory.V"><span class="id" type="variable">V</span></a></span> be a set.  Suppose we just draw the elements of <span class="inlinecode"><a class="idref" href="PathsCategory.html#PathsCategory.V"><span class="id" type="variable">V</span></a></span> as
+      vertices and have no arrows between them. Is this a graph?
+
+<div class="paragraph"> </div>
+
+      Given <span class="inlinecode"><a class="idref" href="PathsCategory.html#PathsCategory.V"><span class="id" type="variable">V</span></a></span>, is there any other ``canonical'' or somehow automatic
+      non-random procedure for generating a graph with those vertices?
+      
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="Exercise_3_3_1_5.V"><span class="id" type="variable">V</span></a> : <span class="id" type="keyword">Type</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Open</span> <span class="id" type="keyword">Scope</span> <span class="id" type="var">type_scope</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="ConstantGraph"><span class="id" type="definition">ConstantGraph</span></a> (<span class="id" type="var">E</span> : <span class="id" type="keyword">Type</span>) : <a class="idref" href="Graph.html#Graph"><span class="id" type="record">Graph</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= {| <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">Vertex</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">V</span></a><a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">;</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">Edge</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">_</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">_</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">⇒</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">E</span></a><a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">)</span></a> |}.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="ExtendedConstantGraph"><span class="id" type="definition">ExtendedConstantGraph</span></a> (<span class="id" type="var">E_same</span> <span class="id" type="var">E_diff</span> : <span class="id" type="keyword">Type</span>) : <a class="idref" href="Graph.html#Graph"><span class="id" type="record">Graph</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= {| <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">Vertex</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">V</span></a><a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">;</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">Edge</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">s</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">d</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">⇒</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">((</span></a><a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">s</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">=</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">d</span></a><a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">)</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">&times;</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">E_same</span></a><a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">)</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">+</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">((</span></a><a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">s</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">≠</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">d</span></a><a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">)</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">&times;</span></a> <a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">E_diff</span></a><a class="idref" href="Graph.html#Build_Graph"><span class="id" type="constructor">))</span></a> |}.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="DiscreteGraph"><span class="id" type="definition">DiscreteGraph</span></a> := <a class="idref" href="Exercise_3_3_1_5.html#ConstantGraph"><span class="id" type="definition">ConstantGraph</span></a> <a class="idref" href="Notations.html#::'∅'"><span class="id" type="notation">&empty;</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="CompleteGraph"><span class="id" type="definition">CompleteGraph</span></a> := <a class="idref" href="Exercise_3_3_1_5.html#ExtendedConstantGraph"><span class="id" type="definition">ExtendedConstantGraph</span></a> <a class="idref" href="Notations.html#::'∅'"><span class="id" type="notation">&empty;</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#unit"><span class="id" type="inductive">unit</span></a>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_3_3_1_5.html#Exercise_3_3_1_5"><span class="id" type="section">Exercise_3_3_1_5</span></a>.<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

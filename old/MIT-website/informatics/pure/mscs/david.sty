@@ -1,0 +1,38 @@
+% This is david.sty
+% TeXSupport, dated 24/06/2017
+
+%\RequirePackage{array}
+
+\newcommand\Xhline[1]{\noalign{\ifnum0=`}\fi\arrayrulewidth#1%
+        \ifx\hline\LT@hline\let\@xhline\LT@@hline\fi
+        \hrule\@height\arrayrulewidth\futurelet\reserved@a\@xhline}
+\def\Xcline#1#2{\@Xcline#1;#2\@nil}
+\def\@Xcline#1-#2;#3\@nil{%
+  \omit
+  \@multicnt#1%
+  \advance\@multispan\m@ne
+  \ifnum\@multicnt=\@ne\@firstofone{&\omit}\fi
+  \@multicnt#2%
+  \advance\@multicnt-#1%
+  \advance\@multispan\@ne
+  \leaders\hrule\@height#3\hfill
+  \cr
+  \noalign{\vskip-#3}}
+
+\renewcommand\tabular{\let\@halignto\@empty % FROM LATEX.LTX
+  \let\hline\SFB@currenthline
+  \def\@xhline{%
+    \ifx\@tempa\hline
+      \vskip -6\p@
+      \vskip \doublerulesep
+    \fi
+    \ifnum0=`{\fi}%
+  }
+  \def\@arrayrule{\@addtopreamble{\hskip -.5\arrayrulewidth
+                 \vrule \@width \arrayrulewidth
+                  \hskip .5\arrayrulewidth}}%
+  \@tabular}
+
+\endinput
+
+

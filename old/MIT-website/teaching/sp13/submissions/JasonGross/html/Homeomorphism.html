@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Homeomorphism</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Homeomorphism</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Setoids.Setoid.html#"><span class="id" type="library">Setoid</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Topology.html#"><span class="id" type="library">Topology</span></a> <a class="idref" href="TopologicalContinuity.html#"><span class="id" type="library">TopologicalContinuity</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab179"></a><h2 class="section">Homeomorphisms</h2>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Open</span> <span class="id" type="keyword">Scope</span> <span class="id" type="var">topology_scope</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="homeomorphic"><span class="id" type="section">homeomorphic</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variables</span> <a name="homeomorphic.X"><span class="id" type="variable">X</span></a> <a name="homeomorphic.Y"><span class="id" type="variable">Y</span></a> : <span class="id" type="keyword">Type</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="homeomorphic.Tx"><span class="id" type="variable">Tx</span></a> : <a class="idref" href="Topology.html#Topology"><span class="id" type="class">Topology</span></a> <a class="idref" href="Homeomorphism.html#homeomorphic.X"><span class="id" type="variable">X</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="homeomorphic.Ty"><span class="id" type="variable">Ty</span></a> : <a class="idref" href="Topology.html#Topology"><span class="id" type="class">Topology</span></a> <a class="idref" href="Homeomorphism.html#homeomorphic.Y"><span class="id" type="variable">Y</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Record</span> <a name="Homeomorphism"><span class="id" type="record">Homeomorphism</span></a> (<span class="id" type="var">f</span> : <a class="idref" href="Homeomorphism.html#homeomorphic.X"><span class="id" type="variable">X</span></a> → <a class="idref" href="Homeomorphism.html#homeomorphic.Y"><span class="id" type="variable">Y</span></a>) :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">HomeomorphismMap</span> :> <span class="id" type="var">_</span> := <a class="idref" href="Homeomorphism.html#f"><span class="id" type="variable">f</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="HomeomophismInverse"><span class="id" type="projection">HomeomophismInverse</span></a> : <a class="idref" href="Homeomorphism.html#homeomorphic.Y"><span class="id" type="variable">Y</span></a> → <a class="idref" href="Homeomorphism.html#homeomorphic.X"><span class="id" type="variable">X</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="HomeomophismContinuous"><span class="id" type="projection">HomeomophismContinuous</span></a> : <a class="idref" href="TopologicalContinuity.html#continuous"><span class="id" type="definition">continuous</span></a> <a class="idref" href="Homeomorphism.html#homeomorphic.Tx"><span class="id" type="variable">Tx</span></a> <a class="idref" href="Homeomorphism.html#homeomorphic.Ty"><span class="id" type="variable">Ty</span></a> <a class="idref" href="Homeomorphism.html#f"><span class="id" type="variable">f</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="HomeomophismInverseContinuous"><span class="id" type="projection">HomeomophismInverseContinuous</span></a> : <a class="idref" href="TopologicalContinuity.html#continuous"><span class="id" type="definition">continuous</span></a> <a class="idref" href="Homeomorphism.html#homeomorphic.Ty"><span class="id" type="variable">Ty</span></a> <a class="idref" href="Homeomorphism.html#homeomorphic.Tx"><span class="id" type="variable">Tx</span></a> <a class="idref" href="Homeomorphism.html#HomeomophismInverse"><span class="id" type="method">HomeomophismInverse</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="HomeomorphismInverse1"><span class="id" type="projection">HomeomorphismInverse1</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">(</span></a><span class="id" type="keyword">fun</span> <span class="id" type="var">x</span> ⇒ <a class="idref" href="Homeomorphism.html#HomeomophismInverse"><span class="id" type="method">HomeomophismInverse</span></a> (<a class="idref" href="Homeomorphism.html#HomeomorphismMap"><span class="id" type="method">HomeomorphismMap</span></a> <a class="idref" href="Homeomorphism.html#x"><span class="id" type="variable">x</span></a>)<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">)</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> @<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#id"><span class="id" type="definition">id</span></a> <span class="id" type="var">_</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="HomeomorphismInverse2"><span class="id" type="projection">HomeomorphismInverse2</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">(</span></a><span class="id" type="keyword">fun</span> <span class="id" type="var">y</span> ⇒ <a class="idref" href="Homeomorphism.html#HomeomorphismMap"><span class="id" type="method">HomeomorphismMap</span></a> (<a class="idref" href="Homeomorphism.html#HomeomophismInverse"><span class="id" type="method">HomeomophismInverse</span></a> <a class="idref" href="Homeomorphism.html#y"><span class="id" type="variable">y</span></a>)<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">)</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> @<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#id"><span class="id" type="definition">id</span></a> <span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Record</span> <a name="Homeomophic"><span class="id" type="record">Homeomophic</span></a> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="Homeomophism1"><span class="id" type="projection">Homeomophism1</span></a> : <a class="idref" href="Homeomorphism.html#homeomorphic.X"><span class="id" type="variable">X</span></a> → <a class="idref" href="Homeomorphism.html#homeomorphic.Y"><span class="id" type="variable">Y</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="Homeomophic_Homeomorphism"><span class="id" type="projection">Homeomophic_Homeomorphism</span></a> :> <a class="idref" href="Homeomorphism.html#Homeomorphism"><span class="id" type="record">Homeomorphism</span></a> <a class="idref" href="Homeomorphism.html#Homeomophism1"><span class="id" type="method">Homeomophism1</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="homemorphism_open_to_open"><span class="id" type="lemma">homemorphism_open_to_open</span></a> <span class="id" type="var">f</span> (<span class="id" type="var">H</span> : <a class="idref" href="Homeomorphism.html#Homeomorphism"><span class="id" type="record">Homeomorphism</span></a> <a class="idref" href="Homeomorphism.html#f"><span class="id" type="variable">f</span></a>) <span class="id" type="var">U</span> : <span class="id" type="keyword">Open</span> <a class="idref" href="Homeomorphism.html#U"><span class="id" type="variable">U</span></a> → <span class="id" type="keyword">Open</span> (<a class="idref" href="Morphism.html#image"><span class="id" type="definition">image</span></a> <a class="idref" href="Homeomorphism.html#f"><span class="id" type="variable">f</span></a> <a class="idref" href="Homeomorphism.html#U"><span class="id" type="variable">U</span></a>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intro</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">H</span>; <span class="id" type="var">subst_body</span>; <span class="id" type="tactic">unfold</span> <a class="idref" href="TopologicalContinuity.html#continuous"><span class="id" type="definition">continuous</span></a> <span class="id" type="keyword">in</span> *; <span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> ×.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">specialize_all_ways</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">unfold</span> <a class="idref" href="Morphism.html#inverse_image"><span class="id" type="definition">inverse_image</span></a> <span class="id" type="keyword">in</span> ×.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : <span class="id" type="keyword">Open</span> ?<span class="id" type="var">A</span> |- <span class="id" type="keyword">Open</span> ?<span class="id" type="var">B</span> ] ⇒ <span class="id" type="tactic">cut</span> (<span class="id" type="var">A</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <span class="id" type="var">B</span>); [ <span class="id" type="keyword">let</span> <span class="id" type="var">H</span> := <span class="id" type="tactic">fresh</span> <span class="id" type="keyword">in</span> <span class="id" type="tactic">intro</span> <span class="id" type="var">H</span>; <span class="id" type="tactic">rewrite</span> &lt;- <span class="id" type="var">H</span>; <span class="id" type="tactic">assumption</span> | ]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Extensionality_Ensembles"><span class="id" type="axiom">Extensionality_Ensembles</span></a>; <span class="id" type="tactic">split</span>; <span class="id" type="tactic">intro</span> <span class="id" type="var">x</span>; <span class="id" type="tactic">intro</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">unfold</span> <a class="idref" href="Morphism.html#image"><span class="id" type="definition">image</span></a>, <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#In"><span class="id" type="definition">In</span></a> <span class="id" type="keyword">in</span> *; <span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> *;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">try</span> <span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : ?<span class="id" type="var">U</span> ?<span class="id" type="var">x</span> |- <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:'exists'_x_'..'_x_','_x"><span class="id" type="notation">∃</span></a> <span class="id" type="var">x0</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:'exists'_x_'..'_x_','_x"><span class="id" type="notation">,</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:'exists'_x_'..'_x_','_x"><span class="id" type="notation">?</span></a><span class="id" type="var">U</span> <a class="idref" href="Homeomorphism.html#x0"><span class="id" type="variable">x0</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'/\'_x"><span class="id" type="notation">∧</span></a> <span class="id" type="var">_</span> ] ⇒ (<span class="id" type="tactic">∃</span> <span class="id" type="var">x</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intuition</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">fg_equal</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">destruct_hypotheses</span>; <span class="id" type="tactic">subst</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">try</span> <span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : <span class="id" type="var">_</span> |- <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">rewrite</span> <span class="id" type="var">H</span>; <span class="id" type="tactic">compute</span>; <span class="id" type="tactic">trivial</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Homeomorphism.html#homeomorphic"><span class="id" type="section">homeomorphic</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

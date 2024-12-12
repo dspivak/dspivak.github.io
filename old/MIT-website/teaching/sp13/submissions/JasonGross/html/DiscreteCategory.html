@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>DiscreteCategory</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library DiscreteCategory</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Category.html#"><span class="id" type="library">Category</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab16"></a><h1 class="section">Discrete Category</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="DiscreteCategory"><span class="id" type="section">DiscreteCategory</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="DiscreteCategory.O"><span class="id" type="variable">O</span></a> : <span class="id" type="keyword">Type</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Ltac</span> <span class="id" type="var">simpl_eq</span> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">subst_body</span>; <span class="id" type="tactic">hnf</span> <span class="id" type="keyword">in</span> *; <span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> *; <span class="id" type="tactic">intros</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">destruct_type</span> @<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#inhabited"><span class="id" type="inductive">inhabited</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> *;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">constructor</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">subst</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">auto</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">simpl_transitivity</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="DiscreteCategory.DiscreteCategory_Morphism"><span class="id" type="variable">DiscreteCategory_Morphism</span></a> (<span class="id" type="var">s</span> <span class="id" type="var">d</span> : <a class="idref" href="DiscreteCategory.html#DiscreteCategory.O"><span class="id" type="variable">O</span></a>) := <a class="idref" href="DiscreteCategory.html#s"><span class="id" type="variable">s</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="DiscreteCategory.html#d"><span class="id" type="variable">d</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="DiscreteCategory_Compose"><span class="id" type="definition">DiscreteCategory_Compose</span></a> (<span class="id" type="var">s</span> <span class="id" type="var">d</span> <span class="id" type="var">d'</span> : <a class="idref" href="DiscreteCategory.html#DiscreteCategory.O"><span class="id" type="variable">O</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">m</span> : <a class="idref" href="DiscreteCategory.html#DiscreteCategory.DiscreteCategory_Morphism"><span class="id" type="variable">DiscreteCategory_Morphism</span></a> <a class="idref" href="DiscreteCategory.html#d"><span class="id" type="variable">d</span></a> <a class="idref" href="DiscreteCategory.html#d'"><span class="id" type="variable">d'</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">m'</span> : <a class="idref" href="DiscreteCategory.html#DiscreteCategory.DiscreteCategory_Morphism"><span class="id" type="variable">DiscreteCategory_Morphism</span></a> <a class="idref" href="DiscreteCategory.html#s"><span class="id" type="variable">s</span></a> <a class="idref" href="DiscreteCategory.html#d"><span class="id" type="variable">d</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="DiscreteCategory.html#DiscreteCategory.DiscreteCategory_Morphism"><span class="id" type="variable">DiscreteCategory_Morphism</span></a> <a class="idref" href="DiscreteCategory.html#s"><span class="id" type="variable">s</span></a> <a class="idref" href="DiscreteCategory.html#d'"><span class="id" type="variable">d'</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">simpl_eq</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="DiscreteCategory_Identity"><span class="id" type="definition">DiscreteCategory_Identity</span></a> <span class="id" type="var">x</span> : <a class="idref" href="DiscreteCategory.html#DiscreteCategory.DiscreteCategory_Morphism"><span class="id" type="variable">DiscreteCategory_Morphism</span></a> <a class="idref" href="DiscreteCategory.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="DiscreteCategory.html#x"><span class="id" type="variable">x</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">simpl_eq</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Global</span>&nbsp;<span class="id" type="var">Arguments</span> <a class="idref" href="DiscreteCategory.html#DiscreteCategory_Compose"><span class="id" type="definition">DiscreteCategory_Compose</span></a> [<span class="id" type="var">s</span> <span class="id" type="var">d</span> <span class="id" type="var">d'</span>] <span class="id" type="var">m</span> <span class="id" type="var">m'</span> /.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Global</span>&nbsp;<span class="id" type="var">Arguments</span> <a class="idref" href="DiscreteCategory.html#DiscreteCategory_Identity"><span class="id" type="definition">DiscreteCategory_Identity</span></a> <span class="id" type="var">x</span> /.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="DiscreteCategory"><span class="id" type="definition">DiscreteCategory</span></a> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <a class="idref" href="DiscreteCategory.html#DiscreteCategory.O"><span class="id" type="variable">O</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (@<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Build_Category</span></a> <span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="DiscreteCategory.html#DiscreteCategory.DiscreteCategory_Morphism"><span class="id" type="variable">DiscreteCategory_Morphism</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="DiscreteCategory.html#DiscreteCategory_Identity"><span class="id" type="definition">DiscreteCategory_Identity</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="DiscreteCategory.html#DiscreteCategory_Compose"><span class="id" type="definition">DiscreteCategory_Compose</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">unfold</span> <a class="idref" href="DiscreteCategory.html#DiscreteCategory_Compose"><span class="id" type="definition">DiscreteCategory_Compose</span></a>, <a class="idref" href="DiscreteCategory.html#DiscreteCategory_Identity"><span class="id" type="definition">DiscreteCategory_Identity</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">simpl_eq</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="DiscreteCategory.html#DiscreteCategory"><span class="id" type="section">DiscreteCategory</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_4_1_1_14</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_4_1_1_14</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Graph.html#"><span class="id" type="library">Graph</span></a> <a class="idref" href="GraphCategory.html#"><span class="id" type="library">GraphCategory</span></a> <a class="idref" href="Category.html#"><span class="id" type="library">Category</span></a> <a class="idref" href="CategoryIsomorphisms.html#"><span class="id" type="library">CategoryIsomorphisms</span></a> <a class="idref" href="SetCategory.html#"><span class="id" type="library">SetCategory</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab60"></a><h1 class="section">Exercise 4.1.1.14</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Exercise_4_1_1_14"><span class="id" type="section">Exercise_4_1_1_14</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab61"></a><h2 class="section">Problem</h2>
+ Suppose that <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent.G"><span class="id" type="variable">G</span></a></span> <span class="inlinecode">=</span> <span class="inlinecode">(<a class="idref" href="PathsCategory.html#PathsCategory.V"><span class="id" type="variable">V</span></a>,</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.A"><span class="id" type="variable">A</span></a>,</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.src"><span class="id" type="variable">src</span></a>,</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.tgt"><span class="id" type="variable">tgt</span></a>)</span> and <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.G'"><span class="id" type="variable">G'</span></a></span> <span class="inlinecode">=</span> <span class="inlinecode">(<span class="id" type="var">V'</span>,</span> <span class="inlinecode"><a class="idref" href="AdjointComposition.html#compose.A'"><span class="id" type="variable">A'</span></a>,</span> <span class="inlinecode"><span class="id" type="var">src'</span>,</span>
+      <span class="inlinecode"><span class="id" type="var">tgt'</span>)</span> are graphs and that <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode">(<span class="id" type="var">f<sub>0</sub></span>,</span> <span class="inlinecode">f<sub>1</sub>)</span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent.G"><span class="id" type="variable">G</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.G'"><span class="id" type="variable">G'</span></a></span> is a graph
+      homomorphism (as in Definition 3.3.3.1).  If <span class="inlinecode"><span class="id" type="var">f<sub>0</sub></span></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="PathsCategory.html#PathsCategory.V"><span class="id" type="variable">V</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" type="var">V'</span></span> and
+      <span class="inlinecode"><span class="id" type="var">f<sub>1</sub></span></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.A"><span class="id" type="variable">A</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="AdjointComposition.html#compose.A'"><span class="id" type="variable">A'</span></a></span> are isomorphisms in <span class="inlinecode"><span class="id" type="keyword">Set</span></span>, does this imply that
+      <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a></span> is an isomorphism in <span class="inlinecode"><a class="idref" href="Exercise_4_1_1_14.html#Exercise_4_1_1_14.Grph"><span class="id" type="variable">Grph</span></a></span>? If so, why; and if not, show a
+      counterexample (where <span class="inlinecode"><span class="id" type="var">f<sub>0</sub></span></span> and <span class="inlinecode"><span class="id" type="var">f<sub>1</sub></span></span> are isomorphisms but <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a></span> is
+      not). 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_4_1_1_14.Grph"><span class="id" type="variable">Grph</span></a> := <a class="idref" href="GraphCategory.html#CategoryOfGraph's"><span class="id" type="definition">CategoryOfGraph's</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Ltac</span> <span class="id" type="var">t</span> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">reflexivity</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">intro</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> := <span class="id" type="var">_</span> |- <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">subst</span> <span class="id" type="var">H</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : <a class="idref" href="CategoryIsomorphisms.html#IsomorphismOf"><span class="id" type="class">IsomorphismOf</span></a> <span class="id" type="var">_</span> |- <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">destruct</span> <span class="id" type="var">H</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="var">_</span> ⇒ <span class="id" type="tactic">progress</span> (<span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> *; <span class="id" type="var">fg_equal</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : <span class="id" type="var">_</span> |- <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">rewrite</span> <span class="id" type="var">H</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H0</span> : <span class="id" type="keyword">∀</span> <span class="id" type="var">x</span>, ?<span class="id" type="var">f</span> (?<span class="id" type="var">g</span> <a class="idref" href="Exercise_4_1_1_14.html#x"><span class="id" type="variable">x</span></a>) <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Exercise_4_1_1_14.html#x"><span class="id" type="variable">x</span></a>,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">H1</span> : <span class="id" type="keyword">∀</span> <span class="id" type="var">x</span>, ?<span class="id" type="var">g</span> (?<span class="id" type="var">f</span> <a class="idref" href="Exercise_4_1_1_14.html#x"><span class="id" type="variable">x</span></a>) <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Exercise_4_1_1_14.html#x"><span class="id" type="variable">x</span></a> |- ?<span class="id" type="var">g</span> ?<span class="id" type="var">y</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">?</span></a><span class="id" type="var">z</span> ] ⇒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">cut</span> (<span class="id" type="var">g</span> (<span class="id" type="var">f</span> (<span class="id" type="var">g</span> <span class="id" type="var">y</span>)) <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <span class="id" type="var">g</span> (<span class="id" type="var">f</span> <span class="id" type="var">z</span>));<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ <span class="id" type="keyword">let</span> <span class="id" type="var">H</span> := <span class="id" type="tactic">fresh</span> <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intro</span> <span class="id" type="var">H</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">rewrite</span> <span class="id" type="var">H1</span> <span class="id" type="keyword">in</span> <span class="id" type="var">H</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">exact</span> <span class="id" type="var">H</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="tactic">rewrite</span> <span class="id" type="var">H0</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#f_equal"><span class="id" type="lemma">f_equal</span></a> ]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="Exercise_4_1_1_14"><span class="id" type="lemma">Exercise_4_1_1_14</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">G</span> <span class="id" type="var">G'</span> : <a class="idref" href="Exercise_4_1_1_14.html#Exercise_4_1_1_14.Grph"><span class="id" type="variable">Grph</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">f</span> : <a class="idref" href="Category.html#Morphism"><span class="id" type="projection">Morphism</span></a> <a class="idref" href="Exercise_4_1_1_14.html#Exercise_4_1_1_14.Grph"><span class="id" type="variable">Grph</span></a> <a class="idref" href="Exercise_4_1_1_14.html#G"><span class="id" type="variable">G</span></a> <a class="idref" href="Exercise_4_1_1_14.html#G'"><span class="id" type="variable">G'</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">f0</span> := <a class="idref" href="Graph.html#OnVertices'"><span class="id" type="projection">OnVertices'</span></a> <a class="idref" href="Exercise_4_1_1_14.html#f"><span class="id" type="variable">f</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">f1</span> := <a class="idref" href="Graph.html#OnArrows'"><span class="id" type="projection">OnArrows'</span></a> <a class="idref" href="Exercise_4_1_1_14.html#f"><span class="id" type="variable">f</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="CategoryIsomorphisms.html#IsomorphismOf"><span class="id" type="class">IsomorphismOf</span></a> (<span class="id" type="var">C</span> := <a class="idref" href="SetCategory.html#CategoryOfTypes"><span class="id" type="definition">CategoryOfTypes</span></a>) <a class="idref" href="Exercise_4_1_1_14.html#f0"><span class="id" type="variable">f0</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;→ <a class="idref" href="CategoryIsomorphisms.html#IsomorphismOf"><span class="id" type="class">IsomorphismOf</span></a> (<span class="id" type="var">C</span> := <a class="idref" href="SetCategory.html#CategoryOfTypes"><span class="id" type="definition">CategoryOfTypes</span></a>) <a class="idref" href="Exercise_4_1_1_14.html#f1"><span class="id" type="variable">f1</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;→ <a class="idref" href="CategoryIsomorphisms.html#IsomorphismOf"><span class="id" type="class">IsomorphismOf</span></a> (<span class="id" type="var">C</span> := <a class="idref" href="Exercise_4_1_1_14.html#Exercise_4_1_1_14.Grph"><span class="id" type="variable">Grph</span></a>) <a class="idref" href="Exercise_4_1_1_14.html#f"><span class="id" type="variable">f</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span> <span class="id" type="var">i0</span> <span class="id" type="var">i1</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">eexists</span> {| <a class="idref" href="Graph.html#Build_Graph'Homomorphism"><span class="id" type="constructor">OnVertices'</span></a> <a class="idref" href="Graph.html#Build_Graph'Homomorphism"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Graph.html#Build_Graph'Homomorphism"><span class="id" type="constructor">(</span></a><a class="idref" href="Graph.html#Build_Graph'Homomorphism"><span class="id" type="constructor">Inverse</span></a> <a class="idref" href="Graph.html#Build_Graph'Homomorphism"><span class="id" type="constructor">i0</span></a><a class="idref" href="Graph.html#Build_Graph'Homomorphism"><span class="id" type="constructor">);</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Graph.html#Build_Graph'Homomorphism"><span class="id" type="constructor">OnArrows'</span></a> <a class="idref" href="Graph.html#Build_Graph'Homomorphism"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Graph.html#Build_Graph'Homomorphism"><span class="id" type="constructor">(</span></a><a class="idref" href="Graph.html#Build_Graph'Homomorphism"><span class="id" type="constructor">Inverse</span></a> <a class="idref" href="Graph.html#Build_Graph'Homomorphism"><span class="id" type="constructor">i1</span></a><a class="idref" href="Graph.html#Build_Graph'Homomorphism"><span class="id" type="constructor">)</span></a> |};<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="Graph.html#Graph'Homomorphism_Eq"><span class="id" type="lemma">Graph'Homomorphism_Eq</span></a>; <span class="id" type="tactic">simpl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">subst</span> <span class="id" type="var">f0</span> <span class="id" type="var">f1</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">i0</span>, <span class="id" type="var">i1</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> *;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">fg_equal</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intuition</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">Grab</span> <span class="id" type="var">Existential</span> <span class="id" type="keyword">Variables</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<span class="id" type="tactic">pose</span> <span class="id" type="var">proof</span> (<a class="idref" href="Graph.html#TargetCommutes'"><span class="id" type="projection">TargetCommutes'</span></a> <span class="id" type="var">f</span>); <span class="id" type="tactic">pose</span> <span class="id" type="var">proof</span> (<a class="idref" href="Graph.html#SourceCommutes'"><span class="id" type="projection">SourceCommutes'</span></a> <span class="id" type="var">f</span>); <span class="id" type="var">t</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<span class="id" type="tactic">pose</span> <span class="id" type="var">proof</span> (<a class="idref" href="Graph.html#TargetCommutes'"><span class="id" type="projection">TargetCommutes'</span></a> <span class="id" type="var">f</span>); <span class="id" type="tactic">pose</span> <span class="id" type="var">proof</span> (<a class="idref" href="Graph.html#SourceCommutes'"><span class="id" type="projection">SourceCommutes'</span></a> <span class="id" type="var">f</span>); <span class="id" type="var">t</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_4_1_1_14.html#Exercise_4_1_1_14"><span class="id" type="section">Exercise_4_1_1_14</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_3_3_2_4</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_3_3_2_4</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#"><span class="id" type="library">ProofIrrelevance</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Monoid.html#"><span class="id" type="library">Monoid</span></a> <a class="idref" href="Graph.html#"><span class="id" type="library">Graph</span></a> <a class="idref" href="Path.html#"><span class="id" type="library">Path</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Ltac</span> <span class="id" type="var">destruct_eqs</span> :=<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> (<span class="id" type="tactic">unfold</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_sym"><span class="id" type="lemma">eq_sym</span></a>, <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_rect_r"><span class="id" type="definition">eq_rect_r</span></a>, <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_rect"><span class="id" type="definition">eq_rect</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ |- <span class="id" type="keyword">context</span>[<span class="id" type="keyword">match</span> ?<span class="id" type="var">E</span> <span class="id" type="keyword">with</span> <span class="id" type="var">_</span> ⇒ <span class="id" type="var">_</span> <span class="id" type="keyword">end</span>] ] ⇒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">let</span> <span class="id" type="var">H</span> := <span class="id" type="tactic">fresh</span> <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">set</span> (<span class="id" type="var">H</span> := <span class="id" type="var">E</span>) <span class="id" type="keyword">in</span> *;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">clearbody</span> <span class="id" type="var">H</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((<span class="id" type="tactic">destruct</span> <span class="id" type="var">H</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| (<span class="id" type="tactic">assert</span> (<span class="id" type="var">H</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a>) <span class="id" type="tactic">by</span> (<span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#proof_irrelevance"><span class="id" type="axiom">proof_irrelevance</span></a>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">subst</span> <span class="id" type="var">H</span>)))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>).<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ <a name="lab40"></a><h1 class="section">Exercise 3.3.2.4</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Exercise_3_3_2_4"><span class="id" type="section">Exercise_3_3_2_4</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab41"></a><h2 class="section">Problem</h2>
+ Let <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent.G"><span class="id" type="variable">G</span></a></span> be a graph and consider the set <span class="inlinecode"><a class="idref" href="Path.html#"><span class="id" type="library">Path</span></a></span> <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent.G"><span class="id" type="variable">G</span></a></span> of paths in
+      <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent.G"><span class="id" type="variable">G</span></a></span>. Is there an identity element and a multiplication formula
+      for which <span class="inlinecode"><a class="idref" href="Path.html#"><span class="id" type="library">Path</span></a></span> <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent.G"><span class="id" type="variable">G</span></a></span> can naturally be given the structure of a
+      monoid?  Why or why not? 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="Exercise_3_3_2_4_SingletonGraphCMonoid"><span class="id" type="definition">Exercise_3_3_2_4_SingletonGraphCMonoid</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">G</span> : <a class="idref" href="Graph.html#Graph"><span class="id" type="record">Graph</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">v</span> : <a class="idref" href="Exercise_3_3_2_4.html#G"><span class="id" type="variable">G</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">H</span> : <span class="id" type="keyword">∀</span> <span class="id" type="var">x</span> : <a class="idref" href="Exercise_3_3_2_4.html#G"><span class="id" type="variable">G</span></a>, <a class="idref" href="Exercise_3_3_2_4.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Exercise_3_3_2_4.html#v"><span class="id" type="variable">v</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="Monoid.html#ComputationalMonoid"><span class="id" type="record">ComputationalMonoid</span></a> (<a class="idref" href="Path.html#PathsOf"><span class="id" type="definition">PathsOf</span></a> <a class="idref" href="Exercise_3_3_2_4.html#G"><span class="id" type="variable">G</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> {| <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">id</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">(</span></a><a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">existT</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">_</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">(</span></a><a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">v</span></a><a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">,</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">v</span></a><a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">)</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">NoEdges</span></a><a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">);</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">comp</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">_</span></a> |}.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span> [[<span class="id" type="var">s1</span> <span class="id" type="var">s2</span>] <span class="id" type="var">sp</span>] [[<span class="id" type="var">d1</span> <span class="id" type="var">d2</span>] <span class="id" type="var">dp</span>];<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">(</span></a><span class="id" type="var">v</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">,</span></a> <span class="id" type="var">v</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">)</span></a>; <span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> ×.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">pose</span> <span class="id" type="var">proof</span> (<span class="id" type="var">H</span> <span class="id" type="var">s1</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">pose</span> <span class="id" type="var">proof</span> (<span class="id" type="var">H</span> <span class="id" type="var">s2</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">pose</span> <span class="id" type="var">proof</span> (<span class="id" type="var">H</span> <span class="id" type="var">d1</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">pose</span> <span class="id" type="var">proof</span> (<span class="id" type="var">H</span> <span class="id" type="var">d2</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">subst</span>; <span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> ×.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">exact</span> (<a class="idref" href="Path.html#concatenate"><span class="id" type="definition">concatenate</span></a> <span class="id" type="var">sp</span> <span class="id" type="var">dp</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Instance</span> <a name="Exercise_3_3_2_4_SingletonGraphIsMonoid"><span class="id" type="instance">Exercise_3_3_2_4_SingletonGraphIsMonoid</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">G</span> : <a class="idref" href="Graph.html#Graph"><span class="id" type="record">Graph</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">v</span> : <a class="idref" href="Exercise_3_3_2_4.html#G"><span class="id" type="variable">G</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">H</span> : <span class="id" type="keyword">∀</span> <span class="id" type="var">x</span> : <a class="idref" href="Exercise_3_3_2_4.html#G"><span class="id" type="variable">G</span></a>, <a class="idref" href="Exercise_3_3_2_4.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Exercise_3_3_2_4.html#v"><span class="id" type="variable">v</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="Monoid.html#IsMonoid"><span class="id" type="class">IsMonoid</span></a> (@<a class="idref" href="Exercise_3_3_2_4.html#Exercise_3_3_2_4_SingletonGraphCMonoid"><span class="id" type="definition">Exercise_3_3_2_4_SingletonGraphCMonoid</span></a> <a class="idref" href="Exercise_3_3_2_4.html#G"><span class="id" type="variable">G</span></a> <a class="idref" href="Exercise_3_3_2_4.html#v"><span class="id" type="variable">v</span></a> <a class="idref" href="Exercise_3_3_2_4.html#H"><span class="id" type="variable">H</span></a>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">split</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">let</span> <span class="id" type="var">s</span> := <span class="id" type="tactic">fresh</span> <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">let</span> <span class="id" type="var">d</span> := <span class="id" type="tactic">fresh</span> <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span> [[<span class="id" type="var">s</span> <span class="id" type="var">d</span>] ?];<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">pose</span> <span class="id" type="var">proof</span> (<span class="id" type="var">H</span> <span class="id" type="var">s</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">pose</span> <span class="id" type="var">proof</span> (<span class="id" type="var">H</span> <span class="id" type="var">d</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">subst</span> <span class="id" type="var">s</span> <span class="id" type="var">d</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> ×<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">try</span> (<span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#f_equal"><span class="id" type="lemma">f_equal</span></a> || <span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#f_equal2"><span class="id" type="lemma">f_equal2</span></a>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="var">destruct_eqs</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">auto</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">try</span> <span class="id" type="tactic">rewrite</span> <a class="idref" href="Path.html#concatenate_associative"><span class="id" type="lemma">concatenate_associative</span></a>; <span class="id" type="tactic">reflexivity</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_3_3_2_4.html#Exercise_3_3_2_4"><span class="id" type="section">Exercise_3_3_2_4</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+\documentclass{amsart}
+
+\input{decl-db}
+
+\def\TT{\mathbb T}
+\def\Set{{\bf Set}}
+\def\AD{{\bf AD}}
+\def\SD{{\bf SD}}
+\def\Pre{{\bf Pre}}
+\def\Fin{{\bf Fin}}
+\def\ND{{\bf ND}}
+
+\begin{document}
+
+\title{Algebraic databases}
+
+\author{David I. Spivak}
+
+\maketitle
+
+
+Let $\TT$ denote a multi-sorted algebraic theory.  The objects of $\TT$ are called {\em types}.  For a type $t\in\TT$, let $\Delta^t\taking\TT\to\Set$ denote the functor $\Hom_{\TT}(t,-)$; we call it {the $t$-simplex}.  A morphism of simplices $\delta\taking \Delta^t\to \Delta^u$ is called a {\em face inclusion} if the corresponding map $\delta^\vee\taking u\to t$ in $\TT$ is a projection.  
+
+\begin{definition}
+
+The category $\Set^\TT$ is called the category of {\em $\TT$-schema}.  
+
+A morphism $g\taking A\to B$ of $\TT$-schema is called {\em obedient} if  for every diagram of the first kind (left) there exists a diagram of the second kind (right) $$\xymatrix{\Delta^t\ar[r]\ar[d]_f&A\ar[d]^g&&\Delta^t\ar[r]\ar@/_1.5pc/[dd]_f\ar[d]&A\ar[dd]^g\\\Delta^u\ar[r]&B&\Rightarrow&\Delta^{u'}\ar[d]^\delta\ar[ur]\\&&&\Delta^u\ar[r]&B}$$ where $\delta\taking\Delta^{y'}\to\Delta^y$ is a face inclusion.  
+
+Let $\Omega_X\ss\Set^\TT_{/X}$ denote the full subcategory of $\TT$-schema over $X$ spanned by the obedient morphisms.
+
+\end{definition}
+
+\begin{example}
+
+Let $P$ be the pushout in the diagram $$\xymatrix{\Delta^{\QQ}\ar[r]^{pr}\ar[d]_\div&\Delta^{\QQ,\ZZ}\ar[d]^g\\\Delta^{\ZZ,\ZZ}\ar[r]&P.}$$  Then the structure map $g\taking\Delta^{\QQ,\ZZ}\to P$ is not obedient (in fact the pushout square itself is the counter-example).  
+
+The idea is that if the schema includes some variable $x$ to be ``computed," then that computation must be a part of any data concerning $x$.  In this case the computation is $\div$; since the implicated $\QQ$ variable is part of the map $g$, this map is not obedient.
+
+\end{example}
+
+\begin{example}
+
+More importantly, the obedience concept precludes degeneracies.  If $\Delta^u\To{g}\Delta^t$ is a degeneracy (i.e. is dual to a diagonal map $t\to u$) then $g$ is not obedient.  The idea is that if $B$ is asking for say two integers, then we cannot allow ourselves to provide as data more than two integers and pretend that we are being obedient to $B$.
+
+\end{example}
+
+Let $p\taking\TT\to\Set$ denote a $\TT$-algebra, i.e. a product-preserving functor.  
+
+\begin{definition}
+
+An  {\em algebraic database on $p$} is a sequence $(X,K,\tau)$ where $X$ and $K$ are  $\TT$-schema, and $\tau\taking K\to X\cross p$ is a natural transformation such that the induced map $K\to X$ is obedient.
+
+A morphism of algebraic databases on $p$, written $(X,K_X,\tau_X)\to(Y,K_Y,\tau_Y)$, consists of a map $f\taking Y\to X$ and a map $f^\sharp\taking K_X\cross_XY\to K_Y$ over $Y\cross p$.
+
+The category of algebraic databases on $p$ will be denoted $\AD^p$.
+
+\end{definition}
+
+Note that for any $f\taking X\to Y$, the map $K_X\cross_XY\to Y$ is obedient.
+
+Let $\TT_1\ss\TT$ denote the full subcategory spanned by the generators (atomic types) of the theory.
+
+\begin{proposition}
+
+Suppose $\TT$ is a discrete multi-sorted algebraic theory, let $p$ be a $\TT$-algebra and $p_1\taking\TT_1\to\Set$ its restriction to $\TT_1$.  Define $\pi\taking Gr(p_1)\to\TT_1$ to be the Grothendieck construction of $p_1$.  Then the category $\SD^\pi$ of simplicial databases on $\pi$ (in the sense of \cite{SD}) is equivalent to the category $\AD^p$ of algebraic databases on $p$.
+
+\end{proposition}
+
+\begin{proof}
+
+If $X\in\Pre(\Fin\down\TT_1)$ is a schema in the sense of \cite{SD}, then the Grothendieck construction induces an equivalence between the category $\Pre(\ND(X))$ and the category of obedient $\TT$-schema over $X$.
+
+***
+
+\end{proof}
+
+Given a database $(X,K,\tau\taking K\to X\cross p)$ on $p$, we can consider $pr_2\circ\tau\taking K\to p$ to be data, and $pr_1\circ\tau\taking K\to X$ to be hidden knowledge.  Finally, we can consider $\tau$ to be information.  It's shaped data.  
+
+We can consider $p$ to be a culture.  Our next step should be to allow a change of culture.  In other words, a change of theory.
+
+\bibliographystyle{amsalpha}
+\begin{thebibliography}{JTT}
+
+\bibitem{SD}[SD] D.I. Spivak ``Simplicial databases."
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,261 @@
+\documentclass{amsart}
+
+\usepackage{amssymb, amscd,stmaryrd,setspace,hyperref,color}
+
+\input xy
+\xyoption{all} \xyoption{poly} \xyoption{knot}\xyoption{curve}
+
+\newcommand{\comment}[1]{}
+
+\newcommand{\longnote}[2][4.9in]{\fcolorbox{black}{yellow}{\parbox{#1}{\color{black} #2}}}
+\newcommand{\note}[1]{\fcolorbox{black}{yellow}{\color{black} #1}}
+\newcommand{\q}[1]{\begin{question}#1\end{question}}
+\newcommand{\g}[1]{\begin{guess}#1\end{guess}}
+
+\def\tn{\textnormal}
+\def\mf{\mathfrak}
+\def\mc{\mathcal}
+
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\CC{{\mathbb C}}
+\def\AA{{\mathbb A}}
+\def\PP{{\mathbb P}}
+\def\NN{{\mathbb N}}
+
+\def\bD{{\bf \Delta}}
+\def\Str{{\bf Str}}
+
+\def\Hom{\tn{Hom}}
+\def\Fun{\tn{Fun}}
+\def\Nat{\tn{Nat}}
+\def\Ob{\tn{Ob}}
+\def\Op{\tn{Op}}
+
+\def\to{\rightarrow}
+\def\from{\leftarrow}
+\def\cross{\times}
+\def\taking{\colon}
+\def\inj{\hookrightarrow}
+\def\surj{\twoheadrightarrow}
+\def\too{\longrightarrow}
+\def\fromm{\longleftarrow}
+\def\down{\downarrow}
+\def\Down{\Downarrow}
+\def\Up{\Uparrow}
+\def\tooo{\longlongrightarrow}
+\def\tto{\rightrightarrows}
+\def\ttto{\equiv\!\!>}
+\def\ss{\subset}
+\def\superset{\supset}
+\def\iso{\cong}
+\def\|{{\;|\;}}
+\def\m1{{-1}}
+\def\op{^\tn{op}}
+\def\loc{\tn{loc}}
+\def\la{\langle}
+\def\ra{\rangle}
+\def\wt{\widetilde}
+\def\wh{\widehat}
+\def\we{\simeq}
+\def\ol{\overline}
+\def\ul{\underline}
+\def\qeq{\mathop{=}^?}
+\def\setto{\colon\hspace{-.25cm}=}
+
+\def\ullimit{\ar@{}[rd]|(.3)*+{\lrcorner}}
+\def\urlimit{\ar@{}[ld]|(.3)*+{\llcorner}}
+\def\lllimit{\ar@{}[ru]|(.3)*+{\urcorner}}
+\def\lrlimit{\ar@{}[lu]|(.3)*+{\ulcorner}}
+\def\ulhlimit{\ar@{}[rd]|(.3)*+{\diamond}}
+\def\urhlimit{\ar@{}[ld]|(.3)*+{\diamond}}
+\def\llhlimit{\ar@{}[ru]|(.3)*+{\diamond}}
+\def\lrhlimit{\ar@{}[lu]|(.3)*+{\diamond}}
+\newcommand{\clabel}[1]{\ar@{}[rd]|(.5)*+{#1}}
+
+\newcommand{\arr}[1]{\ar@<.5ex>[#1]\ar@<-.5ex>[#1]}
+\newcommand{\arrr}[1]{\ar@<.7ex>[#1]\ar@<0ex>[#1]\ar@<-.7ex>[#1]}
+\newcommand{\arrrr}[1]{\ar@<.9ex>[#1]\ar@<.3ex>[#1]\ar@<-.3ex>[#1]\ar@<-.9ex>[#1]}
+\newcommand{\arrrrr}[1]{\ar@<1ex>[#1]\ar@<.5ex>[#1]\ar[#1]\ar@<-.5ex>[#1]\ar@<-1ex>[#1]}
+
+\newcommand{\To}[1]{\xrightarrow{#1}}
+\newcommand{\Too}[1]{\xrightarrow{\ \ #1\ \ }}
+\newcommand{\From}[1]{\xleftarrow{#1}}
+
+
+\newcommand{\Adjoint}[4]{\xymatrix@1{#2 \ar@<.5ex>[r]^-{#1} & #3 \ar@<.5ex>[l]^-{#4}}}
+\newcommand{\adjoint}[4]{\xymatrix@1{#1\colon #2\ar@<.5ex>[r]& #3\;:#4 \ar@<.5ex>[l]}}
+
+\newcommand{\TriRight}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longrightarrow}\ar@{}[u]|>>>>{#7}}}
+\newcommand{\TriLeft}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longleftarrow}\ar@{}[u]|>>>>{#7}}}
+
+\def\id{\tn{id}}
+\def\Top{{\bf Top}}
+\def\Cat{{\bf Cat}}
+\def\Sets{{\bf Sets}}
+\def\sSets{{\bf sSets}}
+\def\Grpd{{\bf Grpd}}
+\def\Pre{{\bf Pre}}
+\def\Shv{{\bf Shv}}
+\def\Rings{{\bf Rings}}
+
+\def\colim{\mathop{\tn{colim}}}
+
+\def\mcA{\mc{A}}
+\def\mcB{\mc{B}}
+\def\mcC{\mc{C}}
+\def\mcD{\mc{D}}
+\def\mcE{\mc{E}}
+\def\mcF{\mc{F}}
+\def\mcG{\mc{G}}
+\def\mcH{\mc{H}}
+\def\mcI{\mc{I}}
+\def\mcJ{\mc{J}}
+\def\mcK{\mc{K}}
+\def\mcL{\mc{L}}
+\def\mcM{\mc{M}}
+\def\mcN{\mc{N}}
+\def\mcO{\mc{O}}
+\def\mcP{\mc{P}}
+\def\mcQ{\mc{Q}}
+\def\mcR{\mc{R}}
+\def\mcS{\mc{S}}
+\def\mcT{\mc{T}}
+\def\mcU{\mc{U}}
+\def\mcV{\mc{V}}
+\def\mcW{\mc{W}}
+\def\mcX{\mc{X}}
+\def\mcY{\mc{Y}}
+\def\mcZ{\mc{Z}}
+
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{guess}[theorem]{Guess}
+\newtheorem{answer}[theorem]{Answer}
+\newtheorem{construction}[theorem]{Construction}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{postulate}[theorem]{Postulate}
+
+\def\DT{{\bf DT}}
+\def\GD{{\bf GD}}
+\def\DB{\GD}
+\def\Sch{{\bf Sch}}
+\def\Null{{\bf Null}}
+\def\Strings{{\bf Strings}}
+\def\ND{{\bf ND}}
+\def\Tables{{\bf Tables}}
+\def\'{\tn{'}}
+\def\disunion{\amalg}
+\def\Rel{{\bf Rel}}
+\def\mcRel{{\bf \mcR el}}
+\def\Cech{$\check{\tn{C}}$ech }
+\def\C{\check{\tn{C}}}
+\def\Fin{{\bf Fin}}
+\def\singleton{{\{*\}}}
+\def\Sub{{\bf Sub}}
+\def\card{\tn{card}}
+\def\Data{{\bf DB}}
+\def\DB{{\bf DB}}
+\def\im{\tn{im}}
+\def\'{\tn{'}}
+\def\start{\note{start here}}
+
+\def\P{{\bf P}}
+
+\begin{document}
+
+\title{Information and Toposes}
+
+\author{David I. Spivak}
+
+\thanks{This project was supported in part by a grant from the Office of Naval Research: N000140910466.}
+
+\maketitle
+
+\begin{abstract}
+
+In this paper we 
+
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+
+In setting out to answer the question ``what is information?" we should begin with a study of what information does and how it is used.  Information is that which informs, that which gives structure and ``shape" to the world we perceive, that which organizes data into knowledge.  What is the structure of human thought?  We will now outline some of our capacities when it comes to understanding our world.
+
+Our world can be organized in such a way that certain events or perceptions are classified into types or classes -- we may say that something is a person, a set, a color, an integer, a feeling.  Often we may associate to each thing of a certain type a thing of another type -- one may posit that each person has a father, each set has a cardinality, each color has a wavelength, each integer has a parity modulo 2, each feeling has a corresponding MRI image.  These associations can be composed: the wavelength of the favorite color of a persons father is a composition of three associations, finally associating to each person a real number.  We see that the types in the world, together with a composable notion of associations between them, form a {\em category}.  Here I use the word ``association" not to mean loose correlation, but to mean something closer to functional relationship; I may also use the term morphism in place of association.  We may denote a way $w$ to associate to each thing of type $A$ a thing of type $B$ with an arrow $A\To{w} B$.
+
+Thus types and associations form a category, but there is much more structure in this world than just that of a category.  For example, given two types, we may form their ``product type" -- a row-size and a column-size produce a matrix-size, a person's name and an appearance-type produce an avatar in a video game, etc.  We may also look at pairs (or $n$-tuples) of things which ``fit together" -- a man and a woman who have the same favorite book, a retailer and a manufacturer such that one wants the widget that the other makes, etc.  The initiated reader will recognize that I am describing products and fiber products in a category; in other words, I contend that finite limits are available in the category of types and associations.  Those that are unfamiliar with these ideas can review them in Section \ref{sec:toposes}.
+
+The final two structural abilities I will describe is that of noticing one type to be a subtype of another, and that of collecting all the subtypes of a given type into one big type.  One can decide that a professor is a subtype of person, a dark color is a subtype of color, an integer bigger than 10 is a subtype of integer, and a happy feeling is a subtype of feeling.  To each subtype $A$ of a given type $X,$ there is a corresponding ``yes/no"-type question which can be asked, which characterizes that subtype.  For example the question ``is a professor?" is the characteristic question which can be asked of a person to decide whether he or she is in fact in the professor subtype.  
+
+If for a given type $A$ we have discovered many different subtypes then there is a new type $\P(A)$ whose elements are those types.  For example if we have noticed that there are many subtypes of the type ``person," (tall,  professor, zodiac-sign=taurus) then there is a new type called ``types of people" whose elements are these subtypes.  Given a relation $R\ss A\cross B$ between two types $A$ and $B$ (e.g. ``a person and his or her pet" is a relation between persons and animals), one can associate to each element of type $A$ a subtype of $B$ (e.g. to each person we can associate a subtype of animal, namely the class of animals which are his or her pet), and this is an association $A\to\P(B)$.
+
+The organizing abilities I have described are precisely those given by the axioms of a topos.  A topos is a category $\mcE$ that has finite limits, a subobject classifier $\Omega$ (which is a generalized ``yes/no" type), and for each object $A\in\mcE$ a ``power object" $\P(A)$ such that the subobjects of $B\cross A$ are in natural bijection with the morphisms $B\to\P(A)$.  This will be explained in more detail in Section \ref{sec:toposes}.
+
+I hope to show that any description of a situation can be modeled in topos-theoretic terms.  In other words, the language of human thought takes place inside a topos.  This is a bold claim; I will give evidence for it in Section \ref{sec:ologs}.  For example unions of types, such as ``a cup and a saucer," automatically exist in any topos; exponential types such as the type ``ways to associate to each thing of type $X$ a thing of type $Y$" also automatically exists in any topos.
+
+In order to justify this claim I will also show that databases naturally live in the language of toposes.
+
+
+\section{Toposes}\label{sec:toposes}
+
+
+
+\section{Ologs}\label{sec:ologs}
+
+\section{Databases}
+
+Let $\mcE$ be a topos; it will signify the world which we would like to discuss.  Define a functor $\Gamma\taking\mcE\to\Sets$ by the equation $\Gamma(A):=\Hom_\mcE(1,A)$, where $1\in\Ob(\mcE)$ is the terminal object.  We take the topos $\mcE$ as fixed for this discussion.  
+
+\begin{definition}
+
+A {\em schema} on $\mcE$ is a pair $(X,\sigma)$ where $X$ is a category and $\sigma\taking X\to\mcE$ is a functor.  We sometimes write the schema by $X\To{\sigma}\mcE$, or simply by $\sigma$.
+
+A {\em morphism of schemas} $(X,\sigma)\to(X',\sigma')$ on $\mcE$ consists of a pair $(f,f^\sharp)$, where $f\taking X'\to X$ is a functor and $f^\sharp\taking$ as in the diagram $$\TriLeft{X'}{\sigma'}{f}{X}{\sigma}{\mcE}{f^\sharp}$$
+
+The {\em category of schema on $\mcE$}, denoted $\Sch_\mcE$ is the category whose objects and morphisms are schemas and morphisms of schemas as above.
+
+\end{definition}
+
+One checks that the initial object of $\Sch_\mcE$ is the schema $\singleton\To{\emptyset}\mcE$ and the final object is the schema $\emptyset\To{!}\mcE$.
+
+\begin{definition}
+
+A {\em key system} on a schema $(X,\sigma)$ is a functor $K\taking X\to\Sets$, and a {\em morphism of key systems} is a natural transformation of functors. 
+
+The {\em universal key system} for $(X,\sigma)$ is defined to be the functor $\sigma^*\Gamma\taking X\to\Sets$, given by the formula (for $x\in X$) $$\sigma^*\Gamma(x):=\Hom_\mcE(1,\sigma(x)).$$
+
+The {\em database} on $(X,\sigma)$, denoted $\DB_\sigma$ is the category of key systems over the universal key system.  That is, an object of $\DB_\sigma$ is a pair $(K,\tau)$ where $K\taking X\to\Sets$ is a key system and $\tau\taking K\to\sigma^*\Gamma$ is a natural transformation; a morphism $(K,\tau)\to(K',\tau')$ is a map $f\taking K\to K'$ making the diagram $$\xymatrix@=1cm{K\ar[rr]^f\ar[rd]_\tau&&K'\ar[dl]^{\tau'}\\&\sigma^*\Gamma}$$ commute.
+
+An object in $\DB_\sigma$ is called a {\em database state}, and a morphism in $\DB_\sigma$ is called a morphism of database states.  
+
+\end{definition}
+
+\begin{remark}
+
+Note that a database is a topos, which we could denote $$\DB_\sigma=\Pre(X\op)_{/\sigma^*\Gamma}.$$  However, note that this topos is of a different nature than is our conception of $\mcE$ (as ``the world of discourse").  The topos $\DB_\sigma$ is more like ``the information about $\mcE$."  As such it has a surprisingly ``opposite" feel to $\mcE$.  In $\mcE$, a subobject has {\em more information}, as we have more information about a number that is bigger than 10 than we do about a number.
+
+\end{remark}
+
+\section{Flexibility}
+
+
+
+\end{document}
+

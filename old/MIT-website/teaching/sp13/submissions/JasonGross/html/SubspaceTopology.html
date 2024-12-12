@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>SubspaceTopology</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library SubspaceTopology</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Setoids.Setoid.html#"><span class="id" type="library">Setoid</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#"><span class="id" type="library">ProofIrrelevance</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.FunctionalExtensionality.html#"><span class="id" type="library">FunctionalExtensionality</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Finite_sets.html#"><span class="id" type="library">Finite_sets</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.Classical.html#"><span class="id" type="library">Classical</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.IndefiniteDescription.html#"><span class="id" type="library">IndefiniteDescription</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#"><span class="id" type="library">Classes.RelationClasses</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.Morphisms.html#"><span class="id" type="library">Morphisms</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Topology.html#"><span class="id" type="library">Topology</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Morphism.html#"><span class="id" type="library">Morphism</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab223"></a><h2 class="section">The Subspace Topology</h2>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Open</span> <span class="id" type="keyword">Scope</span> <span class="id" type="var">topology_scope</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="subspace_topology"><span class="id" type="section">subspace_topology</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="subspace_topology.X"><span class="id" type="variable">X</span></a> : <span class="id" type="keyword">Type</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="subspace_topology.T"><span class="id" type="variable">T</span></a> : <a class="idref" href="Topology.html#Topology"><span class="id" type="class">Topology</span></a> <a class="idref" href="SubspaceTopology.html#subspace_topology.X"><span class="id" type="variable">X</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="subspace_topology.P"><span class="id" type="variable">P</span></a> : <a class="idref" href="SubspaceTopology.html#subspace_topology.X"><span class="id" type="variable">X</span></a> → <span class="id" type="keyword">Prop</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Ltac</span> <span class="id" type="var">subspace_t</span> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">try</span> <span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Extensionality_Ensembles"><span class="id" type="axiom">Extensionality_Ensembles</span></a>; <span class="id" type="tactic">hnf</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">split</span>; <span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> *; <span class="id" type="tactic">hnf</span> <span class="id" type="keyword">in</span> *;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">destruct_hypotheses</span>; <span class="id" type="tactic">unfold</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#In"><span class="id" type="definition">Ensembles.In</span></a> <span class="id" type="keyword">in</span> *; <span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> *;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">destruct_head_hnf</span> @<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Intersection"><span class="id" type="inductive">Intersection</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">auto</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">specialize_all_ways</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">destruct_head_hnf</span> @<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Empty_set"><span class="id" type="inductive">Ensembles.Empty_set</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">destruct_head_hnf</span> <a class="idref" href="Notations.html#::'∅'"><span class="id" type="notation">&empty;</span></a>.<br/>
+
+<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Ltac</span> <span class="id" type="var">remove_proj1_sig_evar</span> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ |- <span class="id" type="keyword">context</span>[<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#proj1_sig"><span class="id" type="definition">proj1_sig</span></a> ?<span class="id" type="var">x</span>] ] ⇒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">has_evar</span> <span class="id" type="var">x</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">let</span> <span class="id" type="var">T</span> := <span class="id" type="var">type</span> <span class="id" type="var">of</span> <span class="id" type="var">x</span> <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">match</span> <span class="id" type="tactic">eval</span> <span class="id" type="tactic">hnf</span> <span class="id" type="keyword">in</span> <span class="id" type="var">T</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#sig"><span class="id" type="inductive">sig</span></a> ?<span class="id" type="var">P</span> ⇒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">match</span> <span class="id" type="var">type</span> <span class="id" type="var">of</span> <span class="id" type="var">P</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ?<span class="id" type="var">A</span> → <span class="id" type="keyword">Prop</span> ⇒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">let</span> <span class="id" type="var">y</span> := <span class="id" type="tactic">fresh</span> "y" <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">let</span> <span class="id" type="var">H</span> := <span class="id" type="tactic">fresh</span> "H" <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">evar</span> (<span class="id" type="var">y</span> : <span class="id" type="var">A</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">evar</span> (<span class="id" type="var">H</span> : <span class="id" type="var">P</span> <span class="id" type="var">y</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">let</span> <span class="id" type="var">H'</span> := <span class="id" type="tactic">fresh</span> <span class="id" type="keyword">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">assert</span> (<span class="id" type="var">H'</span> : <span class="id" type="var">x</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#exist"><span class="id" type="constructor">exist</span></a> <span class="id" type="var">P</span> <span class="id" type="var">y</span> <span class="id" type="var">H</span>) <span class="id" type="tactic">by</span> <span class="id" type="tactic">reflexivity</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">clear</span> <span class="id" type="var">H'</span>; <span class="id" type="tactic">subst</span> <span class="id" type="var">y</span>; <span class="id" type="tactic">subst</span> <span class="id" type="var">H</span>; <span class="id" type="tactic">simpl</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Global Instance</span> <a name="SubspaceTopology"><span class="id" type="instance">SubspaceTopology</span></a> : <a class="idref" href="Topology.html#Topology"><span class="id" type="class">Topology</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#sig"><span class="id" type="inductive">sig</span></a> <a class="idref" href="SubspaceTopology.html#subspace_topology.P"><span class="id" type="variable">P</span></a>) :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{| <span class="id" type="keyword">Open</span> := (<span class="id" type="keyword">fun</span> <span class="id" type="var">U</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:'exists'_x_'..'_x_','_x"><span class="id" type="notation">∃</span></a> <span class="id" type="var">U'</span> : <a class="idref" href="SubspaceTopology.html#subspace_topology.T"><span class="id" type="variable">T</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:'exists'_x_'..'_x_','_x"><span class="id" type="notation">,</span></a> <a class="idref" href="Topology.html#subset_ensemble"><span class="id" type="definition">subset_ensemble</span></a> <a class="idref" href="SubspaceTopology.html#U"><span class="id" type="variable">U</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Notations.html#::x_'∩'_x"><span class="id" type="notation">(</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#proj1_sig"><span class="id" type="definition">proj1_sig</span></a> <a class="idref" href="SubspaceTopology.html#U'"><span class="id" type="variable">U'</span></a><a class="idref" href="Notations.html#::x_'∩'_x"><span class="id" type="notation">)</span></a> <a class="idref" href="Notations.html#::x_'∩'_x"><span class="id" type="notation">&cap;</span></a> <a class="idref" href="SubspaceTopology.html#subspace_topology.P"><span class="id" type="variable">P</span></a>) |}.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span> <span class="id" type="keyword">with</span> <span class="id" type="tactic">simpl</span>; <span class="id" type="tactic">try</span> <span class="id" type="tactic">abstract</span> <span class="id" type="tactic">solve</span> [ <span class="id" type="var">subspace_t</span> ].<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;- <span class="id" type="tactic">refine</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#ex_intro"><span class="id" type="constructor">ex_intro</span></a> <span class="id" type="var">_</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#exist"><span class="id" type="constructor">exist</span></a> <span class="id" type="var">_</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Full_set"><span class="id" type="inductive">Full_set</span></a> <span class="id" type="var">_</span>) <span class="id" type="var">_</span>) <span class="id" type="var">_</span>)...<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;- <span class="id" type="tactic">refine</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#ex_intro"><span class="id" type="constructor">ex_intro</span></a> <span class="id" type="var">_</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#exist"><span class="id" type="constructor">exist</span></a> <span class="id" type="var">_</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Empty_set"><span class="id" type="inductive">Ensembles.Empty_set</span></a> <span class="id" type="var">_</span>) <span class="id" type="var">_</span>) <span class="id" type="var">_</span>)...<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;- <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">admit</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;- <span class="id" type="tactic">setoid_rewrite</span> &lt;- <a class="idref" href="Topology.html#subset_ensemble_intersection"><span class="id" type="lemma">subset_ensemble_intersection</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span> <span class="id" type="var">A</span> <span class="id" type="var">B</span> <span class="id" type="var">HA</span> <span class="id" type="var">HB</span>; <span class="id" type="tactic">destruct</span> <span class="id" type="var">HA</span> <span class="id" type="keyword">as</span> [ <span class="id" type="var">UA</span> <span class="id" type="var">HA</span> ], <span class="id" type="var">HB</span> <span class="id" type="keyword">as</span> [ <span class="id" type="var">UB</span> <span class="id" type="var">HB</span> ];<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">rewrite</span> <span class="id" type="var">HA</span>, <span class="id" type="var">HB</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#ex_intro"><span class="id" type="constructor">ex_intro</span></a> <span class="id" type="var">_</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#exist"><span class="id" type="constructor">exist</span></a> <span class="id" type="var">_</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Intersection"><span class="id" type="inductive">Intersection</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span>) <span class="id" type="var">_</span>) <span class="id" type="var">_</span>); <span class="id" type="tactic">simpl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Extensionality_Ensembles"><span class="id" type="axiom">Extensionality_Ensembles</span></a>; <span class="id" type="tactic">split</span>; <span class="id" type="tactic">intros</span> ? ?; <span class="id" type="var">destruct_sets</span>; <span class="id" type="tactic">unfold</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#In"><span class="id" type="definition">Ensembles.In</span></a> <span class="id" type="keyword">in</span> *; <span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> *;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">constructor</span>; <span class="id" type="tactic">try</span> <span class="id" type="tactic">assumption</span>; <span class="id" type="tactic">unfold</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#In"><span class="id" type="definition">Ensembles.In</span></a> <span class="id" type="keyword">in</span> *; [ | | <span class="id" type="var">eassumption</span> | <span class="id" type="var">eassumption</span> ]; <span class="id" type="tactic">assumption</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">Grab</span> <span class="id" type="var">Existential</span> <span class="id" type="keyword">Variables</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<span class="id" type="var">destruct_sig</span>; <span class="id" type="tactic">simpl</span>; <span class="id" type="tactic">auto</span> <span class="id" type="keyword">with</span> <span class="id" type="var">topology</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<span class="id" type="var">destruct_sig</span>; <span class="id" type="tactic">simpl</span>; <span class="id" type="tactic">auto</span> <span class="id" type="keyword">with</span> <span class="id" type="var">topology</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<span class="id" type="var">destruct_sig</span>; <span class="id" type="tactic">simpl</span>; <span class="id" type="tactic">auto</span> <span class="id" type="keyword">with</span> <span class="id" type="var">topology</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="SubspaceTopology.html#subspace_topology"><span class="id" type="section">subspace_topology</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,237 @@
+\documentclass{amsart}
+
+\usepackage{amssymb, amscd,stmaryrd,setspace,hyperref,color}
+
+\input xy
+\xyoption{all} \xyoption{poly} \xyoption{knot}\xyoption{curve}
+\input{diagxy}
+
+
+\newcommand{\comment}[1]{}
+
+\newcommand{\longnote}[2][4.9in]{\fcolorbox{black}{yellow}{\parbox{#1}{\color{black} #2}}}
+\newcommand{\shortnote}[1]{\fcolorbox{black}{yellow}{\color{black} #1}}
+\newcommand{\q}[1]{\begin{question}#1\end{question}}
+\newcommand{\g}[1]{\begin{guess}#1\end{guess}}
+
+\def\tn{\textnormal}
+\def\mf{\mathfrak}
+\def\mc{\mathcal}
+
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\CC{{\mathbb C}}
+\def\AA{{\mathbb A}}
+\def\PP{{\mathbb P}}
+\def\NN{{\mathbb N}}
+
+\def\Hom{\tn{Hom}}
+\def\Fun{\tn{Fun}}
+\def\Ob{\tn{Ob}}
+\def\Op{\tn{Op}}
+
+\def\to{\rightarrow}
+\def\from{\leftarrow}
+\def\cross{\times}
+\def\taking{\colon}
+\def\inj{\hookrightarrow}
+\def\surj{\twoheadrightarrow}
+\def\too{\longrightarrow}
+\def\tooo{\longlongrightarrow}
+\def\tto{\rightrightarrows}
+\def\ttto{\equiv\!\!>}
+\def\ss{\subset}
+\def\superset{\supset}
+\def\iso{\cong}
+\def\down{\downarrow}
+\def\|{{\;|\;}}
+\def\m1{{-1}}
+\def\op{^\tn{op}}
+\def\loc{\tn{loc}}
+\def\la{\langle}
+\def\ra{\rangle}
+\def\wt{\widetilde}
+\def\wh{\widehat}
+\def\we{\simeq}
+\def\ol{\overline}
+\def\ul{\underline}
+\def\qeq{\mathop{=}^?}
+
+\def\ullimit{\ar@{}[rd]|(.3)*+{\lrcorner}}
+\def\urlimit{\ar@{}[ld]|(.3)*+{\llcorner}}
+\def\lllimit{\ar@{}[ru]|(.3)*+{\urcorner}}
+\def\lrlimit{\ar@{}[lu]|(.3)*+{\ulcorner}}
+\newcommand{\clabel}[1]{\ar@{}[rd]|(.5)*+{#1}}
+
+\newcommand{\arr}[1]{\ar@<.5ex>[#1]\ar@<-.5ex>[#1]}
+\newcommand{\arrr}[1]{\ar@<.7ex>[#1]\ar@<0ex>[#1]\ar@<-.7ex>[#1]}
+\newcommand{\arrrr}[1]{\ar@<.9ex>[#1]\ar@<.3ex>[#1]\ar@<-.3ex>[#1]\ar@<-.9ex>[#1]}
+\newcommand{\arrrrr}[1]{\ar@<1ex>[#1]\ar@<.5ex>[#1]\ar[#1]\ar@<-.5ex>[#1]\ar@<-1ex>[#1]}
+
+\newcommand{\To}[1]{\xrightarrow{#1}}
+\newcommand{\Too}[1]{\xrightarrow{\ \ #1\ \ }}
+\newcommand{\From}[1]{\xleftarrow{#1}}
+
+\newcommand{\Adjoint}[4]{\xymatrix@1{#2 \ar@<.5ex>[r]^-{#1} & #3 \ar@<.5ex>[l]^-{#4}}}
+
+\def\id{\tn{id}}
+\def\Top{{\bf Top}}
+\def\Cat{{\bf Cat}}
+\def\Str{{\bf Str}}
+\def\Sets{{\bf Sets}}
+\def\Set{{\bf Set}}
+\def\sSet{{\bf sSet}}
+\def\sSets{{\bf sSets}}
+\def\Grpd{{\bf Grpd}}
+\def\Pre{{\bf Pre}}
+\def\Shv{{\bf Shv}}
+\def\Rings{{\bf Rings}}
+
+
+\def\colim{\mathop{\tn{colim}}}
+
+\def\mcA{\mc{A}}
+\def\mcB{\mc{B}}
+\def\mcC{\mc{C}}
+\def\mcD{\mc{D}}
+\def\mcE{\mc{E}}
+\def\mcF{\mc{F}}
+\def\mcG{\mc{G}}
+\def\mcH{\mc{H}}
+\def\mcI{\mc{I}}
+\def\mcJ{\mc{J}}
+\def\mcK{\mc{K}}
+\def\mcL{\mc{L}}
+\def\mcM{\mc{M}}
+\def\mcN{\mc{N}}
+\def\mcO{\mc{O}}
+\def\mcP{\mc{P}}
+\def\mcQ{\mc{Q}}
+\def\mcR{\mc{R}}
+\def\mcS{\mc{S}}
+\def\mcT{\mc{T}}
+\def\mcU{\mc{U}}
+\def\mcV{\mc{V}}
+\def\mcW{\mc{W}}
+\def\mcX{\mc{X}}
+\def\mcY{\mc{Y}}
+\def\mcZ{\mc{Z}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{guess}[theorem]{Guess}
+\newtheorem{answer}[theorem]{Answer}
+\newtheorem{construction}[theorem]{Construction}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{postulate}[theorem]{Postulate}
+
+\def\El{{\bf El}}
+\def\Gr{{\bf Gr}}
+\def\Net{{\bf Net}}
+\def\St{{\bf St}}
+\def\Sk{{\bf Sk}}
+\def\bD{{\bf \Delta}}
+\def\Ded{{\bf Ded}}
+\def\Sig{{\bf Sig}}
+\def\Ont{{\bf Ont}}
+\def\Graph{{\mcG{raph}}}
+\def\Finm{{\bf Fin^m}}
+
+
+\begin{document}
+
+\title{Visualizing the RSA algorithm with Simplicial Databases}
+
+\author{David I. Spivak}
+
+\thanks{The author was supported in part by a grant from the Office of Naval Research: N000140910466.}
+
+\maketitle
+
+
+
+The RSA encryption scheme is a well-known method for an entity $A$ to receive messages from other entities $B$ in a way that third parties $C$ cannot understand.  The purpose of this note is not to explain the algorithm, but only to show what it looks like in terms of simplicial databases.  Our source for the RSA encryption scheme is \href{http://en.wikipedia.org/wiki/RSA#Key_generation}{\tt http://en.wikipedia.org/wiki/RSA\#Key\_generation}.
+
+Begin with the following tiles, all of type $\NN$:
+$$\xymatrix@=.7cm{\bullet^a\ar@{-}[rr]^{b=a-1}&&\bullet^b&&\bullet^x\ar@{-}[rr]\ar@{-}[ddr]&\ar@{}[dd]|{xy=z}&\bullet^y\ar@{-}[ddl]&&\bullet^d\ar@{-}[ddr]\ar@{-}[rr]&\ar@{}[dd]|<<<<<<{de\equiv 1 (\text{mod } \phi)}&\bullet^e\ar@{-}[ddl]\\\\&&&&&\bullet^z&&&&\bullet^\phi}$$ and call these the {\em main tiles}.  We will also need two {\em constraining tiles}.  These are $$\bullet^{\text{prime}}$$ (consisting of only primes) and $$\xymatrix@=.7cm{\bullet^r\ar@{-}[rr]^{1<r<s}&&\bullet^s}.$$  From these we can build the RSA encryption scheme as follows:
+
+\begin{enumerate}
+
+\item Begin by dragging copies of the main tiles together to construct the database $$\xymatrix{&&\bullet^p\ar@{-}[rr]\ar@{-}[dd]&&\bullet^{p-1}\ar@{-}[dd]\ar@{-}[drr]&&&&\bullet^e\ar@{-}[dd]\\\bullet^n\ar@{}[rr]|{n=pq}\ar@{-}[rru]\ar@{-}[rrd]&&&&\ar@{}[rr]|{\!\!\phi=(p-1)(q-1)}&&\bullet^\phi\ar@{}[rr]|{\;\;\;de\equiv 1 (\text{mod } \phi)}\ar@{-}[urr]\ar@{-}[drr]&&\\&&\bullet^q\ar@{-}[rr]&&\bullet^{q-1}\ar@{-}[urr]&&&&\bullet^d}$$
+
+\item Now drop the prime tile $\bullet^{\text{prime}}$ onto $\bullet^p$ and then onto $\bullet^q$.  
+
+\item Finally, drop the $\xymatrix@=.7cm{\bullet^s\ar@{-}[rr]^{s>r>1}&&\bullet^r}$ tile onto $\xymatrix@=.7cm{\bullet^\phi\ar@{-}[rr]&&\bullet^e}.$
+
+\item Take the composite database (see Definition \ref{def:composite} below).  It looks like this $$\xymatrix@=.7cm{&&\bullet^e\ar@{-}[dd]\\\bullet^n\ar@{-}[rru]\ar@{-}[rrd]\\&&\bullet^d}$$
+
+\item Choose any record in this table.  It consists of a triple $(n,e,d)$.  This works as the private data for an RSA encryption.
+
+\item The projection onto $\xymatrix@=.7cm{\bullet^n\ar@{-}[rr]&&\bullet^e}$ is the public data for the above RSA encryption.
+
+\end{enumerate}
+
+The following definition assumes an understanding of simplicial databases; see [Spivak.  ``Simplicial databases"] for details.
+
+\begin{definition}\label{def:composite}
+
+Let $X\in\mcS$ be a simplicial complex.  An element $x\in X_0$ is called {\em an outer vertex} if it is contained in a unique maximal simplex.  Let $\Omega_X\ss X_0$ denote the set of vertices.
+
+Given a simplicial database $\mcX:=(X,\mcO_X)$, the {\em composite of $\mcX$} is defined to be the table $\mcO_X(X)\to\Gamma(\Omega_X)$.
+
+\end{definition}
+
+Now to encode a message, one needs the additional tetrahedral table $$\xymatrix@=.7cm{\bullet^x\ar@{-}[rr]\ar@{-}[dd]\ar@{}[ddrr]|{y\equiv x^a (\text{mod } b)}\ar@{..}[rrdd]&&\bullet^a\ar@{-}[dd]\ar@{..}[ddll]\\\\\bullet^y\ar@{-}[rr]&&\bullet^b}$$
+
+Here are the steps:
+
+\begin{enumerate}
+
+\item The message should be encoded as a 1-row, 1-column table $\bullet^m$.  Drop it onto the $\bullet^x$ column of the tetrahedral table.  
+
+\item Drop the above $\xymatrix@=.7cm{\bullet^n\ar@{-}[rr]&&\bullet^e}$ table onto the right-hand edge $\xymatrix@=.7cm{\bullet^a\ar@{-}[rr]&&\bullet^b}$ .  
+
+\item Projecting the table to the $\bullet^y$ column gives the encoded message. 
+
+\end{enumerate}
+
+Now suppose that $\bullet^c$ is a 1-row, 1-column table containing an encoded message.  In order to decode it, one could reverse the above process: drop $\bullet^c$ onto the $\bullet^y$ column and then look at $\bullet^x$.  The problem with this is that the calculation takes too much time.  The idea of the RSA algorithm is that there is a way to get the original message back which is computationally easier.  Namely, do the following:
+
+\begin{enumerate}
+
+\item Drop the $\bullet^c$ table onto $\bullet^x$.
+
+\item Drop the $\xymatrix@=.7cm{\bullet^n\ar@{-}[rr]&&\bullet^d}$ ``private key" table onto $\xymatrix@=.7cm{\bullet^a\ar@{-}[rr]&&\bullet^b}$. 
+
+\item The result in $\bullet^y$ will be the original message.
+
+\end{enumerate}
+
+\comment{
+
+For a nonempty finite set $S$, let $\Delta^S$ denote the simplex with vertices $S$.  Suppose that $X\in\mcS$ is a finite simplicial complex; then there is a natural map $\gamma_X\taking X\to\Delta^{X_0}$ sending each simplex in $X$ to the simplex spanned by its set of vertices.  
+
+Recall that for a simplicial database $\mcX:=(X,\mcO_X)$, we call the database $$(\Delta^{X_0},(\gamma_X)_+(\mcO_X))$$ the {\em global table} associated to $\mcX$.
+
+\begin{definition}
+
+Let $\mcX:=(X,\mcO_X)$ be a simplicial database, $\Omega_X\ss X_0$ its set of outer vertices, and $i\taking\Delta^{\Omega_X}\to\Delta^{X_0}$ the inclusion.  We define the {\em composition of $\mcX$} to be the database $(\Delta^{\Omega_X},i^*(\gamma_X)_+(\mcO_X))$.
+
+\end{definition}   
+}
+
+\end{document}

@@ -1,0 +1,938 @@
+\documentclass[10pt]{amsart}
+
+\input{decl-main}
+\input{decl-rings}
+
+%\usepackage{showkeys}
+
+\begin{document}
+
+\title{Generalized Ringed Spaces and Schemes}
+
+\author{David I. Spivak}
+
+\maketitle
+
+\note{\today}
+
+\setcounter{tocdepth}{2}
+
+\tableofcontents
+
+\section{Introduction}
+
+\section{Categorical Preliminaries}
+
+\subsection{Basic category theory}
+
+For $n\in\NN$, let $[n]$ denote the ``subdivided interval" category with $n+1$ objects $\{0,1,\ldots,n\}$ and exactly one morphism
+$i\to j$ for every $i\leq j\leq n$.
+
+Let $\mcC$ be a category.  A {\em diagram in $\mcC$} is a functor $X\taking I\to\mcC$, where $I$ is a small category (such a functor is
+also called an {\em $I$-shaped diagram in $\mcC$}).  The $I$-shaped diagrams in $\mcC$ form the objects of a category, whose
+morphisms are natural transformations.  If $i\in I$ is an object, we sometimes denote $X(i)$ by $X_i$.
+
+There is an isomorphism of categories $\mcC\iso\mcC^{[0]}$; that is we may identify objects in $\mcC$ with functors $[0]\to\mcC$,
+and morphisms with natural transformations between them.
+
+Any functor $F\taking X\to Y$ naturally induces a functor $F^I\taking X^I\to Y^I$, which we may denote simply by $F\taking X^I\to Y^I$.
+
+Let $F\taking \mcC\to\mcD$ be a functor.  By {\em an object in $F$} we mean a functor $[0]\to\mcD$ which factors through $F$.  More
+generally, we refer to a diagram $I\to\mcD$ which factors through $F$ as {\em an $I$-shaped diagram in $F$}.  If $\mcC=\mcD$ and
+$F$ is the identity, then diagrams in $F$ are simply diagrams in $\mcC$.
+
+Let $\Pre(\mcC)$ denote the category of contravariant functors from $\mcC$ to $\Sets$.  It is called {\em the category of
+presheaves on $\mcC$.} There is a natural functor $r\taking \mcC\to\Pre(\mcC)$ given by $$r(C)=\Hom(-,C)$$ called {\em the representation
+functor}, or the Yoneda imbedding.
+
+Let $\mcC$ and $\mcD$ be categories.  An adjunction from $\mcC$ to $\mcD$ is a triple $(L,R,\phi)$, where $L\taking \mcC\to\mcD$ and
+$R\taking \mcD\to\mcC$ are functors, and $\phi$ is a natural isomorphism of functors $$\phi\taking \Hom_\mcD(L(-),-)\to\Hom_\mcC(-,R(-)).$$ That
+is, for any $C\in\mcC$ and $D\in\mcD$, there is a natural isomorphism $\Hom(LC,D)\iso\Hom(C,RD).$ The functor $L$ is called {\em a
+left adjoint} and the functor $R$ is called {\em a right adjoint}. If $\phi(\beta^\flat)=\beta^\sharp$, then we refer to a pair
+of morphisms $$(\beta^\flat\taking LC\to D,\beta^\sharp\taking C\to RD)$$ as a {\em $\phi$-partnership} or {\em $(L,R)$-partnership}, and we
+refer to $\beta^\flat$ and $\beta^\sharp$ as the left and right partners, respectively .  We denote such a $\phi$-partnership by
+$\beta\taking C\to D$.  We say that $\phi$ is {\em the adjunction isomorphism} of the adjoint pair $$\Adjoint{L}{\mcC}{\mcD}{R.}$$ We
+sometimes suppress mention of $\phi$ when it is inconvenient.
+
+If $F\taking \mcA\to\mcB$ and $X\taking\mcA\to\mcC$ are functors, depicted in the diagram $$\xymatrix{\mcA\ar[r]^X\ar[d]_F&\mcC\\ \mcB\ar@{-->}[ur]_{\lambda_FX}}$$ then the left Kan extension of $X$ along $F$ (if it exists) is denoted $$\lambda_FX\taking\mcB\to\mcC.$$  A natural transformation $\eta_F(X)\taking X\to \lambda_FX\circ F$ is part of the data of a left Kan extension, but is typically suppressed.
+
+By the term {\em Basic Category Theory} or {\em BCT} we will mean anything that can be proven using the following facts (all of
+which can be found in \cite{Mac}).
+
+\begin{lemma} Let $\mcC$ and $\mcD$ be categories, and let $I$ be a small category.
+
+\begin{enumerate}
+
+\item Suppose that $Y\taking I\to\mcC$ is a functor which has a limit $Y^\lhd$.  Then for any object $X\in\mcC$, one has a natural
+isomorphism $$\Hom_\mcC(X,Y^\lhd)\iso\lim(\Hom_\Sets(X,Y)).$$
+
+\item Suppose that $X\taking I\to\mcC$ is a functor which has a colimit $X^\rhd$.  Then for any object $Y\in\mcC$, one has a natural
+isomorphism $$\Hom_\mcC(X^\rhd,Y)\iso\lim(\Hom_\Sets(X,Y)).$$
+
+\item Suppose that $$\Adjoint{L}{\mcC}{\mcD}{R}$$ is a pair of adjoint functors.  Then $L$ commutes with colimits and $R$ commutes
+with limits.  Explicitly, if a diagram $X\taking I\to\mcC$ has a colimit $X^\rhd$, then the diagram $LX\taking I\to\mcD$ has a colimit
+$(LX)^\rhd$, and there is a natural isomorphism $$(LX)^\rhd\To{\iso}L(X^\rhd),$$ (and similarly for $R$ and limits).
+
+\item If $\Adjoint{L}{\mcC}{\mcD}{R}$ is a pair of adjoint functors and $I$ is a small category, then
+$\Adjoint{L}{\mcC^I}{\mcD^I}{R}$ are also adjoint.
+
+\item The Yoneda imbedding $r\taking \mcC\to\Pre(\mcC)$ is fully faithful.  Moreover, for any presheaf $F$ on $\mcC$ and object
+$C\in\mcC$, we have an isomorphism of sets $$\Hom_{\Pre(\mcC)}(rC,F)\iso F(C).$$
+
+\end{enumerate}
+
+\end{lemma}
+
+\subsection{Natural transformation diagrams}
+
+Let $A,B,C$, and $D$ be categories, $A\To{w}B\To{y}D$ and $A\To{x}C\To{z}D$ pairs of composable functors, and $\beta\taking zx\to yw$ a
+natural transformation of functors.  We can express these,
+ data in a {\em natural transformation square}:
+$$\bfig\square[A`B`C`D.;w`x`y`z]\morphism(200,200)/=>/<100,100>[`;\beta]\efig$$ This is an abbreviation of the diagram
+$$\bfig
+\square[A`B`C`D.;w`x`y`z]
+\morphism(50,425)|b|/{@/_.8em/}/<375,-375>[`;zx]
+\morphism(75,450)|a|/{@/^.8em/}/<375,-375>[`;yw]
+\morphism(200,200)/=>/<100,100>[`;\beta]
+\efig$$
+
+A natural transformation square in which $yw=zx$ and $\beta$ is the identity transformation is called a commutative square (of
+categories), and is written $$\bfig\square[A`B`C`D.;w`x`y`z]\efig$$  Similarly, there are natural transformation diagrams of any
+given shape; for example, see Lemma \ref{mor of downs}.
+
+There is one other special case worth mentioning.  Suppose that $y\taking B\to D$ has a right adjoint $y'\taking D\to B$.  Then if $A=C$ and
+$x\taking A\to C$ is the identity, then there is a natural isomorphism $$\Hom_{D^A}(yw,z)\iso\Hom_{B^A}(w,y'z).$$  Any natural
+transformation
+$\beta^\flat\taking yw\to z$ has a right partner $\beta^\sharp\taking w\to y'z$, and these
+two transformations represent the same data.  We represent this data by the diagram $$\bfig
+\square|allb|/>`=`{}`>/[A`B`A`D;w`\id``z]
+\morphism(515,70)<0,360>[`;y']
+\morphism(485,430)<0,-360>[`;y]
+\morphism(250,190)|l|/<=/<0,120>[`;\beta]
+\efig$$
+
+\subsection{Correspondences}
+
+\begin{definition}
+
+Let $\mcC$ and $\mcD$ be categories.  A {\em correspondence $\mcF$ from $\mcC$ to $\mcD$}, written $\mcF\taking\mcC<\mcD$ is a functor
+$\mcF^\sharp\taking\mcD\to\Pre(\mcC)$.  The correspondence $\mcF$ is called {\em full} (resp. {\em faithful}) if $\mcF^\sharp$ is full (resp. faithful).  The correspondence $\mcF$ can also be regarded as a functor $\mcF^\flat\taking\mcC\op\cross\mcD\to\Sets$ via the Cartesian adjunction.
+
+\end{definition}
+
+\begin{remark}\label{not for corr}
+
+There are several reasons for the notation $\mcF\taking\mcC<\mcD$ to denote a correspondence $\mcF\taking\mcC\op\cross\mcD\to\Sets$.  First, it is good to write $\mcC$ before $\mcD$, since it is the contravariant variable.  Second, correspondences generalize functors by saying that the correspondence underlying a functor $F\taking\mcD\to\mcC$ is $$[-,F(-)]_\mcC\taking\mcC<\mcD.$$  Thus the direction on the tip on the arrow is preserved by the less-than symbol.
+
+\end{remark}
+
+We will sometimes denote a correspondence $\mcF\taking \mcC<\mcD$ by some variant of the notation $[-,-]$.  There is often
+a way to do so which makes $\mcF$ clear.  See Example \ref{func ind corr}.
+
+\begin{example}\label{func ind corr}
+
+Let $G\taking \mcD\to\mcC$ be a functor.  It naturally induces two correspondences, $$[-,G(-)]_\mcC\taking \mcC\op\cross\mcD\to\Sets \tn{  and
+} [G(-),-]_\mcC\taking \mcD\op\cross\mcC\to\Sets,$$ defined for $C\in\mcC$ and $D\in\mcD$ by $[C,G(D)]_\mcC\taking =\Hom_\mcC(C,GD)$ and
+$[G(D),C]_\mcC\taking =\Hom_\mcC(GD,C),$ respectively.  In
+particular, the identity functor $\id_\mcC\taking \mcC\to\mcC$ gives the correspondence $[-,-]_\mcC=\Hom_\mcC\taking \mcC\op\cross\mcC\to\Sets$.
+
+More generally, functors $G\taking \mcD\to\mcC$ and $H\taking \mcE\to\mcC$ induce correspondences $[G(-),H(-)]_\mcC$ and
+$[H(-),G(-)]_\mcC$ in the obvious way.
+
+\end{example}
+
+As seen in Example \ref{func ind corr}, a functor $G\taking \mcD\to\mcC$ induces two correspondences.  In this work, we emphasize the
+correspondence $[-,G(-)]_\mcC\taking \mcC\op\cross\mcD\to\Sets$.
+
+\begin{definition}
+
+Let $G\taking \mcD\to\mcC$ be a functor.  The {\em correspondence associated to $G$} is the composition of $G$ with the Yoneda imbedding, $$\mcD\To{G}\mcC\To{r}\Pre(\mcC),$$ and is denoted $rG$.
+
+\end{definition}
+
+Note that correspondences can be composed.  If $\mcF\taking\mcD<\mcE$ and $\mcG\taking\mcC<\mcD$ are correspondences, we can define a correspondence $\mcF\circ\mcG\taking\mcC<\mcE$ as follows.  Consider $\mcF$ as a functor $\mcE\to\Pre(\mcD)$ and consider $\mcG$ as a functor $\mcD\to\Pre(\mcC)$.  The left Kan extension of $\mcG$ along the Yoneda imbedding is a functor $\lambda_r\mcG\taking\Pre(\mcD)\to\Pre(\mcC)$, and we define $$\mcF\circ\mcG:=\mcF\circ \lambda_r\mcG.$$
+
+Let $\mcC$ and $\mcD$ be categories, and let $\mcF,\mcG\taking\mcC<\mcD$ be two correspondences between them.  A {\em natural transformation of correspondences} $a\taking\mcF\to\mcG$ is simply a natural transformation of left partners  $$(\mcF^\flat\Rightarrow\mcG^\flat)\taking\mcC\op\cross\mcD\to\Sets$$ or equivalently of right partners $$(\mcF^\sharp\Rightarrow\mcG^\sharp)\taking\mcD\to\Pre(\mcC).$$  Note that both of these ares equivalent to a correspondence $a\taking(\mcC\cross[1])<\mcD$.
+
+\begin{lemma}\label{corr ind adj pre}
+
+Let $\mcF\taking \mcC<\mcD$ be a correspondence.  It determines an adjunction $$\Adjoint{\lambda_r\mcF}{\Pre(\mcD)}{\Pre(\mcC)}{\rho_r\mcF}$$
+of presheaf categories in which $\lambda_r\mcF(rD)=\mcF(-,D)$ for any $D\in\mcD$.
+
+\end{lemma}
+
+\begin{proof}
+
+Let $F=\mcF^\sharp\taking\mcD\to\Pre(\mcC)$, $L=\lambda_r\mcF$ and $R=\rho_r\mcF$.  For a presheaf $P\in\Pre(\mcD)$, one defines $L(P)=\colim_{rX\to P}F(X)$.  For a presheaf $Q\in\Pre(\mcC)$, one defines $R(Q)=\Hom_{\Pre(\mcC)}(F(-),Q)$.  The result follows from the chain of isomorphisms \begin{align*}\Hom_{\Pre(\mcC)}(L(P),Q)&=\Hom_{\Pre(\mcC)}(\colim_{rX\to P}F(X),Q)\\ &\iso\lim_{rX\to P}R(Q)(X)\\ &\iso\lim_{rX\to P}\Hom_{\Pre(\mcD)}(rX,RQ)\\ &\iso \Hom_{\Pre(\mcD)}(\colim_{rX\to P}rX,RQ)\\ &\iso\Hom_{\Pre(\mcD)}(P,RQ).\end{align*}
+
+
+\end{proof}
+
+\subsection{Downarrow categories}
+
+\begin{definition}
+
+Let $G\taking \mcC\to\mcD$ and $H\taking \mcE\to\mcD$ be functors.  The {\em downarrow category} $(G\down H)$ is the category whose objects
+consist of triples $(C,f,E)$, where $C\in\mcC$ and $E\in\mcE$ are objects and $f\taking GC\to HD$ is a morphism in $\mcD$.  The morphism
+set $\Hom_{(G\down H)}((C,f,E),(C',f',E'))$ is the subset of $\Hom_\mcC(C,C')\cross\Hom_\mcE(E,E')$ consisting of those pairs
+$(c,e)$ for which the induced square in $\mcD$ commutes, i.e. for which $f'c=ef$.
+
+If $\mcC=\mcD$ and $G=\id_\mcD$, we may denote $(G\down H)$ simply by $(\mcD\down H)$.
+
+There are canonical functors $\pi_1\taking (F\down G)\to\mcC$ and $\pi_2\taking (F\down G)\to\mcE$, called {\em the first and second
+projection functors}.
+
+\end{definition}
+
+\begin{lemma}\label{mor of downs}
+
+A natural transformation diagram
+$$\bfig
+\square[\mcC`\mcD`\mcC'`\mcD';F`c`d`F']
+\square(500,0)/<-`>`>`<-/[\mcD`\mcE`\mcD'`\mcE';G``e`G']
+\morphism(200,200)/=>/<100,100>[`;\alpha]
+\morphism(700,300)/=>/<100,-100>[`;\beta]
+\efig$$ induces a functor $$(\alpha\Down_d\beta)\taking (F\down G)\to (F'\down G').$$
+
+\end{lemma}
+
+\begin{proof}
+
+Let $C\in\mcC$ and $E\in\mcE$ be objects, and let $h\taking FC\to GE$ be an object in $(F\down G)$.  Define $(\alpha\Down_d\beta)(h)$ to be the composition $$F'c(C)\To{\alpha}dFC\To{d(h)}dGE\To{\beta}G'eE.$$  This is clearly functorial.
+
+\end{proof}
+
+In case $dF=F'c$ and $\alpha=\id$, we denote $(\alpha\Down_d\beta)$ by $(F\Down_d\beta)$; similarly, if
+$eG=G'd$ and $\beta=\id$, we denote $(\alpha\Down_d\beta)$ by $(\alpha\Down_d G)$.  If $\mcC=\mcD$ and $F=\id_\mcD$, then we denote $(F\Down_d\beta)$ by $(\Down_d\beta)$, and similarly for $G$.
+
+\begin{lemma}\label{col lim com cat}
+
+Let $F\taking \mcC\to\mcD$ and $G\taking \mcE\to\mcD$ be functors.  \begin{enumerate} \item If $\mcC$ and $\mcE$ are cocomplete and $F$ is
+cocontinuous then $(F\down G)$ is cocomplete and the projections $\pi_1$ and $\pi_2$ are also cocontinuous. \item If $\mcC$ and
+$\mcE$ are complete and $G$ is continuous then $(F\down G)$ is complete and the projections $\pi_1$ and $\pi_2$ are also
+continuous.\end{enumerate}
+
+\end{lemma}
+
+\begin{proof}
+
+Since $(G\op\down F\op)$ is the opposite category of $(F\down G)$, it suffices to prove item 1.
+
+$X\taking I\to(F\down G)$, $L=\colim(\pi_1 X)\in\mcC, M=\colim(\pi_2 X)\in\mcE$.
+$$\xymatrix{F\pi_1X\ar[r]\ar[d]\ar@/_1pc/[dd]&G\pi_2X\ar[d]\ar@/^1pc/[dd]\\ FL\ar@{..>}[d]\ar[r]^{\tn{induced}}&GM\ar@{..>}[d]\\
+FL'\ar[r]&GM'}$$
+
+\end{proof}
+
+Let $F\taking \mcC\to\mcD$ and $F'\taking \mcC'\to\mcD'$ be functors, and let $L\taking (\mcD\down F)\to(\mcD'\down F')$ be a functor.  Consider the
+correspondence $$\mcH\taking (\mcD\down F)<(\mcD'\down F')$$ induced by $L$.  There is a natural functor from $\mcH$ to the
+constant correspondence $\Hom_\mcD(LF,F')$, which sends a commutative square $$\Sq{LD}{LF}{D'}{F'}{a}{d}{f}{a'}$$ to $f\taking LF\to F'$.
+
+\section{Sieves and Covering Sieves}
+
+\subsection{First definitions}
+
+Monomorphisms will play a large role in this paper.  If $G\taking \mcC\to\mcD$ and $H\taking \mcE\to\mcD$ are functors, let $[G(-),H(-)]^m_\mcD$
+denote the subfunctor of $[G(-),H(-)]_\mcD$ consisting only of monomorphisms.  Likewise, let $(G\downm H)$ denote the the {\em full} subcategory of $(G\down H)$ whose objects
+are triples $(C,f,E)$ in which $f\taking GC\to HE$ is a monomorphism in $\mcD$.
+
+\begin{definition}
+
+Let $\mcC$ be a category and $X\taking \mcA\to\Pre(\mcC)$ a functor to the presheaf category on $\mcC$.  The {\em category of sieves on
+$X$ in $\mcC$}, denoted $\Sieve_\mcC(X)$, is the category $(\Pre(\mcC)\downm X)$.  If $C\taking [0]\to\mcC$ is an object, we write
+$\Sieve_\mcC(C)$ to denote $\Sieve_\mcC(rC)$, where $r\taking \mcC\to\Pre(\mcC)$ is the Yoneda imbedding.  Thus an object
+in $\Sieve_\mcC(C)$ is simply a subfunctor of $\Hom_\mcC(-,C)$.  If $\mcA=\Pre(\mcC)$ and $X\taking\mcA\to\Pre(\mcC)$ is the identity, then we denote $\Sieve_\mcC(X)$ by $\Sieve_\mcC$.
+
+\end{definition}
+
+Let $X\taking\mcA\to\Pre(\mcC)$.  The forgetful functor $$\Sieve_\mcC(X)=(\Pre(\mcC)\downm X)\to(\Pre(\mcC)\down X)$$ has a left adjoint, called the {\em image-sieve functor}, which we denote by $$(-)^m\taking (\Pre(\mcC)\down X)\to\Sieve_\mcC(X).$$  Let us make this more explicit.
+
+An object $f\taking P\to X_a$ in $(\Pre(\mcC)\down X)$ provides, for each $c\in\mcC$, a map of sets $f(c)\taking P(c)\to X_a(c)$.  Let $\im(f)(c)$ denote the set-theoretic image of $f(c)$, and let $f^m(c)$ be the monomorphism $\im(f)(c)\inj X_a(c)$.  This defines $(-)^m$ on objects, and it is clear how to define it on morphisms.  We refer to $f^m$ as the image-sieve of $f$.
+
+We use the same notation in a similar situation.  Given a functor $F\taking (\Pre(\mcC)\down X)\to(\Pre(\mcD)\down Y)$, let $F^m$ denote the induced functor $$F^m\taking \Sieve_\mcC(X)\to\Sieve_\mcD(Y)$$ which is obtained by the composition $$\Sieve_\mcC(X)\to(\Pre(\mcC)\down X)\To{F}(\Pre(\mcD)\down Y)\To{(-)^m}\Sieve_\mcD(Y).$$
+
+\begin{example}
+
+Suppose that $f\taking C\to C'$ is a morphism in $\mcC$.  It induces a morphism of presheaves $f\taking rC\to rC'$, which gives rise to a sieve
+$f^m\taking \im(f)\inj rC'$.  Explicitly, for any object $c\in\mcC$, one sees that $\im(f)(c)$ is the set of morphisms $c\to C'$ which
+factor through $f$.  If $f$ is a monomorphism, then $\im(f)=rC$ and $f^m=f$.
+
+\end{example}
+
+Let $F\taking\Pre(\mcD)\to\Pre(\mcC)$ be a functor, $\mcA$ a category, and $Y\taking\mcA\to\Pre(\mcD)$ a functor.  $$\bfig
+\square/<-`>`=`<-/[\Pre(\mcD)`\mcA`\Pre(\mcC)`\mcA.;Y`F`\id_\mcA`FY] \efig$$  One defines $$F_*=(\Down_F Y)^m\taking\Sieve_\mcD(Y)\to\Sieve_\mcC(FY).$$
+
+\begin{lemma}\label{adj to push}
+
+Let $F\taking\Pre(\mcD)\to\Pre(\mcC)$ be a functor, $\mcA$ a category, and $Y\taking\mcA\to\Pre(\mcD)$ a functor.  The functor $F_*$ has a right adjoint $F^\m1\taking\Sieve_\mcC(FY)\to\Sieve_\mcD(Y).$
+
+\end{lemma}
+
+\begin{proof}
+
+For a sieve $j\taking\tau\inj FY$, define $F^\m1(j)\taking F^\m1(\tau)\inj Y$ to be the sieve whose value on $T\in\mcD$ is the set $$F^\m1(\tau)(T)=\{h\taking T\to Y|F(h)\in \tau(FT).\}$$
+
+Let $i\taking\sigma\inj Y$ be a sieve on $Y$.  By the nature of sieve categories, the sets $\Hom_{\Sieve_\mcD(Y)}(\sigma,F^\m1(\tau))$ and $\Hom_{\Sieve_\mcC(FY)}(F_*\sigma,\tau)$ are either empty or singleton.  The former set is empty if and only if there exists an object $T\in\mcD$ and a morphism $h\taking T\to X$ such that $h\in\sigma(T)$ and $h\not\in F^\m1(\tau)(T)$.  This is the case if and only if $F(h)\in F_*\sigma(FT)$ and $F(h)\not\in \tau(FT)$, which is the case if and only if $\Hom_{\Sieve_\mcC(FY)}(F_*\sigma,\tau)$ is empty.
+
+\end{proof}
+
+\begin{definition}
+
+Let $F\taking\Pre(\mcD)\to\Pre(\mcC)$ be a functor, $\mcA$ a category, and $Y\taking\mcA\to\Pre(\mcD)$ a functor.  We refer to $F_*\taking\Sieve_\mcD(Y)\to\Sieve_\mcC(FY)$ as the {\em pushforward along $F$} functor, and to $F^\m1\taking\Sieve_\mcC(FY)\to\Sieve_\mcD(Y)$ as the {\em pullback along $F$} functor.
+
+\end{definition}
+
+Let $X\taking\mcA\to\Pre(\mcD)$ and $Y\taking\mcA\to\Pre(\mcD)$ be functors, and let $\beta\taking X\to Y$ be a natural transformation between them $$\bfig
+\square/<-`=`=`<-/[\Pre(\mcD)`\mcA`\Pre(\mcD)`\mcA.;X```Y] \morphism(290,190)|l|/<=/<0,120>[`;\beta] \efig$$  Then $\beta$ induces $(\Down\beta)\taking(\Pre(\mcD)\down X)\to(\Pre(\mcD)\down Y)$, and we denote $(\Down\beta)^m$ by $$\beta_*\taking\Sieve_\mcD(X)\to\Sieve_\mcD(Y).$$  With a proof similar to that of Lemma \ref{adj to push}, one can show that $\beta_*$ has a right adjoint $$\beta^\m1\taking\Sieve_\mcD(Y)\to\Sieve_\mcD(X).$$  We refer to $\beta_*$ as the {\em pushforward along $\beta$} functor and to $\beta^\m1$ as the {\em pullback along $\beta$} functor.
+
+%%%
+
+\comment{DELETED 1}
+
+%%%
+
+\subsection{Covering Sieves}
+
+\begin{definition}
+
+Let $\mcC$ be a category.  Choose a subset $\Cov_\mcC\ss\Ob(\Sieve_\mcC)$, and for each presheaf $X\in\Pre(\mcC)$, let
+$\Cov_\mcC(X)$ denote the subset of $\Cov_\mcC$ that are sieves on $X$.  Elements in $\Cov_\mcC$ are called {\em covering sieves}, and elements in $\Cov_\mcC(X)$ are called {\em covering sieves on $X$}.
+
+A functor $F\taking\Pre(\mcD)\to\Pre(\mcC)$ is said to {\em push forward coverings} if, for every commutative diagram $$\bfig
+\square/<-`>`=`<-/[\Pre(\mcD)`\mcA`\Pre(\mcC)`\mcA;Y`F`\id_\mcA`FY] \efig$$ the dotted arrow in the diagram of sets $$\xymatrix{\Cov_\mcD(Y)\ar[d]\ar@{-->}[r]&\Cov_\mcC(FY)\ar[d]\\
+\Ob(\Sieve_\mcD(Y))\ar[r]_{F_*}&\Ob(\Sieve_\mcC(FY))}$$ exists, and makes the diagram commute (note that because the vertical arrows are
+monomorphisms, if the dotted arrow exists then it is unique).  The functor $F$ is said to {\em pull back coverings} if, for every commutative diagram as above, the dotted arrow in the diagram $$\xymatrix{\Cov_\mcC(FY)\ar[d]\ar@{-->}[r]&\Cov_\mcD(Y)\ar[d]\\
+\Ob(\Sieve_\mcC(FY))\ar[r]_{F^\m1}&\Ob(\Sieve_\mcD(Y))}$$ exists, and makes the diagram commute (note that because the vertical arrows are
+monomorphisms, if the dotted arrow exists then it is unique).
+
+A correspondence $\mcF\taking\mcC<\mcD$ is said to {\em push forward coverings} (resp. {\em pull back coverings}) if its left Kan extension $\lambda_r\mcF\taking\Pre(\mcD)\to\Pre(\mcC)$ does so.  Note that to say that $\mcF$ pushes forward coverings means that it takes coverings on $\mcD$ to coverings on $\mcC$. (One should think of the $<$ as pointing from $\mcD$ to $\mcC$.  See remark \ref{not for corr}.)
+
+Suppose $X,Y\taking\mcA\to\Pre(\mcD)$ are functors and $\beta\taking X\to Y$ is a natural transformation between them $$\bfig
+\square/<-`=`=`<-/[\Pre(\mcD)`\mcA`\Pre(\mcD)`\mcA.;X```Y] \morphism(290,190)|l|/<=/<0,120>[`;\beta] \efig$$  Then $\beta$ is said to {\em push forward (resp. pull back) coverings} if $\beta_*$ (resp. $\beta^\m1$) preserves coverings as above.
+
+A {\em localizing system} on $\mcC$ is a subset $\Cov_\mcC\ss\Ob(\Sieve_\mcC)$ satisfying the following condition:  \begin{itemize} \item If $P\in\Pre(\mcC)$ is a presheaf and $\alpha\taking\sigma\inj P$ is a sieve on $P$, then $\alpha$ is a covering sieve if and only if for every object $X\in\mcC$ and morphism of presheaves $f\taking rX\to P$, the pullback sieve $$f^\m1\alpha\taking f^\m1\sigma\inj rX$$ is a covering sieve.\end{itemize} 
+
+Let $X\in\Pre(\mcC)$ be a presheaf, let $i\taking\sigma\inj X$ and $j\taking\tau\inj X$ be sieves on $X$, and let $g\taking\tau\to\sigma$ be a morphism of sieves on $X$ (note that $g$ is automatically a monomorphism of presheaves).  Define $g\taking\tau\to\sigma$ to be a {\em covering morphism} if, when considered as a sieve on $\sigma$, it is a covering sieve (i.e. $g\in\Cov_\mcC(\sigma)$).
+
+\end{definition}
+
+Fix an object $X\in\Pre(\mcC)$ and a localizing system $\Cov_\mcC$.  One would like to think of $\Cov_\mcC(X)$ as a category, whose objects are covering sieves on $X$ and whose morphisms are covering morphisms of sieves on $X$.  However, suppose that $i\taking\sigma\inj X$ is a covering sieve and that $g\taking\tau\inj\sigma$ is a covering sieve.  It is not guaranteed that the composition $gi\taking\tau\inj\ X$ is a covering sieve.  In fact, it is not even guaranteed that $\id_X\taking X\to X$ is a covering sieve.  To remedy these facts, and the fact that covering sieves should be akin to epimorphisms, we have the following definition.
+
+\begin{definition}\label{epitype}
+
+Let $\mcC$ be a category and $\mcB\ss\mcC$ a subcategory.  Suppose that for every pair of composable morphisms $A\To{f}B\To{g}C$ in $\mcC$,  if the composition $gf$ is in $\mcB$, then $g$ is also in $\mcB$.  Then we say that $\mcB$ is an {\em epitype subcategory} of $\mcC$. 
+
+\end{definition}
+
+\begin{definition}  \label{gro top}
+
+Let $\mcC$ be a category and let $\Cov_\mcC$ be a localizing system such that, for each $C\in\mcC$, the identity morphism $\id_C$ is a covering sieve on $C$.  If, for each $X\in\Pre(\mcC)$, the covering sieves and covering
+morphisms on $X$ form an epitype subcategory of $\Sieve_\mcC(X)$, then we say that $\Cov_\mcC$ is {\em a Grothendieck Topology on
+$\mcC$}.  In this case, we let $\Cov_\mcC(X)$ denote the {\underline category} of covering sieves and covering morphisms on $X$, for each $X$, and we refer to the pair $(\mcC,\Cov_\mcC)$ as a {\em site}.
+
+\end{definition}
+
+The above definition is equivalent to the usual one, for example as found in \cite[3.2.4]{Bor3}, which we show in the following
+Lemma.
+
+\begin{lemma}
+
+Let $\mcC$ be a category and let $\Cov_\mcC$ be a localizing system on $\mcC$.  Then $\Cov_\mcC$ is a Grothendieck topology if and
+only if the following conditions hold. \begin{enumerate} \item For each $C\in\mcC$, the identity sieve $C\to C$ is in
+$\Cov_\mcC(C)$.\item If $\sigma$ is in $\Cov_\mcC(C)$ and $f\taking D\to C$ is a morphism in $\mcC$, then $f^\m1\sigma$ is in
+$\Cov_\mcC(D)$. \item Let $C\in\mcC$ be an object, $\tau\in\Sieve_\mcC(C)$ a sieve on $C$, and $\sigma\in\Cov_\mcC(C)$ a
+covering sieve.  If for each composition $f\taking D\to\sigma\to C$, the pullback $f^\m1\tau$ is in $\Cov_\mcC(D)$, then
+$\tau\in\Cov_\mcC(C)$.\end{enumerate}
+
+\end{lemma}
+
+\begin{proof}
+
+Axiom 3 is equivalent to axiom \begin{description}\item[3'] Let $C\in\mcC$ be an object, $\tau\inj C$ a sieve on $C$ and $\sigma\inj C$ a
+covering sieve.  If the pullback $\tau\cross_C\sigma\inj\sigma$ is a covering sieve of $\sigma$, then $\tau$ is a covering sieve of $C$.\end{description}
+
+First, suppose that $\Cov_\mcC$ is a Grothendieck topology in our sense.  We prove each of the three axioms.
+
+\begin{enumerate}
+
+\item By definition.
+
+\item This follows from the definition of $\Cov_\mcC$ being a localizing system.
+
+\item Consider the diagram $$\xymatrix{\tau\cross_CD\ar[r]\ar[d]\ullimit&D\ar[d]\\ \tau\cross_C\sigma\ar[r]\ar[d]\ullimit&\sigma\ar[d]\\ \tau\ar[r]&C.}$$  By assumption, the top map is a covering sieve for any map $D\to\sigma$.  Hence, by definition, the middle map $\tau\cross_C\sigma\to\sigma$ is a covering sieve.  Since covering sieves form a category, the composition $\tau\cross_C\sigma\to\sigma\to C$ is a covering sieve.  Finally, since $\Cov_\mcC$ is an epitype subcategory, $\tau\to C$ must also be a covering sieve.
+
+\end{enumerate}
+
+Now suppose that the three axioms hold.  It suffices to show that for any presheaf $X\in\Pre(C)$, the covering sieves on $X$ form an epitype subcategory of $\Sieve_\mcC(X)$.  First we need to show that it forms a subcategory.  If $f\taking A\to B$ and $g\taking B\to C$ are covering sieves, then form the pullback square $$\xymatrix{A\ar[r]^f\ar[d]\ullimit&B\ar[r]^\id\ar[d]\ullimit&B\ar[d]^g\\ A\ar[r]_f&B\ar[r]_g&C}$$  Since the top composition is a covering sieve, the bottom one is too by axiom 3.  
+
+Finally, to show that it is an epitype subcategory, suppose that the composition $A\to B\to C$ is a covering sieve.  Form the pullback diagram $$\xymatrix{A\ar[r]\ar[d]\ullimit&A\ar[d]\\ B\ar[r]\ullimit\ar[d]& B\ar[d]\\ B\ar[r]&C.}$$  Since the vertical composition is a covering sieve, axiom 3' implies that $B\to C$ is a covering sieve if $A\to A$ is.
+
+\end{proof}
+
+\begin{definition}
+
+Suppose that $(\mcC,\Cov_\mcC)$ is a Grothendieck site and $F\taking\Pre(\mcC)\to\Pre(\mcD)$ is a functor.  Then the {\em $F$-weak topology on $\Pre(\mcD)$} is the weakest Grothendieck topology under which $F_*$ preserves covering sieves.  Given a functor $G\taking\Pre(\mcD)\to\Pre(\mcC)$, the {\em $G$-strong topology on $\Pre(\mcD)$} is the strongest topology under which $G^\m1$ preserves covering sieves.
+
+\end{definition}
+
+\begin{definition}
+
+Let $(\mcC,\Cov_\mcC)$ be a site.  A morphism $f\taking P\to Q$ of presheaves on $\mcC$ is called a {\em covering presheaf on $Q$} if the image 
+sieve $f^m:\im(f)\inj Q$ is a covering sieve on $Q$.
+
+\end{definition}
+
+\begin{definition}
+
+Let $\mcC$ be a category.  Given a morphism $f\taking P\to Q$ of presheaves on $\mcC$,
+let $f^\m1\taking(\Pre(\mcC)\down Q)\to(\Pre(\mcC)\down P)$ denote the functor which sends each object $g\taking R\to Q$ to its pullback $$f^\m1(g)\taking P\cross_QR\to P$$ along $f$.  That is, define $f^\m1$ to be the functor which sends right arrows to left arrows in the diagram $$\Pull{P\cross_QR}{R}{P}{Q.}{}{f^\m1(g)}{g}{f}$$
+
+\end{definition}
+
+\begin{lemma}\label{im comm wit pull}
+
+Let $\mcC$ be a category, and $P\To{f}Q\From{g}R$ a diagram of presheaves on $\mcC$.  The image-sieve functor commutes with pullback in
+the sense that there is a natural isomorphism of sieves on $P$, $$f^\m1(g^m))\iso f^\m1(g)^m.$$
+
+\end{lemma}
+
+\begin{proof}
+
+Consider the diagram $$\xymatrix{&P\cross_QR\ar[r]^{f^\m1(g)}\ar[dl]\ar[d]\ullimit&R\ar[d]\\
+\im(\pi_1)\ar@{-->}[r]^-{i}\ar[dr]_{f^\m1(g)^m}&P\cross_Q\im(g)\ullimit\ar[r]\ar[d]^{f^\m1(g^m)}&\im(g)\ar[d]^{g^m}\\ &P\ar[r]_f&Q,}$$ in which $\pi_1\taking P\cross_Q R\to P$ is the first
+projection.  Since pullbacks preserve monomorphisms, the map $f^\m1(g^m)\taking P\cross_Q\im(g)\to P$ is a monomorphism.  The dotted arrow $i$ exists
+because $\im(\pi_1)\to P$ is the initial monomorphism through which $\pi_1$ factors.
+
+We need to show that $i$ is an isomorphism.  It must be a monomorphism, so it suffices to show that $i$ is an
+epimorphism.  For $C\in\mcC$, an element of $(P\cross_Q\im(g))(C)$ consists of a morphism $a\taking C\to P$ for which a dotted arrow exists
+in the diagram $$\bfig\square/-->`->`->`->/[C`R`P`Q;`a`g`f]\efig$$ making it commute.  Given such a morphism $a$, choose a morphism $C\to
+R$ making the diagram commute, and one gets an element of $(P\cross_QR)(C)$, which then factors through $\im(\pi_1)(C)$, providing the
+necessary lift.
+
+\end{proof}
+
+\begin{lemma}\label{covering presheaves}
+
+Let $(\mcC,\Cov_\mcC)$ be a site, and let $g\taking R\to Q$ be a morphism of presheaves on $\mcC$.  Then $g$ is a covering presheaf if
+and only if, for all objects $C\in\mcC$ and maps $f\taking rC\to Q$, the pullback  $f^\m1(g)\taking f^\m1 R\to rC$ is a covering presheaf.
+
+\end{lemma}
+
+\begin{proof}
+
+Follows from Lemma \ref{im comm wit pull}.
+
+\end{proof}
+
+\begin{proposition}
+
+Let $(\mcC,\Cov_\mcC)$ be a site, and let $g\taking R\to Q$ be a morphism of presheaves on $\mcC$.  Then $g$ is a covering presheaf if
+and only if it is a generalized cover in the sense of \cite{DHI}
+
+\end{proposition}
+
+\begin{proof}
+
+Recall that $g\taking R\to Q$ is a generalized cover in the sense of \cite{DHI} if it has the following property: given any $C\in\mcC$ and map $rC\to
+Q$, there is a covering sieve $i\taking \sigma\to rC$ such that for every element $U\to C$ in $\sigma(U)$, the composite $rU\to rC\to Q$ lifts through
+$g$.  No compatibility between the various compositions $rU\to R$ is required.
+
+If $g$ is a covering presheaf, then for any map $f\taking rC\to Q$, the pullback $$f^\m1(g)\taking rC\cross_QR\to rC$$ is a covering presheaf by Lemma \ref{covering presheaves}, and its image $f^\m1(g)^m\taking\im(f^\m1(g))\to rC$ is a
+covering sieve with the above property; i.e. $g$ is a generalized cover.
+
+On the other hand, suppose that $g$ is a generalized cover.  Suppose that $i\taking\sigma\to rC$ is a covering sieve with the required property.
+Then for any $rU\to \sigma$, there is a lift $rU\to R$, hence a lift $rU\to rC\cross_QR$, hence a lift $rU\to\im(\pi_1)$; see the
+diagram $$\xymatrix{&&rC\cross_QR\ar[r]\ar[d]&R\ar[dd]^g\\ &&\im(\pi_1)\ar[d]^{\pi_1^m}&\\
+rU\ar[r]\ar@{-->}[uurrr]\ar@{-->}[uurr]\ar@{-->}[urr]&\sigma\ar[r]_i&rC\ar[r]_f&Q.}$$  The map $rU\to\im(\pi_1)$ is unique since $\pi_1^m$ is a monomorphism.  Thus there is an induced morphism $\sigma\to\im(\pi_1)$ through
+which $i$ factors.  Since $(\mcC,\Cov_\mcC)$ is a site, the covering morphisms form an epitype subcategory.  Therefore, since $i$ is a covering sieve, so is
+$\pi_1^m$; hence $g$ is a covering presheaf by Lemma \ref{covering presheaves}.
+
+\end{proof}
+
+%%%
+
+\comment{DELETED 2}
+
+%%%
+
+\subsection{$(\mcC,\Cov_\mcC)$-spaces}
+
+In this section, one should think of $(\mcC,\Cov_\mcC)$ as the category of topological spaces with the usual topology.  Note that the category of subsheaves of a representable sheaf $rX$ (where $X\in\Top$) is isomorphic to the category $\Op(X)$ of open subsets of $X$.
+
+%%%
+
+\comment{DELETED 3}
+
+%%%
+
+\begin{definition}
+
+Let $\mcC=(\mcC,\Cov_\mcC)$ be a site.  Define a {\em $\mcC$-space} to be a site $(\Sub(X),\Cov_{\Sub(X)})$, where $X\in\mcC$ is an object, $\Sub(X)$ is the category of subsheaves of $rX$, and $\Cov_{\Sub(X)}$ is the induced topology.  Write $\Cov_X$ instead of $\Cov_{\Sub(X)}$.  A morphism $f\taking(\Sub(X),\Cov_X)\to(\Sub(Y),\Cov_Y)$ is a functor $\Sub(Y)\to\Sub(X)$ which pushes forward covering sieves.  We denote the category of $\mcC$-spaces by $\mcC-\spc$.
+
+There is always a faithful functor $\mcC\to\mcC-\spc$.  If it is an isomorphism of categories, then we say that $\mcC$ is {\em sober}, and we denote $\mcC$-spaces $(\Sub(X),\Cov_{\Sub(X)})$ simply by $X$. 
+
+\end{definition}
+
+\begin{example}
+
+Let$\mcC=\tn{Sob}$ be the category of sober topological spaces with the standard (open covers) topology.  This is a sober site; that is, the category $\tn{Sob}-\spc$ is simply the category of sober topological spaces.
+
+\end{example}
+
+%%%
+
+\comment{DELETED 4}
+
+%%%
+
+\subsection{Sheaves}\note{perhaps put this after definition \ref{ringed cat}}
+
+\begin{definition}
+
+Let $I$ be a Reedy category, let $I^\rhd$ denote the right-coning of $I$, and let $(\mcC,\Cov_\mcC)$ be a site.  Suppose given a cofibrantly generated model structure $(W,C,F)$ on the functor category $\Sets^I$.  In this case, we will say that $(I,(\mcC,\Cov_\mcC),(W,C,F))$, or just $I$ if the rest is understood, is a {\em ready indexing category}.
+
+In this case, $\Pre(\mcC)^I$ has an induced model structure in which the weak equivalences are determined objectwise on $\mcC$.  A functor $F\taking I^\rhd\to\Pre(\mcC)$ is called {\em an $I$-hypercover} if,
+for all $i\in I$, the natural map $$F(i)\to\lim_{\partial(i\down \overleftarrow{I^\rhd})} F$$ is a covering presheaf.  
+
+Given an $I$-hypercover $F$, let $\partial F\taking I\to\Pre(\mcC)$ be the restriction of $F$ to $I$, let $F'\in\Pre(\mcC)$ be the restriction of $F$ to the cone point, and let $d_F\taking\hocolim(\partial F)\to F'$ be the induced map.  Let $$d_F^m\taking\im(d_F)\inj F'$$ denote the image-sieve of $d_F$.  We
+call the localization of $\Pre(\mcC)^I$ at the set $\{d_F^m|F \tn{ is an } I-\tn{hypercover}\}$ the {\em Jardine category of $I$-presheaves on $\mcC$} and denote it
+$I\Pre(\mcC)$.
+
+\end{definition}
+
+\begin{example}
+
+The one morphism category $I=[0]$ is a Reedy category and the trivial model structure on $\Sets=\Sets^I$ is cofibrantly generated.  Note that a covering $[0]$-hypercover is the same as a covering
+presheaf.  Thus, the Jardine category of $[0]$-presheaves is simply the ordinary category of sheaves on $\mcC$. 
+
+The simplicial indexing category $\Delta\op$ is also a Reedy category, and $\Sets^I$ has a model structure, the usual model structure on the category of simplicial sets; thus $\Delta\op$ is a ready indexing category.  A covering
+$\Delta\op$-hypercover is similar to a hypercover in the usual sense.  The only difference is that, according to \cite{DHI}, a
+hypercover must be the coproduct of representables in every degree whereas a $\Delta\op$-hypercover need not be.  However, it is easy to see that localizing $\Pre(\mcC)$ at
+the class of hypercovers is the same as localizing it at the class of $\Delta\op$-hypercovers.  Indeed, every hypercover is a $\Delta\op$-hypercover, and yet all  $\Delta\op$-hypercovers are acyclic fibrations (hence weak equivalences) after localizing at the class of hypercovers \note{citation?}.
+
+\end{example}
+
+Let $\mcC$ be a category and $C\in\mcC$ an object.  The Yoneda imbedding $r\taking\mcC\to\Pre(\mcC)$ induces a functor
+$r'\taking\Pre(\mcC)\to\Pre(\Pre(\mcC))$, sending $rX$ to $rrX$.  More explicitly, if $F\in\Pre(\mcC)$, then evaluating $r'(F)$ on a
+presheaf $G$ gives $$r'(F)(G)=\colim_{rX\to G}F(X),$$ where the colimit is taken over $(r\down G)$.  It is sometimes convenient to
+not mention $r'$ explicitly, just as one often does not mention the Yoneda imbedding explicitly.
+
+\begin{definition}
+
+Let $(\mcC,\Cov_\mcC)$ be a site and $I$ a ready indexing category.  An $I$-sheaf on $\mcC$ is a cofibrant-fibrant object in $I\Pre(\mcC)$.
+
+\end{definition}
+
+Thus if $I=[0]$, then an $I$-sheaf is just a sheaf, and if $I=\Delta\op$ then an $I$-sheaf is a cofibrant-fibrant simplicial presheaf in the Jardine model structure.
+
+\section{$\omcR$-ringed Categories and $\omcR$-ringed Spaces}
+
+\subsection{$\omcR$-ringed Categories}
+
+\begin{definition}
+
+A {\em category of affines} is a triple $\omcR=(\mcR,\Cov_\mcR,\mcL)$, where $(\mcR,\Cov_\mcR)$ is a Grothendieck site and $\mcL$ is a class of limit cones on $\mcR$.
+
+\end{definition}
+
+\begin{definition}
+
+Let $\mcR$ be a category and let $\mcL$ be a class of limit cones in $\mcR$.  Let $\mcC$ be a category and let $\mcF\taking\mcC<\mcR$ be a correspondence.  Then $\mcF$ is said to {\em preserve limit cones in $\mcL$} if, when considered as a functor $\mcF\taking\mcR\to\Pre(\mcC)$, each limit cone in $\mcR$ is sent to a limit cone in $\Pre(\mcC)$.
+
+\end{definition}
+
+\begin{definition}\label{ringed cat}
+
+Let $\omcR=(\mcR,\Cov_\mcR,\mcL)$ be a category of affines.  An {\em $\omcR$-ringed category} is a triple $(\mcC,\Cov_\mcC,\mcF)$, in which $(\mcC,\Cov_\mcC)$ is a Grothendieck site, and $\mcF\taking\mcC<\mcR$ is a correspondence which preserves limit cones in $\mcL$.  A morphism $$(\mcC,\Cov_\mcC,\mcF)\to(\mcD,\Cov_\mcD,\mcG)$$ of $\omcR$-ringed categories is a pair $(\mcH,a)$, where $\mcH\taking\mcC\to\Pre(\mcD)$ is a correspondence which pushes forward coverings, and $a\taking(\mcH\circ\mcF)\to\mcG$ is a natural transformation of correspondences $\mcR\to\Pre(\mcD)$.
+
+A {\em local $\omcR$-ringed category} is an $\omcR$-ringed category $(\mcC,\Cov_\mcC,\mcF)$ such that $\mcF_*\taking\Sieve_\mcR\to\Sieve_\mcC$ preserves coverings.  A morphism of local $\omcR$-ringed categories is a morphism $(\mcH,a)$ of $\mcR$-ringed categories, such that $a_*$ preserves coverings.
+
+\end{definition}
+
+\subsection{Examples}
+
+We now give several short examples and a few long examples to help motivate the preceding definitions.
+
+\begin{example}
+
+Fix a category of affines $\omcR$.  The initial object in the category of $\omcR$-ringed categories (and the initial object in the category of local $\omcR$-ringed categories) is $(\mcR,\Cov_\mcR,\id_\mcR)$.
+
+\end{example}
+
+\begin{example}
+
+The one-morphism category $\mcR=[0]$ has only one possible Grothendieck topology, and every functor $\mcR\to\Sets$ is automatically limit-preserving.  Thus an $[0]$-ringed category can be regarded as just a Grothendieck site $(\mcC,\Cov_\mcC)$ together with a presheaf of sets $\mcF$.
+
+\end{example}
+
+\begin{definition}
+
+Let $\Aff=\Rings\op$ denote the category of affine schemes, and let $\Cov_\Aff$ denote the Zariski topology on $\Aff$.  Let $\mcL_\Aff$ denote the class of all limit cones that exist on $\Aff$.  Let $\ol{\Aff}=(\Aff,\Cov_\Aff,\mcL_\Aff)$, and call it the {\em algebraic category of affines}.  An $\ol{\Aff}$-ringed category is called an {\em algebraic-ringed category} and a local $\ol{\Aff}$-ringed category is called a {\em local algebraic-ringed category}.
+
+\end{definition}
+
+\begin{lemma}\label{alg rin equ rin}
+
+Let $\mcR$ denote the category of correspondences $\mcF\taking[0]<\Aff$ for which the triple $([0],\Cov_{[0]},\mcF)$ is an algebraic-ringed site.  Then $\mcR$ is equivalent to the category of rings.
+
+\end{lemma}
+
+\begin{proof}
+
+A correspondence $\mcF\taking[0]<\Aff$ is simply a functor $F\taking\Aff\to\Sets$.  Let $R_F=F(\Spec(\ZZ[x])).$  If $F$ preserves all limits in $\Aff$, it is easy to show that the set $R_F$ has the structure of a ring; see \cite[]{Spi}.  On the other hand, every ring $A$ gives rise to a functor $\Hom_\Aff(\Spec(A),-)\taking\Aff\to\Sets$ which preserves all limits in $\Aff$.  One can show that these two operations are mutually inverse.
+
+\end{proof}
+
+\begin{proposition}\label{alg RS equ RS}
+
+Let $X$ be a topological space and $\Op(X)$ its category of open sets; let $\Cov_{\Op(X)}$ denote the Zariski topology on $\Op(X)$.  Let $\RS(X)$ denote the category of correspondences $\mcF\taking\Op(X)<\Aff$ for which the triple $(\Op(X),\Cov_{\Op(X)},\mcF)$ is an algebraic-ringed site.  Then $\RS(X)$ is equivalent to the category of ringed-space structures on $X$.
+
+\end{proposition}
+
+\begin{proof}
+
+A correspondence $\mcF\taking\Op(X)<\Aff$ is the same thing as a presheaf on $\Op(X)$ with values in the category $\Sets^\Aff$ of functors $\Aff\to\Sets$.  The condition that $\mcF$ preserve all limits in $\Aff$ is equivalent to the condition that, for all open sets $U\in\Op(X)$, the functor $\mcF(U,-)\taking\Aff\to\Sets$ preserves limits in $\Aff$; in other words, $\mcF(U,-)$ is a ring by Lemma \ref{alg rin equ rin}.  This completes the proof.
+
+\end{proof}
+
+\begin{proposition}
+
+Let $X, \Op(X),$ and $\Cov_{\Op(X)}$ be as in Proposition \ref{alg RS equ RS}.  Let $\LRS(X)$ denote the category of correspondences $\mcF\taking\Op(X)<\Aff$ for which the triple $(\Op(X),\Cov_{\Op(X)},\mcF)$ is a local algebraic-ringed site.  Then $\LRS(X)$ is equivalent to the category of local ringed-space structure on $X$.
+
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{example}
+
+Let $\mcE$ denote the category whose objects are Euclidean spaces $\RR^n$ and whose morphisms are smooth maps.  Let $\Cov_\mcE$ denote the Grothendieck topology inherited from the inclusion $i\taking\mcE\to\Top$.  Finally, let $\mcL$ denote the set of finite-product diagrams in $\mcE$ (e.g. $\RR^n\from\RR^{n+m}\to\RR^m$ is in $\mcL$).  Then $\ol{\mcE}=(\mcE,\Cov_\mcE,\mcL)$ is called {\em the $C^\infty$-category of affines} and an $\ol{\mcE}$-ring is called a $C^\infty$-ring.  These have been studied by Lawvere \cite{Law-Alg}, Moerdijk and Reyes \cite{MR}, and many others.
+
+\end{example}
+
+More generally, for any algebraic theory $T$, we get a notion of $T$-ringed space and local $T$-ringed space.  Recall that a theory $T$ is a category with objects $T_0,T_1,\ldots$ and isomorphisms $T_n\iso (T_1)^n$ identifying the $n$th object with the $n$th power of the first object.  A $T$-algebra is a product preserving functor from $T$ to $\Sets$.  In other words, if $\Cov_T$ is the indiscrete topology on $T$ and $\mcL$ is the set of product cones, then the category of $T$-algebras is equivalent to the category of $(T,\Cov_T,\mcL)$-ringed category structures on the terminal category $*$.  A presheaf of $T$-algebras on a site is a $(T,\Cov_T,\mcL)$-ringed category structure on that site.
+
+\subsection{$\omcR$-ringed spaces}
+
+In the following, one should think of $(\mcC,\Cov_\mcC)$ as the usual category of topological spaces.
+
+\begin{definition}
+
+Let $\omcR=(\mcR,\Cov_\mcR,\mcL)$ be a category of affines, let $\ol{\mcC}=(\mcC,\Cov_\mcC)$ be a site, and let $F\taking\mcR\to\mcC$ be a functor such that $\mcR$ has the $F$-strong topology and such that the functor $$F^*\taking\Sub(F(R))\to\Sub(R)$$ is an isomorphism of categories for any $R\in \mcR$.  \note{These conditions can probably be simplified.}
+
+An {\em $\omcR$-ringed $\ol{\mcC}$-space} is a 4-tuple $(\Sub(X),\Cov_X,\mcO_X,\nu)$, such that \begin{enumerate}\item  $X\in\mcC$ is an object, $\bfX=\Sub(X)$ is the category of subsheaves of the representable presheaf, $i_X\taking\Pre(\bfX)\to\Pre(\mcC)$ is the (left Kan extension) functor taking a presheaf of $\bfX$ to its underlying sheaf on $\mcC$, and $\Cov_X:=\Cov_{\bfX}$ is the induced topology on $\bfX$, \item $\mcO_X\taking\mcR\to\Pre(\bfX)$ is a correspondence under which $(\bfX,\Cov_X,\mcO_X)$ is an $\omcR$-ringed category, and \item $\nu\taking i_X\circ\mcO_X\to F$ is a natural transformation of functors $\mcR\to\Pre(\mcC)$. \end{enumerate}  In other words, an $\omcR$-ringed $\ol{\mcC}$-space is a $\ol{\mcC}$-space which is simultaneously an $\omcR$-ringed category over $\ol{\mcC}$.
+
+A morphism of $\omcR$-ringed $\ol{\mcC}$-spaces is a morphism of $\ol{\mcC}$-spaces which is simultaneously a morphism of $\omcR$-ringed categories over $\ol{\mcC}$.
+
+A {\em local $\omcR$-ringed $\ol{\mcC}$-space} is a $\ol{\mcC}$-space which is simultaneously a local $\omcR$-ringed category over $\ol{\mcC}$.  A morphism of local $\omcR$-ringed $\ol{\mcC}$-spaces is a morphism of $\omcR$-ringed $\ol{\mcC}$-spaces which is local as a morphism of $\omcR$-ringed categories.
+
+\end{definition}
+
+\begin{example}
+
+Let $(\Top,\Cov_\Top)$ be the Zariski topology on $\Top$ and let $\ol{\Aff}$ be the algebraic category of affines.  Let $F\taking\Aff\to\Top$ be the functor which takes an affine scheme to its underlying topological space.  Note that $\Aff$ has the$F$-strong topology, so $\Top$ underlies $\Aff$.  An $\ol{\Aff}$-ringed $(\Top,\Cov_\Top,F)$-space is just a ringed (topological) space in the usual sense, and a local $\ol{\Aff}$-ringed $(\Top,\Cov_\Top,F)$-space is a local ringed space in the usual sense.
+
+In general, if $\omcR$ is a category of affines and a correspondence $F\taking\Top<\omcR$ is understood, then we refer to a (local) $\omcR$-ringed $(\Top,\Cov_\Top,F)$-space simply as a (local) $\omcR$-ringed space.
+
+\end{example}
+
+\section{The Structure theorem}
+
+Fix a category of affines $\omcR=(\mcR,\Cov_\mcR,\mcL)$, a site $(\mcC,\Cov_\mcC)$ and a functor $F\taking\mcR\to\mcC$ such that $(\mcC,\Cov_\mcC,F)$ underlies $\mcR$.  Let $\LRS$ denote the category of local $\omcR$-ringed $\ol{\mcC}$-spaces; here we just call them local ringed spaces.  If $X\in\mcC$ is an object in $\mcC$, let $\bfX=\Sub(X)$ denote the category of subsheaves of $X$.
+
+Let $H\taking \mcR\op\cross\mcR\to\Sets$ denote the functor $\Hom_\mcR(-,-)$.  For any object $R\in\mcR$, let $H_R=\Hom(R,-)\taking\mcR\to\Sets$.
+
+The most fundamental local ringed spaces are those coming from $\mcR$.  For any $R\in\mcR$, there is an underlying space $F(R)$.  Let $\bfR=\Sub(F(R))$, and let $\mcH_R\taking\bfR\op\cross\mcR\to\Sets$ be the correspondence given by $$\mcH_R(U,S)=\Hom_{\Pre(\mcR)}(U,S).$$
+
+%%%
+
+\comment{DELETED 5}
+
+%%%
+
+\begin{theorem}
+
+Let $R\in\mcR$ and $C\in\mcC$.  Then there is a natural homotopy equivalence $$\Map_{\LRS}(????)$$ ???
+
+\end{theorem}
+
+\longnote{$F\taking\mcR\to\mcC$.  what is the natural presheaf on $F(R)$ so that the local-global theorem will hold?}
+
+\section{Simplifying assumptions}\label{sec:simplifying}
+
+\subsection{$\Op(X)$}
+
+Replacing $\Sieve(X)$ with $\Op(X)$ in some cases.
+
+\subsection{$C^\infty$-rings}
+
+Show, e.g., that a lot of what can be done with smooth rings can be done with $C^\infty$ rings.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%                                     DELETED STUFF:
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%
+
+\section{Deleted stuff}
+
+%\comment{DELETED 1
+
+\subsection{1}
+
+\begin{proposition}
+
+Let $\Adjoint{L}{\Pre(\mcD)}{\Pre(\mcC)}{R}$ be an adjunction, let $\mcA=[0]$, let $X\taking\mcA\to\Pre(\mcC)$ and $Y\taking\mcA\to\Pre(\mcD)$ be objects, and let
+$\beta^\flat\taking LX\to Y$ be a natural transformation.  The functors $$\Adjoint{\beta_*}{\Sieve_\mcD(Y)}{\Sieve_\mcC(X)}{\beta^\m1}$$ are adjoint.
+
+\end{proposition}
+
+\begin{proof}
+
+Let $f\taking\sigma\inj Y$ and $g\taking\tau\inj X$ be sieves.  We need to show that there is a natural isomorphism $$\Hom_{\Sieve_\mcC(X)}(\beta_*(f),g)\iso\Hom_{\Sieve_\mcD(Y)}(f,\beta^\m1(g)).$$ We begin by writing out commutative diagrams representing each side.
+
+Consider the diagram \begin{eqnarray}\label{eqn: on adj1} \xymatrix{L\sigma\ar[r]^{Lf}\ar[d]&LY\ar[d]^{\beta^\flat}\\ \im(\beta Lf)\ar@{(->}[r]\ar@{-->}[d]_i&X\ar@{=}[d]\\ \tau\ar@{(->}[r]_g&X.}\end{eqnarray} The set $I$ of dotted arrows $i$ making the diagram commute is equal to $\Hom_{\Sieve_\mcC(X)}(\beta_*(f),g)$.  Consider also the diagram \begin{eqnarray}\label{eqn:on adj2} \xymatrix{\sigma\ar@{(->}[r]^f\ar@{-->}[d]_j&Y\ar@{=}[d]\\ \beta^\m1\tau\ullimit\ar@{(->}[r]\ar[d]&Y\ar[d]^{\beta^\sharp}\\ R\tau\ar@{(->}[r]_{Rg}&RX.}\end{eqnarray} The set $J$ of dotted arrows $j$ making the diagram commute is equal to $\Hom_{\Sieve_\mcD(Y)}(f,\beta^\m1(g)).$  We must show that there is a natural isomorphism $I\iso J$.
+
+The set $J$ of maps $j\taking\sigma\to\beta^\m1\tau$ which make Diagram \ref{eqn:on adj2} commute is in one-to-one correspondence with the set of maps $$\{j'\taking\sigma\to R\tau| (Rg)j'=\beta^\sharp f\}$$ which in turn is in one-to-one correspondence with the set $$S=\{i'\taking L\sigma\to\tau|gi'=\beta^\flat Lf\}.$$  Since $g$ is a monomorphism, the set $S$ is either empty or consists of a single element.  If it is empty then one easily sees that $I$ is empty; similarly if $S$ consists of a single element then so does $I$.  Thus $I\iso J$.
+
+\end{proof}
+
+\begin{proposition}\label{adj push pull}
+
+Let $\Adjoint{L}{\Pre(\mcD)}{\Pre(\mcC)}{R}$ be an adjunction, let $X\taking\mcA\to\Pre(\mcC)$ and $Y\taking\mcA\to\Pre(\mcD)$ be functors, and let
+$\beta^\flat\taking LX\to Y$ be a natural transformation.  The functors $$\Adjoint{\beta_*}{\Sieve_\mcD(Y)}{\Sieve_\mcC(X)}{\beta^\m1}$$ are adjoint.
+
+\end{proposition}
+
+\begin{proof}
+
+Let $a,b\in\mcA$ be objects and let $f\taking\sigma\inj Y_a$ and $g\taking\tau\inj X_b$ be sieves.  We need to show that there is a natural isomorphism $$\Hom_{\Sieve_\mcC(X)}(\beta_*(f),g)\iso\Hom_{\Sieve_\mcD(Y)}(f,\beta^\m1(g)).$$ We begin by writing out commutative diagrams representing each side.
+
+Consider the diagram \begin{eqnarray}\label{eqn:on adj1} \xymatrix{L\sigma\ar[r]^{Lf}\ar[d]&LY_a\ar[d]^{\beta^\flat}\\ \im(\beta^\flat Lf)\ar@{^(->}[r]\ar@{-->}[d]_i&X_a\ar@{-->}[d]^{X_k}\\ \tau\ar@{^(->}[r]_g&X_b}\end{eqnarray} in $\Sieve_\mcC(X)$.  The set $I$ of pairs $(i,k)$ of morphisms making Diagram \ref{eqn:on adj1} commute is equal to $\Hom_{\Sieve_\mcC(X)}(\beta_*(f),g)$.  Consider also the diagram \begin{eqnarray}\label{eqn:on adj2} \xymatrix{\sigma\ar@{^(->}[r]^f\ar@{-->}[d]_j&Y_a\ar@{-->}[d]^{Y_k}\\ \beta^\m1\tau\ullimit\ar@{^(->}[r]\ar[d]&Y_b\ar[d]^{\beta^\sharp}\\ R\tau\ar@{^(->}[r]_{Rg}&RX_b}\end{eqnarray} in $\Sieve_\mcD(Y)$. The set $J$ of pairs $(j,k)$ of morphisms making Diagram \ref{eqn:on adj2} commute is equal to $\Hom_{\Sieve_\mcD(Y)}(f,\beta^\m1(g)).$  We must show that there is a natural isomorphism $I\iso J$.
+
+Fix a morphism $k\taking a\to b$ in $\mcA$.  Since $\beta^\sharp$ is a natural transformation,  the diagram $$\Sq{Y_a}{RX_a}{Y_b}{RX_b}{\beta^\sharp}{Y_k}{RX_k}{\beta^\sharp}$$ commutes.  The set $J_k$ of maps $j\taking\sigma\to\beta^\m1\tau$ which make Diagram \ref{eqn:on adj2} commute is in one-to-one correspondence with the set of maps $$\{j'\taking\sigma\to R\tau| (Rg)j'=\beta^\sharp Y_kf\}=\{j'\taking\sigma\to R\tau|(Rg)j'=(RX_k)\beta^\sharp f\}$$ which in turn is in one-to-one correspondence with the set $$S_k=\{i'\taking L\sigma\to\tau|gi'=X_k\beta^\flat (Lf)\}.$$  Since $g$ is a monomorphism, the set $S_k$ is either empty or consists of a single element.  By the universal property of the image functor $\im$, one sees that if it is empty then one easily sees that $I_k$ is empty; similarly if $S_k$ consists of a single element then so does $I_k$.  Thus $I_k\iso J_k$ and $I\iso J$.
+
+\end{proof}
+
+\begin{example}
+
+We will give a concrete example of $\beta_*$ and $\beta^\m1$.
+
+Recall that any correspondence $\mcF\taking\mcC<\mcD$ gives rise to an adjunction $$\Adjoint{L}{\Pre(\mcD)}{\Pre(\mcC)}{R}.$$  For concreteness, let $F\taking\mcD\to\mcC$ be a functor and $\mcF=[-,F(-)]_\mcC$.  Also suppose that $\mcA=[0]$ and that $X\in\mcC$ and $Y\in\mcD$ are objects.  Let $\beta^\flat\taking LY\to X$ be a morphism and let $\beta^\sharp$ be its right partner.
+
+Let $g\taking\sigma\inj Y$ be a sieve.  Then $\beta_*g$ is the bottom arrow in the diagram $$\Sq{L\sigma}{LY}{I}{X,}{Lg}{}{\beta^\flat}{}$$ where $I=\im(\beta^\flat \circ (Lg))$.  It is easy to see that for any $c\in\mcC$, one has $$I(c)=\{h\taking c\to X|\exists h'\taking c\to L\sigma \tn{ such that } \beta^\flat (Lg)h'=h\}.$$  That is, $\beta_*$ gives the maps to $X$ which factor through $L\sigma$.
+
+Now let $k\taking\tau\inj X$ be a sieve.  The sieve $\beta^\m1 k$ is the top arrow in the pullback diagram $$\Pull{\beta^\m1\tau}{Y}{R\tau}{RX.}{\beta^\m1 k}{}{\beta^\sharp}{Rk}$$  For any $d\in D$, one has $$\beta^\m1\tau(d)=\{h\taking d\to Y|\beta^\sharp h\in R\tau(d)\}.$$  That is, $\beta^\m1$ gives the maps to $Y$ whose composition with $\beta^\sharp$ factor through $R\tau$.
+
+\end{example}
+
+Unfortunately, the variance in Proposition \ref{adj push pull} is not quite fitting.  For example, recall that a functor $F\taking\mcD\to\mcC$ induces a correspondence $\mcF=[-,F(-)]_\mcC$.  However, given $(\gamma\taking C\to F(D))\in\mcF(C,D)$ one cannot apply Proposition \ref{adj push pull} because  requires a map $F(D)\to C$, rather than a map $C\to F(D)$. Again, the variance is backwards.  There is a remedy, but it requires mixing left and right adjoints.
+
+\longnote{Perhaps the following can be generalized to accomidate $\mcA$ not necessarily [0].}
+
+\begin{construction}\label{con:funcs betw siev cats}
+
+Let $\mcC$ and $\mcD$ be categories.  Suppose given a correspondence $\mcF\taking\mcC<\mcD$, objects $C\in\mcC$ and $D\in\mcD$, and an element $\gamma\in\mcF(C,D)$.  Recall that we have an adjunction $$\Adjoint{L:=\lambda_r\mcF}{\Pre(\mcD)}{\Pre(\mcC)}{\rho_r\mcF=:R}$$ and that $L(rD)=\mcF(-,D)$.  We have a natural transformation diagram $$\bfig
+\square/<-``=`<-/[\Pre(\mcD)`{[0]}`\Pre(\mcC)`{[0]};rD```\mcF(-,D)]
+\square(0,-500)/`=`=`<-/[\Pre(\mcC)`{[0]}`\Pre(\mcC)`{[0]};```rC]
+\morphism(15,70)<0,360>[`;R] \morphism(-15,430)<0,-360>[`;L]
+\morphism(250,190)|r|/<=/<0,120>[`;\id]
+\morphism(250,-310)|r|/=>/<0,120>[`;\gamma]
+
+\efig$$
+
+This gives rise to two functors: \begin{align}\Sieve_\mcD(D)&\To{L_*}\Sieve_\mcC(\mcF(-,D))\To{\gamma^\m1}\Sieve_\mcC(C)\\
+\Sieve_\mcC(C)&\To{\gamma_*}\Sieve_\mcC(\mcF(-,D))\To{L^\m1}\Sieve_\mcD(D).\end{align}
+\end{construction}
+
+%DELETED 1}
+
+%%%%%
+
+%\comment{DELETED 2
+
+\subsection{2}
+
+\begin{definition}
+
+Let $(\mcC,\Cov_\mcC)$ and $(\mcD,\Cov_\mcD)$ be sites, let $\mcF\taking\mcC<\mcD$ be a correspondence.  We say that $\mcF$ is a {\em morphism of sites} if it pulls back covering sieves.
+
+\end{definition}
+
+\begin{warning}\label{warn:pull push cov sieves}
+
+This definition can be a bit misleading.  Suppose $X$ and $Y$ are topological spaces and $F\taking\Op(Y)\to\Op(X)$ is a functor; say $F=f^\m1$ is induces by a continuous map $f\taking X\to Y$.  The functor $F$ is a morphism of sites if covering sieves on $Y$ are taken to covering sieves on $X$.  While it may seem that $F$ is ``pushing forward" covering sieves, one must remember to phrase everything in the language of correspondences.  The functor $F$ induces a correspondence $\mcF\taking\Op(X)<\Op(Y)$ by $$\mcF(U,V)=\Hom_{\Op(X)}{(U,f^\m1(V))}.$$  Again, $\mcF$ (and hence $F$) is a morphism of sites if it pulls back coverings on $Y$ to covering on $X$.
+
+\end{warning}
+
+%DELETED 2}
+
+%%%%%
+
+%\comment{DELETED 3
+
+\subsection{3}
+
+Grothendieck sites are often given in a certain coherent form.
+
+\begin{definition}
+
+Let $\mcC$ be a category.  A subcategory $i\taking\mcD\ss\mcC$ is called a {\em universal monotype subcategory} (or simply {\em unimono}) if \begin{enumerate}
+
+\item $\mcB$ is a monotype subcategory, and
+\item if $f\taking A\to B$ is a map in $\mcD$ and $g\taking B'\to B$ is a map in $\mcC$, then the fiber product $A'$ in the diagram \beqn{eqn:unimono}\Pull{A'}{A}{B'}{B}{g'}{f'}{f}{g}\eeqn exists in $\mcC$, and the map $f'$ is in $\mcD.$
+
+\end{enumerate}
+
+A limit diagram as in \ref{eqn:unimono} is called a {\em base change diagram (of $f$ by $g$)}.
+
+\end{definition}
+
+\begin{example}
+
+The subcategory $\Sieve_\mcC(X)\inj(\Pre(\mcC)\down X)$ is a unimono subcategory.
+
+Let $\Op\ss\Top$ be the subcategory consisting of open inclusions in $\Top$.  Then $\Op$ is unimono, because the pullback of an open inclusion under a continuous map is an open inclusion.
+
+\end{example}
+
+\begin{lemma}
+
+Let $i\taking\mcD\ss\mcC$ be a unimono subcategory.  Then $\mcD$ has fiber products (i.e. each $\Lambda^2_2$ diagram $A\to B\from C$ in $\mcD$ has a limit in $\mcD$), and $i$ preserves fiber products.
+
+\end{lemma}
+
+\begin{proof}
+
+Let $A\To{f}B\From{g}C$ be a $\Lambda^2_2$ diagram in $\mcD$.  Then the fiber product $A\cross_BC$ exists in $\mcC$ and, with reference to the diagram $$\Pull{A\cross_BC}{C}{A}{B,}{f'}{g'}{g}{f}$$ both $f'$ and $g'$ are in $\mcD$.  It suffices to show that $A\cross_BC$ (which is an object in $\mcD$) is a limit in $\mcD$. Suppose one has an object $D$ and maps $G\taking D\to A$ and $F\taking D\to B$ in $\mcD$ such that $fG=gF$.  Then one obtains a map $\ell\taking D\to A\cross_BC$ in $\mcC$ such that $g'\ell=G$ and $f'\ell=F$.  Since $\mcD\ss\mcC$ is a monotype subcategory, the morphism $\ell$ must in fact be in $\mcD$, which renders $A\cross_BC$ a limit in $\mcD$.
+
+\end{proof}
+
+Let $i\taking\mcD\inj\mcC$ be a unimono subcategory.  For every object $X\in\mcC$, one can consider $X$ as an object in $\mcD$, and has the category $\mcD_{/X}:=(\mcD\down X)$ (we use this notation to make clear that we are {\em not} referring to the very different category $(i\down X)$).
+For any $X\in\mcC$, let $i_X\taking\mcD_{/X}\to\mcC$ be the composition of $i$ with the evaluation functor $\mcD_{/X}\to \mcD$ given by $(U\to X)\mapsto U$.
+
+Endow $\mcD$ with the $i$-strong topology, and endow $\mcD_{/X}$ with the $i_X$-strong topology.
+
+A morphism $f\taking X\to Y$ in $\mcC$ induces a functor in the opposite direction denoted $f^\m1\taking\mcD_{/Y}\to\mcD_{/X}$ by pullback.
+
+\begin{lemma}
+
+Let $i\taking\mcD\inj\mcC$ be a unimono subcategory, and let $X\in\mcC$ be an object.  A sieve $j\taking\sigma\inj U$ in $\mcD_{/X}$ is a covering sieve if and only if it is a covering sieve in $\mcC$.
+
+\end{lemma}
+
+\begin{proof}
+
+Recall that $\mcD_{/X}$ has the strong topology relative to the evaluation $\mcD_{/X}\to\mcC$.  In other words, every covering sieve in $\mcC$ (with a map to $X$) is a covering sieve in $\mcD_{/X}$.  To show the converse, we need only show that composition and pullback of sieves in $\mcD_{/X}$ evaluate to composition and pullback of sieves in $\mcC$.  This is clear.
+
+\end{proof}
+
+\begin{definition}
+
+Let $\mcC$ be a category, let $\Cov_\mcC$ be a Grothendieck topology on $\mcC$, and let $i\taking\mcD\ss\mcC$ be a unimono subcategory.  Given an object $X\in\mcC$ and sieve $g\taking\sigma\inj rX$, let $g'\taking\sigma'\to rX$ be the preimage $g'=i^*(g)$.  We say that $\mcD$ {\em canonically generates $\mcC$} if the following condition is satisfied.  For every $X\in\mcC$ and sieve $g\taking\sigma\inj rX$, the preimage sieve $g'\taking\sigma'\to rX$ satisfies the property that  \begin{itemize} \item for all objects $Y\in\mcC$, the map of sets $$\Hom(g',rY)\taking\Hom(rX,rY)\to\Hom(\sigma',rY)$$ is an isomorphism. \end{itemize}  In this case, we call the functor $i\taking\mcD\to\mcC$ a {\em comprehensible site}.  
+
+A morphism $(F,f)\taking i\to i'$ of comprehensible sites is a square $$\Sq{\mcD}{\mcD'}{\mcC}{\mcC'}{f}{i}{i'}{F}$$ such that \begin{enumerate}\item $F$ is a morphism of sites, and \item $F$ preserves base change diagrams of morphisms in $\mcD$.\end{enumerate}
+
+\end{definition}
+
+There are many examples of this idea.  I know of no useful sites which are not of this form. \note{there may be none; look at Giraud's little theorem.  If there are none, reformulate the ``topos" item below.}  Note that any canonically generated topology is subcanonical.
+
+\begin{example}
+
+\begin{enumerate}
+
+\item Let $\mcC$ be a category.  The canonical topology on $\mcC$ is canonically generated by $i=\id_\mcC$.
+\item The discrete topology (resp. the indiscrete topology) on $\mcC$ is generated by the pair $(\id_\mcC,\Ob(\Pre(\mcC)))$ (resp. the pair $(\id_\mcC,\emptyset)$. The discrete topology is also canonically generated by taking $\mcD$ to be the discrete category on $\Ob(\mcC)$.
+\item The Zariski topology on $\Top$ (or on the category of schemes) is canonically generated by taking $\mcD\ss\mcC$ to be the subcategory of open inclusions.
+\item Any topos $T$ can be represented as sheaves on a site $(\mcC,\Cov_\mcC)$.  Let $\mcD=\mcC$ and take $E=\Ob(T)$.  Then $T$ is isomorphic to the topos of sheaves on the site generated by $(\id_\mcC,E)$.  Note, however, that $T$ may have other such representations wherein $i\taking\mcD\to\mcC$ comes in to play.
+
+\end{enumerate}
+
+\end{example}
+
+In this paper, we shall only be interested in subcanonical topologies.  The results should hold more generally, but we restrict to the subcanonical case as a gift to our weary readers.
+
+\begin{definition}
+
+Let $\mcC$ be a category, $i\taking\mcD\inj\mcC$ a unimono subcategory, and $\Cov_\mcC=\Cov_i$ the topology generated by $i$.  Then an {\em $(\mcC,i)$-space} is a site consisting of the induced topology $\Cov_{\mcD_{/X}}$ on $\mcD_{/X}$ for some object $X\in\mcC$.  A morphism of $(\mcC,i)$-spaces is simply a functor which pushes forward covering sieves.  We denote the category of $(\mcC,i)$-spaces by $(\mcC,i)-\spc$.
+
+\end{definition}
+
+
+%DELETED 3}
+
+%%%%%
+
+%\comment{DELETED 4
+
+\subsection{4}
+
+\begin{lemma}
+
+Let $i\taking\mcD\to\mcC$ be a unimono subcategory and $E\ss\Ob(\Pre(\mcC)$ a set of presheaves.  The assignment $\mcD_{/-}\taking\mcC\op\to(\mcC,i)-\spc$ is functorial.
+
+\end{lemma}
+
+\begin{proof}
+
+Let $f\taking Y\to X$ be a morphism in $\mcC$, let $p\taking U\to X$ be a morphism in $\mcD$, and let $j\taking\sigma\inj U$ be a covering sieve in $\mcD_{/X}$.  Since, $\mcD_{/X}$ has the strong topology relative to the evaluation map $\mcD_{/X}\to\mcC$, the morphism $i(j)$ is a covering sieve in $\mcC$.
+
+The morphism $f$ induces a functor $F\taking\mcD_{/X}\to\mcD_{/Y}$ by pullback; it suffices to show that $F_*$ preserves covering sieves.  The image of $j$ under $F_*$ is the pullback $F_*(\sigma)\inj V$ in the all-Cartesian diagram $$\xymatrix{F_*(\sigma)\ullimit\ar[r]\ar[d]&V\ullimit\ar[r]\ar[d]& Y\ar[d]^f\\ \sigma\ar[r]_j&U\ar[r]_p&X.}$$  Since $\sigma\inj U$ is a covering sieve on $U$, the pullback $F_*(\sigma)\inj V$ is a covering sieve on $V$, in $\mcC$.  Finally, since $\mcD_{/Y}$ has the strong topology relative to the evaluation map $\mcD_{/Y}\to\mcC$, the sieve $F_*(\sigma)\inj V$ is a covering sieve in $\mcD_{/Y}$ as well.
+
+\end{proof}
+
+\begin{definition}
+
+Let $i\taking\mcD\ss\mcC$ be a unimono subcategory.  We say that $\mcC$ is {\em $i$-sober} if the functor $\mcD_{/-}\taking\mcC\op\to(\mcC,i)-\spc$ is fully faithful.
+
+\end{definition}
+
+%DELETED 4}
+
+%%%%%
+
+%\comment{DELETED 5
+
+\subsection{5}
+
+\begin{lemma}\label{full induces full}
+
+Suppose $F\taking\mcA\to\mcB$ is a full functor.  Then the induced functor $L=\lambda_r(rF)\taking\Pre(\mcA)\to\Pre(\mcB)$ is also full.
+
+\end{lemma}
+
+\begin{proof}
+
+Let $P,Q\in\Pre(\mcA)$ be presheaves.  Recall that for any object $A\in\mcA$, one has an isomorphism $L(A)\iso rFA$.  Therefore we have \begin{align*}\Hom_{\Pre(\mcB)}(LP,LQ)&=\Hom_{\Pre(\mcB)}(\colim_{rX\to P}rFX,\colim_{rY\to Q}rFY)\\ &\iso\lim_{rX\to P}\Hom_{\Pre(\mcB)}(rFX,\colim_{rY\to Q}rFY)\\ &\iso \lim\colim\Hom_{\Pre(\mcB)}(rFX,rFY).\end{align*}  Because $F$ is full, $\Hom_{\Pre(\mcB)}(rFX,rFY)\iso\Hom_{\Pre(\mcA)}(rX,rY).$  A chain of isomorphisms similar to the one above proves that $$\lim_{rX\to P}\Big(\colim_{rY\to Q}\big(\Hom_{\Pre(\mcA)}(rX,rY)\big)\Big)\iso\Hom_{\Pre(\mcA)}(P,Q),$$ which in turn completes the proof.
+
+\end{proof}
+
+\begin{proposition}
+
+Suppose $F\taking\mcD\to\mcC$ is a full functor inducing an adjunction $$\Adjoint{L}{\Pre(\mcC)}{\Pre(\mcD)}{R.}$$  Let $D\in\mcD$ be an object and let $\beta=\id\taking LrD\to rFD.$  Then the composition $$\beta^\m1\beta_*\taking\Sieve_\mcD(D)\to\Sieve_\mcD(D)$$ is isomorphic to the identity.
+
+\end{proposition}
+
+\begin{proof}
+
+Let $f\taking\sigma\inj D$ be an object in $\Sieve_\mcD(D)$.  The pushforward of $f$ under $\beta$ is $f^m\taking \im(Lf)\to LD.$  Let $\eta\taking D\to RLD$ be the unit morphism.  Then the pullback of $f^m$ under $\beta$ is the top morphism in the diagram $$\Pull{M}{D}{R\im(Lf)}{RLD.}{\beta\m1\beta_*f}{}{\eta}{R(f^m)}$$  Since both $M$ and $\sigma$ are subfunctors of $D$, we will compare them to each other instead of comparing the morphisms $f$ and $\beta^\m1\beta_*f.$
+
+For any $A\in\mcD$, we have \begin{align*} M(A) &=\{g\taking A\to D| \eta g\in R\im(Lf)(A)\}\\ &=\{g|Lg\in\im(Lf)(LA)\}\\ &=\{g| Lg \tn{ factors through } Lf\}.\end{align*}  Since $F$ is full, so is $L$, by Lemma \ref{full induces full}.  Therefore the last set is $\{g\taking A\to D| g \tn{ factors through f }\}$ which is precisely $\sigma(A)$.
+
+\end{proof}
+
+%DELETED 5}
+
+%%%%%
+
+\bibliographystyle{abbrv}
+\bibliography{biblio}
+
+
+\end{document}

@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_3_2_1_7</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_3_2_1_7</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.FunctionalExtensionality.html#"><span class="id" type="library">FunctionalExtensionality</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Isomorphism.html#"><span class="id" type="library">Isomorphism</span></a> <a class="idref" href="Monoid.html#"><span class="id" type="library">Monoid</span></a> <a class="idref" href="Group.html#"><span class="id" type="library">Group</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ <a name="lab31"></a><h1 class="section">Exercise 3.2.1.7</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Exercise_3_2_1_7"><span class="id" type="section">Exercise_3_2_1_7</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab32"></a><h2 class="section">Problem</h2>
+ Let <span class="inlinecode"><a class="idref" href="SetCategoryFacts.html#EpiMono.S"><span class="id" type="variable">S</span></a></span> be a finite set. A permutation of <span class="inlinecode"><a class="idref" href="SetCategoryFacts.html#EpiMono.S"><span class="id" type="variable">S</span></a></span> is an isomorphism <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="SetCategoryFacts.html#EpiMono.S"><span class="id" type="variable">S</span></a></span> <span class="inlinecode">&cong;</span> <span class="inlinecode"><a class="idref" href="SetCategoryFacts.html#EpiMono.S"><span class="id" type="variable">S</span></a></span>
+
+<div class="paragraph"> </div>
+
+      a.) Come up with an identity, and a multiplication formula, such
+          that the set of permutations of <span class="inlinecode"><a class="idref" href="SetCategoryFacts.html#EpiMono.S"><span class="id" type="variable">S</span></a></span> forms a monoid.
+
+<div class="paragraph"> </div>
+
+      b.) Is it a group?
+   
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="Exercise_3_2_1_7.S"><span class="id" type="variable">S</span></a> : <span class="id" type="keyword">Type</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="ComputationalMonoidOfAutomorphisms"><span class="id" type="definition">ComputationalMonoidOfAutomorphisms</span></a> : <a class="idref" href="Monoid.html#ComputationalMonoid"><span class="id" type="record">ComputationalMonoid</span></a> (<a class="idref" href="Exercise_3_2_1_7.html#Exercise_3_2_1_7.S"><span class="id" type="variable">S</span></a> <a class="idref" href="Isomorphism.html#:type_scope:x_'≅'_x"><span class="id" type="notation">&cong;</span></a> <a class="idref" href="Exercise_3_2_1_7.html#Exercise_3_2_1_7.S"><span class="id" type="variable">S</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= {| <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">id</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">isomorphic_reflexive</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">S</span></a><a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">;</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">comp</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">x</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">y</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">⇒</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">@</span></a><a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">isomorphic_transitive</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">S</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">S</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">S</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">y</span></a> <a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">x</span></a><a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">)</span></a> |}.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Instance</span> <a name="Exercise_3_2_1_7_is_monoid"><span class="id" type="instance">Exercise_3_2_1_7_is_monoid</span></a> : <a class="idref" href="Monoid.html#IsMonoid"><span class="id" type="class">IsMonoid</span></a> <a class="idref" href="Exercise_3_2_1_7.html#ComputationalMonoidOfAutomorphisms"><span class="id" type="definition">ComputationalMonoidOfAutomorphisms</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">esplit</span>; <span class="id" type="tactic">unfold</span> <a class="idref" href="Monoid.html#monoid_obj"><span class="id" type="projection">monoid_obj</span></a>; <span class="id" type="tactic">simpl</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">intros</span> [? [? ? ?]]; <span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> *;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="Isomorphism.html#isomorphic_eq"><span class="id" type="lemma">isomorphic_eq</span></a>; <span class="id" type="var">expand</span>; <span class="id" type="tactic">trivial</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="ComputationalGroupOfAutomorphisms"><span class="id" type="definition">ComputationalGroupOfAutomorphisms</span></a> : <a class="idref" href="Group.html#ComputationalGroup"><span class="id" type="record">ComputationalGroup</span></a> (<a class="idref" href="Exercise_3_2_1_7.html#Exercise_3_2_1_7.S"><span class="id" type="variable">S</span></a> <a class="idref" href="Isomorphism.html#:type_scope:x_'≅'_x"><span class="id" type="notation">&cong;</span></a> <a class="idref" href="Exercise_3_2_1_7.html#Exercise_3_2_1_7.S"><span class="id" type="variable">S</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= {| <a class="idref" href="Group.html#Build_ComputationalGroup"><span class="id" type="constructor">group_monoid</span></a> <a class="idref" href="Group.html#Build_ComputationalGroup"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Group.html#Build_ComputationalGroup"><span class="id" type="constructor">ComputationalMonoidOfAutomorphisms</span></a><a class="idref" href="Group.html#Build_ComputationalGroup"><span class="id" type="constructor">;</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Group.html#Build_ComputationalGroup"><span class="id" type="constructor">group_inverse</span></a> <a class="idref" href="Group.html#Build_ComputationalGroup"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Group.html#Build_ComputationalGroup"><span class="id" type="constructor">@</span></a><a class="idref" href="Group.html#Build_ComputationalGroup"><span class="id" type="constructor">isomorphic_symmetric</span></a> <a class="idref" href="Group.html#Build_ComputationalGroup"><span class="id" type="constructor">S</span></a> <a class="idref" href="Group.html#Build_ComputationalGroup"><span class="id" type="constructor">S</span></a> |}.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Instance</span> <a name="Exercise_3_2_1_7_is_group"><span class="id" type="instance">Exercise_3_2_1_7_is_group</span></a> : <a class="idref" href="Group.html#IsGroup"><span class="id" type="class">IsGroup</span></a> <a class="idref" href="Exercise_3_2_1_7.html#ComputationalGroupOfAutomorphisms"><span class="id" type="definition">ComputationalGroupOfAutomorphisms</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> (<span class="id" type="tactic">intros</span> [? [? ? ?]] || <span class="id" type="tactic">split</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">unfold</span> <a class="idref" href="Monoid.html#monoid_obj"><span class="id" type="projection">monoid_obj</span></a>; <span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> *;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">try</span> <span class="id" type="tactic">apply</span> <a class="idref" href="Isomorphism.html#isomorphic_eq"><span class="id" type="lemma">isomorphic_eq</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">try</span> (<span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.FunctionalExtensionality.html#functional_extensionality_dep"><span class="id" type="axiom">functional_extensionality_dep</span></a>; <span class="id" type="tactic">intro</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">expand</span>; <span class="id" type="tactic">trivial</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_3_2_1_7.html#Exercise_3_2_1_7"><span class="id" type="section">Exercise_3_2_1_7</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

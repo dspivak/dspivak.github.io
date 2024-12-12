@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_3_4_2_7</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_3_4_2_7</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Setoids.Setoid.html#"><span class="id" type="library">Setoid</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Orders.html#"><span class="id" type="library">Orders</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ <a name="lab48"></a><h1 class="section">Exercise 3.4.2.7</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Exercise_3_4_2_7"><span class="id" type="section">Exercise_3_4_2_7</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab49"></a><h2 class="section">Problem</h2>
+ Suppose that <span class="inlinecode"><span class="id" type="var">S'</span></span> <span class="inlinecode">:=</span> <span class="inlinecode">(<a class="idref" href="SetCategoryFacts.html#EpiMono.S"><span class="id" type="variable">S</span></a>,</span> <span class="inlinecode">&le;)</span> is an preorder. If <span class="inlinecode"><span class="id" type="var">S'</span></span> is a partial
+      order, is <span class="inlinecode"><span class="id" type="var">S'</span></span><sup>op</sup> also a partial
+      order? If <span class="inlinecode"><span class="id" type="var">S'</span></span> is a linear order, is
+      <span class="inlinecode"><span class="id" type="var">S'</span></span><sup>op</sup> a linear order? 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="Exercise_3_4_2_7.S"><span class="id" type="variable">S</span></a> : <span class="id" type="keyword">Type</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="Exercise_3_4_2_7.le"><span class="id" type="variable">le</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Relations.Relation_Definitions.html#relation"><span class="id" type="definition">Relation_Definitions.relation</span></a> <a class="idref" href="Exercise_3_4_2_7.html#Exercise_3_4_2_7.S"><span class="id" type="variable">S</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Infix</span> <a name="Exercise_3_4_2_7.::x_'≤'_x"><span class="id" type="notation">"</span></a>&le;" := <a class="idref" href="Exercise_3_4_2_7.html#Exercise_3_4_2_7.le"><span class="id" type="variable">le</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Instance</span> <a name="PreOrder_op_is_PreOrder"><span class="id" type="instance">PreOrder_op_is_PreOrder</span></a> `(<span class="id" type="var">H</span> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#PreOrder"><span class="id" type="class">PreOrder</span></a> <a class="idref" href="Exercise_3_4_2_7.html#Exercise_3_4_2_7.S"><span class="id" type="variable">S</span></a> <a class="idref" href="Exercise_3_4_2_7.html#Exercise_3_4_2_7.le"><span class="id" type="variable">le</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#PreOrder"><span class="id" type="class">PreOrder</span></a> (<a class="idref" href="Orders.html#opposite_relation"><span class="id" type="definition">opposite_relation</span></a> <a class="idref" href="Exercise_3_4_2_7.html#Exercise_3_4_2_7.le"><span class="id" type="variable">le</span></a>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">firstorder</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Instance</span> <a name="PartialOrder_op_is_PartialOrder"><span class="id" type="instance">PartialOrder_op_is_PartialOrder</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(<span class="id" type="var">H</span> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#PreOrder"><span class="id" type="class">PreOrder</span></a> <a class="idref" href="Exercise_3_4_2_7.html#Exercise_3_4_2_7.S"><span class="id" type="variable">S</span></a> <a class="idref" href="Exercise_3_4_2_7.html#Exercise_3_4_2_7.le"><span class="id" type="variable">le</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#PartialOrder"><span class="id" type="class">PartialOrder</span></a> <a class="idref" href="Exercise_3_4_2_7.html#Exercise_3_4_2_7.S"><span class="id" type="variable">S</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq"><span class="id" type="inductive">eq</span></a> <a class="idref" href="Exercise_3_4_2_7.html#Exercise_3_4_2_7.le"><span class="id" type="variable">le</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#PartialOrder"><span class="id" type="class">PartialOrder</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq"><span class="id" type="inductive">eq</span></a> (<a class="idref" href="Orders.html#opposite_relation"><span class="id" type="definition">opposite_relation</span></a> <a class="idref" href="Exercise_3_4_2_7.html#Exercise_3_4_2_7.le"><span class="id" type="variable">le</span></a>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">firstorder</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Instance</span> <a name="LinearOrder_op_is_LinearOrder"><span class="id" type="instance">LinearOrder_op_is_LinearOrder</span></a> `(<span class="id" type="var">H</span> : <a class="idref" href="Orders.html#LinearOrder"><span class="id" type="class">LinearOrder</span></a> <a class="idref" href="Exercise_3_4_2_7.html#Exercise_3_4_2_7.S"><span class="id" type="variable">S</span></a> <a class="idref" href="Exercise_3_4_2_7.html#Exercise_3_4_2_7.le"><span class="id" type="variable">le</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="Orders.html#LinearOrder"><span class="id" type="class">LinearOrder</span></a> (<a class="idref" href="Orders.html#opposite_relation"><span class="id" type="definition">opposite_relation</span></a> <a class="idref" href="Exercise_3_4_2_7.html#Exercise_3_4_2_7.le"><span class="id" type="variable">le</span></a>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">firstorder</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_3_4_2_7.html#Exercise_3_4_2_7"><span class="id" type="section">Exercise_3_4_2_7</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

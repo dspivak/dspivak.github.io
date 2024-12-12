@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_4_2_4_3</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_4_2_4_3</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#"><span class="id" type="library">ProofIrrelevance</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#"><span class="id" type="library">Ensembles</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a> <a class="idref" href="Orders.html#"><span class="id" type="library">Orders</span></a> <a class="idref" href="PropPreOrder.html#"><span class="id" type="library">PropPreOrder</span></a> <a class="idref" href="PreOrderCategory.html#"><span class="id" type="library">PreOrderCategory</span></a> <a class="idref" href="Duals.html#"><span class="id" type="library">Duals</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab94"></a><h1 class="section">Exercise 4.2.4.3</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Module</span> <a name="Exercise_4_2_4_3"><span class="id" type="module">Exercise_4_2_4_3</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab95"></a><h2 class="section">Problem</h2>
+ Consider the set of possible laws (most likely an infinite set)
+      that can be dictated to hold throughout a jurisdiction. Consider
+      each law as a proposition ("such and such is (dictated to be)
+      the case"), i.e as an object of our preorder <span class="inlinecode"><span class="id" type="keyword">Prop</span></span>. Given a
+      jurisdiction <span class="inlinecode"><a class="idref" href="PathsCategory.html#PathsCategory.V"><span class="id" type="variable">V</span></a></span>, and a set of laws <span class="inlinecode">{<span class="id" type="var">L1</span>,</span> <span class="inlinecode"><span class="id" type="var">L2</span>,</span> <span class="inlinecode">...,</span> <span class="inlinecode"><span class="id" type="var">Ln</span>}</span> that are
+      dictated to hold throughout <span class="inlinecode"><a class="idref" href="PathsCategory.html#PathsCategory.V"><span class="id" type="variable">V</span></a></span>, we take their meet <span class="inlinecode"><a class="idref" href="Exercise_4_4_1_6.html#Exercise_4_4_1_6.L"><span class="id" type="definition">L</span></a>(<a class="idref" href="PathsCategory.html#PathsCategory.V"><span class="id" type="variable">V</span></a>)</span> <span class="inlinecode">:=</span> <span class="inlinecode"><span class="id" type="var">L1</span></span>
+      <span class="inlinecode">∧</span> <span class="inlinecode"><span class="id" type="var">L2</span></span> <span class="inlinecode">∧</span> <span class="inlinecode">...</span> <span class="inlinecode">∧</span> <span class="inlinecode"><span class="id" type="var">Ln</span></span> and consider it to be the single law of the
+      land <span class="inlinecode"><a class="idref" href="PathsCategory.html#PathsCategory.V"><span class="id" type="variable">V</span></a></span>. Suppose that <span class="inlinecode"><a class="idref" href="PathsCategory.html#PathsCategory.V"><span class="id" type="variable">V</span></a></span> is a jurisdiction and <span class="inlinecode"><a class="idref" href="Topology.html#subset_ensemble_union_intersection.U"><span class="id" type="variable">U</span></a></span> <span class="inlinecode">&sube;</span> <span class="inlinecode"><a class="idref" href="PathsCategory.html#PathsCategory.V"><span class="id" type="variable">V</span></a></span> is a
+      sub-jurisdiction (e.g.  <span class="inlinecode"><a class="idref" href="Topology.html#subset_ensemble_union_intersection.U"><span class="id" type="variable">U</span></a></span> is a county and <span class="inlinecode"><a class="idref" href="PathsCategory.html#PathsCategory.V"><span class="id" type="variable">V</span></a></span> is a state);
+      then clearly any law dictated by the large jurisdiction (the
+      state) must also hold throughout the small jurisdiction (the
+      county). What is the relation in <span class="inlinecode"><span class="id" type="keyword">Prop</span></span> between L(U) and L(V)?
+
+<div class="paragraph"> </div>
+
+      Consider the obvious preorder <span class="inlinecode"><a class="idref" href="Exercise_4_2_4_4.html#J"><span class="id" type="variable">J</span></a></span> on jurisdictions, where <span class="inlinecode"><a class="idref" href="Topology.html#subset_ensemble_union_intersection.U"><span class="id" type="variable">U</span></a></span> <span class="inlinecode">&sube;</span>
+      <span class="inlinecode"><a class="idref" href="PathsCategory.html#PathsCategory.V"><span class="id" type="variable">V</span></a></span> means <span class="inlinecode"><a class="idref" href="Topology.html#subset_ensemble_union_intersection.U"><span class="id" type="variable">U</span></a></span> <span class="inlinecode">&le;</span> <span class="inlinecode"><a class="idref" href="PathsCategory.html#PathsCategory.V"><span class="id" type="variable">V</span></a></span>. Is "the law of the land" a morphism of
+      preorders <span class="inlinecode"><a class="idref" href="Exercise_4_2_4_4.html#J"><span class="id" type="variable">J</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" type="keyword">Prop</span></span>? To be a bit more highbrow, considering
+      both <span class="inlinecode"><a class="idref" href="Exercise_4_2_4_4.html#J"><span class="id" type="variable">J</span></a></span> and <span class="inlinecode"><span class="id" type="keyword">Prop</span></span> to be categories (by Proposition 4.2.1.17),
+      we have a function <span class="inlinecode"><a class="idref" href="Exercise_4_4_1_6.html#Exercise_4_4_1_6.L"><span class="id" type="definition">L</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.CategoryLeafTable.Ob"><span class="id" type="variable">Ob</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_4_2_4_4.html#J"><span class="id" type="variable">J</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.CategoryLeafTable.Ob"><span class="id" type="variable">Ob</span></a></span> <span class="inlinecode"><span class="id" type="keyword">Prop</span></span>; this question is
+      asking whether <span class="inlinecode"><a class="idref" href="Exercise_4_4_1_6.html#Exercise_4_4_1_6.L"><span class="id" type="definition">L</span></a></span> extends to a functor <span class="inlinecode"><a class="idref" href="Exercise_4_2_4_4.html#J"><span class="id" type="variable">J</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" type="keyword">Prop</span></span>. 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="Exercise_4_2_4_3.Law"><span class="id" type="variable">Law</span></a> : <span class="id" type="keyword">Type</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="Exercise_4_2_4_3.LawAsProp"><span class="id" type="variable">LawAsProp</span></a> : <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.Law"><span class="id" type="axiom">Law</span></a> → <span class="id" type="keyword">Prop</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="Exercise_4_2_4_3.Jurisdiction"><span class="id" type="variable">Jurisdiction</span></a> : <span class="id" type="keyword">Type</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="Exercise_4_2_4_3.LawsOf"><span class="id" type="variable">LawsOf</span></a> : <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.Jurisdiction"><span class="id" type="axiom">Jurisdiction</span></a> → <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Ensemble"><span class="id" type="definition">Ensemble</span></a> <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.Law"><span class="id" type="axiom">Law</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Infix</span> <a name="Exercise_4_2_4_3.::x_'<='_x"><span class="id" type="notation">"</span></a>≤" := <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Program.Basics.html#impl"><span class="id" type="definition">impl</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Infix</span> <a name="Exercise_4_2_4_3.::x_'≤'_x"><span class="id" type="notation">"</span></a>&le;" := <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Program.Basics.html#impl"><span class="id" type="definition">impl</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Section</span> <a name="Exercise_4_2_4_3.LawOfTheLand"><span class="id" type="section">LawOfTheLand</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="Exercise_4_2_4_3.LawOfTheLand.V"><span class="id" type="variable">V</span></a> : <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.Jurisdiction"><span class="id" type="axiom">Jurisdiction</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_4_2_4_3.LawOfTheLand.V_Laws"><span class="id" type="variable">V_Laws</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Ensemble"><span class="id" type="definition">Ensemble</span></a> <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.Law"><span class="id" type="axiom">Law</span></a> := <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.LawsOf"><span class="id" type="axiom">LawsOf</span></a> <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.LawOfTheLand.V"><span class="id" type="variable">V</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_4_2_4_3.LawOfTheLand.V_LawsAsProp"><span class="id" type="variable">V_LawsAsProp</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Ensemble"><span class="id" type="definition">Ensemble</span></a> <span class="id" type="keyword">Prop</span> := <span class="id" type="keyword">fun</span> <span class="id" type="var">P</span> ⇒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:'exists'_x_'..'_x_','_x"><span class="id" type="notation">∃</span></a> <span class="id" type="var">L</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:'exists'_x_'..'_x_','_x"><span class="id" type="notation">,</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Exercise_4_2_4_3.html#L"><span class="id" type="variable">L</span></a> <a class="idref" href="Notations.html#::x_'∈'_x"><span class="id" type="notation">&isin;</span></a> <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.LawOfTheLand.V_Laws"><span class="id" type="variable">V_Laws</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'/\'_x"><span class="id" type="notation">∧</span></a> <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.LawAsProp"><span class="id" type="axiom">LawAsProp</span></a> <a class="idref" href="Exercise_4_2_4_3.html#L"><span class="id" type="variable">L</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Exercise_4_2_4_3.html#P"><span class="id" type="variable">P</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="Exercise_4_2_4_3.LawOfTheLand"><span class="id" type="definition">LawOfTheLand</span></a> := <a class="idref" href="PropPreOrder.html#PropHasEnsembleMeets"><span class="id" type="instance">PropHasEnsembleMeets</span></a> <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.LawOfTheLand.V_LawsAsProp"><span class="id" type="variable">V_LawsAsProp</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.LawOfTheLand"><span class="id" type="section">LawOfTheLand</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="Exercise_4_2_4_3.LawOfTheLand_subset_flip"><span class="id" type="lemma">LawOfTheLand_subset_flip</span></a> (<span class="id" type="var">U</span> <span class="id" type="var">V</span> : <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.Jurisdiction"><span class="id" type="axiom">Jurisdiction</span></a>) (<span class="id" type="var">P</span> := <a class="idref" href="PropPreOrder.html#Prop_PreOrder"><span class="id" type="instance">Prop_PreOrder</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">LawOfTheVLand</span> := <a class="idref" href="Orders.html#EnsembleMeetElement"><span class="id" type="method">EnsembleMeetElement</span></a> (<span class="id" type="var">EnsembleMeetOf</span> := <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.LawOfTheLand"><span class="id" type="definition">LawOfTheLand</span></a> <a class="idref" href="Exercise_4_2_4_3.html#V"><span class="id" type="variable">V</span></a>))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">LawOfTheULand</span> := <a class="idref" href="Orders.html#EnsembleMeetElement"><span class="id" type="method">EnsembleMeetElement</span></a> (<span class="id" type="var">EnsembleMeetOf</span> := <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.LawOfTheLand"><span class="id" type="definition">LawOfTheLand</span></a> <a class="idref" href="Exercise_4_2_4_3.html#U"><span class="id" type="variable">U</span></a>))<br/>
+&nbsp;&nbsp;: <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.LawsOf"><span class="id" type="axiom">LawsOf</span></a> <a class="idref" href="Exercise_4_2_4_3.html#U"><span class="id" type="variable">U</span></a> <a class="idref" href="Notations.html#::x_'⊆'_x"><span class="id" type="notation">&sube;</span></a> <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.LawsOf"><span class="id" type="axiom">LawsOf</span></a> <a class="idref" href="Exercise_4_2_4_3.html#V"><span class="id" type="variable">V</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;→ <a class="idref" href="Exercise_4_2_4_3.html#LawOfTheVLand"><span class="id" type="variable">LawOfTheVLand</span></a> <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.::x_'≤'_x"><span class="id" type="notation">&le;</span></a> <a class="idref" href="Exercise_4_2_4_3.html#LawOfTheULand"><span class="id" type="variable">LawOfTheULand</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">firstorder</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Global Instance</span> <a name="Exercise_4_2_4_3.JurisdictionPreOrder"><span class="id" type="instance">JurisdictionPreOrder</span></a><br/>
+&nbsp;&nbsp;: @<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#PreOrder"><span class="id" type="class">PreOrder</span></a> <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.Jurisdiction"><span class="id" type="axiom">Jurisdiction</span></a> (<span class="id" type="keyword">fun</span> <span class="id" type="var">U</span> <span class="id" type="var">V</span> ⇒ <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.LawsOf"><span class="id" type="axiom">LawsOf</span></a> <a class="idref" href="Exercise_4_2_4_3.html#U"><span class="id" type="variable">U</span></a> <a class="idref" href="Notations.html#::x_'⊆'_x"><span class="id" type="notation">&sube;</span></a> <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.LawsOf"><span class="id" type="axiom">LawsOf</span></a> <a class="idref" href="Exercise_4_2_4_3.html#V"><span class="id" type="variable">V</span></a>).<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">firstorder</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="Exercise_4_2_4_3.LawOfTheLandFunctor"><span class="id" type="definition">LawOfTheLandFunctor</span></a><br/>
+&nbsp;&nbsp;: <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> (<a class="idref" href="PreOrderCategory.html#PreOrderCategory"><span class="id" type="definition">PreOrderCategory</span></a> <a class="idref" href="Exercise_4_2_4_3.html#Exercise_4_2_4_3.JurisdictionPreOrder"><span class="id" type="instance">JurisdictionPreOrder</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="idref" href="Duals.html#OppositeCategory"><span class="id" type="definition">OppositeCategory</span></a> (<a class="idref" href="PreOrderCategory.html#PreOrderCategory"><span class="id" type="definition">PreOrderCategory</span></a> <a class="idref" href="PropPreOrder.html#Prop_PreOrder"><span class="id" type="instance">Prop_PreOrder</span></a>)).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> {| <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">ObjectOf</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">V</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">⇒</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">EnsembleMeetElement</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">(</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">EnsembleMeetOf</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">LawOfTheLand</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">V</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">));</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">MorphismOf</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">(@</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">LawOfTheLand_subset_flip</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">:</span></a> <span class="id" type="keyword">∀</span> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">s</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">d</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">(</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">m</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">:</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">Morphism</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">(</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">PreOrderCategory</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">JurisdictionPreOrder</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">)</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">s</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">d</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">),</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">Morphism</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">(</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">OppositeCategory</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">(</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">PreOrderCategory</span></a> <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">Prop_PreOrder</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">))</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">_</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">_</span></a><a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">)</span></a> |};<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<span class="id" type="tactic">intros</span>; <span class="id" type="tactic">simpl</span>; <span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#proof_irrelevance"><span class="id" type="axiom">ProofIrrelevance.proof_irrelevance</span></a>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_4_2_4_3.html#"><span class="id" type="module">Exercise_4_2_4_3</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

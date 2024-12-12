@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>TopologicalContinuity</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library TopologicalContinuity</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Setoids.Setoid.html#"><span class="id" type="library">Setoid</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#"><span class="id" type="library">ProofIrrelevance</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.FunctionalExtensionality.html#"><span class="id" type="library">FunctionalExtensionality</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Finite_sets.html#"><span class="id" type="library">Finite_sets</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.Classical.html#"><span class="id" type="library">Classical</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.IndefiniteDescription.html#"><span class="id" type="library">IndefiniteDescription</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#"><span class="id" type="library">Classes.RelationClasses</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.Morphisms.html#"><span class="id" type="library">Morphisms</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Topology.html#"><span class="id" type="library">Topology</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Morphism.html#"><span class="id" type="library">Morphism</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab224"></a><h2 class="section">Continuity</h2>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Open</span> <span class="id" type="keyword">Scope</span> <span class="id" type="var">topology_scope</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="continuous"><span class="id" type="section">continuous</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Section</span> <a name="continuous.continuous_definition"><span class="id" type="section">continuous_definition</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Variables</span> <a name="continuous.continuous_definition.X"><span class="id" type="variable">X</span></a> <a name="continuous.continuous_definition.Y"><span class="id" type="variable">Y</span></a> : <span class="id" type="keyword">Type</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="continuous.continuous_definition.Tx"><span class="id" type="variable">Tx</span></a> : <a class="idref" href="Topology.html#Topology"><span class="id" type="class">Topology</span></a> <a class="idref" href="TopologicalContinuity.html#continuous.continuous_definition.X"><span class="id" type="variable">X</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="continuous.continuous_definition.Ty"><span class="id" type="variable">Ty</span></a> : <a class="idref" href="Topology.html#Topology"><span class="id" type="class">Topology</span></a> <a class="idref" href="TopologicalContinuity.html#continuous.continuous_definition.Y"><span class="id" type="variable">Y</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+inverse image of open sets are open 
+</div>
+<div class="code">
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="continuous"><span class="id" type="definition">continuous</span></a> (<span class="id" type="var">f</span> : <a class="idref" href="TopologicalContinuity.html#continuous.continuous_definition.X"><span class="id" type="variable">X</span></a> → <a class="idref" href="TopologicalContinuity.html#continuous.continuous_definition.Y"><span class="id" type="variable">Y</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:= <span class="id" type="keyword">∀</span> <span class="id" type="var">Uy</span>, @<span class="id" type="keyword">Open</span> <span class="id" type="var">_</span> <a class="idref" href="TopologicalContinuity.html#continuous.continuous_definition.Ty"><span class="id" type="variable">Ty</span></a> <a class="idref" href="TopologicalContinuity.html#Uy"><span class="id" type="variable">Uy</span></a> → @<span class="id" type="keyword">Open</span> <span class="id" type="var">_</span> <a class="idref" href="TopologicalContinuity.html#continuous.continuous_definition.Tx"><span class="id" type="variable">Tx</span></a> (<a class="idref" href="TopologicalContinuity.html#f"><span class="id" type="variable">f</span></a> <a class="idref" href="Topology.html#:topology_scope:x_'⁻¹'"><span class="id" type="notation"><sup>-1</sup></span></a> <a class="idref" href="TopologicalContinuity.html#Uy"><span class="id" type="variable">Uy</span></a>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">End</span> <a class="idref" href="TopologicalContinuity.html#continuous.continuous_definition"><span class="id" type="section">continuous_definition</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Section</span> <a name="continuous.continuous_identity"><span class="id" type="section">continuous_identity</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="continuous.continuous_identity.X"><span class="id" type="variable">X</span></a> : <span class="id" type="keyword">Type</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="continuous.continuous_identity.Tx"><span class="id" type="variable">Tx</span></a> : <a class="idref" href="Topology.html#Topology"><span class="id" type="class">Topology</span></a> <a class="idref" href="TopologicalContinuity.html#continuous.continuous_identity.X"><span class="id" type="variable">X</span></a>.<br/>
+</div>
+
+<div class="doc">
+the identity function is continuous 
+</div>
+<div class="code">
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="identity_is_continuous"><span class="id" type="definition">identity_is_continuous</span></a> : <a class="idref" href="TopologicalContinuity.html#continuous"><span class="id" type="definition">continuous</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> (@<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#id"><span class="id" type="definition">id</span></a> <a class="idref" href="TopologicalContinuity.html#continuous.continuous_identity.X"><span class="id" type="variable">X</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span> <span class="id" type="var">Uy</span> <span class="id" type="var">UH</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">unfold</span> <a class="idref" href="Morphism.html#inverse_image"><span class="id" type="definition">inverse_image</span></a>, <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#id"><span class="id" type="definition">id</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : <span class="id" type="keyword">Open</span> ?<span class="id" type="var">U</span> |- <span class="id" type="keyword">Open</span> ?<span class="id" type="var">U'</span> ] ⇒ <span class="id" type="tactic">assert</span> (<span class="id" type="var">H'</span> : <span class="id" type="var">U'</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <span class="id" type="var">U</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">by</span> (<span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Extensionality_Ensembles"><span class="id" type="axiom">Extensionality_Ensembles</span></a>; <span class="id" type="tactic">compute</span>; <span class="id" type="tactic">split</span>; <span class="id" type="tactic">intro</span>; <span class="id" type="tactic">exact</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#id"><span class="id" type="definition">id</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intuition</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">End</span> <a class="idref" href="TopologicalContinuity.html#continuous.continuous_identity"><span class="id" type="section">continuous_identity</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Section</span> <a name="continuous.continuous_composition"><span class="id" type="section">continuous_composition</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">Tx</span> : <a class="idref" href="Topology.html#Topology"><span class="id" type="class">Topology</span></a> <span class="id" type="var">X</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">Ty</span> : <a class="idref" href="Topology.html#Topology"><span class="id" type="class">Topology</span></a> <span class="id" type="var">Y</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">Tz</span> : <a class="idref" href="Topology.html#Topology"><span class="id" type="class">Topology</span></a> <span class="id" type="var">ZZ</span>).<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+the composition of continuous functions is continuous 
+</div>
+<div class="code">
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="compose_continuous"><span class="id" type="definition">compose_continuous</span></a> (<span class="id" type="var">f</span> : <a class="idref" href="TopologicalContinuity.html#continuous.continuous_composition.Y"><span class="id" type="variable">Y</span></a> → <a class="idref" href="TopologicalContinuity.html#continuous.continuous_composition.ZZ"><span class="id" type="variable">ZZ</span></a>) (<span class="id" type="var">g</span> : <a class="idref" href="TopologicalContinuity.html#continuous.continuous_composition.X"><span class="id" type="variable">X</span></a> → <a class="idref" href="TopologicalContinuity.html#continuous.continuous_composition.Y"><span class="id" type="variable">Y</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;: <a class="idref" href="TopologicalContinuity.html#continuous"><span class="id" type="definition">continuous</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <a class="idref" href="TopologicalContinuity.html#f"><span class="id" type="variable">f</span></a> → <a class="idref" href="TopologicalContinuity.html#continuous"><span class="id" type="definition">continuous</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <a class="idref" href="TopologicalContinuity.html#g"><span class="id" type="variable">g</span></a> → <a class="idref" href="TopologicalContinuity.html#continuous"><span class="id" type="definition">continuous</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> (<a class="idref" href="TopologicalContinuity.html#f"><span class="id" type="variable">f</span></a> <a class="idref" href="Morphism.html#::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <a class="idref" href="TopologicalContinuity.html#g"><span class="id" type="variable">g</span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span> <span class="id" type="var">fc</span> <span class="id" type="var">gc</span> <span class="id" type="var">Uz</span> <span class="id" type="var">UH</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">unfold</span> <a class="idref" href="TopologicalContinuity.html#continuous"><span class="id" type="definition">continuous</span></a> <span class="id" type="keyword">in</span> ×.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">change</span> (<a class="idref" href="Topology.html#:topology_scope:x_'⁻¹'"><span class="id" type="notation">(</span></a><span class="id" type="var">f</span> <a class="idref" href="Morphism.html#::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <span class="id" type="var">g</span><a class="idref" href="Topology.html#:topology_scope:x_'⁻¹'"><span class="id" type="notation">)</span></a> <a class="idref" href="Topology.html#:topology_scope:x_'⁻¹'"><span class="id" type="notation"><sup>-1</sup></span></a>) <span class="id" type="keyword">with</span> (<span class="id" type="var">g</span> <a class="idref" href="Topology.html#:topology_scope:x_'⁻¹'"><span class="id" type="notation"><sup>-1</sup></span></a> <a class="idref" href="Morphism.html#::x_'o'_x"><span class="id" type="notation">&#x25cb;</span></a> <span class="id" type="var">f</span> <a class="idref" href="Topology.html#:topology_scope:x_'⁻¹'"><span class="id" type="notation"><sup>-1</sup></span></a>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">simpl</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intuition</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">End</span> <a class="idref" href="TopologicalContinuity.html#continuous.continuous_composition"><span class="id" type="section">continuous_composition</span></a>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="TopologicalContinuity.html#continuous"><span class="id" type="section">continuous</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<html>
+<body>
+
+<title> Winter 2010 -- Informatics Seminar</title>
+
+<h1> David Spivak</h1>
+
+Visiting Assistant Professor<br>
+University of Oregon<br>
+Department of Mathematics<br><br>
+<b>Office:</b> 317 Fenton Hall<br>
+Email: dspivak<br>
+
+<h2>Winter 2010 -- Informatics Seminar</h2>
+
+Meeting time: Tuesday and Thursday at 4pm<br>
+Meeting place: 103 Peterson Hall.<br><br>
+
+<hr><br>
+
+<h3>Reading list:</h3>
+
+
+
+1. Lawvere and Schanuel.  <u>Conceptual 
+Mathematics:
+a first introduction to categories</u>.  An excellent book. <a 
+href=http://www.amazon.com/Conceptual-Mathematics-First-Introduction-Categories$
+>Amazon.com link</a><br><br>
+
+2. Lawvere. <a 
+href="http://tac.mta.ca/tac/reprints/articles/8/tr8.pdf"> Taking 
+categories seriously</a> A great 25 page article, including how to think 
+of dynamical systems from a categorical perspective.<br><br>
+
+3. <a 
+   href="http://www.math.uchicago.edu/~may/VIGRE/VIGRE2009/REUPapers/Henderson.pdf"> 
+   A short paper on topoi</a>.  It is good, but I think that there is at 
+   least one medium-sized error; ask me about it 
+some time.<br><br>
+
+4. <a href="http://plato.stanford.edu/entries/information-semantic/"> 
+Stanford Encyclopedia entry on Information</a>.  I personally 
+found sections 2.2 and 3.2.2 particularly relevant.  <br><br>
+
+5. For topoi: Moerdijk and Mac Lane. <u> Sheaves in geometry and Logic: a 
+first introduction to topos theory</u>.  <a 
+href="http://www.amazon.com/Sheaves-Geometry-Logic-Introduction-Universitext/dp/0387977104/ref=sr_1_1?ie=UTF8&s=books&qid=1262994493&sr=1-1"> 
+Amazon.com link</a> <br><br>
+
+6. You may also find this page on my website interesting or relavant: <a 
+href="http://www.uoregon.edu/~dspivak/cs/"> Categorical and topological 
+methods in computer science</a>.<br><br>
+
+<hr><br>
+
+<h3> An appropriate amount of work for this class.</h3>
+
+<br>
+
+See me.
+
+<hr><br>
+
+
+<h3>Ideas to consider.</h3>
+
+1. <b>Global truth versus local truth.</b> Can something be true only 
+   locally?  For example, should a pencil be considered "for all time and 
+   space, a pencil" or just "for the last 5 days, a pencil". <br><br>
+
+2. <b>Context.</b> Related to (1), information is always contextual.  In 
+   other words, we are always looking at information from the viewpoint of 
+   a certain audience (e.g. just myself).  Given a sensible 
+"change-of-audience" morphism, should we
+   get a change-of-information functor, that takes information from one 
+   perspective to information from another?  Please consider 
+slice-toposes and change-of-base 
+functors in a topos and see how well they stack up to this idea.<br><br>
+
+3. <b>Measurements.</b> Suppose we say something has weight 5 lbs.  What 
+   does that mean?  It means that when we put it on a good scale, the 
+   scale returns the number 5.  (What does it mean that the scale is 
+   good?)  Does weight, as a function from physical objects to numbers, 
+   exist as a stand-alone concept, or should it be considered only as
+a function from 
+pairs (physical object, scale) to numbers?  <br><br>
+
+4. <b>Objects are like sets?</b> The objects in our ologs are labeled as 
+   though they are sets (as one
+   interprets a box labeled "a person" as the set of all persons).  Are 
+   they?  Toposes are categories in which
+   the objects feel like sets, but do not have to be such.  Perhaps 
+we should think of objects as moduli spaces instead.<br><br>
+
+5. <b>Parts of speech</b>. Objects should be labeled with noun phrases.  Morphisms 
+   should be labeled with verb phrases.  Adjectives are used in noun phrases to 
+   suggest subobject-hood.  As such, they should suggest a name for the 
+   characteristic morphism corresponding to that subobject.  Do adverbs somehow 
+correspond to subobjects of exponentials?  <br><br>
+
+6. <b>Two types of info?</b>  The <a 
+href="http://plato.stanford.edu/entries/information-semantic/">
+Stanford Encyclopedia article</a>  made a 
+distinction between information that is 
+instructional (e.g. a computer program) and information that is factual (e.g. like 
+a database).  Is that distinction important?  How do ologs handle these two types 
+of information?
+
+<hr><br>
+
+<h3>Longer ideas</h3>
+
+<a 
+href="http://www.uoregon.edu/~dspivak/teaching/wi10/longer/moduli_space"
+
+<hr><br>
+
+
+<h3>Meta-ideas to consider</h3>
+
+I want you to call me out; to the extent it's done appropriately, I  
+respect and appreciate it.  I'm into honesty as much as possible, both within 
+class and without, and in particular I don't 
+want you to protect me from an honest thought of yours about this material.  
+<br><br>
+
+This theory of informatics, "ologs," is very much a work in progress.  And I
+literally  want
+your help: You are a junior mathematician with an interest in the theory of 
+information -- you are the ideal people to help with this project.  As mentioned in 
+the syllabus, I'd 
+like this seminar to be an
+opportunity for all of us.  Not only do I hope everyone gets something good out of 
+this 
+class, but we have the opportunity to come up with something really interesting 
+together.  <br><br>
+
+Ologs are about honesty.  They are about what is really going on.  What do we 
+really mean when we say "...."?   If you don't know how to say something, 
+contemplate it and 
+find a way to say it.<br><br>
+
+ <hr><br>
+
+
+</body> 
+</html>
+

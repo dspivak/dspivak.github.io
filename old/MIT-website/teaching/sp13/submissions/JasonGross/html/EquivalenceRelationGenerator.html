@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>EquivalenceRelationGenerator</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library EquivalenceRelationGenerator</h1>
+
+<div class="code">
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Setoids.Setoid.html#"><span class="id" type="library">Setoid</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="Gen"><span class="id" type="section">Gen</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="Gen.A"><span class="id" type="variable">A</span></a> : <span class="id" type="keyword">Type</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="Gen.equiv"><span class="id" type="variable">equiv</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Relations.Relation_Definitions.html#relation"><span class="id" type="definition">relation</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#Gen.A"><span class="id" type="variable">A</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Inductive</span> <a name="EquivalenceOf"><span class="id" type="inductive">EquivalenceOf</span></a> : <a class="idref" href="EquivalenceRelationGenerator.html#Gen.A"><span class="id" type="variable">A</span></a> → <a class="idref" href="EquivalenceRelationGenerator.html#Gen.A"><span class="id" type="variable">A</span></a> → <span class="id" type="keyword">Prop</span> :=<br/>
+&nbsp;&nbsp;| <a name="gen_underlying"><span class="id" type="constructor">gen_underlying</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">a</span> <span class="id" type="var">b</span>, <a class="idref" href="EquivalenceRelationGenerator.html#Gen.equiv"><span class="id" type="variable">equiv</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#a"><span class="id" type="variable">a</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#b"><span class="id" type="variable">b</span></a> → <a class="idref" href="EquivalenceRelationGenerator.html#EquivalenceOf"><span class="id" type="inductive">EquivalenceOf</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#a"><span class="id" type="variable">a</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#b"><span class="id" type="variable">b</span></a><br/>
+&nbsp;&nbsp;| <a name="gen_refl"><span class="id" type="constructor">gen_refl</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">a</span>, <a class="idref" href="EquivalenceRelationGenerator.html#EquivalenceOf"><span class="id" type="inductive">EquivalenceOf</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#a"><span class="id" type="variable">a</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#a"><span class="id" type="variable">a</span></a><br/>
+&nbsp;&nbsp;| <a name="gen_sym"><span class="id" type="constructor">gen_sym</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">a</span> <span class="id" type="var">b</span>, <a class="idref" href="EquivalenceRelationGenerator.html#EquivalenceOf"><span class="id" type="inductive">EquivalenceOf</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#a"><span class="id" type="variable">a</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#b"><span class="id" type="variable">b</span></a> → <a class="idref" href="EquivalenceRelationGenerator.html#EquivalenceOf"><span class="id" type="inductive">EquivalenceOf</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#b"><span class="id" type="variable">b</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#a"><span class="id" type="variable">a</span></a><br/>
+&nbsp;&nbsp;| <a name="gen_trans"><span class="id" type="constructor">gen_trans</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">a</span> <span class="id" type="var">b</span> <span class="id" type="var">c</span>, <a class="idref" href="EquivalenceRelationGenerator.html#EquivalenceOf"><span class="id" type="inductive">EquivalenceOf</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#a"><span class="id" type="variable">a</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#b"><span class="id" type="variable">b</span></a> → <a class="idref" href="EquivalenceRelationGenerator.html#EquivalenceOf"><span class="id" type="inductive">EquivalenceOf</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#b"><span class="id" type="variable">b</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#c"><span class="id" type="variable">c</span></a> → <a class="idref" href="EquivalenceRelationGenerator.html#EquivalenceOf"><span class="id" type="inductive">EquivalenceOf</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#a"><span class="id" type="variable">a</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#c"><span class="id" type="variable">c</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Hint Constructors</span> <a class="idref" href="EquivalenceRelationGenerator.html#EquivalenceOf"><span class="id" type="inductive">EquivalenceOf</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="EquivalenceOf_Equivalence"><span class="id" type="lemma">EquivalenceOf_Equivalence</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#Equivalence"><span class="id" type="class">Equivalence</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#EquivalenceOf"><span class="id" type="inductive">EquivalenceOf</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">constructor</span>; <span class="id" type="tactic">eauto</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="generateEquivalence"><span class="id" type="definition">generateEquivalence</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_':'_x_'|'_x_'&'_x_'}'"><span class="id" type="notation">{</span></a> <span class="id" type="var">equiv'</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_':'_x_'|'_x_'&'_x_'}'"><span class="id" type="notation">:</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#Gen.A"><span class="id" type="variable">A</span></a> → <a class="idref" href="EquivalenceRelationGenerator.html#Gen.A"><span class="id" type="variable">A</span></a> → <span class="id" type="keyword">Prop</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_':'_x_'|'_x_'&'_x_'}'"><span class="id" type="notation">|</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Classes.RelationClasses.html#Equivalence"><span class="id" type="class">Equivalence</span></a> <span class="id" type="var">equiv'</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_':'_x_'|'_x_'&'_x_'}'"><span class="id" type="notation">&amp;</span></a> <span class="id" type="keyword">∀</span> <span class="id" type="var">a</span> <span class="id" type="var">b</span>, <a class="idref" href="EquivalenceRelationGenerator.html#Gen.equiv"><span class="id" type="variable">equiv</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#a"><span class="id" type="variable">a</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#b"><span class="id" type="variable">b</span></a> → <span class="id" type="var">equiv'</span> <a class="idref" href="EquivalenceRelationGenerator.html#a"><span class="id" type="variable">a</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#b"><span class="id" type="variable">b</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_':'_x_'|'_x_'&'_x_'}'"><span class="id" type="notation">}</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> <a class="idref" href="EquivalenceRelationGenerator.html#EquivalenceOf"><span class="id" type="inductive">EquivalenceOf</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">exact</span> <a class="idref" href="EquivalenceRelationGenerator.html#EquivalenceOf_Equivalence"><span class="id" type="lemma">EquivalenceOf_Equivalence</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">eauto</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="EquivalenceRelationGenerator.html#Gen"><span class="id" type="section">Gen</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Add</span> <span class="id" type="var">Parametric</span> <span class="id" type="var">Relation</span> <span class="id" type="var">A</span> <span class="id" type="var">equiv</span> : <span class="id" type="var">_</span> (@<a class="idref" href="EquivalenceRelationGenerator.html#EquivalenceOf"><span class="id" type="inductive">EquivalenceOf</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#A"><span class="id" type="variable">A</span></a> <a class="idref" href="EquivalenceRelationGenerator.html#equiv"><span class="id" type="variable">equiv</span></a>)<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span> <span class="id" type="var">proved</span> <span class="id" type="tactic">by</span> (@<a class="idref" href="EquivalenceRelationGenerator.html#gen_refl"><span class="id" type="constructor">gen_refl</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span>)<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">symmetry</span> <span class="id" type="var">proved</span> <span class="id" type="tactic">by</span> (@<a class="idref" href="EquivalenceRelationGenerator.html#gen_sym"><span class="id" type="constructor">gen_sym</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span>)<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">transitivity</span> <span class="id" type="var">proved</span> <span class="id" type="tactic">by</span> (@<a class="idref" href="EquivalenceRelationGenerator.html#gen_trans"><span class="id" type="constructor">gen_trans</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">as</span> <span class="id" type="var">EquivalenceOf_rel</span>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

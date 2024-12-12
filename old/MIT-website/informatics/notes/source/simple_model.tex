@@ -1,0 +1,272 @@
+\documentclass{amsart}
+
+\usepackage{amssymb, amscd,stmaryrd,setspace,hyperref,color}
+
+\input xy
+\xyoption{all} \xyoption{poly} \xyoption{knot}\xyoption{curve}
+\input{diagxy}
+
+
+\newcommand{\comment}[1]{}
+
+\newcommand{\longnote}[2][4.9in]{\fcolorbox{black}{yellow}{\parbox{#1}{\color{black} #2}}}
+\newcommand{\note}[1]{\fcolorbox{black}{yellow}{\color{black} #1}}
+\newcommand{\q}[1]{\begin{question}#1\end{question}}
+\newcommand{\g}[1]{\begin{guess}#1\end{guess}}
+
+\def\tn{\textnormal}
+\def\mf{\mathfrak}
+\def\mc{\mathcal}
+
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\CC{{\mathbb C}}
+\def\AA{{\mathbb A}}
+\def\PP{{\mathbb P}}
+\def\NN{{\mathbb N}}
+
+\def\Hom{\tn{Hom}}
+\def\Fun{\tn{Fun}}
+\def\Ob{\tn{Ob}}
+\def\Op{\tn{Op}}
+
+\def\to{\rightarrow}
+\def\from{\leftarrow}
+\def\cross{\times}
+\def\taking{\colon}
+\def\inj{\hookrightarrow}
+\def\surj{\twoheadrightarrow}
+\def\too{\longrightarrow}
+\def\tooo{\longlongrightarrow}
+\def\tto{\rightrightarrows}
+\def\ttto{\equiv\!\!>}
+\def\ss{\subset}
+\def\superset{\supset}
+\def\iso{\cong}
+\def\down{\downarrow}
+\def\|{{\;|\;}}
+\def\m1{{-1}}
+\def\op{^\tn{op}}
+\def\loc{\tn{loc}}
+\def\la{\langle}
+\def\ra{\rangle}
+\def\wt{\widetilde}
+\def\wh{\widehat}
+\def\we{\simeq}
+\def\ol{\overline}
+\def\ul{\underline}
+\def\qeq{\mathop{=}^?}
+
+\def\ullimit{\ar@{}[rd]|(.3)*+{\lrcorner}}
+\def\urlimit{\ar@{}[ld]|(.3)*+{\llcorner}}
+\def\lllimit{\ar@{}[ru]|(.3)*+{\urcorner}}
+\def\lrlimit{\ar@{}[lu]|(.3)*+{\ulcorner}}
+\def\ulhlimit{\ar@{}[rd]|(.3)*+{\diamond}}
+\def\urhlimit{\ar@{}[ld]|(.3)*+{\diamond}}
+\def\llhlimit{\ar@{}[ru]|(.3)*+{\diamond}}
+\def\lrhlimit{\ar@{}[lu]|(.3)*+{\diamond}}
+\newcommand{\clabel}[1]{\ar@{}[rd]|(.5)*+{#1}}
+
+\newcommand{\arr}[1]{\ar@<.5ex>[#1]\ar@<-.5ex>[#1]}
+\newcommand{\arrr}[1]{\ar@<.7ex>[#1]\ar@<0ex>[#1]\ar@<-.7ex>[#1]}
+\newcommand{\arrrr}[1]{\ar@<.9ex>[#1]\ar@<.3ex>[#1]\ar@<-.3ex>[#1]\ar@<-.9ex>[#1]}
+\newcommand{\arrrrr}[1]{\ar@<1ex>[#1]\ar@<.5ex>[#1]\ar[#1]\ar@<-.5ex>[#1]\ar@<-1ex>[#1]}
+
+\newcommand{\To}[1]{\xrightarrow{#1}}
+\newcommand{\Too}[1]{\xrightarrow{\ \ #1\ \ }}
+\newcommand{\From}[1]{\xleftarrow{#1}}
+
+\newcommand{\Adjoint}[4]{\xymatrix@1{#2 \ar@<.5ex>[r]^-{#1} & #3 \ar@<.5ex>[l]^-{#4}}}
+
+\def\id{\tn{id}}
+\def\Top{{\bf Top}}
+\def\Cat{{\bf Cat}}
+\def\Str{{\bf Str}}
+\def\Sets{{\bf Sets}}
+\def\Set{{\bf Set}}
+\def\sSet{{\bf sSet}}
+\def\sSets{{\bf sSets}}
+\def\Grpd{{\bf Grpd}}
+\def\Pre{{\bf Pre}}
+\def\Shv{{\bf Shv}}
+\def\Rings{{\bf Rings}}
+
+\def\colim{\mathop{\tn{colim}}}
+
+\def\mcA{\mc{A}}
+\def\mcB{\mc{B}}
+\def\mcC{\mc{C}}
+\def\mcD{\mc{D}}
+\def\mcE{\mc{E}}
+\def\mcF{\mc{F}}
+\def\mcG{\mc{G}}
+\def\mcH{\mc{H}}
+\def\mcI{\mc{I}}
+\def\mcJ{\mc{J}}
+\def\mcK{\mc{K}}
+\def\mcL{\mc{L}}
+\def\mcM{\mc{M}}
+\def\mcN{\mc{N}}
+\def\mcO{\mc{O}}
+\def\mcP{\mc{P}}
+\def\mcQ{\mc{Q}}
+\def\mcR{\mc{R}}
+\def\mcS{\mc{S}}
+\def\mcT{\mc{T}}
+\def\mcU{\mc{U}}
+\def\mcV{\mc{V}}
+\def\mcW{\mc{W}}
+\def\mcX{\mc{X}}
+\def\mcY{\mc{Y}}
+\def\mcZ{\mc{Z}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{guess}[theorem]{Guess}
+\newtheorem{answer}[theorem]{Answer}
+\newtheorem{construction}[theorem]{Construction}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{postulate}[theorem]{Postulate}
+
+\def\Finm{{\bf Fin_{m}}}
+\def\El{{\bf El}}
+\def\Gr{{\bf Gr}}
+\def\DT{{\bf DT}}
+\def\DB{{\bf DB}}
+\def\Tables{{\bf Tables}}
+\def\Sch{{\bf Sch}}
+\def\Fin{{\bf Fin}}
+\def\P{{\bf P}}
+\def\SC{{\bf SC}}
+\def\ND{{\bf ND}}
+\def\Poset{{\bf Poset}}
+\def\'{\textnormal{'}}
+
+%%%%%
+
+\begin{document}
+
+\title{A simple model of databases}
+
+\author{David I. Spivak}
+
+\thanks{This project was supported in part by a grant from the Office of Naval Research: N000140910466.}
+
+\maketitle
+
+\section{Introduction}
+
+Databases are very easy to describe in terms of category theory, if we assume that every table has a designated primary key column.  In the following paragraphs we will give a rough outline of how this is done; the details are in Section \ref{sec:details}
+
+Suppose one has a database $D$.  Write down the directed graph $G(D)$ whose vertices are the tables of $D$ and whose edges are foreign key constraints.  That is if $T$ is a table in $D$ and $T$ has a column which links to another table $T'$, then we draw an edge from $T$ to $T'$.  One can account for referential integrity by making $G(D)$ a category rather than a graph; i.e. two paths may be forced to be the same.
+
+In the category $G(D)$, every arrow is called a key.  The primary keys are the identity arrows; the foreign keys are the non-identity arrows (note that one may have a foreign key from a table to itself).  
+
+For each table we need a set of records, and foreign keys induce functions between these sets of records.  In other words, the data in the database is given by a functor from $G(D)$ to the category of sets.
+
+We are only missing one thing -- attributes.  Of course, this is not a problem.  We in fact take $G(D)$ not just to be the tables in $D$ but also the set of attribute columns.  This is not really more complicated since attributes can be considered as one-column tables if necessary, in which case the above discussion goes through as written.
+
+Left to discuss are morphisms of databases, queries, etc.  This will be covered below.  We also explain how to turn a database into an RDF triple store.
+
+\section{Databases}\label{sec:details}
+
+\begin{definition}
+
+A {\em attribute declaration}, denoted $(\DT,\pi)$ consists of a functor $\pi\taking\DT\to\Sets$ for some small category $\DT$.
+
+A {\em morphism of attribute declarations}, denoted $f\taking(\DT,\pi)\to(\DT',\pi')$ consists of a functor $f\taking\DT\to\DT'$ such that $\pi'\circ f=\pi$.
+
+\end{definition}
+
+\begin{example}
+
+We are thinking of the attribute declaration as containing all standardized fields contained in the database.  For example one might have an object `Date' in $\DT$ where $\pi(\tn{`Date'})$ is the set of dates written in some format.
+
+\end{example}
+
+\begin{definition}
+
+A {\em database schema}, denoted $\mcS=(\DT,\pi,S,i)$, consists of a attribute declaration $(\DT,\pi)$, a small category $S$, and a functor $i\taking\DT\to S$.  
+
+Suppose that $\mcS'=(\DT',\pi',S',i')$ is another database schema.  A {\em morphism of database schema}, denoted $(f,g)\taking\mcS'\to\mcS$, consists of a morphism of attribute declarations $f\taking(\DT',\pi')\to(\DT,\pi)$ and a functor $g\taking S'\to S$ such that the diagram $$\xymatrix{\DT'\ar[r]^f\ar[d]_{i'}&\DT\ar[d]^i\\S'\ar[r]_g&S}$$ commutes.
+
+\end{definition}
+
+\begin{definition}
+
+Let $\mcS=(\DT,\pi,S,i)$ be a database schema.  An object of $S$ is called a {\em attribute of $\mcS$} if it is in the image of $i$; otherwise it is called a {\em table of $\mcS$}.  
+
+Let $f\taking X\to Y$ be a morphism in $S$.  If $X$ and $Y$ are tables then $f$ is called a {\em foreign key constraint} unless $X=Y$ and $f=\id_X$, in which case $f$ is called the primary key of $X$.  If $X$ is a table and $Y$ is an attribute then $f$ is called a {\em data column}.  If $X$ and $Y$ are both attributes then $f$ is called {\em a known relationship of attributes}.  If $X$ is an attribute and $Y$ is a table then $f$ is called {\em ???}.
+
+\end{definition}
+
+\begin{definition}
+
+A {\em database}, denoted $(\mcS,\delta)$ consists of a database schema $\mcS=(\DT,\pi,S,i)$ and a functor $\delta\taking S\to\Sets$ such that the diagram $$\xymatrix@=.6cm{\DT\ar[rr]^i\ar[dr]_\pi&&S\ar[dl]^\delta\\&\Sets}$$ commutes. 
+
+Let $(\mcS',\delta')$ denote another database.  A {\em morphism of databases}, denoted $$(f,g,h)\taking(\mcS,\delta)\to(\mcS',\delta')$$ consists of a morphism $(f,g)\taking\mcS\to\mcS'$ of database schema and a natural transformation $h\taking\delta\circ g\to\delta'$ of functors $S'\to\Sets$, as in the diagram $$\xymatrix@=.6cm{\DT'\ar[dd]_{i'}\ar@/_3pc/[ddddr]_{\pi'}\ar[rr]^f&&\DT\ar[dd]^i\ar@/^3pc/[ddddl]^{\pi}\\\\S'\ar[rr]^g\ar[ddr]_{\delta'}&\ar@{}[dd]|{\stackrel{h}{\Longleftarrow}}&S\ar[ldd]^\delta\\\\&\Sets}$$
+
+\end{definition}
+
+\begin{remark}
+
+The above definition is greatly simplified if the schema remains constant.  Given a schema  $\mcS=(\DT,\pi,S,i)$, a {\em database on $\mcS$} is, as above, a functor $\delta\taking S\to\Sets$ such that $\delta\circ i=\pi$.  A {\em morphism of databases}, denoted $h\taking\delta\to\delta'$, is just a natural transformation of functors.
+
+\end{remark}
+
+\section{Manipulations and queries}
+
+As in simplicial databases \cite{SD}, a morphism from one schema to another allows us to transfer data between them.  
+
+\begin{definition}
+
+Let $g\taking S'\to S$ denote a functor.  Given a functor $\delta\taking S\to\Sets$, define $g^*\delta\taking S'\to\Sets$ to simply be $\delta\circ g$.  Given a functor $\delta'\taking S'\to\Sets$ define $g_+\delta'\taking S\to\Sets$ to be the right Kan extension of $\delta$ along $g$.  We can also define $g_!\delta\taking S\to\Sets$ to be the left Kan extension of $\delta$ along $g$.
+
+\end{definition}
+
+\begin{remark}
+
+Given $h\taking S'\to S$ and $\delta\taking S'\to\Sets$, the right Kan extension $g_+\delta\taking S\to\Sets$ can be computed as follows.  Given an object $s\in S$ consider the category $(h\downarrow s)$, in which an object is a pair $(s',\alpha)$ where $s'\in\Ob(S')$ and $\alpha\taking h(s')\to s$ and morphisms are defined in the usual way.  We define $g_+(s)$ to be the set $$\lim_{\stackrel{(h(a)\to b)}{\;\;\in(h\downarrow s)}}\delta(a).$$  This construction is functorial in $a$.
+
+\end{remark}
+
+\begin{construction}
+
+Taking the union of databases with the same schema is simply a matter of taking a colimit in the diagram of databases.  Adding a new row to a table is an example of such a union of databases (except that in this case one of the two databases will consist of just one record in some tables and none in others).
+
+\end{construction}
+
+\begin{construction}
+
+Limits in the category of databases correspond to joins and selects.  For details, see \cite{SD} or encourage the author to write up the details.
+
+\end{construction}
+
+\section{Conversion to RDF}
+
+The conversion of a database in this model to RDF graph is simple.  Namely, given a database $(\DT,\pi,S,i,\delta)$ one takes the Grothendieck construction $\Gr(\delta)$.  This is a category whose objects are pairs $(T,x)$, where either $T$ is a table of the database and $x$ is the primary-identifier of a record in it, or where $T$ is an attribute and $x$ is an element in its domain.  An arrow in $\Gr(\delta)$ is a foreign key constraint (or attribute).  The resulting category may be viewed as a graph (called the RDF graph), though it really should be viewed as a category to ensure referential integrity.
+
+\bibliographystyle{amsalpha}
+\begin{thebibliography}{JTT}
+
+\bibitem[SD]{SD}Spivak, D. I.  ``Simplicial databases."  ePrint available: \href{http://arxiv.org/abs/0904.2012}{\texttt http://arxiv.org/abs/0904.2012}
+
+
+\end{thebibliography}
+
+\end{document}
+

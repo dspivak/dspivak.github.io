@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_4_2_3_12</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_4_2_3_12</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.ZArith.ZArith.html#"><span class="id" type="library">ZArith</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a> <a class="idref" href="Groupoid.html#"><span class="id" type="library">Groupoid</span></a> <a class="idref" href="CategoryIsomorphisms.html#"><span class="id" type="library">CategoryIsomorphisms</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Notation</span> <a name="ℤ"><span class="id" type="abbreviation">&#x2124;</span></a> := <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Numbers.BinNums.html#Z"><span class="id" type="inductive">Z</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Open</span> <span class="id" type="keyword">Scope</span> <span class="id" type="var">Z_scope</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab90"></a><h1 class="section">Exercise 4.2.3.12</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Exercise_4_2_3_12"><span class="id" type="section">Exercise_4_2_3_12</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab91"></a><h2 class="section">Problem</h2>
+ Consider the set <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.A"><span class="id" type="variable">A</span></a></span> of all (well-formed) arithmetic expressions
+      in the symbols <span class="inlinecode">{0,</span> <span class="inlinecode">...,</span> <span class="inlinecode">9,</span> <span class="inlinecode">+,</span> <span class="inlinecode">-,</span> <span class="inlinecode">*,</span> <span class="inlinecode">(,</span> <span class="inlinecode">)}</span>. For example, here
+      are some elements of <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.GraphLeafTable.A"><span class="id" type="variable">A</span></a></span>:
+
+<div class="paragraph"> </div>
+
+      <span class="inlinecode">[52,</span> <span class="inlinecode">52</span> <span class="inlinecode">-</span> <span class="inlinecode">7,</span> <span class="inlinecode">50</span> <span class="inlinecode">+</span> <span class="inlinecode">3</span> <span class="inlinecode">×</span> <span class="inlinecode">(6</span> <span class="inlinecode">-</span> <span class="inlinecode">2).]</span>
+
+<div class="paragraph"> </div>
+
+      We can say that an equivalence between two arithmetic
+      expressions is a justification that they give the same "final
+      answer", e.g. <span class="inlinecode">52</span> <span class="inlinecode">+</span> <span class="inlinecode">60</span> is equivalent to <span class="inlinecode">10</span> <span class="inlinecode">×</span> <span class="inlinecode">(5</span> <span class="inlinecode">+</span> <span class="inlinecode">6)</span> <span class="inlinecode">+</span> <span class="inlinecode">(2</span> <span class="inlinecode">+</span>
+      <span class="inlinecode">)</span>, which is equivalent to <span class="inlinecode">10</span> <span class="inlinecode">×</span> <span class="inlinecode">11</span> <span class="inlinecode">+</span> <span class="inlinecode">2</span>. I’ve basically
+      described a groupoid. What are its objects and what are its
+      morphisms? 
+</div>
+<div class="code">
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="eq_trans_id"><span class="id" type="lemma">eq_trans_id</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">T</span> <span class="id" type="var">x</span> <span class="id" type="var">y</span> (<span class="id" type="var">pf</span> : @<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq"><span class="id" type="inductive">eq</span></a> <a class="idref" href="Exercise_4_2_3_12.html#T"><span class="id" type="variable">T</span></a> <a class="idref" href="Exercise_4_2_3_12.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="Exercise_4_2_3_12.html#y"><span class="id" type="variable">y</span></a>),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_trans"><span class="id" type="lemma">eq_trans</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_sym"><span class="id" type="lemma">eq_sym</span></a> <a class="idref" href="Exercise_4_2_3_12.html#pf"><span class="id" type="variable">pf</span></a>) <a class="idref" href="Exercise_4_2_3_12.html#pf"><span class="id" type="variable">pf</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">compute</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">pf</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Inductive</span> <a name="Expression"><span class="id" type="inductive">Expression</span></a> :=<br/>
+&nbsp;&nbsp;| <a name="Constant"><span class="id" type="constructor">Constant</span></a> : <a class="idref" href="Exercise_4_2_3_12.html#ℤ"><span class="id" type="abbreviation">&#x2124;</span></a> → <a class="idref" href="Exercise_4_2_3_12.html#Expression"><span class="id" type="inductive">Expression</span></a><br/>
+&nbsp;&nbsp;| <a name="Pos"><span class="id" type="constructor">Pos</span></a> : <a class="idref" href="Exercise_4_2_3_12.html#Expression"><span class="id" type="inductive">Expression</span></a> → <a class="idref" href="Exercise_4_2_3_12.html#Expression"><span class="id" type="inductive">Expression</span></a><br/>
+&nbsp;&nbsp;| <a name="Negate"><span class="id" type="constructor">Negate</span></a> : <a class="idref" href="Exercise_4_2_3_12.html#Expression"><span class="id" type="inductive">Expression</span></a> → <a class="idref" href="Exercise_4_2_3_12.html#Expression"><span class="id" type="inductive">Expression</span></a><br/>
+&nbsp;&nbsp;| <span class="id" type="keyword">Add</span> : <a class="idref" href="Exercise_4_2_3_12.html#Expression"><span class="id" type="inductive">Expression</span></a> → <a class="idref" href="Exercise_4_2_3_12.html#Expression"><span class="id" type="inductive">Expression</span></a> → <a class="idref" href="Exercise_4_2_3_12.html#Expression"><span class="id" type="inductive">Expression</span></a><br/>
+&nbsp;&nbsp;| <a name="Subtract"><span class="id" type="constructor">Subtract</span></a> : <a class="idref" href="Exercise_4_2_3_12.html#Expression"><span class="id" type="inductive">Expression</span></a> → <a class="idref" href="Exercise_4_2_3_12.html#Expression"><span class="id" type="inductive">Expression</span></a> → <a class="idref" href="Exercise_4_2_3_12.html#Expression"><span class="id" type="inductive">Expression</span></a><br/>
+&nbsp;&nbsp;| <a name="Multiply"><span class="id" type="constructor">Multiply</span></a> : <a class="idref" href="Exercise_4_2_3_12.html#Expression"><span class="id" type="inductive">Expression</span></a> → <a class="idref" href="Exercise_4_2_3_12.html#Expression"><span class="id" type="inductive">Expression</span></a> → <a class="idref" href="Exercise_4_2_3_12.html#Expression"><span class="id" type="inductive">Expression</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Fixpoint</span> <a name="DenoteExpression"><span class="id" type="definition">DenoteExpression</span></a> (<span class="id" type="var">e</span> : <a class="idref" href="Exercise_4_2_3_12.html#Expression"><span class="id" type="inductive">Expression</span></a>) : <a class="idref" href="Exercise_4_2_3_12.html#ℤ"><span class="id" type="abbreviation">&#x2124;</span></a> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">match</span> <a class="idref" href="Exercise_4_2_3_12.html#e"><span class="id" type="variable">e</span></a> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="Exercise_4_2_3_12.html#Constant"><span class="id" type="constructor">Constant</span></a> <span class="id" type="var">z</span> ⇒ <span class="id" type="var">z</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="Exercise_4_2_3_12.html#Pos"><span class="id" type="constructor">Pos</span></a> <span class="id" type="var">z</span> ⇒ <a class="idref" href="Exercise_4_2_3_12.html#DenoteExpression"><span class="id" type="definition">DenoteExpression</span></a> <span class="id" type="var">z</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="Exercise_4_2_3_12.html#Negate"><span class="id" type="constructor">Negate</span></a> <span class="id" type="var">z</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.ZArith.BinInt.html#:Z_scope:'-'_x"><span class="id" type="notation">-</span></a><a class="idref" href="Exercise_4_2_3_12.html#DenoteExpression"><span class="id" type="definition">DenoteExpression</span></a> <span class="id" type="var">z</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" type="keyword">Add</span> <span class="id" type="var">a</span> <span class="id" type="var">b</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.ZArith.BinInt.html#:Z_scope:x_'+'_x"><span class="id" type="notation">(</span></a><a class="idref" href="Exercise_4_2_3_12.html#DenoteExpression"><span class="id" type="definition">DenoteExpression</span></a> <span class="id" type="var">a</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.ZArith.BinInt.html#:Z_scope:x_'+'_x"><span class="id" type="notation">)</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.ZArith.BinInt.html#:Z_scope:x_'+'_x"><span class="id" type="notation">+</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.ZArith.BinInt.html#:Z_scope:x_'+'_x"><span class="id" type="notation">(</span></a><a class="idref" href="Exercise_4_2_3_12.html#DenoteExpression"><span class="id" type="definition">DenoteExpression</span></a> <span class="id" type="var">b</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.ZArith.BinInt.html#:Z_scope:x_'+'_x"><span class="id" type="notation">)</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="Exercise_4_2_3_12.html#Subtract"><span class="id" type="constructor">Subtract</span></a> <span class="id" type="var">a</span> <span class="id" type="var">b</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.ZArith.BinInt.html#:Z_scope:x_'-'_x"><span class="id" type="notation">(</span></a><a class="idref" href="Exercise_4_2_3_12.html#DenoteExpression"><span class="id" type="definition">DenoteExpression</span></a> <span class="id" type="var">a</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.ZArith.BinInt.html#:Z_scope:x_'-'_x"><span class="id" type="notation">)</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.ZArith.BinInt.html#:Z_scope:x_'-'_x"><span class="id" type="notation">-</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.ZArith.BinInt.html#:Z_scope:x_'-'_x"><span class="id" type="notation">(</span></a><a class="idref" href="Exercise_4_2_3_12.html#DenoteExpression"><span class="id" type="definition">DenoteExpression</span></a> <span class="id" type="var">b</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.ZArith.BinInt.html#:Z_scope:x_'-'_x"><span class="id" type="notation">)</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="Exercise_4_2_3_12.html#Multiply"><span class="id" type="constructor">Multiply</span></a> <span class="id" type="var">a</span> <span class="id" type="var">b</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.ZArith.BinInt.html#:Z_scope:x_'*'_x"><span class="id" type="notation">(</span></a><a class="idref" href="Exercise_4_2_3_12.html#DenoteExpression"><span class="id" type="definition">DenoteExpression</span></a> <span class="id" type="var">a</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.ZArith.BinInt.html#:Z_scope:x_'*'_x"><span class="id" type="notation">)</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.ZArith.BinInt.html#:Z_scope:x_'*'_x"><span class="id" type="notation">×</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.ZArith.BinInt.html#:Z_scope:x_'*'_x"><span class="id" type="notation">(</span></a><a class="idref" href="Exercise_4_2_3_12.html#DenoteExpression"><span class="id" type="definition">DenoteExpression</span></a> <span class="id" type="var">b</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.ZArith.BinInt.html#:Z_scope:x_'*'_x"><span class="id" type="notation">)</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="ArithmeticCategory"><span class="id" type="definition">ArithmeticCategory</span></a> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <a class="idref" href="Exercise_4_2_3_12.html#Expression"><span class="id" type="inductive">Expression</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> {| <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Morphism</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">x</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">y</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">⇒</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">DenoteExpression</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">x</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">DenoteExpression</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">y</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">);</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Identity</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">x</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">⇒</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">eq_refl</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">);</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Compose</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">(</span></a><span class="id" type="keyword">fun</span> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">_</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">_</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">_</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">p</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">q</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">⇒</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">eq_trans</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">q</span></a> <a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">p</span></a><a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">)</span></a> |};<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">intro</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">destruct_head_hnf</span> @<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq"><span class="id" type="inductive">eq</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="ArithmeticGroupoid"><span class="id" type="definition">ArithmeticGroupoid</span></a> : <a class="idref" href="Groupoid.html#Groupoid"><span class="id" type="record">Groupoid</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> {| <a class="idref" href="Groupoid.html#Build_Groupoid"><span class="id" type="constructor">GroupoidCategory</span></a> <a class="idref" href="Groupoid.html#Build_Groupoid"><span class="id" type="constructor">:=</span></a> <a class="idref" href="Groupoid.html#Build_Groupoid"><span class="id" type="constructor">ArithmeticCategory</span></a> |}.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">constructor</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span> <span class="id" type="var">s</span> <span class="id" type="var">d</span> <span class="id" type="var">m</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_sym"><span class="id" type="lemma">eq_sym</span></a> <span class="id" type="var">m</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">simpl</span> <span class="id" type="keyword">in</span> *;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">destruct_head_hnf</span> @<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq"><span class="id" type="inductive">eq</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_4_2_3_12.html#Exercise_4_2_3_12"><span class="id" type="section">Exercise_4_2_3_12</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

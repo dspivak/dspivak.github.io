@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_3_1_1_7</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_3_1_1_7</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Setoids.Setoid.html#"><span class="id" type="library">Setoid</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Monoid.html#"><span class="id" type="library">Monoid</span></a> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Definition</span> <a name="smallest_monoid"><span class="id" type="definition">smallest_monoid</span></a> : <a class="idref" href="Monoid.html#Monoid"><span class="id" type="record">Monoid</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#unit"><span class="id" type="inductive">unit</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">eexists</span> (@<a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">Build_ComputationalMonoid</span></a> <span class="id" type="var">_</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#tt"><span class="id" type="constructor">tt</span></a> (<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#tt"><span class="id" type="constructor">tt</span></a>)).<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">split</span>;<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">intros</span> [];<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">reflexivity</span>.<br/>
+<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Lemma</span> <a name="no_smaller_monoid"><span class="id" type="lemma">no_smaller_monoid</span></a> : <a class="idref" href="Monoid.html#Monoid"><span class="id" type="record">Monoid</span></a> <a class="idref" href="Notations.html#::'∅'"><span class="id" type="notation">∅</span></a> → <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#False"><span class="id" type="inductive">False</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">intro</span> <span class="id" type="var">M</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> (@<a class="idref" href="Monoid.html#id"><span class="id" type="projection">id</span></a> <span class="id" type="var">_</span> <span class="id" type="var">M</span>).<br/>
+<span class="id" type="keyword">Qed</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Inductive</span> <a name="two"><span class="id" type="inductive">two</span></a> := <a name="twoa"><span class="id" type="constructor">twoa</span></a> | <a name="twob"><span class="id" type="constructor">twob</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Inductive</span> <a name="three"><span class="id" type="inductive">three</span></a> := <a name="one"><span class="id" type="constructor">one</span></a> | <a name="zeroa"><span class="id" type="constructor">zeroa</span></a> | <a name="zerob"><span class="id" type="constructor">zerob</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Definition</span> <a name="f"><span class="id" type="definition">f</span></a> : <a class="idref" href="Exercise_3_1_1_7.html#three"><span class="id" type="inductive">three</span></a> → <a class="idref" href="Exercise_3_1_1_7.html#three"><span class="id" type="inductive">three</span></a> → <a class="idref" href="Exercise_3_1_1_7.html#three"><span class="id" type="inductive">three</span></a> :=<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">fun</span> <span class="id" type="var">x</span> <span class="id" type="var">y</span> ⇒ <span class="id" type="keyword">match</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">(</span></a><a class="idref" href="Exercise_3_1_1_7.html#x"><span class="id" type="variable">x</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">,</span></a> <a class="idref" href="Exercise_3_1_1_7.html#y"><span class="id" type="variable">y</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">)</span></a> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">(</span></a><a class="idref" href="Exercise_3_1_1_7.html#one"><span class="id" type="constructor">one</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">,</span></a> <span class="id" type="var">z</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">)</span></a> ⇒ <span class="id" type="var">z</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">(</span></a><span class="id" type="var">z</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">,</span></a> <a class="idref" href="Exercise_3_1_1_7.html#one"><span class="id" type="constructor">one</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">)</span></a> ⇒ <span class="id" type="var">z</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">(</span></a><a class="idref" href="Exercise_3_1_1_7.html#zeroa"><span class="id" type="constructor">zeroa</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">,</span></a> <span class="id" type="var">_</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">)</span></a> ⇒ <a class="idref" href="Exercise_3_1_1_7.html#zeroa"><span class="id" type="constructor">zeroa</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">(</span></a><a class="idref" href="Exercise_3_1_1_7.html#zerob"><span class="id" type="constructor">zerob</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">,</span></a> <span class="id" type="var">_</span><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">)</span></a> ⇒ <a class="idref" href="Exercise_3_1_1_7.html#zerob"><span class="id" type="constructor">zerob</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Definition</span> <a name="three_monoid"><span class="id" type="definition">three_monoid</span></a> : <a class="idref" href="Monoid.html#Monoid"><span class="id" type="record">Monoid</span></a> <a class="idref" href="Exercise_3_1_1_7.html#three"><span class="id" type="inductive">three</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">eexists</span> (@<a class="idref" href="Monoid.html#Build_ComputationalMonoid"><span class="id" type="constructor">Build_ComputationalMonoid</span></a> <span class="id" type="var">_</span> <a class="idref" href="Exercise_3_1_1_7.html#one"><span class="id" type="constructor">one</span></a> <a class="idref" href="Exercise_3_1_1_7.html#f"><span class="id" type="definition">f</span></a>).<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">split</span>; <span class="id" type="tactic">repeat</span> <span class="id" type="tactic">intros</span> []; <span class="id" type="tactic">reflexivity</span>.<br/>
+<span class="id" type="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Lemma</span> <a name="two_monoid_is_commutative"><span class="id" type="lemma">two_monoid_is_commutative</span></a> (<span class="id" type="var">M</span> : <a class="idref" href="Monoid.html#Monoid"><span class="id" type="record">Monoid</span></a> <a class="idref" href="Exercise_3_1_1_7.html#two"><span class="id" type="inductive">two</span></a>) : <a class="idref" href="Monoid.html#is_commutative"><span class="id" type="definition">is_commutative</span></a> <a class="idref" href="Exercise_3_1_1_7.html#M"><span class="id" type="variable">M</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="tactic">intro</span>;<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">pose</span> <span class="id" type="var">proof</span> (@<a class="idref" href="Monoid.html#left_id"><span class="id" type="method">left_id</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">M</span>);<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">pose</span> <span class="id" type="var">proof</span> (@<a class="idref" href="Monoid.html#right_id"><span class="id" type="method">right_id</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">M</span>);<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">set</span> (<span class="id" type="var">i</span> := @<a class="idref" href="Monoid.html#id"><span class="id" type="projection">id</span></a> <span class="id" type="var">_</span> <span class="id" type="var">M</span>) <span class="id" type="keyword">in</span> *; <span class="id" type="var">clearbody</span> <span class="id" type="var">i</span>;<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">hnf</span> <span class="id" type="keyword">in</span> *;<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">repeat</span> <span class="id" type="keyword">match</span> <span class="id" type="keyword">goal</span> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> := <span class="id" type="var">_</span> |- <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">subst</span> <span class="id" type="var">H</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : <a class="idref" href="Exercise_3_1_1_7.html#two"><span class="id" type="inductive">two</span></a> |- <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">destruct</span> <span class="id" type="var">H</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [ <span class="id" type="var">H</span> : <span class="id" type="var">_</span> |- <span class="id" type="var">_</span> ] ⇒ <span class="id" type="tactic">rewrite</span> <span class="id" type="var">H</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>;<br/>
+&nbsp;&nbsp;<span class="id" type="tactic">try</span> <span class="id" type="tactic">reflexivity</span>.<br/>
+<span class="id" type="keyword">Qed</span>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

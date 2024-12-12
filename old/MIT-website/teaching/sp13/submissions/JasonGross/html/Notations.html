@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Notations</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Notations</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.JMeq.html#"><span class="id" type="library">JMeq</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#"><span class="id" type="library">Ensembles</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Notation</span> <a name="::'∅'"><span class="id" type="notation">"</span></a>&empty;" := <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#Empty_set"><span class="id" type="inductive">Datatypes.Empty_set</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Notation</span> <a name="ℕ"><span class="id" type="abbreviation">&#x2115;</span></a> := <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#nat"><span class="id" type="inductive">nat</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Infix</span> <a name=":type_scope:x_'×'_x"><span class="id" type="notation">"</span></a>&times;" := <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#prod"><span class="id" type="inductive">prod</span></a> (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 40, <span class="id" type="tactic">left</span> <span class="id" type="keyword">associativity</span>): <span class="id" type="var">type_scope</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Infix</span> <a name="::x_'=='_x"><span class="id" type="notation">"</span></a>==" := <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.JMeq.html#JMeq"><span class="id" type="inductive">JMeq</span></a> (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 70, <span class="id" type="tactic">right</span> <span class="id" type="keyword">associativity</span>).<br/>
+
+<br/>
+<span class="id" type="keyword">Infix</span> <a name=":type_scope:x_'⊔'_x"><span class="id" type="notation">"</span></a>&#x2294;" := <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#sum"><span class="id" type="inductive">sum</span></a> (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 50, <span class="id" type="tactic">left</span> <span class="id" type="keyword">associativity</span>) : <span class="id" type="var">type_scope</span>.<br/>
+
+<br/>
+<span class="id" type="var">Reserved</span> <span class="id" type="keyword">Infix</span> "o" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 40, <span class="id" type="tactic">left</span> <span class="id" type="keyword">associativity</span>).<br/>
+<span class="id" type="var">Reserved</span> <span class="id" type="keyword">Infix</span> "◇" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 40, <span class="id" type="tactic">left</span> <span class="id" type="keyword">associativity</span>).<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<span class="inlinecode"><span class="id" type="var">Reserved</span></span> <span class="inlinecode"><span class="id" type="keyword">Notation</span></span> <span class="inlinecode">"<a class="idref" href="Exercise_4_4_1_5.html#Exercise_4_4_1_5.i"><span class="id" type="constructor">i</span></a></span> <span class="inlinecode"><span class="id" type="var"><sup>-1</sup></span>"</span> <span class="inlinecode">(<span class="id" type="tactic">at</span></span> <span class="inlinecode"><span class="id" type="keyword">level</span></span> <span class="inlinecode">10).</span> 
+</div>
+<div class="code">
+
+<br/>
+
+<br/>
+<span class="id" type="var">Reserved</span> <span class="id" type="keyword">Infix</span> "≅" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 70).<br/>
+
+<br/>
+<span class="id" type="var">Reserved</span> <span class="id" type="keyword">Infix</span> "~&gt;" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 90, <span class="id" type="tactic">right</span> <span class="id" type="keyword">associativity</span>).<br/>
+<span class="id" type="var">Reserved</span> <span class="id" type="keyword">Infix</span> "~~&gt;" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 90, <span class="id" type="tactic">right</span> <span class="id" type="keyword">associativity</span>).<br/>
+<span class="id" type="var">Reserved</span> <span class="id" type="keyword">Infix</span> "~~~&gt;" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 90, <span class="id" type="tactic">right</span> <span class="id" type="keyword">associativity</span>).<br/>
+
+<br/>
+<span class="id" type="keyword">Notation</span> <a name="::x_'∈'_x"><span class="id" type="notation">"</span></a>x ∈ X" := (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#In"><span class="id" type="definition">Ensembles.In</span></a> <span class="id" type="var">_</span> <span class="id" type="var">X</span> <span class="id" type="var">x</span>) (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 50, <span class="id" type="keyword">no</span> <span class="id" type="keyword">associativity</span>).<br/>
+<span class="id" type="keyword">Notation</span> <a name="::x_'∩'_x"><span class="id" type="notation">"</span></a>A ∩ B" := (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Intersection"><span class="id" type="inductive">Ensembles.Intersection</span></a> <span class="id" type="var">_</span> <span class="id" type="var">A</span> <span class="id" type="var">B</span>) (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 50, <span class="id" type="keyword">no</span> <span class="id" type="keyword">associativity</span>).<br/>
+<span class="id" type="keyword">Notation</span> <a name="::x_'∪'_x"><span class="id" type="notation">"</span></a>A ∪ B" := (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Union"><span class="id" type="inductive">Ensembles.Union</span></a> <span class="id" type="var">_</span> <span class="id" type="var">A</span> <span class="id" type="var">B</span>) (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 50, <span class="id" type="keyword">no</span> <span class="id" type="keyword">associativity</span>).<br/>
+<span class="id" type="keyword">Notation</span> <a name="::x_'⊆'_x"><span class="id" type="notation">"</span></a>A ⊆ B" := (<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Sets.Ensembles.html#Included"><span class="id" type="definition">Ensembles.Included</span></a> <span class="id" type="var">_</span> <span class="id" type="var">A</span> <span class="id" type="var">B</span>) (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 50, <span class="id" type="keyword">no</span> <span class="id" type="keyword">associativity</span>).<br/>
+
+<br/>
+<span class="id" type="keyword">Reserved Notation</span> "F ⟨ c , - ⟩" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 70, <span class="id" type="keyword">no</span> <span class="id" type="keyword">associativity</span>).<br/>
+<span class="id" type="keyword">Reserved Notation</span> "F ⟨ - , d ⟩" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 70, <span class="id" type="keyword">no</span> <span class="id" type="keyword">associativity</span>).<br/>
+
+<br/>
+<span class="id" type="keyword">Reserved Notation</span> "i ⁻¹" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 10).<br/>
+<span class="id" type="keyword">Reserved Notation</span> "C ᵒᵖ" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 10).<br/>
+
+<br/>
+<span class="id" type="keyword">Reserved Notation</span> "C ★^ M D" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 70, <span class="id" type="keyword">no</span> <span class="id" type="keyword">associativity</span>).<br/>
+<span class="id" type="keyword">Reserved Notation</span> "C ★^{ M } D" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 70, <span class="id" type="keyword">no</span> <span class="id" type="keyword">associativity</span>).<br/>
+
+<br/>
+<span class="id" type="keyword">Reserved Notation</span> "S ↓ T" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 70, <span class="id" type="keyword">no</span> <span class="id" type="keyword">associativity</span>).<br/>
+
+<br/>
+<span class="id" type="keyword">Reserved Notation</span> "S ⇑ T" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 70, <span class="id" type="keyword">no</span> <span class="id" type="keyword">associativity</span>).<br/>
+<span class="id" type="keyword">Reserved Notation</span> "S ⇓ T" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 70, <span class="id" type="keyword">no</span> <span class="id" type="keyword">associativity</span>).<br/>
+<span class="id" type="keyword">Reserved Notation</span> "'CAT' ⇑ D" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 70, <span class="id" type="keyword">no</span> <span class="id" type="keyword">associativity</span>).<br/>
+<span class="id" type="keyword">Reserved Notation</span> "'CAT' ⇓ D" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 70, <span class="id" type="keyword">no</span> <span class="id" type="keyword">associativity</span>).<br/>
+
+<br/>
+<span class="id" type="keyword">Reserved Notation</span> "x ⊗ y" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 40, <span class="id" type="tactic">left</span> <span class="id" type="keyword">associativity</span>).<br/>
+<span class="id" type="keyword">Reserved Notation</span> "x ⊗m y" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 40, <span class="id" type="tactic">left</span> <span class="id" type="keyword">associativity</span>).<br/>
+
+<br/>
+<span class="id" type="keyword">Reserved Notation</span> "f ○ g" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 70, <span class="id" type="tactic">right</span> <span class="id" type="keyword">associativity</span>).<br/>
+
+<br/>
+<span class="id" type="keyword">Reserved Notation</span> "x ∏ y" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 40, <span class="id" type="tactic">left</span> <span class="id" type="keyword">associativity</span>).<br/>
+<span class="id" type="keyword">Reserved Notation</span> "x ∐ y" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 50, <span class="id" type="tactic">left</span> <span class="id" type="keyword">associativity</span>).<br/>
+
+<br/>
+<span class="id" type="keyword">Reserved Notation</span> "∏_{ x } f" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 0, <span class="id" type="var">x</span> <span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 99).<br/>
+<span class="id" type="keyword">Reserved Notation</span> "∏_{ x : A } f" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 0, <span class="id" type="var">x</span> <span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 99).<br/>
+<span class="id" type="keyword">Reserved Notation</span> "∐_{ x } f" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 0, <span class="id" type="var">x</span> <span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 99).<br/>
+<span class="id" type="keyword">Reserved Notation</span> "∐_{ x : A } f" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 0, <span class="id" type="var">x</span> <span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 99).<br/>
+
+<br/>
+<span class="id" type="keyword">Reserved Notation</span> "[ x ]" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 0, <span class="id" type="var">x</span> <span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 200).<br/>
+
+<br/>
+<span class="id" type="keyword">Reserved Notation</span> "∫ F" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 0).<br/>
+
+<br/>
+<span class="id" type="var">Reserved</span> <span class="id" type="keyword">Infix</span> "⊣" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 90, <span class="id" type="keyword">no</span> <span class="id" type="keyword">associativity</span>).<br/>
+<span class="id" type="var">Reserved</span> <span class="id" type="keyword">Infix</span> "-|" (<span class="id" type="tactic">at</span> <span class="id" type="keyword">level</span> 90, <span class="id" type="keyword">no</span> <span class="id" type="keyword">associativity</span>).<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

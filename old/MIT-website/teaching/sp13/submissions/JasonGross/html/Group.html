@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Group</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Group</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Monoid.html#"><span class="id" type="library">Monoid</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Definition</span> <a name="is_inverse_of"><span class="id" type="definition">is_inverse_of</span></a> <span class="id" type="var">M'</span> (<span class="id" type="var">M</span> : <a class="idref" href="Monoid.html#ComputationalMonoid"><span class="id" type="record">ComputationalMonoid</span></a> <a class="idref" href="Group.html#M'"><span class="id" type="variable">M'</span></a>) : <a class="idref" href="Group.html#M"><span class="id" type="variable">M</span></a> → <a class="idref" href="Group.html#M"><span class="id" type="variable">M</span></a> → <span class="id" type="keyword">Prop</span> :=<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">fun</span> <span class="id" type="var">x</span> <span class="id" type="var">y</span> ⇒ <a class="idref" href="Group.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">&#9733;</span></a> <a class="idref" href="Group.html#y"><span class="id" type="variable">y</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Monoid.html#id"><span class="id" type="projection">id</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'/\'_x"><span class="id" type="notation">∧</span></a> <a class="idref" href="Group.html#y"><span class="id" type="variable">y</span></a> <a class="idref" href="Monoid.html#::x_'★'_x"><span class="id" type="notation">&#9733;</span></a> <a class="idref" href="Group.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Monoid.html#id"><span class="id" type="projection">id</span></a>.<br/>
+<span class="id" type="keyword">Definition</span> <a name="inverse_of"><span class="id" type="definition">inverse_of</span></a> <span class="id" type="var">M'</span> (<span class="id" type="var">M</span> : <a class="idref" href="Monoid.html#ComputationalMonoid"><span class="id" type="record">ComputationalMonoid</span></a> <a class="idref" href="Group.html#M'"><span class="id" type="variable">M'</span></a>) : <a class="idref" href="Group.html#M"><span class="id" type="variable">M</span></a> → <span class="id" type="keyword">Type</span> :=<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">fun</span> <span class="id" type="var">x</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'|'_x_'}'"><span class="id" type="notation">{</span></a> <span class="id" type="var">x'</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'|'_x_'}'"><span class="id" type="notation">|</span></a> <a class="idref" href="Group.html#is_inverse_of"><span class="id" type="definition">is_inverse_of</span></a> <span class="id" type="var">_</span> <a class="idref" href="Group.html#x"><span class="id" type="variable">x</span></a> <span class="id" type="var">x'</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_'|'_x_'}'"><span class="id" type="notation">}</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Record</span> <a name="ComputationalGroup"><span class="id" type="record">ComputationalGroup</span></a> (<span class="id" type="var">M</span> : <span class="id" type="keyword">Type</span>) :=<br/>
+&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="group_monoid"><span class="id" type="projection">group_monoid</span></a> :> <a class="idref" href="Monoid.html#ComputationalMonoid"><span class="id" type="record">ComputationalMonoid</span></a> <a class="idref" href="Group.html#M"><span class="id" type="variable">M</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="group_inverse"><span class="id" type="projection">group_inverse</span></a> : <a class="idref" href="Group.html#group_monoid"><span class="id" type="method">group_monoid</span></a> → <a class="idref" href="Group.html#group_monoid"><span class="id" type="method">group_monoid</span></a><br/>
+&nbsp;&nbsp;}.<br/>
+
+<br/>
+<span class="id" type="keyword">Class</span> <a name="IsGroup"><span class="id" type="record">IsGroup</span></a> <span class="id" type="var">G'</span> (<span class="id" type="var">G</span> : <a class="idref" href="Group.html#ComputationalGroup"><span class="id" type="record">ComputationalGroup</span></a> <a class="idref" href="Group.html#G'"><span class="id" type="variable">G'</span></a>) : <span class="id" type="keyword">Prop</span> :=<br/>
+&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="GroupIsMonoid"><span class="id" type="projection">GroupIsMonoid</span></a> : <a class="idref" href="Monoid.html#IsMonoid"><span class="id" type="class">IsMonoid</span></a> <a class="idref" href="Group.html#G"><span class="id" type="variable">G</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="group_inverse_is_inverse"><span class="id" type="projection">group_inverse_is_inverse</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">x</span>, <a class="idref" href="Group.html#is_inverse_of"><span class="id" type="definition">is_inverse_of</span></a> <span class="id" type="var">_</span> <a class="idref" href="Group.html#x"><span class="id" type="variable">x</span></a> (<a class="idref" href="Group.html#group_inverse"><span class="id" type="projection">group_inverse</span></a> <a class="idref" href="Group.html#G"><span class="id" type="variable">G</span></a> <a class="idref" href="Group.html#x"><span class="id" type="variable">x</span></a>)<br/>
+&nbsp;&nbsp;}.<br/>
+
+<br/>
+<span class="id" type="var">Existing</span> <span class="id" type="keyword">Instance</span> <span class="id" type="var">GroupIsMonoid</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Record</span> &gt; <a name="Group"><span class="id" type="record">Group</span></a> (<span class="id" type="var">G</span> : <span class="id" type="keyword">Type</span>) :=<br/>
+&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="cgroup"><span class="id" type="projection">cgroup</span></a> :> <a class="idref" href="Group.html#ComputationalGroup"><span class="id" type="record">ComputationalGroup</span></a> <a class="idref" href="Group.html#G"><span class="id" type="variable">G</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a name="is_group"><span class="id" type="projection">is_group</span></a> :> <a class="idref" href="Group.html#IsGroup"><span class="id" type="class">IsGroup</span></a> <a class="idref" href="Group.html#cgroup"><span class="id" type="method">cgroup</span></a><br/>
+&nbsp;&nbsp;}.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<span class="inlinecode"><span class="id" type="keyword">Notation</span></span> <span class="inlinecode">"<a class="idref" href="Exercise_4_4_1_5.html#Exercise_4_4_1_5.i"><span class="id" type="constructor">i</span></a></span> <span class="inlinecode"><span class="id" type="var"><sup>-1</sup></span>"</span> <span class="inlinecode">:=</span> <span class="inlinecode">(@<a class="idref" href="Group.html#group_inverse"><span class="id" type="projection">group_inverse</span></a></span> <span class="inlinecode"><span class="id" type="var">_</span></span> <span class="inlinecode"><span class="id" type="var">_</span></span> <span class="inlinecode"><a class="idref" href="Exercise_4_4_1_5.html#Exercise_4_4_1_5.i"><span class="id" type="constructor">i</span></a>)</span> <span class="inlinecode">(<span class="id" type="tactic">at</span></span> <span class="inlinecode"><span class="id" type="keyword">level</span></span> <span class="inlinecode">10)</span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" type="var">type_scope</span>.</span> 
+</div>
+<div class="code">
+
+<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab174"></a><h2 class="section">Group Homomorphisms</h2>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Definition</span> <a name="IsGroupHomomorphism"><span class="id" type="definition">IsGroupHomomorphism</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(<span class="id" type="var">G0H</span> : @<a class="idref" href="Group.html#IsGroup"><span class="id" type="class">IsGroup</span></a> <span class="id" type="var">G0'</span> <span class="id" type="var">G0</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(<span class="id" type="var">G1H</span> : @<a class="idref" href="Group.html#IsGroup"><span class="id" type="class">IsGroup</span></a> <span class="id" type="var">G1'</span> <span class="id" type="var">G1</span>)<br/>
+&nbsp;&nbsp;:= <a class="idref" href="Monoid.html#MonoidHomomorphism"><span class="id" type="record">MonoidHomomorphism</span></a> (<span class="id" type="var">M0</span> := <a class="idref" href="Group.html#G0"><span class="id" type="variable">G0</span></a>) <span class="id" type="var">_</span> (<span class="id" type="var">M'0</span> := <a class="idref" href="Group.html#G1"><span class="id" type="variable">G1</span></a>) <span class="id" type="var">_</span>.<br/>
+<span class="id" type="keyword">Definition</span> <a name="GroupHomomorphism"><span class="id" type="definition">GroupHomomorphism</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(<span class="id" type="var">G0</span> : <a class="idref" href="Group.html#Group"><span class="id" type="record">Group</span></a> <span class="id" type="var">G0'</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(<span class="id" type="var">G1</span> : <a class="idref" href="Group.html#Group"><span class="id" type="record">Group</span></a> <span class="id" type="var">G1'</span>)<br/>
+&nbsp;&nbsp;:= <a class="idref" href="Group.html#IsGroupHomomorphism"><span class="id" type="definition">IsGroupHomomorphism</span></a> (<a class="idref" href="Group.html#is_group"><span class="id" type="projection">is_group</span></a> <a class="idref" href="Group.html#G0"><span class="id" type="variable">G0</span></a>) (<a class="idref" href="Group.html#is_group"><span class="id" type="projection">is_group</span></a> <a class="idref" href="Group.html#G1"><span class="id" type="variable">G1</span></a>).<br/>
+<span class="id" type="keyword">Definition</span> <a name="identity_group_homomorphism"><span class="id" type="definition">identity_group_homomorphism</span></a> `(<span class="id" type="var">G0</span> : <a class="idref" href="Group.html#Group"><span class="id" type="record">Group</span></a> <span class="id" type="var">G0'</span>) : <a class="idref" href="Group.html#GroupHomomorphism"><span class="id" type="definition">GroupHomomorphism</span></a> <a class="idref" href="Group.html#G0"><span class="id" type="variable">G0</span></a> <a class="idref" href="Group.html#G0"><span class="id" type="variable">G0</span></a><br/>
+&nbsp;&nbsp;:= <a class="idref" href="Monoid.html#identity_monoid_homomorphism"><span class="id" type="definition">identity_monoid_homomorphism</span></a> <span class="id" type="var">_</span>.<br/>
+<span class="id" type="keyword">Definition</span> <a name="compose_group_homomorphisms"><span class="id" type="definition">compose_group_homomorphisms</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(<span class="id" type="var">G0</span> : <a class="idref" href="Group.html#Group"><span class="id" type="record">Group</span></a> <span class="id" type="var">G0'</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(<span class="id" type="var">G1</span> : <a class="idref" href="Group.html#Group"><span class="id" type="record">Group</span></a> <span class="id" type="var">G1'</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`(<span class="id" type="var">G2</span> : <a class="idref" href="Group.html#Group"><span class="id" type="record">Group</span></a> <span class="id" type="var">G2'</span>)<br/>
+: <a class="idref" href="Group.html#GroupHomomorphism"><span class="id" type="definition">GroupHomomorphism</span></a> <a class="idref" href="Group.html#G1"><span class="id" type="variable">G1</span></a> <a class="idref" href="Group.html#G2"><span class="id" type="variable">G2</span></a> → <a class="idref" href="Group.html#GroupHomomorphism"><span class="id" type="definition">GroupHomomorphism</span></a> <a class="idref" href="Group.html#G0"><span class="id" type="variable">G0</span></a> <a class="idref" href="Group.html#G1"><span class="id" type="variable">G1</span></a> → <a class="idref" href="Group.html#GroupHomomorphism"><span class="id" type="definition">GroupHomomorphism</span></a> <a class="idref" href="Group.html#G0"><span class="id" type="variable">G0</span></a> <a class="idref" href="Group.html#G2"><span class="id" type="variable">G2</span></a><br/>
+&nbsp;&nbsp;:= <span class="id" type="keyword">fun</span> <span class="id" type="var">m1</span> <span class="id" type="var">m2</span> ⇒ <a class="idref" href="Monoid.html#compose_monoid_homomorphisms"><span class="id" type="definition">compose_monoid_homomorphisms</span></a> <a class="idref" href="Group.html#m1"><span class="id" type="variable">m1</span></a> <a class="idref" href="Group.html#m2"><span class="id" type="variable">m2</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

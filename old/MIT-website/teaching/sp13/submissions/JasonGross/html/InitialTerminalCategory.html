@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>InitialTerminalCategory</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library InitialTerminalCategory</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Category.html#"><span class="id" type="library">Category</span></a> <a class="idref" href="Functor.html#"><span class="id" type="library">Functor</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="DiscreteCategory.html#"><span class="id" type="library">DiscreteCategory</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab182"></a><h1 class="section">Initial and terminal objects of the category of categories.</h1>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="InitialTerminal"><span class="id" type="section">InitialTerminal</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="TerminalCategory"><span class="id" type="definition">TerminalCategory</span></a> : @<a class="idref" href="Category.html#SmallCategory"><span class="id" type="definition">SmallCategory</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#unit"><span class="id" type="inductive">unit</span></a> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Eval</span> <span class="id" type="tactic">compute</span> <span class="id" type="keyword">in</span> <a class="idref" href="DiscreteCategory.html#DiscreteCategory"><span class="id" type="definition">DiscreteCategory</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#unit"><span class="id" type="inductive">unit</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="InitialCategory"><span class="id" type="definition">InitialCategory</span></a> : (@<a class="idref" href="Category.html#SmallCategory"><span class="id" type="definition">SmallCategory</span></a> <a class="idref" href="Notations.html#::'∅'"><span class="id" type="notation">&empty;</span></a>) :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">Eval</span> <span class="id" type="tactic">compute</span> <span class="id" type="keyword">in</span> <a class="idref" href="DiscreteCategory.html#DiscreteCategory"><span class="id" type="definition">DiscreteCategory</span></a> <a class="idref" href="Notations.html#::'∅'"><span class="id" type="notation">&empty;</span></a>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="InitialTerminalCategory.html#InitialTerminal"><span class="id" type="section">InitialTerminal</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Section</span> <a name="InitialTerminalFunctors"><span class="id" type="section">InitialTerminalFunctors</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">C</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">objC</span>).<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="FunctorToTerminal"><span class="id" type="definition">FunctorToTerminal</span></a> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="InitialTerminalCategory.html#InitialTerminalFunctors.C"><span class="id" type="variable">C</span></a> <a class="idref" href="InitialTerminalCategory.html#TerminalCategory"><span class="id" type="definition">TerminalCategory</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">Build_Functor</span></a> <a class="idref" href="InitialTerminalCategory.html#InitialTerminalFunctors.C"><span class="id" type="variable">C</span></a> <a class="idref" href="InitialTerminalCategory.html#TerminalCategory"><span class="id" type="definition">TerminalCategory</span></a> (<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#tt"><span class="id" type="constructor">tt</span></a>) (<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a>) (<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a>) (<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a>).<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="FunctorFromTerminal"><span class="id" type="definition">FunctorFromTerminal</span></a> (<span class="id" type="var">c</span> : <a class="idref" href="InitialTerminalCategory.html#InitialTerminalFunctors.C"><span class="id" type="variable">C</span></a>) : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="InitialTerminalCategory.html#TerminalCategory"><span class="id" type="definition">TerminalCategory</span></a> <a class="idref" href="InitialTerminalCategory.html#InitialTerminalFunctors.C"><span class="id" type="variable">C</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">Build_Functor</span></a> <a class="idref" href="InitialTerminalCategory.html#TerminalCategory"><span class="id" type="definition">TerminalCategory</span></a> <a class="idref" href="InitialTerminalCategory.html#InitialTerminalFunctors.C"><span class="id" type="variable">C</span></a> (<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="InitialTerminalCategory.html#c"><span class="id" type="variable">c</span></a>) (<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="Category.html#Identity"><span class="id" type="projection">Identity</span></a> <a class="idref" href="InitialTerminalCategory.html#c"><span class="id" type="variable">c</span></a>) (<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_sym"><span class="id" type="lemma">eq_sym</span></a> (@<a class="idref" href="Category.html#RightIdentity"><span class="id" type="projection">RightIdentity</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span>)) (<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> ⇒ <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a>).<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="FunctorFromInitial"><span class="id" type="definition">FunctorFromInitial</span></a> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="InitialTerminalCategory.html#InitialCategory"><span class="id" type="definition">InitialCategory</span></a> <a class="idref" href="InitialTerminalCategory.html#InitialTerminalFunctors.C"><span class="id" type="variable">C</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="Functor.html#Build_Functor"><span class="id" type="constructor">Build_Functor</span></a> <a class="idref" href="InitialTerminalCategory.html#InitialCategory"><span class="id" type="definition">InitialCategory</span></a> <a class="idref" href="InitialTerminalCategory.html#InitialTerminalFunctors.C"><span class="id" type="variable">C</span></a> (<span class="id" type="keyword">fun</span> <span class="id" type="var">x</span> ⇒ <span class="id" type="keyword">match</span> <a class="idref" href="InitialTerminalCategory.html#x"><span class="id" type="variable">x</span></a> <span class="id" type="keyword">with</span> <span class="id" type="keyword">end</span>) (<span class="id" type="keyword">fun</span> <span class="id" type="var">x</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> ⇒ <span class="id" type="keyword">match</span> <a class="idref" href="InitialTerminalCategory.html#x"><span class="id" type="variable">x</span></a> <span class="id" type="keyword">with</span> <span class="id" type="keyword">end</span>) (<span class="id" type="keyword">fun</span> <span class="id" type="var">x</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> ⇒ <span class="id" type="keyword">match</span> <a class="idref" href="InitialTerminalCategory.html#x"><span class="id" type="variable">x</span></a> <span class="id" type="keyword">with</span> <span class="id" type="keyword">end</span>) (<span class="id" type="keyword">fun</span> <span class="id" type="var">x</span> ⇒ <span class="id" type="keyword">match</span> <a class="idref" href="InitialTerminalCategory.html#x"><span class="id" type="variable">x</span></a> <span class="id" type="keyword">with</span> <span class="id" type="keyword">end</span>).<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="InitialTerminalCategory.html#InitialTerminalFunctors"><span class="id" type="section">InitialTerminalFunctors</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Coercion</span> <a class="idref" href="InitialTerminalCategory.html#FunctorFromTerminal"><span class="id" type="definition">FunctorFromTerminal</span></a> : <span class="id" type="var">Object</span> &gt;-&gt; <span class="id" type="var">Functor</span>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

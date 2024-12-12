@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_4_1_2_21</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_4_1_2_21</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Category.html#"><span class="id" type="library">Category</span></a> <a class="idref" href="CategoryIsomorphisms.html#"><span class="id" type="library">CategoryIsomorphisms</span></a> <a class="idref" href="Functor.html#"><span class="id" type="library">Functor</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab64"></a><h1 class="section">Exercise 4.1.2.21</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Exercise_4_1_2_21"><span class="id" type="section">Exercise_4_1_2_21</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab65"></a><h2 class="section">Problem</h2>
+ Suppose that <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span> and <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent_Relation.D"><span class="id" type="variable">D</span></a></span> are categories, <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.c"><span class="id" type="constructor">c</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.CategoryLeafTable.Ob"><span class="id" type="variable">Ob</span></a></span> <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span> are
+      objects, and <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent.F"><span class="id" type="variable">F</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent_Relation.D"><span class="id" type="variable">D</span></a></span> is a functor. Suppose that <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.c"><span class="id" type="constructor">c</span></a></span> and
+      <span class="inlinecode"><a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a></span> are isomorphic in <span class="inlinecode"><a class="idref" href="Topology.html#intersection_union_commute.C"><span class="id" type="variable">C</span></a></span>. Show that this implies that <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent.F"><span class="id" type="variable">F</span></a>(<a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.c"><span class="id" type="constructor">c</span></a>)</span>
+      and <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent.F"><span class="id" type="variable">F</span></a>(<a class="idref" href="Exercise_4_6_4_3.html#Exercise_4_6_4_3.c'"><span class="id" type="variable">c'</span></a>)</span> are isomorphic in <span class="inlinecode"><a class="idref" href="SchemaMorphism.html#SchemaMorphismsEquivalent_Relation.D"><span class="id" type="variable">D</span></a></span>. 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">C</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">objC</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Context</span> `(<span class="id" type="var">D</span> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">objD</span>).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="Exercise_4_1_2_21.F"><span class="id" type="variable">F</span></a> : <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="Exercise_4_1_2_21.html#Exercise_4_1_2_21.C"><span class="id" type="variable">C</span></a> <a class="idref" href="Exercise_4_1_2_21.html#Exercise_4_1_2_21.D"><span class="id" type="variable">D</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Open</span> <span class="id" type="keyword">Scope</span> <span class="id" type="var">category_scope</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="FIsomorphismOf"><span class="id" type="definition">FIsomorphismOf</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">c</span> <span class="id" type="var">c'</span> : <a class="idref" href="Exercise_4_1_2_21.html#Exercise_4_1_2_21.C"><span class="id" type="variable">C</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">Fc</span> : <a class="idref" href="Exercise_4_1_2_21.html#Exercise_4_1_2_21.D"><span class="id" type="variable">D</span></a> := <a class="idref" href="Exercise_4_1_2_21.html#Exercise_4_1_2_21.F"><span class="id" type="variable">F</span></a> <a class="idref" href="Exercise_4_1_2_21.html#c"><span class="id" type="variable">c</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="var">Fc'</span> : <a class="idref" href="Exercise_4_1_2_21.html#Exercise_4_1_2_21.D"><span class="id" type="variable">D</span></a> := <a class="idref" href="Exercise_4_1_2_21.html#Exercise_4_1_2_21.F"><span class="id" type="variable">F</span></a> <a class="idref" href="Exercise_4_1_2_21.html#c'"><span class="id" type="variable">c'</span></a>)<br/>
+&nbsp;&nbsp;: <a class="idref" href="Exercise_4_1_2_21.html#c"><span class="id" type="variable">c</span></a> <a class="idref" href="CategoryIsomorphisms.html#:category_scope:x_'≅'_x"><span class="id" type="notation">&cong;</span></a> <a class="idref" href="Exercise_4_1_2_21.html#c'"><span class="id" type="variable">c'</span></a> → <a class="idref" href="Exercise_4_1_2_21.html#Fc"><span class="id" type="variable">Fc</span></a> <a class="idref" href="CategoryIsomorphisms.html#:category_scope:x_'≅'_x"><span class="id" type="notation">&cong;</span></a> <a class="idref" href="Exercise_4_1_2_21.html#Fc'"><span class="id" type="variable">Fc'</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">subst</span> <span class="id" type="var">Fc</span> <span class="id" type="var">Fc'</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intro</span> <span class="id" type="var">i</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> (<a class="idref" href="Functor.html#MorphismOf"><span class="id" type="projection">MorphismOf</span></a> <a class="idref" href="Exercise_4_1_2_21.html#Exercise_4_1_2_21.F"><span class="id" type="variable">F</span></a> <span class="id" type="var">i</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> (<a class="idref" href="Functor.html#MorphismOf"><span class="id" type="projection">MorphismOf</span></a> <a class="idref" href="Exercise_4_1_2_21.html#Exercise_4_1_2_21.F"><span class="id" type="variable">F</span></a> (<span class="id" type="var">i</span> <a class="idref" href="CategoryIsomorphisms.html#:morphism_scope:x_'⁻¹'"><span class="id" type="notation"><sup>-1</sup></span></a>));<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">rewrite</span> &lt;- <a class="idref" href="Functor.html#FCompositionOf"><span class="id" type="projection">FCompositionOf</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">rewrite</span> &lt;- <a class="idref" href="Functor.html#FIdentityOf"><span class="id" type="projection">FIdentityOf</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#f_equal"><span class="id" type="lemma">f_equal</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">destruct</span> <span class="id" type="var">i</span> <span class="id" type="keyword">as</span> [ ? [] ];<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intuition</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_4_1_2_21.html#Exercise_4_1_2_21"><span class="id" type="section">Exercise_4_1_2_21</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

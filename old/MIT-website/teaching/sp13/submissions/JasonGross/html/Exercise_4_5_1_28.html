@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_4_5_1_28</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_4_5_1_28</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Category.html#"><span class="id" type="library">Category</span></a> <a class="idref" href="Coproduct.html#"><span class="id" type="library">Coproduct</span></a> <a class="idref" href="DiscreteCategory.html#"><span class="id" type="library">DiscreteCategory</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab118"></a><h1 class="section">Exercise 4.5.1.28</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="Exercise_4_5_1_28"><span class="id" type="section">Exercise_4_5_1_28</span></a>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab119"></a><h2 class="section">Problem</h2>
+ Let <span class="inlinecode"><a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a></span> be a set, and consider it as a discrete category. Given
+      two objects <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a></span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.y"><span class="id" type="constructor">y</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_4_4.html#Exercise_5_1_4_4.CategoryLeafTable.Ob"><span class="id" type="variable">Ob</span></a></span> <span class="inlinecode"><a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a></span>, under what conditions will there exist
+      a product <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.x"><span class="id" type="constructor">x</span></a></span> <span class="inlinecode">&#x2294;</span> <span class="inlinecode"><a class="idref" href="Exercise_4_1_2_31.html#Exercise_4_1_2_31.y"><span class="id" type="constructor">y</span></a></span>? 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="Exercise_4_5_1_28.X"><span class="id" type="variable">X</span></a> : <span class="id" type="keyword">Type</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_4_5_1_28.X'"><span class="id" type="variable">X'</span></a> := <a class="idref" href="DiscreteCategory.html#DiscreteCategory"><span class="id" type="definition">DiscreteCategory</span></a> <a class="idref" href="Exercise_4_5_1_28.html#Exercise_4_5_1_28.X"><span class="id" type="variable">X</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="Exercise_4_5_1_28_ex"><span class="id" type="definition">Exercise_4_5_1_28_ex</span></a> (<span class="id" type="var">x</span> : <a class="idref" href="Exercise_4_5_1_28.html#Exercise_4_5_1_28.X'"><span class="id" type="variable">X'</span></a>) : (<a class="idref" href="Exercise_4_5_1_28.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="Coproduct.html#:object_scope:x_'⊔'_x"><span class="id" type="notation">&#x2294;</span></a> <a class="idref" href="Exercise_4_5_1_28.html#x"><span class="id" type="variable">x</span></a>)%<span class="id" type="var">object</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">subst_body</span>; <span class="id" type="tactic">compute</span> <span class="id" type="keyword">in</span> ×.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">∃</span> <span class="id" type="var">x</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">eexists</span> (@<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> <span class="id" type="var">_</span> <span class="id" type="var">x</span>) (@<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#eq_refl"><span class="id" type="constructor">eq_refl</span></a> <span class="id" type="var">_</span> <span class="id" type="var">x</span>) (<span class="id" type="keyword">fun</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">m</span> ⇒ <a class="idref" href="Exercise_4_5_1_28.html#m"><span class="id" type="variable">m</span></a>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">compute</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#proof_irrelevance"><span class="id" type="axiom">ProofIrrelevance.proof_irrelevance</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Lemma</span> <a name="Exercise_4_5_1_28_only"><span class="id" type="lemma">Exercise_4_5_1_28_only</span></a> (<span class="id" type="var">x</span> <span class="id" type="var">y</span> : <a class="idref" href="Exercise_4_5_1_28.html#Exercise_4_5_1_28.X'"><span class="id" type="variable">X'</span></a>) : (<a class="idref" href="Exercise_4_5_1_28.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="Coproduct.html#:object_scope:x_'⊔'_x"><span class="id" type="notation">&#x2294;</span></a> <a class="idref" href="Exercise_4_5_1_28.html#y"><span class="id" type="variable">y</span></a>)%<span class="id" type="var">object</span> → <a class="idref" href="Exercise_4_5_1_28.html#x"><span class="id" type="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Logic.html#:type_scope:x_'='_x"><span class="id" type="notation">=</span></a> <a class="idref" href="Exercise_4_5_1_28.html#y"><span class="id" type="variable">y</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">intros</span> [? []]; <span class="id" type="tactic">compute</span>; <span class="id" type="tactic">intros</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">subst</span>; <span class="id" type="tactic">reflexivity</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Qed</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_4_5_1_28.html#Exercise_4_5_1_28"><span class="id" type="section">Exercise_4_5_1_28</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

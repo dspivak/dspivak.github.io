@@ -1,0 +1,196 @@
+\documentclass{amsart}
+
+\usepackage{amssymb, amscd,stmaryrd,setspace,hyperref,color}
+
+\input xy
+\xyoption{all} \xyoption{poly} \xyoption{knot}\xyoption{curve}
+
+\newcommand{\comment}[1]{}
+
+\newcommand{\longnote}[2][4.9in]{\fcolorbox{black}{yellow}{\parbox{#1}{\color{black} #2}}}
+\newcommand{\note}[1]{\fcolorbox{black}{yellow}{\color{black} #1}}
+\newcommand{\q}[1]{\begin{question}#1\end{question}}
+\newcommand{\g}[1]{\begin{guess}#1\end{guess}}
+
+\def\tn{\textnormal}
+\def\mf{\mathfrak}
+\def\mc{\mathcal}
+
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\CC{{\mathbb C}}
+\def\AA{{\mathbb A}}
+\def\PP{{\mathbb P}}
+\def\NN{{\mathbb N}}
+
+\def\bD{{\bf \Delta}}
+\def\Str{{\bf Str}}
+
+\def\Hom{\tn{Hom}}
+\def\Fun{\tn{Fun}}
+\def\Nat{\tn{Nat}}
+\def\Ob{\tn{Ob}}
+\def\Op{\tn{Op}}
+
+\def\to{\rightarrow}
+\def\from{\leftarrow}
+\def\cross{\times}
+\def\taking{\colon}
+\def\inj{\hookrightarrow}
+\def\surj{\twoheadrightarrow}
+\def\too{\longrightarrow}
+\def\fromm{\longleftarrow}
+\def\down{\downarrow}
+\def\Down{\Downarrow}
+\def\Up{\Uparrow}
+\def\tooo{\longlongrightarrow}
+\def\tto{\rightrightarrows}
+\def\ttto{\equiv\!\!>}
+\def\ss{\subset}
+\def\superset{\supset}
+\def\iso{\cong}
+\def\|{{\;|\;}}
+\def\m1{{-1}}
+\def\op{^\tn{op}}
+\def\loc{\tn{loc}}
+\def\la{\langle}
+\def\ra{\rangle}
+\def\wt{\widetilde}
+\def\wh{\widehat}
+\def\we{\simeq}
+\def\ol{\overline}
+\def\ul{\underline}
+\def\qeq{\mathop{=}^?}
+\def\setto{\colon\hspace{-.25cm}=}
+
+\def\ullimit{\ar@{}[rd]|(.3)*+{\lrcorner}}
+\def\urlimit{\ar@{}[ld]|(.3)*+{\llcorner}}
+\def\lllimit{\ar@{}[ru]|(.3)*+{\urcorner}}
+\def\lrlimit{\ar@{}[lu]|(.3)*+{\ulcorner}}
+\def\ulhlimit{\ar@{}[rd]|(.3)*+{\diamond}}
+\def\urhlimit{\ar@{}[ld]|(.3)*+{\diamond}}
+\def\llhlimit{\ar@{}[ru]|(.3)*+{\diamond}}
+\def\lrhlimit{\ar@{}[lu]|(.3)*+{\diamond}}
+\newcommand{\clabel}[1]{\ar@{}[rd]|(.5)*+{#1}}
+
+\newcommand{\arr}[1]{\ar@<.5ex>[#1]\ar@<-.5ex>[#1]}
+\newcommand{\arrr}[1]{\ar@<.7ex>[#1]\ar@<0ex>[#1]\ar@<-.7ex>[#1]}
+\newcommand{\arrrr}[1]{\ar@<.9ex>[#1]\ar@<.3ex>[#1]\ar@<-.3ex>[#1]\ar@<-.9ex>[#1]}
+\newcommand{\arrrrr}[1]{\ar@<1ex>[#1]\ar@<.5ex>[#1]\ar[#1]\ar@<-.5ex>[#1]\ar@<-1ex>[#1]}
+
+\newcommand{\To}[1]{\xrightarrow{#1}}
+\newcommand{\Too}[1]{\xrightarrow{\ \ #1\ \ }}
+\newcommand{\From}[1]{\xleftarrow{#1}}
+
+
+\newcommand{\Adjoint}[4]{\xymatrix@1{#2 \ar@<.5ex>[r]^-{#1} & #3 \ar@<.5ex>[l]^-{#4}}}
+\newcommand{\adjoint}[4]{\xymatrix@1{#1\colon #2\ar@<.5ex>[r]& #3\;:#4 \ar@<.5ex>[l]}}
+
+\def\id{\tn{id}}
+\def\Top{{\bf Top}}
+\def\Cat{{\bf Cat}}
+\def\Sets{{\bf Sets}}
+\def\sSets{{\bf sSets}}
+\def\Grpd{{\bf Grpd}}
+\def\Pre{{\bf Pre}}
+\def\Shv{{\bf Shv}}
+\def\Rings{{\bf Rings}}
+
+\def\colim{\mathop{\tn{colim}}}
+
+\def\mcA{\mc{A}}
+\def\mcB{\mc{B}}
+\def\mcC{\mc{C}}
+\def\mcD{\mc{D}}
+\def\mcE{\mc{E}}
+\def\mcF{\mc{F}}
+\def\mcG{\mc{G}}
+\def\mcH{\mc{H}}
+\def\mcI{\mc{I}}
+\def\mcJ{\mc{J}}
+\def\mcK{\mc{K}}
+\def\mcL{\mc{L}}
+\def\mcM{\mc{M}}
+\def\mcN{\mc{N}}
+\def\mcO{\mc{O}}
+\def\mcP{\mc{P}}
+\def\mcQ{\mc{Q}}
+\def\mcR{\mc{R}}
+\def\mcS{\mc{S}}
+\def\mcT{\mc{T}}
+\def\mcU{\mc{U}}
+\def\mcV{\mc{V}}
+\def\mcW{\mc{W}}
+\def\mcX{\mc{X}}
+\def\mcY{\mc{Y}}
+\def\mcZ{\mc{Z}}
+
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{guess}[theorem]{Guess}
+\newtheorem{answer}[theorem]{Answer}
+\newtheorem{construction}[theorem]{Construction}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{postulate}[theorem]{Postulate}
+
+\def\DT{{\bf DT}}
+\def\GD{{\bf GD}}
+\def\DB{\GD}
+\def\Sch{{\bf Sch}}
+\def\Null{{\bf Null}}
+\def\Strings{{\bf Strings}}
+\def\ND{{\bf ND}}
+\def\Tables{{\bf Tables}}
+\def\'{\tn{'}}
+\def\disunion{\amalg}
+\def\Rel{{\bf Rel}}
+\def\mcRel{{\bf \mcR el}}
+\def\Cech{$\check{\tn{C}}$ech }
+\def\C{\check{\tn{C}}}
+\def\Fin{{\bf Fin}}
+\def\singleton{{\{*\}}}
+\def\Sub{{\bf Sub}}
+\def\card{\tn{card}}
+\def\Data{{\bf DB}}
+\def\DB{{\bf DB}}
+\def\im{\tn{im}}
+\def\'{\tn{'}}
+\def\start{\note{start here}}
+
+\begin{document}
+
+\begin{theorem}
+
+There is a fully faithful functor from the category of small multi-categories to the category of database multi-categories.
+
+\end{theorem}
+
+\begin{proof}
+
+Let $\mcM$ be a small multi-category.  For any object in $M\in\Ob(\mcM)$, let $H(M)$ denote the set $$H_M:=\coprod_{\stackrel{n\geq 1}{X_1,\ldots,X_n\in\Ob(\mcM)}}\Hom_\mcM(X_1,\ldots,X_n;M).$$  Let $\DT_\mcM=\Ob(\mcM)$, let $U_\mcM=(\coprod_{D\in\DT_\mcM}H_D)$, and let $\pi_\mcM\taking U_\mcM\to\DT_\mcM$ denote the obvious map.
+
+For each morphism $f\taking (X_1,\ldots,X_n)\to M$ in $\mcM$, let $S_f$ denote the operational table whose schema is $\sigma_f:=(X_1,\ldots,X_n;M)$ and whose row set is $$R_f:=\{(f_1,\ldots,f_n,g)\in H_{X_1}\cross\cdots\cross H_{X_n}\cross H_M\; |\; g=f\circ(f_1,\ldots,f_n)\}.$$  There is an obvious map $\delta_f\taking R\to\Gamma(\sigma_f)=H_{X_1}\cross\cdots\cross H_{X_n}\cross H_M$.  That is, we set $S_f=(\sigma_f,\delta_f)$.  Let $S_\mcM=\{S_f\;|\; f\in\mcM\}.$
+
+In the following paragraph we will show that the pair $(\pi_\mcM,S_\mcM)$ is a database multi-category.  That is, it contains the identities, and is closed under operational table composition.  That it contains the identities is obvious: for any $M\in\Ob(\mcM)$ we find $S_{\id_M}$ in $S_\mcM$.  
+
+Let $(S_{f_1},\ldots,S_{f_n};S_f)$ denote a composable sequence of tables in $S_\mcM$; denote the inputs of $S_{f_i}$ by $\sigma_i$, the inputs of $S_f$ by $\sigma\taking (C_1\ldots,C_n)\to\DT$, and the output of $S_f$ by $M$.  It is obvious that $(f_1,\ldots,f_n;f)$ is a composable sequence of arrows in $\mcM$.  The operational table composite of $(S_{f_1},\ldots,S_{f_n};S_f)$ has as input type $\sigma_1\amalg\cdots\amalg\sigma_n$ and has as output type $M$; it is obtained as the join of the sequence.  It is easy to see that this join is precisely $S_{f\circ(f_1,\ldots,f_n)}$.
+
+We have now constructed our functor on objects.  Suppose given a morphism of multi-categories $F\taking\mcM\to\mcN$.  It clearly induces a map $\pi(F)\taking\pi_\mcM\to\pi_\mcN$.  Let $T_\mcN$ denote the counterpart to $S_\mcM$.  It is clear that $F$ also induces a function $S_\mcM\to T_\mcN$ by sending each $S_f=($ to 
+
+\end{proof}
+
+\end{document}

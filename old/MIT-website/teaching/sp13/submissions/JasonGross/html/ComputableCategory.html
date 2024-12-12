@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>ComputableCategory</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library ComputableCategory</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Export</span> <a class="idref" href="Category.html#"><span class="id" type="library">Category</span></a> <a class="idref" href="Functor.html#"><span class="id" type="library">Functor</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab8"></a><h1 class="section">Computable Category of Categories</h1>
+
+<div class="paragraph"> </div>
+
+ A (full) category of categories is computable if we have a
+    function from an indexing type to the categories of the larger
+    category. 
+</div>
+<div class="code">
+<span class="id" type="keyword">Section</span> <a name="ComputableCategory"><span class="id" type="section">ComputableCategory</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="ComputableCategory.I"><span class="id" type="variable">I</span></a> : <span class="id" type="keyword">Type</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="ComputableCategory.Index2Object"><span class="id" type="variable">Index2Object</span></a> : <a class="idref" href="ComputableCategory.html#ComputableCategory.I"><span class="id" type="variable">I</span></a> → <span class="id" type="keyword">Type</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Variable</span> <a name="ComputableCategory.Index2Cat"><span class="id" type="variable">Index2Cat</span></a> : <span class="id" type="keyword">∀</span> <span class="id" type="var">i</span> : <a class="idref" href="ComputableCategory.html#ComputableCategory.I"><span class="id" type="variable">I</span></a>, @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> (@<a class="idref" href="ComputableCategory.html#ComputableCategory.Index2Object"><span class="id" type="variable">Index2Object</span></a> <a class="idref" href="ComputableCategory.html#i"><span class="id" type="variable">i</span></a>).<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Coercion</span> <span class="id" type="var">Index2Cat</span> : <span class="id" type="var">I</span> &gt;-&gt; <span class="id" type="var">Category</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Definition</span> <a name="ComputableCategory"><span class="id" type="definition">ComputableCategory</span></a> : @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <a class="idref" href="ComputableCategory.html#ComputableCategory.I"><span class="id" type="variable">I</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">refine</span> (@<a class="idref" href="Category.html#Build_Category"><span class="id" type="constructor">Build_Category</span></a> <span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">C</span> <span class="id" type="var">D</span> : <a class="idref" href="ComputableCategory.html#ComputableCategory.I"><span class="id" type="variable">I</span></a> ⇒ <a class="idref" href="Functor.html#Functor"><span class="id" type="record">Functor</span></a> <a class="idref" href="ComputableCategory.html#C"><span class="id" type="variable">C</span></a> <a class="idref" href="ComputableCategory.html#D"><span class="id" type="variable">D</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">x</span> : <a class="idref" href="ComputableCategory.html#ComputableCategory.I"><span class="id" type="variable">I</span></a> ⇒ <a class="idref" href="Functor.html#IdentityFunctor"><span class="id" type="definition">IdentityFunctor</span></a> <a class="idref" href="ComputableCategory.html#x"><span class="id" type="variable">x</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" type="keyword">fun</span> <span class="id" type="var">C</span> <span class="id" type="var">D</span> <span class="id" type="var">E</span> : <a class="idref" href="ComputableCategory.html#ComputableCategory.I"><span class="id" type="variable">I</span></a> ⇒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="Functor.html#ComposeFunctors"><span class="id" type="definition">ComposeFunctors</span></a> (<span class="id" type="var">C</span> := <a class="idref" href="ComputableCategory.html#C"><span class="id" type="variable">C</span></a>) (<span class="id" type="var">D</span> := <a class="idref" href="ComputableCategory.html#D"><span class="id" type="variable">D</span></a>) (<span class="id" type="var">E</span> := <a class="idref" href="ComputableCategory.html#E"><span class="id" type="variable">E</span></a>))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="var">_</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="tactic">abstract</span> <span class="id" type="var">functor_eq</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Defined</span>.<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="ComputableCategory.html#ComputableCategory"><span class="id" type="section">ComputableCategory</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab9"></a><h2 class="section">The category of small-ish categories</h2>
+ We don't actually want to restrict ourselves to <span class="inlinecode"><span class="id" type="keyword">Set</span></span>, because
+    other things are in <span class="inlinecode"><span class="id" type="keyword">Type</span></span>, and, e.g., <span class="inlinecode"><a class="idref" href="Topology.html#inclusion.T"><span class="id" type="variable">T</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" type="keyword">Prop</span></span> is not in <span class="inlinecode"><span class="id" type="keyword">Set</span></span>. 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Notation</span> <a name="CategoryOfCategoriesOn"><span class="id" type="abbreviation">CategoryOfCategoriesOn</span></a> <span class="id" type="var">Sets</span><br/>
+&nbsp;&nbsp;:= (<a class="idref" href="ComputableCategory.html#ComputableCategory"><span class="id" type="definition">ComputableCategory</span></a> (@<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#projT1"><span class="id" type="definition">projT1</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span>) (@<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#projT2"><span class="id" type="definition">projT2</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_':'_x_'&'_x_'}'"><span class="id" type="notation">{</span></a> <span class="id" type="var">obj</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_':'_x_'&'_x_'}'"><span class="id" type="notation">:</span></a> <span class="id" type="var">Sets</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_':'_x_'&'_x_'}'"><span class="id" type="notation">&amp;</span></a> @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <span class="id" type="var">obj</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#:type_scope:'{'_x_':'_x_'&'_x_'}'"><span class="id" type="notation">}</span></a>).<br/>
+
+<br/>
+<span class="id" type="keyword">Definition</span> <a name="CategoryOfCategories"><span class="id" type="definition">CategoryOfCategories</span></a> := <a class="idref" href="ComputableCategory.html#CategoryOfCategoriesOn"><span class="id" type="abbreviation">CategoryOfCategoriesOn</span></a> <span class="id" type="keyword">Type</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Definition</span> <a name="CategoryInCategoryOfCategories"><span class="id" type="definition">CategoryInCategoryOfCategories</span></a> <span class="id" type="var">obj</span><br/>
+: @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <a class="idref" href="ComputableCategory.html#obj"><span class="id" type="variable">obj</span></a> → <a class="idref" href="ComputableCategory.html#CategoryOfCategories"><span class="id" type="definition">CategoryOfCategories</span></a><br/>
+&nbsp;&nbsp;:= @<a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#existT"><span class="id" type="constructor">existT</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <span class="id" type="var">_</span>.<br/>
+<span class="id" type="keyword">Definition</span> <a name="CategoryInCategoryOfCategories'"><span class="id" type="definition">CategoryInCategoryOfCategories'</span></a> <span class="id" type="var">obj</span><br/>
+: @<a class="idref" href="Category.html#Category"><span class="id" type="record">Category</span></a> <a class="idref" href="ComputableCategory.html#obj"><span class="id" type="variable">obj</span></a> → <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#sigT"><span class="id" type="inductive">sigT</span></a> <span class="id" type="var">_</span><br/>
+&nbsp;&nbsp;:= @<a class="idref" href="ComputableCategory.html#CategoryInCategoryOfCategories"><span class="id" type="definition">CategoryInCategoryOfCategories</span></a> <a class="idref" href="ComputableCategory.html#obj"><span class="id" type="variable">obj</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Coercion</span> <a class="idref" href="ComputableCategory.html#CategoryInCategoryOfCategories"><span class="id" type="definition">CategoryInCategoryOfCategories</span></a> : <span class="id" type="var">Category</span> &gt;-&gt; <span class="id" type="var">Object</span>.<br/>
+<span class="id" type="keyword">Coercion</span> <a class="idref" href="ComputableCategory.html#CategoryInCategoryOfCategories'"><span class="id" type="definition">CategoryInCategoryOfCategories'</span></a> : <span class="id" type="var">Category</span> &gt;-&gt; <span class="id" type="var">sigT</span>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

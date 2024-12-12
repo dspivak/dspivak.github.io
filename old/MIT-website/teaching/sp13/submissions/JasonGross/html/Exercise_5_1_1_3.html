@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="coqdoc.css" rel="stylesheet" type="text/css"/>
+<title>Exercise_5_1_1_3</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library Exercise_5_1_1_3</h1>
+
+<div class="code">
+
+<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Unicode.Utf8.html#"><span class="id" type="library">Utf8</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.JMeq.html#"><span class="id" type="library">JMeq</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Logic.ProofIrrelevance.html#"><span class="id" type="library">ProofIrrelevance</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Lists.List.html#"><span class="id" type="library">List</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="MonoidAdjunction.html#"><span class="id" type="library">MonoidAdjunction</span></a> <a class="idref" href="NaturalNumbersMonoid.html#"><span class="id" type="library">NaturalNumbersMonoid</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Hom.html#"><span class="id" type="library">Hom</span></a> <a class="idref" href="ProductCategory.html#"><span class="id" type="library">ProductCategory</span></a> <a class="idref" href="Duals.html#"><span class="id" type="library">Duals</span></a>.<br/>
+<span class="id" type="keyword">Require</span> <span class="id" type="keyword">Import</span> <a class="idref" href="Common.html#"><span class="id" type="library">Common</span></a> <a class="idref" href="Notations.html#"><span class="id" type="library">Notations</span></a> <a class="idref" href="FEqualDep.html#"><span class="id" type="library">FEqualDep</span></a>.<br/>
+
+<br/>
+<span class="id" type="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+<span class="id" type="keyword">Generalizable</span> <span class="id" type="keyword">All</span> <span class="id" type="keyword">Variables</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+<div class="paragraph"> </div>
+
+<a name="lab150"></a><h1 class="section">Exercise 5.1.1.3</h1>
+
+</div>
+<div class="code">
+<span class="id" type="keyword">Module</span> <a name="Exercise_5_1_1_3"><span class="id" type="module">Exercise_5_1_1_3</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Local</span>&nbsp;<span class="id" type="keyword">Open</span> <span class="id" type="keyword">Scope</span> <span class="id" type="var">list_scope</span>.<br/>
+</div>
+
+<div class="doc">
+<a name="lab151"></a><h2 class="section">Problem</h2>
+ Let <span class="inlinecode"><a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a></span> <span class="inlinecode">=</span> <span class="inlinecode">{<a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.a"><span class="id" type="constructor">a</span></a>,</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.b"><span class="id" type="constructor">b</span></a>,</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.c"><span class="id" type="constructor">c</span></a>}</span> and let <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a></span> <span class="inlinecode">=</span> <span class="inlinecode">(</span> <span class="inlinecode"><a class="idref" href="Notations.html#ℕ"><span class="id" type="abbreviation">&#x2115;</span></a>,</span> <span class="inlinecode">1,</span> <span class="inlinecode">×</span> <span class="inlinecode">)</span> be the
+      multiplicative monoid of natural numbers (see Example
+      3.1.3.2). Let <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a></span> <span class="inlinecode">:</span> <span class="inlinecode"><a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a></span> <span class="inlinecode">→</span> <span class="inlinecode"><a class="idref" href="Notations.html#ℕ"><span class="id" type="abbreviation">&#x2115;</span></a></span> be the function given by <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a>(<a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.a"><span class="id" type="constructor">a</span></a>)</span> <span class="inlinecode">=</span> <span class="inlinecode">7</span>,
+      <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a>(<a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.b"><span class="id" type="constructor">b</span></a>)</span> <span class="inlinecode">=</span> <span class="inlinecode">2</span>, <span class="inlinecode"><a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a>(<a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.c"><span class="id" type="constructor">c</span></a>)</span> <span class="inlinecode">=</span> <span class="inlinecode">2</span>, and let <span class="inlinecode"><span class="id" type="var">β_</span>{<a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a>,<a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a>}:</span> <span class="inlinecode"><span class="id" type="var">Hom_</span>{<span class="id" type="keyword">Set</span>}(<a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a>,</span> <span class="inlinecode"><a class="idref" href="Exercise_3_4_1_7.html#Exercise_3_4_1_7.R"><span class="id" type="variable">R</span></a>(<a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a>))</span> <span class="inlinecode">→</span>
+      <span class="inlinecode"><span class="id" type="var">Hom_</span>{<span class="id" type="var">Mon</span>}(<a class="idref" href="Exercise_4_4_1_6.html#Exercise_4_4_1_6.L"><span class="id" type="definition">L</span></a>(<a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a>),</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a>)</span> be as in the proof of Proposition
+      5.1.1.2. What is <span class="inlinecode"><span class="id" type="var">β_</span>{<a class="idref" href="Topology.html#intersection_lemmas.X"><span class="id" type="variable">X</span></a>,<a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a>}(<a class="idref" href="PathsFunctor.html#PathsFunctor.paths_functor.f"><span class="id" type="variable">f</span></a>)([<a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.b"><span class="id" type="constructor">b</span></a>,</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.b"><span class="id" type="constructor">b</span></a>,</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.a"><span class="id" type="constructor">a</span></a>,</span> <span class="inlinecode"><a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.c"><span class="id" type="constructor">c</span></a>])</span>? 
+</div>
+<div class="code">
+&nbsp;&nbsp;<span class="id" type="keyword">Inductive</span> <a name="Exercise_5_1_1_3.X"><span class="id" type="inductive">X</span></a> := <a name="Exercise_5_1_1_3.a"><span class="id" type="constructor">a</span></a> | <a name="Exercise_5_1_1_3.b"><span class="id" type="constructor">b</span></a> | <a name="Exercise_5_1_1_3.c"><span class="id" type="constructor">c</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_5_1_1_3.M"><span class="id" type="variable">M</span></a> : <a class="idref" href="Monoid.html#Monoid"><span class="id" type="record">Monoid</span></a> <a class="idref" href="Notations.html#ℕ"><span class="id" type="abbreviation">&#x2115;</span></a> := <a class="idref" href="NaturalNumbersMonoid.html#NaturalNumbersMonoid"><span class="id" type="definition">NaturalNumbersMonoid</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_5_1_1_3.f"><span class="id" type="variable">f</span></a> : <a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.X"><span class="id" type="inductive">X</span></a> → <a class="idref" href="Notations.html#ℕ"><span class="id" type="abbreviation">&#x2115;</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= <span class="id" type="keyword">fun</span> <span class="id" type="var">x</span> ⇒ <span class="id" type="keyword">match</span> <a class="idref" href="Exercise_5_1_1_3.html#x"><span class="id" type="variable">x</span></a> <span class="id" type="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.a"><span class="id" type="constructor">a</span></a> ⇒ 7<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.b"><span class="id" type="constructor">b</span></a> ⇒ 2<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.c"><span class="id" type="constructor">c</span></a> ⇒ 2<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" type="keyword">end</span>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Let</span> <a name="Exercise_5_1_1_3.β"><span class="id" type="variable">β</span></a> (<span class="id" type="var">X</span> : <span class="id" type="keyword">Type</span>) {<span class="id" type="var">T</span>} (<span class="id" type="var">M</span> : <a class="idref" href="Monoid.html#Monoid"><span class="id" type="record">Monoid</span></a> <a class="idref" href="Exercise_5_1_1_3.html#T"><span class="id" type="variable">T</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;:= <a class="idref" href="NaturalEquivalence.html#InverseNaturalIsomorphism"><span class="id" type="definition">InverseNaturalIsomorphism</span></a> (<a class="idref" href="Adjoint.html#AMateOf"><span class="id" type="projection">AMateOf</span></a> <a class="idref" href="MonoidAdjunction.html#MonoidFreeUnderlyingAdjunction"><span class="id" type="definition">MonoidFreeUnderlyingAdjunction</span></a>) <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">(</span></a><a class="idref" href="Exercise_5_1_1_3.html#X"><span class="id" type="variable">X</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">,</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Specif.html#existT"><span class="id" type="constructor">existT</span></a> <span class="id" type="var">_</span> <span class="id" type="var">_</span> <a class="idref" href="Exercise_5_1_1_3.html#M"><span class="id" type="variable">M</span></a><a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:core_scope:'('_x_','_x_','_'..'_','_x_')'"><span class="id" type="notation">)</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" type="var">Arguments</span> <a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.β"><span class="id" type="definition">β</span></a> <span class="id" type="var">X</span> {<span class="id" type="var">T</span>} <span class="id" type="var">M</span> <span class="id" type="var">_</span>.<br/>
+&nbsp;&nbsp;<span class="id" type="keyword">Eval</span> <span class="id" type="tactic">compute</span> <span class="id" type="keyword">in</span> <a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.β"><span class="id" type="definition">β</span></a> <a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.X"><span class="id" type="inductive">X</span></a> <a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.M"><span class="id" type="definition">M</span></a> <a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.f"><span class="id" type="definition">f</span></a> (<a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.b"><span class="id" type="constructor">b</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:list_scope:x_'::'_x"><span class="id" type="notation">::</span></a> <a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.b"><span class="id" type="constructor">b</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:list_scope:x_'::'_x"><span class="id" type="notation">::</span></a> <a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.a"><span class="id" type="constructor">a</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:list_scope:x_'::'_x"><span class="id" type="notation">::</span></a> <a class="idref" href="Exercise_5_1_1_3.html#Exercise_5_1_1_3.c"><span class="id" type="constructor">c</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#:list_scope:x_'::'_x"><span class="id" type="notation">::</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.4pl2/stdlib/Coq.Init.Datatypes.html#nil"><span class="id" type="constructor">nil</span></a>).<br/>
+<span class="id" type="keyword">End</span> <a class="idref" href="Exercise_5_1_1_3.html#"><span class="id" type="module">Exercise_5_1_1_3</span></a>.<br/>
+</div>
+
+<div class="doc">
+<hr/>
+ 
+</div>
+<div class="code">
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>
