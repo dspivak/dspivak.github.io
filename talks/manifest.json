@@ -1,0 +1,2286 @@
+[
+  {
+    "slug": "20260317-nitmb-colloquium",
+    "date": "2026-03-17",
+    "venue": "nitmb-colloquium",
+    "title": "Accounting for our inventiveness",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20260317-nitmb-colloquium.pdf",
+    "zip_file": "20260317-nitmb-colloquium.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/20260317--NITMB (Colloquium)"
+  },
+  {
+    "slug": "20260123-nitmb-lightning-talk",
+    "date": "2026-01-23",
+    "venue": "nitmb-lightning-talk",
+    "title": "",
+    "keywords": [],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20260123-nitmb-lightning-talk.pdf",
+    "zip_file": "20260123-nitmb-lightning-talk.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/20260123--NITMB/Lightning Talk"
+  },
+  {
+    "slug": "20260121-nitmb-tutorial",
+    "date": "2026-01-21",
+    "venue": "nitmb-tutorial",
+    "title": "An attempt to explain category theory to biologists in 15 minutes",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20260121-nitmb-tutorial.pdf",
+    "zip_file": "20260121-nitmb-tutorial.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/20260123--NITMB/Tutorial"
+  },
+  {
+    "slug": "20250715-topos-int-poly",
+    "date": "2025-07-15",
+    "venue": "topos-int-poly",
+    "title": "The double category Int(Poly_+) models control flow and data flow",
+    "keywords": [],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20250715-topos-int-poly.pdf",
+    "zip_file": "20250715-topos-int-poly.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20250715--Topos--Int(Poly_+)"
+  },
+  {
+    "slug": "20241202-mit",
+    "date": "2024-12-02",
+    "venue": "mit",
+    "title": "Plausible Fiction: Tending Actualizes Potential",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20241202-mit.pdf",
+    "zip_file": "20241202-mit.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/20241202--MIT"
+  },
+  {
+    "slug": "20241105-ipam-naturalisticai",
+    "date": "2024-11-05",
+    "venue": "ipam-naturalisticai",
+    "title": "Plausible Fiction: Accounting for Actualizing Potential",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20241105-ipam-naturalisticai.pdf",
+    "zip_file": "20241105-ipam-naturalisticai.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "AppliedCT--General/20241104-IPAM--NaturalisticAI"
+  },
+  {
+    "slug": "20241009-mathgov",
+    "date": "2024-10-09",
+    "venue": "mathgov",
+    "title": "How should one govern a plausible fiction platform?",
+    "keywords": [],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20241009-mathgov.pdf",
+    "zip_file": "20241009-mathgov.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/202410--MathGov"
+  },
+  {
+    "slug": "20240815-agi",
+    "date": "2024-08-15",
+    "venue": "agi",
+    "title": "``All my relations'' Contributing to a fabric of belonging",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20240815-agi.pdf",
+    "zip_file": "20240815-agi.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "AppliedCT--General/202408-AGI"
+  },
+  {
+    "slug": "20240709-fmcs",
+    "date": "2024-07-09",
+    "venue": "fmcs",
+    "title": "The Polynomial Abacus",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20240709-fmcs.pdf",
+    "zip_file": "20240709-fmcs.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20240709--FMCS"
+  },
+  {
+    "slug": "20240617-act2024",
+    "date": "2024-06-17",
+    "venue": "act2024",
+    "title": "Pattern runs on matter: The free monad monad as a module over the cofree comonad comonad",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20240617-act2024.pdf",
+    "zip_file": "20240617-act2024.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "PolynomialFunctors/20240622--ACT2024"
+  },
+  {
+    "slug": "20240417-princeton-astera",
+    "date": "2024-04-17",
+    "venue": "princeton-astera",
+    "title": "",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20240417-princeton-astera.pdf",
+    "zip_file": "20240417-princeton-astera.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/202404-Princeton-Astera/20240417"
+  },
+  {
+    "slug": "20240410-princeton-astera",
+    "date": "2024-04-10",
+    "venue": "princeton-astera",
+    "title": "Applied Category Theory: The mathematics of interdisciplinary modeling",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20240410-princeton-astera.pdf",
+    "zip_file": "20240410-princeton-astera.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/202404-Princeton-Astera/20240410"
+  },
+  {
+    "slug": "20240307-calgary",
+    "date": "2024-03-07",
+    "venue": "calgary",
+    "title": "How can math promote life?",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20240307-calgary.pdf",
+    "zip_file": "20240307-calgary.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "AppliedCT--General/202403-Calgary"
+  },
+  {
+    "slug": "20231214-caltech",
+    "date": "2023-12-14",
+    "venue": "caltech",
+    "title": "Category Theory in Science and Engineering",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20231214-caltech.pdf",
+    "zip_file": "20231214-caltech.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20231214--Caltech"
+  },
+  {
+    "slug": "20231011-chevron",
+    "date": "2023-10-11",
+    "venue": "chevron",
+    "title": "Applied Category Theory: The mathematics of interdisciplinary modeling",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20231011-chevron.pdf",
+    "zip_file": "20231011-chevron.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/2023-Chevron"
+  },
+  {
+    "slug": "20230804-act2023",
+    "date": "2023-08-04",
+    "venue": "act2023",
+    "title": "",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20230804-act2023.pdf",
+    "zip_file": "20230804-act2023.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20230804--ACT2023"
+  },
+  {
+    "slug": "20230725-societymfr",
+    "date": "2023-07-25",
+    "venue": "societymfr",
+    "title": "Applied Category Theory: The mathematics of interdisciplinary modeling",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20230725-societymfr.pdf",
+    "zip_file": "20230725-societymfr.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/2023--SocietyMFR"
+  },
+  {
+    "slug": "20230416-consciousness",
+    "date": "2023-04-16",
+    "venue": "consciousness",
+    "title": "",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20230416-consciousness.pdf",
+    "zip_file": "20230416-consciousness.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20230415-Consciousness"
+  },
+  {
+    "slug": "20230323-catsforai",
+    "date": "2023-03-23",
+    "venue": "catsforai",
+    "title": "Dynamic organizational systems: From deep learning to prediction markets",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20230323-catsforai.pdf",
+    "zip_file": "20230323-catsforai.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20230327--CatsForAI"
+  },
+  {
+    "slug": "20230221-topos",
+    "date": "2023-02-21",
+    "venue": "topos",
+    "title": "",
+    "keywords": [],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20230221-topos.pdf",
+    "zip_file": "20230221-topos.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20230222--Topos"
+  },
+  {
+    "slug": "20230109-fra2",
+    "date": "2023-01-09",
+    "venue": "fra2",
+    "title": "Poly is an unreasonably effective abstraction; Might it relate to healthy systems?",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20230109-fra2.pdf",
+    "zip_file": "20230109-fra2.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20230108--FRA2"
+  },
+  {
+    "slug": "20230105-jmm",
+    "date": "2023-01-05",
+    "venue": "jmm",
+    "title": "Category theory is living language",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20230105-jmm.pdf",
+    "zip_file": "20230105-jmm.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "AppliedCT--General/2023--JMM"
+  },
+  {
+    "slug": "20221212-topos",
+    "date": "2022-12-12",
+    "venue": "topos",
+    "title": "Effects Handlers and Bicomodules",
+    "keywords": [],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20221212-topos.pdf",
+    "zip_file": "20221212-topos.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20221212--Topos"
+  },
+  {
+    "slug": "20221103-nist",
+    "date": "2022-11-03",
+    "venue": "nist",
+    "title": "What are we tracking? How category theory puts thinking on rails",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20221103-nist.pdf",
+    "zip_file": "20221103-nist.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "AppliedCT--General/2022--NIST"
+  },
+  {
+    "slug": "20221020-nasa-pce3",
+    "date": "2022-10-20",
+    "venue": "nasa-pce3",
+    "title": "Dynamic organizational structures",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20221020-nasa-pce3.pdf",
+    "zip_file": "20221020-nasa-pce3.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20221020--NASA-PCE3"
+  },
+  {
+    "slug": "20220913-actinf",
+    "date": "2022-09-13",
+    "venue": "actinf",
+    "title": "",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20220913-actinf.pdf",
+    "zip_file": "20220913-actinf.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20220913--ActInf"
+  },
+  {
+    "slug": "20220719-act",
+    "date": "2022-07-19",
+    "venue": "act",
+    "title": "",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20220719-act.pdf",
+    "zip_file": "20220719-act.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20220719--ACT"
+  },
+  {
+    "slug": "20220614-topos-scotttopology",
+    "date": "2022-06-14",
+    "venue": "topos-scotttopology",
+    "title": "",
+    "keywords": [],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20220614-topos-scotttopology.pdf",
+    "zip_file": "20220614-topos-scotttopology.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20220613--Topos-ScottTopology"
+  },
+  {
+    "slug": "20220607-levin",
+    "date": "2022-06-07",
+    "venue": "levin",
+    "title": "",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20220607-levin.pdf",
+    "zip_file": "20220607-levin.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20220607--Levin"
+  },
+  {
+    "slug": "20220513-scse",
+    "date": "2022-05-13",
+    "venue": "scse",
+    "title": "",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20220513-scse.pdf",
+    "zip_file": "20220513-scse.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20220513--SCSE"
+  },
+  {
+    "slug": "20220406-pisa",
+    "date": "2022-04-06",
+    "venue": "pisa",
+    "title": "Some applications of polynomial functors",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20220406-pisa.pdf",
+    "zip_file": "20220406-pisa.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20220406--Pisa"
+  },
+  {
+    "slug": "20220318-pfunc",
+    "date": "2022-03-18",
+    "venue": "pfunc",
+    "title": "Functorial Aggregation",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20220318-pfunc.pdf",
+    "zip_file": "20220318-pfunc.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20220315--PFunc"
+  },
+  {
+    "slug": "20220219-ipam",
+    "date": "2022-02-19",
+    "venue": "ipam",
+    "title": "Sense-making: accounting for intelligibility",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20220219-ipam.pdf",
+    "zip_file": "20220219-ipam.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20220219--IPAM"
+  },
+  {
+    "slug": "20220125-intercats",
+    "date": "2022-01-25",
+    "venue": "intercats",
+    "title": "Categorical Interaction in the Polynomial Ecosystem",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20220125-intercats.pdf",
+    "zip_file": "20220125-intercats.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20220125--Intercats"
+  },
+  {
+    "slug": "20210921-toposinternal",
+    "date": "2021-09-21",
+    "venue": "toposinternal",
+    "title": "Learners' languages",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20210921-toposinternal.pdf",
+    "zip_file": "20210921-toposinternal.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20210416--ToposInternal"
+  },
+  {
+    "slug": "20210315-pfunc",
+    "date": "2021-03-15",
+    "venue": "pfunc",
+    "title": "The Polynomial Abacus",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20210315-pfunc.pdf",
+    "zip_file": "20210315-pfunc.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20210315--PFunc"
+  },
+  {
+    "slug": "20210217-unam",
+    "date": "2021-02-17",
+    "venue": "unam",
+    "title": "Polynomials and the dynamics of data",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20210217-unam.pdf",
+    "zip_file": "20210217-unam.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20210217--UNAM"
+  },
+  {
+    "slug": "20210204-toposcolloquium",
+    "date": "2021-02-04",
+    "venue": "toposcolloquium",
+    "title": "Poly: a category of remarkable abundance",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20210204-toposcolloquium.pdf",
+    "zip_file": "20210204-toposcolloquium.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20210204--ToposColloquium"
+  },
+  {
+    "slug": "20210202-pnnl",
+    "date": "2021-02-02",
+    "venue": "pnnl",
+    "title": "Applied Category Theory: The mathematics of interdisciplinary modeling",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20210202-pnnl.pdf",
+    "zip_file": "20210202-pnnl.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/2021--PNNL"
+  },
+  {
+    "slug": "20210000-topos-fra-workshop-tutorial",
+    "date": "2021",
+    "venue": "topos-fra-workshop-tutorial",
+    "title": "A Tutorial on Category theory: Part 1: pure and classical",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20210000-topos-fra-workshop-tutorial.pdf",
+    "zip_file": "20210000-topos-fra-workshop-tutorial.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "AppliedCT--General/2021--Topos--FRA-Workshop/Tutorial"
+  },
+  {
+    "slug": "20210000-topos-fra-workshop-cultivatingstrategies",
+    "date": "2021",
+    "venue": "topos-fra-workshop-cultivatingstrategies",
+    "title": "Cultivating Strategies",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20210000-topos-fra-workshop-cultivatingstrategies.pdf",
+    "zip_file": "20210000-topos-fra-workshop-cultivatingstrategies.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/2021--Topos--FRA-Workshop/CultivatingStrategies"
+  },
+  {
+    "slug": "20200707-act",
+    "date": "2020-07-07",
+    "venue": "act",
+    "title": "Poly: an abundant categorical setting for mode-dependent dynamics",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20200707-act.pdf",
+    "zip_file": "20200707-act.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20200707--ACT"
+  },
+  {
+    "slug": "20200625-tallinn",
+    "date": "2020-06-25",
+    "venue": "tallinn",
+    "title": "Polynomials: from dynamics to databases",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20200625-tallinn.pdf",
+    "zip_file": "20200625-tallinn.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20200625--Tallinn"
+  },
+  {
+    "slug": "20200612-agi",
+    "date": "2020-06-12",
+    "venue": "agi",
+    "title": "``All my relations'' Contributing to a fabric of belonging",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20200612-agi.pdf",
+    "zip_file": "20200612-agi.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "AppliedCT--General/202408-AGI"
+  },
+  {
+    "slug": "20200607-internalvaluations2020",
+    "date": "2020-06-07",
+    "venue": "internalvaluations2020",
+    "title": "Internal probability valuations",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "Logic/Temporal/Continuous",
+    "pdf_file": "20200607-internalvaluations2020.pdf",
+    "zip_file": "20200607-internalvaluations2020.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Logic/Temporal/Continuous/InternalValuations2020"
+  },
+  {
+    "slug": "20200528-mit",
+    "date": "2020-05-28",
+    "venue": "mit",
+    "title": "Polynomial functors II: Seven wonders of the composition product",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20200528-mit.pdf",
+    "zip_file": "20200528-mit.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20200528--MIT"
+  },
+  {
+    "slug": "20200305-modedependent",
+    "date": "2020-03-05",
+    "venue": "modedependent",
+    "title": "Mode dependent dynamical systems and polynomial functors",
+    "keywords": [],
+    "topic": "WiringDiagrams",
+    "pdf_file": "20200305-modedependent.pdf",
+    "zip_file": "20200305-modedependent.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "WiringDiagrams/ModeDependent"
+  },
+  {
+    "slug": "20190925-eth",
+    "date": "2019-09-25",
+    "venue": "eth",
+    "title": "Applied Category Theory: The mathematics of interdisciplinary modeling",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20190925-eth.pdf",
+    "zip_file": "20190925-eth.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/2019--ETH"
+  },
+  {
+    "slug": "20190719-act2019-short",
+    "date": "2019-07-19",
+    "venue": "act2019-short",
+    "title": "Graphical abelian logic",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "Logic/Abelian",
+    "pdf_file": "20190719-act2019-short.pdf",
+    "zip_file": "20190719-act2019-short.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Logic/Abelian/ACT2019--short"
+  },
+  {
+    "slug": "20190711-ct2019",
+    "date": "2019-07-11",
+    "venue": "ct2019",
+    "title": "Graphical abelian logic",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "Logic/Abelian",
+    "pdf_file": "20190711-ct2019.pdf",
+    "zip_file": "20190711-ct2019.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Logic/Abelian/CT2019"
+  },
+  {
+    "slug": "20190624-compose20190625",
+    "date": "2019-06-24",
+    "venue": "compose20190625",
+    "title": "Reglog -- the game",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "Logic/RegCohGeom/Reglog-the-game",
+    "pdf_file": "20190624-compose20190625.pdf",
+    "zip_file": "20190624-compose20190625.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "Logic/RegCohGeom/Reglog-the-game/Compose20190625"
+  },
+  {
+    "slug": "20190523-monadicdecisionprocesses",
+    "date": "2019-05-23",
+    "venue": "monadicdecisionprocesses",
+    "title": "Monadic Decision Processes for Hierarchical Planning",
+    "keywords": [],
+    "topic": "Misc",
+    "pdf_file": "20190523-monadicdecisionprocesses.pdf",
+    "zip_file": "20190523-monadicdecisionprocesses.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Misc/MonadicDecisionProcesses"
+  },
+  {
+    "slug": "20190509-oxford-fhi",
+    "date": "2019-05-09",
+    "venue": "oxford-fhi",
+    "title": "Applied Category Theory: skip Towards a science of interdisciplinarity",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20190509-oxford-fhi.pdf",
+    "zip_file": "20190509-oxford-fhi.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/2019--Oxford FHI"
+  },
+  {
+    "slug": "20190509-mit-aso",
+    "date": "2019-05-09",
+    "venue": "mit-aso",
+    "title": "Applied Category Theory: skip Mathematics for Interdisciplinary systems modeling",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20190509-mit-aso.pdf",
+    "zip_file": "20190509-mit-aso.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/2019--MIT-ASO"
+  },
+  {
+    "slug": "20190509-bridgewater",
+    "date": "2019-05-09",
+    "venue": "bridgewater",
+    "title": "Applied Category Theory: skip Towards a science of interdisciplinarity",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20190509-bridgewater.pdf",
+    "zip_file": "20190509-bridgewater.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "AppliedCT--General/2019--Bridgewater"
+  },
+  {
+    "slug": "20190422-uber",
+    "date": "2019-04-22",
+    "venue": "uber",
+    "title": "Categorical Databases",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20190422-uber.pdf",
+    "zip_file": "20190422-uber.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "DB_Communication/Databases/2019--Uber"
+  },
+  {
+    "slug": "20190411-mit20190411",
+    "date": "2019-04-11",
+    "venue": "mit20190411",
+    "title": "Reglog -- the game",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "Logic/RegCohGeom/Reglog-the-game",
+    "pdf_file": "20190411-mit20190411.pdf",
+    "zip_file": "20190411-mit20190411.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "Logic/RegCohGeom/Reglog-the-game/MIT20190411"
+  },
+  {
+    "slug": "20190311-ut-austin",
+    "date": "2019-03-11",
+    "venue": "ut-austin",
+    "title": "Applied Category Theory: skip Towards a science of interdisciplinarity",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20190311-ut-austin.pdf",
+    "zip_file": "20190311-ut-austin.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/2019--UT_Austin"
+  },
+  {
+    "slug": "20190227-moderna",
+    "date": "2019-02-27",
+    "venue": "moderna",
+    "title": "Categorical Databases",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20190227-moderna.pdf",
+    "zip_file": "20190227-moderna.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "DB_Communication/Databases/2020 Moderna"
+  },
+  {
+    "slug": "20190227-kensho",
+    "date": "2019-02-27",
+    "venue": "kensho",
+    "title": "Categorical Databases",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20190227-kensho.pdf",
+    "zip_file": "20190227-kensho.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "DB_Communication/Databases/2019 Kensho"
+  },
+  {
+    "slug": "20190110-petribanks",
+    "date": "2019-01-10",
+    "venue": "petribanks",
+    "title": "Petri Banks, quiver representations, and control",
+    "keywords": [],
+    "topic": "Misc",
+    "pdf_file": "20190110-petribanks.pdf",
+    "zip_file": "20190110-petribanks.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Misc/PetriBanks"
+  },
+  {
+    "slug": "20190109-bae",
+    "date": "2019-01-09",
+    "venue": "bae",
+    "title": "Categorical Databases",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20190109-bae.pdf",
+    "zip_file": "20190109-bae.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "DB_Communication/Databases/2019 BAE"
+  },
+  {
+    "slug": "20190000-riverside2019",
+    "date": "2019",
+    "venue": "riverside2019",
+    "title": "Lenses: applications and generalizations",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "Lenses:Backprop:DILS/Lenses",
+    "pdf_file": "20190000-riverside2019.pdf",
+    "zip_file": "20190000-riverside2019.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "Lenses:Backprop:DILS/Lenses/Riverside2019"
+  },
+  {
+    "slug": "20190000-mit20190502",
+    "date": "2019",
+    "venue": "mit20190502",
+    "title": "Graphical calculus for abelian categories",
+    "keywords": [],
+    "topic": "Logic/Abelian",
+    "pdf_file": "20190000-mit20190502.pdf",
+    "zip_file": "20190000-mit20190502.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Logic/Abelian/MIT20190502"
+  },
+  {
+    "slug": "20190000-mit2019",
+    "date": "2019",
+    "venue": "mit2019",
+    "title": "Lenses: applications and generalizations",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "Lenses:Backprop:DILS/Lenses",
+    "pdf_file": "20190000-mit2019.pdf",
+    "zip_file": "20190000-mit2019.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Lenses:Backprop:DILS/Lenses/MIT2019"
+  },
+  {
+    "slug": "20190000-mcgill2019",
+    "date": "2019",
+    "venue": "mcgill2019",
+    "title": "Graphical presentations of abelian categories",
+    "keywords": [],
+    "topic": "Logic/Abelian",
+    "pdf_file": "20190000-mcgill2019.pdf",
+    "zip_file": "20190000-mcgill2019.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Logic/Abelian/McGill2019"
+  },
+  {
+    "slug": "20181027-graphicallogic-octoberfest201810",
+    "date": "2018-10-27",
+    "venue": "graphicallogic-octoberfest201810",
+    "title": "String diagrams for regular logic",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "Logic/RegCohGeom",
+    "pdf_file": "20181027-graphicallogic-octoberfest201810.pdf",
+    "zip_file": "20181027-graphicallogic-octoberfest201810.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Logic/RegCohGeom/GraphicalLogic-OctoberFest201810"
+  },
+  {
+    "slug": "20181001-institutions",
+    "date": "2018-10-01",
+    "venue": "institutions",
+    "title": "Some categorical perspectives on institutions",
+    "keywords": [],
+    "topic": "Logic",
+    "pdf_file": "20181001-institutions.pdf",
+    "zip_file": "20181001-institutions.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Logic/Institutions"
+  },
+  {
+    "slug": "20180928-umcp-isr",
+    "date": "2018-09-28",
+    "venue": "umcp-isr",
+    "title": "Applied Category Theory: The mathematics of interdisciplinary modeling",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20180928-umcp-isr.pdf",
+    "zip_file": "20180928-umcp-isr.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/2018--UMCP--ISR"
+  },
+  {
+    "slug": "20180823-doublecategories",
+    "date": "2018-08-23",
+    "venue": "doublecategories",
+    "title": "Double categories",
+    "keywords": [],
+    "topic": "Misc",
+    "pdf_file": "20180823-doublecategories.pdf",
+    "zip_file": "20180823-doublecategories.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Misc/DoubleCategories"
+  },
+  {
+    "slug": "20180719-decompositionspaces",
+    "date": "2018-07-19",
+    "venue": "decompositionspaces",
+    "title": "Decomposition spaces and toposes",
+    "keywords": [],
+    "topic": "Misc",
+    "pdf_file": "20180719-decompositionspaces.pdf",
+    "zip_file": "20180719-decompositionspaces.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Misc/DecompositionSpaces"
+  },
+  {
+    "slug": "20180709-ct2018",
+    "date": "2018-07-09",
+    "venue": "ct2018",
+    "title": "A topos-theoretic approach to systems and behavior",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "Logic/Temporal/Continuous",
+    "pdf_file": "20180709-ct2018.pdf",
+    "zip_file": "20180709-ct2018.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "Logic/Temporal/Continuous/CT2018"
+  },
+  {
+    "slug": "20180506-maxplanck2018",
+    "date": "2018-05-06",
+    "venue": "maxplanck2018",
+    "title": "Backprop as Functor: A compositional perspective on supervised learning",
+    "keywords": [],
+    "topic": "Lenses:Backprop:DILS/BackProp",
+    "pdf_file": "20180506-maxplanck2018.pdf",
+    "zip_file": "20180506-maxplanck2018.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Lenses:Backprop:DILS/BackProp/MaxPlanck2018"
+  },
+  {
+    "slug": "20180502-act-lorentz2018",
+    "date": "2018-05-02",
+    "venue": "act-lorentz2018",
+    "title": "A higher-order temporal logic for dynamical systems",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "Logic/Temporal/Continuous",
+    "pdf_file": "20180502-act-lorentz2018.pdf",
+    "zip_file": "20180502-act-lorentz2018.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Logic/Temporal/Continuous/ACT-Lorentz2018"
+  },
+  {
+    "slug": "20180426-discrete",
+    "date": "2018-04-26",
+    "venue": "discrete",
+    "title": "Discrete temporal type theory",
+    "keywords": [],
+    "topic": "Logic/Temporal",
+    "pdf_file": "20180426-discrete.pdf",
+    "zip_file": "20180426-discrete.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Logic/Temporal/Discrete"
+  },
+  {
+    "slug": "20180412-graphicallogic-mit201804",
+    "date": "2018-04-12",
+    "venue": "graphicallogic-mit201804",
+    "title": "Categorical views of regular, coherent, geometric logic: from classical to wiring-theoretic",
+    "keywords": [],
+    "topic": "Logic/RegCohGeom",
+    "pdf_file": "20180412-graphicallogic-mit201804.pdf",
+    "zip_file": "20180412-graphicallogic-mit201804.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Logic/RegCohGeom/GraphicalLogic--MIT201804"
+  },
+  {
+    "slug": "20180316-toposescomo2018-talk",
+    "date": "2018-03-16",
+    "venue": "toposescomo2018-talk",
+    "title": "Intuition/Talk on String diagrams for traced and compact categories are oriented 1-cobordisms",
+    "keywords": [],
+    "topic": "WiringDiagrams/TracedCats/CT2016",
+    "pdf_file": "20180316-toposescomo2018-talk.pdf",
+    "zip_file": "20180316-toposescomo2018-talk.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "WiringDiagrams/TracedCats/CT2016/Talk"
+  },
+  {
+    "slug": "20180316-nist2018",
+    "date": "2018-03-16",
+    "venue": "nist2018",
+    "title": "A higher-order temporal logic for dynamical systems",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "Logic/Temporal/Continuous",
+    "pdf_file": "20180316-nist2018.pdf",
+    "zip_file": "20180316-nist2018.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Logic/Temporal/Continuous/NIST2018"
+  },
+  {
+    "slug": "20180316-cmu2019",
+    "date": "2018-03-16",
+    "venue": "cmu2019",
+    "title": "A topos-theoretic approach to systems and behavior",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "Logic/Temporal/Continuous",
+    "pdf_file": "20180316-cmu2019.pdf",
+    "zip_file": "20180316-cmu2019.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Logic/Temporal/Continuous/CMU2019"
+  },
+  {
+    "slug": "20180316-barcelona2018",
+    "date": "2018-03-16",
+    "venue": "barcelona2018",
+    "title": "A higher-order temporal logic for dynamical systems",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "Logic/Temporal/Continuous",
+    "pdf_file": "20180316-barcelona2018.pdf",
+    "zip_file": "20180316-barcelona2018.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Logic/Temporal/Continuous/Barcelona2018"
+  },
+  {
+    "slug": "20180222-metricrealization",
+    "date": "2018-02-22",
+    "venue": "metricrealization",
+    "title": "Metric realization of fuzzy simplicial sets",
+    "keywords": [],
+    "topic": "Misc",
+    "pdf_file": "20180222-metricrealization.pdf",
+    "zip_file": "20180222-metricrealization.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Misc/MetricRealization"
+  },
+  {
+    "slug": "20180201-oxford2018",
+    "date": "2018-02-01",
+    "venue": "oxford2018",
+    "title": "Backprop as Functor: A compositional perspective on supervised learning",
+    "keywords": [],
+    "topic": "Lenses:Backprop:DILS/BackProp",
+    "pdf_file": "20180201-oxford2018.pdf",
+    "zip_file": "20180201-oxford2018.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Lenses:Backprop:DILS/BackProp/Oxford2018"
+  },
+  {
+    "slug": "20180000-graphicallogic-mit201811",
+    "date": "2018",
+    "venue": "graphicallogic-mit201811",
+    "title": "Learning relations via adjunctions",
+    "keywords": [],
+    "topic": "Logic/RegCohGeom",
+    "pdf_file": "20180000-graphicallogic-mit201811.pdf",
+    "zip_file": "20180000-graphicallogic-mit201811.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Logic/RegCohGeom/GraphicalLogic--MIT201811"
+  },
+  {
+    "slug": "20171212-salemstate",
+    "date": "2017-12-12",
+    "venue": "salemstate",
+    "title": "Some Applications of Category Theory",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20171212-salemstate.pdf",
+    "zip_file": "20171212-salemstate.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/2017--SalemState"
+  },
+  {
+    "slug": "20171104-uc-riverside2017",
+    "date": "2017-11-04",
+    "venue": "uc-riverside2017",
+    "title": "A higher-order temporal logic for dynamical systems",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "Logic/Temporal/Continuous",
+    "pdf_file": "20171104-uc-riverside2017.pdf",
+    "zip_file": "20171104-uc-riverside2017.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Logic/Temporal/Continuous/UC-Riverside2017"
+  },
+  {
+    "slug": "20171024-harvardmathtable",
+    "date": "2017-10-24",
+    "venue": "harvardmathtable",
+    "title": "Cayley graphs and the Grothendieck construction",
+    "keywords": [],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20171024-harvardmathtable.pdf",
+    "zip_file": "20171024-harvardmathtable.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/2017--HarvardMathTable"
+  },
+  {
+    "slug": "20171002-mit-del-vecchio",
+    "date": "2017-10-02",
+    "venue": "mit-del-vecchio",
+    "title": "Category theory in science and engineering: A framework for information integration",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20171002-mit-del-vecchio.pdf",
+    "zip_file": "20171002-mit-del-vecchio.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/2017--MIT--Del_Vecchio"
+  },
+  {
+    "slug": "20171002-mcgill",
+    "date": "2017-10-02",
+    "venue": "mcgill",
+    "title": "Machine learning and category theory: perception and cognition",
+    "keywords": [
+      "Formal definition of operad",
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20171002-mcgill.pdf",
+    "zip_file": "20171002-mcgill.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/2017--McGill"
+  },
+  {
+    "slug": "20171002-caltech",
+    "date": "2017-10-02",
+    "venue": "caltech",
+    "title": "Using category theory for information integration",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20171002-caltech.pdf",
+    "zip_file": "20171002-caltech.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/2017--CalTech"
+  },
+  {
+    "slug": "20170905-mit-ct-seminar",
+    "date": "2017-09-05",
+    "venue": "mit-ct-seminar",
+    "title": "Language and semantics for behavior",
+    "keywords": [],
+    "topic": "Logic/Temporal/Continuous",
+    "pdf_file": "20170905-mit-ct-seminar.pdf",
+    "zip_file": "20170905-mit-ct-seminar.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Logic/Temporal/Continuous/MIT-CT-Seminar"
+  },
+  {
+    "slug": "20170713-siam-pa-2017",
+    "date": "2017-07-13",
+    "venue": "siam-pa-2017",
+    "title": "The Pixel Array method for solving nonlinear systems",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PixelArrays",
+    "pdf_file": "20170713-siam-pa-2017.pdf",
+    "zip_file": "20170713-siam-pa-2017.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PixelArrays/SIAM--PA--2017"
+  },
+  {
+    "slug": "20170712-siam2017",
+    "date": "2017-07-12",
+    "venue": "siam2017",
+    "title": "Compositional contracts for hybrid dynamical systems",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "Logic/Temporal/Continuous",
+    "pdf_file": "20170712-siam2017.pdf",
+    "zip_file": "20170712-siam2017.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Logic/Temporal/Continuous/SIAM2017"
+  },
+  {
+    "slug": "20170612-barcelona2017",
+    "date": "2017-06-12",
+    "venue": "barcelona2017",
+    "title": "An Operadic Approach to Compositionality",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "WiringDiagrams/Compositionality",
+    "pdf_file": "20170612-barcelona2017.pdf",
+    "zip_file": "20170612-barcelona2017.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "WiringDiagrams/Compositionality/Barcelona2017"
+  },
+  {
+    "slug": "20170608-lorentz2017",
+    "date": "2017-06-08",
+    "venue": "lorentz2017",
+    "title": "Sheaf-theoretic analysis of networked dynamical systems",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "Logic/Temporal/Continuous",
+    "pdf_file": "20170608-lorentz2017.pdf",
+    "zip_file": "20170608-lorentz2017.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "Logic/Temporal/Continuous/Lorentz2017"
+  },
+  {
+    "slug": "20170329-broad",
+    "date": "2017-03-29",
+    "venue": "broad",
+    "title": "Categorical databases",
+    "keywords": [
+      "A simple ``SELECT\" query using views"
+    ],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20170329-broad.pdf",
+    "zip_file": "20170329-broad.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "DB_Communication/Databases/2017 Broad"
+  },
+  {
+    "slug": "20170130-iap2017",
+    "date": "2017-01-30",
+    "venue": "iap2017",
+    "title": "The pixel array method for solving non-linear systems of equations",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PixelArrays",
+    "pdf_file": "20170130-iap2017.pdf",
+    "zip_file": "20170130-iap2017.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PixelArrays/IAP2017"
+  },
+  {
+    "slug": "20170000-lambdaconf",
+    "date": "2017",
+    "venue": "lambdaconf",
+    "title": "Notes for LambdaConf",
+    "keywords": [],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20170000-lambdaconf.pdf",
+    "zip_file": "20170000-lambdaconf.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/2017--LambdaConf"
+  },
+  {
+    "slug": "20161205-simons2016-presentation",
+    "date": "2016-12-05",
+    "venue": "simons2016-presentation",
+    "title": "An Operadic Approach to Compositionality",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "WiringDiagrams/Compositionality/Simons2016",
+    "pdf_file": "20161205-simons2016-presentation.pdf",
+    "zip_file": "20161205-simons2016-presentation.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "WiringDiagrams/Compositionality/Simons2016/Presentation"
+  },
+  {
+    "slug": "20161110-telecombretagne-2",
+    "date": "2016-11-10",
+    "venue": "telecombretagne-2",
+    "title": "A whirlwind tour of category theory, for the working scientist and engineer",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20161110-telecombretagne-2.pdf",
+    "zip_file": "20161110-telecombretagne-2.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/2016--TelecomBretagne"
+  },
+  {
+    "slug": "20161110-telecombretagne",
+    "date": "2016-11-10",
+    "venue": "telecombretagne",
+    "title": "The Pixel Array method for nonlinear systems, and applications to numerical PDEs",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PixelArrays",
+    "pdf_file": "20161110-telecombretagne.pdf",
+    "zip_file": "20161110-telecombretagne.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "PixelArrays/TelecomBretagne"
+  },
+  {
+    "slug": "20161026-numericalpde-mit",
+    "date": "2016-10-26",
+    "venue": "numericalpde-mit",
+    "title": "The Pixel Array method for nonlinear systems, and applications to numerical PDEs",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "PixelArrays",
+    "pdf_file": "20161026-numericalpde-mit.pdf",
+    "zip_file": "20161026-numericalpde-mit.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "PixelArrays/NumericalPDE--MIT"
+  },
+  {
+    "slug": "20161004-sandia",
+    "date": "2016-10-04",
+    "venue": "sandia",
+    "title": "A whirlwind tour of category theory, for the working scientist and engineer",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20161004-sandia.pdf",
+    "zip_file": "20161004-sandia.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/2016--Sandia"
+  },
+  {
+    "slug": "20160629-daytonafrl2016-06-29",
+    "date": "2016-06-29",
+    "venue": "daytonafrl2016-06-29",
+    "title": "",
+    "keywords": [],
+    "topic": "WiringDiagrams/StateMachines",
+    "pdf_file": null,
+    "zip_file": "20160629-daytonafrl2016-06-29.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "WiringDiagrams/StateMachines/DaytonAFRL2016-06-29"
+  },
+  {
+    "slug": "20160615-socg2016",
+    "date": "2016-06-15",
+    "venue": "socg2016",
+    "title": "Pixel matrices for big, messy, real-world data",
+    "keywords": [],
+    "topic": "PixelArrays",
+    "pdf_file": "20160615-socg2016.pdf",
+    "zip_file": "20160615-socg2016.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "PixelArrays/SoCG2016"
+  },
+  {
+    "slug": "20160407-suny-binghamton20160407",
+    "date": "2016-04-07",
+    "venue": "suny-binghamton20160407",
+    "title": "Calculating steady states of nonlinear dynamical systems using matrix arithmetic ~ Binghamton University Mathematics Colloquium",
+    "keywords": [],
+    "topic": "WiringDiagrams/Networks",
+    "pdf_file": "20160407-suny-binghamton20160407.pdf",
+    "zip_file": "20160407-suny-binghamton20160407.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "WiringDiagrams/Networks/SUNY--Binghamton20160407"
+  },
+  {
+    "slug": "20160322-ohiombi2016",
+    "date": "2016-03-22",
+    "venue": "ohiombi2016",
+    "title": "Operads as a potential foundation for systems of systems",
+    "keywords": [
+      "A DSL for hierarchical protein materials",
+      "Acknowledgments",
+      "Another example: dynamical systems",
+      "Assumptions that compromise validity for simplicity",
+      "Broader outlook",
+      "Category Theory",
+      "Changing the operad",
+      "Compositional mappings",
+      "Discrete DS's also have this composition style",
+      "Every context-free grammar (CFG) is an operad",
+      "Example",
+      "Examples from computer science",
+      "Feedback composition style",
+      "Feedback composition supports matrix arithmetic",
+      "Feedforward composition style",
+      "Formal definition of operad",
+      "Is Euler's method compositional?",
+      "Is this a convincing foundation?",
+      "Mode-dependent networks of dynamical systems",
+      "Operad for mode dependent systems",
+      "Outline",
+      "Plan for the talk",
+      "Port (hyper-)graph composition style",
+      "Port graphs and constraint systems",
+      "Properties of dynamical systems",
+      "Recall: feedback composition of dynamical systems",
+      "Steady state matrices",
+      "System composition styles",
+      "The operadic approach",
+      "Types of composable behavior",
+      "What a foundation should provide",
+      "What are systems?"
+    ],
+    "topic": "WiringDiagrams/Networks",
+    "pdf_file": "20160322-ohiombi2016.pdf",
+    "zip_file": "20160322-ohiombi2016.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "WiringDiagrams/Networks/OhioMBI2016"
+  },
+  {
+    "slug": "20160000-siam2016-didnt-occur",
+    "date": "2016",
+    "venue": "siam2016-didnt-occur",
+    "title": "Bifurcation theory of networked dynamical systems",
+    "keywords": [],
+    "topic": "WiringDiagrams/Networks",
+    "pdf_file": "20160000-siam2016-didnt-occur.pdf",
+    "zip_file": "20160000-siam2016-didnt-occur.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "WiringDiagrams/Networks/SIAM2016(Didn't occur)"
+  },
+  {
+    "slug": "20160000-ct2016-talk",
+    "date": "2016",
+    "venue": "ct2016-talk",
+    "title": "A topos-theoretic approach to systems and behavior",
+    "keywords": [
+      "Outline"
+    ],
+    "topic": "Logic/Temporal/Continuous/ToposesComo2018",
+    "pdf_file": "20160000-ct2016-talk.pdf",
+    "zip_file": "20160000-ct2016-talk.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "Logic/Temporal/Continuous/ToposesComo2018/Talk"
+  },
+  {
+    "slug": "20160000-ct2016",
+    "date": "2016",
+    "venue": "ct2016",
+    "title": "",
+    "keywords": [],
+    "topic": "WiringDiagrams/TracedCats",
+    "pdf_file": "20160000-ct2016.pdf",
+    "zip_file": "20160000-ct2016.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "WiringDiagrams/TracedCats/CT2016"
+  },
+  {
+    "slug": "20151028-nist2015-cct",
+    "date": "2015-10-28",
+    "venue": "nist2015-cct",
+    "title": "Operads: a mathematical approach to compositionality (Extended Abstract)",
+    "keywords": [],
+    "topic": "WiringDiagrams/Design",
+    "pdf_file": "20151028-nist2015-cct.pdf",
+    "zip_file": "20151028-nist2015-cct.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "WiringDiagrams/Design/NIST2015--CCT"
+  },
+  {
+    "slug": "20150617-nist2015-modularity",
+    "date": "2015-06-17",
+    "venue": "nist2015-modularity",
+    "title": "Operadics: the mathematics of modular design",
+    "keywords": [
+      "A matriarch-style program for dynamical systems",
+      "A picture of a recipe",
+      "A tool for producing hierarchical protein materials",
+      "A zoo of operads",
+      "An operad is an ``abstract modular environment\"",
+      "Another modular notion: diagrams with no feedback",
+      "Another way to see it",
+      "Applied category theory",
+      "Category Theory",
+      "Computational modeling",
+      "Conclusion",
+      "Databases",
+      "Directed wiring diagrams are modular",
+      "Electrical circuits",
+      "Every context-free grammar (CFG) is an operad",
+      "Example of materials architecture: collagen",
+      "Example: a recipe for shakshuka",
+      "Example: composition of networks",
+      "Formal definition of operad",
+      "It didn't quite work for everyone; why?",
+      "Materials architecture",
+      "Matriarch as a design tool",
+      "Open dynamical systems",
+      "Operad functors and operad algebras",
+      "Operads and algebras = syntax and semantics",
+      "Operads describe similar phenomena",
+      "Outline",
+      "Plan of the talk",
+      "Potential domains of application",
+      "Recipes",
+      "Sample architectures",
+      "Semantics of wiring diagrams",
+      "The operad of sets",
+      "The operadic model of Matriarch",
+      "The promise of fractals",
+      "What did operads really do for us?",
+      "What is an operad? An overview",
+      "What's operadic about recipes",
+      "Yet another type of wiring diagram"
+    ],
+    "topic": "WiringDiagrams/Design",
+    "pdf_file": "20150617-nist2015-modularity.pdf",
+    "zip_file": "20150617-nist2015-modularity.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "WiringDiagrams/Design/NIST2015--Modularity"
+  },
+  {
+    "slug": "20150616-nist2015-matriarch",
+    "date": "2015-06-16",
+    "venue": "nist2015-matriarch",
+    "title": "Protein materials architecture by design",
+    "keywords": [
+      "A \\catT",
+      "A matriarch-style program for dynamical systems",
+      "An operad \\catS",
+      "An operad \\catT",
+      "Back to materials",
+      "Category theory was the software specification",
+      "Computational modeling",
+      "Context-free grammars",
+      "Databases",
+      "Demo",
+      "Design process",
+      "Electrical circuits",
+      "Every context-free grammar (CFG) is an operad",
+      "Example of materials architecture: collagen",
+      "Explaining operads (a very rough sketch)",
+      "Formal definition of operad",
+      "How operads are useful in design",
+      "Materials architecture",
+      "Matriarch as a design tool",
+      "Matriarch's building blocks and building instructions",
+      "Modularity as good design",
+      "Modularity in nature",
+      "Other material architectures",
+      "Outline",
+      "Sample architectures",
+      "Scripting with Matriarch",
+      "Summary of the Matriarch design process",
+      "Thank you",
+      "The challenges to overcome",
+      "The operadic model of Matriarch",
+      "What's this got to do with category theory?"
+    ],
+    "topic": "WiringDiagrams/Design",
+    "pdf_file": "20150616-nist2015-matriarch.pdf",
+    "zip_file": "20150616-nist2015-matriarch.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "WiringDiagrams/Design/NIST2015--Matriarch"
+  },
+  {
+    "slug": "20150605-fmcs2015",
+    "date": "2015-06-05",
+    "venue": "fmcs2015",
+    "title": "Operads as a language for modular design",
+    "keywords": [
+      "A \\mcT-algebra of open dynamical systems",
+      "A problem in materials design",
+      "Algebras that won't work",
+      "An operad \\mcS of static wiring diagrams",
+      "An operad \\mcT of temporal wiring diagrams",
+      "Definition of operad",
+      "Every context-free grammar (CFG) is an operad",
+      "Example: two different algebras on \\mcE_2",
+      "Materials architecture",
+      "Matriarch as a design tool",
+      "Modular systems are everywhere",
+      "On to the chalkboard",
+      "Operad functors and operad algebras",
+      "Operads",
+      "Operads and algebras = syntax and semantics",
+      "Operads as a foundation for modularity",
+      "Our tool: Matriarch",
+      "Outline",
+      "Papers and transfers",
+      "Restating the general idea",
+      "String diagrams are pictures of cobordisms",
+      "String diagrams in traced categories",
+      "Summary",
+      "Summary: operads and algebras formalize modular systems",
+      "The \\mcS-algebra of relations and queries",
+      "The \\mcT-algebra of stream processors",
+      "The first operad",
+      "The nomenclature we will use",
+      "The operad for monoids",
+      "The operad of sets",
+      "The operadic model of Matriarch",
+      "To begin: a concrete application",
+      "Traced categories",
+      "Traced categories as \\Cob_/\\bullet",
+      "What did operads really do for us?",
+      "What this equivalence tells us",
+      "What's the relationship?",
+      "brainstorm"
+    ],
+    "topic": "WiringDiagrams/Design",
+    "pdf_file": "20150605-fmcs2015.pdf",
+    "zip_file": "20150605-fmcs2015.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "WiringDiagrams/Design/FMCS2015"
+  },
+  {
+    "slug": "20150403-upenn2015",
+    "date": "2015-04-03",
+    "venue": "upenn2015",
+    "title": "Thinking about modularity in networks",
+    "keywords": [
+      "A picture of a recipe",
+      "A problem in materials design",
+      "A zoo of operads",
+      "An operad is an ``abstract modular environment\"",
+      "And another: wiring diagrams without feedback",
+      "Another modular notion of wiring diagram",
+      "Another way to see it",
+      "Applied category theory",
+      "Category Theory",
+      "Conclusion",
+      "Directed wiring diagrams are modular",
+      "Example of materials architecture: collagen",
+      "Example: Shakshuka!",
+      "Example: composition of networks",
+      "Formal definition of operad",
+      "It didn't quite work for everyone; why?",
+      "Materials architecture",
+      "Matriarch as a design tool",
+      "Motivation",
+      "Operads describe similar phenomena",
+      "Outline",
+      "Plan of the talk",
+      "Potential domains of application",
+      "Recipes",
+      "Sample architectures",
+      "Semantics of wiring diagrams",
+      "The operadic model of Matriarch",
+      "The promise of fractals",
+      "The ubiquity of a strategy",
+      "We designed a tool called Matriarch",
+      "What did operads really do for us?",
+      "What is an operad? An overview",
+      "What's operadic about recipes"
+    ],
+    "topic": "WiringDiagrams/Networks",
+    "pdf_file": "20150403-upenn2015.pdf",
+    "zip_file": "20150403-upenn2015.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "WiringDiagrams/Networks/UPenn2015"
+  },
+  {
+    "slug": "20150129-afosr2015review",
+    "date": "2015-01-29",
+    "venue": "afosr2015review",
+    "title": "A mathematical language for modular systems",
+    "keywords": [
+      "A \\mcT-algebra of open dynamical systems",
+      "A problem in materials design",
+      "Algebras that won't work",
+      "An operad \\mcS of static wiring diagrams",
+      "An operad \\mcT of temporal wiring diagrams",
+      "Definition of operad",
+      "Every context-free grammar (CFG) is an operad",
+      "Example: two different algebras on \\mcE_2",
+      "Materials architecture",
+      "Matriarch as a design tool",
+      "Modular systems are everywhere",
+      "Operad functors and operad algebras",
+      "Operads",
+      "Operads as a foundation for modularity",
+      "Our tool: Matriarch",
+      "Outline",
+      "Papers and transfers",
+      "Restating the general idea",
+      "String diagrams are pictures of cobordisms",
+      "String diagrams in traced categories",
+      "Summary",
+      "Summary: operads and algebras formalize modular systems",
+      "The \\mcS-algebra of relations and queries",
+      "The \\mcT-algebra of stream processors",
+      "The first operad",
+      "The nomenclature we will use",
+      "The operad for monoids",
+      "The operad of sets",
+      "The operadic model of Matriarch",
+      "Traced categories",
+      "Traced categories as \\Cob_/\\bullet",
+      "What did operads really do for us?",
+      "What this equivalence tells us",
+      "What's the relationship?",
+      "Where we are in the talk",
+      "brainstorm"
+    ],
+    "topic": "WiringDiagrams/Design",
+    "pdf_file": "20150129-afosr2015review.pdf",
+    "zip_file": "20150129-afosr2015review.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "WiringDiagrams/Design/AFOSR2015Review"
+  },
+  {
+    "slug": "20150126-design-theory-sig-2015",
+    "date": "2015-01-26",
+    "venue": "design-theory-sig-2015",
+    "title": "A category-theoretic approach to materials design",
+    "keywords": [
+      "A more in-depth look at Matriarch",
+      "Artifact theories as information structures",
+      "Building blocks and building instructions in Matriarch",
+      "Category theory was the software specification",
+      "Computational modeling",
+      "Every context-free grammar is an operad",
+      "Example: Mathematical conception of a database",
+      "Example: photomosaic",
+      "How's the time?",
+      "Materials architecture",
+      "Matriarch as a design tool",
+      "My terminology: architecture, instance, function",
+      "The challenges to overcome",
+      "The first operad",
+      "The making of Matriarch",
+      "What do I mean by artifact theory?",
+      "Wiring diagrams 2: processes",
+      "Wiring diagrams type 1: interconnected cells",
+      "Zooming in...."
+    ],
+    "topic": "WiringDiagrams/Design",
+    "pdf_file": "20150126-design-theory-sig-2015.pdf",
+    "zip_file": "20150126-design-theory-sig-2015.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "WiringDiagrams/Design/Design Theory SIG--2015"
+  },
+  {
+    "slug": "20150000-turin2015",
+    "date": "2015",
+    "venue": "turin2015",
+    "title": "A networked world",
+    "keywords": [],
+    "topic": "WiringDiagrams/Networks",
+    "pdf_file": "20150000-turin2015.pdf",
+    "zip_file": "20150000-turin2015.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "WiringDiagrams/Networks/Turin2015"
+  },
+  {
+    "slug": "20150000-lids",
+    "date": "2015",
+    "venue": "lids",
+    "title": "Category theory, the theory of mathematical structures: a whirlwind tour",
+    "keywords": [],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20150000-lids.pdf",
+    "zip_file": "20150000-lids.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/2015--LIDS"
+  },
+  {
+    "slug": "20150000-lausanne",
+    "date": "2015",
+    "venue": "lausanne",
+    "title": "Notes on Applied category theory: Information structures and modular systems",
+    "keywords": [],
+    "topic": "AppliedCT--General",
+    "pdf_file": "20150000-lausanne.pdf",
+    "zip_file": "20150000-lausanne.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "AppliedCT--General/2015--Lausanne"
+  },
+  {
+    "slug": "20140320-ias",
+    "date": "2014-03-20",
+    "venue": "ias",
+    "title": "Category Theory -- A Formal and Flexible Interdisciplinary Language",
+    "keywords": [],
+    "topic": "DB_Communication/Communication",
+    "pdf_file": "20140320-ias.pdf",
+    "zip_file": "20140320-ias.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "DB_Communication/Communication/IAS"
+  },
+  {
+    "slug": "20140304-amgen",
+    "date": "2014-03-04",
+    "venue": "amgen",
+    "title": "Categorical databases",
+    "keywords": [
+      "A simple ``SELECT\" query using views"
+    ],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20140304-amgen.pdf",
+    "zip_file": "20140304-amgen.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "DB_Communication/Databases/2014 Amgen"
+  },
+  {
+    "slug": "20140303-parc",
+    "date": "2014-03-03",
+    "venue": "parc",
+    "title": "Categorical databases",
+    "keywords": [
+      "A simple ``SELECT\" query using views"
+    ],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20140303-parc.pdf",
+    "zip_file": "20140303-parc.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "DB_Communication/Databases/2014 PARC"
+  },
+  {
+    "slug": "20140228-oracle",
+    "date": "2014-02-28",
+    "venue": "oracle",
+    "title": "Categorical databases",
+    "keywords": [
+      "Demo Example 1 in FQL IDE",
+      "Demo Example 2 in FQL IDE",
+      "Demo: Data Exchange",
+      "Example 1",
+      "Example 2",
+      "Example 2 (adds an edge to Example 1)",
+      "Example 3",
+      "FQL as SQL -- implementing the data migration functors",
+      "FQL to RDF",
+      "FQL vs SQL",
+      "Introduction",
+      "SQL as FQL -- Product",
+      "SQL as FQL -- Projection",
+      "SQL as FQL -- Selection",
+      "Schema mappings and associated operations",
+      "The basic idea",
+      "The basic idea, continued"
+    ],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20140228-oracle.pdf",
+    "zip_file": "20140228-oracle.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "DB_Communication/Databases/2014 Oracle"
+  },
+  {
+    "slug": "20140225-uiuc2014-02-25",
+    "date": "2014-02-25",
+    "venue": "uiuc2014-02-25",
+    "title": "Operads, and their algebras, for building new processors from old",
+    "keywords": [],
+    "topic": "WiringDiagrams/StateMachines",
+    "pdf_file": "20140225-uiuc2014-02-25.pdf",
+    "zip_file": "20140225-uiuc2014-02-25.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "WiringDiagrams/StateMachines/UIUC2014-02-25"
+  },
+  {
+    "slug": "20140219-statemachines",
+    "date": "2014-02-19",
+    "venue": "statemachines",
+    "title": "Wiring diagrams and state machines",
+    "keywords": [],
+    "topic": "WiringDiagrams",
+    "pdf_file": "20140219-statemachines.pdf",
+    "zip_file": "20140219-statemachines.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "WiringDiagrams/StateMachines"
+  },
+  {
+    "slug": "20140219-old-usingsafe",
+    "date": "2014-02-19",
+    "venue": "old-usingsafe",
+    "title": "Toward a categorical foundation of functional reactive programming",
+    "keywords": [],
+    "topic": "WiringDiagrams/StateMachines",
+    "pdf_file": "20140219-old-usingsafe.pdf",
+    "zip_file": "20140219-old-usingsafe.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "WiringDiagrams/StateMachines/Old--usingSafe"
+  },
+  {
+    "slug": "20140219-old-frp",
+    "date": "2014-02-19",
+    "venue": "old-frp",
+    "title": "Toward a categorical foundation of functional reactive programming",
+    "keywords": [],
+    "topic": "WiringDiagrams/StateMachines",
+    "pdf_file": "20140219-old-frp.pdf",
+    "zip_file": "20140219-old-frp.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "WiringDiagrams/StateMachines/Old--FRP"
+  },
+  {
+    "slug": "20140219-mit20140415",
+    "date": "2014-02-19",
+    "venue": "mit20140415",
+    "title": "Toward a categorical foundation of functional reactive programming",
+    "keywords": [],
+    "topic": "WiringDiagrams/StateMachines",
+    "pdf_file": "20140219-mit20140415.pdf",
+    "zip_file": "20140219-mit20140415.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "WiringDiagrams/StateMachines/MIT20140415"
+  },
+  {
+    "slug": "20140219-harvard2014-02-19",
+    "date": "2014-02-19",
+    "venue": "harvard2014-02-19",
+    "title": "Toward a categorical foundation of functional reactive programming",
+    "keywords": [],
+    "topic": "WiringDiagrams/StateMachines",
+    "pdf_file": "20140219-harvard2014-02-19.pdf",
+    "zip_file": "20140219-harvard2014-02-19.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "WiringDiagrams/StateMachines/Harvard2014-02-19"
+  },
+  {
+    "slug": "20140219-amgen",
+    "date": "2014-02-19",
+    "venue": "amgen",
+    "title": "Categorical databases",
+    "keywords": [
+      "A simple ``SELECT\" query using views"
+    ],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20140219-amgen.pdf",
+    "zip_file": "20140219-amgen.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "DB_Communication/Databases/2014 Amgen"
+  },
+  {
+    "slug": "20140123-cmu2014-01-23",
+    "date": "2014-01-23",
+    "venue": "cmu2014-01-23",
+    "title": "Toward a categorical foundation of functional reactive programming",
+    "keywords": [],
+    "topic": "WiringDiagrams/StateMachines",
+    "pdf_file": "20140123-cmu2014-01-23.pdf",
+    "zip_file": "20140123-cmu2014-01-23.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "WiringDiagrams/StateMachines/CMU2014-01-23"
+  },
+  {
+    "slug": "20130613-nist-2013-06-12",
+    "date": "2013-06-13",
+    "venue": "nist-2013-06-12",
+    "title": "Toward a mathematical science of informatics",
+    "keywords": [
+      "A simple ``SELECT\" query using functors"
+    ],
+    "topic": "DB_Communication/Communication",
+    "pdf_file": "20130613-nist-2013-06-12.pdf",
+    "zip_file": "20130613-nist-2013-06-12.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "DB_Communication/Communication/NIST-2013-06-12"
+  },
+  {
+    "slug": "20120804-mathfest",
+    "date": "2012-08-04",
+    "venue": "mathfest",
+    "title": "Title: Lifting problems and data",
+    "keywords": [],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20120804-mathfest.pdf",
+    "zip_file": "20120804-mathfest.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "DB_Communication/Databases/2012 MathFest"
+  },
+  {
+    "slug": "20120726-stanford",
+    "date": "2012-07-26",
+    "venue": "stanford",
+    "title": "Categorical ontologies and databases",
+    "keywords": [],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20120726-stanford.pdf",
+    "zip_file": "20120726-stanford.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "DB_Communication/Databases/2012 Stanford"
+  },
+  {
+    "slug": "20120613-onr-2012-06-13",
+    "date": "2012-06-13",
+    "venue": "onr-2012-06-13",
+    "title": "A categorical approach to high-assurance science",
+    "keywords": [],
+    "topic": "DB_Communication/Communication",
+    "pdf_file": "20120613-onr-2012-06-13.pdf",
+    "zip_file": "20120613-onr-2012-06-13.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "DB_Communication/Communication/ONR-2012-06-13"
+  },
+  {
+    "slug": "20120124-amgen",
+    "date": "2012-01-24",
+    "venue": "amgen",
+    "title": "Categorical databases",
+    "keywords": [
+      "A simple ``SELECT\" query using views"
+    ],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20120124-amgen.pdf",
+    "zip_file": "20120124-amgen.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "DB_Communication/Databases/2012 Amgen"
+  },
+  {
+    "slug": "20120113-j-j",
+    "date": "2012-01-13",
+    "venue": "j-j",
+    "title": "Categorical databases",
+    "keywords": [
+      "A simple ``SELECT\" query using views"
+    ],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20120113-j-j.pdf",
+    "zip_file": "20120113-j-j.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "DB_Communication/Databases/2012 J&J"
+  },
+  {
+    "slug": "20120113-introductory-talk",
+    "date": "2012-01-13",
+    "venue": "introductory-talk",
+    "title": "Categorical databases",
+    "keywords": [
+      "A simple ``SELECT\" query using views"
+    ],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20120113-introductory-talk.pdf",
+    "zip_file": "20120113-introductory-talk.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "DB_Communication/Databases/Introductory-talk"
+  },
+  {
+    "slug": "20120000-ut",
+    "date": "2012",
+    "venue": "ut",
+    "title": "Categorical databases ~ Special Geometry Seminar at U. Texas 2012/01/31",
+    "keywords": [],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20120000-ut.pdf",
+    "zip_file": "20120000-ut.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "DB_Communication/Databases/2012 UT"
+  },
+  {
+    "slug": "20110118-cmu",
+    "date": "2011-01-18",
+    "venue": "cmu",
+    "title": "Categorical databases",
+    "keywords": [
+      "A simple ``SELECT\" query using views"
+    ],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20110118-cmu.pdf",
+    "zip_file": "20110118-cmu.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "DB_Communication/Databases/2012-01-18 CMU"
+  },
+  {
+    "slug": "20110000-uiuc",
+    "date": "2011",
+    "venue": "uiuc",
+    "title": "Categorical Information Theory ~ MSS Colloquium at UIUC 2011/11/29",
+    "keywords": [],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20110000-uiuc.pdf",
+    "zip_file": "20110000-uiuc.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "DB_Communication/Databases/2011--UIUC"
+  },
+  {
+    "slug": "20110000-jhu",
+    "date": "2011",
+    "venue": "jhu",
+    "title": "Categorical Information Theory ~ Topology seminar at JHU 2011/11/21",
+    "keywords": [],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20110000-jhu.pdf",
+    "zip_file": "20110000-jhu.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "DB_Communication/Databases/2011 JHU"
+  },
+  {
+    "slug": "20101103-harvard",
+    "date": "2010-11-03",
+    "venue": "harvard",
+    "title": "Databases are categories",
+    "keywords": [
+      "A simple ``SELECT\" query",
+      "Data as a set-valued functor",
+      "Data columns as foreign keys",
+      "Example",
+      "Example again",
+      "Formal definition of a category I: data",
+      "Formal definition of a category II: rules",
+      "Going further...",
+      "Grothendieck construction applied to database states",
+      "Relaxing into the RDF perspective",
+      "The category of Sets",
+      "Typing in general"
+    ],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20101103-harvard.pdf",
+    "zip_file": "20101103-harvard.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "DB_Communication/Databases/2010 Harvard"
+  },
+  {
+    "slug": "20101022-galois",
+    "date": "2010-10-22",
+    "venue": "galois",
+    "title": "Databases are Categories II",
+    "keywords": [
+      "A simple ``SELECT\" query",
+      "Allowing for incomplete, non-atomic, or bad data",
+      "Another example",
+      "Category sketch schema",
+      "Change of perspective",
+      "Dreams and speculation",
+      "Example",
+      "Example olog",
+      "How databases fit in",
+      "In fact...",
+      "Information schema for category sketches",
+      "Review of basic category theory",
+      "Sketching our example, \\mcC",
+      "Typing in general"
+    ],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20101022-galois.pdf",
+    "zip_file": "20101022-galois.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "DB_Communication/Databases/2010 Galois"
+  },
+  {
+    "slug": "20100916-csail",
+    "date": "2010-09-16",
+    "venue": "csail",
+    "title": "Databases = Categories",
+    "keywords": [
+      "A less obvious morphism",
+      "A need for unity",
+      "Advantage of rigor / ``soundness.\"",
+      "Category theory in practice",
+      "Data as a functor",
+      "Data columns as foreign keys",
+      "Data of a category \\mcC",
+      "Example again",
+      "Examples of categories 1: Sets",
+      "Examples of categories 2: Posets and Graphs",
+      "Examples of categories 3: Monoids",
+      "Examples of categories 3: Others",
+      "Examples of functors",
+      "M-sets",
+      "More joins using \\forall_F",
+      "My goal",
+      "Outline of the talk",
+      "Rules for a category \\mcC",
+      "The relational model",
+      "The status of database theory"
+    ],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20100916-csail.pdf",
+    "zip_file": "20100916-csail.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "DB_Communication/Databases/2010 CSAIL"
+  },
+  {
+    "slug": "20100915-mit-linguistics",
+    "date": "2010-09-15",
+    "venue": "mit-linguistics",
+    "title": "Communication networks MIT Linguistics: Semantics reading group, 2010/09/15",
+    "keywords": [],
+    "topic": "DB_Communication/Communication",
+    "pdf_file": "20100915-mit-linguistics.pdf",
+    "zip_file": "20100915-mit-linguistics.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "DB_Communication/Communication/MIT-Linguistics"
+  },
+  {
+    "slug": "20100603-galois",
+    "date": "2010-06-03",
+    "venue": "galois",
+    "title": "Databases are Categories II",
+    "keywords": [
+      "A simple ``SELECT\" query",
+      "Allowing for incomplete, non-atomic, or bad data",
+      "Another example",
+      "Category sketch schema",
+      "Change of perspective",
+      "Dreams and speculation",
+      "Example",
+      "Example olog",
+      "How databases fit in",
+      "In fact...",
+      "Information schema for category sketches",
+      "Review of basic category theory",
+      "Sketching our example, \\mcC",
+      "Typing in general"
+    ],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20100603-galois.pdf",
+    "zip_file": "20100603-galois.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "DB_Communication/Databases/2010 Galois"
+  },
+  {
+    "slug": "20100000-chicago",
+    "date": "2010",
+    "venue": "chicago",
+    "title": "Topology and information University of Chicago 2010/05/11",
+    "keywords": [],
+    "topic": "DB_Communication/Databases",
+    "pdf_file": "20100000-chicago.pdf",
+    "zip_file": "20100000-chicago.zip",
+    "has_multiple_pdfs": true,
+    "source_dir": "DB_Communication/Databases/2010 Chicago"
+  },
+  {
+    "slug": "20091107-quasi-categories",
+    "date": "2009-11-07",
+    "venue": "quasi-categories",
+    "title": "Mapping spaces in quasi-categories",
+    "keywords": [
+      "A few notes on necklaces",
+      "Mapping spaces",
+      "Solution: Weak Kan complexes"
+    ],
+    "topic": "",
+    "pdf_file": "20091107-quasi-categories.pdf",
+    "zip_file": "20091107-quasi-categories.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "quasi-categories"
+  }
+]
