@@ -256,6 +256,7 @@ NON_SLIDES = {
 
 # YouTube links keyed by PDF slug prefix (YYYYMMDD-venue)
 YOUTUBE = {
+    "20260317-nitmb-colloquium": "https://www.youtube.com/watch?v=1VmsZC8SNTM",
     "20260121-nitmb-tutorial": "https://www.youtube.com/watch?v=gibW0NzbZk0",
     "20241202-mit": "https://www.youtube.com/watch?v=sa50SYMHE90",
     "20241105-ipam-naturalisticai": "https://www.youtube.com/watch?v=wDB26DFATAU",

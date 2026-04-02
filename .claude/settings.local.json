@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(python3:*)",
+      "Bash(find:*)",
+      "Bash(TALKS=\"/Users/davidspivak/Google Drive/My Drive/_Actual Drive/Math/Talks\" echo \"=== AccountingSystems.tex ===\" grep -i -n \"20[0-2][0-9]\\\\|date\\\\|year\\\\|copyright\\\\|\\\\today\" \"$TALKS/AppliedCT--General/collectedSlides/AccountingSystems/Collected--AccountingSystems.tex\")",
+      "Bash(for pdf in \"/Users/davidspivak/Google Drive/My Drive/_Actual Drive/Math/Talks/AppliedCT--General/collectedSlides/AccountingSystems/Collected--AccountingSystems.pdf\" \"/Users/davidspivak/Google Drive/My Drive/_Actual Drive/Math/Talks/AppliedCT--General/collectedSlides/CollectiveSensemaking/Collected--CollectiveSensemaking.pdf\" \"/Users/davidspivak/Google Drive/My Drive/_Actual Drive/Math/Talks/AppliedCT--General/collectedSlides/CountOn/Collected--WhatCanWeCountOn.pdf\" \"/Users/davidspivak/Google Drive/My Drive/_Actual Drive/Math/Talks/AppliedCT--General/collectedSlides/SmithOrigins/Collected--EricSmithOrigins.pdf\")",
+      "Bash(do)",
+      "Bash(mdls:*)",
+      "Bash(done)",
+      "Bash(open:*)",
+      "WebSearch",
+      "WebFetch(domain:www.youtube.com)",
+      "WebFetch(domain:topos.institute)",
+      "WebFetch(domain:dspivak.net)",
+      "WebFetch(domain:simons.berkeley.edu)",
+      "WebFetch(domain:brendanfong.com)",
+      "WebFetch(domain:www.appliedcategorytheory.org)",
+      "WebFetch(domain:math.ucr.edu)",
+      "WebFetch(domain:www.classcentral.com)",
+      "WebFetch(domain:mathinstitutes.org)",
+      "WebFetch(domain:www.ipam.ucla.edu)",
+      "WebFetch(domain:events.uchicago.edu)",
+      "WebFetch(domain:blog.juliosong.com)",
+      "WebFetch(domain:act2020.mit.edu)",
+      "WebFetch(domain:msp.cis.strath.ac.uk)",
+      "WebFetch(domain:golem.ph.utexas.edu)",
+      "WebFetch(domain:topos.site)",
+      "WebFetch(domain:oxford24.github.io)"
+    ]
+  }
+}
