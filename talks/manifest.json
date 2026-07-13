@@ -1,5 +1,17 @@
 [
   {
+    "slug": "20260714-ct2026",
+    "date": "2026-07-14",
+    "venue": "ct2026",
+    "title": "Categories by Kan extension",
+    "keywords": [],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20260714-ct2026.pdf",
+    "zip_file": "20260714-ct2026.zip",
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20260714--CatsByKan"
+  },
+  {
     "slug": "20260317-nitmb-colloquium",
     "date": "2026-03-17",
     "venue": "nitmb-colloquium",

@@ -6,7 +6,7 @@ import re
 import json
 import glob
 
-TALKS_DIR = "/Users/davidspivak/Google Drive/My Drive/_Actual Drive/Math/Talks"
+TALKS_DIR = "/Users/davidspivak/My Drive (dspivak@gmail.com)/_Actual Drive/Math/Talks"
 REPO_TALKS = "/Users/davidspivak/VersionControl/dspivak.github.io/talks"
 
 # Manual title overrides for cases where LaTeX-to-plain-text conversion is imperfect
@@ -38,6 +38,7 @@ MANUAL_TITLES = {
 # or inferred from directory names where no venue appears in the .tex file.
 VENUE_OVERRIDES = {
     # 2026
+    "20260714-ct2026": "CT 2026",
     "20260317-nitmb-colloquium": "NITMB Colloquium",
     "20260123-nitmb-lightning-talk": "NITMB: Expanding the Palette of Mathematics in Biology",
     "20260121-nitmb-tutorial": "NITMB: Expanding the Palette of Mathematics in Biology",
