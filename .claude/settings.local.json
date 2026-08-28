@@ -27,7 +27,12 @@
       "WebFetch(domain:msp.cis.strath.ac.uk)",
       "WebFetch(domain:golem.ph.utexas.edu)",
       "WebFetch(domain:topos.site)",
-      "WebFetch(domain:oxford24.github.io)"
+      "WebFetch(domain:oxford24.github.io)",
+      "Bash(md5 -q *.pdf)",
+      "Bash(ls -1 *.pdf)",
+      "Bash(paste /tmp/h.txt /tmp/n.txt)",
+      "Read(//private/tmp/claude-501/**)",
+      "Bash(cd *)"
     ]
   }
 }

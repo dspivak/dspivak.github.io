@@ -1,5 +1,17 @@
 [
   {
+    "slug": "20260806-afosr-review",
+    "date": "2026-08-06",
+    "venue": "afosr-review",
+    "title": "",
+    "keywords": [],
+    "topic": "GrantReviews",
+    "pdf_file": "20260806-afosr-review.pdf",
+    "zip_file": null,
+    "has_multiple_pdfs": false,
+    "source_dir": "../Grant stuff/AFOSR Related/Funded/2023-WorkingLanguage/Reviews/2026Review/talk"
+  },
+  {
     "slug": "20260714-ct2026",
     "date": "2026-07-14",
     "venue": "ct2026",
@@ -64,6 +76,18 @@
     "source_dir": "PolynomialFunctors/20250715--Topos--Int(Poly_+)"
   },
   {
+    "slug": "20250000-afosr-review",
+    "date": "2025",
+    "venue": "afosr-review",
+    "title": "",
+    "keywords": [],
+    "topic": "GrantReviews",
+    "pdf_file": "20250000-afosr-review.pdf",
+    "zip_file": null,
+    "has_multiple_pdfs": false,
+    "source_dir": "../Grant stuff/AFOSR Related/Funded/2023-WorkingLanguage/Reviews/2025Review"
+  },
+  {
     "slug": "20241202-mit",
     "date": "2024-12-02",
     "venue": "mit",
@@ -102,6 +126,18 @@
     "zip_file": "20241009-mathgov.zip",
     "has_multiple_pdfs": false,
     "source_dir": "AppliedCT--General/202410--MathGov"
+  },
+  {
+    "slug": "20240829-afosr-review",
+    "date": "2024-08-29",
+    "venue": "afosr-review",
+    "title": "",
+    "keywords": [],
+    "topic": "GrantReviews",
+    "pdf_file": "20240829-afosr-review.pdf",
+    "zip_file": null,
+    "has_multiple_pdfs": false,
+    "source_dir": "../Grant stuff/AFOSR Related/Funded/2023-WorkingLanguage/Reviews/2024Review"
   },
   {
     "slug": "20240815-agi",
@@ -214,6 +250,18 @@
     "zip_file": "20231011-chevron.zip",
     "has_multiple_pdfs": false,
     "source_dir": "AppliedCT--General/2023-Chevron"
+  },
+  {
+    "slug": "20230914-afosr-review",
+    "date": "2023-09-14",
+    "venue": "afosr-review",
+    "title": "",
+    "keywords": [],
+    "topic": "GrantReviews",
+    "pdf_file": "20230914-afosr-review.pdf",
+    "zip_file": null,
+    "has_multiple_pdfs": false,
+    "source_dir": "../Grant stuff/AFOSR Related/Funded/2020-Functorial Dynamics/2023/2023-Review/Talk"
   },
   {
     "slug": "20230804-act2023",
@@ -366,6 +414,18 @@
     "source_dir": "PolynomialFunctors/20220913--ActInf"
   },
   {
+    "slug": "20220811-afosr-review",
+    "date": "2022-08-11",
+    "venue": "afosr-review",
+    "title": "",
+    "keywords": [],
+    "topic": "GrantReviews",
+    "pdf_file": "20220811-afosr-review.pdf",
+    "zip_file": null,
+    "has_multiple_pdfs": false,
+    "source_dir": "../Grant stuff/AFOSR Related/Funded/2020-Functorial Dynamics/2022/2022-Review"
+  },
+  {
     "slug": "20220719-act",
     "date": "2022-07-19",
     "venue": "act",
@@ -490,6 +550,18 @@
     "source_dir": "PolynomialFunctors/20210416--ToposInternal"
   },
   {
+    "slug": "20210416-afosr-review",
+    "date": "2021-04-16",
+    "venue": "afosr-review",
+    "title": "",
+    "keywords": [],
+    "topic": "GrantReviews",
+    "pdf_file": "20210416-afosr-review.pdf",
+    "zip_file": null,
+    "has_multiple_pdfs": false,
+    "source_dir": "../Grant stuff/AFOSR Related/Funded/2020-Functorial Dynamics/2021/2021-Review"
+  },
+  {
     "slug": "20210315-pfunc",
     "date": "2021-03-15",
     "venue": "pfunc",
@@ -572,6 +644,18 @@
     "zip_file": "20210000-topos-fra-workshop-cultivatingstrategies.zip",
     "has_multiple_pdfs": false,
     "source_dir": "AppliedCT--General/2021--Topos--FRA-Workshop/CultivatingStrategies"
+  },
+  {
+    "slug": "20200804-afosr-review",
+    "date": "2020-08-04",
+    "venue": "afosr-review",
+    "title": "",
+    "keywords": [],
+    "topic": "GrantReviews",
+    "pdf_file": "20200804-afosr-review.pdf",
+    "zip_file": null,
+    "has_multiple_pdfs": false,
+    "source_dir": "../Grant stuff/AFOSR Related/Funded/2016-PixelMatrix/2020"
   },
   {
     "slug": "20200707-act",
@@ -670,6 +754,18 @@
     "source_dir": "AppliedCT--General/2019--ETH"
   },
   {
+    "slug": "20190820-afosr-review",
+    "date": "2019-08-20",
+    "venue": "afosr-review",
+    "title": "",
+    "keywords": [],
+    "topic": "GrantReviews",
+    "pdf_file": "20190820-afosr-review.pdf",
+    "zip_file": null,
+    "has_multiple_pdfs": false,
+    "source_dir": "../Grant stuff/AFOSR Related/Funded/2016-PixelMatrix/2019"
+  },
+  {
     "slug": "20190719-act2019-short",
     "date": "2019-07-19",
     "venue": "act2019-short",
@@ -696,6 +792,18 @@
     "zip_file": "20190711-ct2019.zip",
     "has_multiple_pdfs": false,
     "source_dir": "Logic/Abelian/CT2019"
+  },
+  {
+    "slug": "20190626-afosr-review",
+    "date": "2019-06-26",
+    "venue": "afosr-review",
+    "title": "",
+    "keywords": [],
+    "topic": "GrantReviews",
+    "pdf_file": "20190626-afosr-review.pdf",
+    "zip_file": null,
+    "has_multiple_pdfs": false,
+    "source_dir": "../Grant stuff/AFOSR Related/Funded/2018-AgentInteraction/2019/AFOSRReviewTalk"
   },
   {
     "slug": "20190624-compose20190625",
@@ -1096,6 +1204,18 @@
     "source_dir": "Logic/Temporal/Continuous/Barcelona2018"
   },
   {
+    "slug": "20180316-afosr-review",
+    "date": "2018-03-16",
+    "venue": "afosr-review",
+    "title": "",
+    "keywords": [],
+    "topic": "GrantReviews",
+    "pdf_file": "20180316-afosr-review.pdf",
+    "zip_file": null,
+    "has_multiple_pdfs": false,
+    "source_dir": "../Grant stuff/AFOSR Related/Funded/2016-PixelMatrix/2018/AFOSR_Review_Talk"
+  },
+  {
     "slug": "20180222-metricrealization",
     "date": "2018-02-22",
     "venue": "metricrealization",
@@ -1253,6 +1373,30 @@
     "zip_file": "20170712-siam2017.zip",
     "has_multiple_pdfs": false,
     "source_dir": "Logic/Temporal/Continuous/SIAM2017"
+  },
+  {
+    "slug": "20170628-afosr-pixel-review",
+    "date": "2017-06-28",
+    "venue": "afosr-review",
+    "title": "",
+    "keywords": [],
+    "topic": "GrantReviews",
+    "pdf_file": "20170628-afosr-pixel-review.pdf",
+    "zip_file": null,
+    "has_multiple_pdfs": false,
+    "source_dir": "../Grant stuff/AFOSR Related/Funded/2016-PixelMatrix/2017/PixelMatrices--Talk"
+  },
+  {
+    "slug": "20170628-afosr-agent-review",
+    "date": "2017-06-28",
+    "venue": "afosr-review",
+    "title": "",
+    "keywords": [],
+    "topic": "GrantReviews",
+    "pdf_file": "20170628-afosr-agent-review.pdf",
+    "zip_file": null,
+    "has_multiple_pdfs": false,
+    "source_dir": "../Grant stuff/AFOSR Related/Funded/2013-AgentInteraction/2017/AgentInteraction--Talk"
   },
   {
     "slug": "20170612-barcelona2017",
@@ -2000,6 +2144,18 @@
     "zip_file": "20140123-cmu2014-01-23.zip",
     "has_multiple_pdfs": false,
     "source_dir": "WiringDiagrams/StateMachines/CMU2014-01-23"
+  },
+  {
+    "slug": "20130918-onr-review",
+    "date": "2013-09-18",
+    "venue": "onr-review",
+    "title": "",
+    "keywords": [],
+    "topic": "GrantReviews",
+    "pdf_file": "20130918-onr-review.pdf",
+    "zip_file": null,
+    "has_multiple_pdfs": false,
+    "source_dir": "../Grant stuff/onr related/onr-2013/onr review 2013-09-15/Talk--2013-09-18"
   },
   {
     "slug": "20130613-nist-2013-06-12",

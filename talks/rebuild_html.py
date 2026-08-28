@@ -24,6 +24,9 @@ MANUAL_TITLES = {
     "20150129-afosr2015review": "A mathematical language for modular systems",
     # Lightning talk with no .tex file
     "20260123-nitmb-lightning-talk": "Achieving answerability",
+    # Grant-review talks whose \title{} appends the award number
+    "20170628-afosr-agent-review": "“How do these things compose?” Modularity in materials, databases, and dynamical systems",
+    "20170628-afosr-pixel-review": "Compositional analyses of dynamical systems",
     # Old talks that embedded venue+date in \title{}
     "20160407-suny-binghamton20160407": "Calculating steady states of nonlinear dynamical systems using matrix arithmetic",
     "20120000-ut": "Categorical databases",
@@ -38,13 +41,16 @@ MANUAL_TITLES = {
 # or inferred from directory names where no venue appears in the .tex file.
 VENUE_OVERRIDES = {
     # 2026
+    "20260806-afosr-review": "AFOSR Program Review",
     "20260714-ct2026": "CT 2026",
     "20260317-nitmb-colloquium": "NITMB Colloquium",
     "20260123-nitmb-lightning-talk": "NITMB: Expanding the Palette of Mathematics in Biology",
     "20260121-nitmb-tutorial": "NITMB: Expanding the Palette of Mathematics in Biology",
     # 2025
+    "20250000-afosr-review": "AFOSR Program Review",
     "20250715-topos-int-poly": "Topos Berkeley Seminar",
     # 2024
+    "20240829-afosr-review": "AFOSR Program Review",
     "20241202-mit": "MIT CEE: ACT4ED",
     "20241105-ipam-naturalisticai": "IPAM Naturalistic Approaches to AI",
     "20241009-mathgov": "MathGov",
@@ -55,6 +61,7 @@ VENUE_OVERRIDES = {
     "20240410-princeton-astera": "Princeton Neuroscience of Cognitive Control and Astera",
     "20240307-calgary": "Annual Mathematics and Philosophy Lecture, University of Calgary",
     # 2023
+    "20230914-afosr-review": "AFOSR Program Review",
     "20231214-caltech": "Caltech, Special Seminar in Mechanical and Civil Engineering",
     "20231011-chevron": "Chevron Systems Engineering Community of Practice",
     "20230804-act2023": "Applied Category Theory 2023",
@@ -65,6 +72,7 @@ VENUE_OVERRIDES = {
     "20230109-fra2": "Finding the Right Abstractions for Healthy Systems",
     "20230105-jmm": "Joint Mathematics Meetings, Special Session on Applied Category Theory",
     # 2022
+    "20220811-afosr-review": "AFOSR Program Review",
     "20221212-topos": "Topos Berkeley Seminar",
     "20221103-nist": "NIST, Compositional Structures in Systems Engineering and Design Workshop",
     "20221020-nasa-pce3": "NASA Prebiotic Chemistry and Evolution on the Early Earth (PCE3)",
@@ -78,6 +86,7 @@ VENUE_OVERRIDES = {
     "20220219-ipam": "Mathematics of Collective Intelligence",
     "20220125-intercats": "Seminar on Categorical Interaction",
     # 2021
+    "20210416-afosr-review": "AFOSR Program Review",
     "20210921-toposinternal": "Topos Internal Seminar",
     "20210315-pfunc": "Workshop on Polynomial Functors",
     "20210217-unam": "Seminario de categorias UNAM",
@@ -86,6 +95,7 @@ VENUE_OVERRIDES = {
     "20210000-topos-fra-workshop-tutorial": "Finding the Right Abstractions, Topos Institute",
     "20210000-topos-fra-workshop-cultivatingstrategies": "Finding the Right Abstractions, Topos Institute",
     # 2020
+    "20200804-afosr-review": "AFOSR Program Review",
     "20200707-act": "ACT 2020",
     "20200625-tallinn": "Tallinn CS Theory Seminar",
     "20200612-agi": "AGI 2020",
@@ -93,6 +103,8 @@ VENUE_OVERRIDES = {
     "20200528-mit": "MIT Categories Seminar",
     "20200305-modedependent": "MIT",
     # 2019
+    "20190820-afosr-review": "AFOSR Program Review",
+    "20190626-afosr-review": "AFOSR Program Review",
     "20190925-eth": "ETH Zurich",
     "20190719-act2019-short": "ACT 2019",
     "20190711-ct2019": "CT 2019",
@@ -113,6 +125,7 @@ VENUE_OVERRIDES = {
     "20190000-mit2019": "MIT",
     "20190000-mcgill2019": "McGill University",
     # 2018
+    "20180316-afosr-review": "AFOSR Program Review",
     "20181027-graphicallogic-octoberfest201810": "Octoberfest",
     "20181001-institutions": "MIT",
     "20180928-umcp-isr": "Institute of Systems Research, UMD",
@@ -131,6 +144,8 @@ VENUE_OVERRIDES = {
     "20180201-oxford2018": "Oxford OASIS",
     "20180000-graphicallogic-mit201811": "MIT CT Seminar",
     # 2017
+    "20170628-afosr-pixel-review": "AFOSR Program Review, USAF Academy",
+    "20170628-afosr-agent-review": "AFOSR Program Review, USAF Academy",
     "20171212-salemstate": "Salem State University",
     "20171104-uc-riverside2017": "AMS Fall Sectional, Riverside CA",
     "20171024-harvardmathtable": "Harvard Math Table",
@@ -183,6 +198,7 @@ VENUE_OVERRIDES = {
     "20140219-amgen": "Amgen",
     "20140123-cmu2014-01-23": "Carnegie Mellon University",
     # 2013
+    "20130918-onr-review": "Office of Naval Research Review",
     "20130613-nist-2013-06-12": "National Institute of Standards and Technology",
     # 2012
     "20120804-mathfest": "MathFest",
