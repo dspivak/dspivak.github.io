@@ -41,6 +41,7 @@ MANUAL_TITLES = {
 # or inferred from directory names where no venue appears in the .tex file.
 VENUE_OVERRIDES = {
     # 2026
+    "20260908-topos-catsbykan": "Topos Berkeley Seminar",
     "20260806-afosr-review": "AFOSR Program Review",
     "20260714-ct2026": "CT 2026",
     "20260317-nitmb-colloquium": "NITMB Colloquium",

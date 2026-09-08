@@ -1,5 +1,17 @@
 [
   {
+    "slug": "20260908-topos-catsbykan",
+    "date": "2026-09-08",
+    "venue": "topos-catsbykan",
+    "title": "Categories by Kan extension",
+    "keywords": [],
+    "topic": "PolynomialFunctors",
+    "pdf_file": "20260908-topos-catsbykan.pdf",
+    "zip_file": null,
+    "has_multiple_pdfs": false,
+    "source_dir": "PolynomialFunctors/20260908--Topos--CatsByKan"
+  },
+  {
     "slug": "20260806-afosr-review",
     "date": "2026-08-06",
     "venue": "afosr-review",
