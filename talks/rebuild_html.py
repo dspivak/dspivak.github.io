@@ -560,7 +560,11 @@ def extract_frame_titles(tex_content):
 
 
 def summarize_keywords(frame_titles, max_keywords=8):
-    """From a list of frame titles, produce a concise keyword list."""
+    """From a list of frame titles, produce a concise keyword list.
+
+    This is the offline fallback for talks not yet in keywords.json. It can only
+    filter and trim; turning a slide title into a topic is what curate_keywords.py
+    is for."""
     if not frame_titles:
         return []
 
@@ -574,9 +578,20 @@ def summarize_keywords(frame_titles, max_keywords=8):
         r'^what will we', r'^what we\'ll', r'^goals?\b',
         r'^review\b', r'^recap\b', r'^reminder\b',
         r'^the end\b', r'^end\b', r'^$',
+        # Slide bookkeeping: these name a slide, not a subject.
+        r'^extra slide', r'^supplementary', r'^example$', r'^examples$',
+        r'^notation$', r'^last time\b', r'^this is the subject',
+        r'^how this talk', r'^what just happened', r'^taking stock\b',
     ]
     filtered = []
     for t in frame_titles:
+        # Strip presentational prefixes: "Ex 1: X", "Operad 3: X", "Aside: X".
+        t = re.sub(r'^(?:ex|eg|example|operad|category|game|application|aside|'
+                   r'interlude|part|step)\s*\d*\s*:\s*', '', t, flags=re.I)
+        # Strip enumeration suffixes: "Arrangements 1 of 3", "M-MDPs II."
+        t = re.sub(r'\s+\d+\s+of\s+\d+\.?$', '', t)
+        t = re.sub(r'\s+[IVX]+\.$', '', t)
+        t = t.strip()
         t_lower = t.lower().strip()
         if any(re.search(p, t_lower) for p in skip_patterns):
             continue
@@ -613,6 +628,18 @@ def find_tex_files(directory):
         if f.endswith('.tex') and not f.startswith('.'):
             tex_files.append(os.path.join(directory, f))
     return tex_files
+
+
+def read_curated_keywords():
+    """Read keywords.json, the curated slug -> keywords cache.
+
+    Written by curate_keywords.py and committed, so this build stays offline
+    and deterministic. Talks absent from it fall back to summarize_keywords."""
+    path = os.path.join(REPO_TALKS, "keywords.json")
+    if os.path.exists(path):
+        with open(path) as f:
+            return json.load(f)
+    return {}
 
 
 def read_manifest():
@@ -801,8 +828,12 @@ def main():
     manifest = read_manifest()
     print(f"Loaded {len(manifest)} entries from manifest")
 
+    curated = read_curated_keywords()
+    print(f"Loaded curated keywords for {len(curated)} talks")
+
     updated_entries = []
     title_changes = []
+    uncurated = []
 
     for entry in manifest:
         source_dir = entry.get("source_dir", "")
@@ -812,14 +843,19 @@ def main():
         tex_content = find_source_tex(source_dir)
         new_title = None
         keywords = []
+        slug = entry["slug"]
 
+        if slug in curated:
+            keywords = curated[slug]
         if tex_content:
             new_title = extract_title_from_tex(tex_content)
-            frame_titles = extract_frame_titles(tex_content)
-            keywords = summarize_keywords(frame_titles)
+            if not keywords:
+                frame_titles = extract_frame_titles(tex_content)
+                keywords = summarize_keywords(frame_titles)
+                if keywords:
+                    uncurated.append(slug)
 
         # Check for manual override first
-        slug = entry["slug"]
         if slug in MANUAL_TITLES:
             entry["title_corrected"] = MANUAL_TITLES[slug]
             if MANUAL_TITLES[slug] != old_title:
@@ -866,6 +902,9 @@ def main():
     print(f"Total entries: {len(updated_entries)}")
     entries_with_keywords = sum(1 for e in updated_entries if e.get("keywords_new"))
     print(f"Entries with keywords: {entries_with_keywords}")
+    if uncurated:
+        print(f"Using raw slide titles for {len(uncurated)} talk(s) "
+              f"(run curate_keywords.py): {', '.join(uncurated)}")
 
 
 if __name__ == "__main__":

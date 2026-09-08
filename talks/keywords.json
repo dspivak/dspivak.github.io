@@ -1,0 +1,1210 @@
+{
+  "20091107-quasi-categories": [
+    "Homotopy theory",
+    "Model structures",
+    "Homotopy function complex",
+    "Quillen equivalence",
+    "Weak Kan complexes",
+    "Mapping spaces",
+    "Necklaces"
+  ],
+  "20100603-galois": [
+    "Information schemas",
+    "Sketches",
+    "Sketch maps",
+    "RDF triple stores",
+    "Data migration",
+    "Sigma and Pi functors",
+    "Polynomial functors",
+    "Ologs"
+  ],
+  "20100916-csail": [
+    "Foreign keys",
+    "Categorical normal form",
+    "Schema morphisms",
+    "Pullback",
+    "Existential and universal push-forwards",
+    "Joins and unions",
+    "Relational model",
+    "M-sets"
+  ],
+  "20101022-galois": [
+    "Information schemas",
+    "Sketches",
+    "Sketch maps",
+    "RDF triple stores",
+    "Data migration",
+    "Sigma and Pi functors",
+    "Polynomial functors",
+    "Ologs"
+  ],
+  "20101103-harvard": [
+    "Categories",
+    "Functors",
+    "Databases",
+    "Grothendieck construction",
+    "RDF",
+    "Data migration",
+    "Views",
+    "Provenance"
+  ],
+  "20110118-cmu": [
+    "Category theory",
+    "Functors",
+    "Data migration",
+    "Adjoints",
+    "Views",
+    "Grothendieck construction",
+    "RDF",
+    "Queries"
+  ],
+  "20120113-introductory-talk": [
+    "Category theory",
+    "Functors",
+    "Data migration",
+    "Adjoints",
+    "Views",
+    "Grothendieck construction",
+    "RDF",
+    "Queries"
+  ],
+  "20120113-j-j": [
+    "Category theory",
+    "Functors",
+    "Data migration",
+    "Adjoints",
+    "Views",
+    "Grothendieck construction",
+    "RDF",
+    "Queries"
+  ],
+  "20120124-amgen": [
+    "Category theory",
+    "Functors",
+    "Data migration",
+    "Adjoints",
+    "Views",
+    "Grothendieck construction",
+    "RDF",
+    "Queries"
+  ],
+  "20120613-onr-2012-06-13": [
+    "Sheaves",
+    "Databases",
+    "Category theory",
+    "Ologs",
+    "Fiber products",
+    "Functors",
+    "Data migration",
+    "Hierarchical categories"
+  ],
+  "20120726-stanford": [
+    "Categories",
+    "Functors",
+    "Database schemas",
+    "Set-valued functors",
+    "Functorial data migration",
+    "Grothendieck construction",
+    "RDF",
+    "Lifting problems"
+  ],
+  "20120804-mathfest": [
+    "Databases",
+    "Database schemas",
+    "Set-valued functors",
+    "Functorial data migration",
+    "Category of elements",
+    "RDF",
+    "Lifting problems",
+    "Queries"
+  ],
+  "20130613-nist-2013-06-12": [
+    "Information structures",
+    "Databases",
+    "Ologs",
+    "Categories",
+    "Functors",
+    "Functorial data migration",
+    "FQL",
+    "RDF"
+  ],
+  "20130918-onr-review": [
+    "Information structures",
+    "Databases",
+    "Categories",
+    "Functors",
+    "Functorial data migration",
+    "FQL",
+    "Grothendieck construction",
+    "RDF"
+  ],
+  "20140123-cmu2014-01-23": [
+    "Functional reactive programming",
+    "Wiring diagrams",
+    "Tensor products",
+    "Symmetric monoidal categories",
+    "Lax monoidal functors",
+    "State propagators",
+    "State reduction",
+    "Monads"
+  ],
+  "20140219-amgen": [
+    "Categories",
+    "Functors",
+    "Database schemas",
+    "Set-valued functors",
+    "Functorial data migration",
+    "FQL",
+    "Grothendieck construction",
+    "RDF"
+  ],
+  "20140219-harvard2014-02-19": [
+    "Functional reactive programming",
+    "Wiring diagrams",
+    "Tensor products",
+    "Safe wiring diagrams",
+    "Symmetric monoidal categories",
+    "Lax monoidal functors",
+    "State propagators",
+    "State reduction"
+  ],
+  "20140219-mit20140415": [
+    "Functional reactive programming",
+    "Wiring diagrams",
+    "Tensor products",
+    "Safe wiring diagrams",
+    "Symmetric monoidal categories",
+    "Lax monoidal functors",
+    "State propagators",
+    "State reduction"
+  ],
+  "20140219-old-frp": [
+    "Functional reactive programming",
+    "Wiring diagrams",
+    "Tensor products",
+    "Symmetric monoidal categories",
+    "Lax monoidal functors",
+    "State propagators",
+    "State reduction",
+    "Linear propagators"
+  ],
+  "20140219-old-usingsafe": [
+    "Functional reactive programming",
+    "Wiring diagrams",
+    "Tensor products",
+    "Safe wiring diagrams",
+    "Symmetric monoidal categories",
+    "Lax monoidal functors",
+    "State propagators",
+    "State reduction"
+  ],
+  "20140219-statemachines": [
+    "Wiring diagrams",
+    "Tensor products",
+    "Symmetric monoidal categories",
+    "Lax monoidal functors",
+    "State machines",
+    "State reduction",
+    "Linear combinations monad",
+    "Linear machines"
+  ],
+  "20140228-oracle": [
+    "Databases as languages",
+    "Category theory",
+    "Relational databases",
+    "Schemas as categories",
+    "Functorial Query Language",
+    "Data Exchange",
+    "RDF",
+    "Data migration functors"
+  ],
+  "20140303-parc": [
+    "Categories",
+    "Functors",
+    "Database schema",
+    "Data migration",
+    "Adjoints",
+    "FQL",
+    "Grothendieck construction",
+    "RDF"
+  ],
+  "20140304-amgen": [
+    "Categories",
+    "Functors",
+    "Database schema",
+    "Data migration",
+    "Adjoints",
+    "FQL",
+    "Grothendieck construction",
+    "RDF"
+  ],
+  "20150126-design-theory-sig-2015": [
+    "Materials design",
+    "Materials architecture",
+    "Operads",
+    "Artifact theories",
+    "Matriarch",
+    "Category theory",
+    "Wiring diagrams",
+    "Context-free grammars"
+  ],
+  "20150129-afosr2015review": [
+    "Materials architecture",
+    "Modular systems",
+    "Operads",
+    "Operad algebras",
+    "Wiring diagrams",
+    "String diagrams",
+    "Traced categories",
+    "Matriarch"
+  ],
+  "20150403-upenn2015": [
+    "Operads",
+    "Recipes",
+    "Networks",
+    "Materials design",
+    "Matriarch",
+    "Materials architecture",
+    "Wiring diagrams"
+  ],
+  "20150605-fmcs2015": [
+    "Materials architecture",
+    "Modular systems",
+    "Operads",
+    "Operad algebras",
+    "Wiring diagrams",
+    "String diagrams",
+    "Traced categories",
+    "Matriarch"
+  ],
+  "20150616-nist2015-matriarch": [
+    "Hierarchical protein materials",
+    "Matriarch",
+    "Materials architecture",
+    "Operads",
+    "Wiring diagrams",
+    "Category theory",
+    "Open dynamical systems",
+    "Electrical circuits"
+  ],
+  "20150617-nist2015-modularity": [
+    "Operads",
+    "Applied category theory",
+    "Wiring diagrams",
+    "Protein materials",
+    "Matriarch",
+    "Databases",
+    "Open dynamical systems",
+    "Electrical circuits"
+  ],
+  "20160000-ct2016-talk": [
+    "Sheaves",
+    "Temporal type theory",
+    "Topoi",
+    "Temporal logic",
+    "Differential equations",
+    "Behavior contracts",
+    "Dedekind numeric objects",
+    "Discrete vs. continuous time"
+  ],
+  "20160322-ohiombi2016": [
+    "Operads",
+    "System composition",
+    "Feedforward composition",
+    "Feedback composition",
+    "Dynamical systems",
+    "Context-free grammars",
+    "Port graphs",
+    "Compositional mappings"
+  ],
+  "20161004-sandia": [
+    "Category theory",
+    "Functors",
+    "Categorification",
+    "Database schemas",
+    "Data migration",
+    "Posets",
+    "Monoids",
+    "Sheaves"
+  ],
+  "20161026-numericalpde-mit": [
+    "Wiring diagrams",
+    "Array multiplication",
+    "Boolean matrices",
+    "Clustering",
+    "Cluster trees",
+    "Numerical methods for PDEs",
+    "Open dynamical systems",
+    "Pixel Array analysis"
+  ],
+  "20161110-telecombretagne": [
+    "Wiring diagrams",
+    "Array multiplication",
+    "Boolean matrices",
+    "Clustering",
+    "PDEs",
+    "Heat equation",
+    "Open dynamical systems",
+    "Plotting"
+  ],
+  "20161110-telecombretagne-2": [
+    "Categorification",
+    "Finite sets",
+    "Functors",
+    "Database schemas",
+    "Posets",
+    "Monoids",
+    "Groups",
+    "Sheaves"
+  ],
+  "20161205-simons2016-presentation": [
+    "Composition",
+    "Syntax and semantics",
+    "String diagrams",
+    "Operads",
+    "Traced monoidal categories",
+    "Hypergraph categories",
+    "Dynamical systems",
+    "Wiring diagrams"
+  ],
+  "20170130-iap2017": [
+    "Wiring diagrams",
+    "Array multiplication",
+    "Boolean matrices",
+    "Clustering",
+    "Dynamical systems",
+    "PDEs",
+    "Heat equation",
+    "Open dynamical systems"
+  ],
+  "20170329-broad": [
+    "Functors",
+    "Categories",
+    "Database schemas",
+    "Data migration",
+    "Adjoints",
+    "Views",
+    "FQL",
+    "Grothendieck construction"
+  ],
+  "20170608-lorentz2017": [
+    "Interfaces",
+    "Wiring diagrams",
+    "Networks",
+    "Behaviors",
+    "Sheaves",
+    "Topos",
+    "Contracts",
+    "Safety properties"
+  ],
+  "20170612-barcelona2017": [
+    "Compositionality",
+    "Operads",
+    "Wiring diagrams",
+    "String diagrams",
+    "Monoidal categories",
+    "Hypergraph categories",
+    "Dynamical systems",
+    "Hierarchical protein materials"
+  ],
+  "20170628-afosr-agent-review": [
+    "Composition",
+    "Operads",
+    "Wiring diagrams",
+    "Mode-dependent wiring diagrams",
+    "Bifurcation theory",
+    "Evolution and learning",
+    "Recipes"
+  ],
+  "20170628-afosr-pixel-review": [
+    "Composition",
+    "Operads",
+    "Wiring diagrams",
+    "Compositional mappings",
+    "Dynamical systems",
+    "Bifurcation diagrams",
+    "Steady states",
+    "Discretization"
+  ],
+  "20170712-siam2017": [
+    "Composition",
+    "Behavior contracts",
+    "Behavior types",
+    "Sheaves",
+    "Topos theory",
+    "Modalities",
+    "Hybrid dynamical systems",
+    "National airspace system"
+  ],
+  "20170713-siam-pa-2017": [
+    "Pixel Array method",
+    "Nonlinear systems",
+    "Array multiplication",
+    "Equations",
+    "Wiring diagrams"
+  ],
+  "20171002-caltech": [
+    "Information integration",
+    "Operads",
+    "Wiring diagrams",
+    "Algebras of operads",
+    "Equations",
+    "Dynamical systems",
+    "Compositional mappings",
+    "Bifurcation diagrams"
+  ],
+  "20171002-mcgill": [
+    "Operads",
+    "Wiring diagrams",
+    "Hierarchical protein materials",
+    "Grammars",
+    "Recipes",
+    "Equations",
+    "Clustering",
+    "Open dynamical systems"
+  ],
+  "20171002-mit-del-vecchio": [
+    "Operads",
+    "Wiring diagrams",
+    "Hierarchical protein materials",
+    "Grammars",
+    "Recipes",
+    "Tensors",
+    "Equations",
+    "Compositional mappings"
+  ],
+  "20171104-uc-riverside2017": [
+    "Hypergraph categories",
+    "Relations in a topos",
+    "Toposes",
+    "Type theory",
+    "Kripke-Joyal semantics",
+    "Modalities",
+    "Differential equations",
+    "Behavior contracts"
+  ],
+  "20171212-salemstate": [
+    "Operads",
+    "Wiring diagrams",
+    "Hierarchical protein materials",
+    "Grammars",
+    "Recipes",
+    "Open dynamical systems",
+    "Relations",
+    "Tensors"
+  ],
+  "20180316-afosr-review": [
+    "Behavior types",
+    "Interconnection of behaviors",
+    "Toposes",
+    "Logic",
+    "Intervallic monitors",
+    "Logic of behavior types",
+    "HOTL",
+    "Behavior contracts"
+  ],
+  "20180316-barcelona2018": [
+    "Hypergraph categories",
+    "Relations in a topos",
+    "Toposes",
+    "Type theory",
+    "Kripke-Joyal semantics",
+    "Differential equations",
+    "Behavior contracts"
+  ],
+  "20180316-cmu2019": [
+    "Behaviors as sheaves",
+    "Topos",
+    "Discrete vs. continuous time",
+    "Temporal logic",
+    "Internal language of a topos",
+    "Temporal type theory",
+    "Differential equations",
+    "Behavior contracts"
+  ],
+  "20180316-nist2018": [
+    "Hypergraph categories",
+    "Relations in a topos",
+    "Topos",
+    "Type theory",
+    "Kripke-Joyal semantics",
+    "Differential equations",
+    "Behavior contracts"
+  ],
+  "20180502-act-lorentz2018": [
+    "Hypergraph categories",
+    "Topos",
+    "Type theory",
+    "Kripke-Joyal semantics",
+    "Dedekind numeric objects",
+    "Modalities",
+    "Differential equations",
+    "Behavior contracts"
+  ],
+  "20180709-ct2018": [
+    "Behavior",
+    "Topos",
+    "Discrete vs. continuous time",
+    "Temporal logic",
+    "Internal language of a topos",
+    "Dedekind numeric objects",
+    "Temporal type theory",
+    "Differential equations"
+  ],
+  "20180928-umcp-isr": [
+    "Category theory",
+    "Compositional operations",
+    "Operads",
+    "Wiring diagrams",
+    "Operad algebras",
+    "Tensor networks",
+    "Dynamical systems",
+    "Interdisciplinarity"
+  ],
+  "20181027-graphicallogic-octoberfest201810": [
+    "String diagrams",
+    "Adjunctions",
+    "Regular hypergraph categories",
+    "Regular categories",
+    "Regular logic",
+    "Cospan-algebras"
+  ],
+  "20190000-mit2019": [
+    "Agent/environment systems",
+    "Lenses",
+    "Wiring diagrams",
+    "Dynamical systems",
+    "Learners",
+    "Hierarchical planning",
+    "Bundles",
+    "Polynomial functors"
+  ],
+  "20190000-riverside2019": [
+    "Agent/environment systems",
+    "Lenses",
+    "Wiring diagrams",
+    "Dynamical systems",
+    "Learners",
+    "Hierarchical planning",
+    "Bundles",
+    "Polynomial functors"
+  ],
+  "20190109-bae": [
+    "Information integration",
+    "Information kinematics",
+    "Databases",
+    "Categories",
+    "Functors",
+    "Functorial data migration"
+  ],
+  "20190227-kensho": [
+    "Information integration",
+    "Information kinematics",
+    "Databases",
+    "Categories",
+    "Functors",
+    "Functorial data migration",
+    "Grothendieck construction"
+  ],
+  "20190227-moderna": [
+    "Information integration",
+    "Information kinematics",
+    "Databases",
+    "Categories",
+    "Functors",
+    "Functorial data migration",
+    "Grothendieck construction"
+  ],
+  "20190311-ut-austin": [
+    "Compositional operations",
+    "Wiring diagrams",
+    "Hierarchical protein materials",
+    "Probabilities",
+    "Grammars",
+    "Tensor networks",
+    "Dynamical systems",
+    "Smart grid"
+  ],
+  "20190411-mit20190411": [
+    "Regular logic",
+    "Compositionality",
+    "Regular categories",
+    "Graphical regular logic",
+    "Wiring diagrams",
+    "Graphical calculi",
+    "Categorical Query Language"
+  ],
+  "20190422-uber": [
+    "Information integration",
+    "Database schemas",
+    "Categories",
+    "Functors",
+    "Functorial data migration",
+    "Grothendieck construction",
+    "RDF",
+    "Categorical Query Language"
+  ],
+  "20190509-bridgewater": [
+    "Compositionality",
+    "Operads",
+    "Wiring diagrams",
+    "Protein materials",
+    "Probabilities",
+    "Categories",
+    "Database schemas",
+    "Categorical Query Language"
+  ],
+  "20190509-mit-aso": [
+    "Operads",
+    "Wiring diagrams",
+    "Protein materials",
+    "Probabilities",
+    "Functors",
+    "Algebras",
+    "Dynamical systems",
+    "Tensor networks"
+  ],
+  "20190509-oxford-fhi": [
+    "Compositionality",
+    "Operads",
+    "Wiring diagrams",
+    "Protein materials",
+    "Probabilities",
+    "Grammars",
+    "Recipes",
+    "Dynamical systems"
+  ],
+  "20190624-compose20190625": [
+    "Regular logic",
+    "Compositionality",
+    "Regular categories",
+    "Graphical regular logic",
+    "Wiring diagrams",
+    "Graphical calculi",
+    "Categorical Query Language"
+  ],
+  "20190626-afosr-review": [
+    "Autopoiesis",
+    "Cognition",
+    "Distributed cognition",
+    "Wiring diagrams",
+    "Dynamical systems",
+    "Mode-dependent networks"
+  ],
+  "20190711-ct2019": [
+    "Abelian categories",
+    "Graphical languages",
+    "Abelian relations",
+    "Finitely-generated abelian groups",
+    "Syntactic category",
+    "Supply",
+    "Abelian calculi",
+    "Predicates"
+  ],
+  "20190719-act2019-short": [
+    "Graphical languages",
+    "Abelian categories",
+    "Abelian relations",
+    "Po-props",
+    "Functors",
+    "Finitely-generated abelian groups",
+    "Monoidal functors"
+  ],
+  "20190820-afosr-review": [
+    "Autonomous systems",
+    "Hierarchical planning",
+    "Markov decision processes",
+    "Monads",
+    "Monadic MDPs",
+    "Combining planners"
+  ],
+  "20190925-eth": [
+    "Operads",
+    "Wiring diagrams",
+    "Functors",
+    "Operad algebras",
+    "Tensor networks",
+    "Dynamical systems",
+    "Smart grid"
+  ],
+  "20200528-mit": [
+    "Polynomials",
+    "Composition product",
+    "Strategies",
+    "Comonoids",
+    "Dynamical systems",
+    "Operads",
+    "Categories",
+    "Bimodules"
+  ],
+  "20200607-internalvaluations2020": [
+    "Stochastic processes",
+    "Sheaves",
+    "Topos logic",
+    "Modalities",
+    "Internal topological spaces",
+    "Internal real numbers",
+    "Probability valuations",
+    "Families of valuations"
+  ],
+  "20200612-agi": [
+    "Collective sensemaking",
+    "Care",
+    "Abstraction",
+    "Category theory",
+    "Interfaces",
+    "Delegation",
+    "Machines",
+    "Dynamic arrangements"
+  ],
+  "20200625-tallinn": [
+    "Polynomials",
+    "Monoidal structures",
+    "Moore machines",
+    "Wiring diagrams",
+    "Mode-dependent dynamics",
+    "Comonoids",
+    "Databases",
+    "Data migration"
+  ],
+  "20200707-act": [
+    "Polynomials",
+    "Adjunctions",
+    "Bimorphic lenses",
+    "Monoidal structures",
+    "Moore machines",
+    "Wiring diagrams",
+    "Mode-dependent dynamics",
+    "Comonoids"
+  ],
+  "20200804-afosr-review": [
+    "Applied category theory",
+    "Hypercomplexity",
+    "ACT pipeline",
+    "Robotics",
+    "Temporal type theory",
+    "Stochastic processes",
+    "Petri nets",
+    "Wiring diagrams"
+  ],
+  "20210000-topos-fra-workshop-cultivatingstrategies": [
+    "Strategies",
+    "Negentropy",
+    "AI transition",
+    "Collective intelligence",
+    "Dynamical systems",
+    "Organizations",
+    "Polynomial functors",
+    "Empowerment"
+  ],
+  "20210000-topos-fra-workshop-tutorial": [
+    "Sets",
+    "Orders",
+    "Universal properties",
+    "Categories",
+    "Initial and terminal objects",
+    "Coproducts and products",
+    "Functors",
+    "String diagrams"
+  ],
+  "20210202-pnnl": [
+    "Operads",
+    "Wiring diagrams",
+    "Hierarchical protein materials",
+    "Probabilities",
+    "Grammars",
+    "Recipes",
+    "Tensor networks",
+    "Smart grid"
+  ],
+  "20210204-toposcolloquium": [
+    "Poly",
+    "Monoidal structures",
+    "Comonoids",
+    "Bicomodules",
+    "Moore machines",
+    "Wiring diagrams",
+    "Categorical databases",
+    "Cellular automata"
+  ],
+  "20210217-unam": [
+    "Poly",
+    "Polynomial morphisms",
+    "Monoidal structures",
+    "Comonoids",
+    "Bicomodules",
+    "Moore machines",
+    "Wiring diagrams",
+    "Categorical databases"
+  ],
+  "20210315-pfunc": [
+    "Poly",
+    "Monoidal structures",
+    "Comonoids",
+    "Cofree comonoids",
+    "Bicomodules",
+    "Moore machines",
+    "Wiring diagrams",
+    "Categorical databases"
+  ],
+  "20210416-afosr-review": [
+    "Complex systems theory",
+    "Dynamic networks",
+    "Bundles",
+    "Lenses",
+    "Open dynamical systems",
+    "Wiring diagrams",
+    "Operadic composition",
+    "Deep learning"
+  ],
+  "20210921-toposinternal": [
+    "Poly",
+    "Monoidal structures",
+    "Internal hom",
+    "Coalgebras",
+    "Interaction patterns",
+    "Wiring diagrams",
+    "Characters",
+    "Organizations"
+  ],
+  "20220125-intercats": [
+    "Polynomial functors",
+    "Lens pattern",
+    "Dynamical systems",
+    "Wiring diagrams",
+    "Interaction patterns",
+    "Categorical databases",
+    "Open games",
+    "Deep learning"
+  ],
+  "20220219-ipam": [
+    "Accounting systems",
+    "Collective intelligence",
+    "Sense-making",
+    "Operads",
+    "Interaction patterns",
+    "Interacting dynamical systems",
+    "Governance",
+    "Accountability"
+  ],
+  "20220318-pfunc": [
+    "Categorical databases",
+    "Aggregation",
+    "Poly",
+    "Dirichlet product",
+    "Substitution product",
+    "Cat^#",
+    "Database schemas",
+    "Prafunctors"
+  ],
+  "20220406-pisa": [
+    "Polynomial functors",
+    "Lens pattern",
+    "Polymorphic data types",
+    "Algebraic datatypes",
+    "Dynamical systems",
+    "Mealy machines",
+    "Wiring diagrams",
+    "Categorical databases"
+  ],
+  "20220513-scse": [
+    "Polynomial functors",
+    "Entropy",
+    "Morphisms of polynomials",
+    "Fundamental invariants",
+    "Distributive monoidal structures",
+    "Derivatives",
+    "Bifibrations",
+    "Categorical partition function"
+  ],
+  "20220607-levin": [
+    "Interfaces",
+    "Polynomial functors",
+    "Arrangements",
+    "Dynamics",
+    "Digital circuits",
+    "Control systems",
+    "Deep learning",
+    "Morphogenesis of systems"
+  ],
+  "20220719-act": [
+    "Polynomial functors",
+    "Entropy",
+    "Morphisms of polynomials",
+    "Fundamental invariants",
+    "Distributive monoidal structures",
+    "Derivatives",
+    "Bifibrations",
+    "Categorical partition function"
+  ],
+  "20220811-afosr-review": [
+    "Algebraic structure of complex systems",
+    "Category theory",
+    "Mode dependent interaction",
+    "Poly",
+    "Natural applications of Poly",
+    "Design environment"
+  ],
+  "20220913-actinf": [
+    "Interfaces as polynomials",
+    "Arrangements",
+    "Dynamics",
+    "Dynamic arrangements",
+    "Digital circuits and control systems",
+    "Deep learning",
+    "Dynamic organizational structures",
+    "Active inference"
+  ],
+  "20221020-nasa-pce3": [
+    "Mathematical fields as accounting systems",
+    "Dynamic organizational structures",
+    "Open dynamical systems",
+    "Wiring diagrams and interaction patterns",
+    "Mode dependent interaction",
+    "Applications to PCE3"
+  ],
+  "20221103-nist": [
+    "Tracking values",
+    "Accounting systems",
+    "Finding the right abstractions",
+    "Recipes",
+    "Recipe structure",
+    "Ologs",
+    "Databases",
+    "Categorical imperative"
+  ],
+  "20230105-jmm": [
+    "Accounting systems",
+    "Working language",
+    "Matter and pattern",
+    "Compositionality",
+    "ACT",
+    "Spencer's graph"
+  ],
+  "20230109-fra2": [
+    "Poly",
+    "Comonoids",
+    "Lenses",
+    "Moore machines",
+    "Mealy machines",
+    "Wiring diagrams",
+    "Databases and data migration",
+    "Dynamic organizational systems"
+  ],
+  "20230323-catsforai": [
+    "Dynamic organizational systems",
+    "Polynomial morphisms",
+    "Comonoids",
+    "Lenses",
+    "Moore machines",
+    "Wiring diagrams",
+    "Artificial neural networks",
+    "Prediction markets"
+  ],
+  "20230416-consciousness": [
+    "Accounting",
+    "Dynamic organizational systems",
+    "Sense-making",
+    "Polynomial morphisms",
+    "Moore machines",
+    "Wiring diagrams",
+    "Artificial neural networks",
+    "Prediction markets"
+  ],
+  "20230725-societymfr": [
+    "Operads",
+    "Wiring diagrams",
+    "Hierarchical protein materials",
+    "Probabilities",
+    "Deep learning",
+    "Prediction markets",
+    "Organizations",
+    "Dynamic operads"
+  ],
+  "20230804-act2023": [
+    "Poly",
+    "Polynomial comonads",
+    "Cat^#",
+    "Categories",
+    "Span",
+    "Multisorted polynomials",
+    "Dynamic functions",
+    "Dynamic arrangements"
+  ],
+  "20230914-afosr-review": [
+    "Categorical systems theory",
+    "Compositional adaptive systems",
+    "Mathematics of interfaces",
+    "Dynamic operads",
+    "Compositional physics",
+    "Lie groups",
+    "Hopf monoids"
+  ],
+  "20231011-chevron": [
+    "Operads",
+    "Wiring diagrams",
+    "Hierarchical protein materials",
+    "Probabilities",
+    "Deep learning",
+    "Prediction markets",
+    "Organizations",
+    "Dynamic operads"
+  ],
+  "20231214-caltech": [
+    "Mathematical fields as accounting systems",
+    "Category theory",
+    "Operads",
+    "Wiring diagrams",
+    "Manifolds",
+    "Lenses and open dynamical systems",
+    "Dynamic arrangements",
+    "Compositional physics"
+  ],
+  "20240307-calgary": [
+    "Accountability",
+    "Mathematical fields as accounting systems",
+    "Interfaces",
+    "Algebraic operations on interfaces",
+    "Nesting arrangements",
+    "Dynamics",
+    "Dynamic arrangements",
+    "Recombinant intelligence"
+  ],
+  "20240410-princeton-astera": [
+    "Mathematical fields as accounting systems",
+    "Category theory",
+    "Operads",
+    "Wiring diagrams",
+    "Probabilities",
+    "Deep learning",
+    "Dynamic arrangements",
+    "Dynamic operads"
+  ],
+  "20240417-princeton-astera": [
+    "Interfaces as polynomials",
+    "Semantics of polynomial operations",
+    "Arrangements",
+    "Dynamic arrangements",
+    "Digital circuits and control systems",
+    "Deep learning",
+    "Organizational structures",
+    "Active inference"
+  ],
+  "20240617-act2024": [
+    "Polynomial functors",
+    "Moore and Mealy machines",
+    "Wiring diagrams",
+    "Free monad",
+    "Cofree comonad",
+    "Tree representation",
+    "Monad monad and Comonad comonad",
+    "Interactions between free and cofree"
+  ],
+  "20240709-fmcs": [
+    "Abacus",
+    "Polynomials",
+    "Poly",
+    "Monoidal structures",
+    "Comonoids",
+    "Bicomodules",
+    "Wiring diagrams",
+    "Categorical databases"
+  ],
+  "20240815-agi": [
+    "Collective sensemaking",
+    "Tracking what we care about",
+    "Abstraction",
+    "Category theory",
+    "Relational math",
+    "Interfaces",
+    "Delegation",
+    "Dynamic arrangements"
+  ],
+  "20240829-afosr-review": [
+    "Polynomial functors",
+    "Categories, functors, and natural transformations",
+    "Endofunctors and monoidal structures",
+    "Monoids and comonoids",
+    "Monads and comonads",
+    "Substitution product",
+    "Free monad monad and cofree comonad comonad"
+  ],
+  "20241105-ipam-naturalisticai": [
+    "Plausible fiction",
+    "Care tends to actualize potential",
+    "Lightning, hurricanes, and life",
+    "Recombination and coordination in life",
+    "Working language",
+    "Accounting systems",
+    "Petri nets",
+    "Accounting for ourselves"
+  ],
+  "20241202-mit": [
+    "Plausible fiction",
+    "Care tends to actualize potential",
+    "Lightning, hurricanes, and life",
+    "Recombination and coordination in life",
+    "Working language",
+    "Accounting systems",
+    "Petri nets",
+    "Operadic gap-filling"
+  ],
+  "20250000-afosr-review": [
+    "Formal effects in material contexts",
+    "Categories, functors, and natural transformations",
+    "Monoidal structures, monoids, and comonoids",
+    "Monads and comonads",
+    "Algebraic theories",
+    "Dependent type theory",
+    "Categories as comonads",
+    "Topological intuition for comonads"
+  ],
+  "20260121-nitmb-tutorial": [
+    "Operations and relations",
+    "Popper's objection",
+    "Operads",
+    "Hierarchical protein materials",
+    "Wiring diagrams",
+    "Algebras"
+  ],
+  "20260317-nitmb-colloquium": [
+    "Inventiveness, portability, and compositionality",
+    "Mathematical fields as accounting systems",
+    "Abiogenesis",
+    "Wiring diagrams",
+    "Algebras for wiring diagram operads",
+    "Polynomial functors",
+    "Polynomial coalgebras",
+    "Rewiring diagrams and updating interfaces"
+  ],
+  "20260714-ct2026": [
+    "Left Kan extensions",
+    "Left Kan calculus",
+    "Pra-functors",
+    "Pra-comonads",
+    "Density comonads",
+    "Lawvere theories",
+    "Product completions",
+    "Nerves"
+  ],
+  "20260806-afosr-review": [
+    "Category theory",
+    "Functorial semantics",
+    "Operadic syntax for interaction",
+    "Adaptive arrangements",
+    "Computer systems",
+    "Integrators",
+    "Gradient descent and backpropagation",
+    "Wave and heat equations"
+  ],
+  "20260908-topos-catsbykan": [
+    "Left Kan extensions",
+    "Left Kan calculus",
+    "Pra-functors",
+    "Pra-comonads",
+    "Density comonads",
+    "Lawvere theories",
+    "Arbitrary product completions",
+    "Nerves"
+  ]
+}
